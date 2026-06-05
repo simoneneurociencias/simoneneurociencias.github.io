@@ -397,14 +397,10 @@
       width: 100px;
       height: 100px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--roxo), #c084fc);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 2rem;
-      font-weight: 800;
+      object-fit: cover;
+      object-position: top center;
       flex-shrink: 0;
+      border: 3px solid var(--roxo);
     }
     .mentora-bio h3 { font-size: 1.2rem; margin-bottom: 10px; }
     .mentora-bio p  { font-size: .93rem; color: #444; line-height: 1.7; }
@@ -839,7 +835,7 @@
   <div class="container">
     <span class="label">Quem está por trás disso</span>
     <div class="mentora-inner" style="margin-top:28px;">
-      <div class="mentora-avatar">SC</div>
+      <img src="simone.jpeg" alt="Simone Carneiro" class="mentora-avatar" />
       <div class="mentora-bio">
         <h3>Simone Carneiro</h3>
         <p>
