@@ -46,9 +46,9 @@
       --borda:      rgba(212,175,55,.16);
       --ouro:       #d4af37;
       --ouro-suave: #e7cd83;
-      --preto:      #0c0c0e;
-      --grafite:    #141418;
-      --card:       #1b1b21;
+      --preto:      #0b0b0d;            /* tom ESCURO das seções */
+      --grafite:    #17171e;            /* tom CLARO das seções (grafite levantado) */
+      --card:       #1f1f28;            /* cards: mais claros que ambos, sempre destacam */
     }
 
     body {
@@ -172,7 +172,7 @@
     /* ════════════════════════════
        QUEM SOMOS
     ════════════════════════════ */
-    .problema { padding: 72px 0; }
+    .problema { padding: 72px 0; background: var(--grafite); border-top: 1px solid var(--borda); }
     .problema p + p { margin-top: 16px; }
     .problema strong { color: var(--roxo); }
     .destaque-box {
@@ -249,7 +249,7 @@
     /* ════════════════════════════
        SUBPROMESSAS / BENEFÍCIOS
     ════════════════════════════ */
-    .beneficios { padding: 72px 0; background: var(--grafite); }
+    .beneficios { padding: 72px 0; background: var(--preto); border-top: 1px solid var(--borda); }
     .beneficios h2 { margin-bottom: 36px; }
     .benef-grid {
       display: grid;
@@ -273,7 +273,7 @@
     /* ════════════════════════════
        PARA QUEM É
     ════════════════════════════ */
-    .para-quem { padding: 72px 0; }
+    .para-quem { padding: 72px 0; background: var(--grafite); border-top: 1px solid var(--borda); }
     .para-quem h2 { margin-bottom: 10px; }
     .para-quem > .container > p { margin-top: 14px; color: var(--cinza); }
     .pq-list {
@@ -329,7 +329,7 @@
     /* ════════════════════════════
        RESULTADOS
     ════════════════════════════ */
-    .resultados { padding: 72px 0; background: var(--preto); }
+    .resultados { padding: 72px 0; background: var(--grafite); border-top: 1px solid var(--borda); }
     .resultados h2 { margin-bottom: 32px; }
     .result-grid {
       display: grid;
@@ -348,7 +348,7 @@
     /* ════════════════════════════
        DEPOIMENTOS
     ════════════════════════════ */
-    .depoimentos { padding: 72px 0; background: var(--grafite); }
+    .depoimentos { padding: 72px 0; background: var(--grafite); border-top: 1px solid var(--borda); }
     .dep-grid {
       display: flex;
       flex-direction: column;
@@ -419,7 +419,7 @@
     /* ════════════════════════════
        MENTORA
     ════════════════════════════ */
-    .mentora { padding: 72px 0; }
+    .mentora { padding: 72px 0; background: var(--preto); border-top: 1px solid var(--borda); }
     .mentora-inner {
       display: flex;
       gap: 36px;
@@ -497,7 +497,7 @@
     /* ════════════════════════════
        COMO FUNCIONA
     ════════════════════════════ */
-    .como-funciona { padding: 72px 0; background: var(--preto); }
+    .como-funciona { padding: 72px 0; background: var(--preto); border-top: 1px solid var(--borda); }
     .metodo-destaque {
       background: linear-gradient(135deg, #000 0%, var(--roxo-mid) 100%);
       color: #fff;
@@ -537,7 +537,7 @@
     /* ════════════════════════════
        FAQ
     ════════════════════════════ */
-    .faq { padding: 72px 0; background: var(--grafite); }
+    .faq { padding: 72px 0; background: var(--preto); border-top: 1px solid var(--borda); }
     details {
       border-bottom: 1px solid var(--borda);
       padding: 20px 0;
@@ -670,7 +670,7 @@
 <!-- ════════════════════════════
      MENTORA — AUTORIDADE
 ════════════════════════════ -->
-<section class="mentora section--soft">
+<section class="mentora">
   <div class="container">
     <span class="label">Quem será sua mentora</span>
     <div class="mentora-inner" style="margin-top:28px;">
