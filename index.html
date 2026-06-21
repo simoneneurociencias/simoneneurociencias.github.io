@@ -139,16 +139,14 @@
       text-align: center;
       border-bottom: 1px solid var(--borda);
     }
-    .hero-foto {
-      width: 112px;
-      height: 112px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: top center;
-      border: 2px solid var(--ouro);
-      box-shadow: 0 0 28px rgba(212,175,55,.3);
-      margin: 0 auto 24px;
+    .hero-img {
       display: block;
+      width: 100%;
+      max-width: 440px;
+      margin: 40px auto 0;
+      border-radius: 14px;
+      border: 1px solid rgba(212,175,55,.4);
+      box-shadow: 0 20px 50px rgba(0,0,0,.55);
     }
     .hero-kicker {
       display: inline-block;
@@ -695,7 +693,6 @@
 ════════════════════════════ -->
 <section class="hero">
   <div class="container">
-    <img src="simone.jpeg" alt="Simone Carneiro" class="hero-foto" />
     <span class="hero-kicker">Simone Carneiro · Neurocientista &amp; Mentora de Terapeutas</span>
 
     <h1>
@@ -715,6 +712,8 @@
       QUERO DESCOBRIR OS 3 SEGREDOS
     </a>
     <p class="hero-sub">Acesso imediato · Pagamento 100% seguro · Satisfação garantida</p>
+
+    <img src="simone-palco.jpg" alt="Simone Carneiro apresentando o webinário para uma plateia lotada" class="hero-img" loading="lazy" />
   </div>
 </section>
 
