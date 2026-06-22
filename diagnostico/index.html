@@ -169,29 +169,6 @@
   <button class="btn" id="verBtn" type="button">Ver meu resultado</button>
   <p class="aviso" id="aviso"></p>
 
-  <!-- GATE: captura de contato antes do resultado -->
-  <section id="gate">
-    <div class="gate-card">
-      <h2>Quase lá!</h2>
-      <p>Preencha abaixo para liberar o seu diagnóstico completo.</p>
-      <div class="campo">
-        <label for="nome">Seu nome</label>
-        <input type="text" id="nome" placeholder="Como você se chama?" autocomplete="name" />
-      </div>
-      <div class="campo">
-        <label for="email">Seu melhor e-mail</label>
-        <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
-      </div>
-      <div class="campo">
-        <label for="whatsapp">WhatsApp (opcional)</label>
-        <input type="tel" id="whatsapp" placeholder="(DDD) 90000-0000" autocomplete="tel" />
-      </div>
-      <button class="btn" id="liberarBtn" type="button">Liberar meu diagnóstico</button>
-      <p class="aviso" id="avisoGate"></p>
-      <p class="gate-sub">Seus dados estão seguros e não serão compartilhados.</p>
-    </div>
-  </section>
-
   <!-- RESULTADO -->
   <section id="resultado">
     <div class="res-card">
@@ -252,10 +229,6 @@
 </div>
 
 <script>
-  // ⚙️ CONFIGURAÇÃO — cole aqui a URL do webhook do Make (ou Apps Script) para salvar os leads.
-  // Enquanto estiver vazio, o diagnóstico funciona normalmente, mas NÃO salva os contatos.
-  const WEBHOOK_URL = "https://hook.us2.make.com/4g7sb39n5d41ms3n33d8jg98fmv5tgu9";
-
   const perguntas = [
     { g: 1, t: "Evito me promover ou aparecer porque parece forçado." },
     { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
@@ -319,56 +292,17 @@
     return { total, s1, s2, s3, faixa };
   }
 
-  // 1) clicar em "Ver meu resultado" → valida e abre o gate de contato
+  // clicar em "Ver meu resultado" → valida e mostra o resultado
   document.getElementById('verBtn').onclick = () => {
     if (Object.keys(respostas).length < perguntas.length) {
       document.getElementById('aviso').textContent = 'Responda todas as 12 frases para ver o resultado.';
       return;
     }
     document.getElementById('verBtn').style.display = 'none';
-    document.getElementById('gate').style.display = 'block';
-    document.getElementById('gate').scrollIntoView({ behavior: 'smooth' });
-  };
-
-  // 2) preencher contato → envia lead e revela resultado
-  document.getElementById('liberarBtn').onclick = async () => {
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!nome || !okEmail) {
-      document.getElementById('avisoGate').textContent = 'Preencha seu nome e um e-mail válido.';
-      return;
-    }
-    const r = calcular();
-    const btn = document.getElementById('liberarBtn');
-    btn.disabled = true; btn.textContent = 'Liberando...';
-
-    // envia o lead (não bloqueia o resultado se falhar)
-    if (WEBHOOK_URL) {
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            nome: nome, email: email, whatsapp: whatsapp,
-            pontuacao: r.total,
-            faixa: r.faixa,
-            visibilidade: r.s1,
-            consistencia: r.s2,
-            cobranca: r.s3,
-            origem: 'diagnostico-bloqueio',
-            data: new Date().toISOString()
-          })
-        });
-      } catch (e) { /* segue mesmo se o envio falhar */ }
-    }
-
-    mostrarResultado(r);
+    mostrarResultado(calcular());
   };
 
   function mostrarResultado(r) {
-    document.getElementById('gate').style.display = 'none';
     document.getElementById('score').innerHTML = r.total + '<small>/36</small>';
 
     let nome, desc, fxId;
