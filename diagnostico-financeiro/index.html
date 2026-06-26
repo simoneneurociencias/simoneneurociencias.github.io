@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diagnóstico — Qual é o seu nível de bloqueio financeiro?</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ouro:       #d4af37;
+      --ouro-suave: #e7cd83;
+      --preto:      #0b0b0d;
+      --grafite:    #17171e;
+      --card:       #1f1f28;
+      --roxo-mid:   #1b1b21;
+      --texto:      #f2efe9;
+      --cinza:      #b5b0a6;
+      --borda:      rgba(212,175,55,.16);
+      --verde:      #5cb87a;
+      --amber:      #e0a13c;
+      --vermelho:   #d4574e;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: var(--texto);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.10) 0%, transparent 55%),
+        var(--preto);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3 { font-family: 'Marcellus', Georgia, serif; font-weight: 400; }
+
+    .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
+
+    header { text-align: center; margin-bottom: 40px; }
+    .kicker {
+      display: inline-block;
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ouro); margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px; }
+    h1 em { font-style: normal; color: var(--ouro-suave); }
+    header p { color: var(--cinza); max-width: 540px; margin: 0 auto; font-size: 1rem; }
+
+    /* ── Grupos de perguntas ── */
+    .grupo { margin-bottom: 34px; }
+    .grupo-tit {
+      display: flex; align-items: center; gap: 12px;
+      font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ouro-suave); margin-bottom: 16px;
+    }
+    .grupo-tit::before {
+      content: ""; width: 26px; height: 2px; background: var(--ouro); flex-shrink: 0;
+    }
+
+    .q {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 12px;
+      padding: 18px 18px 16px;
+      margin-bottom: 14px;
+    }
+    .q-txt { font-size: .97rem; margin-bottom: 14px; }
+    .q-num { color: var(--ouro); font-weight: 700; margin-right: 6px; }
+
+    .opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 460px) { .opts { grid-template-columns: repeat(2, 1fr); } }
+
+    .opt {
+      cursor: pointer;
+      text-align: center;
+      border: 1px solid rgba(212,175,55,.3);
+      border-radius: 8px;
+      padding: 10px 6px;
+      font-size: .8rem;
+      color: var(--cinza);
+      background: transparent;
+      transition: all .15s;
+      line-height: 1.25;
+    }
+    .opt:hover { border-color: var(--ouro); color: var(--texto); }
+    .opt .pt { display: block; font-family: 'Marcellus', serif; font-size: 1.25rem; color: var(--ouro-suave); margin-bottom: 2px; }
+    .opt.sel {
+      background: linear-gradient(135deg, var(--ouro-suave), var(--ouro));
+      border-color: var(--ouro);
+      color: #1a1400;
+    }
+    .opt.sel .pt { color: #1a1400; }
+
+    .btn {
+      display: block; width: 100%; max-width: 380px; margin: 8px auto 0;
+      padding: 16px 30px; border: none; border-radius: 8px; cursor: pointer;
+      font-size: 1rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      background: linear-gradient(135deg, var(--ouro-suave) 0%, var(--ouro) 55%, #b8901f 100%);
+      color: #1a1400; transition: transform .15s, box-shadow .2s;
+      box-shadow: 0 8px 26px rgba(212,175,55,.3);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { opacity: .7; cursor: default; transform: none; }
+    .aviso { text-align: center; color: var(--amber); font-size: .85rem; margin-top: 14px; min-height: 20px; }
+
+    /* ── Gate de captura de contato ── */
+    #gate { display: none; margin-top: 10px; }
+    .gate-card {
+      background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px;
+      padding: 32px 26px; text-align: center; max-width: 480px; margin: 0 auto;
+    }
+    .gate-card h2 { font-size: 1.5rem; margin-bottom: 8px; }
+    .gate-card p { color: var(--cinza); font-size: .95rem; margin-bottom: 22px; }
+    .campo { text-align: left; margin-bottom: 14px; }
+    .campo label { display: block; font-size: .8rem; color: var(--ouro-suave); margin-bottom: 6px; font-weight: 600; }
+    .campo input {
+      width: 100%; padding: 13px 14px; border-radius: 8px;
+      border: 1px solid var(--borda); background: var(--preto); color: var(--texto);
+      font-size: .95rem; font-family: inherit;
+    }
+    .campo input:focus { outline: none; border-color: var(--ouro); }
+    .campo select {
+      width: 100%; padding: 13px 14px; border-radius: 8px;
+      border: 1px solid var(--borda); background: var(--preto); color: var(--texto);
+      font-size: .95rem; font-family: inherit; cursor: pointer;
+      appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23e7cd83' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+    }
+    .campo select:focus { outline: none; border-color: var(--ouro); }
+    .campo select:invalid { color: var(--cinza); }
+    .gate-sub { font-size: .78rem; color: var(--cinza); opacity: .8; margin-top: 6px; }
+
+    /* ── Resultado ── */
+    #resultado { display: none; margin-top: 10px; }
+    .res-card {
+      background: var(--grafite);
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 32px 26px;
+      text-align: center;
+    }
+    .res-score {
+      font-family: 'Marcellus', serif;
+      font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px;
+    }
+    .res-score small { font-size: 1.1rem; color: var(--cinza); }
+    .res-faixa { font-family: 'Marcellus', serif; font-size: 1.7rem; margin: 10px 0 6px; }
+    .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
+
+    /* escala */
+    .escala { margin: 28px 0 8px; }
+    .barra {
+      position: relative; height: 14px; border-radius: 10px; overflow: visible;
+      background: linear-gradient(90deg, var(--verde) 0%, var(--verde) 25%, var(--amber) 25%, var(--amber) 58%, var(--vermelho) 58%, var(--vermelho) 100%);
+    }
+    .marker {
+      position: absolute; top: -8px; width: 4px; height: 30px; background: #fff;
+      border-radius: 3px; box-shadow: 0 0 0 3px rgba(0,0,0,.5); transition: left .5s ease;
+    }
+    .escala-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cinza); margin-top: 10px; }
+
+    /* faixas detalhadas */
+    .faixas { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .faixa {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--card); border: 1px solid var(--borda);
+      border-left: 5px solid var(--borda);
+      border-radius: 10px; padding: 18px 20px; opacity: .55; transition: opacity .3s, transform .3s;
+    }
+    .faixa.ativa { opacity: 1; transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    .faixa.leve     { border-left-color: var(--verde); }
+    .faixa.moderado { border-left-color: var(--amber); }
+    .faixa.profundo { border-left-color: var(--vermelho); }
+    .faixa-range {
+      font-family: 'Marcellus', serif; font-size: 1.05rem; color: var(--ouro-suave);
+      flex-shrink: 0; min-width: 78px;
+    }
+    .faixa h3 { font-size: 1.05rem; margin-bottom: 4px; }
+    .faixa p { font-size: .9rem; color: var(--cinza); }
+
+    /* breakdown por segredo */
+    .bd { margin-top: 32px; text-align: left; }
+    .bd-tit { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ouro); margin-bottom: 14px; text-align: center; }
+    .bd-row { margin-bottom: 14px; }
+    .bd-row .lab { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 5px; }
+    .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; }
+    .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
+    .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease; }
+    .bd-tag { font-size: .78rem; color: var(--amber); margin-top: 14px; text-align: center; }
+
+    /* CTA final → Análise Diagnóstica gratuita */
+    .cta-final {
+      margin-top: 36px;
+      background: linear-gradient(160deg, rgba(212,175,55,.12), rgba(212,175,55,.02));
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 32px 26px;
+      text-align: center;
+    }
+    .cta-final .cta-kicker {
+      display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--ouro); margin-bottom: 12px;
+    }
+    .cta-final h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
+    .cta-final h2 em { font-style: normal; color: var(--ouro-suave); }
+    .cta-final p { color: var(--cinza); font-size: .98rem; max-width: 540px; margin: 0 auto 22px; }
+    .cta-final .btn { text-decoration: none; }
+    .cta-final .cta-urgencia {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .85rem; font-weight: 600; color: var(--amber);
+      background: rgba(224,161,60,.10); border: 1px solid rgba(224,161,60,.30);
+      border-radius: 999px; padding: 8px 16px; margin: 0 auto 18px;
+    }
+    .cta-final .cta-sub { font-size: .8rem; color: var(--cinza); opacity: .85; margin-top: 12px; margin-bottom: 0; }
+
+    .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
+    .refazer:hover { background: rgba(212,175,55,.1); }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="kicker">Autodiagnóstico</span>
+    <h1>Qual é o seu <em>nível de bloqueio financeiro</em>?</h1>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê em qual faixa está — e qual dos 3 padrões mais te trava.</p>
+  </header>
+
+  <form id="form"></form>
+
+  <button class="btn" id="verBtn" type="button">Ver meu resultado</button>
+  <p class="aviso" id="aviso"></p>
+
+  <!-- GATE: captura de contato antes do resultado -->
+  <section id="gate">
+    <div class="gate-card">
+      <h2>Quase lá!</h2>
+      <p>Preencha abaixo para liberar o seu diagnóstico completo.</p>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" placeholder="Como você se chama?" autocomplete="name" />
+      </div>
+      <div class="campo">
+        <label for="email">Seu melhor e-mail</label>
+        <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
+      </div>
+      <div class="campo">
+        <label for="whatsapp">Seu WhatsApp</label>
+        <input type="tel" id="whatsapp" placeholder="(DDD) 90000-0000" autocomplete="tel" />
+      </div>
+      <div class="campo">
+        <label for="faturamento">Sua faixa de faturamento mensal</label>
+        <select id="faturamento" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="Sem remuneração">Sem remuneração</option>
+          <option value="Até R$ 5 mil">Até R$ 5 mil</option>
+          <option value="R$ 5 mil a R$ 10 mil">R$ 5 mil a R$ 10 mil</option>
+          <option value="R$ 10 mil a R$ 20 mil">R$ 10 mil a R$ 20 mil</option>
+          <option value="Acima de R$ 20 mil">Acima de R$ 20 mil</option>
+        </select>
+      </div>
+      <button class="btn" id="liberarBtn" type="button">Liberar meu diagnóstico</button>
+      <p class="aviso" id="avisoGate"></p>
+      <p class="gate-sub">Seus dados estão seguros e não serão compartilhados.</p>
+    </div>
+  </section>
+
+  <!-- RESULTADO -->
+  <section id="resultado">
+    <div class="res-card">
+      <div class="res-score" id="score">0<small>/36</small></div>
+      <div class="res-faixa" id="faixaNome">—</div>
+      <p class="res-desc" id="faixaDesc">—</p>
+
+      <div class="escala">
+        <div class="barra"><div class="marker" id="marker" style="left:0%"></div></div>
+        <div class="escala-labels"><span>0</span><span>9</span><span>20</span><span>36</span></div>
+      </div>
+
+      <div class="bd">
+        <div class="bd-tit">Onde está o seu maior bloqueio</div>
+        <div class="bd-row">
+          <div class="lab"><span>Visibilidade (atrair clientes)</span><span id="s1v">0/12</span></div>
+          <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
+        </div>
+        <div class="bd-row">
+          <div class="lab"><span>Consistência (teto / altos e baixos)</span><span id="s2v">0/12</span></div>
+          <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
+        </div>
+        <div class="bd-row">
+          <div class="lab"><span>Cobrança (dizer o preço)</span><span id="s3v">0/12</span></div>
+          <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
+        </div>
+        <p class="bd-tag" id="bdTag"></p>
+      </div>
+    </div>
+
+    <div class="faixas">
+      <div class="faixa leve" id="fx-leve">
+        <div class="faixa-range">0–9</div>
+        <div>
+          <h3>Bloqueio leve</h3>
+          <p>Você já tem uma relação saudável com dinheiro e valor. Os bloqueios são pontuais — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
+        </div>
+      </div>
+      <div class="faixa moderado" id="fx-moderado">
+        <div class="faixa-range">10–20</div>
+        <div>
+          <h3>Bloqueio moderado</h3>
+          <p>Há padrões subconscientes claros te sabotando em momentos-chave (cobrar, aparecer, manter consistência). Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar os resultados.</p>
+        </div>
+      </div>
+      <div class="faixa profundo" id="fx-profundo">
+        <div class="faixa-range">21–36</div>
+        <div>
+          <h3>Bloqueio profundo</h3>
+          <p>O teto é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-final" id="ctaFinal">
+      <span class="cta-kicker">Próximo passo</span>
+      <h2 id="ctaTitulo">—</h2>
+      <p id="ctaTexto">—</p>
+      <p class="cta-urgencia">⏳ Vagas limitadas — abro poucos horários por semana e eles se esgotam rápido.</p>
+      <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
+      <p class="cta-sub">Conversa individual e sem compromisso.</p>
+    </div>
+
+    <button class="btn refazer" type="button" onclick="location.reload()">Refazer o diagnóstico</button>
+  </section>
+
+</div>
+
+<script>
+  // ⚙️ CONFIGURAÇÃO — URL do Web App do Google Apps Script que grava os leads na planilha.
+  // Código do receptor: apps/diagnostico-bloqueio-leads/apps-script.gs
+  const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbw2f6De0F-Y0BV9TLZJ0vo1Ki6e5pYztACb_b6f9ZK13lo4xH5muvYbq50Ox_5ltEnQTQ/exec";
+
+  // ⚙️ CONFIGURAÇÃO — link da página de agendamento (Google Agenda) da Análise Diagnóstica gratuita.
+  // Enquanto estiver vazio, o botão de agendar fica oculto.
+  const AGENDA_URL = "https://calendar.app.google/vub9HiAtn2FEMymU8";
+
+  const perguntas = [
+    { g: 1, t: "Evito me promover ou aparecer porque parece forçado." },
+    { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
+    { g: 1, t: "Tenho receio de ser vista como “comercial demais”." },
+    { g: 1, t: "Sinto que mereço mais clientes do que consigo atrair." },
+    { g: 2, t: "Meu faturamento sobe e desce frequentemente." },
+    { g: 2, t: "Existe um valor-teto que eu raramente ultrapasso." },
+    { g: 2, t: "Quando ganho mais, vem ansiedade ou autossabotagem." },
+    { g: 2, t: "Procrastino justamente quando as coisas vão bem." },
+    { g: 3, t: "Travo, gaguejo ou suo na hora de dizer o preço." },
+    { g: 3, t: "Dou desconto sem o cliente nem pedir." },
+    { g: 3, t: "Sinto culpa depois de receber um valor alto." },
+    { g: 3, t: "Acho, no fundo, que cobrar caro é “feio” ou egoísta." }
+  ];
+  const grupos = {
+    1: "Segredo 1 · Visibilidade",
+    2: "Segredo 2 · Consistência",
+    3: "Segredo 3 · Cobrança"
+  };
+  const escala = ["Não me representa", "Um pouco", "Bastante", "Totalmente"];
+
+  const respostas = {};
+  const form = document.getElementById('form');
+  let gAtual = 0;
+  perguntas.forEach((p, i) => {
+    if (p.g !== gAtual) {
+      gAtual = p.g;
+      const gt = document.createElement('div');
+      gt.className = 'grupo-tit';
+      gt.textContent = grupos[p.g];
+      form.appendChild(gt);
+    }
+    const q = document.createElement('div');
+    q.className = 'q';
+    q.innerHTML = '<div class="q-txt"><span class="q-num">' + (i+1) + '.</span>' + p.t + '</div>';
+    const opts = document.createElement('div');
+    opts.className = 'opts';
+    for (let v = 0; v <= 3; v++) {
+      const o = document.createElement('button');
+      o.type = 'button';
+      o.className = 'opt';
+      o.innerHTML = '<span class="pt">' + v + '</span>' + escala[v];
+      o.onclick = () => {
+        respostas[i] = v;
+        opts.querySelectorAll('.opt').forEach(el => el.classList.remove('sel'));
+        o.classList.add('sel');
+        document.getElementById('aviso').textContent = '';
+      };
+      opts.appendChild(o);
+    }
+    q.appendChild(opts);
+    form.appendChild(q);
+  });
+
+  // calcula as pontuações a partir das respostas
+  function calcular() {
+    let total = 0, s1 = 0, s2 = 0, s3 = 0;
+    perguntas.forEach((p, i) => {
+      const v = respostas[i];
+      total += v;
+      if (p.g === 1) s1 += v; else if (p.g === 2) s2 += v; else s3 += v;
+    });
+    let faixa;
+    if (total <= 9) faixa = 'Leve'; else if (total <= 20) faixa = 'Moderado'; else faixa = 'Profundo';
+    return { total, s1, s2, s3, faixa };
+  }
+
+  // 1) "Ver meu resultado" → valida respostas e abre o gate de contato
+  document.getElementById('verBtn').onclick = () => {
+    if (Object.keys(respostas).length < perguntas.length) {
+      document.getElementById('aviso').textContent = 'Responda todas as 12 frases para ver o resultado.';
+      return;
+    }
+    document.getElementById('verBtn').style.display = 'none';
+    document.getElementById('aviso').textContent = '';
+    document.getElementById('gate').style.display = 'block';
+    document.getElementById('gate').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // 2) "Liberar meu diagnóstico" → valida contato, envia o lead e revela o resultado
+  document.getElementById('liberarBtn').onclick = async () => {
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const faturamento = document.getElementById('faturamento').value;
+    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const okWhats = whatsapp.replace(/\D/g, '').length >= 10;
+    if (!nome || !okEmail || !okWhats || !faturamento) {
+      document.getElementById('avisoGate').textContent = 'Preencha seu nome, e-mail válido, WhatsApp com DDD e a faixa de faturamento.';
+      return;
+    }
+
+    const r = calcular();
+    r.faturamento = faturamento; // usado para liberar (ou não) a agenda
+    const btn = document.getElementById('liberarBtn');
+    btn.disabled = true; btn.textContent = 'Liberando...';
+
+    // envia o lead ao Apps Script. text/plain evita o preflight CORS (OPTIONS);
+    // é fire-and-forget: não lemos a resposta, então o redirect do Google não atrapalha.
+    if (WEBHOOK_URL) {
+      try {
+        await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify({
+            nome: nome,
+            email: email,
+            whatsapp: whatsapp,
+            faturamento: faturamento,
+            pontuacao: r.total,
+            faixa: r.faixa,
+            visibilidade: r.s1,
+            consistencia: r.s2,
+            cobranca: r.s3,
+            origem: 'diagnostico-bloqueio',
+            data: new Date().toISOString()
+          })
+        });
+      } catch (e) {
+        // não bloqueia a entrega do resultado se o envio falhar
+        console.warn('Falha ao enviar lead:', e);
+      }
+    }
+
+    mostrarResultado(r);
+  };
+
+  // 3) renderiza o resultado completo
+  function mostrarResultado(r) {
+    document.getElementById('gate').style.display = 'none';
+    document.getElementById('score').innerHTML = r.total + '<small>/36</small>';
+
+    let nome, desc, fxId;
+    if (r.total <= 9) {
+      nome = 'Bloqueio leve'; fxId = 'fx-leve';
+      desc = 'Sua base é saudável. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava rápido.';
+    } else if (r.total <= 20) {
+      nome = 'Bloqueio moderado'; fxId = 'fx-moderado';
+      desc = 'Há padrões subconscientes claros te sabotando. Você precisa de reprogramação dirigida para destravar e sustentar resultados.';
+    } else {
+      nome = 'Bloqueio profundo'; fxId = 'fx-profundo';
+      desc = 'O teto é estrutural. Sem trabalho consistente no subconsciente, nenhuma estratégia se sustenta — e é justamente isso que pode ser reescrito.';
+    }
+    document.getElementById('faixaNome').textContent = nome;
+    document.getElementById('faixaDesc').textContent = desc;
+    document.getElementById('marker').style.left = (r.total / 36 * 100) + '%';
+
+    document.getElementById('s1v').textContent = r.s1 + '/12';
+    document.getElementById('s2v').textContent = r.s2 + '/12';
+    document.getElementById('s3v').textContent = r.s3 + '/12';
+    document.getElementById('s1f').style.width = (r.s1 / 12 * 100) + '%';
+    document.getElementById('s2f').style.width = (r.s2 / 12 * 100) + '%';
+    document.getElementById('s3f').style.width = (r.s3 / 12 * 100) + '%';
+
+    const maxv = Math.max(r.s1, r.s2, r.s3);
+    const nomes = [];
+    if (r.s1 === maxv) nomes.push('Visibilidade');
+    if (r.s2 === maxv) nomes.push('Consistência');
+    if (r.s3 === maxv) nomes.push('Cobrança');
+    document.getElementById('bdTag').textContent = 'Seu padrão mais forte: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
+
+    ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
+    document.getElementById(fxId).classList.add('ativa');
+
+    montarCta(r, fxId);
+
+    document.getElementById('resultado').style.display = 'block';
+    document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Faixas de faturamento que liberam a agenda (R$ 5 mil pra cima).
+  const FATURAMENTO_QUALIFICA = [
+    'R$ 5 mil a R$ 10 mil',
+    'R$ 10 mil a R$ 20 mil',
+    'Acima de R$ 20 mil'
+  ];
+
+  // 4) monta o convite para a Análise Diagnóstica gratuita, adaptado por nível de bloqueio
+  function montarCta(r, fxId) {
+    const cta = document.getElementById('ctaFinal');
+
+    // só abre a agenda se houver link E o faturamento se qualificar (R$ 5 mil+)
+    if (!AGENDA_URL || FATURAMENTO_QUALIFICA.indexOf(r.faturamento) === -1) {
+      cta.style.display = 'none';
+      return;
+    }
+
+    const copy = {
+      'fx-leve': {
+        titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
+        texto: 'Seu bloqueio é leve — é o momento ideal pra ousar mais. Numa Análise Diagnóstica gratuita a gente mapeia o seu teto atual e traça o caminho pra subir de nível.'
+      },
+      'fx-moderado': {
+        titulo: 'Você está a <em>um passo</em> de destravar.',
+        texto: 'Há padrões claros te segurando — e eles têm solução. Numa Análise Diagnóstica gratuita a gente identifica exatamente o que reprogramar pra você destravar e sustentar o resultado.'
+      },
+      'fx-profundo': {
+        titulo: 'Esse padrão <em>pode ser reescrito</em> — e você não precisa fazer isso sozinha.',
+        texto: 'Seu bloqueio é estrutural: nenhuma estratégia se sustenta sem trabalhar a raiz. Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo pra reverter isso.'
+      }
+    };
+    const c = copy[fxId];
+    document.getElementById('ctaTitulo').innerHTML = c.titulo;
+    document.getElementById('ctaTexto').textContent = c.texto;
+    document.getElementById('ctaBtn').href = AGENDA_URL;
+    cta.style.display = 'block';
+  }
+</script>
+</body>
+</html>
