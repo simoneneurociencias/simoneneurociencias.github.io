@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico — Qual é o seu nível de bloqueio financeiro?</title>
+  <title>Diagnóstico — Qual é o seu nível de bloqueio de crescimento?</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -229,7 +229,7 @@
 
   <header>
     <span class="kicker">Autodiagnóstico</span>
-    <h1>Qual é o seu <em>nível de bloqueio financeiro</em>?</h1>
+    <h1>Qual é o seu <em>nível de bloqueio de crescimento</em>?</h1>
     <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê em qual faixa está — e qual dos 3 padrões mais te trava.</p>
   </header>
 
@@ -287,15 +287,15 @@
       <div class="bd">
         <div class="bd-tit">Onde está o seu maior bloqueio</div>
         <div class="bd-row">
-          <div class="lab"><span>Visibilidade (atrair clientes)</span><span id="s1v">0/12</span></div>
+          <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0/12</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
         </div>
         <div class="bd-row">
-          <div class="lab"><span>Consistência (teto / altos e baixos)</span><span id="s2v">0/12</span></div>
+          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0/12</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
         </div>
         <div class="bd-row">
-          <div class="lab"><span>Cobrança (dizer o preço)</span><span id="s3v">0/12</span></div>
+          <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0/12</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
         </div>
         <p class="bd-tag" id="bdTag"></p>
@@ -365,8 +365,8 @@
   ];
   const grupos = {
     1: "Segredo 1 · Visibilidade",
-    2: "Segredo 2 · Consistência",
-    3: "Segredo 3 · Cobrança"
+    2: "Segredo 2 · Previsibilidade",
+    3: "Segredo 3 · Autovalor"
   };
   const escala = ["Não me representa", "Um pouco", "Bastante", "Totalmente"];
 
@@ -506,8 +506,8 @@
     const maxv = Math.max(r.s1, r.s2, r.s3);
     const nomes = [];
     if (r.s1 === maxv) nomes.push('Visibilidade');
-    if (r.s2 === maxv) nomes.push('Consistência');
-    if (r.s3 === maxv) nomes.push('Cobrança');
+    if (r.s2 === maxv) nomes.push('Previsibilidade');
+    if (r.s3 === maxv) nomes.push('Autovalor');
     document.getElementById('bdTag').textContent = 'Seu padrão mais forte: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
 
     ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
