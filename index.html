@@ -52,14 +52,14 @@
       --preto:      #0a0a0c;   /* fundo base */
       --preto-2:    #0e0e12;   /* cards escuros */
       --grafite:    #221a28;   /* 3o tom (conector) p/ alternância sem repetir cor */
-      --laranja:    #f26a1e;   /* accent / CTA */
-      --laranja-2:  #ff7f31;   /* hover / brilho */
-      --laranja-esc:#c9500f;
+      --laranja:    #e5432a;   /* accent / CTA (novo: puxado do degrade) */
+      --laranja-2:  #ff6a4d;   /* hover / brilho (novo) */
+      --laranja-esc:#c0341a;
       --grad-secao: linear-gradient(118deg, #c3305c 0%, #d43a42 52%, #e5432a 100%); /* magenta -> laranja: fundo das secoes */
       --vermelho:   #c02f16;   /* gradiente da seção bio */
       --creme:      #f4f0e9;   /* off-white quente */
       --cinza:      #b8b3aa;   /* texto secundário */
-      --borda:      rgba(242,106,30,.20);
+      --borda:      rgba(229,67,42,.20);
     }
 
     body {
@@ -95,7 +95,7 @@
     /* ── Botão CTA ── */
     .btn {
       display: inline-block;
-      background: var(--laranja);
+      background: var(--grad-secao);
       color: #fff;
       font-family: 'Segoe UI', Arial, sans-serif;
       font-weight: 700;
@@ -108,10 +108,10 @@
       max-width: 100%;
       padding: 17px 40px;
       border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(242,106,30,.32);
+      box-shadow: 0 10px 30px rgba(229,67,42,.32);
       transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
-    .btn:hover { background: var(--laranja-2); transform: translateY(-2px); box-shadow: 0 14px 38px rgba(242,106,30,.42); }
+    .btn:hover { background: var(--grad-secao); filter: brightness(1.08); transform: translateY(-2px); box-shadow: 0 14px 38px rgba(229,67,42,.42); }
     .btn--full { width: 100%; text-align: center; }
     .btn-note { font-size: .8rem; color: var(--cinza); margin-top: 12px; }
 
@@ -127,7 +127,7 @@
       position: relative;
       padding: 0;
       background:
-        radial-gradient(85% 65% at 74% 12%, rgba(242,106,30,.34) 0%, rgba(242,106,30,.10) 32%, transparent 62%),
+        radial-gradient(85% 65% at 74% 12%, rgba(229,67,42,.34) 0%, rgba(229,67,42,.10) 32%, transparent 62%),
         radial-gradient(58% 52% at 90% 26%, rgba(255,168,74,.22) 0%, transparent 55%),
         radial-gradient(75% 60% at 18% 8%, rgba(90,110,140,.10) 0%, transparent 50%),
         radial-gradient(135% 125% at 50% 44%, transparent 50%, rgba(0,0,0,.6) 100%),
@@ -192,6 +192,8 @@
       transform: translateY(-48px);
       filter: drop-shadow(0 18px 38px rgba(0,0,0,.5));
     }
+    .hero-photo-caption { text-align: center; margin-top: -34px; position: relative; z-index: 2; }
+    .hero-photo-caption strong { display: block; font-family: 'Marcellus', Georgia, serif; font-size: 1.15rem; color: var(--creme); margin-bottom: 10px; letter-spacing: .01em; }
 
     /* ════════ PROBLEMA ════════ */
     .problema h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); text-align: center; margin-bottom: 24px; }
@@ -218,7 +220,7 @@
       padding: 26px 32px;
       border: 1px solid var(--borda);
       border-radius: 18px;
-      background: rgba(242,106,30,.04);
+      background: rgba(229,67,42,.04);
     }
     .segredo-title { text-align: right; }
     .segredo-row.rev .segredo-title { order: 3; text-align: left; }
@@ -296,11 +298,11 @@
     .card-dark .c-title { font-size: 1rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 8px; text-align: center; }
     .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
     .pill { padding: 9px 20px; border: 1px solid var(--borda); border-radius: 24px; color: var(--laranja-2); font-weight: 600; font-size: .95rem; }
-    .metodo-destaque { margin-top: 22px; padding: 22px 26px; background: rgba(242,106,30,.06); border-radius: 12px; }
+    .metodo-destaque { margin-top: 22px; padding: 22px 26px; background: rgba(229,67,42,.06); border-radius: 12px; }
     .metodo-destaque p { color: var(--cinza); }
     .metodo-destaque strong { color: var(--creme); }
     .etapas { margin-top: 26px; display: flex; flex-direction: column; gap: 18px; }
-    .etapas-card { background: var(--grafite); border: 1px solid rgba(242,106,30,.32); border-radius: 22px; padding: 28px 22px 32px; margin-top: 42px; box-shadow: 0 16px 46px rgba(0,0,0,.3); }
+    .etapas-card { background: var(--grafite); border: 1px solid rgba(229,67,42,.32); border-radius: 22px; padding: 28px 22px 32px; margin-top: 42px; box-shadow: 0 16px 46px rgba(0,0,0,.3); }
     .etapa { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; border: 1px solid var(--borda); border-radius: 14px; background: var(--preto-2); }
     .etapa-num { font-family: 'Marcellus', serif; font-size: 1.6rem; color: var(--laranja); flex-shrink: 0; line-height: 1.2; min-width: 40px; }
     .etapa h4 { color: var(--creme); margin-bottom: 4px; font-size: 1.05rem; }
@@ -328,7 +330,7 @@
     .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
     .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
     .price-card {
-      background: var(--preto-2); border: 1px solid rgba(242,106,30,.5); border-radius: 16px;
+      background: var(--preto-2); border: 1px solid rgba(229,67,42,.5); border-radius: 16px;
       padding: 30px 26px; max-width: 380px; margin: 0 auto 30px;
       box-shadow: 0 14px 44px rgba(0,0,0,.4);
     }
@@ -421,8 +423,8 @@
     .branco .garantia-box strong { color: #16141c; }
 
     /* ════════ OFERTA — cards escuros sobre fundo branco ════════ */
-    .oferta .info-card, .oferta .price-card { background: #211d24; border-color: rgba(242,106,30,.35); }
-    .oferta .price-card { border-color: rgba(242,106,30,.55); }
+    .oferta .info-card, .oferta .price-card { background: #211d24; border-color: rgba(229,67,42,.35); }
+    .oferta .price-card { border-color: rgba(229,67,42,.55); }
     .oferta .info-card .ic-label, .oferta .price-card .pc-label,
     .oferta .data-box .db-label { color: var(--laranja-2); }
     .oferta .info-card .ic-main { color: #f4f0e9; }
@@ -430,7 +432,7 @@
     .oferta .price-card .pc-value { color: var(--laranja); }
     .oferta .data-box {
       display: inline-flex; flex-direction: column; align-items: center; gap: 5px;
-      background: #211d24; border: 1px solid rgba(242,106,30,.55); border-radius: 14px;
+      background: #211d24; border: 1px solid rgba(229,67,42,.55); border-radius: 14px;
       padding: 18px 44px; margin: 0 auto 30px; box-shadow: 0 12px 34px rgba(0,0,0,.22);
     }
     .oferta .data-box .db-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
@@ -499,7 +501,11 @@
         <p class="form-note">O endereço de e-mail deve ser válido para que você possa garantir sua vaga.</p>
       </div>
       <div class="hero-photo">
-        <img src="simone-capa-nobg.png" alt="Simone Carneiro, Neurocientista e Mentora de Terapeutas" loading="eager" />
+        <img src="simone-capa-nobg.png" alt="Simone Carneiro, Neurocientista e Mentora de Alta Performance" loading="eager" />
+        <div class="hero-photo-caption">
+          <strong>Simone Carneiro</strong>
+          <div class="pills"><span class="pill">Neurocientista · Mentora de Alta Performance</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -761,9 +767,9 @@
     </div>
 
     <!-- Bloco: Diagnóstico de Crescimento (apresenta o diagnóstico ao vivo — ponto de partida) -->
-    <div style="background:linear-gradient(180deg, rgba(242,106,30,.10), rgba(14,14,18,.55));border:1px solid rgba(242,106,30,.5);border-radius:22px;padding:32px 24px;margin-top:42px;box-shadow:0 16px 46px rgba(0,0,0,.32);text-align:center;">
+    <div style="background:linear-gradient(180deg, rgba(229,67,42,.10), rgba(14,14,18,.55));border:1px solid rgba(229,67,42,.5);border-radius:22px;padding:32px 24px;margin-top:42px;box-shadow:0 16px 46px rgba(0,0,0,.32);text-align:center;">
       <span class="label">✦ Incluído · ao vivo com a Simone</span>
-      <h3 style="font-family:'Marcellus',Georgia,serif;font-size:1.7rem;color:var(--creme);margin-bottom:16px;line-height:1.25;">Tudo começa com o seu<br><span style="color:var(--laranja);">Diagnóstico de Crescimento</span></h3>
+      <h3 style="font-family:'Marcellus',Georgia,serif;color:var(--creme);margin-bottom:16px;line-height:1.18;"><span style="display:block;font-size:1.05rem;color:var(--cinza);font-weight:400;letter-spacing:.02em;margin-bottom:6px;">Tudo começa com o seu</span><span style="display:block;font-size:2rem;color:var(--laranja);">Diagnóstico de Crescimento</span></h3>
       <p style="color:var(--cinza);max-width:560px;margin:0 auto 14px;line-height:1.62;">Logo no início do webinário, <strong style="color:var(--creme);">eu conduzo você, ao vivo</strong>, por um diagnóstico guiado que revela em poucos minutos <strong style="color:var(--creme);">exatamente quais dos 3 bloqueios</strong> estão te travando agora: aparecer e atrair, sustentar o crescimento e cobrar o seu valor.</p>
       <p style="color:var(--cinza);max-width:560px;margin:0 auto 22px;line-height:1.62;">Não é um teste genérico da internet — é o <strong style="color:var(--creme);">seu mapa pessoal</strong>, feito comigo, em tempo real. E é a partir dele que tudo o que vem depois é reprogramado <strong style="color:var(--creme);">especificamente pra você</strong>.</p>
       <div class="pills">
