@@ -117,6 +117,13 @@
 
     /* ── Seções ── */
     section { padding: 48px 0; }
+    /* glow rosa/magenta discreto nas secoes escuras (mesmo espirito do hero) */
+    .segredos, .como, .faq {
+      background:
+        radial-gradient(72% 55% at 85% 5%, rgba(195,48,92,.13) 0%, rgba(195,48,92,.05) 34%, transparent 62%),
+        radial-gradient(62% 52% at 8% 100%, rgba(229,67,42,.07) 0%, transparent 55%),
+        var(--preto);
+    }
     .section-title { text-align: center; }
     .section-title h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); text-wrap: balance; }
     .section-title p { color: var(--cinza); max-width: 640px; margin: 16px auto 0; }
