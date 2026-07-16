@@ -118,12 +118,19 @@
     /* ── Seções ── */
     section { padding: 48px 0; }
     /* glow rosa/magenta discreto nas secoes escuras (mesmo espirito do hero) */
-    .segredos, .como, .faq {
+    .segredos, .como, .faq, .bonus {
       background:
         radial-gradient(72% 55% at 85% 5%, rgba(195,48,92,.13) 0%, rgba(195,48,92,.05) 34%, transparent 62%),
         radial-gradient(62% 52% at 8% 100%, rgba(229,67,42,.07) 0%, transparent 55%),
         var(--preto);
     }
+    /* ════════ BONUS ════════ */
+    .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .bonus-card { position: relative; background: var(--preto-2); border: 1px solid rgba(229,67,42,.32); border-radius: 18px; padding: 26px 26px 28px; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+    .bonus-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-secao); padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+    .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: 1.3rem; color: var(--creme); margin-bottom: 10px; }
+    .bonus-card p { color: var(--cinza); font-size: .98rem; line-height: 1.6; }
+    .bonus-card strong { color: var(--creme); }
     .section-title { text-align: center; }
     .section-title h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); text-wrap: balance; }
     .section-title p { color: var(--cinza); max-width: 640px; margin: 16px auto 0; }
@@ -874,6 +881,28 @@
       <div class="perfil-card">
         <img src="benef-6.jpg" alt="Simone Carneiro" loading="lazy" />
         <div class="perfil-txt">Enxergar a raiz dos <span class="hl">altos e baixos</span> e dar o primeiro passo rumo à previsibilidade</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
+<section class="bonus">
+  <div class="container narrow">
+    <div style="text-align:center;"><span class="label">Bônus exclusivos</span></div>
+    <h2 style="text-align:center;">Você ainda leva estes bônus</h2>
+    <p style="text-align:center;color:var(--cinza);max-width:600px;margin:0 auto 8px;">Além do webinário ao vivo — para transformar o desbloqueio em resultado que se sustenta:</p>
+
+    <div class="bonus-list">
+      <div class="bonus-card">
+        <div class="bonus-tag">Bônus 01</div>
+        <h3>Plano de 21 Dias de Reprogramação</h3>
+        <p>Um guia prático que pega a crença que ficou <strong>mais forte no seu Diagnóstico de Crescimento</strong> e te dá um plano de 21 dias — exercícios curtos, rotina e acompanhamento — para transformar o desbloqueio do webinário em <strong>hábito diário</strong>, e não só num insight que passa.</p>
+      </div>
+      <div class="bonus-card">
+        <div class="bonus-tag">Bônus 02</div>
+        <h3>Grupo exclusivo dos participantes</h3>
+        <p>Acesso ao grupo dos participantes: <strong>lembretes</strong> para você não perder o ao vivo, <strong>suporte</strong> durante os 21 dias de prática e a força de fazer a mudança acompanhada, não sozinha.</p>
       </div>
     </div>
   </div>
