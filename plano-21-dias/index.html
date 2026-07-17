@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano de 21 Dias de Reprogramação — Simone Carneiro</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --preto:   #0a0a0c;
+      --magenta: #c3305c;
+      --laranja: #e5432a;
+      --grad:    linear-gradient(118deg, #c3305c 0%, #d43a42 52%, #e5432a 100%);
+      --creme:   #f4f0e9;
+      --papel:   #faf7f1;
+      --tinta:   #2c2630;   /* texto principal */
+      --tinta-2: #6a6270;   /* texto secundário */
+      --linha:   #e4ddd2;   /* bordas suaves */
+    }
+    html { background: #2a2530; }
+    body { font-family: 'Inter', Arial, sans-serif; color: var(--tinta); line-height: 1.6; }
+
+    /* cada "página" */
+    .page {
+      background: var(--papel);
+      max-width: 820px;
+      margin: 26px auto;
+      padding: 64px 60px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.4);
+      border-radius: 4px;
+      position: relative;
+    }
+    .page::after {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+      background: var(--grad); border-radius: 4px 0 0 4px;
+    }
+
+    h1, h2, h3, .serif { font-family: 'Marcellus', Georgia, serif; font-weight: 400; }
+    .kicker { display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--laranja); margin-bottom: 14px; }
+    .eyebrow-num { font-family: 'Marcellus', serif; color: var(--magenta); font-size: .95rem; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { font-size: 2rem; line-height: 1.15; color: var(--preto); margin-bottom: 18px; }
+    h3 { font-size: 1.25rem; color: var(--preto); margin-bottom: 8px; }
+    p { margin-bottom: 14px; color: var(--tinta); }
+    .lead { font-size: 1.08rem; color: var(--tinta-2); }
+    strong { color: var(--preto); font-weight: 700; }
+    .accent { color: var(--laranja); }
+
+    /* ---- CAPA ---- */
+    .cover {
+      background:
+        radial-gradient(80% 60% at 78% 12%, rgba(229,67,42,.34) 0%, transparent 60%),
+        radial-gradient(70% 55% at 12% 92%, rgba(195,48,92,.30) 0%, transparent 60%),
+        var(--preto);
+      color: var(--creme);
+      min-height: 920px; display: flex; flex-direction: column; justify-content: center;
+      padding: 70px 60px;
+    }
+    .cover::after { display: none; }
+    .cover .kicker { color: #ffb59f; }
+    .cover h1 { font-size: 3.1rem; line-height: 1.08; color: #fff; margin-bottom: 20px; }
+    .cover h1 .g { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .cover .sub { font-size: 1.15rem; color: rgba(255,255,255,.82); max-width: 560px; margin-bottom: 40px; }
+    .cover .by { font-size: .95rem; letter-spacing: .04em; color: rgba(255,255,255,.7); }
+    .cover .by strong { color: #fff; font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.15rem; display: block; margin-bottom: 2px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 42px; }
+    .pill { border: 1px solid rgba(255,255,255,.25); border-radius: 40px; padding: 7px 16px; font-size: .82rem; color: rgba(255,255,255,.9); font-weight: 600; }
+
+    /* ---- blocos ---- */
+    .box { border: 1px solid var(--linha); border-radius: 14px; padding: 22px 24px; margin: 16px 0; background: #fff; }
+    .box-accent { border-left: 4px solid var(--laranja); border-radius: 0 12px 12px 0; background: #fff; }
+    .steps { list-style: none; counter-reset: s; margin-top: 8px; }
+    .steps li { counter-increment: s; position: relative; padding: 12px 0 12px 52px; border-bottom: 1px solid var(--linha); }
+    .steps li:last-child { border-bottom: none; }
+    .steps li::before {
+      content: counter(s); position: absolute; left: 0; top: 12px;
+      width: 34px; height: 34px; border-radius: 50%; background: var(--grad); color: #fff;
+      font-family: 'Marcellus', serif; font-size: 1.05rem; display: flex; align-items: center; justify-content: center;
+    }
+    .steps b { color: var(--preto); }
+    .steps small { color: var(--tinta-2); }
+
+    /* crenças núcleo */
+    .core-grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+    .core { border: 1px solid var(--linha); border-radius: 14px; padding: 20px 22px; background: #fff; }
+    .core .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad); padding: 5px 12px; border-radius: 20px; margin-bottom: 12px; }
+    .core .old { font-size: .92rem; color: var(--tinta-2); font-style: italic; margin-bottom: 8px; }
+    .core .new { font-family: 'Marcellus', serif; font-size: 1.2rem; color: var(--preto); line-height: 1.35; }
+
+    /* variações */
+    .var-segredo { margin-bottom: 26px; }
+    .var-segredo h3 { display: flex; align-items: baseline; gap: 10px; border-bottom: 2px solid var(--laranja); padding-bottom: 8px; margin-bottom: 12px; }
+    .var-segredo h3 .sub { font-family: 'Inter', sans-serif; font-size: .82rem; font-weight: 600; color: var(--tinta-2); text-transform: none; letter-spacing: 0; }
+    .var-list { list-style: none; }
+    .var-list li { padding: 8px 0 8px 30px; position: relative; border-bottom: 1px dashed var(--linha); }
+    .var-list li:last-child { border-bottom: none; }
+    .var-list li::before { content: counter(v); counter-increment: v; position: absolute; left: 0; top: 8px; color: var(--magenta); font-weight: 700; font-size: .9rem; }
+    .var-list { counter-reset: v; }
+
+    /* seu resultado */
+    .res-segredo { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--linha); flex-wrap: wrap; }
+    .res-segredo:last-child { border-bottom: none; }
+    .res-segredo .nome { font-family: 'Marcellus', serif; font-size: 1.15rem; color: var(--preto); }
+    .res-segredo .nome small { display: block; font-family: 'Inter'; font-size: .8rem; color: var(--tinta-2); }
+    .intens { display: flex; gap: 8px; }
+    .intens span { border: 1.5px solid var(--linha); border-radius: 20px; padding: 5px 14px; font-size: .82rem; font-weight: 600; color: var(--tinta-2); }
+    .write-line { border-bottom: 1.5px solid var(--linha); height: 30px; margin-top: 10px; }
+
+    /* tracker */
+    table.tracker { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: .9rem; }
+    table.tracker th, table.tracker td { border: 1px solid var(--linha); padding: 9px 8px; text-align: center; }
+    table.tracker thead th { background: var(--preto); color: #fff; font-weight: 600; font-size: .82rem; letter-spacing: .03em; }
+    table.tracker td.dia { font-family: 'Marcellus', serif; color: var(--magenta); font-weight: 400; }
+    table.tracker td.obs { text-align: left; min-width: 190px; height: 38px; }
+    table.tracker .chk { width: 20px; height: 20px; border: 1.5px solid #c9c0b4; border-radius: 5px; display: inline-block; }
+    .semana-tag td { background: #f1eadf; font-weight: 700; color: var(--laranja); letter-spacing: .1em; text-transform: uppercase; font-size: .74rem; }
+
+    /* checkin */
+    .checkin { border: 1px solid var(--linha); border-radius: 14px; padding: 20px 22px; margin: 14px 0; background: #fff; }
+    .checkin .d { display: inline-block; background: var(--grad); color: #fff; font-weight: 700; font-size: .78rem; letter-spacing: .08em; padding: 5px 14px; border-radius: 20px; margin-bottom: 12px; }
+    .checkin .q { padding: 8px 0; border-bottom: 1px dashed var(--linha); color: var(--tinta); }
+    .checkin .q:last-child { border-bottom: none; }
+
+    .foot-note { margin-top: 40px; text-align: center; font-size: .82rem; color: var(--tinta-2); }
+    .cta-btn { display: inline-block; margin-top: 14px; background: var(--grad); color: #fff; font-weight: 700; text-decoration: none; padding: 16px 34px; border-radius: 10px; font-size: 1rem; box-shadow: 0 12px 34px rgba(229,67,42,.38); }
+    .divisor { height: 2px; width: 60px; background: var(--grad); border: none; margin: 8px 0 24px; }
+
+    @media (max-width: 680px) {
+      .page { padding: 40px 26px; margin: 12px; }
+      .cover { padding: 50px 26px; }
+      .cover h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.6rem; }
+      /* pagina final: ocupa uma tela cheia do celular */
+      .final-cta { min-height: calc(100dvh - 24px); padding: 40px 26px !important; justify-content: center; }
+      .final-cta h1 { font-size: 1.85rem; }
+      .final-cta .sub { font-size: 1rem; line-height: 1.5; margin-bottom: 14px; }
+      .final-cta .cta-btn { padding: 15px 24px; font-size: .95rem; margin-top: 8px; }
+      .final-cta .by { margin-top: 20px !important; }
+    }
+    @media print {
+      html, body { background: #fff; }
+      .page { box-shadow: none; margin: 0; max-width: none; border-radius: 0; page-break-after: always; min-height: auto; }
+      .cover { min-height: 96vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ CAPA ═══════════ -->
+  <section class="page cover">
+    <span class="kicker">Bônus exclusivo · Webinário Os 3 Segredos</span>
+    <h1>Plano de 21 Dias<br>de <span class="g">Reprogramação</span></h1>
+    <p class="sub">Um plano prático para transformar o desbloqueio que você viveu no webinário em um novo padrão — trabalhando os 3 segredos do seu diagnóstico, todos os dias.</p>
+    <div class="pill-row">
+      <span class="pill">Visibilidade</span>
+      <span class="pill">Previsibilidade</span>
+      <span class="pill">Autovalor</span>
+    </div>
+    <div class="by"><strong>Simone Carneiro</strong>Neurocientista e Mentora de Alta Performance</div>
+  </section>
+
+  <!-- ═══════════ INTRODUÇÃO ═══════════ -->
+  <section class="page">
+    <span class="kicker">Como usar este plano</span>
+    <h2>Você já descobriu ao vivo.<br>Agora é hora de <span class="accent">fixar</span>.</h2>
+    <hr class="divisor">
+    <p class="lead">No webinário você enxergou os padrões que te travam e viveu o primeiro desbloqueio, comigo, ao vivo. Mas um insight que não vira rotina se dissolve em poucos dias. Este plano existe para o contrário disso: fazer a mudança <strong>pegar</strong>.</p>
+    <p>A ciência é simples: o cérebro reescreve um padrão pela <strong>repetição consistente</strong>. Em 21 dias de prática curta e diária, a nova crença deixa de ser uma ideia bonita e começa a virar a sua forma automática de pensar, aparecer e cobrar.</p>
+
+    <div class="box box-accent">
+      <h3>Em 3 passos</h3>
+      <ol class="steps">
+        <li><b>Registre o seu resultado.</b><br><small>Na próxima página, marque o quanto cada um dos 3 segredos apareceu no seu diagnóstico.</small></li>
+        <li><b>Faça o ritual diário dos 3 segredos.</b><br><small>Todos os dias, por 21 dias — para cada segredo: leia a afirmação do dia, mentalize e ouça o áudio daquele segredo.</small></li>
+        <li><b>Acompanhe no tracker.</b><br><small>Marque cada dia. Ver a sequência crescer é parte da reprogramação.</small></li>
+      </ol>
+    </div>
+    <p style="margin-top:18px;">Você não precisa escolher <em>um</em> bloqueio. Quase todo terapeuta tem os três presentes — um mais forte, os outros em graus diferentes. Por isso a gente trabalha os <strong>três em paralelo</strong>, um pouco de cada, todos os dias.</p>
+  </section>
+
+  <!-- ═══════════ SEU RESULTADO ═══════════ -->
+  <section class="page">
+    <span class="kicker">Passo 1</span>
+    <h2>O seu resultado no diagnóstico</h2>
+    <hr class="divisor">
+    <p>Volte ao que você descobriu no webinário e marque o quanto cada segredo apareceu em você. Isso personaliza o plano — você vai dar mais atenção onde está mais forte, sem largar os outros.</p>
+
+    <div class="box">
+      <div class="res-segredo">
+        <div class="nome">Visibilidade <small>aparecer e atrair</small></div>
+        <div class="intens"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+      </div>
+      <div class="res-segredo">
+        <div class="nome">Previsibilidade <small>fim dos altos e baixos</small></div>
+        <div class="intens"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+      </div>
+      <div class="res-segredo">
+        <div class="nome">Autovalor <small>cobrar o seu preço</small></div>
+        <div class="intens"><span>Baixo</span><span>Médio</span><span>Alto</span></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:26px;">Olhando o segredo que ficou mais forte acima:</h3>
+    <p style="color:var(--tinta-2);font-size:.9rem;margin-bottom:6px;">A frase que passa na minha cabeça quando eu tento aparecer, crescer ou cobrar é…</p>
+    <div class="write-line"></div>
+    <div class="write-line"></div>
+  </section>
+
+  <!-- ═══════════ 3 NOVAS CRENÇAS ═══════════ -->
+  <section class="page">
+    <span class="kicker">Passo 2 · O destino</span>
+    <h2>As 3 novas crenças</h2>
+    <hr class="divisor">
+    <p>Cada bloqueio é sustentado por uma crença antiga. A reprogramação é trocar essa crença por uma verdade nova — que você repete até o cérebro assumir como sua. Estas são as três âncoras do seu plano:</p>
+    <div class="core-grid">
+      <div class="core">
+        <span class="tag">Visibilidade</span>
+        <div class="old">Antes: "Me expor me deixa insegura: tenho medo do julgamento, sinto que não sei aparecer nas redes, e no fundo acho que me divulgar fere a minha essência de terapeuta."</div>
+        <div class="new">"Eu não preciso estar perfeita nem saber tudo para me expor nas redes sociais. Levar a minha mensagem a quem precisa é o que importa."</div>
+      </div>
+      <div class="core">
+        <span class="tag">Previsibilidade</span>
+        <div class="old">Antes: "Crescer é arriscado — eu não consigo sustentar, sempre volta a cair."</div>
+        <div class="new">"Eu mereço crescer de forma constante. O meu sistema nervoso aceita a estabilidade e a abundância."</div>
+      </div>
+      <div class="core">
+        <span class="tag">Autovalor</span>
+        <div class="old">Antes: "Cobrar caro é feio, egoísta — eu não sou digna disso."</div>
+        <div class="new">"O meu preço reflete o valor que eu entrego. Cobrar com firmeza é respeito, comigo e com quem me busca."</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ 21 AFIRMAÇÕES ═══════════ -->
+  <section class="page">
+    <span class="kicker">As afirmações</span>
+    <h2>21 frases para reprogramar</h2>
+    <hr class="divisor">
+    <p>Sete variações de cada segredo. Cada dia, leia a próxima frase de cada bloco (quando acabar, recomece). Elas dizem a mesma verdade por ângulos diferentes — o áudio ancora, as frases mantêm você presente.</p>
+
+    <div class="var-segredo">
+      <h3>Visibilidade <span class="sub">aparecer e atrair</span></h3>
+      <ol class="var-list">
+        <li>Aparecer do meu jeito já basta — eu não preciso ser perfeita pra me mostrar.</li>
+        <li>O julgamento dos outros não define o meu valor nem o meu trabalho.</li>
+        <li>Me mostrar é uma extensão do meu cuidado — não o contrário da minha essência.</li>
+        <li>Eu não estou me vendendo; estou sendo encontrada por quem precisa de mim.</li>
+        <li>Ficar invisível não me protege — só me afasta de quem eu poderia ajudar.</li>
+        <li>Cada vez que eu apareço, fica mais natural e mais seguro aparecer de novo.</li>
+        <li>Eu mereço ocupar o meu lugar e ser vista pelo valor que eu tenho.</li>
+      </ol>
+    </div>
+
+    <div class="var-segredo">
+      <h3>Previsibilidade <span class="sub">fim dos altos e baixos</span></h3>
+      <ol class="var-list">
+        <li>Eu mereço crescer de forma constante, e não em picos que sempre despencam.</li>
+        <li>O meu sistema nervoso aceita a estabilidade — segurança e crescimento cabem juntos.</li>
+        <li>Sustentar o meu sucesso é seguro; eu não preciso me sabotar bem na hora que dá certo.</li>
+        <li>Cada novo patamar que eu alcanço vira o meu novo normal.</li>
+        <li>O que eu construo, eu consigo manter — eu confio na continuidade.</li>
+        <li>Eu me permito receber de forma constante, sem culpa e sem medo de perder.</li>
+        <li>Os altos e baixos não são o meu destino; a previsibilidade é algo que eu treino.</li>
+      </ol>
+    </div>
+
+    <div class="var-segredo">
+      <h3>Autovalor <span class="sub">cobrar o seu preço</span></h3>
+      <ol class="var-list">
+        <li>O meu preço reflete o valor que eu entrego — e o que eu entrego transforma vidas.</li>
+        <li>Cobrar com firmeza é respeito: comigo e com quem me procura.</li>
+        <li>Eu posso dizer o meu preço sem me justificar e sem pedir desculpas.</li>
+        <li>Ser bem paga não me torna menos generosa — me torna sustentável.</li>
+        <li>Não existe culpa em receber bem por aquilo que eu levei anos pra dominar.</li>
+        <li>Quando eu valorizo o meu trabalho, quem me busca também valoriza.</li>
+        <li>Eu sou digna de cobrar o preço de quem entrega resultado de verdade.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ═══════════ RITUAL DIÁRIO ═══════════ -->
+  <section class="page">
+    <span class="kicker">O ritual diário · os 3 segredos</span>
+    <h2>O que fazer todos os dias</h2>
+    <hr class="divisor">
+    <p>Todos os dias você passa pelos <strong>3 eixos</strong>, na ordem <strong>Visibilidade → Previsibilidade → Autovalor</strong>. Para cada um, a sequência é sempre a mesma:</p>
+    <ol class="steps">
+      <li><b>Leia a afirmação do dia</b> daquele segredo.<br><small>Dia 1 = 1ª afirmação, Dia 2 = 2ª… ao chegar na 7ª, recomeça da 1ª.</small></li>
+      <li><b>Mentalize a afirmação.</b><br><small>Feche os olhos e sinta a frase como verdade — mentalize a afirmação a cada respiração, faça isso 7 vezes.</small></li>
+      <li><b>Ouça o áudio daquele segredo.</b><br><small>Logo em seguida, sem pausa longa entre a mentalização e o áudio.</small></li>
+    </ol>
+    <p style="margin-top:16px;">Repita a sequência nos três segredos. Ao terminar, marque o dia no tracker. De manhã funciona muito bem — consistência vence intensidade.</p>
+
+    <div class="box">
+      <h3 style="font-size:1.05rem;">Exemplo — Dia 1</h3>
+      <p style="margin:0;font-size:.95rem;color:var(--tinta-2);">
+        <b style="color:var(--preto);">Visibilidade:</b> 1ª afirmação → mentaliza → áudio de Visibilidade.<br>
+        <b style="color:var(--preto);">Previsibilidade:</b> 1ª afirmação → mentaliza → áudio de Previsibilidade.<br>
+        <b style="color:var(--preto);">Autovalor:</b> 1ª afirmação → mentaliza → áudio de Autovalor.<br>
+        <em>No Dia 2, tudo igual — só que com a 2ª afirmação de cada segredo.</em>
+      </p>
+    </div>
+
+    <div class="box">
+      <h3 style="font-size:1.05rem;">A micro-ação da semana</h3>
+      <p style="margin:0 0 6px;color:var(--tinta-2);font-size:.95rem;">Uma vez por semana, dê um passo prático no mundo real — é o que tira a mudança da cabeça e coloca na vida. Uma boa forma é focar um segredo por semana:</p>
+      <p style="margin:0;font-size:.95rem;color:var(--tinta-2);">
+        • <b style="color:var(--preto);">Semana 1 · Visibilidade:</b> apareça em vez de se esconder — publique um story, um post ou fale do seu trabalho hoje, mesmo sem estar perfeita e mesmo com o medo do julgamento presente.<br>
+        • <b style="color:var(--preto);">Semana 2 · Previsibilidade:</b> sustente o crescimento em vez de sabotá-lo — mantenha uma rotina que já funciona e crie uma estrutura de constância (agenda, processo, captação recorrente de clientes).<br>
+        • <b style="color:var(--preto);">Semana 3 · Autovalor:</b> cobre o que você vale em vez de se encolher — diga o seu preço com firmeza, sem se justificar nem pedir desculpas, e segure a vontade de baixar ou dar o desconto que ninguém pediu.
+      </p>
+    </div>
+
+    <div class="box box-accent">
+      <b>Furou um dia?</b> Sem culpa — recomece de onde parou. O que importa não é a rigidez; é <strong>completar os 21 dias</strong>.
+    </div>
+  </section>
+
+  <!-- ═══════════ TRACKER ═══════════ -->
+  <section class="page">
+    <span class="kicker">Passo 3</span>
+    <h2>Tracker de 21 dias</h2>
+    <hr class="divisor">
+    <p>Cada dia você trabalha os <strong>3 segredos</strong>: marque cada um que completou (afirmação + áudio) e escreva uma <strong>Observação do dia</strong> — o que você sentiu ou percebeu, numa frase só (veja o exemplo no Dia 1).</p>
+    <table class="tracker">
+      <thead>
+        <tr><th>Dia</th><th>Afirmação</th><th>Visibilidade</th><th>Previsibilidade</th><th>Autovalor</th><th>Observação do dia</th></tr>
+      </thead>
+      <tbody>
+        <tr class="semana-tag"><td colspan="6">Semana 1 · construindo o hábito</td></tr>
+        <tr><td class="dia">01</td><td>1ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"><span style="color:#b7ad9d;font-style:italic;font-size:.8rem;">ex.: gravei um story sem regravar mil vezes e publiquei mesmo imperfeito</span></td></tr>
+        <tr><td class="dia">02</td><td>2ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">03</td><td>3ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">04</td><td>4ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">05</td><td>5ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">06</td><td>6ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">07</td><td>7ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr class="micro-row"><td colspan="2" style="text-align:left;font-weight:700;color:var(--laranja);background:#f6efe4;">✦ Micro-ação da semana</td><td colspan="4" class="obs" style="background:#f6efe4;"></td></tr>
+        <tr class="semana-tag"><td colspan="6">Semana 2 · aprofundando</td></tr>
+        <tr><td class="dia">08</td><td>1ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">09</td><td>2ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">10</td><td>3ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">11</td><td>4ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">12</td><td>5ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">13</td><td>6ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">14</td><td>7ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr class="micro-row"><td colspan="2" style="text-align:left;font-weight:700;color:var(--laranja);background:#f6efe4;">✦ Micro-ação da semana</td><td colspan="4" class="obs" style="background:#f6efe4;"></td></tr>
+        <tr class="semana-tag"><td colspan="6">Semana 3 · consolidando o novo padrão</td></tr>
+        <tr><td class="dia">15</td><td>1ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">16</td><td>2ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">17</td><td>3ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">18</td><td>4ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">19</td><td>5ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">20</td><td>6ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr><td class="dia">21</td><td>7ª</td><td><span class="chk"></span></td><td><span class="chk"></span></td><td><span class="chk"></span></td><td class="obs"></td></tr>
+        <tr class="micro-row"><td colspan="2" style="text-align:left;font-weight:700;color:var(--laranja);background:#f6efe4;">✦ Micro-ação da semana</td><td colspan="4" class="obs" style="background:#f6efe4;"></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ═══════════ CHECK-INS ═══════════ -->
+  <section class="page">
+    <span class="kicker">Reflexão</span>
+    <h2>Check-ins da jornada</h2>
+    <hr class="divisor">
+    <p>A cada 7 dias, pare uns minutos e reflita <strong>segredo por segredo</strong>. É aqui que você percebe, no concreto, o quanto já mudou em cada um.</p>
+
+    <div class="checkin">
+      <span class="d">Dia 7 · o que já começou a mudar</span>
+      <p style="margin:10px 0 2px;"><b style="color:var(--preto);">Visibilidade</b> — em aparecer e me mostrar, o que já está diferente?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Previsibilidade</b> — em sustentar o meu crescimento, o que já está diferente?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Autovalor</b> — em cobrar o meu preço, o que já está diferente?</p>
+      <div class="write-line"></div>
+    </div>
+
+    <div class="checkin">
+      <span class="d">Dia 14 · o que eu já faço diferente</span>
+      <p style="margin:10px 0 2px;"><b style="color:var(--preto);">Visibilidade</b> — que atitude de me mostrar eu tomei que a antiga eu teria evitado?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Previsibilidade</b> — que passo de estrutura ou consistência eu dei?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Autovalor</b> — onde eu me posicionei ou cobrei sem me encolher?</p>
+      <div class="write-line"></div>
+    </div>
+
+    <div class="checkin">
+      <span class="d">Dia 21 · o que já é meu</span>
+      <p style="margin:10px 0 2px;"><b style="color:var(--preto);">Visibilidade</b> — qual nova crença sobre me mostrar já sinto como verdade?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Previsibilidade</b> — qual já sinto sobre sustentar o meu crescimento?</p>
+      <div class="write-line"></div>
+      <p style="margin:12px 0 2px;"><b style="color:var(--preto);">Autovalor</b> — qual já sinto sobre cobrar o meu preço?</p>
+      <div class="write-line"></div>
+      <p style="margin:16px 0 2px;color:var(--laranja);font-weight:700;">Meu próximo passo para sustentar isso daqui pra frente:</p>
+      <div class="write-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FECHO + CONVITE MENTORIA ═══════════ -->
+  <section class="page cover final-cta" style="padding:66px 60px;">
+    <span class="kicker">Um último lembrete · o próximo nível</span>
+    <h1 style="font-size:2.2rem;">Você virou o jogo.<br>Que tal ir <span class="g">à raiz</span>?</h1>
+    <p class="sub">Vinte e um dias atrás, o bloqueio era automático. Se você chegou até aqui marcando os dias, ele não te controla mais — você assumiu o controle. Esse é o começo do terapeuta de alto valor que você sempre foi por dentro.</p>
+    <p class="sub">E dá pra ir ainda mais fundo. Além do grupo, existe um <strong style="color:#fff;">acompanhamento personalizado</strong>, feito só pra você, que <strong style="color:#fff;">vai na raiz, ressignifica e destrava o bloqueio de forma mais profunda e definitiva</strong> — bem na origem do que trava a sua renda e a sua alta performance. É a mentoria <strong style="color:#fff;">Identidade High Ticket</strong>.</p>
+    <a href="#SUBSTITUIR-PELO-LINK" class="cta-btn">Quero conhecer a Identidade High Ticket →</a>
+    <div class="by" style="margin-top:28px;"><strong>Simone Carneiro</strong>Neurocientista e Mentora de Alta Performance</div>
+  </section>
+
+  <p class="foot-note">© Simone Carneiro · Material de apoio do Webinário "Os 3 Segredos do Terapeuta de Alto Valor" · uso pessoal</p>
+
+</body>
+</html>
