@@ -117,6 +117,7 @@
     table.tracker td.dia { font-family: 'Marcellus', serif; color: var(--magenta); font-weight: 400; }
     table.tracker td.obs { text-align: left; min-width: 190px; height: 38px; }
     .table-wrap { max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .h-short { display: none; }
     table.tracker .chk { width: 20px; height: 20px; border: 1.5px solid #c9c0b4; border-radius: 5px; display: inline-block; }
     .semana-tag td { background: #f1eadf; font-weight: 700; color: var(--laranja); letter-spacing: .1em; text-transform: uppercase; font-size: .74rem; }
 
@@ -136,6 +137,13 @@
       .cover h1 { font-size: 2.2rem; }
       .capa h1 { font-size: 1.8rem; }
       h2 { font-size: 1.6rem; }
+      /* tracker cabe na tela do celular (PDF/desktop nao muda) */
+      table.tracker { font-size: .72rem; }
+      table.tracker th, table.tracker td { padding: 6px 4px; }
+      table.tracker td.obs { min-width: 78px; }
+      table.tracker .chk { width: 16px; height: 16px; }
+      .h-full { display: none; }
+      .h-short { display: inline; }
       /* pagina final: ocupa uma tela cheia do celular */
       .final-cta { min-height: calc(100dvh - 24px); padding: 40px 26px !important; justify-content: center; }
       .final-cta h1 { font-size: 1.85rem; }
@@ -332,7 +340,7 @@
     <div class="table-wrap">
     <table class="tracker">
       <thead>
-        <tr><th>Dia</th><th>Afirmação</th><th>Visibilidade</th><th>Previsibilidade</th><th>Autovalor</th><th>Observação do dia</th></tr>
+        <tr><th>Dia</th><th>Afirmação</th><th><span class="h-full">Visibilidade</span><span class="h-short">Visib.</span></th><th><span class="h-full">Previsibilidade</span><span class="h-short">Previs.</span></th><th><span class="h-full">Autovalor</span><span class="h-short">Autov.</span></th><th><span class="h-full">Observação do dia</span><span class="h-short">Observação</span></th></tr>
       </thead>
       <tbody>
         <tr class="semana-tag"><td colspan="6">Semana 1 · construindo o hábito</td></tr>
