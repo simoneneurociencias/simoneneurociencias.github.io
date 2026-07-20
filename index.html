@@ -343,8 +343,9 @@
     .oferta { text-align: center; }
     .oferta h2 { font-size: clamp(1.6rem,3.8vw,2.3rem); margin-bottom: 30px; }
     .info-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 620px; margin: 0 auto 36px; }
-    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; padding: 24px 26px; min-width: 170px; flex: 1; }
-    .info-card .ic { font-size: 1.8rem; margin-bottom: 8px; }
+    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 170px; flex: 1; overflow: hidden; }
+    .info-card img { width: 100%; height: 104px; object-fit: cover; display: block; }
+    .info-card .ic-body { padding: 18px 20px 22px; }
     .info-card .ic-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 6px; }
     .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
     .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
@@ -903,22 +904,28 @@
 
     <div class="info-cards">
       <div class="info-card">
-        <div class="ic">💻</div>
-        <div class="ic-label">Formato</div>
-        <div class="ic-main">Webinar Online</div>
-        <div class="ic-sub">Ao vivo, de onde você estiver</div>
+        <img src="info-1.jpg" alt="Terapeuta acompanhando o webinário ao vivo pelo computador, em casa" loading="lazy">
+        <div class="ic-body">
+          <div class="ic-label">Formato</div>
+          <div class="ic-main">Webinar Online</div>
+          <div class="ic-sub">Ao vivo, de onde você estiver</div>
+        </div>
       </div>
       <div class="info-card">
-        <div class="ic">⏱️</div>
-        <div class="ic-label">Duração</div>
-        <div class="ic-main">4 Horas</div>
-        <div class="ic-sub">Uma experiência transformadora</div>
+        <img src="info-2.jpg" alt="Ampulheta marcando o tempo do encontro" loading="lazy">
+        <div class="ic-body">
+          <div class="ic-label">Duração</div>
+          <div class="ic-main">4 Horas</div>
+          <div class="ic-sub">Uma experiência transformadora</div>
+        </div>
       </div>
       <div class="info-card">
-        <div class="ic">🎓</div>
-        <div class="ic-label">Para quem</div>
-        <div class="ic-main">Terapeutas</div>
-        <div class="ic-sub">Psicólogos e profissionais de saúde</div>
+        <img src="info-3.jpg" alt="Sessão de terapia entre profissional e cliente" loading="lazy">
+        <div class="ic-body">
+          <div class="ic-label">Para quem</div>
+          <div class="ic-main">Terapeutas</div>
+          <div class="ic-sub">Psicólogos e profissionais de saúde</div>
+        </div>
       </div>
     </div>
 
