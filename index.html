@@ -385,14 +385,54 @@
     .cta-final .btn-note { color: rgba(255,255,255,.75); }
     .cta-final .cta-lead p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto 15px; }
     .cta-final .cta-risco {
-      max-width: 620px; margin: 24px auto 26px; padding: 16px 24px;
-      background: rgba(0,0,0,.18); border-radius: 12px; color: #fff; font-size: 1rem; line-height: 1.55;
+      max-width: 640px; margin: 26px auto; padding: 18px 26px;
+      background: #0b0a0e; border: 1px solid rgba(255,255,255,.24);
+      border-radius: 12px; color: var(--creme); font-size: 1rem; line-height: 1.55;
+      box-shadow: 0 12px 40px rgba(0,0,0,.32);
     }
-    .cta-final .cta-risco strong { color: #fff; }
+    .cta-final .cta-risco strong { color: var(--laranja-2); }
     .cta-final .cta-punch {
-      font-family: 'Marcellus', Georgia, serif; font-size: clamp(1.25rem, 2.6vw, 1.65rem);
-      color: #fff; margin: 0 auto 22px;
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: clamp(1.02rem, 1.9vw, 1.26rem);
+      line-height: 1.5; color: #fff;
+      max-width: 640px; margin: 0 auto 26px;
+      text-wrap: balance;
     }
+    .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
+
+    /* ── Dois caminhos (CTA final) ── */
+    .cta-final .label { color: #fff; }
+    .cta-final .cta-intro { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 34px; }
+    .caminhos {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      text-align: left; max-width: 900px; margin: 0 auto 30px;
+    }
+    .caminho {
+      border-radius: 14px; padding: 22px 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.32);
+    }
+    /* Caminho 01 — vinho profundo sólido, puxado do magenta do degradê */
+    .caminho--inerte {
+      background: #2b1b26;
+      border: 1px solid rgba(255,255,255,.22);
+    }
+    .caminho--inerte .c-num { color: #e0b7c6; }
+    .caminho--inerte p { color: #f0e9ee; }
+    /* Caminho 02 — quase preto sólido, contorno laranja */
+    .caminho--ativo {
+      background: #0b0a0e;
+      border: 1.5px solid var(--laranja-2);
+      box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
+    }
+    .caminho--ativo .c-num { color: var(--laranja-2); }
+    .caminho--ativo p { color: var(--creme); }
+    .caminho .c-num {
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .caminho p { font-size: .98rem; margin: 0; max-width: none; }
+    .caminho strong { color: var(--laranja-2); font-weight: 600; }
+    @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
     /* ════════ FOOTER ════════ */
     footer { background: var(--preto); padding: 40px 22px; text-align: center; border-top: 1px solid var(--borda); }
@@ -552,7 +592,7 @@
     </p>
     <p>
       É que uma parte de você associa crescer a perigo: cobrar caro de quem sofre, virar "aquele
-      terapeuta comercial", ser julgado por quem você admira. Então ela te protege. E te trava,
+      terapeuta comercial", sofrer o julgamento de quem você admira. Então ela te protege. E te trava,
       no escuro, sem pedir permissão.
     </p>
     <p>
@@ -577,7 +617,7 @@
       <h2>Quais <span style="color:var(--laranja)">Segredos</span> Você Vai <span style="color:var(--laranja)">Descobrir?</span></h2>
       <p>
         Não são estratégias de marketing nem scripts de venda. São 3 bloqueios emocionais que
-        separam o terapeuta que cresce do que fica estagnado. Ao vivo, você descobre quais são
+        separam quem cresce de quem fica estagnado. Ao vivo, você descobre quais são
         os seus — e vive o primeiro desbloqueio comigo.
       </p>
     </div>
@@ -591,8 +631,8 @@
         <div class="segredo-div"></div>
         <div class="segredo-desc">
           <p class="promessa">
-            Como se tornar o terapeuta lembrado e procurado na sua área,
-            <strong>mesmo que você deteste se expor</strong> e não queira virar influenciador.
+            Como se tornar a referência lembrada e procurada na sua área,
+            <strong>mesmo que você deteste se expor</strong> e não queira viver de rede social.
           </p>
         </div>
       </div>
@@ -728,7 +768,7 @@
         <div class="manifesto">
           <div class="m-label">O meu manifesto</div>
           <p>
-            Nenhum terapeuta talentoso deveria viver financeiramente estagnado. O teto que te segura
+            Ninguém com o seu talento deveria viver financeiramente estagnado. O teto que te segura
             não está no mercado nem na sua técnica: está em padrões invisíveis que podem ser reescritos.
             É isso que eu vou te mostrar.
           </p>
@@ -789,7 +829,7 @@
         <div class="etapa-num">01</div>
         <div>
           <h4>Identificamos o seu padrão limitante</h4>
-          <p>Logo no início, <strong>ao vivo comigo</strong>, você passa por um diagnóstico guiado que revela <strong>com muita precisão os bloqueios emocionais</strong> que te impedem de ser um terapeuta de alto valor.</p>
+          <p>Logo no início, <strong>ao vivo comigo</strong>, você passa por um diagnóstico guiado que revela <strong>com muita precisão os bloqueios emocionais</strong> que te impedem de alcançar o alto valor que o seu trabalho merece.</p>
         </div>
       </div>
       <div class="etapa">
@@ -831,7 +871,7 @@
 
     <div class="center-cta">
       <a href="https://chk.eduzz.com/G96RKYGEW1" target="_blank" rel="noopener noreferrer" class="btn">
-        Quero identificar meu teto invisível
+        Quero reprogramar meus bloqueios
       </a>
     </div>
   </div>
@@ -894,7 +934,7 @@
       <div class="bonus-card">
         <div class="bonus-tag">Bônus 03</div>
         <h3>Grupo exclusivo dos participantes</h3>
-        <p>Um grupo temporário, <strong>só de quem está no mesmo processo</strong>. É o que sustenta a prática quando a empolgação do primeiro dia passa e faz você <strong>chegar ao dia 21</strong> — quando cobrar o seu preço e ocupar o seu espaço já não exigem esforço, porque viraram <strong>quem você é</strong>.</p>
+        <p>Um grupo temporário, <strong>só de quem está no mesmo processo</strong>. É o que sustenta a prática quando a empolgação do primeiro dia passa e te leva até o <strong>dia 21</strong> — o ponto em que cobrar o seu preço e ocupar o seu espaço deixaram de custar esforço e viraram <strong>o seu normal</strong>.</p>
       </div>
     </div>
   </div>
@@ -976,7 +1016,7 @@
     </details>
     <details>
       <summary>Como funciona o webinar na prática?</summary>
-      <p>É um encontro 100% online e ao vivo, conduzido pela Simone, com duração aproximada de 4 horas. Você participa de onde estiver, precisando apenas de acesso à internet. Não é uma aula expositiva: é um processo guiado, em que você é levado(a) a enxergar, na sua própria história, o padrão que trava o seu crescimento. Após a inscrição, você recebe todas as informações de acesso.</p>
+      <p>É um encontro 100% online e ao vivo, conduzido pela Simone, com duração aproximada de 4 horas. Você participa de onde estiver, precisando apenas de acesso à internet. Não é uma aula expositiva: é um processo guiado, que leva você a enxergar, na sua própria história, o padrão que trava o seu crescimento. Após a inscrição, você recebe todas as informações de acesso.</p>
     </details>
     <details>
       <summary>Vai ficar gravado? E se eu não puder no dia?</summary>
@@ -999,14 +1039,39 @@
 
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
 <section class="cta-final">
-  <div class="container narrow">
-    <h2>Daqui a um ano, você pode estar <span style="color:#16110c;font-weight:700;">exatamente onde está hoje.</span></h2>
-    <div class="cta-lead">
-      <p>A mesma invisibilidade. Os mesmos altos e baixos. A mesma hesitação na hora de dizer o seu preço — não por falta de esforço, mas porque o padrão que cria tudo isso continua intacto.</p>
-      <p>Ou você pode olhar pra trás e reconhecer estas 4 horas como o momento em que parou de brigar com o sintoma e foi até a raiz. Não com mais um curso, mais uma técnica ou mais um certificado, mas destravando o que trava. É isso que acontece aqui, ao vivo, comigo.</p>
+  <div class="container">
+    <span class="label">A decisão</span>
+    <h2>Você tem dois caminhos agora</h2>
+    <p class="cta-intro">Um deles você já testou por anos — e sabe exatamente onde ele termina. O outro começa em quatro horas.</p>
+
+    <div class="caminhos">
+      <div class="caminho caminho--inerte">
+        <div class="c-num">Caminho 01</div>
+        <p>
+          Fechar esta página e continuar do jeito que está: excelência no que você
+          faz, travamento no que você ganha. Esperando o mês bom que não se sustenta
+          — porque hoje você não tem previsibilidade, não tem nada nas suas mãos.
+          Você tem uma ilusão.
+        </p>
+      </div>
+
+      <div class="caminho caminho--ativo">
+        <div class="c-num">Caminho 02</div>
+        <p>
+          Reservar quatro horas e destravar a liberdade: de ter conforto, de
+          realizar os seus sonhos, de receber o valor que você merece.
+          <strong>Ter o reconhecimento e o valor que o seu trabalho merece — vivendo
+          do seu propósito, com previsibilidade, transformando mais vidas. Inclusive
+          a sua.</strong>
+        </p>
+      </div>
     </div>
+
     <div class="cta-risco"><strong>O risco é meu.</strong> Você tem 7 dias de garantia: se sentir que não é para você, devolvo cada centavo. A única coisa que não volta é o tempo parado no mesmo lugar.</div>
-    <p class="cta-punch">O bloqueio te trouxe até aqui. Agora é a hora de destravar.</p>
+    <p class="cta-punch">
+      A estagnação continua enquanto o padrão não muda.
+      <span>E o padrão não muda sozinho — ele muda quando você enxerga qual é.</span>
+    </p>
     <a href="https://chk.eduzz.com/G96RKYGEW1" target="_blank" rel="noopener noreferrer" class="btn btn--full" style="max-width:460px;margin:0 auto;">
       Sim, quero destravar agora
     </a>
