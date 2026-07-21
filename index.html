@@ -350,6 +350,14 @@
     .info-card .ic-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 6px; }
     .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
     .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
+    /* Abaixo de ~590px os 3 cards nao cabem lado a lado. Sem isto o card que
+       sobra na linha estica com flex:1 e a imagem dele vai a 200-310px de
+       altura. Empilha os 3 na largura da coluna central (245px = calendario,
+       investimento e botao), mantendo a imagem em 140px. */
+    @media (max-width: 592px) {
+      .info-cards { max-width: 245px; }
+      .info-card { min-width: 0; flex: 1 1 100%; }
+    }
     .price-card {
       background: var(--preto-2); border: 1px solid rgba(229,67,42,.5); border-radius: 16px;
       padding: 30px 26px; max-width: 380px; margin: 0 auto 30px;
