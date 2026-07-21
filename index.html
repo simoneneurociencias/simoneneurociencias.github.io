@@ -486,6 +486,13 @@
     /* ════════ OFERTA — cards escuros sobre fundo branco ════════ */
     .oferta .info-card, .oferta .price-card { background: #211d24; border-color: rgba(229,67,42,.35); }
     .oferta .price-card { border-color: rgba(229,67,42,.55); }
+    /* coluna central uniforme: data, investimento e botao na mesma largura */
+    .oferta .price-card { width: 245px; max-width: 100%; padding: 26px 18px; }
+    .oferta .btn {
+      width: 245px; max-width: 100%;
+      padding: 16px 18px; white-space: normal; text-wrap: balance;
+      font-size: .95rem; line-height: 1.3;
+    }
     .oferta .info-card .ic-label, .oferta .price-card .pc-label,
     .oferta .data-box .db-label { color: var(--laranja-2); }
     .oferta .info-card .ic-main { color: #f4f0e9; }
