@@ -14,16 +14,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --ouro:       #d4af37;
-      --ouro-suave: #e7cd83;
-      --preto:      #0b0b0d;
-      --grafite:    #17171e;
-      --card:       #1f1f28;
-      --roxo-mid:   #1b1b21;
-      --texto:      #f2efe9;
-      --cinza:      #b5b0a6;
-      --borda:      rgba(212,175,55,.16);
+      /* paleta espelhada da LP (index-novo.html) */
+      --ouro:       #e5432a;   /* accent  — era dourado */
+      --ouro-suave: #ff6a4d;   /* brilho  — era dourado claro */
+      --preto:      #0a0a0c;
+      --grafite:    #221a28;
+      --card:       #1b1620;
+      --roxo-mid:   #221a28;
+      --texto:      #f4f0e9;
+      --cinza:      #b8b3aa;
+      --borda:      rgba(229,67,42,.18);
       --verde-cta:  #25D366;
+      --grad-secao: linear-gradient(118deg, #c3305c 0%, #d43a42 52%, #e5432a 100%);
     }
 
     body {
@@ -44,7 +46,7 @@
     /* ── HERO OBRIGADO ── */
     .hero-obrigado {
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.14) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 0%, rgba(229,67,42,.16) 0%, transparent 60%),
         linear-gradient(135deg, #000 0%, var(--roxo-mid) 100%);
       color: #fff;
       padding: 72px 0 64px;
@@ -55,7 +57,7 @@
     .check-circle {
       width: 80px;
       height: 80px;
-      background: rgba(212,175,55,.14);
+      background: rgba(229,67,42,.16);
       border: 3px solid var(--ouro);
       border-radius: 50%;
       display: flex;
@@ -74,8 +76,8 @@
 
     .hero-obrigado .tag {
       display: inline-block;
-      background: rgba(212,175,55,.1);
-      border: 1px solid rgba(212,175,55,.35);
+      background: rgba(229,67,42,.12);
+      border: 1px solid rgba(229,67,42,.42);
       border-radius: 20px;
       padding: 5px 16px;
       font-size: .78rem;
@@ -200,10 +202,86 @@
       margin-top: 2px;
     }
 
+    /* ── CAIXA DE BÔNUS (destaque) ── */
+    .bonus-box {
+      background: var(--grad-secao);
+      border-radius: 18px;
+      padding: 3px;                 /* moldura em degradê */
+      margin: 44px auto 0;
+      max-width: 620px;
+      box-shadow: 0 18px 48px rgba(229,67,42,.28);
+    }
+    .bonus-box-in {
+      background: #120f16;
+      border-radius: 15px;
+      padding: 32px 28px;
+    }
+    .bonus-box-tit {
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .bonus-box-sub {
+      text-align: center;
+      font-size: .88rem;
+      color: var(--cinza);
+      margin-bottom: 26px;
+    }
+    .bonus-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255,255,255,.07);
+    }
+    .bonus-item:first-of-type { border-top: 0; padding-top: 0; }
+    .bonus-ico {
+      flex: none;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--grad-secao);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+    }
+    .bonus-tx { text-align: left; }
+    .bonus-tx h3 {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 3px;
+      line-height: 1.35;
+    }
+    .bonus-tx p { font-size: .9rem; color: var(--cinza); line-height: 1.55; }
+    .bonus-tag-mini {
+      display: inline-block;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--grad-secao);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 7px;
+    }
+    .bonus-box-pe {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.07);
+      text-align: center;
+      font-size: .93rem;
+      color: var(--ouro-suave);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
     /* ── CTA WHATSAPP ── */
     .cta-wpp {
       background:
-        radial-gradient(ellipse at 50% 100%, rgba(212,175,55,.13) 0%, transparent 60%),
+        radial-gradient(ellipse at 50% 100%, rgba(229,67,42,.15) 0%, transparent 60%),
         linear-gradient(135deg, #000 0%, var(--roxo-mid) 100%);
       color: #fff;
       padding: 72px 0;
@@ -308,11 +386,50 @@
       os lembretes para não perder nada.
     </p>
 
-    <p class="subhead" style="margin-top:14px;">
-      🎁 E é lá dentro que eu libero o seu <strong>presente de boas-vindas</strong>:
-      o guia <em>As 7 Crenças que Travam a Sua Relação com Dinheiro</em> — para você
-      já chegar preparado e aquecido no dia do encontro.
-    </p>
+    <div class="bonus-box">
+      <div class="bonus-box-in">
+        <h2 class="bonus-box-tit">Tudo o que você acabou de garantir</h2>
+        <p class="bonus-box-sub">Além das 4 horas ao vivo — liberado no grupo</p>
+
+        <div class="bonus-item">
+          <div class="bonus-ico">🎁</div>
+          <div class="bonus-tx">
+            <span class="bonus-tag-mini">Presente · na hora</span>
+            <h3>As 7 Crenças que Travam a Sua Relação com Dinheiro</h3>
+            <p>Guia interativo com exercícios para começar desde já. Você já chega preparado e aquecido no dia do encontro.</p>
+          </div>
+        </div>
+
+        <div class="bonus-item">
+          <div class="bonus-ico">📘</div>
+          <div class="bonus-tx">
+            <span class="bonus-tag-mini">Bônus 01</span>
+            <h3>Plano de 21 Dias de Reprogramação</h3>
+            <p>O workbook que trabalha os 3 bloqueios que o seu diagnóstico revelou — transformando o desbloqueio em hábito, não num insight que passa.</p>
+          </div>
+        </div>
+
+        <div class="bonus-item">
+          <div class="bonus-ico">🎧</div>
+          <div class="bonus-tx">
+            <span class="bonus-tag-mini">Bônus 02</span>
+            <h3>3 Áudios de Autohipnose na voz da Simone</h3>
+            <p>Para ouvir durante os 21 dias, fixando a nova programação no subconsciente até ela ocupar o lugar do bloqueio.</p>
+          </div>
+        </div>
+
+        <div class="bonus-item">
+          <div class="bonus-ico">💬</div>
+          <div class="bonus-tx">
+            <span class="bonus-tag-mini">Bônus 03</span>
+            <h3>Grupo exclusivo dos participantes</h3>
+            <p>Só de quem está no mesmo processo. É o que sustenta a prática quando a empolgação do primeiro dia passa e te leva até o dia 21.</p>
+          </div>
+        </div>
+
+        <p class="bonus-box-pe">👇 Entre no grupo agora — é lá que eu libero o seu presente</p>
+      </div>
+    </div>
 
     <div style="margin-top:32px;">
       <a href="https://chat.whatsapp.com/JGcAl6vUl6WHbXXwtpGs5u" target="_blank" rel="noopener noreferrer" class="btn-wpp">
