@@ -202,19 +202,58 @@
       margin-top: 2px;
     }
 
-    /* ── CAIXA DE BÔNUS (destaque) ── */
-    .bonus-box {
+    /* ── CAIXA 1: PRESENTE (imediato — destaque quente) ── */
+    .presente-box {
       background: var(--grad-secao);
       border-radius: 18px;
       padding: 3px;                 /* moldura em degradê */
       margin: 44px auto 0;
       max-width: 620px;
-      box-shadow: 0 18px 48px rgba(229,67,42,.28);
+      box-shadow: 0 18px 48px rgba(229,67,42,.34);
     }
-    .bonus-box-in {
-      background: #120f16;
+    .presente-box-in {
+      background: #150f18;
       border-radius: 15px;
-      padding: 32px 28px;
+      padding: 28px 26px;
+    }
+    .selo-agora {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--grad-secao);
+      color: #fff;
+      font-size: .68rem; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .presente-box h2 {
+      font-size: clamp(1.15rem, 3vw, 1.42rem);
+      line-height: 1.32; margin-bottom: 8px;
+    }
+    .presente-box p { font-size: .95rem; color: var(--cinza); line-height: 1.6; }
+    .presente-pe {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,.09);
+      font-size: .92rem; color: var(--ouro-suave); font-weight: 600;
+    }
+
+    /* ── CAIXA 2: BÔNUS (só depois do webinário — visual sóbrio) ── */
+    .bonus-box {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      margin: 20px auto 0;
+      max-width: 620px;
+    }
+    .bonus-box-in { padding: 26px 26px 24px; }
+    .selo-depois {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--cinza);
+      font-size: .66rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 20px;
+      margin-bottom: 12px;
     }
     .bonus-box-tit {
       font-family: 'Marcellus', Georgia, serif;
@@ -239,11 +278,12 @@
     .bonus-item:first-of-type { border-top: 0; padding-top: 0; }
     .bonus-ico {
       flex: none;
-      width: 40px; height: 40px;
+      width: 38px; height: 38px;
       border-radius: 10px;
-      background: var(--grad-secao);
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
     }
     .bonus-tx { text-align: left; }
     .bonus-tx h3 {
@@ -257,13 +297,14 @@
     .bonus-tx p { font-size: .9rem; color: var(--cinza); line-height: 1.55; }
     .bonus-tag-mini {
       display: inline-block;
-      font-size: .64rem;
+      font-size: .63rem;
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: #fff;
-      background: var(--grad-secao);
-      padding: 3px 10px;
+      color: var(--cinza);
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 2px 9px;
       border-radius: 20px;
       margin-bottom: 7px;
     }
@@ -386,19 +427,29 @@
       os lembretes para não perder nada.
     </p>
 
+    <!-- ── CAIXA 1 — O QUE É IMEDIATO ── -->
+    <div class="presente-box">
+      <div class="presente-box-in">
+        <span class="selo-agora">🎁 Seu presente · agora</span>
+        <h2>As 7 Crenças que Travam a Sua Relação com Dinheiro</h2>
+        <p>
+          O guia interativo com exercícios para você começar a mexer nessas crenças
+          desde hoje — sem esperar o dia do encontro. Assim você já chega preparado
+          e aquecido.
+        </p>
+        <p class="presente-pe">👇 Liberado assim que você entrar no grupo</p>
+      </div>
+    </div>
+
+    <!-- ── CAIXA 2 — O QUE VEM DEPOIS ── -->
     <div class="bonus-box">
       <div class="bonus-box-in">
-        <h2 class="bonus-box-tit">Tudo o que você acabou de garantir</h2>
-        <p class="bonus-box-sub">Além das 4 horas ao vivo — liberado no grupo</p>
-
-        <div class="bonus-item">
-          <div class="bonus-ico">🎁</div>
-          <div class="bonus-tx">
-            <span class="bonus-tag-mini">Presente · na hora</span>
-            <h3>As 7 Crenças que Travam a Sua Relação com Dinheiro</h3>
-            <p>Guia interativo com exercícios para começar desde já. Você já chega preparado e aquecido no dia do encontro.</p>
-          </div>
-        </div>
+        <span class="selo-depois">⏳ Ao final do webinário</span>
+        <h2 class="bonus-box-tit" style="font-size:1.12rem;text-align:left;margin-bottom:4px;">Você ainda leva estes bônus</h2>
+        <p class="bonus-box-sub" style="text-align:left;margin-bottom:20px;">
+          Estes <strong style="color:var(--texto);">não são imediatos</strong>: são entregues
+          depois das 4 horas ao vivo, porque trabalham o que o seu diagnóstico revelar durante o encontro.
+        </p>
 
         <div class="bonus-item">
           <div class="bonus-ico">📘</div>
@@ -421,13 +472,11 @@
         <div class="bonus-item">
           <div class="bonus-ico">💬</div>
           <div class="bonus-tx">
-            <span class="bonus-tag-mini">Bônus 03</span>
+            <span class="bonus-tag-mini">Bônus 03 · já começa hoje</span>
             <h3>Grupo exclusivo dos participantes</h3>
-            <p>Só de quem está no mesmo processo. É o que sustenta a prática quando a empolgação do primeiro dia passa e te leva até o dia 21.</p>
+            <p>Você entra agora, e é lá que tudo acontece — antes, durante e depois. É o que sustenta a prática quando a empolgação passa e te leva até o dia 21.</p>
           </div>
         </div>
-
-        <p class="bonus-box-pe">👇 Entre no grupo agora — é lá que eu libero o seu presente</p>
       </div>
     </div>
 
