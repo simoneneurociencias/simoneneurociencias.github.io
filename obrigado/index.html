@@ -132,8 +132,9 @@
     /* ── MENSAGEM DE TRANSFORMAÇÃO ── */
     .transformacao {
       padding: 72px 0;
-      background: var(--grafite);
-      border-bottom: 1px solid var(--borda);
+      background: var(--grad-secao);
+      border-bottom: 1px solid rgba(0,0,0,.18);
+      color: #fff;
     }
 
     .label {
@@ -142,13 +143,14 @@
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--ouro);
+      color: #fff;
+      opacity: .82;
       margin-bottom: 10px;
     }
 
     .transformacao .cred {
       font-size: .82rem;
-      color: var(--cinza);
+      color: rgba(255,255,255,.72);
       margin-bottom: 18px;
     }
 
@@ -158,22 +160,25 @@
       margin-bottom: 24px;
     }
 
+    .transformacao h2 { color: #fff; }
+
     .transformacao p {
       font-size: 1rem;
-      color: var(--cinza);
+      color: rgba(255,255,255,.9);
       line-height: 1.75;
     }
 
     .transformacao p + p { margin-top: 16px; }
 
+    /* fundo SÓLIDO: sobre o degradê, caixa translúcida apaga o texto */
     .destaque-box {
-      background: #16161a;
-      border-left: 4px solid var(--ouro);
+      background: #120f16;
+      border-left: 4px solid var(--ouro-suave);
       border-radius: 0 8px 8px 0;
       padding: 18px 22px;
       margin-top: 28px;
       font-size: .97rem;
-      color: var(--ouro-suave);
+      color: #fff;
       font-weight: 600;
       line-height: 1.6;
     }
@@ -191,12 +196,13 @@
       align-items: flex-start;
       gap: 10px;
       font-size: .97rem;
-      color: var(--texto);
+      color: #fff;
     }
 
     .items-list li::before {
       content: "\2726";
-      color: var(--ouro);
+      color: #fff;
+      opacity: .85;
       font-weight: 800;
       flex-shrink: 0;
       margin-top: 2px;
