@@ -127,6 +127,19 @@
     /* ════════ BONUS ════════ */
     .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
     .bonus-card { position: relative; background: var(--preto-2); border: 1px solid rgba(229,67,42,.32); border-radius: 18px; padding: 26px 26px 28px; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
+    /* nota em degradê rosa->laranja (tons claros: o --grad-secao e escuro demais p/ texto) */
+    .nota-grad {
+      font-style: italic;
+      font-weight: 600;
+      color: var(--laranja-2);                 /* fallback */
+      background: linear-gradient(90deg, #ff5f8f 0%, #ff6a4d 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+    @supports (-webkit-background-clip: text) or (background-clip: text) {
+      .nota-grad { color: transparent; }
+    }
+
     .bonus-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-secao); padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
     .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: 1.3rem; color: var(--creme); margin-bottom: 10px; }
     .bonus-card p { color: var(--cinza); font-size: .98rem; line-height: 1.6; }
@@ -954,7 +967,7 @@
       <div class="bonus-card">
         <div class="bonus-tag">Bônus 03</div>
         <h3>Grupo de prática dos 21 dias</h3>
-        <p>Depois do encontro, um grupo novo se forma — <strong>só com quem está executando o plano</strong>. É o que sustenta a rotina quando a empolgação do primeiro dia passa e te leva até o <strong>dia 21</strong> — o ponto em que cobrar o seu preço e ocupar o seu espaço deixaram de custar esforço e viraram <strong>o seu normal</strong>. <em style="opacity:.85;">(Assim que você garante a vaga, já entra no grupo de aquecimento, onde libero o seu presente.)</em></p>
+        <p>Depois do encontro, um grupo novo se forma — <strong>só com quem está executando o plano</strong>. É o que sustenta a rotina quando a empolgação do primeiro dia passa e te leva até o <strong>dia 21</strong> — o ponto em que cobrar o seu preço e ocupar o seu espaço deixaram de custar esforço e viraram <strong>o seu normal</strong>. <em class="nota-grad">(Assim que você garante a vaga, já entra no grupo de aquecimento, onde libero o seu presente.)</em></p>
       </div>
     </div>
   </div>
