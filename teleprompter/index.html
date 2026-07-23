@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teleprompter Livre — cole seu texto</title>
+<style>
+  :root{
+    --bg:#0d0e12; --card:#15171e; --linha:#252833;
+    --tinta:#f2f3f7; --tinta-2:#9aa0b0;
+    --acento:#7c5cff; --ok:#2ec4a6; --acao:#e5a72a; --quente:#e5432a;
+    --fs:34px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--tinta);
+    font-family:-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ================= EDITOR ================= */
+  #editor{max-width:820px; margin:0 auto; padding:40px 24px 80px}
+  #editor h1{font-size:26px; margin:0 0 6px}
+  #editor .lead{color:var(--tinta-2); margin:0 0 28px; line-height:1.6; font-size:16px}
+
+  textarea{
+    width:100%; min-height:48vh; resize:vertical;
+    background:var(--card); color:var(--tinta); border:1px solid var(--linha);
+    border-radius:12px; padding:18px 20px; font-size:17px; line-height:1.6;
+    font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+  }
+  textarea:focus{outline:none; border-color:var(--acento)}
+
+  .barra-editor{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:18px}
+  .btn{
+    background:var(--acento); color:#fff; border:0; border-radius:10px;
+    padding:14px 26px; font-size:17px; font-weight:700; cursor:pointer; font-family:inherit;
+  }
+  .btn:hover{filter:brightness(1.1)}
+  .btn.sec{background:var(--card); color:var(--tinta-2); border:1px solid var(--linha); font-weight:500}
+  .btn.sec:hover{color:var(--tinta)}
+
+  details.guia{margin-top:34px; background:var(--card); border:1px solid var(--linha); border-radius:12px; padding:4px 20px}
+  details.guia summary{cursor:pointer; padding:14px 0; font-weight:700; font-size:16px}
+  details.guia[open]{padding-bottom:20px}
+  .guia table{border-collapse:collapse; width:100%; font-size:15px; margin-top:6px}
+  .guia td{padding:9px 10px; border-top:1px solid var(--linha); vertical-align:top; line-height:1.5}
+  .guia td:first-child{white-space:nowrap; color:var(--acento); font-family:Consolas,monospace}
+  .guia .ex{color:var(--tinta-2)}
+
+  /* ================= PALCO ================= */
+  #palco{display:none}
+  #barra{
+    position:sticky; top:0; z-index:50; display:flex; align-items:center;
+    gap:12px; padding:12px 18px; background:rgba(13,14,18,.94);
+    backdrop-filter:blur(10px); border-bottom:1px solid var(--linha); flex-wrap:wrap;
+  }
+  .ctrl{
+    background:var(--card); color:var(--tinta-2); border:1px solid var(--linha);
+    border-radius:8px; padding:8px 13px; font-size:14px; cursor:pointer; font-family:inherit;
+  }
+  .ctrl:hover{color:var(--tinta); border-color:#3a3f4f}
+  .ctrl.on{background:var(--ok); color:#04120e; border-color:transparent; font-weight:700}
+  #cron{font-variant-numeric:tabular-nums; font-size:16px; color:var(--tinta-2); min-width:52px}
+  #onde{color:var(--tinta-2); font-size:14px; flex:1; min-width:120px; text-align:right}
+  .sep{width:1px; align-self:stretch; background:var(--linha)}
+
+  main{max-width:22em; margin:0 auto; padding:48px 24px; font-size:var(--fs); line-height:1.75}
+  p.fala{margin:0 0 1.15em}
+  .marco{
+    display:flex; align-items:center; gap:12px; margin:2em 0 1em;
+    font-size:.42em; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--tinta-2); font-weight:700;
+  }
+  .marco::after{content:""; flex:1; height:1px; background:var(--linha)}
+  .marco .dot{width:9px;height:9px;border-radius:50%;background:var(--acento);flex:none}
+  .afirm{
+    border-left:3px solid var(--ok); padding:2px 0 2px 22px; margin:0 0 1.15em;
+    color:#bff3e6; font-style:italic;
+  }
+  .p{color:var(--quente); font-weight:700; letter-spacing:.22em; padding:0 .12em}
+  .plonga{
+    display:block; margin:1.1em 0; padding:12px 20px; border-radius:10px;
+    background:rgba(229,67,42,.1); border:1px dashed rgba(229,67,42,.45);
+    color:#ff8a72; font-size:.5em; letter-spacing:.14em; text-transform:uppercase;
+    font-weight:700; text-align:center;
+  }
+  /* linha-guia central, ajuda a manter o olhar */
+  #linha{position:fixed; left:0; right:0; top:38%; height:2px; background:rgba(124,92,255,.35); z-index:40; display:none; pointer-events:none}
+  #linha.on{display:block}
+</style>
+</head>
+
+<!-- ================= TELA 1: EDITOR ================= -->
+<div id="editor">
+  <h1>Teleprompter Livre</h1>
+  <p class="lead">Cole ou digite o seu texto abaixo e clique em <b>Montar teleprompter</b>.
+  Serve para qualquer leitura — hipnose, Reels, aula ao vivo, áudio, VSL. O texto fica salvo
+  neste navegador.</p>
+
+  <textarea id="txt" placeholder="Cole aqui o seu roteiro...
+
+Cada parágrafo vira uma fala.
+
+Use três pontos... assim... para marcar as pausas curtas.
+
+--- para uma pausa longa
+
+# Um título com # vira marcador de seção"></textarea>
+
+  <div class="barra-editor">
+    <button class="btn" id="montar">▶ Montar teleprompter</button>
+    <button class="btn sec" id="limpar">Limpar</button>
+  </div>
+
+  <details class="guia">
+    <summary>Como escrever (opcional — 5 códigos)</summary>
+    <table>
+      <tr><td>linha em branco</td><td class="ex">separa os parágrafos. Cada bloco vira uma fala.</td></tr>
+      <tr><td>...&nbsp;&nbsp;ou&nbsp;&nbsp;…</td><td class="ex">pausa curta — aparece em vermelho no palco.</td></tr>
+      <tr><td>---</td><td class="ex">uma linha só com três traços = <b>pausa longa</b> (tarja).</td></tr>
+      <tr><td># Texto</td><td class="ex">vira um marcador de seção (ex.: <i># Indução</i>, <i># Oferta</i>).</td></tr>
+      <tr><td>&gt; Texto</td><td class="ex">vira uma afirmação em destaque (verde) — para frases de repetir.</td></tr>
+    </table>
+  </details>
+</div>
+
+<!-- ================= TELA 2: PALCO ================= -->
+<div id="palco">
+  <div id="barra">
+    <button class="ctrl" id="voltar">✎ Editar</button>
+    <div class="sep"></div>
+    <button class="ctrl" id="bCron">▶ tempo</button>
+    <span id="cron">0:00</span>
+    <div class="sep"></div>
+    <button class="ctrl" id="bMenos">A−</button>
+    <button class="ctrl" id="bMais">A+</button>
+    <div class="sep"></div>
+    <button class="ctrl" id="bRolar">▶ rolar</button>
+    <button class="ctrl" id="bLento">−</button>
+    <button class="ctrl" id="bRapido">+</button>
+    <span id="onde"></span>
+  </div>
+  <div id="linha"></div>
+  <main id="palcoTexto"></main>
+</div>
+
+<script>
+  const $ = s => document.querySelector(s);
+  const txt = $('#txt'), editor = $('#editor'), palco = $('#palco'), alvo = $('#palcoTexto');
+
+  // ---------- persistência ----------
+  txt.value = localStorage.getItem('tl-texto') || '';
+  txt.addEventListener('input', ()=> localStorage.setItem('tl-texto', txt.value));
+
+  // ---------- parser: texto puro -> HTML ----------
+  const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const pausas = s => esc(s)
+      .replace(/\.\.\.|…/g, '<span class="p">…</span>');   // ... ou … -> pausa curta
+
+  function montarHTML(raw){
+    const blocos = raw.replace(/\r/g,'').split(/\n{2,}/);   // parágrafos por linha em branco
+    let out = '';
+    for(let b of blocos){
+      b = b.trim();
+      if(!b) continue;
+      // um bloco pode ter várias linhas de comando; trata linha a linha
+      const linhas = b.split('\n');
+      let paragrafo = [];
+      const despeja = ()=>{ if(paragrafo.length){ out += `<p class="fala">${pausas(paragrafo.join(' '))}</p>`; paragrafo=[]; } };
+      for(let l of linhas){
+        l = l.trim();
+        if(l === '---' || l === '***'){ despeja(); out += `<span class="plonga">pausa longa</span>`; }
+        else if(l.startsWith('# ')){ despeja(); out += `<div class="marco"><span class="dot"></span>${esc(l.slice(2))}</div>`; }
+        else if(l.startsWith('> ')){ despeja(); out += `<div class="afirm">${pausas(l.slice(2))}</div>`; }
+        else { paragrafo.push(l); }
+      }
+      despeja();
+    }
+    return out || '<p class="fala" style="color:#9aa0b0">(sem texto — volte e cole o seu roteiro)</p>';
+  }
+
+  // ---------- trocar de tela ----------
+  $('#montar').onclick = ()=>{
+    alvo.innerHTML = montarHTML(txt.value);
+    editor.style.display='none'; palco.style.display='block';
+    window.scrollTo(0,0); observaMarcos();
+  };
+  $('#voltar').onclick = ()=>{ pararRolagem(); palco.style.display='none'; editor.style.display='block'; };
+  $('#limpar').onclick = ()=>{ if(confirm('Apagar o texto?')){ txt.value=''; localStorage.removeItem('tl-texto'); } };
+
+  // ---------- fonte ----------
+  let fs = parseInt(localStorage.getItem('tl-fs')) || 34;
+  const setFs = v => { fs = Math.min(72, Math.max(18, v)); document.documentElement.style.setProperty('--fs', fs+'px'); localStorage.setItem('tl-fs', fs); };
+  setFs(fs);
+  $('#bMais').onclick = ()=> setFs(fs+2);
+  $('#bMenos').onclick = ()=> setFs(fs-2);
+
+  // ---------- cronômetro ----------
+  let seg=0, timer=null;
+  const elCron=$('#cron'), bCron=$('#bCron');
+  const pinta=()=> elCron.textContent = Math.floor(seg/60)+':'+String(seg%60).padStart(2,'0');
+  bCron.onclick = ()=>{
+    if(timer){ clearInterval(timer); timer=null; bCron.textContent='▶ tempo'; }
+    else { timer=setInterval(()=>{seg++;pinta();},1000); bCron.textContent='❚❚ tempo'; }
+  };
+  elCron.ondblclick = ()=>{ seg=0; pinta(); };
+
+  // ---------- rolagem automática ----------
+  let rolando=null, vel=1.0;
+  const bRolar=$('#bRolar'), linha=$('#linha');
+  function pararRolagem(){ if(rolando){ cancelAnimationFrame(rolando); rolando=null; bRolar.textContent='▶ rolar'; bRolar.classList.remove('on'); linha.classList.remove('on'); } }
+  function rolar(){
+    window.scrollBy(0, vel);
+    if(window.innerHeight+window.scrollY >= document.body.scrollHeight-2){ pararRolagem(); return; }
+    rolando = requestAnimationFrame(rolar);
+  }
+  bRolar.onclick = ()=>{
+    if(rolando){ pararRolagem(); }
+    else { bRolar.textContent='❚❚ rolar'; bRolar.classList.add('on'); linha.classList.add('on'); rolando=requestAnimationFrame(rolar); }
+  };
+  $('#bRapido').onclick = ()=> vel = Math.min(6, vel+0.4);
+  $('#bLento').onclick  = ()=> vel = Math.max(0.4, vel-0.4);
+
+  // ---------- indicador "onde estou" (marcadores) ----------
+  let io=null;
+  function observaMarcos(){
+    if(io) io.disconnect();
+    const marcos = [...alvo.querySelectorAll('.marco')];
+    if(!marcos.length){ $('#onde').textContent=''; return; }
+    io = new IntersectionObserver(ents=>{
+      const vis = ents.filter(e=>e.isIntersecting).sort((a,b)=>a.boundingClientRect.top-b.boundingClientRect.top);
+      if(vis.length) $('#onde').textContent = vis[0].target.textContent;
+    },{rootMargin:'-80px 0px -60% 0px', threshold:0});
+    marcos.forEach(m=>io.observe(m));
+  }
+
+  // ---------- teclado ----------
+  addEventListener('keydown', e=>{
+    if(palco.style.display==='none') return;
+    if(e.key==='+'||e.key==='=') setFs(fs+2);
+    if(e.key==='-') setFs(fs-2);
+    if(e.code==='Space'){ e.preventDefault(); bRolar.click(); }
+  });
+</script>
+</body>
+</html>
