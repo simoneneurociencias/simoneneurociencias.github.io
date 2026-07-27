@@ -225,7 +225,8 @@
       font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
       color: var(--vermelho); border: 1px solid rgba(212,87,78,.5); border-radius: 20px; padding: 1px 8px;
     }
-    .bd-nota { font-size: .84rem; color: var(--texto); margin-top: 7px; line-height: 1.45; }
+    /* branco a 75%: o texto e claro, mas nao compete com o percentual colorido acima */
+    .bd-nota { font-size: .84rem; color: rgba(242,239,233,.75); margin-top: 7px; line-height: 1.45; }
     /* no celular o label + "0% de 100% · baixíssimo" nao cabem lado a lado */
     @media (max-width: 460px) {
       .bd-row .lab { flex-direction: column; align-items: flex-start; gap: 3px; }
@@ -261,6 +262,41 @@
 
     .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
     .refazer:hover { background: rgba(212,175,55,.1); }
+    .baixar { margin-top: 26px; }
+    .baixar-dica { text-align: center; font-size: .78rem; color: var(--cinza); margin-top: 8px; }
+    .print-marca { display: none; }
+
+    /* ── Impressão / Salvar em PDF ──
+       sem biblioteca externa: o proprio navegador gera o PDF. Aqui a pagina
+       vira so o resultado, com o tema preservado. */
+    @media print {
+      @page { margin: 12mm; }
+      body {
+        background: var(--preto) !important;
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      .wrap { padding: 0; max-width: 100%; }
+      header, #form, #verBtn, .aviso, #gate, .baixar, .baixar-dica, .refazer { display: none !important; }
+      .print-marca {
+        display: block; text-align: center; margin-bottom: 20px;
+        color: var(--cinza); font-size: .78rem;
+      }
+      .print-marca strong {
+        display: block; font-family: 'Marcellus', serif; font-size: 1.05rem;
+        color: var(--ouro-suave); font-weight: 400; margin-bottom: 3px;
+      }
+      .print-marca span { display: block; }
+      .res-titulo { margin-top: 0; }
+      /* no PDF so faz sentido a faixa em que a pessoa caiu */
+      .faixa:not(.ativa) { display: none; }
+      .faixa.ativa { opacity: 1; transform: none; box-shadow: none; }
+      /* o card e alto demais para caber inteiro numa pagina: se pedir "avoid"
+         nele, o Chrome joga o bloco todo para a pagina seguinte e sobra
+         pagina em branco. So os blocos pequenos e que nao podem partir. */
+      .bd-row, .faixa, .cta-final { break-inside: avoid; }
+      .res-card { padding: 24px 20px; }
+      body { min-height: 0; }
+    }
   </style>
 </head>
 <body>
@@ -268,8 +304,8 @@
 
   <header>
     <span class="kicker">Autodiagnóstico</span>
-    <h1>Quanto do seu <em>potencial de crescimento</em> está liberado hoje?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e qual dos 3 eixos está mais travado.</p>
+    <h1>Quanto do seu <em>potencial</em> está liberado?</h1>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e onde o bloqueio pesa mais.</p>
   </header>
 
   <form id="form"></form>
@@ -313,6 +349,11 @@
 
   <!-- RESULTADO -->
   <section id="resultado">
+    <div class="print-marca">
+      <strong>Diagnóstico de Potencial de Crescimento</strong>
+      <span>Simone Carneiro · Neurociência e Hipnoterapia</span>
+      <span id="printData"></span>
+    </div>
     <h2 class="res-titulo">Resultado</h2>
     <div class="res-card">
       <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
@@ -378,6 +419,9 @@
       <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
       <p class="cta-sub">Conversa individual e sem compromisso.</p>
     </div>
+
+    <button class="btn baixar" id="baixarBtn" type="button">Baixar meu resultado em PDF</button>
+    <p class="baixar-dica">Na janela que abrir, escolha <strong>Salvar como PDF</strong> no destino.</p>
 
     <button class="btn refazer" type="button" onclick="location.reload()">Refazer o diagnóstico</button>
   </section>
@@ -579,6 +623,15 @@
   };
 
   // 3) renderiza o resultado completo
+  // "Baixar em PDF" = imprimir com o CSS de impressao acima. Sem dependencia
+  // externa; o titulo do documento vira o nome sugerido do arquivo.
+  document.getElementById('baixarBtn').onclick = function () {
+    const titulo = document.title;
+    document.title = 'Diagnostico de Potencial de Crescimento';
+    window.print();
+    setTimeout(function () { document.title = titulo; }, 800);
+  };
+
   function mostrarResultado(r) {
     document.getElementById('gate').style.display = 'none';
     const score = document.getElementById('score');
@@ -591,10 +644,10 @@
       desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é PROFUNDO: não está na sua estratégia, está na programação que roda por baixo dela — antiga, silenciosa, e é ela que te puxa de volta toda vez que você avança. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
     } else if (r.pct <= 59) {
       nome = 'Potencial de crescimento intermitente'; fxId = 'fx-moderado';
-      desc = 'Você está operando com ' + r.pct + '% do seu potencial — e os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado. Reprogramação dirigida é o que destrava e sustenta.';
+      desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. Os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado — cobrar, aparecer, sustentar o que conquistou. Sem uma reprogramação dirigida, você destrava e perde de novo.';
     } else {
       nome = 'Potencial de crescimento destravado'; fxId = 'fx-leve';
-      desc = 'Sua base é saudável: ' + r.pct + '% do seu potencial está disponível. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
+      desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. A sua base é saudável e o que trava é pontual. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
     document.getElementById('faixaNome').textContent = nome;
     document.getElementById('faixaDesc').textContent = desc;
@@ -635,6 +688,9 @@
     document.getElementById(fxId).classList.add('ativa');
 
     montarCta(r, fxId);
+
+    document.getElementById('printData').textContent =
+      'Realizado em ' + new Date().toLocaleDateString('pt-BR');
 
     document.getElementById('resultado').style.display = 'block';
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
