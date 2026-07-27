@@ -351,20 +351,20 @@
         <div class="faixa-range">0–33%</div>
         <div>
           <h3>Potencial de crescimento bloqueado</h3>
-          <p>A maior parte do seu potencial está travada. O bloqueio é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
+          <p>A maior parte do seu potencial está travada. O bloqueio é profundo: crenças antigas associam prosperar a perigo ou a perder a essência — e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
         <div class="faixa-range">34–59%</div>
         <div>
-          <h3>Crescimento intermitente</h3>
+          <h3>Potencial de crescimento intermitente</h3>
           <p>Boa parte do seu potencial está disponível, mas some nos momentos-chave (cobrar, aparecer, manter consistência) — e é justamente onde o resultado se decide. Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar o que conquista.</p>
         </div>
       </div>
       <div class="faixa leve" id="fx-leve">
         <div class="faixa-range">60%+</div>
         <div>
-          <h3>Crescimento livre</h3>
+          <h3>Potencial de crescimento destravado</h3>
           <p>Você já tem uma relação saudável com valor e visibilidade. O que trava é pontual — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
         </div>
       </div>
@@ -588,12 +588,12 @@
     let nome, desc, fxId;
     if (r.pct <= 33) {
       nome = 'Potencial de crescimento bloqueado'; fxId = 'fx-profundo';
-      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é ESTRUTURAL. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
+      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é PROFUNDO: não está na sua estratégia, está na programação que roda por baixo dela — antiga, silenciosa, e é ela que te puxa de volta toda vez que você avança. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
     } else if (r.pct <= 59) {
-      nome = 'Crescimento intermitente'; fxId = 'fx-moderado';
+      nome = 'Potencial de crescimento intermitente'; fxId = 'fx-moderado';
       desc = 'Você está operando com ' + r.pct + '% do seu potencial — e os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado. Reprogramação dirigida é o que destrava e sustenta.';
     } else {
-      nome = 'Crescimento livre'; fxId = 'fx-leve';
+      nome = 'Potencial de crescimento destravado'; fxId = 'fx-leve';
       desc = 'Sua base é saudável: ' + r.pct + '% do seu potencial está disponível. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
     document.getElementById('faixaNome').textContent = nome;
@@ -668,7 +668,7 @@
       },
       'fx-profundo': {
         titulo: 'Esse padrão <em>pode ser reescrito</em> — e você não precisa fazer isso por conta própria.',
-        texto: 'A maior parte do seu potencial está travada, e é estrutural: nenhuma estratégia se sustenta sem trabalhar a raiz. Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo pra reverter isso.'
+        texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz. Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo pra reverter isso.'
       }
     };
     const c = copy[fxId];
