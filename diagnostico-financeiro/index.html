@@ -200,7 +200,8 @@
     .bd-tit { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ouro); margin-bottom: 14px; text-align: center; }
     .bd-row { margin-bottom: 14px; }
     .bd-row .lab { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 5px; }
-    .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; }
+    /* nowrap: "25% de 100%" nao pode quebrar em duas linhas no celular */
+    .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; white-space: nowrap; padding-left: 10px; }
     .bd-row .lab span:last-child.n-baixo { color: var(--vermelho); }
     .bd-row .lab span:last-child.n-medio { color: var(--amber); }
     .bd-row .lab span:last-child.n-alto  { color: var(--verde); }
@@ -309,15 +310,15 @@
       <div class="bd">
         <div class="bd-tit">Quanto de cada eixo você tem hoje</div>
         <div class="bd-row" id="bd1">
-          <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0%</span></div>
+          <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
         </div>
         <div class="bd-row" id="bd2">
-          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0%</span></div>
+          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
         </div>
         <div class="bd-row" id="bd3">
-          <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0%</span></div>
+          <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
         </div>
         <p class="bd-tag" id="bdTag"></p>
@@ -329,7 +330,7 @@
         <div class="faixa-range">0–33%</div>
         <div>
           <h3>Crescimento bloqueado</h3>
-          <p>A maior parte do seu potencial está travada. O teto é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
+          <p>A maior parte do seu potencial está travada. O bloqueio é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
@@ -372,18 +373,18 @@
   const AGENDA_URL = "https://calendar.app.google/vub9HiAtn2FEMymU8";
 
   const perguntas = [
-    { g: 1, t: "Evito me promover ou aparecer porque parece forçado." },
+    { g: 1, t: "Evito me promover ou aparecer por medo do julgamento." },
     { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
     { g: 1, t: "Tenho receio de parecer “comercial demais”." },
     { g: 1, t: "Sinto que mereço mais clientes do que consigo atrair." },
     { g: 2, t: "Meu faturamento sobe e desce frequentemente." },
-    { g: 2, t: "Existe um valor-teto que eu raramente ultrapasso." },
-    { g: 2, t: "Quando ganho mais, vem ansiedade ou autossabotagem." },
+    { g: 2, t: "Existe um valor que eu raramente ultrapasso." },
+    { g: 2, t: "Quando ganho mais, vem a ansiedade e a autossabotagem." },
     { g: 2, t: "Procrastino justamente quando as coisas vão bem." },
-    { g: 3, t: "Travo, gaguejo ou suo na hora de dizer o preço." },
+    { g: 3, t: "Travo ou gaguejo na hora de dizer o preço." },
     { g: 3, t: "Dou desconto sem o cliente nem pedir." },
     { g: 3, t: "Sinto culpa depois de receber um valor alto." },
-    { g: 3, t: "Acho, no fundo, que cobrar caro é “feio” ou egoísta." }
+    { g: 3, t: "Acho, no fundo, que cobrar caro é errado ou é egoísta." }
   ];
   const grupos = {
     1: "Segredo 1 · Visibilidade",
@@ -391,7 +392,7 @@
     3: "Segredo 3 · Autovalor"
   };
   // Índice = intensidade do bloqueio. Não existe resposta "zero bloqueio":
-  // a opção mais branda ("Um pouco") já vale 1 ponto, então o teto do índice
+  // a opção mais branda ("Um pouco") já vale 1 ponto, então o limite do índice
   // é 67% — ninguém sai ileso. Os cortes das faixas (33/60) respeitam isso.
   const escala = ["Um pouco", "Bastante", "Totalmente"];
   const PONTO_MIN = 1;
@@ -557,7 +558,7 @@
     const nomes = eixos.filter(e => e.v === minv).map(e => e.nome);
     eixos.forEach(e => {
       const lab = document.getElementById(e.val);
-      lab.textContent = e.v + '%';
+      lab.textContent = e.v + '% de 100%';
       lab.className = nivel(e.v);
       const f = document.getElementById(e.fill);
       f.style.width = e.v + '%';
@@ -605,7 +606,7 @@
     const copy = {
       'fx-leve': {
         titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
-        texto: 'Seu índice está alto — é o momento ideal pra ousar mais. Numa Análise Diagnóstica gratuita a gente mapeia o seu teto atual e traça o caminho pra subir de nível.'
+        texto: 'Seu índice está alto — é o momento ideal pra ousar mais. Numa Análise Diagnóstica gratuita a gente mapeia o seu bloqueio atual e traça o caminho pra subir de nível.'
       },
       'fx-moderado': {
         titulo: 'Você está a <em>um passo</em> de destravar.',
