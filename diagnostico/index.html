@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico — Qual é o seu nível de bloqueio de crescimento?</title>
+  <title>Diagnóstico — Qual é o seu Índice de Crescimento?</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -72,8 +72,8 @@
     .q-txt { font-size: .97rem; margin-bottom: 14px; }
     .q-num { color: var(--ouro); font-weight: 700; margin-right: 6px; }
 
-    .opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    @media (max-width: 460px) { .opts { grid-template-columns: repeat(2, 1fr); } }
+    .opts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    @media (max-width: 400px) { .opt { font-size: .74rem; padding: 9px 4px; } }
 
     .opt {
       cursor: pointer; text-align: center;
@@ -82,9 +82,13 @@
       background: transparent; transition: all .15s; line-height: 1.25;
     }
     .opt:hover { border-color: var(--ouro); color: var(--texto); }
-    .opt .pt { display: block; font-family: 'Marcellus', serif; font-size: 1.25rem; color: var(--ouro-suave); margin-bottom: 2px; }
+    /* indicador de intensidade (substitui a pontuação numérica — ver nota no JS) */
+    .opt .lvl { display: flex; gap: 3px; justify-content: center; margin-bottom: 7px; }
+    .opt .lvl i { width: 13px; height: 4px; border-radius: 2px; background: rgba(212,175,55,.20); }
+    .opt .lvl i.on { background: var(--ouro-suave); }
     .opt.sel { background: linear-gradient(135deg, var(--ouro-suave), var(--ouro)); border-color: var(--ouro); color: #1a1400; }
-    .opt.sel .pt { color: #1a1400; }
+    .opt.sel .lvl i { background: rgba(26,20,0,.22); }
+    .opt.sel .lvl i.on { background: #1a1400; }
 
     .btn {
       display: block; width: 100%; max-width: 380px; margin: 8px auto 0;
@@ -119,17 +123,22 @@
     /* ── Resultado ── */
     #resultado { display: none; margin-top: 10px; }
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
-    .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px; }
+    .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px; transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
+    .res-score.n-baixo  { color: var(--vermelho); }
+    .res-score.n-medio  { color: var(--amber); }
+    .res-score.n-alto   { color: var(--verde); }
+    .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
     .res-faixa { font-family: 'Marcellus', serif; font-size: 1.7rem; margin: 10px 0 6px; }
     .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
 
     .escala { margin: 28px 0 8px; }
+    /* escala invertida: 0% (esquerda) = crítico → 100% (direita) = saudável */
     .barra {
       position: relative; height: 14px; border-radius: 10px;
-      background: linear-gradient(90deg, var(--verde) 0%, var(--verde) 25%, var(--amber) 25%, var(--amber) 58%, var(--vermelho) 58%, var(--vermelho) 100%);
+      background: linear-gradient(90deg, var(--vermelho) 0%, var(--vermelho) 33%, var(--amber) 33%, var(--amber) 60%, var(--verde) 60%, var(--verde) 100%);
     }
-    .marker { position: absolute; top: -8px; width: 4px; height: 30px; background: #fff; border-radius: 3px; box-shadow: 0 0 0 3px rgba(0,0,0,.5); transition: left .5s ease; }
+    .marker { position: absolute; top: -8px; width: 4px; height: 30px; transform: translateX(-50%); background: #fff; border-radius: 3px; box-shadow: 0 0 0 3px rgba(0,0,0,.5); transition: left .5s ease; }
     .escala-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cinza); margin-top: 10px; }
 
     .faixas { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
@@ -147,8 +156,19 @@
     .bd-row { margin-bottom: 14px; }
     .bd-row .lab { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 5px; }
     .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; }
+    .bd-row .lab span:last-child.n-baixo { color: var(--vermelho); }
+    .bd-row .lab span:last-child.n-medio { color: var(--amber); }
+    .bd-row .lab span:last-child.n-alto  { color: var(--verde); }
     .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
-    .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease; }
+    .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease, background .3s; }
+    .bd-fill.n-baixo { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
+    .bd-fill.n-medio { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
+    .bd-fill.n-alto  { background: linear-gradient(90deg, #479560, var(--verde)); }
+    .bd-row.fraco .lab span:first-child::after {
+      content: "mais frágil"; display: inline-block; margin-left: 8px;
+      font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--vermelho); border: 1px solid rgba(212,87,78,.5); border-radius: 20px; padding: 1px 8px;
+    }
     .bd-tag { font-size: .78rem; color: var(--amber); margin-top: 14px; text-align: center; }
 
     .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
@@ -160,8 +180,8 @@
 
   <header>
     <span class="kicker">Autodiagnóstico</span>
-    <h1>Qual é o seu <em>nível de bloqueio de crescimento</em>?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê em qual faixa está — e qual dos 3 padrões mais te trava.</p>
+    <h1>Quanto do seu <em>potencial de crescimento</em> está liberado hoje?</h1>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Crescimento</strong> — de 0% a 100% — e qual dos 3 eixos está mais travado.</p>
   </header>
 
   <form id="form"></form>
@@ -172,27 +192,28 @@
   <!-- RESULTADO -->
   <section id="resultado">
     <div class="res-card">
-      <div class="res-score" id="score">0<small>/36</small></div>
+      <div class="res-legenda">Seu Índice de Crescimento</div>
+      <div class="res-score" id="score">0<small>%</small></div>
       <div class="res-faixa" id="faixaNome">—</div>
       <p class="res-desc" id="faixaDesc">—</p>
 
       <div class="escala">
         <div class="barra"><div class="marker" id="marker" style="left:0%"></div></div>
-        <div class="escala-labels"><span>0</span><span>9</span><span>20</span><span>36</span></div>
+        <div class="escala-labels"><span>0%</span><span>33%</span><span>60%</span><span>100%</span></div>
       </div>
 
       <div class="bd">
-        <div class="bd-tit">Onde está o seu maior bloqueio</div>
-        <div class="bd-row">
-          <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0/12</span></div>
+        <div class="bd-tit">Quanto de cada eixo você tem hoje</div>
+        <div class="bd-row" id="bd1">
+          <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
         </div>
-        <div class="bd-row">
-          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0/12</span></div>
+        <div class="bd-row" id="bd2">
+          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
         </div>
-        <div class="bd-row">
-          <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0/12</span></div>
+        <div class="bd-row" id="bd3">
+          <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
         </div>
         <p class="bd-tag" id="bdTag"></p>
@@ -200,25 +221,25 @@
     </div>
 
     <div class="faixas">
-      <div class="faixa leve" id="fx-leve">
-        <div class="faixa-range">0–9</div>
+      <div class="faixa profundo" id="fx-profundo">
+        <div class="faixa-range">0–33%</div>
         <div>
-          <h3>Bloqueio leve</h3>
-          <p>Você já tem uma relação saudável com dinheiro e valor. Os bloqueios são pontuais — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
+          <h3>Crescimento bloqueado</h3>
+          <p>A maior parte do seu potencial está travada. O teto é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
-        <div class="faixa-range">10–20</div>
+        <div class="faixa-range">34–59%</div>
         <div>
-          <h3>Bloqueio moderado</h3>
-          <p>Há padrões subconscientes claros te sabotando em momentos-chave (cobrar, aparecer, manter consistência). Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar os resultados.</p>
+          <h3>Crescimento intermitente</h3>
+          <p>Boa parte do seu potencial está disponível, mas some nos momentos-chave (cobrar, aparecer, manter consistência) — e é justamente onde o resultado se decide. Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar o que conquista.</p>
         </div>
       </div>
-      <div class="faixa profundo" id="fx-profundo">
-        <div class="faixa-range">21–36</div>
+      <div class="faixa leve" id="fx-leve">
+        <div class="faixa-range">60%+</div>
         <div>
-          <h3>Bloqueio profundo</h3>
-          <p>O teto é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
+          <h3>Crescimento livre</h3>
+          <p>Você já tem uma relação saudável com valor e visibilidade. O que trava é pontual — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
         </div>
       </div>
     </div>
@@ -232,7 +253,7 @@
   const perguntas = [
     { g: 1, t: "Evito me promover ou aparecer porque parece forçado." },
     { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
-    { g: 1, t: "Tenho receio de ser vista como “comercial demais”." },
+    { g: 1, t: "Tenho receio de parecer “comercial demais”." },
     { g: 1, t: "Sinto que mereço mais clientes do que consigo atrair." },
     { g: 2, t: "Meu faturamento sobe e desce sem eu entender bem por quê." },
     { g: 2, t: "Existe um valor-teto que eu raramente ultrapasso." },
@@ -244,7 +265,14 @@
     { g: 3, t: "Acho, no fundo, que cobrar caro é “feio” ou egoísta." }
   ];
   const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Previsibilidade", 3: "Segredo 3 · Autovalor" };
-  const escala = ["Não me representa", "Um pouco", "Bastante", "Totalmente"];
+  // Índice = intensidade do bloqueio. Não existe resposta "zero bloqueio":
+  // a opção mais branda ("Um pouco") já vale 1 ponto, então o teto do índice
+  // é 67% — ninguém sai ileso. Os cortes das faixas (33/60) respeitam isso.
+  const escala = ["Um pouco", "Bastante", "Totalmente"];
+  const PONTO_MIN = 1;
+  const MAX_Q = 3;                                  // intensidade máxima por frase
+  const MAX_EIXO = 4 * MAX_Q;                       // 4 frases por eixo = 12
+  const MAX_TOTAL = 12 * MAX_Q;                     // 12 frases = 36
 
   const respostas = {};
   const form = document.getElementById('form');
@@ -262,11 +290,17 @@
     q.innerHTML = '<div class="q-txt"><span class="q-num">' + (i+1) + '.</span>' + p.t + '</div>';
     const opts = document.createElement('div');
     opts.className = 'opts';
-    for (let v = 0; v <= 3; v++) {
+    for (let idx = 0; idx < escala.length; idx++) {
+      const v = idx + PONTO_MIN;
       const o = document.createElement('button');
       o.type = 'button';
       o.className = 'opt';
-      o.innerHTML = '<span class="pt">' + v + '</span>' + escala[v];
+      // sem número visível de propósito: se a pessoa vê a pontuação, ela responde
+      // para "tirar nota alta" e o diagnóstico deixa de refletir a realidade dela
+      let lvl = '<span class="lvl">';
+      for (let n = 1; n <= MAX_Q; n++) lvl += '<i class="' + (n <= v ? 'on' : '') + '"></i>';
+      lvl += '</span>';
+      o.innerHTML = lvl + escala[idx];
       o.onclick = () => {
         respostas[i] = v;
         opts.querySelectorAll('.opt').forEach(el => el.classList.remove('sel'));
@@ -279,18 +313,27 @@
     form.appendChild(q);
   });
 
-  // calcula pontuações
+  // calcula o ÍNDICE DE CRESCIMENTO: quanto do potencial está liberado.
+  // As frases medem bloqueio, então o índice é o INVERSO — quanto mais a frase
+  // representa a pessoa, MENOR o percentual. Nota baixa = ruim.
+  function pctEixo(bloqueio) { return Math.round((MAX_EIXO - bloqueio) / MAX_EIXO * 100); }
+
   function calcular() {
-    let total = 0, s1 = 0, s2 = 0, s3 = 0;
+    let b = 0, b1 = 0, b2 = 0, b3 = 0;
     perguntas.forEach((p, i) => {
       const v = respostas[i];
-      total += v;
-      if (p.g === 1) s1 += v; else if (p.g === 2) s2 += v; else s3 += v;
+      b += v;
+      if (p.g === 1) b1 += v; else if (p.g === 2) b2 += v; else b3 += v;
     });
+    const pct = Math.round((MAX_TOTAL - b) / MAX_TOTAL * 100);
+    const s1 = pctEixo(b1), s2 = pctEixo(b2), s3 = pctEixo(b3);
     let faixa;
-    if (total <= 9) faixa = 'Leve'; else if (total <= 20) faixa = 'Moderado'; else faixa = 'Profundo';
-    return { total, s1, s2, s3, faixa };
+    if (pct <= 33) faixa = 'Bloqueado'; else if (pct <= 59) faixa = 'Intermitente'; else faixa = 'Livre';
+    return { pct, s1, s2, s3, faixa };
   }
+
+  // nível de cor a partir de um percentual (mesmos cortes da escala)
+  function nivel(p) { return p <= 33 ? 'n-baixo' : (p <= 59 ? 'n-medio' : 'n-alto'); }
 
   // clicar em "Ver meu resultado" → valida e mostra o resultado
   document.getElementById('verBtn').onclick = () => {
@@ -303,36 +346,54 @@
   };
 
   function mostrarResultado(r) {
-    document.getElementById('score').innerHTML = r.total + '<small>/36</small>';
+    const score = document.getElementById('score');
+    score.innerHTML = r.pct + '<small>%</small>';
+    score.className = 'res-score ' + nivel(r.pct);
 
     let nome, desc, fxId;
-    if (r.total <= 9) {
-      nome = 'Bloqueio leve'; fxId = 'fx-leve';
-      desc = 'Sua base é saudável. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava rápido.';
-    } else if (r.total <= 20) {
-      nome = 'Bloqueio moderado'; fxId = 'fx-moderado';
-      desc = 'Há padrões subconscientes claros te sabotando. Você precisa de reprogramação dirigida para destravar e sustentar resultados.';
+    if (r.pct <= 33) {
+      nome = 'Crescimento bloqueado'; fxId = 'fx-profundo';
+      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é ESTRUTURAL. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
+    } else if (r.pct <= 59) {
+      nome = 'Crescimento intermitente'; fxId = 'fx-moderado';
+      desc = 'Você está operando com ' + r.pct + '% do seu potencial — e os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado. Reprogramação dirigida é o que destrava e sustenta.';
     } else {
-      nome = 'Bloqueio profundo'; fxId = 'fx-profundo';
-      desc = 'O teto é estrutural. Sem trabalho consistente no subconsciente, nenhuma estratégia se sustenta — e é justamente isso que pode ser reescrito.';
+      nome = 'Crescimento livre'; fxId = 'fx-leve';
+      desc = 'Sua base é saudável: ' + r.pct + '% do seu potencial está disponível. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
     document.getElementById('faixaNome').textContent = nome;
     document.getElementById('faixaDesc').textContent = desc;
-    document.getElementById('marker').style.left = (r.total / 36 * 100) + '%';
+    // clamp: nos extremos (0% / 100%) o marcador sairia meio corpo para fora da barra
+    document.getElementById('marker').style.left = Math.min(Math.max(r.pct, 2), 98) + '%';
 
-    document.getElementById('s1v').textContent = r.s1 + '/12';
-    document.getElementById('s2v').textContent = r.s2 + '/12';
-    document.getElementById('s3v').textContent = r.s3 + '/12';
-    document.getElementById('s1f').style.width = (r.s1 / 12 * 100) + '%';
-    document.getElementById('s2f').style.width = (r.s2 / 12 * 100) + '%';
-    document.getElementById('s3f').style.width = (r.s3 / 12 * 100) + '%';
+    const eixos = [
+      { v: r.s1, nome: 'Visibilidade',    val: 's1v', fill: 's1f', row: 'bd1' },
+      { v: r.s2, nome: 'Previsibilidade', val: 's2v', fill: 's2f', row: 'bd2' },
+      { v: r.s3, nome: 'Autovalor',       val: 's3v', fill: 's3f', row: 'bd3' }
+    ];
+    const minv = Math.min(r.s1, r.s2, r.s3);
+    const nomes = eixos.filter(e => e.v === minv).map(e => e.nome);
+    eixos.forEach(e => {
+      const lab = document.getElementById(e.val);
+      lab.textContent = e.v + '%';
+      lab.className = nivel(e.v);
+      const f = document.getElementById(e.fill);
+      f.style.width = e.v + '%';
+      f.className = 'bd-fill ' + nivel(e.v);
+      // no empate dos três não faz sentido destacar "o mais frágil"
+      document.getElementById(e.row).classList.toggle('fraco', e.v === minv && nomes.length < 3);
+    });
 
-    const maxv = Math.max(r.s1, r.s2, r.s3);
-    const nomes = [];
-    if (r.s1 === maxv) nomes.push('Visibilidade');
-    if (r.s2 === maxv) nomes.push('Previsibilidade');
-    if (r.s3 === maxv) nomes.push('Autovalor');
-    document.getElementById('bdTag').textContent = 'Seu padrão mais forte: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
+    let tag;
+    if (nomes.length === 3) {
+      // empate nos três: apontar um "mais frágil" não diz nada
+      tag = minv >= 60
+        ? 'Os três eixos estão equilibrados. O trabalho aqui é de refino, não de desbloqueio.'
+        : 'Os três eixos estão no mesmo nível de bloqueio — a reprogramação precisa ser ampla, não pontual.';
+    } else {
+      tag = 'Seu eixo mais frágil: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
+    }
+    document.getElementById('bdTag').textContent = tag;
 
     ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
     document.getElementById(fxId).classList.add('ativa');
