@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico — Qual é o seu Índice de Crescimento?</title>
+  <title>Diagnóstico — Qual é o seu Índice de Potencial de Crescimento?</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,6 +142,15 @@
     .gate-sub { font-size: .78rem; color: var(--cinza); opacity: .8; margin-top: 6px; }
 
     /* ── Resultado ── */
+    .res-titulo {
+      text-align: center; font-size: clamp(1.7rem, 6vw, 2.4rem); color: var(--ouro-suave);
+      letter-spacing: .14em; text-transform: uppercase; margin-bottom: 20px; line-height: 1.1;
+    }
+    .res-titulo::after {
+      content: ""; display: block; width: 54px; height: 2px; background: var(--ouro);
+      margin: 12px auto 0;
+    }
+
     #resultado { display: none; margin-top: 10px; }
     .res-card {
       background: var(--grafite);
@@ -160,7 +169,8 @@
     .res-score.n-medio { color: var(--amber); }
     .res-score.n-alto  { color: var(--verde); }
     .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
-    .res-faixa { font-family: 'Marcellus', serif; font-size: 1.7rem; margin: 10px 0 6px; }
+    /* clamp + line-height: "Potencial de crescimento bloqueado" quebrava em 3 linhas soltas no celular */
+    .res-faixa { font-family: 'Marcellus', serif; font-size: clamp(1.3rem, 4.6vw, 1.7rem); line-height: 1.2; margin: 12px 0 8px; }
     .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
 
     /* escala */
@@ -215,6 +225,13 @@
       font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
       color: var(--vermelho); border: 1px solid rgba(212,87,78,.5); border-radius: 20px; padding: 1px 8px;
     }
+    .bd-nota { font-size: .84rem; color: var(--texto); margin-top: 7px; line-height: 1.45; }
+    /* no celular o label + "0% de 100% · baixíssimo" nao cabem lado a lado */
+    @media (max-width: 460px) {
+      .bd-row .lab { flex-direction: column; align-items: flex-start; gap: 3px; }
+      .bd-row .lab span:last-child { padding-left: 0; }
+    }
+    .bd-row { margin-bottom: 20px; }
     .bd-tag { font-size: .78rem; color: var(--amber); margin-top: 14px; text-align: center; }
 
     /* CTA final → Análise Diagnóstica gratuita */
@@ -252,7 +269,7 @@
   <header>
     <span class="kicker">Autodiagnóstico</span>
     <h1>Quanto do seu <em>potencial de crescimento</em> está liberado hoje?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Crescimento</strong> — de 0% a 100% — e qual dos 3 eixos está mais travado.</p>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e qual dos 3 eixos está mais travado.</p>
   </header>
 
   <form id="form"></form>
@@ -296,8 +313,9 @@
 
   <!-- RESULTADO -->
   <section id="resultado">
+    <h2 class="res-titulo">Resultado</h2>
     <div class="res-card">
-      <div class="res-legenda">Seu Índice de Crescimento</div>
+      <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
       <div class="res-score" id="score">0<small>%</small></div>
       <div class="res-faixa" id="faixaNome">—</div>
       <p class="res-desc" id="faixaDesc">—</p>
@@ -308,18 +326,21 @@
       </div>
 
       <div class="bd">
-        <div class="bd-tit">Quanto de cada eixo você tem hoje</div>
+        <div class="bd-tit">O que isso está te custando hoje</div>
         <div class="bd-row" id="bd1">
           <div class="lab"><span>Visibilidade (aparecer e atrair)</span><span id="s1v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
+          <p class="bd-nota" id="s1n"></p>
         </div>
         <div class="bd-row" id="bd2">
           <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
+          <p class="bd-nota" id="s2n"></p>
         </div>
         <div class="bd-row" id="bd3">
           <div class="lab"><span>Autovalor (cobrar o seu preço)</span><span id="s3v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
+          <p class="bd-nota" id="s3n"></p>
         </div>
         <p class="bd-tag" id="bdTag"></p>
       </div>
@@ -329,7 +350,7 @@
       <div class="faixa profundo" id="fx-profundo">
         <div class="faixa-range">0–33%</div>
         <div>
-          <h3>Crescimento bloqueado</h3>
+          <h3>Potencial de crescimento bloqueado</h3>
           <p>A maior parte do seu potencial está travada. O bloqueio é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
@@ -442,7 +463,9 @@
   // calcula o ÍNDICE DE CRESCIMENTO: quanto do potencial está liberado.
   // As frases medem bloqueio, então o índice é o INVERSO — quanto mais a frase
   // representa a pessoa, MENOR o percentual. Nota baixa = ruim.
-  function pctEixo(bloqueio) { return Math.round((MAX_EIXO - bloqueio) / MAX_EIXO * 100); }
+  // piso: zero absoluto e lido como erro do sistema, entao 5% e o minimo exibido
+  const PISO = 5;
+  function pctEixo(bloqueio) { return Math.max(PISO, Math.round((MAX_EIXO - bloqueio) / MAX_EIXO * 100)); }
 
   function calcular() {
     let b = 0, b1 = 0, b2 = 0, b3 = 0;
@@ -451,11 +474,40 @@
       b += v;
       if (p.g === 1) b1 += v; else if (p.g === 2) b2 += v; else b3 += v;
     });
-    const pct = Math.round((MAX_TOTAL - b) / MAX_TOTAL * 100);
+    const pct = Math.max(PISO, Math.round((MAX_TOTAL - b) / MAX_TOTAL * 100));
     const s1 = pctEixo(b1), s2 = pctEixo(b2), s3 = pctEixo(b3);
     let faixa;
     if (pct <= 33) faixa = 'Bloqueado'; else if (pct <= 59) faixa = 'Intermitente'; else faixa = 'Livre';
     return { pct, s1, s2, s3, faixa };
+  }
+
+
+  // Leitura de cada eixo por nível — o que aquele percentual significa na
+  // prática. Sem promessa de faturamento: descreve o sintoma, não o resultado.
+  const LEITURA = {
+    'Visibilidade': {
+      'n-baixo': 'Você está invisível para quem mais precisa de você — e quem não te vê, não te procura. A agenda depende de indicação e sorte.',
+      'n-medio': 'Você aparece quando dá, e some justamente nas semanas em que mais precisaria estar visível. Por isso o movimento nunca vira constante.',
+      'n-alto':  'Você aparece com naturalidade e já é lembrança na cabeça de quem precisa. Aqui o ganho é ampliar o alcance.'
+    },
+    'Previsibilidade': {
+      'n-baixo': 'Cada mês recomeça do zero. O que entra não depende do seu trabalho, depende do acaso — e isso mantém você em estado de alerta o ano inteiro.',
+      'n-medio': 'Você tem meses bons, mas eles não se repetem, e você não sabe dizer o porquê. É o padrão que faz o melhor mês virar exceção.',
+      'n-alto':  'Seus meses já se parecem: o resultado é seu, não do acaso. Aqui o ganho é subir o patamar sem perder a consistência.'
+    },
+    'Autovalor': {
+      'n-baixo': 'Você entrega muito mais do que cobra — e sente isso a cada atendimento. O preço sai menor do que vale, e o cansaço cobra a diferença.',
+      'n-medio': 'Você até diz o seu preço, mas hesita. E a hesitação aparece: é nela que o desconto nasce, antes mesmo de o cliente pedir.',
+      'n-alto':  'Você diz o seu preço sem pedir desculpas. Aqui o ganho é sustentar isso quando o valor subir.'
+    }
+  };
+  // qualificador em palavra do percentual — a nota é mais concreta lida
+  // como "baixíssimo" do que como um numero solto
+  function palavra(p) {
+    if (p <= 15) return 'baixíssimo';
+    if (p <= 33) return 'baixo';
+    if (p <= 59) return 'moderado';
+    return 'alto';
   }
 
   // nível de cor a partir de um percentual (mesmos cortes da escala)
@@ -504,7 +556,7 @@
             whatsapp: whatsapp,
             faturamento: faturamento,
             // ⚠️ desde a inversão do índice, estas 4 colunas são PERCENTUAIS (0-100)
-            // do Índice de Crescimento — quanto MENOR, pior. Antes eram pontos de
+            // do Índice de Potencial de Crescimento — quanto MENOR, pior. Antes eram pontos de
             // bloqueio (0-36 e 0-12), onde maior era pior: linhas antigas da
             // planilha não são comparáveis com as novas. 'faixa' virou
             // Bloqueado / Intermitente / Livre (era Profundo / Moderado / Leve).
@@ -535,7 +587,7 @@
 
     let nome, desc, fxId;
     if (r.pct <= 33) {
-      nome = 'Crescimento bloqueado'; fxId = 'fx-profundo';
+      nome = 'Potencial de crescimento bloqueado'; fxId = 'fx-profundo';
       desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é ESTRUTURAL. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
     } else if (r.pct <= 59) {
       nome = 'Crescimento intermitente'; fxId = 'fx-moderado';
@@ -550,19 +602,21 @@
     document.getElementById('marker').style.left = Math.min(Math.max(r.pct, 2), 98) + '%';
 
     const eixos = [
-      { v: r.s1, nome: 'Visibilidade',    val: 's1v', fill: 's1f', row: 'bd1' },
-      { v: r.s2, nome: 'Previsibilidade', val: 's2v', fill: 's2f', row: 'bd2' },
-      { v: r.s3, nome: 'Autovalor',       val: 's3v', fill: 's3f', row: 'bd3' }
+      { v: r.s1, nome: 'Visibilidade',    val: 's1v', fill: 's1f', row: 'bd1', nota: 's1n' },
+      { v: r.s2, nome: 'Previsibilidade', val: 's2v', fill: 's2f', row: 'bd2', nota: 's2n' },
+      { v: r.s3, nome: 'Autovalor',       val: 's3v', fill: 's3f', row: 'bd3', nota: 's3n' }
     ];
     const minv = Math.min(r.s1, r.s2, r.s3);
     const nomes = eixos.filter(e => e.v === minv).map(e => e.nome);
     eixos.forEach(e => {
       const lab = document.getElementById(e.val);
-      lab.textContent = e.v + '% de 100%';
+      lab.textContent = e.v + '% de 100% · ' + palavra(e.v);
       lab.className = nivel(e.v);
       const f = document.getElementById(e.fill);
       f.style.width = e.v + '%';
       f.className = 'bd-fill ' + nivel(e.v);
+      // o numero sozinho nao di: a leitura nomeia o custo daquele nivel
+      document.getElementById(e.nota).textContent = LEITURA[e.nome][nivel(e.v)];
       // no empate dos três não faz sentido destacar "o mais frágil"
       document.getElementById(e.row).classList.toggle('fraco', e.v === minv && nomes.length < 3);
     });
