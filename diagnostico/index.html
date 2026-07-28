@@ -229,7 +229,7 @@
         -webkit-print-color-adjust: exact; print-color-adjust: exact;
       }
       .wrap { padding: 0; max-width: 100%; }
-      header, #form, #verBtn, .aviso, #gate, .baixar, .baixar-dica, .refazer { display: none !important; }
+      header, #form, #verBtn, .aviso, .baixar, .baixar-dica, .refazer { display: none !important; }
       .print-marca {
         display: block; text-align: center; margin-bottom: 20px;
         color: var(--cinza); font-size: .78rem;
@@ -297,7 +297,7 @@
 
   <header>
     <span class="kicker">Autodiagnóstico</span>
-    <h1>Quanto do seu <em>potencial</em> está liberado?</h1>
+    <h1>Quanto do seu <em>potencial</em> está ativado?</h1>
     <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e onde o bloqueio pesa mais.</p>
   </header>
 
@@ -305,29 +305,6 @@
 
   <button class="btn" id="verBtn" type="button">Ver meu resultado</button>
   <p class="aviso" id="aviso"></p>
-
-  <!-- GATE: identificacao antes de liberar o resultado -->
-  <section id="gate">
-    <div class="gate-card">
-      <h2>Seu resultado está pronto</h2>
-      <p>Preencha abaixo para liberar o seu diagnóstico completo.</p>
-      <div class="campo">
-        <label for="nome">Seu nome</label>
-        <input type="text" id="nome" placeholder="Como você se chama?" autocomplete="name" />
-      </div>
-      <div class="campo">
-        <label for="email">Seu melhor e-mail</label>
-        <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
-      </div>
-      <div class="campo">
-        <label for="whatsapp">Seu WhatsApp</label>
-        <input type="tel" id="whatsapp" placeholder="(DDD) 90000-0000" autocomplete="tel" />
-      </div>
-      <button class="btn" id="liberarBtn" type="button">Liberar meu diagnóstico</button>
-      <p class="aviso" id="avisoGate"></p>
-      <p class="gate-sub">Seus dados estão seguros e não serão compartilhados.</p>
-    </div>
-  </section>
 
   <!-- RESULTADO -->
   <section id="resultado">
@@ -417,8 +394,9 @@
   // Enquanto estiver vazio, o gate libera o resultado sem gravar nada.
   const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec";
 
-  // identifica a turma/campanha na planilha (mesmo valor em todas as linhas)
+  // identificam a turma na planilha (mesmo valor em todas as linhas)
   const ORIGEM = "webinario TAV1";
+  const NOME = "cliente TAV";
 
   const perguntas = [
     { g: 1, t: "Evito me promover ou aparecer por medo do julgamento." },
@@ -486,7 +464,7 @@
     form.appendChild(q);
   });
 
-  // calcula o ÍNDICE DE CRESCIMENTO: quanto do potencial está liberado.
+  // calcula o ÍNDICE DE CRESCIMENTO: quanto do potencial está ativado.
   // As frases medem bloqueio, então o índice é o INVERSO — quanto mais a frase
   // representa a pessoa, MENOR o percentual. Nota baixa = ruim.
   // piso: zero absoluto e lido como erro do sistema, entao 5% e o minimo exibido
@@ -546,62 +524,42 @@
 
   // clicar em "Ver meu resultado" → valida e mostra o resultado
   document.getElementById('verBtn').onclick = () => {
+    const aviso = document.getElementById('aviso');
     if (Object.keys(respostas).length < perguntas.length) {
-      document.getElementById('aviso').textContent = 'Responda todas as 12 frases para ver o resultado.';
-      return;
-    }
-    document.getElementById('verBtn').style.display = 'none';
-    document.getElementById('aviso').textContent = '';
-    document.getElementById('gate').style.display = 'block';
-    document.getElementById('gate').scrollIntoView({ behavior: 'smooth' });
-  };
-
-  document.getElementById('liberarBtn').onclick = async () => {
-    const nome = document.getElementById('nome').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    const okWhats = whatsapp.replace(/\D/g, '').length >= 10;
-    if (!nome || !okEmail || !okWhats) {
-      document.getElementById('avisoGate').textContent = 'Preencha seu nome, um e-mail válido e o WhatsApp com DDD.';
+      aviso.textContent = 'Responda todas as 12 frases para ver o resultado.';
       return;
     }
 
     const r = calcular();
-    const btn = document.getElementById('liberarBtn');
-    btn.disabled = true; btn.textContent = 'Liberando...';
-
-    // text/plain evita o preflight CORS; fire-and-forget: nao lemos a resposta,
-    // entao o redirect do Google nao atrapalha e o resultado nunca fica preso
-    if (WEBHOOK_URL) {
-      try {
-        await fetch(WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-          body: JSON.stringify({
-            nome: nome,
-            email: email,
-            whatsapp: whatsapp,
-            origem: ORIGEM,
-            indice: r.pct,
-            faixa: r.faixa,
-            visibilidade: r.s1,
-            previsibilidade: r.s2,
-            autovalor: r.s3,
-            eixoFragil: r.fragil,
-            // espelho do que a pessoa marcou, frase a frase
-            respostas: perguntas.map((p, i) => escala[respostas[i] - PONTO_MIN]),
-            data: new Date().toISOString()
-          })
-        });
-      } catch (e) {
-        console.warn('Falha ao enviar:', e); // nunca bloqueia a entrega do resultado
-      }
-    }
-
-    document.getElementById('gate').style.display = 'none';
+    enviarResultado(r);   // sem await: o resultado nao espera a rede
+    aviso.textContent = '';
+    document.getElementById('verBtn').style.display = 'none';
     mostrarResultado(r);
   };
+
+  // Envia para a planilha em segundo plano. Se falhar, a pessoa nem percebe —
+  // o resultado ja esta na tela; text/plain evita o preflight CORS.
+  function enviarResultado(r) {
+    if (!WEBHOOK_URL) return;
+    fetch(WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({
+        nome: NOME,
+        email: '',
+        whatsapp: '',
+        origem: ORIGEM,
+        indice: r.pct,
+        faixa: r.faixa,
+        visibilidade: r.s1,
+        previsibilidade: r.s2,
+        autovalor: r.s3,
+        eixoFragil: r.fragil,
+        respostas: perguntas.map((p, i) => escala[respostas[i] - PONTO_MIN]),
+        data: new Date().toISOString()
+      })
+    }).catch(function (e) { console.warn('Falha ao enviar:', e); });
+  }
 
   // "Baixar em PDF" = imprimir com o CSS de impressao acima. Sem dependencia
   // externa; o titulo do documento vira o nome sugerido do arquivo.
