@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico — Qual é o seu Índice de Potencial de Crescimento?</title>
+  <title>Autodiagnóstico de Potencial de Crescimento</title>
   <meta name="robots" content="noindex, nofollow" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,9 +90,12 @@
     header { text-align: center; margin-bottom: 40px; }
     .kicker {
       display: inline-block;
-      font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--ouro); margin-bottom: 14px;
+      font-size: .88rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+      color: var(--ouro); margin-bottom: 16px;
     }
+    /* no celular o nome quebra em duas linhas: line-height menor p/ elas
+       ficarem como um bloco so, nao como duas frases soltas */
+    @media (max-width: 460px) { .kicker { letter-spacing: .05em; font-size: .74rem; line-height: 1.35; } }
     h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px; }
     h1 em { font-style: normal; color: var(--ouro-suave); }
     header p { color: var(--cinza); max-width: 540px; margin: 0 auto; font-size: 1rem; }
@@ -221,7 +224,7 @@
     .bd-fill.n-medio { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
     .bd-fill.n-alto  { background: linear-gradient(90deg, #479560, var(--verde)); }
     .bd-row.fraco .lab span:first-child::after {
-      content: "mais frágil"; display: inline-block; margin-left: 8px;
+      content: "dominante"; display: inline-block; margin-left: 8px;
       font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
       color: var(--vermelho); border: 1px solid rgba(212,87,78,.5); border-radius: 20px; padding: 1px 8px;
     }
@@ -340,9 +343,9 @@
   </div>
 
   <header>
-    <span class="kicker">Autodiagnóstico</span>
+    <span class="kicker">Autodiagnóstico de Potencial de Crescimento</span>
     <h1>Quanto do seu <em>potencial</em> está ativado?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e onde o bloqueio pesa mais.</p>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e qual é o seu <strong>Bloqueio Dominante</strong>.</p>
   </header>
 
   <form id="form"></form>
@@ -353,7 +356,7 @@
   <!-- RESULTADO -->
   <section id="resultado">
     <div class="print-marca">
-      <strong>Diagnóstico de Potencial de Crescimento</strong>
+      <strong>Autodiagnóstico de Potencial de Crescimento</strong>
       <span>Simone Carneiro · Neurociência e Hipnoterapia</span>
       <span id="printData"></span>
     </div>
@@ -376,7 +379,7 @@
           <p class="bd-nota" id="s1n"></p>
         </div>
         <div class="bd-row" id="bd2">
-          <div class="lab"><span>Previsibilidade (fim dos altos e baixos)</span><span id="s2v">0% de 100%</span></div>
+          <div class="lab"><span>Merecimento (sustentar o crescimento)</span><span id="s2v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
           <p class="bd-nota" id="s2n"></p>
         </div>
@@ -473,7 +476,7 @@
     { g: 3, t: "Sinto culpa depois de receber um valor alto." },
     { g: 3, t: "Acho, no fundo, que cobrar caro é errado ou é egoísta." }
   ];
-  const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Previsibilidade", 3: "Segredo 3 · Autovalor" };
+  const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Merecimento", 3: "Segredo 3 · Autovalor" };
   // Índice = intensidade do bloqueio. Não existe resposta "zero bloqueio":
   // a opção mais branda ("Um pouco") já vale 1 ponto, então o limite do índice
   // é 67% — ninguém sai ileso. Os cortes das faixas (33/60) respeitam isso.
@@ -546,7 +549,7 @@
     const menor = Math.min(s1, s2, s3);
     const fragil = [];
     if (s1 === menor) fragil.push('Visibilidade');
-    if (s2 === menor) fragil.push('Previsibilidade');
+    if (s2 === menor) fragil.push('Merecimento');
     if (s3 === menor) fragil.push('Autovalor');
     return { pct, s1, s2, s3, faixa, fragil: fragil.join(' + ') };
   }
@@ -560,10 +563,10 @@
       'n-medio': 'Você aparece quando dá, e some justamente nas semanas em que mais precisaria estar visível. Por isso o movimento nunca vira constante.',
       'n-alto':  'Você aparece com naturalidade e já é lembrança na cabeça de quem precisa. Aqui o ganho é ampliar o alcance.'
     },
-    'Previsibilidade': {
-      'n-baixo': 'Cada mês recomeça do zero. O que entra não depende do seu trabalho, depende do acaso — e isso mantém você em estado de alerta o ano inteiro.',
-      'n-medio': 'Você tem meses bons, mas eles não se repetem, e você não sabe dizer o porquê. É o padrão que faz o melhor mês virar exceção.',
-      'n-alto':  'Seus meses já se parecem: o resultado é seu, não do acaso. Aqui o ganho é subir o patamar sem perder a consistência.'
+    'Merecimento': {
+      'n-baixo': 'Toda vez que você cresce, alguma coisa em você desliga o motor: vem a ansiedade, a procrastinação, e tudo volta ao lugar de sempre. Não é falta de capacidade — é permissão.',
+      'n-medio': 'Você até chega a valores maiores, mas não se permite ficar neles. O melhor mês vira exceção, e o seguinte devolve você ao patamar antigo.',
+      'n-alto':  'Você recebe mais sem se sabotar e sustenta o que conquista. Aqui o ganho é subir de patamar sem culpa.'
     },
     'Autovalor': {
       'n-baixo': 'Você entrega muito mais do que cobra — e sente isso a cada atendimento. O preço sai menor do que vale, e o cansaço cobra a diferença.',
@@ -626,7 +629,7 @@
   // externa; o titulo do documento vira o nome sugerido do arquivo.
   document.getElementById('baixarBtn').onclick = function () {
     const titulo = document.title;
-    document.title = 'Diagnostico de Potencial de Crescimento';
+    document.title = 'Autodiagnostico de Potencial de Crescimento';
     window.print();
     setTimeout(function () { document.title = titulo; }, 800);
   };
@@ -653,7 +656,7 @@
 
     const eixos = [
       { v: r.s1, nome: 'Visibilidade',    val: 's1v', fill: 's1f', row: 'bd1', nota: 's1n' },
-      { v: r.s2, nome: 'Previsibilidade', val: 's2v', fill: 's2f', row: 'bd2', nota: 's2n' },
+      { v: r.s2, nome: 'Merecimento',     val: 's2v', fill: 's2f', row: 'bd2', nota: 's2n' },
       { v: r.s3, nome: 'Autovalor',       val: 's3v', fill: 's3f', row: 'bd3', nota: 's3n' }
     ];
     const minv = Math.min(r.s1, r.s2, r.s3);
@@ -667,18 +670,18 @@
       f.className = 'bd-fill ' + nivel(e.v);
       // o numero sozinho nao di: a leitura nomeia o custo daquele nivel
       document.getElementById(e.nota).textContent = LEITURA[e.nome][nivel(e.v)];
-      // no empate dos três não faz sentido destacar "o mais frágil"
+      // no empate dos três nenhum bloqueio domina: sem selo
       document.getElementById(e.row).classList.toggle('fraco', e.v === minv && nomes.length < 3);
     });
 
     let tag;
     if (nomes.length === 3) {
-      // empate nos três: apontar um "mais frágil" não diz nada
+      // empate nos três: apontar um dominante não diz nada
       tag = minv >= 60
-        ? 'Os três eixos estão equilibrados. O trabalho aqui é de refino, não de desbloqueio.'
-        : 'Os três eixos estão no mesmo nível de bloqueio — a reprogramação precisa ser ampla, não pontual.';
+        ? 'Os três eixos estão equilibrados: nenhum bloqueio domina. O trabalho aqui é de refino.'
+        : 'Os três eixos bloqueiam por igual — nenhum domina, então a reprogramação precisa ser ampla.';
     } else {
-      tag = 'Seu eixo mais frágil: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
+      tag = 'Seu Bloqueio Dominante: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
     }
     document.getElementById('bdTag').textContent = tag;
 
