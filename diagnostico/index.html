@@ -223,11 +223,6 @@
     .bd-fill.n-baixo { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
     .bd-fill.n-medio { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
     .bd-fill.n-alto  { background: linear-gradient(90deg, #479560, var(--verde)); }
-    .bd-row.fraco .lab span:first-child::after {
-      content: "dominante"; display: inline-block; margin-left: 8px;
-      font-size: .66rem; letter-spacing: .08em; text-transform: uppercase;
-      color: var(--vermelho); border: 1px solid rgba(212,87,78,.5); border-radius: 20px; padding: 1px 8px;
-    }
     /* branco a 75%: o texto e claro, mas nao compete com o percentual colorido acima */
     .bd-nota { font-size: .84rem; color: rgba(242,239,233,.75); margin-top: 7px; line-height: 1.45; }
     /* no celular o label + "0% de 100% · baixíssimo" nao cabem lado a lado */
@@ -236,7 +231,19 @@
       .bd-row .lab span:last-child { padding-left: 0; }
     }
     .bd-row { margin-bottom: 20px; }
-    .bd-tag { font-size: .78rem; color: var(--amber); margin-top: 14px; text-align: center; }
+    /* pilula: e o fecho do diagnostico, precisa pesar mais que uma legenda */
+    .bd-tag {
+      display: block; width: fit-content; max-width: 100%;
+      margin: 22px auto 0; padding: 11px 22px;
+      font-size: .92rem; line-height: 1.45; text-align: center;
+      text-transform: uppercase; letter-spacing: .07em; font-weight: 600;
+      color: var(--amber);
+      background: rgba(224,161,60,.10);
+      border: 1px solid rgba(224,161,60,.38);
+      border-radius: 999px;
+    }
+    .bd-tag strong { color: var(--texto); font-weight: 700; }
+    @media (max-width: 560px) { .bd-tag { border-radius: 18px; padding: 12px 18px; font-size: .86rem; } }
 
     .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
     .refazer:hover { background: rgba(212,175,55,.1); }
@@ -379,7 +386,7 @@
           <p class="bd-nota" id="s1n"></p>
         </div>
         <div class="bd-row" id="bd2">
-          <div class="lab"><span>Merecimento (sustentar o crescimento)</span><span id="s2v">0% de 100%</span></div>
+          <div class="lab"><span>Permissão (sustentar o crescimento)</span><span id="s2v">0% de 100%</span></div>
           <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
           <p class="bd-nota" id="s2n"></p>
         </div>
@@ -476,7 +483,7 @@
     { g: 3, t: "Sinto culpa depois de receber um valor alto." },
     { g: 3, t: "Acho, no fundo, que cobrar caro é errado ou é egoísta." }
   ];
-  const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Merecimento", 3: "Segredo 3 · Autovalor" };
+  const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Permissão", 3: "Segredo 3 · Autovalor" };
   // Índice = intensidade do bloqueio. Não existe resposta "zero bloqueio":
   // a opção mais branda ("Um pouco") já vale 1 ponto, então o limite do índice
   // é 67% — ninguém sai ileso. Os cortes das faixas (33/60) respeitam isso.
@@ -549,7 +556,7 @@
     const menor = Math.min(s1, s2, s3);
     const fragil = [];
     if (s1 === menor) fragil.push('Visibilidade');
-    if (s2 === menor) fragil.push('Merecimento');
+    if (s2 === menor) fragil.push('Permissão');
     if (s3 === menor) fragil.push('Autovalor');
     return { pct, s1, s2, s3, faixa, fragil: fragil.join(' + ') };
   }
@@ -563,7 +570,7 @@
       'n-medio': 'Você aparece quando dá, e some justamente nas semanas em que mais precisaria estar visível. Por isso o movimento nunca vira constante.',
       'n-alto':  'Você aparece com naturalidade e já é lembrança na cabeça de quem precisa. Aqui o ganho é ampliar o alcance.'
     },
-    'Merecimento': {
+    'Permissão': {
       'n-baixo': 'Toda vez que você cresce, alguma coisa em você desliga o motor: vem a ansiedade, a procrastinação, e tudo volta ao lugar de sempre. Não é falta de capacidade — é permissão.',
       'n-medio': 'Você até chega a valores maiores, mas não se permite ficar neles. O melhor mês vira exceção, e o seguinte devolve você ao patamar antigo.',
       'n-alto':  'Você recebe mais sem se sabotar e sustenta o que conquista. Aqui o ganho é subir de patamar sem culpa.'
@@ -618,7 +625,9 @@
         visibilidade: r.s1,
         previsibilidade: r.s2,
         autovalor: r.s3,
-        eixoFragil: r.fragil,
+        // a partir de 60% nenhum eixo se destaca — grava o grau, mesmo texto
+        // da pilula na tela, para planilha e resultado contarem a mesma coisa
+        eixoFragil: r.pct >= 60 ? 'BLOQUEIOS LEVES' : r.fragil,
         respostas: perguntas.map((p, i) => escala[respostas[i] - PONTO_MIN]),
         data: new Date().toISOString()
       })
@@ -656,7 +665,7 @@
 
     const eixos = [
       { v: r.s1, nome: 'Visibilidade',    val: 's1v', fill: 's1f', row: 'bd1', nota: 's1n' },
-      { v: r.s2, nome: 'Merecimento',     val: 's2v', fill: 's2f', row: 'bd2', nota: 's2n' },
+      { v: r.s2, nome: 'Permissão',       val: 's2v', fill: 's2f', row: 'bd2', nota: 's2n' },
       { v: r.s3, nome: 'Autovalor',       val: 's3v', fill: 's3f', row: 'bd3', nota: 's3n' }
     ];
     const minv = Math.min(r.s1, r.s2, r.s3);
@@ -670,20 +679,19 @@
       f.className = 'bd-fill ' + nivel(e.v);
       // o numero sozinho nao di: a leitura nomeia o custo daquele nivel
       document.getElementById(e.nota).textContent = LEITURA[e.nome][nivel(e.v)];
-      // no empate dos três nenhum bloqueio domina: sem selo
-      document.getElementById(e.row).classList.toggle('fraco', e.v === minv && nomes.length < 3);
     });
 
     let tag;
-    if (nomes.length === 3) {
-      // empate nos três: apontar um dominante não diz nada
-      tag = minv >= 60
-        ? 'Os três eixos estão equilibrados: nenhum bloqueio domina. O trabalho aqui é de refino.'
-        : 'Os três eixos bloqueiam por igual — nenhum domina, então a reprogramação precisa ser ampla.';
+    if (r.pct >= 60) {
+      // potencial destravado: nao ha um bloqueio a eleger, mas dizer "sem
+      // bloqueios" contradiria as respostas — ela marcou "um pouco" em todas
+      tag = 'Bloqueios leves';
+    } else if (nomes.length === 3) {
+      tag = 'Os três eixos bloqueiam por igual';
     } else {
-      tag = 'Seu Bloqueio Dominante: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
+      tag = 'Seu maior bloqueio é: <strong>' + nomes.join(' + ') + '</strong>';
     }
-    document.getElementById('bdTag').textContent = tag;
+    document.getElementById('bdTag').innerHTML = tag;   // tag tem <strong>; o conteudo e interno, nao vem do usuario
 
     ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
     document.getElementById(fxId).classList.add('ativa');
