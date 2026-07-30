@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscrição recebida — Simone Carneiro</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─────────────────────────────────────────────────────────────
+       TEMA CLARO — paleta espelhada da LP clara (index-claro.html).
+       Os NOMES das variáveis vêm da versão escura; o que mudou é o VALOR:
+         --preto = fundo base · --card = card · --texto = cor do texto
+         --ouro  = accent terracota
+       Cores amostradas da LP de referência.
+       ───────────────────────────────────────────────────────────── */
+    :root {
+      --ouro:       #a0623b;   /* accent terracota */
+      --ouro-suave: #8a4220;   /* accent escuro (texto sobre fundo claro) */
+      --preto:      #fbf4e6;   /* fundo base (creme) */
+      --grafite:    #f6ecd8;
+      --card:       #fffdf8;   /* cards */
+      --roxo-mid:   #f6ecd8;
+      --texto:      #241d17;   /* TEXTO principal */
+      --cinza:      #6b6055;   /* texto secundário */
+      --borda:      rgba(181,97,58,.22);
+      --verde-cta:  #1faa54;   /* verde WhatsApp um tom mais escuro, p/ ler em fundo claro */
+      --grad-btn:   linear-gradient(180deg, #f7d972 0%, #f3ce4c 100%);
+      /* dourado das seções (o mesmo da hero da LP) */
+      --grad-secao: linear-gradient(180deg, #f9e2ae 0%, #fceabe 45%, #fdeec7 100%);
+      --sombra:     0 10px 30px rgba(120,80,40,.10);
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: var(--texto);
+      background: var(--preto);
+      line-height: 1.65;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
+      font-weight: 400;
+      color: var(--texto);
+    }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HERO OBRIGADO — degradê radial dourado, igual ao da LP clara ── */
+    .hero-obrigado {
+      background:
+        linear-gradient(180deg, rgba(244,205,135,.78) 0%, rgba(247,218,163,.34) 26%, rgba(250,228,180,0) 60%),
+        radial-gradient(118% 64% at 50% 44%, #fffaea 0%, #fdf1cf 44%, #f9e2ab 100%);
+      color: var(--texto);
+      padding: 72px 0 64px;
+      text-align: center;
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .check-circle {
+      width: 80px;
+      height: 80px;
+      background: rgba(255,255,255,.72);
+      border: 3px solid var(--ouro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-size: 2.2rem;
+      color: var(--ouro-suave);
+      animation: pop .4s cubic-bezier(.175, .885, .32, 1.275) both;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(.4); opacity: 0; }
+      100% { transform: scale(1);  opacity: 1; }
+    }
+
+    .hero-obrigado .tag {
+      display: inline-block;
+      background: rgba(255,255,255,.66);
+      border: 1px solid rgba(160,98,59,.38);
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--ouro-suave);
+      margin-bottom: 20px;
+    }
+
+    .hero-obrigado h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+      line-height: 1.18;
+      margin-bottom: 18px;
+    }
+
+    .hero-obrigado h1 em {
+      font-style: normal;
+      color: var(--ouro-suave);
+    }
+
+    .hero-obrigado .subhead {
+      font-size: 1.08rem;
+      max-width: 560px;
+      margin: 0 auto;
+      opacity: .88;
+      line-height: 1.65;
+    }
+
+    /* ── BOTÃO WHATSAPP ── */
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--verde-cta);
+      color: #fff;
+      padding: 18px 40px;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity .2s, transform .15s;
+      box-shadow: 0 8px 24px rgba(37,211,102,.28);
+    }
+
+    .btn-wpp:hover { opacity: .9; transform: translateY(-2px); }
+    .btn-wpp svg { width: 24px; height: 24px; fill: #fff; flex-shrink: 0; }
+
+    /* ── MENSAGEM DE TRANSFORMAÇÃO ── */
+    .transformacao {
+      padding: 72px 0;
+      background: var(--grad-secao);
+      border-bottom: 1px solid rgba(160,98,59,.20);
+      color: var(--texto);
+    }
+
+    .label {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ouro-suave);
+      margin-bottom: 10px;
+    }
+
+    .transformacao .cred {
+      font-size: .82rem;
+      color: var(--cinza);
+      margin-bottom: 18px;
+    }
+
+    .transformacao h2 {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+
+    .transformacao h2 { color: #2f2013; }
+
+    .transformacao p {
+      font-size: 1rem;
+      color: #4d4238;
+      line-height: 1.75;
+    }
+
+    .transformacao p + p { margin-top: 16px; }
+
+    /* fundo SÓLIDO: sobre o degradê, caixa translúcida perde definição */
+    .destaque-box {
+      background: #fffdf8;
+      border-left: 4px solid var(--ouro);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin-top: 28px;
+      font-size: .97rem;
+      color: var(--ouro-suave);
+      font-weight: 600;
+      line-height: 1.6;
+      box-shadow: var(--sombra);
+    }
+
+    .items-list {
+      list-style: none;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .items-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: .97rem;
+      color: #3b2f24;
+    }
+
+    .items-list li::before {
+      content: "\2726";
+      color: var(--ouro);
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── CAIXA 1: PRESENTE (imediato — destaque quente) ── */
+    .presente-box {
+      background: linear-gradient(150deg, #b56437 0%, #8a4220 100%);
+      border-radius: 18px;
+      padding: 3px;                 /* moldura terracota */
+      margin: 44px auto 0;
+      max-width: 620px;
+      box-shadow: 0 16px 40px rgba(140,80,40,.26);
+    }
+    .presente-box-in {
+      background: #fffdf8;
+      border-radius: 15px;
+      padding: 28px 26px;
+    }
+    .selo-agora {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #b56437;
+      color: #fff;
+      font-size: .68rem; font-weight: 800;
+      letter-spacing: .12em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .presente-box h2 {
+      font-size: clamp(1.15rem, 3vw, 1.42rem);
+      line-height: 1.32; margin-bottom: 8px;
+    }
+    .presente-box p { font-size: .95rem; color: var(--cinza); line-height: 1.6; }
+    .presente-pe {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid rgba(120,80,40,.16);
+      font-size: .92rem; color: var(--ouro-suave); font-weight: 600;
+    }
+
+    /* ── CAIXA 2: BÔNUS (só depois do webinário — visual sóbrio) ── */
+    .bonus-box {
+      background: var(--card);
+      border: 1px solid rgba(120,80,40,.16);
+      border-radius: 16px;
+      margin: 20px auto 0;
+      max-width: 620px;
+    }
+    .bonus-box-in { padding: 26px 26px 24px; }
+    .selo-depois {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #fdf8ee;
+      border: 1px solid rgba(120,80,40,.18);
+      color: var(--cinza);
+      font-size: .66rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 20px;
+      margin-bottom: 12px;
+    }
+    .bonus-box-tit {
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      text-align: center;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .bonus-box-sub {
+      text-align: center;
+      font-size: .88rem;
+      color: var(--cinza);
+      margin-bottom: 26px;
+    }
+    .bonus-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 0;
+      border-top: 1px solid rgba(120,80,40,.14);
+    }
+    .bonus-item:first-of-type { border-top: 0; padding-top: 0; }
+    .bonus-ico {
+      flex: none;
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: #fdf8ee;
+      border: 1px solid rgba(120,80,40,.16);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.05rem;
+    }
+    .bonus-tx { text-align: left; }
+    .bonus-tx h3 {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--texto);
+      margin-bottom: 3px;
+      line-height: 1.35;
+    }
+    .bonus-tx p { font-size: .9rem; color: var(--cinza); line-height: 1.55; }
+    .bonus-tag-mini {
+      display: inline-block;
+      font-size: .64rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      background: #b56437;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 7px;
+    }
+    .bonus-box-pe {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(120,80,40,.14);
+      text-align: center;
+      font-size: .93rem;
+      color: var(--ouro-suave);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    /* ── CTA WHATSAPP ── */
+    /* fecho em terracota escuro — o único bloco escuro, como no CTA final da LP clara */
+    .cta-wpp {
+      background: linear-gradient(150deg, #b0603a 0%, #97482a 48%, #7c3819 100%);
+      color: #fdf7ea;
+      padding: 72px 0;
+      text-align: center;
+    }
+
+    .cta-wpp h2 {
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 1.3;
+      margin-bottom: 14px;
+      color: #f9d45c;   /* dourado: o fundo aqui é escuro */
+    }
+
+    .cta-wpp p {
+      font-size: 1.02rem;
+      opacity: .85;
+      max-width: 520px;
+      margin: 0 auto 32px;
+      line-height: 1.65;
+    }
+
+    .wpp-card {
+      background: var(--card);
+      border: 1px solid var(--borda);
+      border-radius: 14px;
+      padding: 28px 24px;
+      max-width: 480px;
+      margin: 0 auto 32px;
+      text-align: left;
+    }
+
+    .wpp-card-title {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ouro-suave);
+      margin-bottom: 14px;
+    }
+
+    .wpp-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .wpp-items li {
+      font-size: .94rem;
+      color: var(--texto);
+      opacity: .92;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .wpp-items li::before {
+      content: "\2192";
+      color: var(--verde-cta);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .btn-wpp-sub {
+      margin-top: 12px;
+      font-size: .8rem;
+      opacity: .55;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .78rem;
+      color: #8a857c;
+      border-top: 1px solid var(--borda);
+      background: var(--preto);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════
+     HERO — CONFIRMAÇÃO
+══════════════════════════ -->
+<section class="hero-obrigado">
+  <div class="container">
+
+    <div class="check-circle">✓</div>
+
+    <span class="tag">Você está quase dentro</span>
+
+    <h1>
+      Parabéns! Você acabou de<br>
+      tomar uma das decisões<br>
+      mais <em>importantes</em> da sua carreira
+    </h1>
+
+    <p class="subhead">
+      Sua inscrição foi recebida. O próximo passo é entrar no grupo exclusivo no WhatsApp —
+      é por lá que você recebe a confirmação, o link de acesso ao webinar ao vivo e todos
+      os lembretes para não perder nada.
+    </p>
+
+    <!-- ── CAIXA 1 — O QUE É IMEDIATO ── -->
+    <div class="presente-box">
+      <div class="presente-box-in">
+        <span class="selo-agora">🎁 Seu presente · agora</span>
+        <h2>As 7 Crenças que Travam a Sua Relação com Dinheiro</h2>
+        <p>
+          O guia interativo com exercícios para você começar a mexer nessas crenças
+          desde hoje — sem esperar o dia do encontro. Assim você já chega preparado
+          e aquecido.
+        </p>
+        <p class="presente-pe">👇 Liberado assim que você entrar no grupo</p>
+      </div>
+    </div>
+
+    <!-- ── CAIXA 2 — O QUE VEM DEPOIS ── -->
+    <div class="bonus-box">
+      <div class="bonus-box-in">
+        <span class="selo-depois">⏳ Ao final do webinário</span>
+        <h2 class="bonus-box-tit" style="font-size:1.12rem;text-align:left;margin-bottom:4px;">Você ainda leva este bônus</h2>
+        <p class="bonus-box-sub" style="text-align:left;margin-bottom:20px;">
+          Este <strong style="color:var(--texto);">não é imediato</strong>: é entregue
+          depois das 3h30 ao vivo, porque trabalha o que o seu diagnóstico revelar durante o encontro.
+        </p>
+
+        <div class="bonus-item">
+          <div class="bonus-ico">🎧</div>
+          <div class="bonus-tx">
+            <span class="bonus-tag-mini">Bônus 01</span>
+            <h3>3 Áudios de Autohipnose na voz da Simone</h3>
+            <p>Para ouvir nos dias seguintes ao encontro, fixando a nova programação no subconsciente até ela ocupar o lugar do bloqueio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:32px;">
+      <a href="https://chat.whatsapp.com/JGcAl6vUl6WHbXXwtpGs5u" target="_blank" rel="noopener noreferrer" class="btn-wpp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        ENTRAR NO GRUPO DO WEBINAR
+      </a>
+      <p style="margin-top:10px;font-size:.8rem;opacity:.55;">Grupo exclusivo · Confirmação e acesso por lá</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     MENSAGEM DA SIMONE
+══════════════════════════ -->
+<section class="transformacao">
+  <div class="container">
+
+    <span class="label">Uma mensagem da Simone</span>
+    <p class="cred">Neurocientista · Mentora de Terapeutas · Hipnoterapeuta Omni · Analista Comportamental (FFM) · PSYCH-K® Internacional</p>
+    <h2>Você não se inscreveu em um webinar.<br>Você abriu uma porta.</h2>
+
+    <p>
+      Essa decisão que você acabou de tomar não é pequena. A maioria das pessoas vê uma
+      oportunidade assim e deixa para depois — você não. Você agiu. E isso já diz muito
+      sobre quem você é e o nível que você está construindo para si.
+    </p>
+
+    <p>
+      Durante o webinar, você vai entender por que terapeutas talentosos — exatamente
+      como você — continuam presos no mesmo patamar financeiro, mesmo entregando
+      transformações reais para os seus clientes. E mais: você vai sair com clareza sobre
+      o que precisa mudar na sua mente e no seu posicionamento para romper esse padrão.
+    </p>
+
+    <p>
+      Não é sobre trabalhar mais. Não é sobre mais certificações. É sobre alinhar quem
+      você é com o nível que você quer atingir — e isso começa agora.
+    </p>
+
+    <div class="destaque-box">
+      "Terapeutas que faturam alto não são mais capacitados do que você.
+      Eles simplesmente resolveram algo que a maioria ignora. Em breve, você vai saber exatamente o quê."
+    </div>
+
+    <ul class="items-list">
+      <li>Você vai entender o padrão subconsciente que cria o teto financeiro invisível</li>
+      <li>Vai descobrir por que cobrar o que você vale ainda trava você</li>
+      <li>Vai compreender por que o seu faturamento sobe e desce sem explicação</li>
+      <li>Vai sair com clareza e direção para o próximo nível — sem abrir mão da sua essência</li>
+    </ul>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     CTA — GRUPO WHATSAPP
+══════════════════════════ -->
+<section class="cta-wpp">
+  <div class="container">
+
+    <h2>Agora entre no grupo exclusivo<br>do webinar</h2>
+
+    <p>
+      O grupo é onde tudo acontece: confirmação da sua inscrição, link de acesso ao vivo,
+      lembretes e materiais exclusivos. Não fique de fora.
+    </p>
+
+    <div class="wpp-card">
+      <p class="wpp-card-title">Dentro do grupo você recebe:</p>
+      <ul class="wpp-items">
+        <li>Confirmação da inscrição e link de acesso ao webinar ao vivo</li>
+        <li>Lembretes para não perder nenhum detalhe</li>
+        <li>Materiais e conteúdos exclusivos antes do evento</li>
+        <li>Contato direto com a equipe da Simone</li>
+      </ul>
+    </div>
+
+    <a href="https://chat.whatsapp.com/JGcAl6vUl6WHbXXwtpGs5u" target="_blank" rel="noopener noreferrer" class="btn-wpp">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      ENTRAR NO GRUPO AGORA
+    </a>
+
+    <p class="btn-wpp-sub">Gratuito · Exclusivo para inscritos · Acesso imediato</p>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════
+     FOOTER
+══════════════════════════ -->
+<footer>
+  <p>© 2026 Simone Carneiro · Todos os direitos reservados</p>
+  <p style="margin-top:6px;">Pagamento processado com segurança pela Eduzz.</p>
+</footer>
+
+</body>
+</html>
