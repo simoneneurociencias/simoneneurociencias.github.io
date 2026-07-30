@@ -413,6 +413,55 @@
       border-top: 1px solid var(--borda);
       background: var(--preto);
     }
+
+    /* ─────────────────────────────────────────────────────────────────────────
+       PRIMEIRA TELA DO CELULAR — do topo até o botão do WhatsApp (e a borda da
+       seção) tudo cabe numa tela só. Mesma técnica da hero da LP: a seção ocupa
+       100svh, o espaçamento é o gap do flex e cada medida é min(rem, vh), então
+       o conteúdo encolhe junto com a altura do aparelho.
+       Ao mexer, altere só o 1º valor do min() — o 2º (vh) é o que faz caber.
+       ───────────────────────────────────────────────────────────────────────── */
+    @media (max-width: 620px) {
+      .hero-obrigado {
+        min-height: 100vh;      /* fallback */
+        min-height: 100svh;
+        display: flex; flex-direction: column; justify-content: center;
+        padding: min(18px, 2.2vh) 0;
+      }
+      .hero-obrigado .container {
+        display: flex; flex-direction: column; align-items: center;
+        gap: min(11px, 1.35vh);
+      }
+      .hero-obrigado .container > * { margin: 0 !important; }
+
+      /* flex-shrink:0 — como item flex do container ele achatava e virava um traço */
+      .check-circle {
+        width: min(52px, 6.4vh); height: min(52px, 6.4vh); flex: 0 0 auto;
+        font-size: min(1.55rem, 3.5vh); border-width: 2px;
+      }
+      .hero-obrigado .tag { font-size: min(.63rem, 1.55vh); padding: 4px 13px; }
+      .hero-obrigado h1 { font-size: min(1.3rem, 3.15vh); line-height: 1.2; }
+      .hero-obrigado .subhead { font-size: min(.83rem, 2.02vh); line-height: 1.45; }
+
+      .presente-box { width: 100%; max-width: 100%; padding: 2px; border-radius: 14px; }
+      .presente-box-in { padding: min(16px, 2vh) 16px; border-radius: 12px; }
+      .selo-agora { font-size: min(.6rem, 1.45vh); padding: 4px 11px; margin-bottom: min(9px, 1.1vh); }
+      .presente-box h2 { font-size: min(1.02rem, 2.5vh); line-height: 1.28; margin-bottom: min(6px, .8vh); }
+      .presente-box p { font-size: min(.8rem, 1.95vh); line-height: 1.5; }
+      .presente-pe {
+        margin-top: min(11px, 1.35vh); padding-top: min(9px, 1.1vh);
+        font-size: min(.76rem, 1.85vh);
+      }
+
+      /* nowrap + letter-spacing menor: sem isto o rótulo quebra em duas linhas */
+      .btn-wpp {
+        padding: min(13px, 1.6vh) 18px; font-size: min(.82rem, 1.95vh); gap: 8px;
+        white-space: nowrap; letter-spacing: .02em;
+      }
+      .btn-wpp svg { width: min(20px, 2.4vh); height: min(20px, 2.4vh); }
+      /* a legenda do botão vive dentro de uma div junto com ele */
+      .hero-obrigado .container > div > p { font-size: min(.72rem, 1.75vh) !important; margin-top: min(8px, 1vh) !important; }
+    }
   </style>
 </head>
 <body>
