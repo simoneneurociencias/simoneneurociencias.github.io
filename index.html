@@ -176,16 +176,24 @@
     .hero-copy { padding: 70px 40px 70px 0; position: relative; z-index: 2; text-align: center; }
     .hero-kicker {
       display: block;
-      font-size: .72rem; font-weight: 700; letter-spacing: .14em; line-height: 1.5;
-      text-transform: uppercase; color: var(--cinza); margin-bottom: 14px;
-      max-width: 430px; margin-left: auto; margin-right: auto;
+      font-size: .8rem; font-weight: 700; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--cinza); margin-bottom: 12px;
     }
     .hero-copy h1 {
-      font-size: clamp(1.7rem, 4vw, 2.7rem);
-      line-height: 1.12;
-      margin-bottom: 22px;
+      font-size: clamp(1.6rem, 3.4vw, 2.3rem);
+      line-height: 1.14;
+      margin-bottom: 14px;
     }
     .hero-copy h1 em { font-style: normal; color: var(--laranja); }
+    /* camada 2 — headline publicitaria: sans-serif pesada, abaixo do nome do evento */
+    .hero-headline {
+      font-family: 'Segoe UI', Arial, sans-serif; font-weight: 800;
+      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      line-height: 1.22; letter-spacing: -.01em;
+      color: var(--creme); max-width: 490px; margin: 0 auto 16px;
+      text-wrap: balance;
+    }
+    .hero-headline em { font-style: normal; color: var(--laranja); }
     .hero-badge {
       display: inline-block;
       background: var(--grad-secao);
@@ -220,8 +228,6 @@
       transform: translateY(-48px);
       filter: drop-shadow(0 18px 38px rgba(0,0,0,.5));
     }
-    .hero-photo-caption { text-align: center; margin-top: -34px; position: relative; z-index: 2; }
-    .hero-photo-caption strong { display: block; font-family: 'Marcellus', Georgia, serif; font-size: 1.15rem; color: var(--creme); margin-bottom: 10px; letter-spacing: .01em; }
 
     /* ════════ PROBLEMA ════════ */
     .problema h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); text-align: center; margin-bottom: 24px; }
@@ -564,12 +570,43 @@
     /* ════════ RESPONSIVO ════════ */
     @media (max-width: 860px) {
       .btn { padding: 16px 20px; letter-spacing: .02em; white-space: normal; }
-      .hero-grid { grid-template-columns: 1fr; min-height: 0; }
-      .hero-copy { padding: 54px 0 30px; order: 2; text-align: center; }
-      .hero-sub { margin-left: auto; margin-right: auto; }
-      .hero-copy .lead-form, .hero-copy .form-note { margin-left: auto; margin-right: auto; }
-      .hero-photo { order: 1; min-height: 320px; }
-      .hero-photo img { max-height: 400px; transform: none; }
+      /* ─────────────────────────────────────────────────────────────────────
+         HERO EM UMA TELA — foto + nome do evento + headline + apoio + form +
+         nota cabem na primeira tela do celular. A secao ocupa 100svh, o
+         espacamento e o gap do flex e cada medida e min(rem, vh), entao tudo
+         encolhe junto com a altura do aparelho.
+         Ao mexer, altere so o 1o valor do min() — o 2o (vh) e o que faz caber.
+         ───────────────────────────────────────────────────────────────────── */
+      .hero { min-height: 100vh; min-height: 100svh; display: flex; }
+      .hero > .container { display: flex; flex: 1 1 auto; }
+      .hero-grid {
+        grid-template-columns: 1fr; min-height: 0; flex: 1 1 auto;
+        display: flex; flex-direction: column; justify-content: center;
+        gap: min(5px, .6vh); padding: min(8px, 1vh) 0;
+      }
+      /* align-self:center — o "end" do desktop (que alinhava ao rodape do grid)
+         vira alinhamento a DIREITA quando o container vira flex column */
+      .hero-photo { order: 1; min-height: 0; flex: 0 0 auto; align-self: center; }
+      .hero-photo img { height: min(182px, 22.5vh); width: auto; max-height: none; transform: none; margin: 0 auto; }
+
+      .hero-copy {
+        order: 2; padding: 0; text-align: center;
+        display: flex; flex-direction: column; align-items: center;
+        gap: min(7px, .85vh);
+      }
+      .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
+      .lead-form, .form-note { margin: 0 !important; }
+      .lead-form { width: 100%; }
+
+      .hero-kicker { font-size: min(.66rem, 1.6vh); letter-spacing: .22em; }
+      .hero-copy h1 { font-size: min(1.32rem, 3.2vh); line-height: 1.14; }
+      .hero-headline { font-size: min(1.06rem, 2.55vh); line-height: 1.24; }
+      .hero-badge { font-size: min(.66rem, 1.6vh); padding: min(6px, .8vh) 16px; }
+      .hero-sub { font-size: min(.75rem, 1.82vh); line-height: 1.38; }
+      .lead-form { gap: min(7px, .85vh); }
+      .lead-form input { padding: min(10px, 1.2vh) 14px; font-size: min(.88rem, 2.1vh); }
+      .lead-form button { padding: min(11px, 1.35vh) 14px; font-size: min(.84rem, 2vh); }
+      .form-note { font-size: min(.68rem, 1.65vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 340px; margin: 0 auto; }
       .mentora-photo::before { display: none; }
@@ -594,8 +631,9 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="hero-kicker">Webinário · Os 3 Segredos do Terapeuta de Alto Valor</span>
-        <h1>Descubra a raiz dos bloqueios que <em>limitam</em> a sua expansão e transforme a <em>sua dor em legado</em></h1>
+        <span class="hero-kicker">Webinário</span>
+        <h1>Os 3 Segredos do <em>Terapeuta de Alto Valor</em></h1>
+        <p class="hero-headline">Descubra a raiz dos bloqueios que <em>limitam</em> a sua expansão e transforme a <em>sua dor em legado</em></p>
         <span class="hero-badge">Ao vivo · Online</span>
         <p class="hero-sub">
           Em <strong>3h30</strong>, compreenda pela primeira vez a origem dos padrões que sabotam
@@ -612,10 +650,6 @@
       </div>
       <div class="hero-photo">
         <img src="simone-capa-nobg.png" alt="Simone Carneiro, Neurocientista e Mentora de Alta Performance" loading="eager" />
-        <div class="hero-photo-caption">
-          <strong>Simone Carneiro</strong>
-          <div class="pills"><span class="pill">Neurocientista · Mentora de Alta Performance</span></div>
-        </div>
       </div>
     </div>
   </div>
