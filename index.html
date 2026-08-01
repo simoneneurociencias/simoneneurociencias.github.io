@@ -371,7 +371,7 @@
        as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
        da propria caixa */
     .esc-item {
-      background: var(--preto-2); border: 1px solid var(--borda);
+      background: rgba(229,67,42,.10); border: 1px solid rgba(229,67,42,.55);
       border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
     }
     .esc-item .esc-q {
@@ -379,16 +379,16 @@
       font-size: 1.15rem; color: var(--laranja-2); margin-bottom: 4px;
     }
     .esc-item p { color: var(--cinza); font-size: var(--fs-intro); margin: 0; }
-    .esc-item--forte {
-      background: rgba(229,67,42,.10); border-color: rgba(229,67,42,.55);
-      box-shadow: 0 12px 34px rgba(0,0,0,.28);
-    }
+    /* todas as caixas da secao usam a mesma cor (pedido dela); o degrau final
+       segue com mais peso pela sombra, pelo rotulo cheio e pelo texto em creme */
+    .esc-item--forte { box-shadow: 0 12px 34px rgba(0,0,0,.28); }
     .esc-item--forte .esc-q { color: var(--laranja); }
     .esc-item--forte p { color: var(--creme); }
     .esc-fecho {
       text-align: center; color: var(--creme); font-size: var(--fs-intro);
       margin-top: 18px; padding: 18px 20px;
-      border: 1px dashed rgba(229,67,42,.45); border-radius: 14px;
+      background: rgba(229,67,42,.10);
+      border: 1px dashed rgba(229,67,42,.55); border-radius: 14px;
     }
     .esc-fecho strong { color: var(--laranja-2); font-weight: 600; }
 
@@ -411,7 +411,7 @@
     .metodo-destaque strong { color: var(--creme); }
     .etapas { margin-top: 26px; display: flex; flex-direction: column; gap: 18px; }
     .etapas-card { background: var(--grafite); border: 1px solid rgba(229,67,42,.32); border-radius: 22px; padding: 28px 22px 32px; margin-top: 42px; box-shadow: 0 16px 46px rgba(0,0,0,.3); }
-    .etapa { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; border: 1px solid var(--borda); border-radius: 14px; background: var(--preto-2); }
+    .etapa { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; border: 1px solid rgba(229,67,42,.55); border-radius: 14px; background: rgba(229,67,42,.10); }
     .etapa-num { font-family: 'Marcellus', serif; font-size: 1.6rem; color: var(--laranja); flex-shrink: 0; line-height: 1.2; min-width: 40px; }
     .etapa h4 { color: var(--creme); margin-bottom: 4px; font-size: 1.05rem; }
     .etapa p { color: var(--cinza); font-size: .96rem; }
@@ -954,12 +954,13 @@
     <p class="intro">
       O seu sistema nervoso está calibrado para um limite seguro e aciona um freio
       automático toda vez que você tenta ultrapassá-lo — por isso estratégia sozinha não segura. É aqui
-      que entra a <strong>Recalibragem do Subconsciente</strong>: em vez de exigir mais esforço de
+      que entra a <strong>Recalibragem do Subconsciente (RDS)</strong>: em vez de exigir mais esforço de
       você, ela solta o freio. No webinário você vive isso ao vivo, pilar a pilar.
     </p>
 
     <div class="escada">
-      <h3>Por que a Recalibragem do Subconsciente chega onde os outros param</h3>
+      <div style="text-align:center;"><span class="label">Diferencial do método RDS</span></div>
+      <h3>Por que ele chega onde os outros métodos param</h3>
       <p class="esc-lead">Existem centenas de cursos sobre reprogramação mental.</p>
 
       <div class="esc-item">
