@@ -329,6 +329,15 @@
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
     .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
     .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
+    /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
+       outro lado para nao repetir o desenho da secao "para quem e" */
+    /* invertida tambem a proporcao: aqui quem fica na 1a coluna e a lista,
+       que tem as frases mais longas e precisa da coluna maior */
+    .pq-grid--rev { grid-template-columns: 1.08fr .92fr; }
+    .pq-grid--rev .pq-foto { order: 2; }
+    .sec-laranja .pq-list li { color: #fff; }
+    .sec-laranja .pq-list li::before { color: #fff; }
+    .beneficios h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 38px; }
     .nao-para { margin: 34px 0 0; padding: 24px 26px; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; }
     .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: 1.05rem; }
     .nao-para ul { list-style: none; }
@@ -639,6 +648,8 @@
       .pq-list { grid-template-columns: 1fr; }
       .pq-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
+      /* no celular a foto volta a vir primeiro nas duas secoes */
+      .pq-grid--rev .pq-foto { order: 0; }
       .livro-grid { grid-template-columns: 1fr; gap: 28px; }
       .livro-img { max-width: 360px; margin: 0 auto; }
     }
@@ -960,35 +971,19 @@
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
 <section class="beneficios sec-laranja">
   <div class="container">
-    <div class="section-title">
-      <span class="label">O que muda na sua vida</span>
-      <h2>Depois do webinar, você vai:</h2>
-    </div>
-    <div class="perfis-grid">
-      <div class="perfil-card">
-        <img src="benef-4.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt compact">Identificar e romper o <span class="hl">teto de valor invisível</span> que te mantém estagnado</div>
+    <h2 style="text-align:center;">O que muda na sua vida após o webinário</h2>
+
+    <div class="pq-grid pq-grid--rev">
+      <div class="pq-foto">
+        <img src="o-que-muda.jpg" alt="Terapeuta sentada no consultório, tranquila, com uma xícara nas mãos" loading="lazy">
       </div>
-      <div class="perfil-card">
-        <img src="benef-1.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt">Dizer o seu preço com firmeza, sem <span class="hl">travar nem sentir culpa</span> depois</div>
-      </div>
-      <div class="perfil-card">
-        <img src="benef-2.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt">Aparecer e se posicionar sem o <span class="hl">medo de parecer “comercial demais”</span></div>
-      </div>
-      <div class="perfil-card">
-        <img src="benef-5.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt">Entender por que você <span class="hl">depende só de indicação</span> e destravar a atração de clientes</div>
-      </div>
-      <div class="perfil-card">
-        <img src="benef-3.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt">Reconhecer e desarmar a <span class="hl">autossabotagem</span> que te trava quando começa a dar certo</div>
-      </div>
-      <div class="perfil-card">
-        <img src="benef-6.jpg" alt="Simone Carneiro" loading="lazy" />
-        <div class="perfil-txt">Enxergar a raiz dos <span class="hl">altos e baixos</span> e dar o primeiro passo rumo à previsibilidade</div>
-      </div>
+      <ul class="pq-list">
+        <li>Diz o seu preço com firmeza, sem travar nem sentir culpa depois</li>
+        <li>Se sente mais seguro para aparecer nas redes e vender o seu trabalho</li>
+        <li>Entra em ação e cria formas de parar de depender só de indicação</li>
+        <li>Se mantém seguro e confortável quando começa a se valorizar e ganhar mais</li>
+        <li>Entende por que a sua renda oscila e dá o primeiro passo rumo à previsibilidade</li>
+      </ul>
     </div>
   </div>
 </section>
