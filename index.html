@@ -326,9 +326,14 @@
     .para-quem .pq-sub { text-align: center; font-size: clamp(1rem, 2.1vw, 1.25rem); margin: 0 auto 36px; max-width: 660px; }
     .pq-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 40px; align-items: center; max-width: 980px; margin: 0 auto; }
     .pq-foto img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
+    /* arte que ja contem a lista: ocupa a largura da secao, sem coluna de texto */
+    .pq-solo img { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
     .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
     .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
+    /* precisa vir DEPOIS de .pq-list: mesma especificidade, quem vence e a
+       ultima regra do arquivo. So aparece no celular (ver o @media) */
+    .pq-list--mob { display: none; }
     /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
        outro lado para nao repetir o desenho da secao "para quem e" */
     /* invertida tambem a proporcao: aqui quem fica na 1a coluna e a lista,
@@ -650,6 +655,8 @@
       .pq-list li { font-size: .98rem; padding-left: 30px; }
       /* no celular a foto volta a vir primeiro nas duas secoes */
       .pq-grid--rev .pq-foto { order: 0; }
+      /* o texto da arte fica ilegivel em 360px — a lista reaparece embaixo */
+      .pq-list--mob { display: grid; margin-top: 26px; }
       .livro-grid { grid-template-columns: 1fr; gap: 28px; }
       .livro-img { max-width: 360px; margin: 0 auto; }
     }
@@ -784,20 +791,20 @@
     <h2 style="text-align:center;">Para quem é este webinário</h2>
     <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
 
-    <div class="pq-grid">
-      <div class="pq-foto">
-        <img src="para-quem.jpg" alt="Terapeuta cabisbaixa de um lado e, do outro, a mesma terapeuta segura e realizada, com uma lista: autovalor, segurança, autoridade, propósito, realização" loading="lazy">
-      </div>
-      <ul class="pq-list">
-        <li>Se sentem abandonados depois que a formação acabou</li>
-        <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
-        <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
-        <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
-        <li>Têm insegurança para cobrar o que valem</li>
-        <li>Querem atender com mais segurança e autoridade</li>
-        <li>Desejam uma virada pessoal, não só profissional</li>
-      </ul>
+    <div class="pq-solo">
+      <img src="para-quem-v2.jpg" alt="Terapeuta pensativa no consultório, cercada pelos sete perfis: se sentem abandonados depois que a formação acabou; estudam, se certificam, e ainda assim não se sentem prontos; veem a renda oscilar e nunca sabem como o mês vai fechar; travam seu crescimento por crenças de merecimento e autovalor; têm insegurança para cobrar o que valem; querem atender com mais segurança e autoridade; desejam uma virada pessoal, não só profissional" loading="lazy">
     </div>
+    <!-- a arte ja traz a lista escrita, mas no celular ela fica pequena demais
+         para ler — entao o texto reaparece embaixo da imagem so no telefone -->
+    <ul class="pq-list pq-list--mob">
+      <li>Se sentem abandonados depois que a formação acabou</li>
+      <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
+      <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
+      <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
+      <li>Têm insegurança para cobrar o que valem</li>
+      <li>Querem atender com mais segurança e autoridade</li>
+      <li>Desejam uma virada pessoal, não só profissional</li>
+    </ul>
 
     <div class="center-cta">
       <a href="https://chk.eduzz.com/797ZYA480E" target="_blank" rel="noopener noreferrer" class="btn">É para mim!</a>
