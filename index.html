@@ -120,12 +120,14 @@
 
     /* ── Seções ── */
     section { padding: 48px 0; }
-    /* glow rosa/magenta discreto nas secoes escuras (mesmo espirito do hero) */
+    /* Secoes escuras: glow rosa/magenta discreto (mesmo espirito do hero) SOBRE
+       um degrade vertical que sai do preto e esquenta ate um alaranjado escuro
+       na base — e essa base quente que emenda com a secao laranja seguinte. */
     .segredos, .como, .faq, .bonus {
       background:
         radial-gradient(72% 55% at 85% 5%, rgba(195,48,92,.13) 0%, rgba(195,48,92,.05) 34%, transparent 62%),
         radial-gradient(62% 52% at 8% 100%, rgba(229,67,42,.07) 0%, transparent 55%),
-        var(--preto);
+        linear-gradient(180deg, #0a0a0c 0%, #140b08 46%, #24110a 78%, #2e150b 100%);
     }
     /* ════════ BONUS ════════ */
     .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
@@ -855,7 +857,7 @@
       <div class="mentora-copy">
         <p>
           O que você vai viver no webinário não é motivação nem "pensamento positivo". É um
-          processo apoiado em neurociência e em métodos validados de recalibragem subconsciente,
+          processo apoiado em neurociência e em métodos validados de recalibragem do subconsciente,
           conduzido por Simone Carneiro, que se especializou nisso ao longo de mais de duas décadas.
         </p>
         <div class="cred-grid">
@@ -922,17 +924,17 @@
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método</span></div>
     <h2>Como funciona a sua transformação</h2>
-    <p class="metodo-nome">Recalibragem Subconsciente</p>
+    <p class="metodo-nome">Recalibragem do Subconsciente</p>
     <p class="intro">
       O seu sistema nervoso está calibrado para um ponto de segurança e aciona um freio
       automático toda vez que você tenta ultrapassá-lo — por isso estratégia sozinha não segura. É aqui
-      que entra a <strong>Recalibragem Subconsciente</strong>: em vez de exigir mais esforço de
+      que entra a <strong>Recalibragem do Subconsciente</strong>: em vez de exigir mais esforço de
       você, ela solta o freio. No webinário você vive isso ao vivo. O método se apoia em 4 pilares.
     </p>
 
     <div style="text-align:center;margin:16px auto 4px;">
       <img src="metodo-termometro.png" alt="O ponto de segurança e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" style="display:inline-block;max-width:240px;width:100%;border-radius:14px;box-shadow:0 14px 44px rgba(0,0,0,.5);" loading="lazy">
-      <p style="color:var(--cinza);font-size:.9rem;margin-top:18px;">A Recalibragem une três ciências da mente que se potencializam:</p>
+      <p style="color:var(--cinza);font-size:.9rem;margin-top:4px;">A Recalibragem une três ciências da mente que se potencializam:</p>
       <div class="pills" style="margin-top:10px;">
         <span class="pill">Neurociência</span>
         <span class="pill">Hipnoterapia</span>
@@ -962,7 +964,7 @@
         <div class="etapa-num">03</div>
         <div>
           <h4>Recalibragem do bloqueio, ao vivo</h4>
-          <p>Guiada por mim, a <strong>Recalibragem Subconsciente</strong> solta o freio que dispara toda vez que você tenta ultrapassar o seu ponto de segurança — o mesmo freio que te faz depender de indicação, dar desconto sem pedirem e recuar justo quando começa a dar certo.</p>
+          <p>Guiada por mim, a <strong>Recalibragem do Subconsciente</strong> solta o freio que dispara toda vez que você tenta ultrapassar o seu ponto de segurança — o mesmo freio que te faz depender de indicação, dar desconto sem pedirem e recuar justo quando começa a dar certo.</p>
         </div>
       </div>
       <div class="etapa">
@@ -984,7 +986,7 @@
       </div>
       <div class="praticas-item">
         <span>✦</span>
-        <p><strong>Um exercício guiado de recalibragem subconsciente</strong>, que já provoca um grande desbloqueio das crenças que travam o seu crescimento.</p>
+        <p><strong>Um exercício guiado de recalibragem do subconsciente</strong>, que já provoca um grande desbloqueio das crenças que travam o seu crescimento.</p>
       </div>
     </div>
 
