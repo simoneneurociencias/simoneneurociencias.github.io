@@ -579,27 +579,41 @@
          ───────────────────────────────────────────────────────────────────── */
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
       .hero > .container { display: flex; flex: 1 1 auto; }
+      /* Linhas 1-2 = faixa do topo: kicker + titulo na COLUNA ESQUERDA, foto na
+         direita ocupando as duas linhas. O titulo fica centrado na vertical em
+         relacao a foto (kicker align-self:end + h1 align-self:start colam o par
+         no meio) e centrado na horizontal dentro da propria coluna.
+         Linhas 3-7 = o resto, em largura cheia.
+         .hero-copy vira display:contents para os filhos dele entrarem no grid. */
       .hero-grid {
-        grid-template-columns: 1fr; min-height: 0; flex: 1 1 auto;
-        display: flex; flex-direction: column; justify-content: center;
-        gap: min(5px, .6vh); padding: min(8px, 1vh) 0;
+        display: grid; grid-template-columns: minmax(0, 1fr) auto;
+        min-height: 0; flex: 1 1 auto; align-content: center;
+        row-gap: min(7px, .85vh); column-gap: min(12px, 3.2vw);
+        padding: min(8px, 1vh) 0;
       }
-      /* align-self:center — o "end" do desktop (que alinhava ao rodape do grid)
-         vira alinhamento a DIREITA quando o container vira flex column */
-      .hero-photo { order: 1; min-height: 0; flex: 0 0 auto; align-self: center; }
-      .hero-photo img { height: min(182px, 22.5vh); width: auto; max-height: none; transform: none; margin: 0 auto; }
+      .hero-copy { display: contents; }
+      .hero-kicker  { grid-column: 1; grid-row: 1; align-self: end; }
+      .hero-copy h1 { grid-column: 1; grid-row: 2; align-self: start; }
+      .hero-photo {
+        grid-column: 2; grid-row: 1 / span 2; align-self: center;
+        min-height: 0; justify-content: center;
+      }
+      .hero-photo img { height: min(196px, 24vh); width: auto; max-height: none; transform: none; }
+      .hero-headline { grid-row: 3; }
+      .hero-badge    { grid-row: 4; justify-self: center; }
+      .hero-sub      { grid-row: 5; }
+      .lead-form     { grid-row: 6; }
+      .form-note     { grid-row: 7; }
+      .hero-headline, .hero-badge, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
 
-      .hero-copy {
-        order: 2; padding: 0; text-align: center;
-        display: flex; flex-direction: column; align-items: center;
-        gap: min(7px, .85vh);
-      }
+      /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
+         vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
-      .lead-form, .form-note { margin: 0 !important; }
+      .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       .lead-form { width: 100%; }
 
       .hero-kicker { font-size: min(.66rem, 1.6vh); letter-spacing: .22em; }
-      .hero-copy h1 { font-size: min(1.32rem, 3.2vh); line-height: 1.14; }
+      .hero-copy h1 { font-size: min(1.42rem, 3.45vh); line-height: 1.16; text-wrap: balance; }
       .hero-headline { font-size: min(1.06rem, 2.55vh); line-height: 1.24; }
       .hero-badge { font-size: min(.66rem, 1.6vh); padding: min(6px, .8vh) 16px; }
       .hero-sub { font-size: min(.75rem, 1.82vh); line-height: 1.38; }
