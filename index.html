@@ -60,6 +60,9 @@
       --creme:      #f4f0e9;   /* off-white quente */
       --cinza:      #b8b3aa;   /* texto secundário */
       --borda:      rgba(229,67,42,.20);
+      /* tamanho unico do paragrafo de abertura de secao — mexer aqui muda
+         todas as secoes de uma vez (ver o bloco "TEXTO DE ABERTURA") */
+      --fs-intro:   clamp(1.05rem, 1.5vw, 1.15rem);
     }
 
     body {
@@ -584,6 +587,17 @@
     }
     .toast-lead.on { opacity: 1; transform: translateX(-50%) translateY(0); }
     .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
+    /* ════════ TEXTO DE ABERTURA DAS SECOES ════════
+       Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
+       tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
+       clamp, e as aberturas nao batiam entre si. */
+    .problema p,
+    .segredos .section-title p,
+    .para-quem .pq-sub,
+    .como > .container > p.intro,
+    .bonus > .container > p,
+    .cta-final .cta-intro { font-size: var(--fs-intro); }
+
     /* ════════ RESPONSIVO ════════ */
     @media (max-width: 860px) {
       .btn { padding: 16px 20px; letter-spacing: .02em; white-space: normal; }
