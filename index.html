@@ -174,6 +174,10 @@
       min-height: 640px;
     }
     .hero-copy { padding: 70px 40px 70px 0; position: relative; z-index: 2; text-align: center; }
+    /* no desktop o lockup nao existe como caixa — kicker, h1 e pilula seguem
+       soltos no fluxo do .hero-copy. Ele so vira um bloco no celular, ao lado
+       da foto (ver o @media la embaixo) */
+    .hero-lockup { display: contents; }
     .hero-kicker {
       display: block;
       font-size: .8rem; font-weight: 700; letter-spacing: .28em;
@@ -579,48 +583,58 @@
          ───────────────────────────────────────────────────────────────────── */
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
       .hero > .container { display: flex; flex: 1 1 auto; }
-      /* Linhas 1-2 = faixa do topo: kicker + titulo na COLUNA ESQUERDA, foto na
-         direita ocupando as duas linhas. O titulo fica centrado na vertical em
-         relacao a foto (kicker align-self:end + h1 align-self:start colam o par
-         no meio) e centrado na horizontal dentro da propria coluna.
-         Linhas 3-7 = o resto, em largura cheia.
-         .hero-copy vira display:contents para os filhos dele entrarem no grid. */
+      /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
+         esquerda e a foto na direita, centrados um em relacao ao outro.
+         Linhas 2-5 = promessa, apoio, formulario e nota, em largura cheia.
+         .hero-copy vira display:contents para os filhos dele entrarem no grid.
+         align-content:space-between joga a sobra de altura nas JUNTAS entre os
+         blocos, em vez de acumular tudo nas bordas de cima e de baixo. */
       .hero-grid {
         display: grid; grid-template-columns: minmax(0, 1fr) auto;
-        min-height: 0; flex: 1 1 auto; align-content: center;
-        row-gap: min(7px, .85vh); column-gap: min(12px, 3.2vw);
-        padding: min(8px, 1vh) 0;
+        min-height: 0; flex: 1 1 auto; align-content: space-between;
+        row-gap: min(16px, 1.2vh); column-gap: min(12px, 3.2vw);
+        padding: min(26px, 2vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
-      .hero-kicker  { grid-column: 1; grid-row: 1; align-self: end; }
-      .hero-copy h1 { grid-column: 1; grid-row: 2; align-self: start; }
+      .hero-lockup {
+        display: flex; flex-direction: column; align-items: center;
+        gap: min(9px, 1.1vh);
+        grid-column: 1; grid-row: 1; align-self: center;
+      }
       .hero-photo {
-        grid-column: 2; grid-row: 1 / span 2; align-self: center;
+        grid-column: 2; grid-row: 1; align-self: center;
         min-height: 0; justify-content: center;
       }
-      .hero-photo img { height: min(196px, 24vh); width: auto; max-height: none; transform: none; }
-      .hero-headline { grid-row: 3; }
-      .hero-badge    { grid-row: 4; justify-self: center; }
-      .hero-sub      { grid-row: 5; }
-      .lead-form     { grid-row: 6; }
-      .form-note     { grid-row: 7; }
-      .hero-headline, .hero-badge, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
+      /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
+         passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
+      .hero-photo img { height: min(180px, 22vh); width: auto; max-height: none; transform: none; }
+      .hero-headline { grid-row: 2; }
+      .hero-sub      { grid-row: 3; }
+      .lead-form     { grid-row: 4; }
+      .form-note     { grid-row: 5; }
+      .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
       .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       .lead-form { width: 100%; }
+      /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
+         dela); as outras ficam iguais, distribuidas pelo space-between */
+      .hero-headline { margin-top: min(16px, 2vh) !important; }
 
-      .hero-kicker { font-size: min(.66rem, 1.6vh); letter-spacing: .22em; }
-      .hero-copy h1 { font-size: min(1.42rem, 3.45vh); line-height: 1.16; text-wrap: balance; }
-      .hero-headline { font-size: min(1.06rem, 2.55vh); line-height: 1.24; }
-      .hero-badge { font-size: min(.66rem, 1.6vh); padding: min(6px, .8vh) 16px; }
-      .hero-sub { font-size: min(.75rem, 1.82vh); line-height: 1.38; }
-      .lead-form { gap: min(7px, .85vh); }
-      .lead-form input { padding: min(10px, 1.2vh) 14px; font-size: min(.88rem, 2.1vh); }
-      .lead-form button { padding: min(11px, 1.35vh) 14px; font-size: min(.84rem, 2vh); }
-      .form-note { font-size: min(.68rem, 1.65vh); line-height: 1.3; }
+      /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
+         para tablet (~860px de altura), senao a fonte trava, o conteudo para de
+         crescer e a sobra vai toda para os vaos. Ao ajustar, mexer no vh. */
+      .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
+      .hero-copy h1 { font-size: min(2.1rem, 3.9vh); line-height: 1.16; text-wrap: balance; }
+      .hero-headline { font-size: min(1.45rem, 2.7vh); line-height: 1.24; }
+      .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
+      .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
+      .lead-form { gap: min(10px, .85vh); }
+      .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
+      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); }
+      .form-note { font-size: min(.9rem, 1.65vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 340px; margin: 0 auto; }
       .mentora-photo::before { display: none; }
@@ -645,14 +659,16 @@
   <div class="container">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="hero-kicker">Webinário</span>
-        <h1>Os 3 Segredos do <em>Terapeuta de Alto Valor</em></h1>
+        <div class="hero-lockup">
+          <span class="hero-kicker">Webinário</span>
+          <h1>Os 3 Segredos do <em>Terapeuta de Alto Valor</em></h1>
+          <span class="hero-badge">Ao vivo · Online</span>
+        </div>
         <p class="hero-headline">Descubra a raiz dos bloqueios que <em>limitam</em> a sua expansão e transforme a <em>sua dor em legado</em></p>
-        <span class="hero-badge">Ao vivo · Online</span>
         <p class="hero-sub">
-          Em <strong>3h30</strong>, compreenda pela primeira vez a origem dos padrões que sabotam
+          Em <strong>3h30</strong>, compreenda a origem dos padrões que sabotam
           o seu crescimento profissional e financeiro, deixando de ser refém deles — sem levar
-          anos de tentativa e erro para enxergar isso.
+          anos de tentativa e erro para mudar isso.
         </p>
         <form class="lead-form" onsubmit="return submeterLead(event)">
           <input type="text"  name="nome"     placeholder="Seu nome"               autocomplete="name"  required>
