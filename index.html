@@ -198,13 +198,17 @@
       text-wrap: balance;
     }
     .hero-headline em { font-style: normal; color: var(--laranja); }
+    /* pilula translucida: o degrade solido virou vidro laranja com borda —
+       ela pesa menos que o botao do formulario, que continua sendo o unico
+       elemento solido do hero */
     .hero-badge {
       display: inline-block;
-      background: var(--grad-secao);
-      color: #fff;
+      background: rgba(229,67,42,.16);
+      border: 1px solid rgba(229,67,42,.45);
+      color: var(--creme);
       font-size: .82rem; font-weight: 700; letter-spacing: .12em;
       text-transform: uppercase;
-      padding: 10px 22px; border-radius: 6px;
+      padding: 9px 22px; border-radius: 999px;
       margin-bottom: 22px;
     }
     .hero-sub { color: var(--cinza); font-size: 1.05rem; max-width: 460px; margin: 0 auto 30px; }
@@ -627,7 +631,7 @@
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
          crescer e a sobra vai toda para os vaos. Ao ajustar, mexer no vh. */
       .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
-      .hero-copy h1 { font-size: min(2.1rem, 3.9vh); line-height: 1.16; text-wrap: balance; }
+      .hero-copy h1 { font-size: min(1.9rem, 3.5vh); line-height: 1.16; text-wrap: balance; }
       .hero-headline { font-size: min(1.45rem, 2.7vh); line-height: 1.24; }
       .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
