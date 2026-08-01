@@ -302,29 +302,32 @@
       color: #fff;
       overflow: hidden;
     }
+    /* neuronios ao fundo: a arte do cerebro e dourada sobre PRETO, entao em
+       mix-blend-mode:screen o preto some e sobram so os tracos luminosos sobre
+       o degrade da secao. Duas copias: uma grande atras da foto (esquerda) e
+       uma menor na direita, para o texto ficar sempre em area limpa. */
+    .mentora::before {
+      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        url("brain-bg.jpg") no-repeat left -8% center / auto 122%,
+        url("brain-bg.jpg") no-repeat right -16% center / auto 86%;
+      mix-blend-mode: screen; opacity: .34;
+    }
+    .mentora > .container { position: relative; z-index: 1; }
     .mentora-grid {
       display: grid; grid-template-columns: .82fr 1.18fr; align-items: center; gap: 46px;
     }
     .mentora-photo { position: relative; align-self: center; max-width: 320px; margin: 0 auto; }
     .mentora-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; position: relative; z-index: 2; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
-    .mentora-photo::before {
-      content: ""; position: absolute; left: -7%; top: 5%; width: 100%; height: 100%;
-      background: rgba(255,255,255,.10); border-radius: 14px; z-index: 1;
-    }
     .mentora-copy h2 { color: #fff; font-size: clamp(1.7rem, 3.8vw, 2.4rem); margin-bottom: 20px; }
-    .mentora-copy p { color: rgba(255,255,255,.92); margin-bottom: 15px; font-size: 1rem; }
+    /* texto corrido: os 6 cards de credencial viraram prosa, entao o bloco
+       passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
+    .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-intro); text-align: left; }
     .mentora-copy p strong { color: #fff; font-weight: 700; }
-    .mentora-copy > p { text-align: center; }
-    .manifesto {
-      margin-top: 24px; padding: 22px 26px;
-      background: rgba(0,0,0,.16); border-left: 4px solid #fff; border-radius: 0 10px 10px 0;
-    }
+    /* manifesto sem caixa: so a citacao em serifa, centralizada */
+    .manifesto { margin: 26px auto 0; max-width: 640px; text-align: center; }
     .manifesto .m-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
-    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-size: .98rem; line-height: 1.6; color: #fff; margin: 0; }
-    .cred-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 22px 0 4px; }
-    .cred-card { background: rgba(10,10,12,.28); border: 1px solid rgba(255,255,255,.20); border-radius: 12px; padding: 16px 18px; }
-    .cred-card h3 { color: #fff; font-size: 1rem; margin-bottom: 5px; }
-    .cred-card p { color: rgba(255,255,255,.88); font-size: .9rem; margin: 0; }
+    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
     /* ════════ PARA QUEM ════════ */
     .para-quem h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 12px; }
@@ -666,7 +669,11 @@
       .form-note { font-size: min(.9rem, 1.65vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 340px; margin: 0 auto; }
-      .mentora-photo::before { display: none; }
+      /* no celular fica uma copia so do cerebro, mais discreta */
+      .mentora::before {
+        background: url("brain-bg.jpg") no-repeat center top -10% / 150% auto;
+        opacity: .26;
+      }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
       .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
       .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
@@ -860,38 +867,25 @@
           processo apoiado em neurociência e em métodos validados de recalibragem do subconsciente,
           conduzido por Simone Carneiro, que se especializou nisso ao longo de mais de duas décadas.
         </p>
-        <div class="cred-grid">
-          <div class="cred-card">
-            <h3>+25 anos de trajetória</h3>
-            <p>Mais de 3 mil vidas transformadas.</p>
-          </div>
-          <div class="cred-card">
-            <h3>Neurocientista</h3>
-            <p>Graduada em Neurociências e em Coaching e Desenvolvimento Humano.</p>
-          </div>
-          <div class="cred-card">
-            <h3>Analista Comportamental (BFFM)</h3>
-            <p>Big Five Factor Model, o modelo de personalidade com maior respaldo científico.</p>
-          </div>
-          <div class="cred-card">
-            <h3>Expert em PSYCH-K®</h3>
-            <p>Reprogramação de crenças limitantes, com certificação internacional.</p>
-          </div>
-          <div class="cred-card">
-            <h3>Hipnoterapeuta Faixa Ouro</h3>
-            <p>Título Omni para hipnoterapeutas que alcançam 100 mil/mês na área.</p>
-          </div>
-          <div class="cred-card">
-            <h3>Ciência aplicada com IA</h3>
-            <p>Usa inteligência artificial para criar materiais de suporte interativos e apps que aceleram a transformação dos clientes.</p>
-          </div>
-        </div>
+        <p>
+          São <strong>mais de 25 anos de trajetória</strong> e mais de <strong>3 mil vidas
+          transformadas</strong>. Simone é <strong>neurocientista</strong>, graduada em Neurociências
+          e em Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five
+          Factor Model</strong> — o modelo de personalidade com maior respaldo científico —,
+          <strong>expert em PSYCH-K®</strong>, com certificação internacional em reprogramação de
+          crenças limitantes, e <strong>hipnoterapeuta Faixa Ouro</strong>, título Omni para
+          hipnoterapeutas que alcançam 100 mil/mês na área.
+        </p>
+        <p>
+          Também usa inteligência artificial para criar materiais de suporte interativos e apps
+          que aceleram a transformação dos clientes.
+        </p>
         <div class="manifesto">
           <div class="m-label">O meu manifesto</div>
           <p>
-            Ninguém com o seu talento deveria viver financeiramente estagnado. O teto que te segura
-            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser reescritos.
-            É isso que eu vou te mostrar.
+            "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
+            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
+            reescritos. É isso que eu vou te mostrar."
           </p>
         </div>
       </div>
