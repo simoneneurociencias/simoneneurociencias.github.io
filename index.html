@@ -351,8 +351,13 @@
       box-shadow: 0 16px 44px rgba(0,0,0,.28); backdrop-filter: blur(2px);
     }
     .mentora-box p:last-child { margin-bottom: 0; }
-    /* manifesto sem caixa: so a citacao em serifa, centralizada */
-    .manifesto { margin: 30px auto 0; max-width: 640px; text-align: center; }
+    /* manifesto: caixa rosada, na mesma coluna e largura da .mentora-box */
+    .manifesto {
+      margin: 16px 0 0; text-align: center;
+      background: linear-gradient(160deg, rgba(195,48,92,.34) 0%, rgba(195,48,92,.14) 100%);
+      border: 1px solid rgba(255,255,255,.16); border-radius: 18px;
+      padding: 20px 26px; box-shadow: 0 14px 38px rgba(0,0,0,.24);
+    }
     .manifesto .m-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
     .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
@@ -1006,16 +1011,16 @@
             transformação dos clientes.
           </p>
         </div>
-      </div>
-    </div>
 
-    <div class="manifesto">
-      <div class="m-label">O meu manifesto</div>
-      <p>
-        "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
-        não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
-        reescritos. É isso que eu vou te mostrar."
-      </p>
+        <div class="manifesto">
+          <div class="m-label">O meu manifesto</div>
+          <p>
+            "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
+            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
+            reescritos. É isso que eu vou te mostrar."
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
