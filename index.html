@@ -561,7 +561,8 @@
     .sec-laranja .garantia-box strong { color: #fff; }
 
     /* ════════ SOBRE O LIVRO ════════ */
-    .livro { background: #ffffff; }
+    /* sem background proprio: a secao herda o degrade de .sec-laranja. Ela
+       tinha "background:#ffffff" aqui, que vencia a classe por vir depois */
     .livro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px; align-items: center; }
     .livro-img img { width: 100%; max-width: 150px; margin: 0 auto; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.55); }
     .livro h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 12px; }
