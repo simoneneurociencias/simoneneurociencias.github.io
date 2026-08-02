@@ -409,7 +409,11 @@
     /* ── o bloco do diferencial, na secao laranja ──
        Titulo e abertura em PRETO (pedido dela) e as caixas com o mesmo preto
        degrade alaranjado das secoes escuras, duas por linha. */
-    .diferencial .escada h3, .diferencial .esc-sub, .diferencial .esc-lead { color: #16141c; }
+    /* o titulo volta ao branco; o subtitulo e a abertura ficam em preto e a
+       abertura sobe para junto da frase de cima */
+    .diferencial .escada h3 { color: #fff; }
+    .diferencial .esc-sub, .diferencial .esc-lead { color: #16141c; }
+    .diferencial .esc-sub { margin-bottom: 4px; }
     /* os tres degraus lado a lado, um por coluna */
     .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
     .esc-grid .esc-item { margin-bottom: 0; }
