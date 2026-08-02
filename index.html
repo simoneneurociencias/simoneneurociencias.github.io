@@ -403,13 +403,26 @@
     /* todas as caixas da secao usam a mesma cor (pedido dela); o degrau final
        segue com mais peso pela sombra, pelo rotulo cheio e pelo texto em creme */
     .esc-item--forte { box-shadow: 0 12px 34px rgba(0,0,0,.28); }
-    /* a escada foi para uma secao laranja: o ambar translucido sumiria contra o
-       degrade, entao as caixas viram vidro escuro */
-    .sec-laranja .esc-item { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.26); }
-    .sec-laranja .esc-item .esc-q { color: #ffd9c2; }
-    .sec-laranja .esc-item p { color: rgba(255,255,255,.92); }
-    .sec-laranja .esc-item--forte { background: rgba(10,10,12,.55); border-color: rgba(255,255,255,.55); }
-    .sec-laranja .esc-item--forte .esc-q, .sec-laranja .esc-item--forte p { color: #fff; }
+    /* ── o bloco do diferencial, na secao laranja ──
+       Titulo e abertura em PRETO (pedido dela) e as caixas com o mesmo preto
+       degrade alaranjado das secoes escuras, duas por linha. */
+    .diferencial .escada h3, .diferencial .esc-sub, .diferencial .esc-lead { color: #16141c; }
+    .esc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    .esc-grid .esc-item { margin-bottom: 0; }
+    /* a 3a caixa e a virada do argumento: ocupa a linha inteira */
+    .esc-grid .esc-item--forte { grid-column: 1 / -1; }
+    .sec-laranja .esc-item {
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border-color: rgba(229,67,42,.45);
+    }
+    .sec-laranja .esc-item .esc-q { color: var(--laranja-2); }
+    .sec-laranja .esc-item p { color: var(--cinza); }
+    .sec-laranja .esc-item--forte {
+      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
+      border-color: rgba(229,67,42,.75);
+    }
+    .sec-laranja .esc-item--forte .esc-q { color: var(--laranja); }
+    .sec-laranja .esc-item--forte p { color: var(--creme); }
     .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
     .sec-laranja .esc-fecho strong { color: #ffd9c2; }
     .esc-item--forte .esc-q { color: var(--laranja); }
@@ -768,6 +781,7 @@
       .segredo-div { display: none; }
       .grid-3 { grid-template-columns: 1fr; }
       .pq-list { grid-template-columns: 1fr; }
+      .esc-grid { grid-template-columns: 1fr; gap: 12px; }
       .pq-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
       /* no celular a foto volta a vir primeiro nas duas secoes */
@@ -1043,17 +1057,19 @@
       <p class="esc-sub">Por que ele chega onde os outros métodos param</p>
       <p class="esc-lead">Existem centenas de cursos sobre reprogramação mental.</p>
 
-      <div class="esc-item">
-        <span class="esc-q">A maioria</span>
-        <p>trabalha o <strong>comportamento</strong>: o que você faz. Muda a rotina, a agenda, o script — a parte que está sob o seu controle consciente.</p>
-      </div>
-      <div class="esc-item">
-        <span class="esc-q">Alguns</span>
-        <p>chegam ao <strong>pensamento</strong>: o que você acredita. Reescrevem a crença na conversa, no papel, na razão — e ela volta assim que a pressão aumenta.</p>
-      </div>
-      <div class="esc-item esc-item--forte">
-        <span class="esc-q">Nenhum</span>
-        <p>desce até onde o bloqueio de fato mora: o <strong>sistema nervoso</strong>, que lê crescimento como risco e aciona o freio <strong>antes</strong> de o pensamento chegar.</p>
+      <div class="esc-grid">
+        <div class="esc-item">
+          <span class="esc-q">A maioria</span>
+          <p>trabalha o <strong>comportamento</strong>: o que você faz. Muda a rotina, a agenda, o script — a parte que está sob o seu controle consciente.</p>
+        </div>
+        <div class="esc-item">
+          <span class="esc-q">Alguns</span>
+          <p>chegam ao <strong>pensamento</strong>: o que você acredita. Reescrevem a crença na conversa, no papel, na razão — e ela volta assim que a pressão aumenta.</p>
+        </div>
+        <div class="esc-item esc-item--forte">
+          <span class="esc-q">Nenhum</span>
+          <p>desce até onde o bloqueio de fato mora: o <strong>sistema nervoso</strong>, que lê crescimento como risco e aciona o freio <strong>antes</strong> de o pensamento chegar.</p>
+        </div>
       </div>
 
       <p class="esc-fecho">É por isso que você entende tudo, decide mudar — e recua mesmo assim. Quando a decisão chega à consciência, <strong>o corpo já respondeu</strong>.</p>
