@@ -392,6 +392,11 @@
 
     /* ════════ COMO FUNCIONA ════════ */
     .como h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
+    /* nome do metodo em uma linha so: a sigla em laranja, o nome cheio em
+       creme. Corpo menor que os outros h2 porque a frase e longa — precisa
+       caber numa linha no desktop */
+    .metodo-h2 { font-size: clamp(1.15rem, 2.9vw, 1.85rem) !important; margin-bottom: 14px !important; }
+    .metodo-h2 .mn-sigla { color: var(--laranja-2); }
     /* ── ESCADA "a maioria / alguns / nenhum" ──
        Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
        descem do superficial ao profundo. Sem caixa; o que separa os degraus e
@@ -1049,8 +1054,7 @@
 <section class="como">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método por trás da transformação</span></div>
-    <h2>Recalibração do Sistema Nervoso</h2>
-    <p class="metodo-nome">Método RSN</p>
+    <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span> — Recalibração do Sistema Nervoso</h2>
     <p class="intro">
       O seu sistema nervoso está calibrado para um limite seguro e aciona um freio
       automático toda vez que você tenta ultrapassá-lo — por isso estratégia sozinha não segura. É aqui
