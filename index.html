@@ -383,7 +383,10 @@
        Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
        descem do superficial ao profundo. Sem caixa; o que separa os degraus e
        a linha fina a esquerda, que fica cheia no ultimo. */
-    .escada { max-width: 680px; margin: 34px auto 0; }
+    /* com as 3 caixas lado a lado o bloco precisa de mais largura que o
+       .narrow da secao (760px) */
+    .escada { max-width: 1000px; width: 100%; margin: 34px auto 0; }
+    .diferencial > .container { max-width: 1060px; }
     /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
     .escada h3 { text-align: center; font-size: clamp(1.55rem, 3.4vw, 2.1rem); margin-bottom: 6px; }
     .esc-sub { text-align: center; color: var(--creme); font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 14px; }
@@ -407,10 +410,9 @@
        Titulo e abertura em PRETO (pedido dela) e as caixas com o mesmo preto
        degrade alaranjado das secoes escuras, duas por linha. */
     .diferencial .escada h3, .diferencial .esc-sub, .diferencial .esc-lead { color: #16141c; }
-    .esc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; }
+    /* os tres degraus lado a lado, um por coluna */
+    .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
     .esc-grid .esc-item { margin-bottom: 0; }
-    /* a 3a caixa e a virada do argumento: ocupa a linha inteira */
-    .esc-grid .esc-item--forte { grid-column: 1 / -1; }
     .sec-laranja .esc-item {
       background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
       border-color: rgba(229,67,42,.45);
@@ -1060,15 +1062,15 @@
       <div class="esc-grid">
         <div class="esc-item">
           <span class="esc-q">A maioria</span>
-          <p>trabalha o <strong>comportamento</strong>: o que você faz. Muda a rotina, a agenda, o script — a parte que está sob o seu controle consciente.</p>
+          <p>trabalha o <strong>comportamento</strong>: o que você faz. Muda a rotina, a agenda, o script.</p>
         </div>
         <div class="esc-item">
           <span class="esc-q">Alguns</span>
-          <p>chegam ao <strong>pensamento</strong>: o que você acredita. Reescrevem a crença na conversa, no papel, na razão — e ela volta assim que a pressão aumenta.</p>
+          <p>chegam ao <strong>pensamento</strong>: o que você acredita. Mas a crença volta assim que a pressão aumenta.</p>
         </div>
         <div class="esc-item esc-item--forte">
           <span class="esc-q">Nenhum</span>
-          <p>desce até onde o bloqueio de fato mora: o <strong>sistema nervoso</strong>, que lê crescimento como risco e aciona o freio <strong>antes</strong> de o pensamento chegar.</p>
+          <p>desce até onde o bloqueio mora: o <strong>sistema nervoso</strong>, que aciona o freio <strong>antes</strong> de você pensar.</p>
         </div>
       </div>
 
