@@ -343,8 +343,16 @@
        passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
     .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-intro); text-align: left; }
     .mentora-copy p strong { color: #fff; font-weight: 700; }
+    /* o texto da bio inteiro dentro de uma caixa (formato da ref que ela
+       mandou); o manifesto fica FORA dela, solto embaixo da secao */
+    .mentora-box {
+      background: rgba(10,10,12,.42); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px; padding: 26px 28px;
+      box-shadow: 0 16px 44px rgba(0,0,0,.28); backdrop-filter: blur(2px);
+    }
+    .mentora-box p:last-child { margin-bottom: 0; }
     /* manifesto sem caixa: so a citacao em serifa, centralizada */
-    .manifesto { margin: 26px auto 0; max-width: 640px; text-align: center; }
+    .manifesto { margin: 30px auto 0; max-width: 640px; text-align: center; }
     .manifesto .m-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
     .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
@@ -559,21 +567,24 @@
       border-radius: 14px; padding: 22px 24px;
       box-shadow: 0 12px 40px rgba(0,0,0,.32);
     }
-    /* Caminho 01 — vinho profundo sólido, puxado do magenta do degradê */
+    /* os dois caminhos em rosa degrade discreto; o que separa e a borda e o
+       peso do destaque. Dentro do texto, as partes que importam ficam brancas
+       (<em>) contra o corpo em tom mais suave */
     .caminho--inerte {
-      background: #2b1b26;
-      border: 1px solid rgba(255,255,255,.22);
+      background: linear-gradient(160deg, #3a2230 0%, #2a1a24 60%, #201118 100%);
+      border: 1px solid rgba(255,255,255,.18);
     }
     .caminho--inerte .c-num { color: #e0b7c6; }
-    .caminho--inerte p { color: #f0e9ee; }
-    /* Caminho 02 — quase preto sólido, contorno laranja */
+    .caminho--inerte p { color: rgba(255,255,255,.72); }
+    .caminho--inerte em { font-style: normal; color: #fff; font-weight: 600; }
     .caminho--ativo {
-      background: #0b0a0e;
+      background: linear-gradient(160deg, #4a2233 0%, #331624 58%, #24101a 100%);
       border: 1.5px solid var(--laranja-2);
       box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
     }
     .caminho--ativo .c-num { color: var(--laranja-2); }
-    .caminho--ativo p { color: var(--creme); }
+    .caminho--ativo p { color: rgba(255,255,255,.78); }
+    .caminho--ativo em { font-style: normal; color: #fff; font-weight: 600; }
     .caminho .c-num {
       font-size: .72rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; margin-bottom: 10px;
@@ -867,7 +878,7 @@
 <section class="segredos">
   <div class="container">
     <div class="section-title">
-      <h2>O que eu vou te <span style="color:var(--laranja)">revelar</span></h2>
+      <h2 style="text-transform:uppercase;">O que eu vou te <span style="color:var(--laranja)">revelar</span></h2>
       <p>
         Não são estratégias de marketing nem scripts de venda. São 3 segredos que
         separam quem cresce de quem fica estagnado. Ao vivo, você descobre quais são
@@ -975,34 +986,36 @@
         <img src="simone-palco.jpg" alt="Simone Carneiro palestrando ao vivo" loading="lazy" />
       </div>
       <div class="mentora-copy">
-        <p>
-          Quem conduz o encontro, do início ao fim, é <strong>Simone Carneiro</strong>. E o que você
-          vai viver com ela não é motivação nem "pensamento positivo": é um processo apoiado em
-          neurociência e em métodos validados de recalibração do sistema nervoso, no qual ela se
-          especializou ao longo de mais de duas décadas.
-        </p>
-        <p>
-          São <strong>mais de 25 anos de trajetória</strong> e mais de <strong>3 mil vidas
-          transformadas</strong>. Simone é <strong>neurocientista</strong>, graduada em Neurociências
-          e em Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five
-          Factor Model</strong> — o modelo de personalidade com maior respaldo científico —,
-          <strong>expert em PSYCH-K®</strong>, com certificação internacional em reprogramação de
-          crenças limitantes, e <strong>hipnoterapeuta Faixa Ouro</strong>, título Omni para
-          hipnoterapeutas que alcançam 100 mil/mês na área.
-        </p>
-        <p>
-          Também usa inteligência artificial para criar materiais de suporte interativos e apps
-          que aceleram a transformação dos clientes.
-        </p>
-        <div class="manifesto">
-          <div class="m-label">O meu manifesto</div>
+        <div class="mentora-box">
           <p>
-            "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
-            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
-            reescritos. É isso que eu vou te mostrar."
+            Quem conduz o encontro, do início ao fim, é <strong>Simone Carneiro</strong> — e o que
+            você vai viver não é motivação nem "pensamento positivo": é um processo apoiado em
+            neurociência e em recalibração do sistema nervoso, no qual ela se especializou por
+            mais de duas décadas.
+          </p>
+          <p>
+            São <strong>25 anos de trajetória</strong> e mais de <strong>3 mil vidas
+            transformadas</strong>. <strong>Neurocientista</strong>, graduada em Neurociências e em
+            Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five Factor
+            Model</strong> — o modelo de personalidade com maior respaldo científico —,
+            <strong>expert em PSYCH-K®</strong> e <strong>hipnoterapeuta Faixa Ouro</strong>,
+            título Omni para quem alcança 100 mil/mês na área.
+          </p>
+          <p>
+            Também usa inteligência artificial para criar apps e materiais que aceleram a
+            transformação dos clientes.
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="manifesto">
+      <div class="m-label">O meu manifesto</div>
+      <p>
+        "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
+        não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
+        reescritos. É isso que eu vou te mostrar."
+      </p>
     </div>
   </div>
 </section>
@@ -1120,12 +1133,6 @@
     </div>
     </div>
 
-  </div>
-</section>
-
-<!-- ═══════════════════════ VOCÊ VAI VIVER (laranja) ═══════════════════════ -->
-<section class="praticas sec-laranja">
-  <div class="container narrow">
     <div class="card-dark">
       <div class="c-title" style="font-family:'Marcellus',Georgia, serif;font-size:1.75rem;text-transform:none;letter-spacing:.01em;margin-bottom:14px;">Você vai viver, não só assistir</div>
       <p style="color:var(--cinza);text-align:center;margin-bottom:16px;">Ao vivo, você participa de práticas reais, não é apenas conteúdo:</p>
@@ -1148,7 +1155,7 @@
 </section>
 
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios escura">
+<section class="beneficios sec-laranja">
   <div class="container">
     <h2 style="text-align:center;">O que muda na sua vida após o webinário</h2>
 
@@ -1168,7 +1175,7 @@
 </section>
 
 <!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
-<section class="bonus sec-laranja">
+<section class="bonus escura">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">Bônus exclusivos</span></div>
     <h2 style="text-align:center;">Você ainda leva estes bônus</h2>
@@ -1195,7 +1202,7 @@
 </section>
 
 <!-- ════════════════════════════ OFERTA / EVENTO ════════════════════════════ -->
-<section class="oferta escura">
+<section class="oferta sec-laranja">
   <div class="container">
     <div style="text-align:center;"><span class="label">O evento</span></div>
     <h2>O que você precisa saber<br>antes de garantir sua vaga</h2>
@@ -1255,7 +1262,7 @@
 </section>
 
 <!-- ════════════════════════════ FAQ ════════════════════════════ -->
-<section class="faq sec-laranja">
+<section class="faq escura">
   <div class="container">
     <div style="text-align:center;"><span class="label">Dúvidas frequentes</span></div>
     <h2>Respostas para as principais dúvidas</h2>
@@ -1292,7 +1299,7 @@
 </section>
 
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
-<section class="cta-final escura">
+<section class="cta-final sec-laranja">
   <div class="container">
     <span class="label">A decisão</span>
     <h2>Você tem dois caminhos agora</h2>
@@ -1302,21 +1309,18 @@
       <div class="caminho caminho--inerte">
         <div class="c-num">Caminho 01</div>
         <p>
-          Fechar esta página e continuar do jeito que está: excelência no que você
-          faz, travamento no que você ganha. Esperando o mês bom que não se sustenta
-          — porque hoje você não tem previsibilidade, não tem nada nas suas mãos.
-          Você tem uma ilusão.
+          Fechar esta página e continuar do jeito que está: <em>excelência no que você
+          faz, travamento no que você ganha</em>. Esperando o mês bom que não se
+          sustenta. <em>Você tem uma ilusão.</em>
         </p>
       </div>
 
       <div class="caminho caminho--ativo">
         <div class="c-num">Caminho 02</div>
         <p>
-          Reservar três horas e meia para destravar a liberdade: de ter conforto, de
-          realizar os seus sonhos, de receber o valor que você merece.
-          <strong>Ter o reconhecimento e o valor que o seu trabalho merece — vivendo
-          do seu propósito, com previsibilidade, transformando mais vidas. Inclusive
-          a sua.</strong>
+          Reservar três horas e meia para <em>destravar a liberdade</em>: de realizar
+          os seus sonhos e de receber o valor que o seu trabalho merece — vivendo do
+          seu propósito, <em>transformando mais vidas. Inclusive a sua.</em>
         </p>
       </div>
     </div>
