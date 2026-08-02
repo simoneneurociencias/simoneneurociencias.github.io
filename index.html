@@ -365,7 +365,9 @@
        descem do superficial ao profundo. Sem caixa; o que separa os degraus e
        a linha fina a esquerda, que fica cheia no ultimo. */
     .escada { max-width: 680px; margin: 34px auto 0; }
-    .escada h3 { text-align: center; font-size: clamp(1.25rem, 2.6vw, 1.6rem); margin-bottom: 12px; }
+    /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
+    .escada h3 { text-align: center; font-size: clamp(1.55rem, 3.4vw, 2.1rem); margin-bottom: 6px; }
+    .esc-sub { text-align: center; color: var(--creme); font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 14px; }
     .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
     /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
        as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
@@ -950,7 +952,7 @@
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método</span></div>
     <h2>Como funciona a sua transformação</h2>
-    <p class="metodo-nome">Recalibragem do Subconsciente</p>
+    <p class="metodo-nome">Método RDS — Recalibragem do Subconsciente</p>
     <p class="intro">
       O seu sistema nervoso está calibrado para um limite seguro e aciona um freio
       automático toda vez que você tenta ultrapassá-lo — por isso estratégia sozinha não segura. É aqui
@@ -959,7 +961,10 @@
     </p>
 
     <div style="text-align:center;margin:16px auto 4px;">
-      <img src="metodo-termometro.png" alt="O limite seguro e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" style="display:inline-block;max-width:240px;width:100%;border-radius:14px;box-shadow:0 14px 44px rgba(0,0,0,.5);" loading="lazy">
+      <!-- mesma moldura das outras imagens da LP (ver a da secao do problema):
+           400px, cantos 14px e sombra .45. Sem aspect-ratio de proposito — a
+           arte e 2:3 e tem texto embutido; forcar quadrado cortaria a regua -->
+      <img src="metodo-termometro.png" alt="O limite seguro e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" style="display:block;width:400px;max-width:100%;margin:24px auto 8px;border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.45);" loading="lazy">
       <p style="color:var(--cinza);font-size:.9rem;margin-top:4px;">A Recalibragem une três ciências da mente que se potencializam:</p>
       <div class="pills" style="margin-top:10px;">
         <span class="pill">Neurociência</span>
@@ -969,8 +974,8 @@
     </div>
 
     <div class="escada">
-      <div style="text-align:center;"><span class="label">Diferencial do método RDS</span></div>
-      <h3>Por que ele chega onde os outros métodos param</h3>
+      <h3>Diferencial do método RDS</h3>
+      <p class="esc-sub">Por que ele chega onde os outros métodos param</p>
       <p class="esc-lead">Existem centenas de cursos sobre reprogramação mental.</p>
 
       <div class="esc-item">
