@@ -123,12 +123,16 @@
     /* Secoes escuras: glow rosa/magenta discreto (mesmo espirito do hero) SOBRE
        um degrade vertical que sai do preto e esquenta ate um alaranjado escuro
        na base — e essa base quente que emenda com a secao laranja seguinte. */
-    .segredos, .como, .faq, .bonus {
+    .segredos, .como, .escura {
       background:
         radial-gradient(72% 55% at 85% 5%, rgba(195,48,92,.13) 0%, rgba(195,48,92,.05) 34%, transparent 62%),
         radial-gradient(62% 52% at 8% 100%, rgba(229,67,42,.07) 0%, transparent 55%),
         linear-gradient(180deg, #0a0a0c 0%, #140b08 46%, #24110a 78%, #2e150b 100%);
     }
+    /* a pagina alterna SO entre estas duas famílias (pedido dela): escura com
+       degrade alaranjado e o degrade da paleta. Nenhuma secao e branca. */
+    .escura, .escura h2, .escura h3, .escura h4 { color: var(--creme); }
+    .escura p { color: var(--cinza); }
     /* ════════ BONUS ════════ */
     .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
     .bonus-card { position: relative; background: var(--preto-2); border: 1px solid rgba(229,67,42,.32); border-radius: 18px; padding: 26px 26px 28px; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
@@ -301,7 +305,6 @@
     /* ════════ MENTORA (fundo laranja) ════════ */
     .mentora {
       position: relative;
-      background: var(--grad-secao);
       color: #fff;
       overflow: hidden;
     }
@@ -478,7 +481,7 @@
     .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: .96rem; }
 
     /* ════════ CTA FINAL ════════ */
-    .cta-final { background: var(--grad-secao); text-align: center; }
+    .cta-final { text-align: center; }
     .cta-final { padding: 60px 0; }
     .cta-final h2 { color: #fff; font-size: clamp(1.6rem,3.6vw,2.2rem); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
@@ -632,7 +635,7 @@
     /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
     .pilares-img {
       width: 100%; max-width: 620px; height: auto; display: block;
-      margin: 0 auto 30px; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28);
+      margin: 22px auto 30px; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28);
     }
     .vivencia h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
     /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
@@ -872,7 +875,7 @@
 </section>
 
 <!-- ════════════════════════════ PARA QUEM É ════════════════════════════ -->
-<section class="para-quem branco">
+<section class="para-quem sec-laranja">
   <div class="container">
     <h2 style="text-align:center;">Para quem é este webinário</h2>
     <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
@@ -908,7 +911,7 @@
 </section>
 
 <!-- ════════════════════════════ MENTORA (fundo laranja) ════════════════════════════ -->
-<section class="mentora">
+<section class="mentora escura">
   <div class="container">
     <div style="text-align:center;margin-bottom:34px;">
       <span class="label" style="color:rgba(255,255,255,.92);">Autoridade</span>
@@ -952,7 +955,7 @@
 </section>
 
 <!-- ════════════════════════════ SOBRE O LIVRO ════════════════════════════ -->
-<section class="livro branco">
+<section class="livro sec-laranja">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto;">
       <span class="label">Autoridade publicada</span>
@@ -1021,12 +1024,12 @@
 </section>
 
 <!-- ════════════════════════════ A VIVÊNCIA (fundo branco) ════════════════════════════ -->
-<section class="vivencia branco">
+<section class="vivencia sec-laranja">
   <div class="container narrow">
-    <img src="pilares.jpg" class="pilares-img" alt="Três colunas de mármore escuro com filamentos de luz dourada por dentro, a luz crescendo da primeira para a terceira" loading="lazy">
-
     <div style="text-align:center;"><span class="label">A vivência</span></div>
     <h2 style="text-align:center;">Como funciona a sua transformação</h2>
+
+    <img src="pilares.jpg" class="pilares-img" alt="Três colunas de mármore escuro com filamentos de luz dourada por dentro, a luz crescendo da primeira para a terceira" loading="lazy">
 
     <div class="etapas-card">
     <h3 style="text-align:center;font-size:1.55rem;margin:4px 0 26px;">Os pilares do método</h3>
@@ -1078,7 +1081,7 @@
 </section>
 
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios sec-laranja">
+<section class="beneficios escura">
   <div class="container">
     <h2 style="text-align:center;">O que muda na sua vida após o webinário</h2>
 
@@ -1098,11 +1101,11 @@
 </section>
 
 <!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
-<section class="bonus">
+<section class="bonus sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">Bônus exclusivos</span></div>
     <h2 style="text-align:center;">Você ainda leva estes bônus</h2>
-    <p style="text-align:center;color:var(--cinza);max-width:600px;margin:0 auto 8px;">Além do webinário ao vivo — para transformar o desbloqueio em resultado que se sustenta:</p>
+    <p style="text-align:center;color:rgba(255,255,255,.94);max-width:600px;margin:0 auto 8px;">Além do webinário ao vivo — para transformar o desbloqueio em resultado que se sustenta:</p>
 
     <div class="bonus-list">
       <div class="bonus-card">
@@ -1125,7 +1128,7 @@
 </section>
 
 <!-- ════════════════════════════ OFERTA / EVENTO ════════════════════════════ -->
-<section class="oferta branco">
+<section class="oferta escura">
   <div class="container">
     <div style="text-align:center;"><span class="label">O evento</span></div>
     <h2>O que você precisa saber<br>antes de garantir sua vaga</h2>
@@ -1185,7 +1188,7 @@
 </section>
 
 <!-- ════════════════════════════ FAQ ════════════════════════════ -->
-<section class="faq">
+<section class="faq sec-laranja">
   <div class="container">
     <div style="text-align:center;"><span class="label">Dúvidas frequentes</span></div>
     <h2>Respostas para as principais dúvidas</h2>
@@ -1222,7 +1225,7 @@
 </section>
 
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
-<section class="cta-final">
+<section class="cta-final escura">
   <div class="container">
     <span class="label">A decisão</span>
     <h2>Você tem dois caminhos agora</h2>
