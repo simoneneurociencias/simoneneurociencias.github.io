@@ -201,8 +201,10 @@
       display: block; font-family: 'Marcellus', Georgia, serif; font-weight: 400;
       text-transform: uppercase; line-height: 1.04; letter-spacing: .04em;
     }
-    .lk-l1 { font-size: clamp(1.25rem, 3.4vw, 2.1rem); color: var(--creme); }
-    .lk-l2 { font-size: clamp(1.45rem, 4.1vw, 2.55rem); color: var(--laranja); }
+    /* as tres linhas do lockup tem o mesmo corpo; o que separa e a cor */
+    .lk-l1, .lk-l2 { font-size: clamp(1.25rem, 3.4vw, 2.1rem); }
+    .lk-l1 { color: var(--creme); }
+    .lk-l2 { color: var(--laranja); }
     .lk-orn { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 7px 0; }
     .lk-orn i { flex: 0 0 auto; width: clamp(20px, 6vw, 52px); height: 1px; background: linear-gradient(90deg, transparent, var(--laranja)); }
     .lk-orn i:last-child { background: linear-gradient(90deg, var(--laranja), transparent); }
@@ -212,7 +214,7 @@
     }
     /* camada 2 — headline publicitaria: sans-serif pesada, abaixo do nome do evento */
     .hero-headline {
-      font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700;
+      font-family: 'Segoe UI', Arial, sans-serif; font-weight: 400;
       font-size: clamp(1.12rem, 2.2vw, 1.5rem);
       line-height: 1.24; letter-spacing: -.01em;
       color: var(--creme); max-width: 490px; margin: 0 auto 16px;
@@ -742,8 +744,7 @@
       .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
-      .lk-l1 { font-size: min(1.24rem, 3vh); }
-      .lk-l2 { font-size: min(1.44rem, 3.5vh); }
+      .lk-l1, .lk-l2 { font-size: min(1.24rem, 3vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
