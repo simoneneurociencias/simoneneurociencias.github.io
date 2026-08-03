@@ -398,8 +398,12 @@
     .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     /* fecho da secao 'O que muda', abaixo da dupla foto+lista */
     .fecho-muda {
-      text-align: center; color: #fff; font-size: var(--fs-intro);
+      text-align: center; color: var(--creme); font-size: var(--fs-intro);
       max-width: 640px; margin: 28px auto 0; text-wrap: balance;
+      /* caixa preta com degrade alaranjado, o mesmo das secoes escuras */
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border: 1px solid rgba(229,67,42,.45); border-radius: 14px;
+      padding: 20px 26px; box-shadow: 0 14px 40px rgba(0,0,0,.28);
     }
     .fecho-muda strong { color: #fff; font-weight: 700; }
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
