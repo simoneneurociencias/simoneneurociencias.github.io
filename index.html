@@ -266,6 +266,15 @@
     .problema h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); text-align: center; margin-bottom: 24px; }
     .problema p { color: var(--cinza); margin-bottom: 16px; text-align: center; }
     .problema p strong { color: var(--creme); }
+    /* as cenas da secao do problema: cada uma e um flash concreto, com um
+       travessao laranja no lugar do marcador de lista */
+    .cenas { list-style: none; margin: 22px auto 0; max-width: 640px; display: grid; gap: 14px; }
+    .cenas li { position: relative; padding-left: 26px; line-height: 1.5; }
+    .cenas li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
+    .sec-laranja .cenas li { color: #fff; }
+    .sec-laranja .cenas li::before { color: #fff; }
+    .sec-laranja .cenas li strong { color: #fff; font-weight: 700; }
+
     .destaque-box {
       margin-top: 30px; padding: 26px 30px;
       background: var(--preto-2);
@@ -899,22 +908,20 @@
 <!-- ════════════════════════════ PROBLEMA ════════════════════════════ -->
 <section class="problema sec-laranja">
   <div class="container narrow">
-    <h2>Por que isso continua acontecendo?</h2>
+    <h2>Você é boa no que faz. Então por que o dinheiro não acompanha?</h2>
     <img src="problema-errado-comigo.jpg" class="sec-img sec-img--quad" alt="Terapeuta pensativa diante do computador, com o certificado na parede e o WhatsApp em silêncio: o que há de errado comigo?" loading="lazy">
-    <p>
-      Você já tentou de tudo: curso, certificação, tentar aparecer nas redes. E mesmo assim o
-      WhatsApp fica quieto por dias, o faturamento do mês oscila sem previsibilidade, e na hora
-      de cobrar o seu valor, você trava.
-    </p>
-    <p>
-      Então vem a pergunta: "o que há de errado comigo?" A resposta é: <strong>nada</strong>.
-      Não é falta de técnica nem de esforço. É um <strong>bloqueio invisível</strong> que associa
-      crescer a perigo — e enquanto ele estiver ativo, <strong>nenhuma estratégia se sustenta</strong>.
-    </p>
+
+    <!-- cenas concretas no lugar de conceitos (estrutura ditada por ela) -->
+    <ul class="cenas">
+      <li>Você olha para o seu preço e sabe que está abaixo do que entrega — mas na hora de dizer o valor, <strong>a voz muda</strong>.</li>
+      <li>A agenda enche num mês e esvazia no outro. Você <strong>nunca sabe quanto vai faturar</strong>.</li>
+      <li>Você abre o Instagram para gravar, trava, e fecha. <strong>De novo</strong>.</li>
+      <li>Você fez mais uma formação achando que era falta de repertório. <strong>Não era</strong>.</li>
+      <li>Você vê colegas menos preparados faturando mais — e não entende o que eles têm que você não tem.</li>
+    </ul>
 
     <div class="destaque-box">
-      "O problema nunca foi você: é a sua mente que ainda não se sente segura
-      no nível que você quer atingir."
+      "O problema nunca foi capacidade. Você já provou que tem."
     </div>
   </div>
 </section>
