@@ -123,7 +123,7 @@
     /* Secoes escuras: glow rosa/magenta discreto (mesmo espirito do hero) SOBRE
        um degrade vertical que sai do preto e esquenta ate um alaranjado escuro
        na base — e essa base quente que emenda com a secao laranja seguinte. */
-    .segredos, .como, .escura {
+    .escura {
       background:
         radial-gradient(72% 55% at 85% 5%, rgba(195,48,92,.13) 0%, rgba(195,48,92,.05) 34%, transparent 62%),
         radial-gradient(62% 52% at 8% 100%, rgba(229,67,42,.07) 0%, transparent 55%),
@@ -378,6 +378,13 @@
        os 320px do padrao, a pedido dela */
     .como .sec-img { width: 250px; }
 
+    /* ════════ O QUE ESTA NO MEIO (ponte entre o problema e os segredos) ════════ */
+    .meio { text-align: center; }
+    .meio h2 { font-size: clamp(1.45rem, 3.2vw, 2.05rem); margin-bottom: 20px; text-wrap: balance; }
+    .meio p { font-size: var(--fs-intro); max-width: 640px; margin: 0 auto 14px; }
+    .meio p:last-child { margin-bottom: 0; }
+    .meio strong { color: var(--creme); font-weight: 600; }
+
     /* ════════ PARA QUEM ════════ */
     .para-quem h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 12px; }
     /* maior que as demais aberturas de secao, a pedido dela: e a frase que
@@ -452,6 +459,33 @@
     /* os tres degraus lado a lado, um por coluna */
     .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
     .esc-grid .esc-item { margin-bottom: 0; }
+    /* ── caixas sobre o degrade laranja ──
+       .segredo-row e .esc-item usam laranja translucido; sobre a secao
+       laranja eles sumiriam, entao ganham o mesmo preto degrade das secoes
+       escuras */
+    .sec-laranja .segredo-row,
+    .sec-laranja .esc-item {
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border-color: rgba(229,67,42,.45);
+    }
+    .sec-laranja .esc-item--forte {
+      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
+      border-color: rgba(229,67,42,.75);
+    }
+    .sec-laranja .esc-item p, .sec-laranja .esc-lead { color: var(--cinza); }
+    .sec-laranja .esc-item--forte p { color: var(--creme); }
+    .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
+    .sec-laranja .esc-fecho strong { color: #ffd9c2; }
+    .sec-laranja .segredo-desc .promessa { color: var(--creme); }
+    /* textos que eram laranja/cinza sobre fundo escuro e agora vivem sobre o
+       degrade laranja: laranja sobre laranja some, cinza fica fraco */
+    .sec-laranja .metodo-h2 .mn-nome { color: #2a1008; }
+    .sec-laranja .como > .container > p.intro,
+    .sec-laranja .segredos .section-title p,
+    .sec-laranja .esc-lead { color: rgba(255,255,255,.94); }
+    .sec-laranja .escada h3 { color: #fff; }
+    .sec-laranja .pill { color: #fff; border-color: rgba(255,255,255,.55); background: rgba(10,10,12,.22); }
+    .sec-laranja .metodo-ciencias { color: rgba(255,255,255,.94) !important; }
     .esc-item--forte .esc-q { color: var(--laranja); }
     .esc-item--forte p { color: var(--creme); }
     .esc-fecho {
@@ -926,11 +960,30 @@
   </div>
 </section>
 
+<!-- ════════════════════════════ O QUE ESTA NO MEIO ════════════════════════════ -->
+<section class="meio escura">
+  <div class="container narrow">
+    <h2>Existe algo entre saber e escolher. E é sempre no mesmo ponto.</h2>
+    <p>
+      Você sabe o que faria diferente. Já pensou nisso muitas vezes.
+      <strong>A informação nunca foi o gargalo.</strong>
+    </p>
+    <p>
+      Mas na hora de decidir — subir o preço, dizer não, se mostrar — <strong>algo trava</strong>.
+      Sempre nos mesmos lugares. Não é falta de disciplina nem de coragem.
+    </p>
+    <p>
+      Enquanto isso não for tratado na origem, você continua executando uma carreira que foi
+      se montando sozinha, <strong>em vez de uma que você desenhou</strong>.
+    </p>
+  </div>
+</section>
+
 <!-- ════════════════════════════ OS 3 SEGREDOS (zig-zag) ════════════════════════════ -->
-<section class="segredos">
+<section class="segredos sec-laranja">
   <div class="container">
     <div class="section-title">
-      <h2>Os 3 <span style="color:var(--laranja)">Segredos</span></h2>
+      <h2>Os 3 <span style="color:#2a1008">Segredos</span></h2>
       <p>
         São bloqueios ocultos que separam quem cresce de quem fica estagnado. Ao vivo,
         você descobre os seus — e vive o primeiro desbloqueio comigo.
@@ -989,7 +1042,7 @@
 </section>
 
 <!-- ════════════════════════════ PARA QUEM É ════════════════════════════ -->
-<section class="para-quem sec-laranja">
+<section class="para-quem escura">
   <div class="container">
     <h2 style="text-align:center;">Para quem é este webinário</h2>
     <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
@@ -1028,7 +1081,7 @@
 </section>
 
 <!-- ════════════════════════════ MENTORA (fundo laranja) ════════════════════════════ -->
-<section class="mentora escura">
+<section class="mentora sec-laranja">
   <div class="container">
     <div style="text-align:center;margin-bottom:34px;">
       <span class="label" style="color:rgba(255,255,255,.92);">Autoridade</span>
@@ -1074,7 +1127,7 @@
 </section>
 
 <!-- ════════════════════════════ SOBRE O LIVRO ════════════════════════════ -->
-<section class="livro sec-laranja">
+<section class="livro escura">
   <div class="container">
     <div style="text-align:center;max-width:640px;margin:0 auto;">
       <span class="label">Autoridade publicada</span>
@@ -1094,7 +1147,7 @@
 </section>
 
 <!-- ════════════════════════════ COMO FUNCIONA ════════════════════════════ -->
-<section class="como">
+<section class="como sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método por trás da transformação</span></div>
     <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span><span class="mn-nome">Recalibração do Sistema Nervoso</span></h2>
@@ -1110,7 +1163,7 @@
       <!-- mesma moldura das outras imagens da LP (ver a da secao do problema):
            400px, cantos 14px e sombra .45. Sem aspect-ratio de proposito — a
            arte e 2:3 e tem texto embutido; forcar quadrado cortaria a regua -->
-      <p style="color:var(--cinza);font-size:.9rem;margin-top:0;">A Recalibração une três ciências da mente que se potencializam:</p>
+      <p class="metodo-ciencias" style="color:var(--cinza);font-size:.9rem;margin-top:0;">A Recalibração une três ciências da mente que se potencializam:</p>
       <div class="pills" style="margin-top:10px;">
         <span class="pill">Neurociência</span>
         <span class="pill">Hipnoterapia</span>
@@ -1152,7 +1205,7 @@
 </section>
 
 <!-- ═══════════════════════ OS PILARES (laranja) ═══════════════════════ -->
-<section class="vivencia sec-laranja">
+<section class="vivencia escura">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">A vivência</span></div>
     <h2 style="text-align:center;">Como funciona a sua transformação</h2>
@@ -1216,7 +1269,7 @@
 </section>
 
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios escura">
+<section class="beneficios sec-laranja">
   <div class="container">
     <h2 style="text-align:center;">O que muda após a Recalibração</h2>
 
@@ -1236,7 +1289,7 @@
 </section>
 
 <!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
-<section class="bonus sec-laranja">
+<section class="bonus escura">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">Bônus exclusivos</span></div>
     <h2 style="text-align:center;">Você ainda leva estes bônus</h2>
@@ -1263,7 +1316,7 @@
 </section>
 
 <!-- ════════════════════════════ OFERTA / EVENTO ════════════════════════════ -->
-<section class="oferta escura">
+<section class="oferta sec-laranja">
   <div class="container">
     <div style="text-align:center;"><span class="label">O evento</span></div>
     <h2>O que você precisa saber<br>antes de garantir sua vaga</h2>
@@ -1323,7 +1376,7 @@
 </section>
 
 <!-- ════════════════════════════ FAQ ════════════════════════════ -->
-<section class="faq sec-laranja">
+<section class="faq escura">
   <div class="container">
     <div style="text-align:center;"><span class="label">Dúvidas frequentes</span></div>
     <h2>Respostas para as principais dúvidas</h2>
@@ -1360,7 +1413,7 @@
 </section>
 
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
-<section class="cta-final escura">
+<section class="cta-final sec-laranja">
   <div class="container">
     <span class="label">A decisão</span>
     <h2>Você tem dois caminhos agora</h2>
