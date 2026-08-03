@@ -459,6 +459,27 @@
     /* os tres degraus lado a lado, um por coluna */
     .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
     .esc-grid .esc-item { margin-bottom: 0; }
+    /* ── a secao do metodo agora e laranja ──
+       as caixas da escada usam laranja translucido e sumiriam; os textos que
+       eram laranja/cinza sobre fundo escuro precisam de contraste novo */
+    .sec-laranja .esc-item {
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border-color: rgba(229,67,42,.45);
+    }
+    .sec-laranja .esc-item--forte {
+      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
+      border-color: rgba(229,67,42,.75);
+    }
+    .sec-laranja .esc-item p { color: var(--cinza); }
+    .sec-laranja .esc-item--forte p { color: var(--creme); }
+    .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
+    .sec-laranja .esc-fecho strong { color: #ffd9c2; }
+    .sec-laranja .escada h3 { color: #fff; }
+    .sec-laranja .metodo-h2 .mn-nome { color: #2a1008; }
+    .sec-laranja .como > .container > p.intro,
+    .sec-laranja .esc-lead,
+    .sec-laranja .metodo-ciencias { color: rgba(255,255,255,.94) !important; }
+    .sec-laranja .pill { color: #fff; border-color: rgba(255,255,255,.55); background: rgba(10,10,12,.22); }
     .esc-item--forte .esc-q { color: var(--laranja); }
     .esc-item--forte p { color: var(--creme); }
     .esc-fecho {
@@ -911,7 +932,6 @@
     </div>
   </div>
 </section>
-
 <!-- ════════════════════════════ PROBLEMA ════════════════════════════ -->
 <section class="problema sec-laranja">
   <div class="container narrow">
@@ -932,9 +952,8 @@
     </div>
   </div>
 </section>
-
 <!-- ════════════════════════════ OS 3 SEGREDOS (zig-zag) ════════════════════════════ -->
-<section class="segredos">
+<section class="segredos escura">
   <div class="container">
     <div class="section-title">
       <h2>Os 3 <span style="color:var(--laranja)">Segredos</span></h2>
@@ -1001,114 +1020,8 @@
     </div>
   </div>
 </section>
-
-<!-- ════════════════════════════ PARA QUEM É ════════════════════════════ -->
-<section class="para-quem sec-laranja">
-  <div class="container">
-    <h2 style="text-align:center;">Para quem é este webinário</h2>
-    <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
-
-    <!-- os sete perfis ficam SEMPRE em lista de texto (pedido dela), no
-         computador e no celular; a arte volta a ser a do antes/depois, sem
-         os topicos escritos dentro dela -->
-    <div class="pq-grid">
-      <div class="pq-foto">
-        <img src="para-quem.jpg" alt="Terapeuta cabisbaixa no consultório e, ao lado, a mesma terapeuta segura e realizada, com um caderno onde se lê autovalor, segurança, autoridade, propósito e realização" loading="lazy">
-      </div>
-      <ul class="pq-list">
-        <li>Se sentem abandonados depois que a formação acabou</li>
-        <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
-        <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
-        <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
-        <li>Têm insegurança para cobrar o que valem</li>
-        <li>Querem atender com mais segurança e autoridade</li>
-        <li>Desejam uma virada pessoal, não só profissional</li>
-      </ul>
-    </div>
-
-    <div class="center-cta">
-      <a href="https://chk.eduzz.com/797ZYA480E" target="_blank" rel="noopener noreferrer" class="btn">É para mim!</a>
-    </div>
-
-    <div class="nao-para" style="max-width:640px;margin:30px auto 0;">
-      <h4>Não é para você se busca apenas:</h4>
-      <ul>
-        <li>Marketing e posicionamento em redes sociais</li>
-        <li>Soluções técnicas de vendas</li>
-        <li>Resultados sem trabalho interno</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════ MENTORA (fundo laranja) ════════════════════════════ -->
-<section class="mentora escura">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:34px;">
-      <span class="label" style="color:rgba(255,255,255,.92);">Autoridade</span>
-      <h2 style="color:#fff;font-size:clamp(1.7rem,3.8vw,2.4rem);">Quem vai te conduzir nesse processo</h2>
-    </div>
-    <div class="mentora-grid">
-      <div class="mentora-photo">
-        <img src="simone-palco.jpg" alt="Simone Carneiro palestrando ao vivo" loading="lazy" />
-      </div>
-      <div class="mentora-copy">
-        <div class="mentora-box">
-          <p>
-            Quem conduz o encontro, do início ao fim, é <strong>Simone Carneiro</strong> — e o que
-            você vai viver não é motivação nem "pensamento positivo": é um processo apoiado em
-            neurociência e em recalibração do sistema nervoso, no qual ela se especializou por
-            mais de duas décadas.
-          </p>
-          <p>
-            São <strong>25 anos de trajetória</strong> e mais de <strong>3 mil vidas
-            transformadas</strong>. <strong>Neurocientista</strong>, graduada em Neurociências e em
-            Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five Factor
-            Model</strong> — o modelo de personalidade com maior respaldo científico —,
-            <strong>expert em PSYCH-K®</strong> e <strong>hipnoterapeuta Faixa Ouro</strong>,
-            título Omni para quem alcança 100 mil/mês na área.
-          </p>
-          <p>
-            Também usa inteligência artificial para criar apps e materiais que aceleram a
-            transformação dos clientes.
-          </p>
-        </div>
-
-        <div class="manifesto">
-          <div class="m-label">O meu manifesto</div>
-          <p>
-            "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
-            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
-            reescritos. É isso que eu vou te mostrar."
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════ SOBRE O LIVRO ════════════════════════════ -->
-<section class="livro sec-laranja">
-  <div class="container">
-    <div style="text-align:center;max-width:640px;margin:0 auto;">
-      <span class="label">Autoridade publicada</span>
-      <h2>Coautora do livro "Mente de Alta Performance"</h2>
-    </div>
-    <div class="livro-img" style="margin:24px auto 22px;">
-      <img src="livro-capa.jpg" alt="Capa do livro Mente de Alta Performance, coautoria de Simone Carneiro" loading="lazy" />
-    </div>
-    <div class="livro-copy" style="max-width:640px;margin:0 auto;">
-      <p class="livro-sub">Não é teoria de palco: a ciência da mente que estrutura o meu trabalho está publicada e reconhecida internacionalmente. Sou <strong>coautora de "Mente de Alta Performance"</strong>, o livro que revela o segredo mental por trás de líderes extraordinários e mostra como reprogramar a mente para performar no máximo, de forma sustentável.</p>
-      <div class="livro-nome">
-        <strong>Mente de Alta Performance</strong>
-        <span>O segredo mental por trás de líderes extraordinários · Coautoria pela Literare Iuris International (Brasil · Europa · USA · Japão)</span>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ════════════════════════════ COMO FUNCIONA ════════════════════════════ -->
-<section class="como">
+<section class="como sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método por trás da transformação</span></div>
     <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span><span class="mn-nome">Recalibração do Sistema Nervoso</span></h2>
@@ -1124,7 +1037,7 @@
       <!-- mesma moldura das outras imagens da LP (ver a da secao do problema):
            400px, cantos 14px e sombra .45. Sem aspect-ratio de proposito — a
            arte e 2:3 e tem texto embutido; forcar quadrado cortaria a regua -->
-      <p style="color:var(--cinza);font-size:.9rem;margin-top:0;">A Recalibração une três ciências da mente que se potencializam:</p>
+      <p class="metodo-ciencias" style="color:var(--cinza);font-size:.9rem;margin-top:0;">A Recalibração une três ciências da mente que se potencializam:</p>
       <div class="pills" style="margin-top:10px;">
         <span class="pill">Neurociência</span>
         <span class="pill">Hipnoterapia</span>
@@ -1164,9 +1077,8 @@
     </div>
   </div>
 </section>
-
 <!-- ═══════════════════════ OS PILARES (laranja) ═══════════════════════ -->
-<section class="vivencia sec-laranja">
+<section class="vivencia escura">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">A vivência</span></div>
     <h2 style="text-align:center;">Como funciona a sua transformação</h2>
@@ -1228,9 +1140,8 @@
     </div>
   </div>
 </section>
-
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios escura">
+<section class="beneficios sec-laranja">
   <div class="container">
     <h2 style="text-align:center;">O que muda após a Recalibração</h2>
 
@@ -1248,7 +1159,108 @@
     </div>
   </div>
 </section>
+<!-- ════════════════════════════ PARA QUEM É ════════════════════════════ -->
+<section class="para-quem escura">
+  <div class="container">
+    <h2 style="text-align:center;">Para quem é este webinário</h2>
+    <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
 
+    <!-- os sete perfis ficam SEMPRE em lista de texto (pedido dela), no
+         computador e no celular; a arte volta a ser a do antes/depois, sem
+         os topicos escritos dentro dela -->
+    <div class="pq-grid">
+      <div class="pq-foto">
+        <img src="para-quem.jpg" alt="Terapeuta cabisbaixa no consultório e, ao lado, a mesma terapeuta segura e realizada, com um caderno onde se lê autovalor, segurança, autoridade, propósito e realização" loading="lazy">
+      </div>
+      <ul class="pq-list">
+        <li>Se sentem abandonados depois que a formação acabou</li>
+        <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
+        <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
+        <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
+        <li>Têm insegurança para cobrar o que valem</li>
+        <li>Querem atender com mais segurança e autoridade</li>
+        <li>Desejam uma virada pessoal, não só profissional</li>
+      </ul>
+    </div>
+
+    <div class="center-cta">
+      <a href="https://chk.eduzz.com/797ZYA480E" target="_blank" rel="noopener noreferrer" class="btn">É para mim!</a>
+    </div>
+
+    <div class="nao-para" style="max-width:640px;margin:30px auto 0;">
+      <h4>Não é para você se busca apenas:</h4>
+      <ul>
+        <li>Marketing e posicionamento em redes sociais</li>
+        <li>Soluções técnicas de vendas</li>
+        <li>Resultados sem trabalho interno</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- ════════════════════════════ MENTORA (fundo laranja) ════════════════════════════ -->
+<section class="mentora sec-laranja">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:34px;">
+      <span class="label" style="color:rgba(255,255,255,.92);">Autoridade</span>
+      <h2 style="color:#fff;font-size:clamp(1.7rem,3.8vw,2.4rem);">Quem vai te conduzir nesse processo</h2>
+    </div>
+    <div class="mentora-grid">
+      <div class="mentora-photo">
+        <img src="simone-palco.jpg" alt="Simone Carneiro palestrando ao vivo" loading="lazy" />
+      </div>
+      <div class="mentora-copy">
+        <div class="mentora-box">
+          <p>
+            Quem conduz o encontro, do início ao fim, é <strong>Simone Carneiro</strong> — e o que
+            você vai viver não é motivação nem "pensamento positivo": é um processo apoiado em
+            neurociência e em recalibração do sistema nervoso, no qual ela se especializou por
+            mais de duas décadas.
+          </p>
+          <p>
+            São <strong>25 anos de trajetória</strong> e mais de <strong>3 mil vidas
+            transformadas</strong>. <strong>Neurocientista</strong>, graduada em Neurociências e em
+            Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five Factor
+            Model</strong> — o modelo de personalidade com maior respaldo científico —,
+            <strong>expert em PSYCH-K®</strong> e <strong>hipnoterapeuta Faixa Ouro</strong>,
+            título Omni para quem alcança 100 mil/mês na área.
+          </p>
+          <p>
+            Também usa inteligência artificial para criar apps e materiais que aceleram a
+            transformação dos clientes.
+          </p>
+        </div>
+
+        <div class="manifesto">
+          <div class="m-label">O meu manifesto</div>
+          <p>
+            "Ninguém com o seu talento deveria viver financeiramente estagnado. O que te segura
+            não está no mercado nem na sua técnica: está em bloqueios invisíveis que podem ser
+            reescritos. É isso que eu vou te mostrar."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ════════════════════════════ SOBRE O LIVRO ════════════════════════════ -->
+<section class="livro escura">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto;">
+      <span class="label">Autoridade publicada</span>
+      <h2>Coautora do livro "Mente de Alta Performance"</h2>
+    </div>
+    <div class="livro-img" style="margin:24px auto 22px;">
+      <img src="livro-capa.jpg" alt="Capa do livro Mente de Alta Performance, coautoria de Simone Carneiro" loading="lazy" />
+    </div>
+    <div class="livro-copy" style="max-width:640px;margin:0 auto;">
+      <p class="livro-sub">Não é teoria de palco: a ciência da mente que estrutura o meu trabalho está publicada e reconhecida internacionalmente. Sou <strong>coautora de "Mente de Alta Performance"</strong>, o livro que revela o segredo mental por trás de líderes extraordinários e mostra como reprogramar a mente para performar no máximo, de forma sustentável.</p>
+      <div class="livro-nome">
+        <strong>Mente de Alta Performance</strong>
+        <span>O segredo mental por trás de líderes extraordinários · Coautoria pela Literare Iuris International (Brasil · Europa · USA · Japão)</span>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
 <section class="bonus sec-laranja">
   <div class="container narrow">
@@ -1275,7 +1287,6 @@
     </div>
   </div>
 </section>
-
 <!-- ════════════════════════════ OFERTA / EVENTO ════════════════════════════ -->
 <section class="oferta escura">
   <div class="container">
@@ -1335,7 +1346,6 @@
     </div>
   </div>
 </section>
-
 <!-- ════════════════════════════ FAQ ════════════════════════════ -->
 <section class="faq sec-laranja">
   <div class="container">
@@ -1372,7 +1382,6 @@
     </details>
   </div>
 </section>
-
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
 <section class="cta-final escura">
   <div class="container">
