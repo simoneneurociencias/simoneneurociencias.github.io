@@ -178,7 +178,7 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1fr 1.06fr;
       align-items: center;
       min-height: 640px;
     }
@@ -190,22 +190,22 @@
     .hero-kicker {
       display: block;
       font-size: .8rem; font-weight: 700; letter-spacing: .28em;
-      text-transform: uppercase; color: var(--cinza); margin-bottom: 12px;
+      text-transform: uppercase; color: var(--cinza); margin-bottom: 18px;
     }
     /* LOCKUP do nome do evento — mesma disposicao da LP clara, com a Marcellus
        de volta: "Os 3 Segredos" / ornamento com o "do" / "Terapeuta" /
        "de Alto Valor". As linhas sao spans dentro do h1, entao o titulo
        continua sendo uma frase so para busca e leitor de tela. */
-    .hero-copy h1 { margin-bottom: 14px; }
+    .hero-copy h1 { margin-bottom: 18px; }
     .lk-l1, .lk-l2 {
       display: block; font-family: 'Marcellus', Georgia, serif; font-weight: 400;
-      text-transform: uppercase; line-height: 1.04; letter-spacing: .04em;
+      text-transform: uppercase; line-height: 1.1; letter-spacing: .04em;
     }
     /* as tres linhas do lockup tem o mesmo corpo; o que separa e a cor */
     .lk-l1, .lk-l2 { font-size: clamp(1.25rem, 3.4vw, 2.1rem); }
     .lk-l1 { color: var(--creme); }
     .lk-l2 { color: var(--laranja); }
-    .lk-orn { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 7px 0; }
+    .lk-orn { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 11px 0; }
     .lk-orn i { flex: 0 0 auto; width: clamp(20px, 6vw, 52px); height: 1px; background: linear-gradient(90deg, transparent, var(--laranja)); }
     .lk-orn i:last-child { background: linear-gradient(90deg, var(--laranja), transparent); }
     .lk-orn span {
@@ -217,7 +217,7 @@
       font-family: 'Segoe UI', Arial, sans-serif; font-weight: 400;
       font-size: clamp(1.12rem, 2.2vw, 1.5rem);
       line-height: 1.24; letter-spacing: -.01em;
-      color: var(--creme); max-width: 490px; margin: 0 auto 16px;
+      color: var(--creme); max-width: 490px; margin: 0 auto 9px;
       text-wrap: balance;
     }
     .hero-headline em { font-style: normal; color: var(--laranja); }
@@ -232,9 +232,9 @@
       font-size: .82rem; font-weight: 700; letter-spacing: .12em;
       text-transform: uppercase;
       padding: 9px 22px; border-radius: 999px;
-      margin-bottom: 22px;
+      margin: 4px auto 26px;
     }
-    .hero-sub { color: var(--cinza); font-size: 1.05rem; max-width: 460px; margin: 0 auto 30px; }
+    .hero-sub { color: var(--cinza); font-size: 1.05rem; max-width: 460px; margin: 0 auto 24px; }
     .hero-sub strong { color: var(--creme); }
     .hero-trust { margin-top: 16px; font-size: .82rem; color: var(--cinza); letter-spacing: .02em; }
     .hero-name {
@@ -249,13 +249,15 @@
     }
     .lead-form input::placeholder { color: rgba(255,255,255,.5); }
     .lead-form input:focus { outline: none; border-color: var(--laranja); background: rgba(255,255,255,.10); }
-    .lead-form button { border: none; cursor: pointer; }
+    /* o botao ganha um vao proprio, maior que o gap entre os campos
+       (pedido dela): ele deixa de parecer o 4o campo da lista */
+    .lead-form button { border: none; cursor: pointer; margin-top: 10px; }
     .form-note { font-size: .78rem; color: var(--cinza); max-width: 430px; margin: 0 auto 10px; }
 
     .hero-photo { position: relative; z-index: 1; align-self: end; min-height: 640px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
     .hero-photo img {
       position: relative; z-index: 1;
-      width: 100%; max-height: 560px; object-fit: contain; object-position: bottom center;
+      width: 100%; max-height: 640px; object-fit: contain; object-position: bottom center;
       transform: translateY(-48px);
       filter: drop-shadow(0 18px 38px rgba(0,0,0,.5));
     }
@@ -293,7 +295,9 @@
     .segredo-row.rev .segredo-desc  { order: 1; text-align: right; }
     .segredo-title .num {
       font-family: 'Marcellus', Georgia, serif;
-      font-size: clamp(1.25rem, 2.6vw, 1.75rem);
+      /* um degrau abaixo do h2 da secao (clamp 1.7/4vw/2.5rem): grande, mas
+         sem competir com o titulo */
+      font-size: clamp(1.6rem, 3.4vw, 2.25rem);
       color: var(--laranja);
       text-transform: uppercase; letter-spacing: .04em; line-height: 1;
       white-space: nowrap;
@@ -319,25 +323,14 @@
       color: #fff;
       overflow: hidden;
     }
-    /* neuronios ao fundo: a arte do cerebro e dourada sobre PRETO, entao em
-       mix-blend-mode:screen o preto some e sobram so os tracos luminosos sobre
-       o degrade da secao. Duas copias: uma grande atras da foto (esquerda) e
-       uma menor na direita, para o texto ficar sempre em area limpa. */
-    .mentora::before {
-      content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none;
-      background:
-        url("brain-bg.jpg") no-repeat left -8% center / auto 122%,
-        url("brain-bg.jpg") no-repeat right -16% center / auto 86%;
-      /* sobre o fundo escuro a arte dourada pesa muito mais do que pesava
-         sobre o laranja: opacidade baixa + desfoque leve deixam so a textura */
-      mix-blend-mode: screen; opacity: .13; filter: blur(1.5px);
-    }
+    /* o fundo de neuronios (brain-bg.jpg, em mix-blend-mode:screen) foi
+       retirado a pedido dela: a secao fica so com o degrade escuro */
     .mentora > .container { position: relative; z-index: 1; }
     .mentora-grid {
-      display: grid; grid-template-columns: .82fr 1.18fr; align-items: center; gap: 46px;
+      display: grid; grid-template-columns: 320px 1fr; align-items: start; gap: 46px;
     }
-    .mentora-photo { position: relative; align-self: center; max-width: 320px; margin: 0 auto; }
-    .mentora-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; position: relative; z-index: 2; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+    .mentora-photo { position: relative; max-width: 320px; margin: 0 auto; }
+    .mentora-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; position: relative; z-index: 2; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     .mentora-copy h2 { color: #fff; font-size: clamp(1.7rem, 3.8vw, 2.4rem); margin-bottom: 20px; }
     /* texto corrido: os 6 cards de credencial viraram prosa, entao o bloco
        passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
@@ -361,24 +354,36 @@
     .manifesto .m-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
     .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
+    /* ════════ IMAGENS DAS SECOES ════════
+       Pedido dela: toda arte de secao entra LOGO ABAIXO DO TITULO e com a
+       mesma largura da foto da autoridade (320px). As quadradas ficam
+       320x320; as em retrato (capa do livro, termometro) mantem a propria
+       proporcao para nao cortar o que esta escrito dentro delas. */
+    .sec-img {
+      width: 320px; max-width: 100%; height: auto; display: block;
+      margin: 0 auto 26px; border-radius: 12px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .sec-img--quad { aspect-ratio: 1/1; object-fit: cover; }
+    /* o cerebro e a capa do livro sao os dois retratos da pagina: menores que
+       os 320px do padrao, a pedido dela */
+    .como .sec-img { width: 250px; }
+
     /* ════════ PARA QUEM ════════ */
     .para-quem h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 12px; }
-    .para-quem .pq-sub { text-align: center; font-size: clamp(1rem, 2.1vw, 1.25rem); margin: 0 auto 36px; max-width: 660px; }
-    .pq-grid { display: grid; grid-template-columns: .92fr 1.08fr; gap: 40px; align-items: center; max-width: 980px; margin: 0 auto; }
-    .pq-foto img { width: 100%; height: auto; display: block; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
-    /* arte que ja contem a lista: ocupa a largura da secao, sem coluna de texto */
-    .pq-solo img { width: 100%; max-width: 900px; height: auto; display: block; margin: 0 auto; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28); }
+    /* maior que as demais aberturas de secao, a pedido dela: e a frase que
+       qualifica o publico. Por isso saiu da lista do --fs-intro */
+    .para-quem .pq-sub { text-align: center; font-size: clamp(1.2rem, 2.4vw, 1.5rem); margin: 0 auto 36px; max-width: 660px; }
+    .pq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; max-width: 980px; margin: 0 auto; }
+    .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
     .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
     .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
-    /* precisa vir DEPOIS de .pq-list: mesma especificidade, quem vence e a
-       ultima regra do arquivo. So aparece no celular (ver o @media) */
-    .pq-list--mob { display: none; }
     /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
        outro lado para nao repetir o desenho da secao "para quem e" */
     /* invertida tambem a proporcao: aqui quem fica na 1a coluna e a lista,
        que tem as frases mais longas e precisa da coluna maior */
-    .pq-grid--rev { grid-template-columns: 1.08fr .92fr; }
+    .pq-grid--rev { grid-template-columns: 1fr 320px; }
     .pq-grid--rev .pq-foto { order: 2; }
     .sec-laranja .pq-list li { color: #fff; }
     .sec-laranja .pq-list li::before { color: #fff; }
@@ -395,18 +400,24 @@
     /* nome do metodo em uma linha so: a sigla em laranja, o nome cheio em
        creme. Corpo menor que os outros h2 porque a frase e longa — precisa
        caber numa linha no desktop */
-    .metodo-h2 { font-size: clamp(1.15rem, 2.9vw, 1.85rem) !important; margin-bottom: 14px !important; }
-    .metodo-h2 .mn-sigla { color: var(--laranja-2); }
+    /* duas linhas do mesmo corpo, separadas so pela cor: a sigla em branco e
+       o nome por extenso em laranja (pedido dela) */
+    .metodo-h2 { font-size: clamp(1.35rem, 3.4vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
+    .metodo-h2 .mn-sigla { display: block; color: #fff; }
+    .metodo-h2 .mn-nome { display: block; color: var(--laranja-2); }
     /* ── ESCADA "a maioria / alguns / nenhum" ──
        Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
        descem do superficial ao profundo. Sem caixa; o que separa os degraus e
        a linha fina a esquerda, que fica cheia no ultimo. */
     /* com as 3 caixas lado a lado o bloco precisa de mais largura que o
        .narrow da secao (760px) */
-    .escada { max-width: 1000px; width: 100%; margin: 34px auto 0; }
-    .diferencial > .container { max-width: 1060px; }
+    /* o diferencial vive DENTRO da secao do metodo (mesmo fundo escuro); o
+       vao maior no topo e o que separa os dois assuntos, sem filete */
+    .escada { max-width: 1000px; width: 100%; margin: 54px auto 0; }
+    .esc-wrap { max-width: 1060px; }
     /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
-    .escada h3 { text-align: center; font-size: clamp(1.55rem, 3.4vw, 2.1rem); margin-bottom: 6px; }
+    /* vence .escura h3 (mesma especificidade) por vir depois no arquivo */
+    .escada h3 { text-align: center; font-size: clamp(1.55rem, 3.4vw, 2.1rem); margin-bottom: 6px; color: var(--laranja-2); }
     .esc-sub { text-align: center; color: var(--creme); font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 14px; }
     .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
     /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
@@ -425,31 +436,11 @@
     /* todas as caixas da secao usam a mesma cor (pedido dela); o degrau final
        segue com mais peso pela sombra, pelo rotulo cheio e pelo texto em creme */
     .esc-item--forte { box-shadow: 0 12px 34px rgba(0,0,0,.28); }
-    /* ── o bloco do diferencial, na secao laranja ──
-       Titulo e abertura em PRETO (pedido dela) e as caixas com o mesmo preto
-       degrade alaranjado das secoes escuras, duas por linha. */
-    /* o titulo volta ao branco; o subtitulo e a abertura ficam em preto e a
-       abertura sobe para junto da frase de cima */
-    .diferencial .escada h3 { color: #fff; }
-    .diferencial .esc-sub, .diferencial .esc-lead { color: #16141c; }
-    .diferencial .esc-sub { margin-bottom: 4px; }
+    /* a abertura sobe para junto da frase de cima */
+    .escada .esc-sub { margin-bottom: 4px; }
     /* os tres degraus lado a lado, um por coluna */
     .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
     .esc-grid .esc-item { margin-bottom: 0; }
-    .sec-laranja .esc-item {
-      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
-      border-color: rgba(229,67,42,.45);
-    }
-    .sec-laranja .esc-item .esc-q { color: var(--laranja-2); }
-    .sec-laranja .esc-item p { color: var(--cinza); }
-    .sec-laranja .esc-item--forte {
-      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
-      border-color: rgba(229,67,42,.75);
-    }
-    .sec-laranja .esc-item--forte .esc-q { color: var(--laranja); }
-    .sec-laranja .esc-item--forte p { color: var(--creme); }
-    .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
-    .sec-laranja .esc-fecho strong { color: #ffd9c2; }
     .esc-item--forte .esc-q { color: var(--laranja); }
     .esc-item--forte p { color: var(--creme); }
     .esc-fecho {
@@ -478,16 +469,39 @@
     .metodo-destaque { margin-top: 22px; padding: 22px 26px; background: rgba(229,67,42,.06); border-radius: 12px; }
     .metodo-destaque p { color: var(--cinza); }
     .metodo-destaque strong { color: var(--creme); }
-    .etapas { margin-top: 26px; display: flex; flex-direction: column; gap: 18px; }
+    /* gap e margem maiores: o circulo do numero sobe 21px acima da caixa e
+       encostaria na caixa de cima (e no h3, na primeira) */
+    .etapas { margin-top: 42px; display: flex; flex-direction: column; gap: 36px; }
     .etapas-card { background: var(--grafite); border: 1px solid rgba(229,67,42,.32); border-radius: 22px; padding: 28px 22px 32px; margin-top: 42px; box-shadow: 0 16px 46px rgba(0,0,0,.3); }
-    .etapa { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; border: 1px solid rgba(229,67,42,.55); border-radius: 14px; background: rgba(229,67,42,.10); }
-    .etapa-num { font-family: 'Marcellus', serif; font-size: 1.6rem; color: var(--laranja); flex-shrink: 0; line-height: 1.2; min-width: 40px; }
-    .etapa h4 { color: var(--creme); margin-bottom: 4px; font-size: 1.05rem; }
+    /* caixa numerada: o numero sai da lateral e vira um circulo cavalgando a
+       borda de cima, centrado (pedido dela). O gap do .etapas cuida do espaco
+       entre as caixas; o circulo cabe no padding extra do topo. */
+    .etapa { position: relative; padding: 34px 22px 20px; border: 1px solid rgba(229,67,42,.55); border-radius: 14px; background: rgba(229,67,42,.10); text-align: center; }
+    .etapa-num {
+      position: absolute; top: -21px; left: 50%; transform: translateX(-50%);
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Marcellus', serif; font-size: 1.25rem; line-height: 1;
+      color: var(--laranja);
+      /* #361e28 = o grafite do card com os 10% de laranja da caixa por cima:
+         cor SOLIDA, senao a borda da caixa aparece atras do circulo */
+      background: #361e28; border: 1px solid rgba(229,67,42,.55);
+    }
+    /* caixa alta + negrito (pedido dela). O Marcellus so vem em 400, entao o
+       700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
+       o resultado fica limpo no tamanho em que o titulo aparece. */
+    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
     .etapa p { color: var(--cinza); font-size: .96rem; }
     .etapa p strong { color: var(--creme); font-weight: 600; }
-    .praticas-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
+       centralizava mas a estrela ficava sozinha na margem esquerda. Agora
+       estrela e texto sao inline no mesmo bloco centrado, entao a estrela
+       acompanha o comeco da primeira linha. */
+    .praticas-item { display: block; text-align: center; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .praticas-item > span { display: inline; margin-right: 7px; }
+    .praticas-item > p { display: inline; }
     .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
-    .praticas-item p { font-size: .95rem; color: var(--creme); text-wrap: balance; }
+    .praticas-item p { font-size: .95rem; color: var(--creme); text-wrap: balance; text-align: center; }
     .praticas-item strong { color: var(--laranja-2); }
 
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
@@ -547,8 +561,8 @@
     .cta-final h2 { color: #fff; font-size: clamp(1.6rem,3.6vw,2.2rem); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
-    .cta-final .btn { background: #0a0a0c; box-shadow: 0 12px 34px rgba(0,0,0,.35); }
-    .cta-final .btn:hover { background: #17171c; }
+    /* a secao virou escura: o botao volta ao degrade da paleta (preto sobre
+       fundo preto sumia) */
     .cta-final .btn-note { color: rgba(255,255,255,.75); }
     .cta-final .cta-lead p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto 15px; }
     .cta-final .cta-risco {
@@ -628,7 +642,9 @@
     /* sem background proprio: a secao herda o degrade de .sec-laranja. Ela
        tinha "background:#ffffff" aqui, que vencia a classe por vir depois */
     .livro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px; align-items: center; }
-    .livro-img img { width: 100%; max-width: 150px; margin: 0 auto; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.55); }
+    /* a capa e retrato (491x720): 220px de largura da a MESMA ALTURA (~322px)
+       das imagens quadradas de 320, entao ela fica menor sem sair do padrao */
+    .livro-img img { width: 100%; max-width: 170px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     .livro h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 12px; }
     .livro-sub { color: var(--cinza); margin-bottom: 20px; text-align: center; }
     .livro-nome { padding: 14px 18px; border-left: 3px solid var(--laranja); background: var(--preto-2); border-radius: 0 10px 10px 0; margin-bottom: 24px; }
@@ -699,8 +715,8 @@
     .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
     /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
     .pilares-img {
-      width: 100%; max-width: 620px; height: auto; display: block;
-      margin: 22px auto 30px; border-radius: 16px; box-shadow: 0 18px 44px rgba(0,0,0,.28);
+      width: 320px; max-width: 100%; height: auto; display: block;
+      margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
     }
     .vivencia h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
     /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
@@ -723,7 +739,6 @@
        clamp, e as aberturas nao batiam entre si. */
     .problema p,
     .segredos .section-title p,
-    .para-quem .pq-sub,
     .como > .container > p.intro,
     .bonus > .container > p,
     .cta-final .cta-intro { font-size: var(--fs-intro); }
@@ -755,7 +770,7 @@
       .hero-copy { display: contents; }
       .hero-lockup {
         display: flex; flex-direction: column; align-items: center;
-        gap: min(9px, 1.1vh);
+        gap: min(12px, 1.45vh);
         grid-column: 1; grid-row: 1; align-self: center;
       }
       .hero-photo {
@@ -764,12 +779,15 @@
       }
       /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
-      .hero-photo img { height: min(180px, 22vh); width: auto; max-height: none; transform: none; }
-      .hero-headline { grid-row: 2; }
-      .hero-sub      { grid-row: 3; }
-      .lead-form     { grid-row: 4; }
-      .form-note     { grid-row: 5; }
-      .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
+      .hero-photo img { height: min(200px, 24vh); width: auto; max-height: none; transform: none; }
+      /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
+         linha propria, centrada, entre a faixa do topo e a promessa */
+      .hero-badge    { grid-row: 2; justify-self: center; }
+      .hero-headline { grid-row: 3; }
+      .hero-sub      { grid-row: 4; }
+      .lead-form     { grid-row: 5; }
+      .form-note     { grid-row: 6; }
+      .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
@@ -778,7 +796,10 @@
       .lead-form { width: 100%; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
-      .hero-headline { margin-top: min(16px, 2vh) !important; }
+      .hero-headline { margin-top: min(14px, 1.8vh) !important; }
+      /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
+      .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
+      .lead-form { margin-top: min(10px, 1.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -795,15 +816,10 @@
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
       .lead-form { gap: min(10px, .85vh); }
       .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
-      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); }
+      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
       .form-note { font-size: min(.9rem, 1.65vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
-      .mentora-photo { max-width: 340px; margin: 0 auto; }
-      /* no celular fica uma copia so do cerebro, mais discreta */
-      .mentora::before {
-        background: url("brain-bg.jpg") no-repeat center top -10% / 150% auto;
-        opacity: .11;
-      }
+      .mentora-photo { max-width: 250px; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
       .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
       .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
@@ -812,13 +828,17 @@
       .pq-list { grid-template-columns: 1fr; }
       .esc-grid { grid-template-columns: 1fr; gap: 12px; }
       .pq-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
+      /* no celular 320px ocupam 82% da largura da tela: as artes caem para
+         250px (e a capa do livro, que e retrato, para 140px) */
+      .sec-img, .pilares-img { width: 250px; }
+      /* no celular a foto tambem fica nos 320px das demais imagens */
+      .pq-foto img { max-width: 250px; margin: 0 auto; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
       /* no celular a foto volta a vir primeiro nas duas secoes */
       .pq-grid--rev .pq-foto { order: 0; }
       /* o texto da arte fica ilegivel em 360px — a lista reaparece embaixo */
-      .pq-list--mob { display: grid; margin-top: 26px; }
       .livro-grid { grid-template-columns: 1fr; gap: 28px; }
-      .livro-img { max-width: 360px; margin: 0 auto; }
+      .livro-img { max-width: 140px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -837,12 +857,13 @@
             <span class="lk-l2">Terapeuta</span>
             <span class="lk-l2">de Alto Valor</span>
           </h1>
-          <span class="hero-badge">Ao vivo · Online</span>
         </div>
-        <p class="hero-headline">Descubra a raiz dos bloqueios que <em>limitam</em> a sua expansão e transforme a <em>sua dor em liberdade</em></p>
+        <span class="hero-badge">Ao vivo · Online</span>
+        <p class="hero-headline">Descubra a raiz dos bloqueios que <em>freiam</em> a sua expansão e transforme a <em>sua dor em liberdade</em></p>
         <p class="hero-sub">
-          Em <strong>3h30</strong>, você desativa o freio mental que te mantém
-          no ciclo de tentativa e erro.
+          Em <strong>3h30</strong>, você identifica e desativa o freio mental que te
+          sabota sempre que você tenta crescer — e te mantém refém do ciclo de
+          tentativa e erro.
         </p>
         <form class="lead-form" onsubmit="return submeterLead(event)">
           <input type="text"  name="nome"     placeholder="Seu nome"               autocomplete="name"  required>
@@ -850,7 +871,7 @@
           <input type="tel"   name="whatsapp" placeholder="Seu WhatsApp (com DDD)"  autocomplete="tel"   required>
           <button type="submit" class="btn btn--full">Garantir minha vaga agora</button>
         </form>
-        <p class="form-note">🎁 Você recebe o seu <strong style="color:var(--creme);font-weight:600;">presente de boas-vindas</strong> assim que se inscrever.</p>
+        <p class="form-note">🎁 Você recebe o seu <strong style="color:var(--creme);font-weight:600;">presente de boas-vindas</strong> após a inscrição.</p>
       </div>
       <div class="hero-photo">
         <img src="simone-capa-nobg.png" alt="Simone Carneiro, Neurocientista e Mentora de Alta Performance" loading="eager" />
@@ -864,19 +885,17 @@
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O que ninguém te conta</span></div>
     <h2>Por que isso continua<br>acontecendo com você?</h2>
+    <img src="problema-errado-comigo.jpg" class="sec-img sec-img--quad" alt="Terapeuta pensativa diante do computador, com o certificado na parede e o WhatsApp em silêncio: o que há de errado comigo?" loading="lazy">
     <p>
       Você já tentou de tudo: mais um curso, mais uma certificação, terapia, tentar aparecer
       nas redes. E mesmo assim o WhatsApp fica quieto por dias, o faturamento do mês bom não
-      se repete no seguinte, e quando o cliente pergunta o valor, alguma coisa aperta no seu peito.
+      se repete no seguinte, e na hora de falar o seu valor para o cliente, você trava.
     </p>
     <p>
       Então vem a pergunta: "o que há de errado comigo?" A resposta é: <strong>nada</strong>.
       Não é falta de técnica nem de esforço. É um <strong>bloqueio invisível</strong> que associa
       crescer a perigo — e enquanto ele estiver ativo, <strong>nenhuma estratégia se sustenta</strong>.
     </p>
-    <!-- 400px: abaixo disso o texto embutido ("WhatsApp quieto por dias", "alguma coisa
-         aperta no seu peito") comeca a ficar ilegivel -->
-    <img src="problema-errado-comigo.jpg" alt="Terapeuta pensativa diante do computador, com o certificado na parede e o WhatsApp em silêncio: o que há de errado comigo?" style="display:block;width:400px;max-width:100%;aspect-ratio:1/1;object-fit:cover;margin:24px auto 8px;border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.45);" loading="lazy">
 
     <div class="destaque-box">
       "O problema nunca foi você. É que a sua mente ainda não se sente segura
@@ -889,9 +908,9 @@
 <section class="segredos">
   <div class="container">
     <div class="section-title">
-      <h2 style="text-transform:uppercase;">O que eu vou te <span style="color:var(--laranja)">revelar</span></h2>
+      <h2>Os 3 <span style="color:var(--laranja)">Segredos</span></h2>
       <p>
-        Não são estratégias de marketing nem scripts de venda. São 3 segredos que
+        Não são estratégias de marketing nem scripts de venda. São bloqueios ocultos que
         separam quem cresce de quem fica estagnado. Ao vivo, você descobre quais são
         os seus — e vive o primeiro desbloqueio comigo.
       </p>
@@ -955,20 +974,23 @@
     <h2 style="text-align:center;">Para quem é este webinário</h2>
     <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
 
-    <div class="pq-solo">
-      <img src="para-quem-v2.jpg" alt="Terapeuta pensativa no consultório, cercada pelos sete perfis: se sentem abandonados depois que a formação acabou; estudam, se certificam, e ainda assim não se sentem prontos; veem a renda oscilar e nunca sabem como o mês vai fechar; travam seu crescimento por crenças de merecimento e autovalor; têm insegurança para cobrar o que valem; querem atender com mais segurança e autoridade; desejam uma virada pessoal, não só profissional" loading="lazy">
+    <!-- os sete perfis ficam SEMPRE em lista de texto (pedido dela), no
+         computador e no celular; a arte volta a ser a do antes/depois, sem
+         os topicos escritos dentro dela -->
+    <div class="pq-grid">
+      <div class="pq-foto">
+        <img src="para-quem.jpg" alt="Terapeuta cabisbaixa no consultório e, ao lado, a mesma terapeuta segura e realizada, com um caderno onde se lê autovalor, segurança, autoridade, propósito e realização" loading="lazy">
+      </div>
+      <ul class="pq-list">
+        <li>Se sentem abandonados depois que a formação acabou</li>
+        <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
+        <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
+        <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
+        <li>Têm insegurança para cobrar o que valem</li>
+        <li>Querem atender com mais segurança e autoridade</li>
+        <li>Desejam uma virada pessoal, não só profissional</li>
+      </ul>
     </div>
-    <!-- a arte ja traz a lista escrita, mas no celular ela fica pequena demais
-         para ler — entao o texto reaparece embaixo da imagem so no telefone -->
-    <ul class="pq-list pq-list--mob">
-      <li>Se sentem abandonados depois que a formação acabou</li>
-      <li>Estudam, se certificam, e ainda assim não se sentem prontos</li>
-      <li>Veem a renda oscilar e nunca sabem como o mês vai fechar</li>
-      <li>Travam seu crescimento por crenças de merecimento e autovalor</li>
-      <li>Têm insegurança para cobrar o que valem</li>
-      <li>Querem atender com mais segurança e autoridade</li>
-      <li>Desejam uma virada pessoal, não só profissional</li>
-    </ul>
 
     <div class="center-cta">
       <a href="https://chk.eduzz.com/797ZYA480E" target="_blank" rel="noopener noreferrer" class="btn">É para mim!</a>
@@ -990,7 +1012,7 @@
   <div class="container">
     <div style="text-align:center;margin-bottom:34px;">
       <span class="label" style="color:rgba(255,255,255,.92);">Autoridade</span>
-      <h2 style="color:#fff;font-size:clamp(1.7rem,3.8vw,2.4rem);text-transform:uppercase;">Quem vai te conduzir nesse processo</h2>
+      <h2 style="color:#fff;font-size:clamp(1.7rem,3.8vw,2.4rem);">Quem vai te conduzir nesse processo</h2>
     </div>
     <div class="mentora-grid">
       <div class="mentora-photo">
@@ -1055,7 +1077,8 @@
 <section class="como">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método por trás da transformação</span></div>
-    <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span> — Recalibração do Sistema Nervoso</h2>
+    <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span><span class="mn-nome">Recalibração do Sistema Nervoso</span></h2>
+    <img src="metodo-termometro.png" class="sec-img" alt="O limite seguro e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" loading="lazy">
     <p class="intro">
       O seu sistema nervoso está calibrado para um limite seguro e aciona um freio
       automático toda vez que você tenta ultrapassá-lo — por isso estratégia sozinha não segura. É aqui
@@ -1073,15 +1096,16 @@
         <span class="pill">Hipnoterapia</span>
         <span class="pill">PNL</span>
       </div>
-      <img src="metodo-termometro.png" alt="O limite seguro e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" style="display:block;width:400px;max-width:100%;margin:22px auto 0;border-radius:14px;box-shadow:0 16px 48px rgba(0,0,0,.45);" loading="lazy">
     </div>
 
   </div>
-</section>
 
-<!-- ═══════════════════════ DIFERENCIAL RSN (laranja) ═══════════════════════ -->
-<section class="diferencial sec-laranja">
-  <div class="container narrow">
+  <!-- ── DIFERENCIAL RSN — dentro da mesma secao do metodo (pedido dela):
+       ate aqui a pagina responde "o que e o metodo"; daqui em diante,
+       "por que ele chega onde os outros param". Mesmo fundo escuro.
+       Container proprio (1060px) porque a escada e mais larga que o
+       .narrow (760px) do bloco do metodo. ── -->
+  <div class="container esc-wrap">
     <div class="escada">
       <h3>Diferencial do método RSN</h3>
       <p class="esc-sub">Por que ele chega onde os outros métodos param</p>
@@ -1098,7 +1122,7 @@
         </div>
         <div class="esc-item esc-item--forte">
           <span class="esc-q">Nenhum</span>
-          <p>Chega na camada invisível onde o <strong>bloqueio</strong> é gerado.</p>
+          <p>Chega na camada invisível onde o <strong>freio de proteção</strong> é desativado.</p>
         </div>
       </div>
 
@@ -1107,13 +1131,13 @@
   </div>
 </section>
 
-<!-- ═══════════════════════ OS PILARES (escura) ═══════════════════════ -->
-<section class="vivencia escura">
+<!-- ═══════════════════════ OS PILARES (laranja) ═══════════════════════ -->
+<section class="vivencia sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">A vivência</span></div>
     <h2 style="text-align:center;">Como funciona a sua transformação</h2>
 
-    <img src="pilares.jpg" class="pilares-img" alt="Três colunas de mármore escuro com filamentos de luz dourada por dentro, a luz crescendo da primeira para a terceira" loading="lazy">
+    <img src="pilares-v2.jpg" class="pilares-img" alt="Quatro colunas de mármore escuro com filamentos de luz dourada por dentro, a luz crescendo da primeira para a quarta" loading="lazy">
 
     <div class="etapas-card">
     <h3 style="text-align:center;font-size:1.55rem;margin:4px 0 26px;">Os pilares do método</h3>
@@ -1130,7 +1154,7 @@
         <div class="etapa-num">02</div>
         <div>
           <h4>Desbloqueio ao vivo</h4>
-          <p>Com a minha condução, a <strong>Recalibração do Sistema Nervoso</strong> desativa o freio que é acionado toda vez que você tenta ultrapassar o seu limite seguro — o mesmo freio que te faz depender de indicação, dar desconto sem pedirem e recuar justo quando começa a dar certo.</p>
+          <p>Com a minha condução, usamos o <strong>Método RSN</strong> e desativamos o freio que é acionado toda vez que você tenta ultrapassar o seu limite seguro — o mesmo freio que te faz depender de indicação, dar desconto sem pedirem e recuar justo quando começa a dar certo.</p>
         </div>
       </div>
       <div class="etapa">
@@ -1155,11 +1179,11 @@
       <p style="color:var(--cinza);text-align:center;margin-bottom:16px;">Ao vivo, você participa de práticas reais, não é apenas conteúdo:</p>
       <div class="praticas-item">
         <span>✦</span>
-        <p><strong>O diagnóstico guiado que abre o encontro</strong>: não é um teste genérico da internet, é o seu mapa pessoal saindo na hora, comigo, em tempo real.</p>
+        <p><strong>O diagnóstico guiado abre nosso encontro</strong>: não é um teste genérico da internet, é o mapa do que trava seu crescimento saindo na hora, comigo, em tempo real.</p>
       </div>
       <div class="praticas-item">
         <span>✦</span>
-        <p><strong>Um exercício guiado de recalibração do sistema nervoso</strong>, que já provoca um grande desbloqueio das crenças que travam o seu crescimento.</p>
+        <p><strong>Um exercício guiado de recalibração do sistema nervoso</strong>, que já provoca um grande desbloqueio e destrava o seu crescimento.</p>
       </div>
     </div>
 
@@ -1172,7 +1196,7 @@
 </section>
 
 <!-- ════════════════════════════ BENEFÍCIOS ════════════════════════════ -->
-<section class="beneficios sec-laranja">
+<section class="beneficios escura">
   <div class="container">
     <h2 style="text-align:center;">O que muda após a Recalibração</h2>
 
@@ -1192,7 +1216,7 @@
 </section>
 
 <!-- ════════════════════════════ BÔNUS ════════════════════════════ -->
-<section class="bonus escura">
+<section class="bonus sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">Bônus exclusivos</span></div>
     <h2 style="text-align:center;">Você ainda leva estes bônus</h2>
@@ -1219,7 +1243,7 @@
 </section>
 
 <!-- ════════════════════════════ OFERTA / EVENTO ════════════════════════════ -->
-<section class="oferta sec-laranja">
+<section class="oferta escura">
   <div class="container">
     <div style="text-align:center;"><span class="label">O evento</span></div>
     <h2>O que você precisa saber<br>antes de garantir sua vaga</h2>
@@ -1279,7 +1303,7 @@
 </section>
 
 <!-- ════════════════════════════ FAQ ════════════════════════════ -->
-<section class="faq escura">
+<section class="faq sec-laranja">
   <div class="container">
     <div style="text-align:center;"><span class="label">Dúvidas frequentes</span></div>
     <h2>Respostas para as principais dúvidas</h2>
@@ -1316,7 +1340,7 @@
 </section>
 
 <!-- ════════════════════════════ CTA FINAL ════════════════════════════ -->
-<section class="cta-final sec-laranja">
+<section class="cta-final escura">
   <div class="container">
     <span class="label">A decisão</span>
     <h2>Você tem dois caminhos agora</h2>
