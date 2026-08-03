@@ -821,6 +821,13 @@
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 250px; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+      /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
+         vaos, padding e o rotulo; as promessas nao sao tocadas */
+      .segredos { padding: 28px 0; }
+      .segredos-list { margin-top: 20px; gap: 16px; }
+      .segredo-row, .segredo-row.rev { padding: 16px 20px; gap: 6px; }
+      .segredo-title .num { font-size: 1.5rem; }
+      .segredos .center-cta { margin-top: 20px; }
       .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
       .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
       .segredo-div { display: none; }
@@ -828,6 +835,14 @@
       .pq-list { grid-template-columns: 1fr; }
       .esc-grid { grid-template-columns: 1fr; gap: 12px; }
       .pq-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
+      /* ── SECAO DO PROBLEMA EM UMA TELA DO CELULAR (pedido dela) ──
+         Nao e compressao geral: sao vaos e a arte desta secao. O texto e o
+         corpo das letras ficam intactos. */
+      .problema { padding: 28px 0; }
+      .problema h2 { margin-bottom: 16px; }
+      .problema .sec-img { width: 190px; margin-bottom: 16px; }
+      .problema p { margin-bottom: 12px; }
+      .problema .destaque-box { margin-top: 14px; }
       /* no celular 320px ocupam 82% da largura da tela: as artes caem para
          250px (e a capa do livro, que e retrato, para 140px) */
       .sec-img, .pilares-img { width: 250px; }
@@ -887,9 +902,9 @@
     <h2>Por que isso continua<br>acontecendo com você?</h2>
     <img src="problema-errado-comigo.jpg" class="sec-img sec-img--quad" alt="Terapeuta pensativa diante do computador, com o certificado na parede e o WhatsApp em silêncio: o que há de errado comigo?" loading="lazy">
     <p>
-      Você já tentou de tudo: mais um curso, mais uma certificação, terapia, tentar aparecer
-      nas redes. E mesmo assim o WhatsApp fica quieto por dias, o faturamento do mês bom não
-      se repete no seguinte, e na hora de falar o seu valor para o cliente, você trava.
+      Você já tentou de tudo: curso, certificação, terapia, aparecer nas redes. E o WhatsApp
+      segue quieto por dias, o mês bom não se repete no seguinte, e na hora de falar o seu
+      valor, você trava.
     </p>
     <p>
       Então vem a pergunta: "o que há de errado comigo?" A resposta é: <strong>nada</strong>.
