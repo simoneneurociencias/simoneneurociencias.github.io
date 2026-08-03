@@ -393,6 +393,8 @@
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
     .nao-para li::before { content: "✕"; position: absolute; left: 0; color: var(--laranja); font-size: .85rem; }
+    .nao-para p { color: var(--cinza); }
+    .nao-para p strong { color: var(--laranja-2); }
     .para-quem .center-cta { margin-top: 30px; }
 
     /* ════════ COMO FUNCIONA ════════ */
@@ -850,6 +852,14 @@
       .sec-img, .pilares-img { width: 250px; }
       /* no celular a foto tambem fica nos 320px das demais imagens */
       .pq-foto img { max-width: 250px; margin: 0 auto; }
+      /* ── SECAO 'PARA QUEM E' EM UMA TELA DO CELULAR (pedido dela) ── */
+      .para-quem { padding: 20px 0; }
+      .para-quem h2 { margin-bottom: 8px; }
+      .para-quem .pq-sub { margin-bottom: 16px; }
+      .para-quem .pq-grid { gap: 16px; }
+      .para-quem .pq-foto img { max-width: 130px; }
+      .para-quem .pq-list { gap: 9px; }
+      .para-quem .nao-para { margin-top: 16px !important; padding: 14px 18px; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
       /* no celular a foto volta a vir primeiro nas duas secoes */
       .pq-grid--rev .pq-foto { order: 0; }
@@ -985,8 +995,8 @@
 <!-- ════════════════════════════ PARA QUEM É ════════════════════════════ -->
 <section class="para-quem sec-laranja">
   <div class="container">
-    <h2 style="text-align:center;">Para quem é este webinário</h2>
-    <p class="pq-sub">É para terapeutas, formados ou em formação, que:</p>
+    <h2 style="text-align:center;">Para quem é</h2>
+    <p class="pq-sub">Para terapeutas, formados ou em formação:</p>
 
     <!-- os sete perfis ficam SEMPRE em lista de texto (pedido dela), no
          computador e no celular; a arte volta a ser a do antes/depois, sem
@@ -1006,17 +1016,10 @@
       </ul>
     </div>
 
-    <div class="center-cta">
-      <a href="https://chk.eduzz.com/797ZYA480E" target="_blank" rel="noopener noreferrer" class="btn">É para mim!</a>
-    </div>
 
     <div class="nao-para" style="max-width:640px;margin:30px auto 0;">
-      <h4>Não é para você se busca apenas:</h4>
-      <ul>
-        <li>Marketing e posicionamento em redes sociais</li>
-        <li>Soluções técnicas de vendas</li>
-        <li>Resultados sem trabalho interno</li>
-      </ul>
+      <p><strong>Não é para você</strong> se busca apenas marketing, técnicas de venda ou
+      resultado sem trabalho interno.</p>
     </div>
   </div>
 </section>
