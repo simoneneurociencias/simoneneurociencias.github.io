@@ -369,14 +369,15 @@
        320x320; as em retrato (capa do livro, termometro) mantem a propria
        proporcao para nao cortar o que esta escrito dentro delas. */
     .sec-img {
-      width: 320px; max-width: 100%; height: auto; display: block;
+      width: 100%; max-width: 640px; height: auto; display: block;
       margin: 0 auto 26px; border-radius: 12px;
       box-shadow: 0 18px 50px rgba(0,0,0,.45);
     }
     .sec-img--quad { aspect-ratio: 1/1; object-fit: cover; }
     /* o cerebro e a capa do livro sao os dois retratos da pagina: menores que
        os 320px do padrao, a pedido dela */
-    .como .sec-img { width: 250px; }
+    /* retrato 2:3 — com a largura do texto ficaria quase 1000px de altura */
+    .como .sec-img { width: 320px; }
 
     /* fecho da secao dos segredos: leve, sem caixa, so o corpo maior */
     .fecho-segredos {
@@ -476,7 +477,9 @@
     .sec-laranja .esc-fecho strong { color: #ffd9c2; }
     .sec-laranja .escada h3 { color: #fff; }
     .sec-laranja .metodo-h2 .mn-nome { color: #2a1008; }
-    .sec-laranja .como > .container > p.intro,
+    /* .como TEM a classe sec-laranja (mesmo elemento), entao o seletor
+       descendente '.sec-laranja .como' nao pega — precisa ser .como.sec-laranja */
+    .como.sec-laranja > .container > p.intro,
     .sec-laranja .esc-lead,
     .sec-laranja .metodo-ciencias { color: rgba(255,255,255,.94) !important; }
     .sec-laranja .pill { color: #fff; border-color: rgba(255,255,255,.55); background: rgba(10,10,12,.22); }
@@ -754,7 +757,7 @@
     .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
     /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
     .pilares-img {
-      width: 320px; max-width: 100%; height: auto; display: block;
+      width: 100%; max-width: 640px; height: auto; display: block;
       margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
     }
     .vivencia h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
@@ -858,7 +861,7 @@
       .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
       .form-note { font-size: min(.9rem, 1.65vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
-      .mentora-photo { max-width: 250px; margin: 0 auto; }
+      .mentora-photo { max-width: 100%; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
       /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
          vaos, padding e o rotulo; as promessas nao sao tocadas */
@@ -879,14 +882,14 @@
          corpo das letras ficam intactos. */
       .problema { padding: 28px 0; }
       .problema h2 { margin-bottom: 16px; }
-      .problema .sec-img { width: 150px; margin-bottom: 14px; }
+      .problema .sec-img { width: 100%; margin-bottom: 14px; }
       .problema p { margin-bottom: 12px; }
       .problema .destaque-box { margin-top: 14px; padding: 16px 20px; }
       /* no celular 320px ocupam 82% da largura da tela: as artes caem para
          250px (e a capa do livro, que e retrato, para 140px) */
-      .sec-img, .pilares-img { width: 250px; }
+      .sec-img, .pilares-img { width: 100%; }
       /* no celular a foto tambem fica nos 320px das demais imagens */
-      .pq-foto img { max-width: 250px; margin: 0 auto; }
+      .pq-foto img { max-width: 100%; margin: 0 auto; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
       /* no celular a foto volta a vir primeiro nas duas secoes */
       .pq-grid--rev .pq-foto { order: 0; }
