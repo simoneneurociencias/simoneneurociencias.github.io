@@ -134,6 +134,9 @@
     .escura, .escura h2, .escura h3, .escura h4 { color: var(--creme); }
     .escura p { color: var(--cinza); }
     /* ════════ BONUS ════════ */
+    /* mesmo corpo dos titulos das outras secoes (Para quem e, O que muda,
+       Como funciona) — o dos bonus herdava o tamanho base e ficava menor */
+    .bonus h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 10px; }
     .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
     .bonus-card { position: relative; background: var(--preto-2); border: 1px solid rgba(229,67,42,.32); border-radius: 18px; padding: 26px 26px 28px; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
     /* nota em degradê rosa->laranja (tons claros: o --grad-secao e escuro demais p/ texto) */
@@ -268,7 +271,7 @@
     .problema p strong { color: var(--creme); }
     /* as cenas da secao do problema: cada uma e um flash concreto, com um
        travessao laranja no lugar do marcador de lista */
-    .cenas { list-style: none; margin: 22px auto 0; max-width: 640px; display: grid; gap: 14px; }
+    .cenas { list-style: none; margin: 18px auto 0; max-width: 640px; display: grid; gap: 11px; }
     .cenas li { position: relative; padding-left: 26px; line-height: 1.5; }
     .cenas li::before { content: "—"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
     .sec-laranja .cenas li { color: #fff; }
@@ -882,7 +885,10 @@
          corpo das letras ficam intactos. */
       .problema { padding: 28px 0; }
       .problema h2 { margin-bottom: 16px; }
-      .problema .sec-img { width: 100%; margin-bottom: 14px; }
+      /* a arte alinhada a coluna ficaria 340px de altura (quadrada); em 3:2
+         ela mantem a largura do texto e economiza ~115px. object-position
+         alto preserva o topo, onde esta o "O QUE HA DE ERRADO COMIGO?" */
+      .problema .sec-img { width: 100%; margin-bottom: 14px; aspect-ratio: 16/9; object-fit: cover; object-position: center 8%; }
       .problema p { margin-bottom: 12px; }
       .problema .destaque-box { margin-top: 14px; padding: 16px 20px; }
       /* no celular 320px ocupam 82% da largura da tela: as artes caem para
@@ -1221,10 +1227,10 @@
           </p>
           <p>
             São <strong>25 anos de trajetória</strong> e mais de <strong>3 mil vidas
-            transformadas</strong>. <strong>Neurocientista</strong>, graduada em Neurociências e em
-            Coaching e Desenvolvimento Humano, <strong>analista comportamental pelo Big Five Factor
-            Model</strong> — o modelo de personalidade com maior respaldo científico —,
-            <strong>expert em PSYCH-K®</strong> e <strong>hipnoterapeuta Faixa Ouro</strong>,
+            transformadas</strong>. Neurocientista, graduada em Neurociências e em
+            Coaching e Desenvolvimento Humano, analista comportamental pelo Big Five Factor
+            Model — o modelo de personalidade com maior respaldo científico —,
+            expert em PSYCH-K® e hipnoterapeuta Faixa Ouro,
             título Omni para quem alcança 100 mil/mês na área.
           </p>
           <p>
@@ -1285,7 +1291,7 @@
       <div class="bonus-card">
         <div class="bonus-tag">Bônus 02</div>
         <h3>O Diagnóstico de Crescimento liberado para você aplicar</h3>
-        <p>A mesma ferramenta que abre o nosso encontro, <strong>liberada para você usar nos seus eventos e atendimentos</strong>. São 12 afirmações que devolvem na hora o índice de potencial de crescimento de quem responde, com a leitura de cada eixo e o resultado em PDF. Em vez de pedir o contato em troca de nada, <strong>você entrega um diagnóstico de verdade</strong> — e quem responde chega até você já sabendo o que precisa resolver.</p>
+        <p>A mesma ferramenta que abre o nosso encontro, <strong>liberada para você usar nos seus eventos e atendimentos</strong>: 12 afirmações que devolvem na hora o índice de potencial de crescimento, com a leitura de cada eixo e o resultado em PDF. Em vez de captar contato em troca de nada, <strong>quem responde chega até você já sabendo o que precisa resolver</strong>.</p>
       </div>
     </div>
   </div>
