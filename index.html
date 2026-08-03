@@ -402,7 +402,9 @@
        caber numa linha no desktop */
     /* duas linhas do mesmo corpo, separadas so pela cor: a sigla em branco e
        o nome por extenso em laranja (pedido dela) */
-    .metodo-h2 { font-size: clamp(1.35rem, 3.4vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
+    /* o vw manda ate ~440px de largura: e o que faz "Recalibracao do Sistema
+       Nervoso" caber em UMA linha tambem em 320 e 360px (pedido dela) */
+    .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
     .metodo-h2 .mn-sigla { display: block; color: #fff; }
     .metodo-h2 .mn-nome { display: block; color: var(--laranja-2); }
     /* ── ESCADA "a maioria / alguns / nenhum" ──
@@ -902,9 +904,9 @@
     <h2>Por que isso continua<br>acontecendo com você?</h2>
     <img src="problema-errado-comigo.jpg" class="sec-img sec-img--quad" alt="Terapeuta pensativa diante do computador, com o certificado na parede e o WhatsApp em silêncio: o que há de errado comigo?" loading="lazy">
     <p>
-      Você já tentou de tudo: curso, certificação, terapia, aparecer nas redes. E o WhatsApp
-      segue quieto por dias, o mês bom não se repete no seguinte, e na hora de falar o seu
-      valor, você trava.
+      Você já tentou de tudo: curso, certificação, tentar aparecer nas redes. E mesmo assim o
+      WhatsApp fica quieto por dias, o faturamento do mês oscila sem previsibilidade, e na hora
+      de falar o seu valor para o cliente, você trava.
     </p>
     <p>
       Então vem a pergunta: "o que há de errado comigo?" A resposta é: <strong>nada</strong>.
