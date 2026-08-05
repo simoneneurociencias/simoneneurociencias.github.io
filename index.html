@@ -380,7 +380,7 @@
     /* o cerebro e a capa do livro sao os dois retratos da pagina: menores que
        os 320px do padrao, a pedido dela */
     /* retrato 2:3 — com a largura do texto ficaria quase 1000px de altura */
-    .como .sec-img { width: 320px; }
+    .como .sec-img { width: 320px; max-width: 100%; }
 
     /* fecho da secao dos segredos: leve, sem caixa, so o corpo maior */
     .fecho-segredos {
@@ -434,6 +434,19 @@
        o nome por extenso em laranja (pedido dela) */
     /* o vw manda ate ~440px de largura: e o que faz "Recalibracao do Sistema
        Nervoso" caber em UMA linha tambem em 320 e 360px (pedido dela) */
+    /* o nome do metodo dentro de uma caixa preta com degrade alaranjado forte
+       (pedido dela). Sobre a secao laranja ela vira o bloco mais escuro da
+       tela, entao o nome por extenso volta ao laranja claro */
+    .metodo-caixa {
+      max-width: 640px; margin: 0 auto 18px; padding: 22px 26px;
+      background: linear-gradient(155deg, #0a0a0c 0%, #2a1209 48%, #7d2c12 100%);
+      border: 1px solid rgba(229,67,42,.6); border-radius: 16px;
+      box-shadow: 0 16px 46px rgba(0,0,0,.34);
+    }
+    .metodo-caixa .metodo-h2 { margin-bottom: 0 !important; }
+    .metodo-caixa .mn-sigla { color: #fff; }
+    /* vence a regra que pinta o nome de escuro quando a secao e laranja */
+    .metodo-caixa .mn-nome { color: var(--laranja-2) !important; }
     .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
     .metodo-h2 .mn-sigla { display: block; color: #fff; }
     .metodo-h2 .mn-nome { display: block; color: var(--laranja-2); }
@@ -637,7 +650,8 @@
     .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
 
     /* ── Dois caminhos (CTA final) ── */
-    .cta-final .label { color: #fff; }
+    /* pedido dela: o kicker desta secao e maior que os das outras e em laranja */
+    .cta-final .label { color: var(--laranja-2); font-size: 1rem; letter-spacing: .2em; }
     .cta-final .cta-intro { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 34px; }
     .caminhos {
       display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
@@ -666,10 +680,10 @@
     .caminho--ativo p { color: rgba(255,255,255,.78); }
     .caminho--ativo em { font-style: normal; color: #fff; font-weight: 600; }
     .caminho .c-num {
-      font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+      font-size: .84rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; margin-bottom: 10px;
     }
-    .caminho p { font-size: .98rem; margin: 0; max-width: none; }
+    .caminho p { font-size: 1.08rem; line-height: 1.55; margin: 0; max-width: none; }
     .caminho strong { color: var(--laranja-2); font-weight: 600; }
     @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
@@ -943,7 +957,7 @@
           <input type="tel"   name="whatsapp" placeholder="Seu WhatsApp (com DDD)"  autocomplete="tel"   required>
           <button type="submit" class="btn btn--full">Garantir minha vaga agora</button>
         </form>
-        <p class="form-note">🎁 Guia Prático <strong style="color:var(--creme);font-weight:600;">Destrave as 7 Crenças da Abundância</strong></p>
+        <p class="form-note">🎁 Receba após a inscrição o Guia Prático <strong style="color:var(--creme);font-weight:600;">Destrave as 7 Crenças da Abundância</strong></p>
       </div>
       <div class="hero-photo">
         <img src="simone-capa-nobg.png" alt="Simone Carneiro, Neurocientista e Mentora de Alta Performance" loading="eager" />
@@ -1043,7 +1057,7 @@
 <section class="como sec-laranja">
   <div class="container narrow">
     <div style="text-align:center;"><span class="label">O método por trás da transformação</span></div>
-    <h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span><span class="mn-nome">Recalibração do Sistema Nervoso</span></h2>
+    <div class="metodo-caixa"><h2 class="metodo-h2"><span class="mn-sigla">Método RSN</span><span class="mn-nome">Recalibração do Sistema Nervoso</span></h2></div>
     <img src="metodo-termometro.png" class="sec-img" alt="O limite seguro e o termômetro interno do sistema nervoso: seu sistema busca segurança, não crescimento" loading="lazy">
     <p class="intro">
       O seu sistema nervoso está calibrado para um limite seguro e aciona um freio
