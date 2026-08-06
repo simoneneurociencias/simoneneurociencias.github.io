@@ -104,7 +104,25 @@
       .nota-grad { color: transparent; }
     }
 
+    /* topo do card: a pilula do bonus e, a direita, o valor declarado.
+       O valor NAO e riscado de proposito - riscar seria desconto teatral,
+       que ela tirou da pagina em 09/jul */
+    .bonus-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .bonus-valor {
+      font-size: .82rem; font-weight: 700; letter-spacing: .04em;
+      color: var(--laranja-2); white-space: nowrap; margin-bottom: 14px;
+    }
     .bonus-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: var(--grad-secao); padding: 6px 14px; border-radius: 20px; margin-bottom: 14px; }
+    /* listas dos cards de bonus: icone no lugar do marcador padrao.
+       Os icones sao <symbol> definidos uma vez no topo da secao e reusados */
+    .bonus-lista { list-style: none; margin: 15px 0 0; padding: 0; display: grid; gap: 11px; }
+    .bonus-lista li {
+      display: flex; align-items: flex-start; gap: 11px;
+      font-size: .98rem; line-height: 1.5; color: var(--creme);
+    }
+    .bonus-ico {
+      flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; color: var(--laranja-2);
+    }
     .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: 1.3rem; color: var(--creme); margin-bottom: 10px; }
     .bonus-card p { color: var(--cinza); font-size: .98rem; line-height: 1.6; }
     .bonus-card strong { color: var(--creme); }
