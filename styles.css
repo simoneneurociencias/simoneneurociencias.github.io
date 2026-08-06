@@ -12,9 +12,16 @@
       --creme:      #f4f0e9;   /* off-white quente */
       --cinza:      #b8b3aa;   /* texto secundário */
       --borda:      rgba(229,67,42,.20);
-      /* tamanho unico do paragrafo de abertura de secao — mexer aqui muda
-         todas as secoes de uma vez (ver o bloco "TEXTO DE ABERTURA") */
-      --fs-intro:   clamp(1.05rem, 1.5vw, 1.15rem);
+      /* ── ESCALA TIPOGRAFICA (padronizada em 06/08) ─────────────────────────
+         Antes cada secao tinha o seu proprio clamp: os h2 iam de 24px a 45px e
+         os paragrafos tinham 7 tamanhos diferentes. Agora tudo sai daqui.
+         Mexer numa variavel muda a pagina inteira de uma vez. */
+      --fs-h2:      clamp(1.85rem, 4.2vw, 2.6rem);   /* titulo de secao      */
+      --fs-h3:      clamp(1.28rem, 2.6vw, 1.62rem);  /* titulo de bloco      */
+      --fs-h4:      clamp(1.02rem, 1.9vw, 1.15rem);  /* titulo de item/card  */
+      --fs-intro:   clamp(1.05rem, 1.5vw, 1.15rem);  /* abertura de secao    */
+      --fs-corpo:   1rem;                            /* texto corrido        */
+      --fs-destaque: clamp(1.12rem, 2.3vw, 1.34rem); /* frase de virada      */
     }
 
     body {
@@ -88,7 +95,7 @@
     /* ════════ BONUS ════════ */
     /* mesmo corpo dos titulos das outras secoes (Para quem e, O que muda,
        Como funciona) — o dos bonus herdava o tamanho base e ficava menor */
-    .bonus h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 10px; }
+    .bonus h2 { font-size: var(--fs-h2); margin-bottom: 10px; }
     .bonus-list { margin-top: 34px; display: grid; grid-template-columns: 1fr; gap: 20px; }
     .bonus-card { position: relative; background: var(--preto-2); border: 1px solid rgba(229,67,42,.32); border-radius: 18px; padding: 26px 26px 28px; box-shadow: 0 14px 40px rgba(0,0,0,.3); }
     /* nota em degradê rosa->laranja (tons claros: o --grad-secao e escuro demais p/ texto) */
@@ -149,11 +156,11 @@
     .bonus-ico {
       flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; color: var(--laranja-2);
     }
-    .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: 1.3rem; color: var(--creme); margin-bottom: 10px; }
+    .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-h3); color: var(--creme); margin-bottom: 10px; }
     .bonus-card p { color: var(--cinza); font-size: .98rem; line-height: 1.6; }
     .bonus-card strong { color: var(--creme); }
     .section-title { text-align: center; }
-    .section-title h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); text-wrap: balance; }
+    .section-title h2 { font-size: var(--fs-h2); text-wrap: balance; }
     .section-title p { color: var(--cinza); max-width: 640px; margin: 16px auto 0; }
     .grafite { background: var(--grafite); }
 
@@ -262,39 +269,85 @@
     }
 
     /* ════════ PROBLEMA ════════ */
-    .problema h2 { font-size: clamp(1.6rem, 3.8vw, 2.3rem); text-align: center; margin-bottom: 24px; }
+    .problema h2 { font-size: var(--fs-h2); text-align: center; margin-bottom: 24px; }
     .problema p { color: var(--cinza); margin-bottom: 16px; text-align: center; }
     .problema p strong { color: var(--creme); }
     /* as cenas da secao do problema: cada uma e um flash concreto, com um
        travessao laranja no lugar do marcador de lista */
+    /* ── O CUSTO DE CONTINUAR (amplificacao, abre a secao escura) ──
+       Os dois blocos desta secao (custo e falsa-causa) precisam LER COMO DUAS
+       SECOES: cada um tem rotulo proprio e um vao grande entre eles. Sem isso
+       viram um texto so e a leitura se perde */
+    .custo { max-width: 980px; margin: 0 auto; text-align: center; }
+    .custo h2 { font-size: var(--fs-h2); margin-bottom: 18px; }
+    .custo .label { margin-bottom: 10px; display: inline-block; }
+    /* a frase entre as duas grades: e a virada do bloco, ganha respiro dos dois lados */
+    .custo .custo-virada { margin: 34px auto 30px; padding-top: 0; border-top: 0; }
+    .custo p { color: var(--cinza); line-height: 1.6; margin: 0 auto 14px; max-width: 640px; }
+    .custo strong { color: var(--creme); }
+    .custo .cenas { text-align: left; max-width: 520px; margin-top: 14px; }
+    .custo .custo-lead { margin-top: 20px; }
+    .custo .custo-fecho { margin-top: 22px; }
+    /* as duas secoes novas usam a MESMA grade de "o que muda" e "para quem e":
+       foto de um lado, lista do outro, alternando o lado entre elas */
+    .custo .pq-grid, .falsa-causa .pq-grid { margin: 26px auto; }
+    /* as secoes sao centralizadas, mas a lista da grade e alinhada a esquerda,
+       como em "o que muda" e "para quem e" — senao o check fica solto do texto */
+    .custo .pq-list, .falsa-causa .pq-list, .problema .pq-list { text-align: left; }
+    .problema .pq-grid { margin: 26px auto 30px; }
+    .custo .custo-virada {
+      font-family: 'Marcellus', Georgia, serif; color: var(--creme);
+      font-size: var(--fs-destaque); line-height: 1.45;
+      margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.16);
+    }
+    .custo .custo-virada strong { color: var(--laranja-2); }
+
     /* ── QUEBRA DA FALSA CAUSA (abre a secao escura dos 3 segredos) ── */
     .falsa-causa { max-width: 700px; margin: 0 auto 54px; text-align: center; }
-    .falsa-causa h2 { margin-bottom: 18px; }
+    .falsa-causa h2 { font-size: var(--fs-h2); margin-bottom: 18px; }
     .falsa-causa p { color: var(--cinza); line-height: 1.6; margin: 0 auto 14px; max-width: 640px; }
     .falsa-causa strong { color: var(--creme); }
-    .falsa-causa .fc-pergunta {
+    .custo .fc-pergunta {
       font-family: 'Marcellus', Georgia, serif; color: var(--laranja-2);
-      font-size: clamp(1.12rem, 2.3vw, 1.34rem); line-height: 1.4; margin: 20px auto 18px;
+      font-size: var(--fs-destaque); line-height: 1.4; margin: 20px auto 18px;
     }
-    .falsa-causa .fc-lead { margin-top: 20px; }
+    .custo .fc-lead { margin-top: 20px; }
     .falsa-causa .cenas { text-align: left; max-width: 480px; margin-top: 14px; }
-    .falsa-causa .fc-fecho { margin-top: 22px; }
+    /* fecho do bloco numa caixa com o degrade da marca (rosa -> laranja):
+       e a conclusao da secao e precisa saltar do fundo escuro */
+    .custo .fc-fecho {
+      max-width: 720px; margin: 32px auto 0; padding: 22px 28px;
+      background: var(--grad-secao); border-radius: 16px;
+      color: #fff; font-size: var(--fs-intro); line-height: 1.5;
+      box-shadow: 0 16px 44px rgba(0,0,0,.34);
+    }
+    .custo .fc-fecho strong { color: #fff; }
 
     /* blocos de texto da secao do problema (estrutura de identificacao) */
-    .problema .prob-abre { max-width: 640px; margin: 18px auto 0; text-align: center; }
+    .problema .prob-abre { max-width: 760px; margin: 18px auto 0; text-align: center; font-size: var(--fs-intro); }
     .problema .prob-vira {
       max-width: 640px; margin: 20px auto 0; text-align: center;
       font-weight: 700; font-size: 1.06rem;
     }
-    .problema .prob-fecha { max-width: 640px; margin: 22px auto 0; text-align: center; }
+    /* a PERGUNTA fica solta (destaque de texto) e o FECHO vai para a caixa com
+       o degrade da marca — mesmo padrao da secao seguinte */
+    .problema .prob-pergunta {
+      font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-destaque);
+      color: #fff; text-align: center; margin: 6px auto 0; max-width: 640px;
+    }
+    .problema .prob-fecha {
+      max-width: 720px; margin: 30px auto 0; padding: 22px 28px; text-align: center;
+      background: rgba(10,10,12,.34); border: 1px solid rgba(255,255,255,.22);
+      border-radius: 16px; font-size: var(--fs-corpo); line-height: 1.55;
+    }
     /* a pergunta e o ponto de virada da secao: centralizada, grande e sem a
        barra lateral, que puxava o texto para a esquerda */
     .problema .destaque-box {
       max-width: 640px; margin: 14px auto 0; text-align: center;
       border-left: 0; border-radius: 14px;
       border: 1px solid rgba(255,255,255,.22);
-      font-size: clamp(1.4rem, 3.4vw, 1.9rem); line-height: 1.3;
-      padding: 24px 26px;
+      font-size: var(--fs-destaque); line-height: 1.4;
+      padding: 22px 26px;
     }
 
     .cenas { list-style: none; margin: 18px auto 0; max-width: 640px; display: grid; gap: 11px; }
@@ -320,8 +373,32 @@
     }
 
     /* ════════ SEGREDOS (zig-zag) ════════ */
-    .segredos { position: relative; overflow: hidden; }
-    .segredos > .container { position: relative; z-index: 1; }
+    /* .diagnostico = a secao escura que abre com o custo e a falsa causa.
+       Herdou de .segredos quando os 3 segredos foram para depois do metodo */
+    .segredos, .diagnostico { position: relative; overflow: hidden; }
+    .segredos > .container, .diagnostico > .container { position: relative; z-index: 1; }
+    /* os 3 segredos e a vivencia dividem a mesma secao escura: sem esta folga
+       o botao dos segredos encosta no rotulo "A vivencia" */
+    .vivencia .center-cta { margin-bottom: 54px; }
+    .pilares-h3 { text-align: center; font-size: var(--fs-h3); margin: 4px 0 26px; }
+    /* a secao carrega DOIS blocos com larguras diferentes: os 3 segredos usam o
+       container cheio (1120px, como sempre usaram) e a vivencia usa a coluna
+       estreita de leitura. Sem isso os pilares esticam de ponta a ponta */
+    .viv-narrow { max-width: 760px; margin: 0 auto; }
+
+    /* ── SLOT DE IMAGEM DE SECAO ──────────────────────────────────────────
+       Padrao unico: a imagem entra LOGO DEPOIS do h2, largura da coluna de
+       texto, sem altura fixa (as artes dela sao 16:9 e cortar destroi).
+       Para usar numa secao nova, basta:
+       <img src="arquivo.jpg" class="sec-img" alt="..." loading="lazy"> */
+    .custo .sec-img, .falsa-causa .sec-img { margin: 4px auto 22px; }
+
+    /* ponte do metodo para os segredos */
+    .ponte-segredos {
+      max-width: 640px; margin: 26px auto 0; text-align: center;
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: var(--fs-destaque); line-height: 1.4;
+    }
     .segredos-list { margin-top: 54px; display: flex; flex-direction: column; gap: 44px; }
     .segredo-row {
       display: grid;
@@ -376,7 +453,7 @@
     }
     .mentora-photo { position: relative; max-width: 320px; margin: 0 auto; }
     .mentora-photo img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 12px; position: relative; z-index: 2; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-    .mentora-copy h2 { color: #fff; font-size: clamp(1.7rem, 3.8vw, 2.4rem); margin-bottom: 20px; }
+    .mentora h2, .mentora-copy h2 { color: #fff; font-size: var(--fs-h2); margin-bottom: 20px; }
     /* texto corrido: os 6 cards de credencial viraram prosa, entao o bloco
        passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
     .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-intro); text-align: left; }
@@ -413,7 +490,7 @@
     /* o cerebro e a capa do livro sao os dois retratos da pagina: menores que
        os 320px do padrao, a pedido dela */
     /* retrato 2:3 — com a largura do texto ficaria quase 1000px de altura */
-    .como .sec-img { width: 320px; max-width: 100%; }
+    .como .sec-img { width: 240px; max-width: 100%; }
 
     /* fecho da secao dos segredos: leve, sem caixa, so o corpo maior */
     .fecho-segredos {
@@ -423,10 +500,10 @@
     .fecho-segredos strong { color: var(--laranja-2); font-weight: 600; }
 
     /* ════════ PARA QUEM ════════ */
-    .para-quem h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 12px; }
+    .para-quem h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 12px; }
     /* maior que as demais aberturas de secao, a pedido dela: e a frase que
        qualifica o publico. Por isso saiu da lista do --fs-intro */
-    .para-quem .pq-sub { text-align: center; font-size: clamp(1.2rem, 2.4vw, 1.5rem); margin: 0 auto 36px; max-width: 660px; }
+    .para-quem .pq-sub { text-align: center; font-size: var(--fs-destaque); margin: 0 auto 36px; max-width: 660px; }
     .pq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; max-width: 980px; margin: 0 auto; }
     .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     /* fecho da secao 'O que muda', abaixo da dupla foto+lista */
@@ -450,16 +527,16 @@
     .pq-grid--rev .pq-foto { order: 2; }
     .sec-laranja .pq-list li { color: #fff; }
     .sec-laranja .pq-list li::before { color: #fff; }
-    .beneficios h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 38px; }
+    .beneficios h2 { font-size: var(--fs-h2); margin-bottom: 38px; }
     .nao-para { margin: 34px 0 0; padding: 24px 26px; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; }
-    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: 1.05rem; }
+    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: var(--fs-h4); }
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
     .nao-para li::before { content: "✕"; position: absolute; left: 0; color: var(--laranja); font-size: .85rem; }
     .para-quem .center-cta { margin-top: 30px; }
 
     /* ════════ COMO FUNCIONA ════════ */
-    .como h2 { text-align: center; font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
+    .como h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 8px; }
     /* nome do metodo em uma linha so: a sigla em laranja, o nome cheio em
        creme. Corpo menor que os outros h2 porque a frase e longa — precisa
        caber numa linha no desktop */
@@ -500,8 +577,8 @@
     .esc-wrap { max-width: 1060px; }
     /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
     /* vence .escura h3 (mesma especificidade) por vir depois no arquivo */
-    .escada h3 { text-align: center; font-size: clamp(1.55rem, 3.4vw, 2.1rem); margin-bottom: 6px; color: var(--laranja-2); }
-    .esc-sub { text-align: center; color: var(--creme); font-size: clamp(1.05rem, 2.2vw, 1.3rem); margin-bottom: 14px; }
+    .escada h3 { text-align: center; font-size: var(--fs-h3); margin-bottom: 6px; color: var(--laranja-2); }
+    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-destaque); margin-bottom: 14px; }
     .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
     /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
        as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
@@ -596,7 +673,7 @@
     /* caixa alta + negrito (pedido dela). O Marcellus so vem em 400, entao o
        700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
        o resultado fica limpo no tamanho em que o titulo aparece. */
-    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: 1.05rem; font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
+    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
     .etapa p { color: var(--cinza); font-size: .96rem; }
     .etapa p strong { color: var(--creme); font-weight: 600; }
     /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
@@ -613,14 +690,14 @@
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
     .g-item { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; padding: 22px 22px; }
-    .g-item h3 { color: var(--laranja-2); font-size: 1.02rem; margin-bottom: 6px; }
+    .g-item h3 { color: var(--laranja-2); font-size: var(--fs-h4); margin-bottom: 6px; }
     .g-item p { color: var(--cinza); font-size: .93rem; }
     .benef-icon { display: inline-flex; width: 42px; height: 42px; color: var(--laranja); margin-bottom: 10px; }
     .benef-icon svg { width: 100%; height: 100%; }
 
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
-    .oferta h2 { font-size: clamp(1.6rem,3.8vw,2.3rem); margin-bottom: 30px; }
+    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
     .info-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 580px; margin: 0 auto 36px; }
     .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 170px; flex: 1; overflow: hidden; }
     /* as 3 imagens sao 1.751 — aspect-ratio exibe cada uma inteira, sem corte em nenhuma largura */
@@ -649,7 +726,7 @@
     .garantia-box strong { color: var(--creme); }
 
     /* ════════ FAQ ════════ */
-    .faq h2 { text-align: center; font-size: clamp(1.6rem,3.6vw,2.2rem); margin-bottom: 30px; }
+    .faq h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 30px; }
     .faq details {
       max-width: 760px; margin: 0 auto 12px;
       background: var(--preto-2); border: 1px solid var(--borda); border-radius: 10px;
@@ -664,7 +741,7 @@
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
     .cta-final { padding: 60px 0; }
-    .cta-final h2 { color: #fff; font-size: clamp(1.6rem,3.6vw,2.2rem); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
+    .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
     /* a secao virou escura: o botao volta ao degrade da paleta (preto sobre
@@ -695,7 +772,7 @@
     }
     .cta-final .cta-punch {
       font-family: 'Marcellus', Georgia, serif;
-      font-size: clamp(1.02rem, 1.9vw, 1.26rem);
+      font-size: var(--fs-destaque);
       line-height: 1.5; color: #fff;
       max-width: 640px; margin: 0 auto 26px;
       text-wrap: balance;
@@ -861,7 +938,7 @@
     /* a capa e retrato (491x720): 220px de largura da a MESMA ALTURA (~322px)
        das imagens quadradas de 320, entao ela fica menor sem sair do padrao */
     .livro-img img { width: 100%; max-width: 170px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
-    .livro h2 { font-size: clamp(1.7rem, 4vw, 2.5rem); margin-bottom: 12px; }
+    .livro h2 { font-size: var(--fs-h2); margin-bottom: 12px; }
     .livro-sub { color: var(--cinza); margin-bottom: 20px; text-align: center; }
     .livro-nome { padding: 14px 18px; border-left: 3px solid var(--laranja); background: var(--preto-2); border-radius: 0 10px 10px 0; margin-bottom: 24px; }
     .livro-nome strong { display: block; font-family: 'Marcellus', Georgia, serif; font-size: 1.25rem; color: var(--laranja-2); }
@@ -869,7 +946,7 @@
     .livro-itens { display: grid; grid-template-columns: 1fr; gap: 12px; }
     .livro-item { display: flex; gap: 14px; align-items: flex-start; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; padding: 16px 18px; }
     .li-ic { font-size: 1.5rem; flex-shrink: 0; line-height: 1.25; }
-    .livro-item h4 { color: var(--creme); font-size: 1.05rem; margin-bottom: 3px; }
+    .livro-item h4 { color: var(--creme); font-size: var(--fs-h4); margin-bottom: 3px; }
     .livro-item p { color: var(--cinza); font-size: .94rem; }
 
     /* ════════ SEÇÕES BRANCAS ════════ */
@@ -934,7 +1011,7 @@
       width: 100%; max-width: 640px; height: auto; display: block;
       margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
     }
-    .vivencia h2 { font-size: clamp(1.9rem, 4.4vw, 2.8rem); margin-bottom: 8px; }
+    .vivencia h2 { font-size: var(--fs-h2); margin-bottom: 8px; }
     /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
        queimar sobre o branco */
     .branco .etapas-card { background: #fbf8f4; border-color: rgba(229,67,42,.26); box-shadow: 0 14px 40px rgba(0,0,0,.08); }
@@ -1074,3 +1151,57 @@
       .livro-grid { grid-template-columns: 1fr; gap: 28px; }
       .livro-img { max-width: 140px; margin: 0 auto; }
     }
+
+    /* as 3 ciencias ganham caixa propria: soltas, sumiam no fundo laranja */
+    /* caixa que FECHA a secao do metodo: as tres ciencias + a ponte das tres
+       dimensoes. O "tres" aparece duas vezes de proposito, preparando os
+       3 segredos que vem logo abaixo */
+    .fecho-box {
+      max-width: 660px; margin: 30px auto 0; padding: 26px 28px;
+      background: rgba(10,10,12,.42); border: 1px solid rgba(255,255,255,.24);
+      border-radius: 18px; text-align: center;
+      box-shadow: 0 16px 44px rgba(0,0,0,.3);
+    }
+    .como .metodo-ciencias {
+      color: #fff !important; font-size: var(--fs-intro) !important;
+      margin: 0 0 14px !important;
+    }
+    .como .metodo-ciencias strong { color: var(--laranja-2); }
+    /* pilulas: fundo preto com o laranja da marca */
+    .como .pills .pill {
+      background: #0a0a0c; border: 1px solid var(--laranja);
+      color: var(--laranja-2); font-weight: 600;
+    }
+    .ciencias-ponte {
+      margin: 4px auto 0; padding-top: 0;
+      font-family: 'Marcellus', Georgia, serif; color: #fff;
+      font-size: var(--fs-destaque); line-height: 1.4;
+    }
+    .ciencias-ponte strong { color: var(--laranja-2); }
+    /* titulo do diferencial: estava do mesmo peso do texto em volta */
+    .escada h3 {
+      font-size: var(--fs-h2); color: #fff; margin-bottom: 10px;
+    }
+    .escada .esc-sub { color: rgba(255,255,255,.94); }
+
+    /* o fecho da escada passou a viver DENTRO da caixa (pedido dela: evitar
+       caixa dentro de caixa). Separado por linha, no topo */
+    .fecho-box .cx-fecho {
+      margin: 0 0 18px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92); font-size: var(--fs-corpo); line-height: 1.55;
+      background: none; border-left: 0; border-radius: 0;
+    }
+    .fecho-box .cx-fecho strong { color: var(--laranja-2); }
+    /* "3 dimensoes da mente" com o mesmo tratamento das pilulas: fundo preto */
+    .badge-dim {
+      display: inline-block; background: #0a0a0c; color: var(--laranja-2);
+      border: 1px solid var(--laranja); border-radius: 999px;
+      padding: 3px 14px; font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: .9em; font-weight: 700; white-space: nowrap;
+    }
+
+    /* as tres ciencias ficam SOLTAS (so as pilulas em caixa preta); quem ganha
+       caixa e o fecho da escada + a ponte das 3 dimensoes */
+    .como .metodo-ciencias { text-align: center; margin: 26px auto 12px !important; }
+    .como .pills { justify-content: center; margin-bottom: 4px; }
