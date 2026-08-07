@@ -1166,7 +1166,7 @@
       color: #fff !important; font-size: var(--fs-intro) !important;
       margin: 0 0 14px !important;
     }
-    .como .metodo-ciencias strong { color: var(--laranja-2); }
+    .como .metodo-ciencias strong { color: #0a0a0c; font-weight: 800; }
     /* pilulas: fundo preto com o laranja da marca */
     .como .pills .pill {
       background: #0a0a0c; border: 1px solid var(--laranja);
@@ -1205,3 +1205,787 @@
        caixa e o fecho da escada + a ponte das 3 dimensoes */
     .como .metodo-ciencias { text-align: center; margin: 26px auto 12px !important; }
     .como .pills { justify-content: center; margin-bottom: 4px; }
+
+    /* a dimensao embaixo do "Segredo NN": fecha a promessa das 3 dimensoes da
+       mente feita na secao do metodo. NAO revela o mecanismo — so o territorio */
+    .segredo-dim {
+      display: block; margin-top: 8px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: .78rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.62);
+    }
+
+    /* ── A VIRADA (fim da secao do metodo) ────────────────────────────────
+       Sai a caixa pesada: aqui a pagina passa da explicacao para o motivo de
+       se inscrever, e o tratamento e editorial — ornamento + tipografia grande */
+    .virada { max-width: 700px; margin: 40px auto 0; text-align: center; }
+    /* ornamento: duas linhas simetricas com o losango no meio */
+    .virada-orn {
+      position: relative; display: block; color: rgba(255,255,255,.75);
+      font-size: .7rem; line-height: 1;
+    }
+    .virada-orn::before, .virada-orn::after {
+      content: ""; position: absolute; top: 50%; height: 1px;
+      background: rgba(255,255,255,.34);
+    }
+    .virada-orn::before { left: 0; right: calc(50% + 16px); }
+    .virada-orn::after  { right: 0; left:  calc(50% + 16px); }
+    /* a frase de cima e o detalhe que prepara; quem manda e a .virada-nota */
+    .virada-frase {
+      font-family: 'Marcellus', Georgia, serif; color: rgba(255,255,255,.92);
+      font-size: var(--fs-intro); line-height: 1.55;
+      margin: 22px auto 18px; max-width: 620px;
+    }
+    .virada-frase em { font-style: normal; color: #ffd9c2; }
+    .virada-frase strong { color: #fff; white-space: nowrap; }
+    /* a faixa entre os dois ornamentos guarda o paragrafo de origem do metodo —
+       o mais importante da pagina (definicao dela) */
+    .virada-faixa { margin-top: 26px; }
+    .virada-nota {
+      font-family: 'Marcellus', Georgia, serif; color: #fff;
+      font-size: clamp(1.3rem, 2.9vw, 1.75rem); line-height: 1.45;
+      max-width: 700px; margin: 26px auto 18px;
+    }
+    /* destaque premium, sem pilula: caixa alta, entrelinha aberta e um filete
+       fino em ambar por baixo */
+    .dim-destaque {
+      color: #ffd9c2; letter-spacing: .06em; white-space: nowrap;
+      border-bottom: 1px solid rgba(255,217,194,.6); padding-bottom: 2px;
+    }
+    .virada-gancho {
+      font-family: 'Marcellus', Georgia, serif; color: rgba(255,255,255,.94);
+      font-size: clamp(1.08rem, 2.2vw, 1.28rem); line-height: 1.5;
+      max-width: 660px; margin: 0 auto 26px;
+    }
+    .virada-gancho strong { display: block; margin-top: 6px; color: #fff; }
+    .sec-img--quad { aspect-ratio: 1/1; object-fit: cover; }
+    /* o cerebro e a capa do livro sao os dois retratos da pagina: menores que
+       os 320px do padrao, a pedido dela */
+    /* retrato 2:3 — com a largura do texto ficaria quase 1000px de altura */
+    .como .sec-img { width: 240px; max-width: 100%; }
+
+    /* fecho da secao dos segredos: leve, sem caixa, so o corpo maior */
+    .fecho-segredos {
+      text-align: center; color: var(--creme); font-size: var(--fs-intro);
+      max-width: 620px; margin: 16px auto 0; text-wrap: balance;
+    }
+    .fecho-segredos strong { color: var(--laranja-2); font-weight: 600; }
+
+    /* ════════ PARA QUEM ════════ */
+    .para-quem h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 12px; }
+    /* maior que as demais aberturas de secao, a pedido dela: e a frase que
+       qualifica o publico. Por isso saiu da lista do --fs-intro */
+    .para-quem .pq-sub { text-align: center; font-size: var(--fs-destaque); margin: 0 auto 36px; max-width: 660px; }
+    .pq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; max-width: 980px; margin: 0 auto; }
+    .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+    /* fecho da secao 'O que muda', abaixo da dupla foto+lista */
+    .fecho-muda {
+      text-align: center; color: var(--creme); font-size: var(--fs-intro);
+      max-width: 640px; margin: 28px auto 0; text-wrap: balance;
+      /* caixa preta com degrade alaranjado, o mesmo das secoes escuras */
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border: 1px solid rgba(229,67,42,.45); border-radius: 14px;
+      padding: 20px 26px; box-shadow: 0 14px 40px rgba(0,0,0,.28);
+    }
+    .fecho-muda strong { color: #fff; font-weight: 700; }
+    .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
+    .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
+    .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
+    /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
+       outro lado para nao repetir o desenho da secao "para quem e" */
+    /* invertida tambem a proporcao: aqui quem fica na 1a coluna e a lista,
+       que tem as frases mais longas e precisa da coluna maior */
+    .pq-grid--rev { grid-template-columns: 1fr 320px; }
+    .pq-grid--rev .pq-foto { order: 2; }
+    .sec-laranja .pq-list li { color: #fff; }
+    .sec-laranja .pq-list li::before { color: #fff; }
+    .beneficios h2 { font-size: var(--fs-h2); margin-bottom: 38px; }
+    .nao-para { margin: 34px 0 0; padding: 24px 26px; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; }
+    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: var(--fs-h4); }
+    .nao-para ul { list-style: none; }
+    .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
+    .nao-para li::before { content: "✕"; position: absolute; left: 0; color: var(--laranja); font-size: .85rem; }
+    .para-quem .center-cta { margin-top: 30px; }
+
+    /* ════════ COMO FUNCIONA ════════ */
+    .como h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 8px; }
+    /* nome do metodo em uma linha so: a sigla em laranja, o nome cheio em
+       creme. Corpo menor que os outros h2 porque a frase e longa — precisa
+       caber numa linha no desktop */
+    /* duas linhas do mesmo corpo, separadas so pela cor: a sigla em branco e
+       o nome por extenso em laranja (pedido dela) */
+    /* o vw manda ate ~440px de largura: e o que faz "Recalibracao do Sistema
+       Nervoso" caber em UMA linha tambem em 320 e 360px (pedido dela) */
+    /* o nome do metodo dentro de uma caixa preta com degrade alaranjado forte
+       (pedido dela). Sobre a secao laranja ela vira o bloco mais escuro da
+       tela, entao o nome por extenso volta ao laranja claro */
+    .metodo-caixa {
+      max-width: 640px; margin: 0 auto 18px; padding: 22px 26px;
+      background: linear-gradient(155deg, #0a0a0c 0%, #2a1209 48%, #7d2c12 100%);
+      border: 1px solid rgba(229,67,42,.6); border-radius: 16px;
+      box-shadow: 0 16px 46px rgba(0,0,0,.34);
+    }
+    .metodo-caixa .metodo-h2 { margin-bottom: 0 !important; }
+    .metodo-caixa .mn-sigla { color: #fff; }
+    /* vence a regra que pinta o nome de escuro quando a secao e laranja */
+    .metodo-caixa .mn-nome { color: var(--laranja-2) !important; }
+    .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
+    .metodo-h2 .mn-sigla { display: block; color: #fff; }
+    /* o nome por extenso tem que caber em UMA linha (pedido dela): fonte menor que
+       a sigla e presa ao vw, com nowrap. Se mexer, medir em 320px antes */
+    .metodo-h2 .mn-nome {
+      display: block; color: var(--laranja-2);
+      font-size: min(4.35vw, 1.5rem); white-space: nowrap; margin-top: 4px;
+    }
+    /* ── ESCADA "a maioria / alguns / nenhum" ──
+       Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
+       descem do superficial ao profundo. Sem caixa; o que separa os degraus e
+       a linha fina a esquerda, que fica cheia no ultimo. */
+    /* com as 3 caixas lado a lado o bloco precisa de mais largura que o
+       .narrow da secao (760px) */
+    /* o diferencial vive DENTRO da secao do metodo (mesmo fundo escuro); o
+       vao maior no topo e o que separa os dois assuntos, sem filete */
+    .escada { max-width: 1000px; width: 100%; margin: 54px auto 0; }
+    .esc-wrap { max-width: 1060px; }
+    /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
+    /* vence .escura h3 (mesma especificidade) por vir depois no arquivo */
+    .escada h3 { text-align: center; font-size: var(--fs-h3); margin-bottom: 6px; color: var(--laranja-2); }
+    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-destaque); margin-bottom: 14px; }
+    .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
+    /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
+       as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
+       da propria caixa */
+    .esc-item {
+      background: rgba(229,67,42,.10); border: 1px solid rgba(229,67,42,.55);
+      border-radius: 14px; padding: 18px 20px; margin-bottom: 14px;
+    }
+    .esc-item .esc-q {
+      display: block; font-family: 'Marcellus', Georgia, serif;
+      font-size: 1.15rem; color: var(--laranja-2); margin-bottom: 4px;
+      text-transform: uppercase; letter-spacing: .05em;
+    }
+    .esc-item p { color: var(--cinza); font-size: var(--fs-intro); margin: 0; }
+    /* todas as caixas da secao usam a mesma cor (pedido dela); o degrau final
+       segue com mais peso pela sombra, pelo rotulo cheio e pelo texto em creme */
+    .esc-item--forte { box-shadow: 0 12px 34px rgba(0,0,0,.28); }
+    /* a abertura sobe para junto da frase de cima */
+    .escada .esc-sub { margin-bottom: 4px; }
+    /* os tres degraus lado a lado, um por coluna */
+    .esc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; align-items: stretch; }
+    .esc-grid .esc-item { margin-bottom: 0; }
+    /* ── a secao do metodo agora e laranja ──
+       as caixas da escada usam laranja translucido e sumiriam; os textos que
+       eram laranja/cinza sobre fundo escuro precisam de contraste novo */
+    .sec-laranja .esc-item {
+      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
+      border-color: rgba(229,67,42,.45);
+    }
+    .sec-laranja .esc-item--forte {
+      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
+      border-color: rgba(229,67,42,.75);
+    }
+    .sec-laranja .esc-item p { color: var(--cinza); }
+    .sec-laranja .esc-item--forte p { color: var(--creme); }
+    .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
+    .sec-laranja .esc-fecho strong { color: #ffd9c2; }
+    .sec-laranja .escada h3 { color: #fff; }
+    .sec-laranja .metodo-h2 .mn-nome { color: #2a1008; }
+    /* .como TEM a classe sec-laranja (mesmo elemento), entao o seletor
+       descendente '.sec-laranja .como' nao pega — precisa ser .como.sec-laranja */
+    .como.sec-laranja > .container > p.intro,
+    .sec-laranja .esc-lead,
+    .sec-laranja .metodo-ciencias { color: rgba(255,255,255,.94) !important; }
+    .sec-laranja .pill { color: #fff; border-color: rgba(255,255,255,.55); background: rgba(10,10,12,.22); }
+    .esc-item--forte .esc-q { color: var(--laranja); }
+    .esc-item--forte p { color: var(--creme); }
+    .esc-fecho {
+      text-align: center; color: var(--creme); font-size: var(--fs-intro);
+      margin-top: 18px; padding: 18px 20px;
+      background: rgba(229,67,42,.10);
+      border: 1px dashed rgba(229,67,42,.55); border-radius: 14px;
+    }
+    .esc-fecho strong { color: var(--laranja-2); font-weight: 600; }
+
+    /* nome do metodo, logo abaixo do h2 */
+    .metodo-nome {
+      text-align: center; font-family: 'Marcellus', Georgia, serif;
+      /* ~70% do h2 acima: acompanha o titulo sem competir com ele */
+      font-size: clamp(1.4rem, 3.2vw, 2rem); color: var(--laranja-2);
+      letter-spacing: .04em; margin: 0 auto 18px;
+    }
+    .como > .container > p.intro { text-align: center; color: var(--cinza); margin: 0 auto 24px; max-width: 640px; }
+    .card-dark {
+      background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px;
+      padding: 26px 28px; margin-top: 22px; box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    .card-dark .c-title { font-size: 1rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 8px; text-align: center; }
+    .pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 6px; }
+    .pill { padding: 9px 20px; border: 1px solid var(--borda); border-radius: 24px; color: var(--laranja-2); font-weight: 600; font-size: .95rem; }
+    .metodo-destaque { margin-top: 22px; padding: 22px 26px; background: rgba(229,67,42,.06); border-radius: 12px; }
+    .metodo-destaque p { color: var(--cinza); }
+    .metodo-destaque strong { color: var(--creme); }
+    /* gap e margem maiores: o circulo do numero sobe 21px acima da caixa e
+       encostaria na caixa de cima (e no h3, na primeira) */
+    .etapas { margin-top: 42px; display: flex; flex-direction: column; gap: 36px; }
+    .etapas-card { background: var(--grafite); border: 1px solid rgba(229,67,42,.32); border-radius: 22px; padding: 28px 22px 32px; margin-top: 42px; box-shadow: 0 16px 46px rgba(0,0,0,.3); }
+    /* caixa numerada: o numero sai da lateral e vira um circulo cavalgando a
+       borda de cima, centrado (pedido dela). O gap do .etapas cuida do espaco
+       entre as caixas; o circulo cabe no padding extra do topo. */
+    .etapa { position: relative; padding: 34px 22px 20px; border: 1px solid rgba(229,67,42,.55); border-radius: 14px; background: rgba(229,67,42,.10); text-align: center; }
+    .etapa-num {
+      position: absolute; top: -21px; left: 50%; transform: translateX(-50%);
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Marcellus', serif; font-size: 1.25rem; line-height: 1;
+      color: var(--laranja);
+      /* #361e28 = o grafite do card com os 10% de laranja da caixa por cima:
+         cor SOLIDA, senao a borda da caixa aparece atras do circulo */
+      background: #361e28; border: 1px solid rgba(229,67,42,.55);
+    }
+    /* caixa alta + negrito (pedido dela). O Marcellus so vem em 400, entao o
+       700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
+       o resultado fica limpo no tamanho em que o titulo aparece. */
+    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
+    .etapa p { color: var(--cinza); font-size: .96rem; }
+    .etapa p strong { color: var(--creme); font-weight: 600; }
+    /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
+       centralizava mas a estrela ficava sozinha na margem esquerda. Agora
+       estrela e texto sao inline no mesmo bloco centrado, entao a estrela
+       acompanha o comeco da primeira linha. */
+    .praticas-item { display: block; text-align: center; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
+    .praticas-item > span { display: inline; margin-right: 7px; }
+    .praticas-item > p { display: inline; }
+    .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
+    .praticas-item p { font-size: .95rem; color: var(--creme); text-wrap: balance; text-align: center; }
+    .praticas-item strong { color: var(--laranja-2); }
+
+    /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .g-item { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; padding: 22px 22px; }
+    .g-item h3 { color: var(--laranja-2); font-size: var(--fs-h4); margin-bottom: 6px; }
+    .g-item p { color: var(--cinza); font-size: .93rem; }
+    .benef-icon { display: inline-flex; width: 42px; height: 42px; color: var(--laranja); margin-bottom: 10px; }
+    .benef-icon svg { width: 100%; height: 100%; }
+
+    /* ════════ OFERTA / EVENTO ════════ */
+    .oferta { text-align: center; }
+    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
+    .info-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 580px; margin: 0 auto 36px; }
+    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 170px; flex: 1; overflow: hidden; }
+    /* as 3 imagens sao 1.751 — aspect-ratio exibe cada uma inteira, sem corte em nenhuma largura */
+    .info-card img { width: 100%; aspect-ratio: 1.751; height: auto; display: block; }
+    .info-card .ic-body { padding: 18px 20px 22px; }
+    .info-card .ic-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 6px; }
+    .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
+    .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
+    /* Abaixo de ~590px os 3 cards nao cabem lado a lado. Sem isto o card que
+       sobra na linha estica com flex:1 e a imagem dele vai a 200-310px de
+       altura. Empilha os 3 na largura da coluna central (245px = calendario,
+       investimento e botao), mantendo a imagem em 140px. */
+    @media (max-width: 592px) {
+      .info-cards { max-width: 245px; }
+      .info-card { min-width: 0; flex: 1 1 100%; }
+    }
+    .price-card {
+      background: var(--preto-2); border: 1px solid rgba(229,67,42,.5); border-radius: 16px;
+      padding: 30px 26px; max-width: 380px; margin: 0 auto 30px;
+      box-shadow: 0 14px 44px rgba(0,0,0,.4);
+    }
+    .price-card .pc-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 12px; }
+    .price-card .pc-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 800; font-size: 2.7rem; line-height: 1; color: var(--laranja); }
+    .price-card .pc-sub { font-size: .85rem; color: var(--cinza); margin-top: 10px; }
+    .garantia-box { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; color: var(--cinza); font-size: .92rem; }
+    .garantia-box strong { color: var(--creme); }
+
+    /* ════════ FAQ ════════ */
+    .faq h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 30px; }
+    .faq details {
+      max-width: 760px; margin: 0 auto 12px;
+      background: var(--preto-2); border: 1px solid var(--borda); border-radius: 10px;
+      padding: 4px 22px;
+    }
+    .faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: var(--creme); list-style: none; position: relative; padding-right: 28px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja); font-size: 1.3rem; }
+    .faq details[open] summary::after { content: "–"; }
+    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: .96rem; }
+
+    /* ════════ CTA FINAL ════════ */
+    .cta-final { text-align: center; }
+    .cta-final { padding: 60px 0; }
+    .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
+    .cta-final h2 span { display: inline-block; margin-top: 6px; }
+    .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
+    /* a secao virou escura: o botao volta ao degrade da paleta (preto sobre
+       fundo preto sumia) */
+    .cta-final .btn-note { color: rgba(255,255,255,.75); }
+    .cta-final .cta-lead p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto 15px; }
+    /* Caixa da garantia: selo dourado a esquerda + o texto. O selo e o UNICO
+       elemento dourado da pagina - proposital, le como carimbo de autoridade.
+       Nao ampliar nem repetir o dourado, senao briga com a paleta magenta/laranja */
+    .cta-final .cta-risco {
+      display: flex; align-items: center; gap: 22px; text-align: left;
+      max-width: 640px; margin: 26px auto; padding: 18px 26px;
+      background: #0b0a0e; border: 1px solid rgba(255,255,255,.24);
+      border-radius: 12px; color: var(--creme); font-size: 1rem; line-height: 1.55;
+      box-shadow: 0 12px 40px rgba(0,0,0,.32);
+    }
+    .cta-final .cta-risco strong { color: var(--laranja-2); }
+    .cta-final .risco-selo {
+      flex: 0 0 auto; width: 112px; height: auto; border-radius: 50%;
+      box-shadow: 0 10px 28px rgba(0,0,0,.5);
+    }
+    .cta-final .risco-txt { margin: 0; }
+    /* no celular o selo vai para cima do texto: lado a lado, sobra coluna de
+       texto estreita demais e o paragrafo quebra em muitas linhas */
+    @media (max-width: 620px) {
+      .cta-final .cta-risco { flex-direction: column; text-align: center; gap: 16px; padding: 20px 22px; }
+      .cta-final .risco-selo { width: 96px; }
+    }
+    .cta-final .cta-punch {
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: var(--fs-destaque);
+      line-height: 1.5; color: #fff;
+      max-width: 640px; margin: 0 auto 26px;
+      text-wrap: balance;
+    }
+    .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
+    /* ultima linha da pagina: cresce e volta ao branco cheio - e nela que a
+       leitora se ve, entao ela nao pode ter o mesmo peso do resto */
+    .cta-final .cta-punch .punch-final {
+      margin-top: 16px; color: #fff;
+      font-size: clamp(1.18rem, 2.4vw, 1.5rem); line-height: 1.4;
+    }
+    /* ── OS 3 GANHOS (padrao da referencia): lead + tres cards com icone ── */
+    .cta-final .ganhos-lead {
+      text-align: center; color: rgba(255,255,255,.86);
+      font-size: 1rem; margin: 0 0 16px;
+    }
+    .cta-final .ganhos {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      max-width: 840px; margin: 0 auto 30px;
+    }
+    .cta-final .ganho {
+      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 14px; padding: 22px 18px; text-align: center;
+    }
+    .cta-final .ganho-ico { width: 54px; height: 54px; color: var(--laranja-2); margin-bottom: 12px; }
+    .cta-final .ganho p { margin: 0; font-size: .98rem; line-height: 1.45; color: rgba(255,255,255,.82); }
+    .cta-final .ganho strong { color: #fff; }
+    /* no celular viram uma coluna: em 3 colunas o texto quebra em 5 linhas */
+    @media (max-width: 720px) {
+      .cta-final .ganhos { grid-template-columns: 1fr; max-width: 420px; gap: 12px; }
+      .cta-final .ganho { display: flex; align-items: center; gap: 14px; text-align: left; padding: 16px 18px; }
+      .cta-final .ganho-ico { flex: 0 0 auto; width: 38px; height: 38px; margin-bottom: 0; }
+    }
+
+    /* o virada da frase em laranja, como na referencia que ela mandou */
+    .cta-final .cta-punch .punch-hi { font-style: normal; color: var(--laranja-2); }
+    .cta-final .cta-punch strong { color: #fff; }
+
+    /* ── Dois caminhos (CTA final) ── */
+    /* pedido dela: o kicker desta secao e maior que os das outras e em laranja */
+    .cta-final .label { color: var(--laranja-2); font-size: 1rem; letter-spacing: .2em; }
+    .cta-final .cta-intro { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 34px; }
+    .caminhos {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+      text-align: left; max-width: 900px; margin: 0 auto 30px;
+    }
+    .caminho {
+      border-radius: 14px; padding: 22px 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,.32);
+    }
+    /* os dois caminhos em rosa degrade discreto; o que separa e a borda e o
+       peso do destaque. Dentro do texto, as partes que importam ficam brancas
+       (<em>) contra o corpo em tom mais suave */
+    .caminho--inerte {
+      background: linear-gradient(160deg, #3a2230 0%, #2a1a24 60%, #201118 100%);
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .caminho--inerte .c-num { color: #e0b7c6; }
+    .caminho--inerte p { color: rgba(255,255,255,.72); }
+    .caminho--inerte em { font-style: normal; color: #fff; font-weight: 600; }
+    .caminho--ativo {
+      background: linear-gradient(160deg, #4a2233 0%, #331624 58%, #24101a 100%);
+      border: 1.5px solid var(--laranja-2);
+      box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
+    }
+    .caminho--ativo .c-num { color: var(--laranja-2); }
+    .caminho--ativo p { color: rgba(255,255,255,.78); }
+    .caminho--ativo em { font-style: normal; color: #fff; font-weight: 600; }
+    /* ── as duas telas de celular dos caminhos ──
+       mockup em CSS puro: moldura, barra de status, dois cards de notificacao
+       e uma bolha de conversa. A da esquerda e cinza e apagada; a da direita
+       tem a cor da marca. NUNCA colocar valor/numero aqui: as telas mostram
+       COMPORTAMENTO (publicar, responder, recusar), nao resultado financeiro */
+    /* Foto da cena de cada caminho. A imagem ja nasce em 16:9, entao o aspect-ratio
+       nao corta nada - NUNCA trocar por height fixo (corta a cena) nem aplicar
+       filtro de cor (as imagens dela ja vem no tom certo) */
+    .caminho .c-foto {
+      /* height:auto e obrigatorio: sem ele o atributo height="675" do <img> vira
+         altura fixa, vence o aspect-ratio e a cena sai esticada e cortada */
+      display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+      border-radius: 12px; margin: 0 0 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.42);
+    }
+    .caminho--ativo .c-foto { border-color: rgba(229,67,42,.34); }
+
+    .tela {
+      border-radius: 16px; padding: 10px 10px 12px; margin: 0 0 16px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, #14121a 0%, #0d0b11 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.06), 0 10px 26px rgba(0,0,0,.4);
+    }
+    .tela-top {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .62rem; letter-spacing: .04em; color: rgba(255,255,255,.42);
+      padding: 2px 6px 8px;
+    }
+    .tela-sig { width: 26px; height: 6px; border-radius: 3px; background: rgba(255,255,255,.22); }
+    .tela-card {
+      display: flex; gap: 10px; align-items: center;
+      background: rgba(255,255,255,.05); border-radius: 11px;
+      padding: 9px 11px; margin-bottom: 7px;
+    }
+    .tc-ico { font-size: 1rem; line-height: 1; flex: 0 0 auto; filter: grayscale(1) opacity(.75); }
+    .tc-t { font-size: .72rem; font-weight: 700; color: rgba(255,255,255,.72); }
+    .tc-s { font-size: .72rem; color: rgba(255,255,255,.5); line-height: 1.35; }
+    .tela-bolha {
+      font-size: .74rem; line-height: 1.4; border-radius: 12px 12px 12px 3px;
+      background: rgba(255,255,255,.06); color: rgba(255,255,255,.55);
+      padding: 9px 12px; margin-top: 9px; max-width: 88%;
+    }
+    /* caminho 02: a mesma tela, viva */
+    .tela--on { border-color: rgba(229,67,42,.42); background: linear-gradient(180deg, #1b1016 0%, #120b0e 100%); }
+    .tela--on .tc-ico { filter: none; }
+    .tela--on .tc-t { color: #fff; }
+    .tela--on .tc-s { color: rgba(255,255,255,.72); }
+    .tela--on .tela-sig { background: var(--laranja-2); }
+    .tela-bolha--enviada {
+      margin-left: auto; border-radius: 12px 12px 3px 12px;
+      background: linear-gradient(135deg, #c3305c 0%, #e5432a 100%);
+      color: #fff; font-weight: 500;
+    }
+    .caminho .c-num {
+      font-size: .84rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 4px;
+    }
+    /* titulo do caminho: nomeia a escolha antes do paragrafo. Os dois lados usam
+       a MESMA construcao (verbo no infinitivo) - e a simetria que cria a tensao */
+    .caminho .c-titulo {
+      font-size: clamp(1.35rem, 2.2vw, 1.62rem); font-weight: 400; line-height: 1.2;
+      margin: 0 0 14px;
+    }
+    .caminho--inerte .c-titulo { color: rgba(255,255,255,.82); }
+    .caminho--ativo  .c-titulo { color: var(--creme); }
+    .caminho p { font-size: 1.08rem; line-height: 1.55; margin: 0; max-width: none; }
+    .caminho strong { color: var(--laranja-2); font-weight: 600; }
+    @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
+
+    /* ════════ FOOTER ════════ */
+    footer { background: var(--preto); padding: 40px 22px; text-align: center; border-top: 1px solid var(--borda); }
+    .social-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .social-row a { color: var(--laranja-2); text-decoration: none; font-size: .9rem; display: flex; align-items: center; gap: 6px; }
+    footer p { color: var(--cinza); font-size: .82rem; }
+
+    /* ════════ SEÇÕES LARANJA (alternadas com o preto) ════════ */
+    .sec-laranja { background: var(--grad-secao); }
+    .sec-laranja .label { color: #fff; }
+    .sec-laranja h2, .sec-laranja h3, .sec-laranja h4 { color: #fff; }
+    .sec-laranja p { color: rgba(255,255,255,.94); }
+    .sec-laranja .destaque-box { color: #fff; border-left-color: #fff; background: rgba(10,10,12,.30); }
+    .sec-laranja .g-item,
+    .sec-laranja .info-card,
+    .sec-laranja .price-card { background: var(--preto-2); border-color: rgba(255,255,255,.16); }
+    .sec-laranja .btn { background: #0a0a0c; color: #fff; box-shadow: 0 12px 34px rgba(0,0,0,.35); }
+    .sec-laranja .btn:hover { background: #17171c; }
+    .sec-laranja .garantia-box { color: rgba(255,255,255,.92); }
+    .sec-laranja .garantia-box strong { color: #fff; }
+
+    /* ════════ SOBRE O LIVRO ════════ */
+    /* sem background proprio: a secao herda o degrade de .sec-laranja. Ela
+       tinha "background:#ffffff" aqui, que vencia a classe por vir depois */
+    .livro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px; align-items: center; }
+    /* a capa e retrato (491x720): 220px de largura da a MESMA ALTURA (~322px)
+       das imagens quadradas de 320, entao ela fica menor sem sair do padrao */
+    .livro-img img { width: 100%; max-width: 170px; display: block; margin: 0 auto; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+    .livro h2 { font-size: var(--fs-h2); margin-bottom: 12px; }
+    .livro-sub { color: var(--cinza); margin-bottom: 20px; text-align: center; }
+    .livro-nome { padding: 14px 18px; border-left: 3px solid var(--laranja); background: var(--preto-2); border-radius: 0 10px 10px 0; margin-bottom: 24px; }
+    .livro-nome strong { display: block; font-family: 'Marcellus', Georgia, serif; font-size: 1.25rem; color: var(--laranja-2); }
+    .livro-nome span { font-size: .88rem; color: var(--cinza); }
+    .livro-itens { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    .livro-item { display: flex; gap: 14px; align-items: flex-start; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; padding: 16px 18px; }
+    .li-ic { font-size: 1.5rem; flex-shrink: 0; line-height: 1.25; }
+    .livro-item h4 { color: var(--creme); font-size: var(--fs-h4); margin-bottom: 3px; }
+    .livro-item p { color: var(--cinza); font-size: .94rem; }
+
+    /* ════════ SEÇÕES BRANCAS ════════ */
+    .branco { background: #ffffff; }
+    .branco h2, .branco h3, .branco h4 { color: #16141c; }
+    .branco p, .branco .livro-sub { color: #4a4753; }
+    .branco strong { color: #16141c; }
+    .branco .pq-list li { color: #16141c; }
+    .branco .g-item, .branco .info-card, .branco .price-card, .branco .nao-para, .branco .livro-nome {
+      background: #f4f1ec; border-color: rgba(0,0,0,.10);
+    }
+    .branco .nao-para h4, .branco .ic-label, .branco .pc-label, .branco .pc-value, .branco .livro-nome strong { color: var(--laranja-esc); }
+    .branco .ic-main { color: #16141c; }
+    .branco .nao-para li, .branco .ic-sub, .branco .pc-sub, .branco .livro-nome span, .branco .garantia-box { color: #4a4753; }
+    .branco .garantia-box strong { color: #16141c; }
+
+    /* ════════ OFERTA — cards escuros sobre fundo branco ════════ */
+    .oferta .info-card, .oferta .price-card { background: #211d24; border-color: rgba(229,67,42,.35); }
+    .oferta .price-card { border-color: rgba(229,67,42,.55); }
+    /* coluna central uniforme: data, investimento e botao na mesma largura */
+    .oferta .price-card { width: 245px; max-width: 100%; padding: 26px 18px; }
+    /* "12x de R$ 5,22" e mais longo que o preco antigo e quebrava em duas linhas */
+    .oferta .price-card .pc-value { font-size: 2.05rem; white-space: nowrap; }
+    .oferta .btn {
+      width: 245px; max-width: 100%;
+      padding: 16px 18px; white-space: normal; text-wrap: balance;
+      font-size: .95rem; line-height: 1.3;
+    }
+    .oferta .info-card .ic-label, .oferta .price-card .pc-label,
+    .oferta .data-box .db-label { color: var(--laranja-2); }
+    .oferta .info-card .ic-main { color: #f4f0e9; }
+    .oferta .info-card .ic-sub, .oferta .price-card .pc-sub { color: #b3aea6; }
+    .oferta .price-card .pc-value { color: var(--laranja); }
+    .oferta .data-box {
+      display: inline-flex; flex-direction: column;
+      background: #211d24; border: 1px solid rgba(229,67,42,.55); border-radius: 14px;
+      margin: 0 auto 30px; box-shadow: 0 12px 34px rgba(0,0,0,.22);
+      overflow: hidden; width: 245px; max-width: 100%;
+    }
+    .oferta .data-box img { width: 100%; aspect-ratio: 1.78; height: auto; display: block; }
+    .oferta .data-box .db-body { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 24px 20px; }
+    .oferta .data-box .db-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    .oferta .data-box .db-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1.4rem; line-height: 1.1; color: #f4f0e9; }
+
+
+    /* ── GATE DO LEAD: quem clica em checkout sem cadastro vai para o formulario ── */
+    .toast-lead {
+      position: fixed; left: 50%; bottom: 18px;
+      transform: translateX(-50%) translateY(14px);
+      background: var(--grad-secao); color: #fff;
+      padding: 12px 22px; border-radius: 999px;
+      font-size: .88rem; font-weight: 600; line-height: 1.35; text-align: center;
+      box-shadow: 0 12px 32px rgba(0,0,0,.45);
+      max-width: calc(100% - 32px);
+      opacity: 0; pointer-events: none; z-index: 60;
+      transition: opacity .25s ease, transform .25s ease;
+    }
+    .toast-lead.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
+    /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
+    .pilares-img {
+      width: 100%; max-width: 640px; height: auto; display: block;
+      margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
+    }
+    .vivencia h2 { font-size: var(--fs-h2); margin-bottom: 8px; }
+    /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
+       queimar sobre o branco */
+    .branco .etapas-card { background: #fbf8f4; border-color: rgba(229,67,42,.26); box-shadow: 0 14px 40px rgba(0,0,0,.08); }
+    .branco .etapa { background: rgba(229,67,42,.07); border-color: rgba(229,67,42,.38); }
+    /* .etapa p strong (0,1,2) e mais especifico que .branco strong (0,1,1) e
+       pintava o negrito de creme — invisivel no fundo claro */
+    .branco .etapa p strong { color: #16141c; }
+    /* o "Voce vai viver" segue sendo o unico bloco escuro da secao — sem estas
+       regras o .branco p pintaria o texto dele de cinza-escuro e ele sumiria */
+    .branco .card-dark p { color: var(--cinza); }
+    .branco .card-dark .praticas-item p { color: var(--creme); }
+    .branco .card-dark .praticas-item p strong { color: var(--laranja-2); }
+    .branco .card-dark .c-title { color: var(--laranja-2); }
+
+    /* ════════ TEXTO DE ABERTURA DAS SECOES ════════
+       Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
+       tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
+       clamp, e as aberturas nao batiam entre si. */
+    .problema p,
+    .segredos .section-title p,
+    .como > .container > p.intro,
+    .bonus > .container > p,
+    .cta-final .cta-intro { font-size: var(--fs-intro); }
+
+    /* ════════ RESPONSIVO ════════ */
+    @media (max-width: 860px) {
+      .btn { padding: 16px 20px; letter-spacing: .02em; white-space: normal; }
+      /* ─────────────────────────────────────────────────────────────────────
+         HERO EM UMA TELA — foto + nome do evento + headline + apoio + form +
+         nota cabem na primeira tela do celular. A secao ocupa 100svh, o
+         espacamento e o gap do flex e cada medida e min(rem, vh), entao tudo
+         encolhe junto com a altura do aparelho.
+         Ao mexer, altere so o 1o valor do min() — o 2o (vh) e o que faz caber.
+         ───────────────────────────────────────────────────────────────────── */
+      .hero { min-height: 100vh; min-height: 100svh; display: flex; }
+      .hero > .container { display: flex; flex: 1 1 auto; }
+      /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
+         esquerda e a foto na direita, centrados um em relacao ao outro.
+         Linhas 2-5 = promessa, apoio, formulario e nota, em largura cheia.
+         .hero-copy vira display:contents para os filhos dele entrarem no grid.
+         align-content:space-between joga a sobra de altura nas JUNTAS entre os
+         blocos, em vez de acumular tudo nas bordas de cima e de baixo. */
+      .hero-grid {
+        display: grid; grid-template-columns: minmax(0, 1fr) auto;
+        min-height: 0; flex: 1 1 auto; align-content: space-between;
+        row-gap: min(16px, 1.2vh); column-gap: min(12px, 3.2vw);
+        padding: min(26px, 2vh) 0 min(22px, 1.7vh);
+      }
+      .hero-copy { display: contents; }
+      .hero-lockup {
+        display: flex; flex-direction: column; align-items: center;
+        gap: min(12px, 1.45vh);
+        grid-column: 1; grid-row: 1; align-self: center;
+      }
+      .hero-photo {
+        grid-column: 2; grid-row: 1; align-self: center;
+        min-height: 0; justify-content: center;
+      }
+      /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
+         passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
+      .hero-photo img { height: min(200px, 24vh); width: auto; max-height: none; transform: none; }
+      /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
+         linha propria, centrada, entre a faixa do topo e a promessa */
+      .hero-badge    { grid-row: 2; justify-self: center; }
+      .hero-headline { grid-row: 3; }
+      .hero-sub      { grid-row: 4; }
+      .lead-form     { grid-row: 5; }
+      .form-note     { grid-row: 6; }
+      .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
+
+      /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
+         vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
+      .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
+      .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
+      .lead-form { width: 100%; }
+      /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
+         dela); as outras ficam iguais, distribuidas pelo space-between */
+      .hero-headline { margin-top: min(14px, 1.8vh) !important; }
+      /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
+      .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
+      .lead-form { margin-top: min(10px, 1.2vh) !important; }
+
+      /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
+         para tablet (~860px de altura), senao a fonte trava, o conteudo para de
+         crescer e a sobra vai toda para os vaos. Ao ajustar, mexer no vh. */
+      .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
+      /* o lockup no celular: as duas linhas grandes escalam com a altura da
+         tela, como o resto da hero */
+      .lk-l1, .lk-l2 { font-size: min(1.24rem, 3vh); }
+      .lk-orn { margin: min(4px, .5vh) 0; }
+      .lk-orn i { width: min(34px, 9vw); }
+      .lk-orn span { font-size: min(.58rem, 1.4vh); }
+      .hero-headline { font-size: min(1.45rem, 2.7vh); line-height: 1.24; }
+      .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
+      .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
+      .lead-form { gap: min(10px, .85vh); }
+      .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
+      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
+      .form-note { font-size: min(.9rem, 1.65vh); line-height: 1.3; }
+      .mentora-grid { grid-template-columns: 1fr; }
+      .mentora-photo { max-width: 100%; margin: 0 auto; }
+      .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
+      /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
+         vaos, padding e o rotulo; as promessas nao sao tocadas */
+      .segredos { padding: 22px 0; }
+      .segredos-list { margin-top: 14px; gap: 12px; }
+      .segredo-row, .segredo-row.rev { padding: 14px 18px; gap: 5px; }
+      .segredo-title .num { font-size: 1.5rem; }
+      .segredos .center-cta { margin-top: 14px; }
+      .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
+      .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
+      .segredo-div { display: none; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .pq-list { grid-template-columns: 1fr; }
+      .esc-grid { grid-template-columns: 1fr; gap: 12px; }
+      .pq-grid { grid-template-columns: 1fr; gap: 24px; max-width: 460px; }
+      /* ── SECAO DO PROBLEMA EM UMA TELA DO CELULAR (pedido dela) ──
+         Nao e compressao geral: sao vaos e a arte desta secao. O texto e o
+         corpo das letras ficam intactos. */
+      .problema { padding: 28px 0; }
+      .problema h2 { margin-bottom: 16px; }
+      /* a arte alinhada a coluna ficaria 340px de altura (quadrada); em 3:2
+         ela mantem a largura do texto e economiza ~115px. object-position
+         alto preserva o topo, onde esta o "O QUE HA DE ERRADO COMIGO?" */
+      .problema .sec-img { width: 100%; margin-bottom: 14px; aspect-ratio: 16/9; object-fit: cover; object-position: center 8%; }
+      .problema p { margin-bottom: 12px; }
+      .problema .destaque-box { margin-top: 14px; padding: 16px 20px; }
+      /* no celular 320px ocupam 82% da largura da tela: as artes caem para
+         250px (e a capa do livro, que e retrato, para 140px) */
+      .sec-img, .pilares-img { width: 100%; }
+      /* no celular a foto tambem fica nos 320px das demais imagens */
+      .pq-foto img { max-width: 100%; margin: 0 auto; }
+      .pq-list li { font-size: .98rem; padding-left: 30px; }
+      /* no celular a foto volta a vir primeiro nas duas secoes */
+      .pq-grid--rev .pq-foto { order: 0; }
+      /* o texto da arte fica ilegivel em 360px — a lista reaparece embaixo */
+      .livro-grid { grid-template-columns: 1fr; gap: 28px; }
+      .livro-img { max-width: 140px; margin: 0 auto; }
+    }
+
+    /* as 3 ciencias ganham caixa propria: soltas, sumiam no fundo laranja */
+    /* caixa que FECHA a secao do metodo: as tres ciencias + a ponte das tres
+       dimensoes. O "tres" aparece duas vezes de proposito, preparando os
+       3 segredos que vem logo abaixo */
+    .fecho-box {
+      max-width: 660px; margin: 30px auto 0; padding: 26px 28px;
+      background: rgba(10,10,12,.42); border: 1px solid rgba(255,255,255,.24);
+      border-radius: 18px; text-align: center;
+      box-shadow: 0 16px 44px rgba(0,0,0,.3);
+    }
+    .como .metodo-ciencias {
+      color: #fff !important; font-size: var(--fs-intro) !important;
+      margin: 0 0 14px !important;
+    }
+    .como .metodo-ciencias strong { color: #0a0a0c; font-weight: 800; }
+    /* pilulas: fundo preto com o laranja da marca */
+    .como .pills .pill {
+      background: #0a0a0c; border: 1px solid var(--laranja);
+      color: var(--laranja-2); font-weight: 600;
+    }
+    .ciencias-ponte {
+      margin: 4px auto 0; padding-top: 0;
+      font-family: 'Marcellus', Georgia, serif; color: #fff;
+      font-size: var(--fs-destaque); line-height: 1.4;
+    }
+    .ciencias-ponte strong { color: var(--laranja-2); }
+    /* titulo do diferencial: estava do mesmo peso do texto em volta */
+    .escada h3 {
+      font-size: var(--fs-h2); color: #fff; margin-bottom: 10px;
+    }
+    .escada .esc-sub { color: rgba(255,255,255,.94); }
+
+    /* o fecho da escada passou a viver DENTRO da caixa (pedido dela: evitar
+       caixa dentro de caixa). Separado por linha, no topo */
+    .fecho-box .cx-fecho {
+      margin: 0 0 18px; padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.92); font-size: var(--fs-corpo); line-height: 1.55;
+      background: none; border-left: 0; border-radius: 0;
+    }
+    .fecho-box .cx-fecho strong { color: var(--laranja-2); }
+    /* "3 dimensoes da mente" com o mesmo tratamento das pilulas: fundo preto */
+    .badge-dim {
+      display: inline-block; background: #0a0a0c; color: var(--laranja-2);
+      border: 1px solid var(--laranja); border-radius: 999px;
+      padding: 3px 14px; font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: .9em; font-weight: 700; white-space: nowrap;
+    }
+
+    /* as tres ciencias ficam SOLTAS (so as pilulas em caixa preta); quem ganha
+       caixa e o fecho da escada + a ponte das 3 dimensoes */
+    .como .metodo-ciencias { text-align: center; margin: 26px auto 12px !important; }
+    .como .pills { justify-content: center; margin-bottom: 4px; }
+
+    /* a dimensao embaixo do "Segredo NN": fecha a promessa das 3 dimensoes da
+       mente feita na secao do metodo. NAO revela o mecanismo — so o territorio */
+    .segredo-dim {
+      display: block; margin-top: 8px;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: .78rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: rgba(255,255,255,.62);
+    }
+
+    /* (as regras da .virada ficam mais acima, no bloco unico — este trecho era
+       uma duplicata que sobrescrevia a hierarquia e foi removida) */
