@@ -1089,14 +1089,16 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(150px, 19vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
       .hero-headline { grid-row: 3; }
-      .hero-sub      { grid-row: 4; }
-      .lead-form     { grid-row: 5; }
-      .form-note     { grid-row: 6; }
+      /* .hero-sub NAO existe mais no HTML: deixar o formulario na linha 5 criava
+         uma linha fantasma vazia entre a promessa e o cadastro, cobrando DOIS
+         row-gaps (40px em vez de 20). Renumerado. */
+      .lead-form     { grid-row: 4; }
+      .form-note     { grid-row: 5; }
       .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
@@ -1123,7 +1125,11 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1, .lk-l2 { font-size: min(1.65rem, 3.9vh); }
+      .lk-l1 { font-size: min(1.65rem, 3.9vh); }
+      /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
+         coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
+         sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
+      .lk-l2 { font-size: min(1.72rem, 4.05vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
@@ -1888,14 +1894,16 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(150px, 19vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
       .hero-headline { grid-row: 3; }
-      .hero-sub      { grid-row: 4; }
-      .lead-form     { grid-row: 5; }
-      .form-note     { grid-row: 6; }
+      /* .hero-sub NAO existe mais no HTML: deixar o formulario na linha 5 criava
+         uma linha fantasma vazia entre a promessa e o cadastro, cobrando DOIS
+         row-gaps (40px em vez de 20). Renumerado. */
+      .lead-form     { grid-row: 4; }
+      .form-note     { grid-row: 5; }
       .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
@@ -1922,7 +1930,11 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1, .lk-l2 { font-size: min(1.65rem, 3.9vh); }
+      .lk-l1 { font-size: min(1.65rem, 3.9vh); }
+      /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
+         coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
+         sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
+      .lk-l2 { font-size: min(1.72rem, 4.05vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
