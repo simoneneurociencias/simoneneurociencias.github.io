@@ -342,7 +342,9 @@
     .problema .prob-fecha {
       max-width: 720px; margin: 30px auto 0; padding: 22px 28px; text-align: center;
       background: rgba(10,10,12,.34); border: 1px solid rgba(255,255,255,.22);
-      border-radius: 16px; font-size: var(--fs-corpo); line-height: 1.55;
+      /* mesmo corpo do fecho da secao seguinte (.fc-fecho): mesmo papel na pagina,
+         e antes um era 1rem e o outro --fs-intro */
+      border-radius: 16px; font-size: var(--fs-intro); line-height: 1.55;
     }
     /* a pergunta e o ponto de virada da secao: centralizada, grande e sem a
        barra lateral, que puxava o texto para a esquerda */
