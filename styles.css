@@ -1082,7 +1082,9 @@
       }
       /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
-      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
+      /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
+         185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
+      .hero-photo img { height: min(170px, 21vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1099,6 +1101,9 @@
       .lead-form { width: 100%; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
+      /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
+         bloco acima zera as margens de todos os itens da hero */
+      .hero-badge { margin-top: min(12px, 1.4vh) !important; }
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
@@ -1869,7 +1874,9 @@
       }
       /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
-      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
+      /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
+         185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
+      .hero-photo img { height: min(170px, 21vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1886,6 +1893,9 @@
       .lead-form { width: 100%; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
+      /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
+         bloco acima zera as margens de todos os itens da hero */
+      .hero-badge { margin-top: min(12px, 1.4vh) !important; }
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
