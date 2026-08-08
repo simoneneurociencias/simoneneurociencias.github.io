@@ -1272,8 +1272,8 @@
       font-size: var(--fs-intro); line-height: 1.55;
       margin: 22px auto 18px; max-width: 620px;
     }
-    /* mesmo laranja dos outros destaques da pagina (era #ffd9c2, o unico ambar) */
-    .virada-frase em { font-style: normal; color: var(--laranja-2); }
+    /* branco, por decisao dela em 08/08 (passou por ambar e laranja antes) */
+    .virada-frase em { font-style: normal; color: #fff; }
     .virada-frase strong { color: #fff; white-space: nowrap; }
     /* a faixa entre os dois ornamentos guarda o paragrafo de origem do metodo —
        o mais importante da pagina (definicao dela) */
