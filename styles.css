@@ -1056,7 +1056,7 @@
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
       /* no celular a hero usa a largura toda: 22px de padding eram 44px roubados
          da coluna do titulo e do formulario */
-      .hero > .container { padding: 0 12px; }
+      .hero > .container { padding: 0 18px; }
       .hero > .container { display: flex; flex: 1 1 auto; }
       /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
          esquerda e a foto na direita, centrados um em relacao ao outro.
@@ -1089,7 +1089,7 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(170px, 21vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1105,7 +1105,7 @@
       .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
          lateral para o titulo crescer, mas os campos encostavam na borda */
-      .lead-form { width: 100%; padding-inline: 10px; }
+      .lead-form { width: 100%; padding-inline: 4px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
@@ -1114,7 +1114,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(10px, 1.2vh) !important; }
+      .lead-form { margin-top: 0 !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -1855,7 +1855,7 @@
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
       /* no celular a hero usa a largura toda: 22px de padding eram 44px roubados
          da coluna do titulo e do formulario */
-      .hero > .container { padding: 0 12px; }
+      .hero > .container { padding: 0 18px; }
       .hero > .container { display: flex; flex: 1 1 auto; }
       /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
          esquerda e a foto na direita, centrados um em relacao ao outro.
@@ -1888,7 +1888,7 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(170px, 21vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1904,7 +1904,7 @@
       .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
          lateral para o titulo crescer, mas os campos encostavam na borda */
-      .lead-form { width: 100%; padding-inline: 10px; }
+      .lead-form { width: 100%; padding-inline: 4px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
@@ -1913,7 +1913,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(10px, 1.2vh) !important; }
+      .lead-form { margin-top: 0 !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
