@@ -1245,14 +1245,19 @@
     .virada-faixa { margin-top: 26px; }
     .virada-nota {
       font-family: 'Marcellus', Georgia, serif; color: #fff;
-      font-size: clamp(1.3rem, 2.9vw, 1.75rem); line-height: 1.45;
+      /* mesma fonte do paragrafo anterior (.virada-frase): quem cresce aqui e
+         so o destaque das dimensoes, por contraste */
+      font-size: var(--fs-intro); line-height: 1.55;
       max-width: 700px; margin: 26px auto 18px;
     }
     /* destaque premium, sem pilula: caixa alta, entrelinha aberta e um filete
        fino em ambar por baixo */
     .dim-destaque {
-      color: #ffd9c2; letter-spacing: .06em; white-space: nowrap;
-
+      color: var(--laranja-2); letter-spacing: .04em;
+      /* destaque sem sublinhado: corpo maior que a frase + brilho laranja suave.
+         sem white-space:nowrap — no celular a frase grande estouraria a largura */
+      display: inline-block; font-size: 1.35em; line-height: 1.25;
+      text-shadow: 0 0 20px rgba(229,67,42,.55), 0 0 3px rgba(255,106,77,.4);
     }
     .virada-gancho {
       font-family: 'Marcellus', Georgia, serif; color: rgba(255,255,255,.94);
