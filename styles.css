@@ -229,6 +229,8 @@
       text-wrap: balance;
     }
     .hero-headline em { font-style: normal; color: var(--laranja); }
+    /* o 3h30 fica branco: o laranja da headline e so do fecho (pedido dela) */
+    .hero-headline strong { color: #fff; font-weight: 600; }
     /* pilula translucida: o degrade solido virou vidro laranja com borda —
        ela pesa menos que o botao do formulario, que continua sendo o unico
        elemento solido do hero */
@@ -1061,8 +1063,11 @@
          blocos, em vez de acumular tudo nas bordas de cima e de baixo. */
       .hero-grid {
         display: grid; grid-template-columns: minmax(0, 1fr) auto;
-        min-height: 0; flex: 1 1 auto; align-content: space-between;
-        row-gap: min(16px, 1.2vh); column-gap: min(12px, 3.2vw);
+        /* era space-between: num celular ALTO (844px) a sobra de ~240px ia toda
+           para as juntas e o cadastro ficava longe da promessa (ela reclamou).
+           Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
+        min-height: 0; flex: 1 1 auto; align-content: center;
+        row-gap: min(20px, 2vh); column-gap: min(12px, 3.2vw);
         padding: min(26px, 2vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
@@ -1077,7 +1082,7 @@
       }
       /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
-      .hero-photo img { height: min(200px, 24vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1097,7 +1102,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(18px, 1.9vh) !important; }
+      .lead-form { margin-top: min(10px, 1.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -1105,19 +1110,20 @@
       .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
-      .lk-l1, .lk-l2 { font-size: min(1.24rem, 3vh); }
+      /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
+      .lk-l1, .lk-l2 { font-size: min(1.5rem, 3.5vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
-      .hero-headline { font-size: min(1.45rem, 2.7vh); line-height: 1.24; }
+      .hero-headline { font-size: min(1.3rem, 2.4vh); line-height: 1.26; }
       .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
       .lead-form { gap: min(10px, .85vh); }
       .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
       .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
-      /* 12px e o teto que mantem a nota em UMA linha num celular de 360px
-         (medido: 301px de texto em ~328px uteis) */
-      .form-note { font-size: min(.75rem, 1.45vh); line-height: 1.3; }
+      /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
+         e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
+      .form-note { font-size: min(.7rem, 1.45vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 100%; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
@@ -1844,8 +1850,11 @@
          blocos, em vez de acumular tudo nas bordas de cima e de baixo. */
       .hero-grid {
         display: grid; grid-template-columns: minmax(0, 1fr) auto;
-        min-height: 0; flex: 1 1 auto; align-content: space-between;
-        row-gap: min(16px, 1.2vh); column-gap: min(12px, 3.2vw);
+        /* era space-between: num celular ALTO (844px) a sobra de ~240px ia toda
+           para as juntas e o cadastro ficava longe da promessa (ela reclamou).
+           Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
+        min-height: 0; flex: 1 1 auto; align-content: center;
+        row-gap: min(20px, 2vh); column-gap: min(12px, 3.2vw);
         padding: min(26px, 2vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
@@ -1860,7 +1869,7 @@
       }
       /* a altura da foto define a LARGURA que sobra para o titulo ao lado —
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
-      .hero-photo img { height: min(200px, 24vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(160px, 20vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1880,7 +1889,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(18px, 1.9vh) !important; }
+      .lead-form { margin-top: min(10px, 1.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -1888,19 +1897,20 @@
       .hero-kicker { font-size: min(.9rem, 1.6vh); letter-spacing: .22em; }
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
-      .lk-l1, .lk-l2 { font-size: min(1.24rem, 3vh); }
+      /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
+      .lk-l1, .lk-l2 { font-size: min(1.5rem, 3.5vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
-      .hero-headline { font-size: min(1.45rem, 2.7vh); line-height: 1.24; }
+      .hero-headline { font-size: min(1.3rem, 2.4vh); line-height: 1.26; }
       .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
       .lead-form { gap: min(10px, .85vh); }
       .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
       .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
-      /* 12px e o teto que mantem a nota em UMA linha num celular de 360px
-         (medido: 301px de texto em ~328px uteis) */
-      .form-note { font-size: min(.75rem, 1.45vh); line-height: 1.3; }
+      /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
+         e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
+      .form-note { font-size: min(.7rem, 1.45vh); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 100%; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
