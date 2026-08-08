@@ -787,7 +787,9 @@
     /* ── OS 3 GANHOS (padrao da referencia): lead + tres cards com icone ── */
     .cta-final .ganhos-lead {
       text-align: center; color: rgba(255,255,255,.86);
-      font-size: 1rem; margin: 0 0 16px;
+      font-size: 1.15rem; margin: 0 auto 18px;
+      /* mesma largura dos cards: a frase centraliza no eixo deles */
+      max-width: 840px;
     }
     .cta-final .ganhos {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -1166,7 +1168,7 @@
       color: #fff !important; font-size: var(--fs-intro) !important;
       margin: 0 0 14px !important;
     }
-    .como .metodo-ciencias strong { color: #0a0a0c; font-weight: 800; }
+    .como .metodo-ciencias strong { color: #fff; font-weight: 700; }
     /* pilulas: fundo preto com o laranja da marca */
     .como .pills .pill {
       background: #0a0a0c; border: 1px solid var(--laranja);
@@ -1559,7 +1561,9 @@
     /* ── OS 3 GANHOS (padrao da referencia): lead + tres cards com icone ── */
     .cta-final .ganhos-lead {
       text-align: center; color: rgba(255,255,255,.86);
-      font-size: 1rem; margin: 0 0 16px;
+      font-size: 1.15rem; margin: 0 auto 18px;
+      /* mesma largura dos cards: a frase centraliza no eixo deles */
+      max-width: 840px;
     }
     .cta-final .ganhos {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
@@ -1938,7 +1942,7 @@
       color: #fff !important; font-size: var(--fs-intro) !important;
       margin: 0 0 14px !important;
     }
-    .como .metodo-ciencias strong { color: #0a0a0c; font-weight: 800; }
+    .como .metodo-ciencias strong { color: #fff; font-weight: 700; }
     /* pilulas: fundo preto com o laranja da marca */
     .como .pills .pill {
       background: #0a0a0c; border: 1px solid var(--laranja);
