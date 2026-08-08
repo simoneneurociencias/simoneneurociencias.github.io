@@ -1069,11 +1069,11 @@
         /* era space-between: num celular ALTO (844px) a sobra de ~240px ia toda
            para as juntas e o cadastro ficava longe da promessa (ela reclamou).
            Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
-        min-height: 0; flex: 1 1 auto; align-content: center;
+        min-height: 0; flex: 1 1 auto; align-content: start;
         /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
            a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
         row-gap: min(20px, 2vh); column-gap: 4px;
-        padding: min(26px, 2vh) 0 min(22px, 1.7vh);
+        padding: min(10px, 1vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
       .hero-lockup {
@@ -1877,11 +1877,11 @@
         /* era space-between: num celular ALTO (844px) a sobra de ~240px ia toda
            para as juntas e o cadastro ficava longe da promessa (ela reclamou).
            Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
-        min-height: 0; flex: 1 1 auto; align-content: center;
+        min-height: 0; flex: 1 1 auto; align-content: start;
         /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
            a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
         row-gap: min(20px, 2vh); column-gap: 4px;
-        padding: min(26px, 2vh) 0 min(22px, 1.7vh);
+        padding: min(10px, 1vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
       .hero-lockup {
