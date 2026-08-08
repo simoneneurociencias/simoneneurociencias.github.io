@@ -562,7 +562,7 @@
     /* vence a regra que pinta o nome de escuro quando a secao e laranja */
     .metodo-caixa .mn-nome { color: #fff !important; }
     .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
-    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); }
+    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); font-size: 1.18em; }
     /* o nome por extenso tem que caber em UMA linha (pedido dela): fonte menor que
        a sigla e presa ao vw, com nowrap. Se mexer, medir em 320px antes */
     .metodo-h2 .mn-nome {
@@ -1370,7 +1370,7 @@
     /* vence a regra que pinta o nome de escuro quando a secao e laranja */
     .metodo-caixa .mn-nome { color: #fff !important; }
     .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
-    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); }
+    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); font-size: 1.18em; }
     /* o nome por extenso tem que caber em UMA linha (pedido dela): fonte menor que
        a sigla e presa ao vw, com nowrap. Se mexer, medir em 320px antes */
     .metodo-h2 .mn-nome {
