@@ -554,16 +554,17 @@
       box-shadow: 0 16px 46px rgba(0,0,0,.34);
     }
     .metodo-caixa .metodo-h2 { margin-bottom: 0 !important; }
-    .metodo-caixa .mn-sigla { color: #fff; }
+    .metodo-caixa .mn-sigla { color: var(--laranja-2); }
     /* vence a regra que pinta o nome de escuro quando a secao e laranja */
-    .metodo-caixa .mn-nome { color: var(--laranja-2) !important; }
+    .metodo-caixa .mn-nome { color: #fff !important; }
     .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
-    .metodo-h2 .mn-sigla { display: block; color: #fff; }
+    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); }
     /* o nome por extenso tem que caber em UMA linha (pedido dela): fonte menor que
        a sigla e presa ao vw, com nowrap. Se mexer, medir em 320px antes */
     .metodo-h2 .mn-nome {
-      display: block; color: var(--laranja-2);
-      font-size: min(4.35vw, 1.5rem); white-space: nowrap; margin-top: 4px;
+      display: block; color: #fff;
+      /* subiu de min(4.35vw,1.5rem): o vw e quem garante a linha unica em 320px */
+      font-size: min(4.8vw, 1.65rem); white-space: nowrap; margin-top: 4px;
     }
     /* ── ESCADA "a maioria / alguns / nenhum" ──
        Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
@@ -1333,16 +1334,17 @@
       box-shadow: 0 16px 46px rgba(0,0,0,.34);
     }
     .metodo-caixa .metodo-h2 { margin-bottom: 0 !important; }
-    .metodo-caixa .mn-sigla { color: #fff; }
+    .metodo-caixa .mn-sigla { color: var(--laranja-2); }
     /* vence a regra que pinta o nome de escuro quando a secao e laranja */
-    .metodo-caixa .mn-nome { color: var(--laranja-2) !important; }
+    .metodo-caixa .mn-nome { color: #fff !important; }
     .metodo-h2 { font-size: clamp(1.02rem, 5.1vw, 2.3rem) !important; margin-bottom: 14px !important; line-height: 1.22; text-wrap: balance; }
-    .metodo-h2 .mn-sigla { display: block; color: #fff; }
+    .metodo-h2 .mn-sigla { display: block; color: var(--laranja-2); }
     /* o nome por extenso tem que caber em UMA linha (pedido dela): fonte menor que
        a sigla e presa ao vw, com nowrap. Se mexer, medir em 320px antes */
     .metodo-h2 .mn-nome {
-      display: block; color: var(--laranja-2);
-      font-size: min(4.35vw, 1.5rem); white-space: nowrap; margin-top: 4px;
+      display: block; color: #fff;
+      /* subiu de min(4.35vw,1.5rem): o vw e quem garante a linha unica em 320px */
+      font-size: min(4.8vw, 1.65rem); white-space: nowrap; margin-top: 4px;
     }
     /* ── ESCADA "a maioria / alguns / nenhum" ──
        Molde da ref que ela mandou (LP do Mapa do Trauma): tres degraus que
