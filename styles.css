@@ -1089,7 +1089,7 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(150px, 19vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(180px, 22vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1128,11 +1128,11 @@
       /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
          cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
          virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
-      .lk-l1 { font-size: min(1.65rem, 3.9vh, 6.7vw); }
+      .lk-l1 { font-size: min(1.5rem, 3.6vh, 5.9vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.72rem, 4.05vh, 7vw); }
+      .lk-l2 { font-size: min(1.55rem, 3.7vh, 6.1vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
@@ -1897,7 +1897,7 @@
          passar de ~22vh estreita a coluna e o h1 comeca a quebrar em 5-6 linhas */
       /* 170px/21vh e o TETO medido em 08/08: com 180px a coluna do titulo cai para
          185px e "DE ALTO VALOR" quebra, virando 3 linhas num celular de 390px */
-      .hero-photo img { height: min(150px, 19vh); width: auto; max-height: none; transform: none; }
+      .hero-photo img { height: min(180px, 22vh); width: auto; max-height: none; transform: none; }
       /* a pilula deixou de morar dentro do lockup: no celular ela ocupa uma
          linha propria, centrada, entre a faixa do topo e a promessa */
       .hero-badge    { grid-row: 2; justify-self: center; }
@@ -1936,11 +1936,11 @@
       /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
          cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
          virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
-      .lk-l1 { font-size: min(1.65rem, 3.9vh, 6.7vw); }
+      .lk-l1 { font-size: min(1.5rem, 3.6vh, 5.9vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.72rem, 4.05vh, 7vw); }
+      .lk-l2 { font-size: min(1.55rem, 3.7vh, 6.1vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
