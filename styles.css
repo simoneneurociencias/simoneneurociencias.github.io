@@ -1103,7 +1103,9 @@
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
       .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
-      .lead-form { width: 100%; }
+      /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
+         lateral para o titulo crescer, mas os campos encostavam na borda */
+      .lead-form { width: 100%; padding-inline: 10px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
@@ -1900,7 +1902,9 @@
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
       .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
-      .lead-form { width: 100%; }
+      /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
+         lateral para o titulo crescer, mas os campos encostavam na borda */
+      .lead-form { width: 100%; padding-inline: 10px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
