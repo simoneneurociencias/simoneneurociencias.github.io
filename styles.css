@@ -1054,6 +1054,9 @@
          Ao mexer, altere so o 1o valor do min() — o 2o (vh) e o que faz caber.
          ───────────────────────────────────────────────────────────────────── */
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
+      /* no celular a hero usa a largura toda: 22px de padding eram 44px roubados
+         da coluna do titulo e do formulario */
+      .hero > .container { padding: 0 12px; }
       .hero > .container { display: flex; flex: 1 1 auto; }
       /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
          esquerda e a foto na direita, centrados um em relacao ao outro.
@@ -1067,7 +1070,9 @@
            para as juntas e o cadastro ficava longe da promessa (ela reclamou).
            Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
         min-height: 0; flex: 1 1 auto; align-content: center;
-        row-gap: min(20px, 2vh); column-gap: min(12px, 3.2vw);
+        /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
+           a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
+        row-gap: min(20px, 2vh); column-gap: 4px;
         padding: min(26px, 2vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
@@ -1116,7 +1121,7 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1, .lk-l2 { font-size: min(1.5rem, 3.5vh); }
+      .lk-l1, .lk-l2 { font-size: min(1.65rem, 3.9vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
@@ -1846,6 +1851,9 @@
          Ao mexer, altere so o 1o valor do min() — o 2o (vh) e o que faz caber.
          ───────────────────────────────────────────────────────────────────── */
       .hero { min-height: 100vh; min-height: 100svh; display: flex; }
+      /* no celular a hero usa a largura toda: 22px de padding eram 44px roubados
+         da coluna do titulo e do formulario */
+      .hero > .container { padding: 0 12px; }
       .hero > .container { display: flex; flex: 1 1 auto; }
       /* Linha 1 = faixa do topo: o LOCKUP (nome do evento + pilula) na coluna
          esquerda e a foto na direita, centrados um em relacao ao outro.
@@ -1859,7 +1867,9 @@
            para as juntas e o cadastro ficava longe da promessa (ela reclamou).
            Centralizado, a sobra vai para as bordas e o vao cai de 85 para 44px. */
         min-height: 0; flex: 1 1 auto; align-content: center;
-        row-gap: min(20px, 2vh); column-gap: min(12px, 3.2vw);
+        /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
+           a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
+        row-gap: min(20px, 2vh); column-gap: 4px;
         padding: min(26px, 2vh) 0 min(22px, 1.7vh);
       }
       .hero-copy { display: contents; }
@@ -1908,7 +1918,7 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1, .lk-l2 { font-size: min(1.5rem, 3.5vh); }
+      .lk-l1, .lk-l2 { font-size: min(1.65rem, 3.9vh); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
