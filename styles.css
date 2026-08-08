@@ -1125,11 +1125,14 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1 { font-size: min(1.65rem, 3.9vh); }
+      /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
+         cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
+         virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
+      .lk-l1 { font-size: min(1.65rem, 3.9vh, 6.7vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.72rem, 4.05vh); }
+      .lk-l2 { font-size: min(1.72rem, 4.05vh, 7vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
@@ -1141,7 +1144,7 @@
       .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
       /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
          e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
-      .form-note { font-size: min(.7rem, 1.45vh); line-height: 1.3; }
+      .form-note { font-size: min(.7rem, 1.45vh, 2.85vw); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 100%; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
@@ -1930,11 +1933,14 @@
       /* o lockup no celular: as duas linhas grandes escalam com a altura da
          tela, como o resto da hero */
       /* titulo maior (pedido dela): o vh subiu de 3 para 3.5 e o rem acompanha */
-      .lk-l1 { font-size: min(1.65rem, 3.9vh); }
+      /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
+         cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
+         virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
+      .lk-l1 { font-size: min(1.65rem, 3.9vh, 6.7vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.72rem, 4.05vh); }
+      .lk-l2 { font-size: min(1.72rem, 4.05vh, 7vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
@@ -1946,7 +1952,7 @@
       .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
       /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
          e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
-      .form-note { font-size: min(.7rem, 1.45vh); line-height: 1.3; }
+      .form-note { font-size: min(.7rem, 1.45vh, 2.85vw); line-height: 1.3; }
       .mentora-grid { grid-template-columns: 1fr; }
       .mentora-photo { max-width: 100%; margin: 0 auto; }
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
