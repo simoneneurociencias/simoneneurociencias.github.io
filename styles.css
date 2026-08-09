@@ -136,9 +136,10 @@
     }
     .bt-valor {
       font-family: 'Segoe UI', Arial, sans-serif; font-weight: 800;
-      font-size: clamp(2.1rem, 5vw, 2.8rem); line-height: 1; color: #fff;
+      /* numero laranja, risco branco — igual ao valor de cada bonus */
+      font-size: clamp(2.1rem, 5vw, 2.8rem); line-height: 1; color: var(--laranja-2);
       text-decoration: line-through; text-decoration-thickness: 3px;
-      text-decoration-color: rgba(255,255,255,.8);
+      text-decoration-color: rgba(255,255,255,.9);
     }
     .bt-frase {
       font-family: 'Marcellus', Georgia, serif; font-size: clamp(1.3rem, 3vw, 1.62rem);
