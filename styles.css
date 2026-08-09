@@ -628,14 +628,28 @@
     /* ── a secao do metodo agora e laranja ──
        as caixas da escada usam laranja translucido e sumiriam; os textos que
        eram laranja/cinza sobre fundo escuro precisam de contraste novo */
+    /* ── PAINEL DO DIFERENCIAL (pedido dela em 09/08) ──
+       antes o bloco ficava solto sobre o degrade rosa e lia como continuacao da
+       secao. Agora e um painel escuro com moldura e sombra: separa sem trocar a
+       cor da secao. As caixas de dentro ficam MAIS CLARAS que o painel, senao
+       desaparecem nele. */
+    .sec-laranja .escada {
+      background: linear-gradient(165deg, rgba(10,9,12,.80) 0%, rgba(26,12,18,.90) 100%);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 22px;
+      padding: 34px 26px 30px;
+      box-shadow: 0 26px 64px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.06);
+    }
     .sec-laranja .esc-item {
-      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
-      border-color: rgba(229,67,42,.45);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.14);
     }
     .sec-laranja .esc-item--forte {
-      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
-      border-color: rgba(229,67,42,.75);
+      background: linear-gradient(160deg, rgba(229,67,42,.22) 0%, rgba(195,48,92,.16) 100%);
+      border-color: rgba(255,140,110,.55);
+      box-shadow: 0 14px 34px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
     }
+    .sec-laranja .esc-item p { color: rgba(255,255,255,.82); }
     .sec-laranja .esc-item p { color: var(--cinza); }
     .sec-laranja .esc-item--forte p { color: var(--creme); }
     .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
@@ -1464,14 +1478,28 @@
     /* ── a secao do metodo agora e laranja ──
        as caixas da escada usam laranja translucido e sumiriam; os textos que
        eram laranja/cinza sobre fundo escuro precisam de contraste novo */
+    /* ── PAINEL DO DIFERENCIAL (pedido dela em 09/08) ──
+       antes o bloco ficava solto sobre o degrade rosa e lia como continuacao da
+       secao. Agora e um painel escuro com moldura e sombra: separa sem trocar a
+       cor da secao. As caixas de dentro ficam MAIS CLARAS que o painel, senao
+       desaparecem nele. */
+    .sec-laranja .escada {
+      background: linear-gradient(165deg, rgba(10,9,12,.80) 0%, rgba(26,12,18,.90) 100%);
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 22px;
+      padding: 34px 26px 30px;
+      box-shadow: 0 26px 64px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.06);
+    }
     .sec-laranja .esc-item {
-      background: linear-gradient(180deg, #0a0a0c 0%, #170c08 55%, #2a1209 100%);
-      border-color: rgba(229,67,42,.45);
+      background: rgba(255,255,255,.05);
+      border-color: rgba(255,255,255,.14);
     }
     .sec-laranja .esc-item--forte {
-      background: linear-gradient(180deg, #12080a 0%, #24100b 55%, #3a1a0d 100%);
-      border-color: rgba(229,67,42,.75);
+      background: linear-gradient(160deg, rgba(229,67,42,.22) 0%, rgba(195,48,92,.16) 100%);
+      border-color: rgba(255,140,110,.55);
+      box-shadow: 0 14px 34px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.08);
     }
+    .sec-laranja .esc-item p { color: rgba(255,255,255,.82); }
     .sec-laranja .esc-item p { color: var(--cinza); }
     .sec-laranja .esc-item--forte p { color: var(--creme); }
     .sec-laranja .esc-fecho { background: rgba(10,10,12,.30); border-color: rgba(255,255,255,.4); color: #fff; }
