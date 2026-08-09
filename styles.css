@@ -756,7 +756,7 @@
     .info-card img { width: 100%; aspect-ratio: 1.751; height: auto; display: block; }
     .info-card .ic-body { padding: 18px 20px 22px; }
     .info-card .ic-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 6px; }
-    .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
+    .info-card .ic-main { font-size: 1rem; font-weight: 700; }
     .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
     /* Abaixo de ~590px os 3 cards nao cabem lado a lado. Sem isto o card que
        sobra na linha estica com flex:1 e a imagem dele vai a 200-310px de
@@ -766,7 +766,7 @@
       /* mantem 2 por linha tambem no celular */
       .info-cards { max-width: 100%; gap: 12px; }
       .info-card .ic-body { padding: 14px 14px 18px; }
-      .info-card .ic-main { font-size: 1rem; }
+      .info-card .ic-main { font-size: .94rem; }
       .info-card .ic-sub { font-size: .78rem; }
     }
     .price-card {
@@ -1606,7 +1606,7 @@
     .info-card img { width: 100%; aspect-ratio: 1.751; height: auto; display: block; }
     .info-card .ic-body { padding: 18px 20px 22px; }
     .info-card .ic-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--laranja-2); margin-bottom: 6px; }
-    .info-card .ic-main { font-size: 1.1rem; font-weight: 700; }
+    .info-card .ic-main { font-size: 1rem; font-weight: 700; }
     .info-card .ic-sub { font-size: .84rem; color: var(--cinza); margin-top: 4px; }
     /* Abaixo de ~590px os 3 cards nao cabem lado a lado. Sem isto o card que
        sobra na linha estica com flex:1 e a imagem dele vai a 200-310px de
@@ -1616,7 +1616,7 @@
       /* mantem 2 por linha tambem no celular */
       .info-cards { max-width: 100%; gap: 12px; }
       .info-card .ic-body { padding: 14px 14px 18px; }
-      .info-card .ic-main { font-size: 1rem; }
+      .info-card .ic-main { font-size: .94rem; }
       .info-card .ic-sub { font-size: .78rem; }
     }
     .price-card {
