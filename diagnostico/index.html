@@ -250,6 +250,30 @@
     .bd-tag strong { color: var(--texto); font-weight: 700; }
     @media (max-width: 560px) { .bd-tag { border-radius: 18px; padding: 12px 18px; font-size: .86rem; } }
 
+    /* CTA final → Análise Diagnóstica gratuita. Só existe na versão isca:
+       no webinário ao vivo a oferta é feita por ela, não pela página. */
+    .cta-final {
+      display: none; margin-top: 36px;
+      background: linear-gradient(160deg, rgba(212,175,55,.12), rgba(212,175,55,.02));
+      border: 1px solid var(--borda); border-radius: 16px;
+      padding: 32px 26px; text-align: center;
+    }
+    .cta-final .cta-kicker {
+      display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--ouro); margin-bottom: 12px;
+    }
+    .cta-final h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
+    .cta-final h2 em { font-style: normal; color: var(--ouro-suave); }
+    .cta-final p { color: var(--cinza); font-size: .98rem; max-width: 540px; margin: 0 auto 22px; }
+    .cta-final .btn { text-decoration: none; }
+    .cta-final .cta-urgencia {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .85rem; font-weight: 600; color: var(--amber);
+      background: rgba(224,161,60,.10); border: 1px solid rgba(224,161,60,.30);
+      border-radius: 999px; padding: 8px 16px; margin: 0 auto 18px;
+    }
+    .cta-final .cta-sub { font-size: .8rem; color: var(--cinza); opacity: .85; margin-top: 12px; margin-bottom: 0; }
+
     .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
     .refazer:hover { background: rgba(212,175,55,.1); }
     .baixar { margin-top: 26px; }
@@ -463,6 +487,15 @@
       </div>
     </div>
 
+    <div class="cta-final" id="ctaFinal">
+      <span class="cta-kicker">Próximo passo</span>
+      <h2 id="ctaTitulo"></h2>
+      <p id="ctaTexto"></p>
+      <p class="cta-urgencia">⏳ Vagas limitadas: abro poucos horários por semana e eles se esgotam rápido.</p>
+      <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
+      <p class="cta-sub">Conversa individual e sem compromisso.</p>
+    </div>
+
     <button class="btn baixar" id="baixarBtn" type="button">Baixar meu resultado em PDF</button>
     <p class="baixar-dica">Na janela que abrir, escolha <strong>Salvar como PDF</strong> no destino.</p>
 
@@ -668,6 +701,8 @@
 
   // guarda o resultado calculado enquanto o gate está aberto
   let ultimoResultado = null;
+  // faixa declarada no gate; decide se o convite da Análise aparece
+  let faturamentoInformado = '';
 
   // "Liberar meu resultado" (só existe na versão isca) → valida contato,
   // envia o lead junto com o resultado e revela a tela
@@ -684,6 +719,7 @@
       return;
     }
     document.getElementById('avisoGate').textContent = '';
+    faturamentoInformado = faturamento;
     enviarResultado(ultimoResultado, {
       nome: nome, email: email, whatsapp: whatsapp, faturamento: faturamento
     });
@@ -783,11 +819,57 @@
     ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
     document.getElementById(fxId).classList.add('ativa');
 
+    montarCta(fxId);
+
     document.getElementById('printData').textContent =
       'Realizado em ' + new Date().toLocaleDateString('pt-BR');
 
     document.getElementById('resultado').style.display = 'block';
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // ⚙️ CONFIGURAÇÃO — página de agendamento da Análise Diagnóstica gratuita.
+  // Vazio esconde o botão.
+  const AGENDA_URL = "https://calendar.app.google/vub9HiAtn2FEMymU8";
+
+  // Faixas que liberam a agenda. Abaixo de R$ 5 mil a conversa individual não
+  // se paga, então o convite nem aparece: some sem dizer que a pessoa foi
+  // recusada.
+  const FATURAMENTO_QUALIFICA = [
+    'R$ 5 mil a R$ 10 mil',
+    'R$ 10 mil a R$ 20 mil',
+    'Acima de R$ 20 mil'
+  ];
+
+  // Convite para a Análise Diagnóstica gratuita, com o texto adaptado ao nível
+  // do bloqueio. Só na isca: no webinário ao vivo quem faz a oferta é ela.
+  function montarCta(fxId) {
+    const cta = document.getElementById('ctaFinal');
+    if (!ISCA || !AGENDA_URL ||
+        FATURAMENTO_QUALIFICA.indexOf(faturamentoInformado) === -1) {
+      cta.style.display = 'none';
+      return;
+    }
+
+    const copy = {
+      'fx-leve': {
+        titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
+        texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais. Numa Análise Diagnóstica gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
+      },
+      'fx-moderado': {
+        titulo: 'Você está a <em>um passo</em> de destravar.',
+        texto: 'Parte do seu potencial já responde, mas some justamente quando mais importa, e isso tem solução. Numa Análise Diagnóstica gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
+      },
+      'fx-profundo': {
+        titulo: 'Esse padrão <em>pode ser reescrito</em>, e você não precisa fazer isso sozinha.',
+        texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz. Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
+      }
+    };
+    const c = copy[fxId];
+    document.getElementById('ctaTitulo').innerHTML = c.titulo;
+    document.getElementById('ctaTexto').textContent = c.texto;
+    document.getElementById('ctaBtn').href = AGENDA_URL;
+    cta.style.display = 'block';
   }
 </script>
 </body>
