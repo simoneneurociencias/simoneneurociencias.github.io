@@ -390,6 +390,10 @@
     /* so a secao da vivencia (laranja): a dos segredos tambem tem a classe
        .vivencia e herdava esses 54px como sobra no fim */
     .vivencia.sec-laranja .center-cta { margin-bottom: 54px; }
+    /* o topo da vivencia cede espaco: a faixa laranja comeca mais tarde e a
+       secao dos 3 segredos ganha respiro no fim (pedido dela) */
+    .vivencia.sec-laranja { padding-top: 20px; }
+    .segredos { padding-bottom: 56px; }
     /* text-wrap:balance divide as linhas por igual — sem ele o "3h30" caia sozinho
        na segunda linha */
     .pilares-h3 {
@@ -1179,7 +1183,7 @@
       /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
          vaos, padding e o rotulo; as promessas nao sao tocadas */
       /* mais ar no topo e menos sobra embaixo (pedido dela) */
-      .segredos { padding: 52px 0 24px; }
+      .segredos { padding: 52px 0 52px; }
       /* respiro entre a subheadline e o primeiro segredo */
       .segredos-list { margin-top: 32px; gap: 16px; }
       .segredo-row, .segredo-row.rev { padding: 14px 18px; gap: 5px; }
@@ -2005,7 +2009,7 @@
       /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
          vaos, padding e o rotulo; as promessas nao sao tocadas */
       /* mais ar no topo e menos sobra embaixo (pedido dela) */
-      .segredos { padding: 52px 0 24px; }
+      .segredos { padding: 52px 0 52px; }
       /* respiro entre a subheadline e o primeiro segredo */
       .segredos-list { margin-top: 32px; gap: 16px; }
       .segredo-row, .segredo-row.rev { padding: 14px 18px; gap: 5px; }
