@@ -387,7 +387,9 @@
     .segredos > .container, .diagnostico > .container { position: relative; z-index: 1; }
     /* os 3 segredos e a vivencia dividem a mesma secao escura: sem esta folga
        o botao dos segredos encosta no rotulo "A vivencia" */
-    .vivencia .center-cta { margin-bottom: 54px; }
+    /* so a secao da vivencia (laranja): a dos segredos tambem tem a classe
+       .vivencia e herdava esses 54px como sobra no fim */
+    .vivencia.sec-laranja .center-cta { margin-bottom: 54px; }
     /* text-wrap:balance divide as linhas por igual — sem ele o "3h30" caia sozinho
        na segunda linha */
     .pilares-h3 {
@@ -1176,11 +1178,13 @@
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
       /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
          vaos, padding e o rotulo; as promessas nao sao tocadas */
-      .segredos { padding: 22px 0; }
-      .segredos-list { margin-top: 14px; gap: 12px; }
+      /* mais ar no topo e menos sobra embaixo (pedido dela) */
+      .segredos { padding: 52px 0 24px; }
+      /* respiro entre a subheadline e o primeiro segredo */
+      .segredos-list { margin-top: 32px; gap: 16px; }
       .segredo-row, .segredo-row.rev { padding: 14px 18px; gap: 5px; }
       .segredo-title .num { font-size: 1.5rem; }
-      .segredos .center-cta { margin-top: 14px; }
+      .segredos .center-cta { margin-top: 26px; }
       .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
       .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
       .segredo-div { display: none; }
@@ -2000,11 +2004,13 @@
       .segredo-row, .segredo-row.rev { grid-template-columns: 1fr; gap: 12px; text-align: center; }
       /* ── SECAO DOS 3 SEGREDOS EM UMA TELA (pedido dela) ──
          vaos, padding e o rotulo; as promessas nao sao tocadas */
-      .segredos { padding: 22px 0; }
-      .segredos-list { margin-top: 14px; gap: 12px; }
+      /* mais ar no topo e menos sobra embaixo (pedido dela) */
+      .segredos { padding: 52px 0 24px; }
+      /* respiro entre a subheadline e o primeiro segredo */
+      .segredos-list { margin-top: 32px; gap: 16px; }
       .segredo-row, .segredo-row.rev { padding: 14px 18px; gap: 5px; }
       .segredo-title .num { font-size: 1.5rem; }
-      .segredos .center-cta { margin-top: 14px; }
+      .segredos .center-cta { margin-top: 26px; }
       .segredo-title, .segredo-row.rev .segredo-title { text-align: center; order: 1; }
       .segredo-desc, .segredo-row.rev .segredo-desc { text-align: center; order: 2; }
       .segredo-div { display: none; }
