@@ -786,16 +786,21 @@
 
     /* ════════ FAQ ════════ */
     .faq h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 30px; }
+    /* caixas em preto -> laranja em degrade (pedido dela); os textos sobem de tom
+       para nao ficarem fracos sobre o ambar da base */
     .faq details {
       max-width: 760px; margin: 0 auto 12px;
-      background: var(--preto-2); border: 1px solid var(--borda); border-radius: 10px;
+      background: linear-gradient(160deg, #08080a 0%, #1c0c09 58%, #33170f 100%);
+      border: 1px solid rgba(229,67,42,.42); border-radius: 12px;
       padding: 4px 22px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
     }
-    .faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: var(--creme); list-style: none; position: relative; padding-right: 28px; }
+    .faq details[open] { border-color: rgba(255,140,110,.6); }
+    .faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: #fff; list-style: none; position: relative; padding-right: 28px; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja); font-size: 1.3rem; }
+    .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja-2); font-size: 1.3rem; }
     .faq details[open] summary::after { content: "–"; }
-    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: var(--fs-corpo); }
+    .faq details p { color: rgba(255,255,255,.9); padding: 0 0 18px; font-size: var(--fs-corpo); }
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
@@ -1652,16 +1657,21 @@
 
     /* ════════ FAQ ════════ */
     .faq h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 30px; }
+    /* caixas em preto -> laranja em degrade (pedido dela); os textos sobem de tom
+       para nao ficarem fracos sobre o ambar da base */
     .faq details {
       max-width: 760px; margin: 0 auto 12px;
-      background: var(--preto-2); border: 1px solid var(--borda); border-radius: 10px;
+      background: linear-gradient(160deg, #08080a 0%, #1c0c09 58%, #33170f 100%);
+      border: 1px solid rgba(229,67,42,.42); border-radius: 12px;
       padding: 4px 22px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.05);
     }
-    .faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: var(--creme); list-style: none; position: relative; padding-right: 28px; }
+    .faq details[open] { border-color: rgba(255,140,110,.6); }
+    .faq summary { cursor: pointer; padding: 16px 0; font-weight: 600; color: #fff; list-style: none; position: relative; padding-right: 28px; }
     .faq summary::-webkit-details-marker { display: none; }
-    .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja); font-size: 1.3rem; }
+    .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja-2); font-size: 1.3rem; }
     .faq details[open] summary::after { content: "–"; }
-    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: var(--fs-corpo); }
+    .faq details p { color: rgba(255,255,255,.9); padding: 0 0 18px; font-size: var(--fs-corpo); }
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
