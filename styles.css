@@ -696,12 +696,24 @@
        centralizava mas a estrela ficava sozinha na margem esquerda. Agora
        estrela e texto sao inline no mesmo bloco centrado, entao a estrela
        acompanha o comeco da primeira linha. */
-    .praticas-item { display: block; text-align: center; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .praticas-item > span { display: inline; margin-right: 7px; }
-    .praticas-item > p { display: inline; }
-    .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
-    .praticas-item p { font-size: var(--fs-corpo); color: var(--creme); text-wrap: balance; text-align: center; }
-    .praticas-item strong { color: var(--laranja-2); }
+    /* item de pratica: o losango fica numa coluna propria e o texto alinhado a
+       esquerda, com recuo pendurado. Centralizado com bullet ficava desalinhado
+       (o ✦ no meio da primeira linha e as demais linhas soltas) */
+    .praticas-item {
+      display: grid; grid-template-columns: auto 1fr; gap: 0 12px;
+      max-width: 600px; margin: 0 auto 16px; text-align: left;
+      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .praticas-item:last-of-type { padding-bottom: 0; border-bottom: 0; margin-bottom: 0; }
+    .praticas-item > span {
+      color: var(--laranja-2); font-size: 1rem; line-height: 1.62;
+      display: block; margin: 0;
+    }
+    .praticas-item > p {
+      display: block; margin: 0; font-size: var(--fs-corpo); line-height: 1.62;
+      color: rgba(255,255,255,.9); text-align: left; text-wrap: pretty;
+    }
+    .praticas-item strong { color: #fff; font-weight: 600; }
 
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
@@ -1506,12 +1518,24 @@
        centralizava mas a estrela ficava sozinha na margem esquerda. Agora
        estrela e texto sao inline no mesmo bloco centrado, entao a estrela
        acompanha o comeco da primeira linha. */
-    .praticas-item { display: block; text-align: center; margin-bottom: 14px; max-width: 640px; margin-left: auto; margin-right: auto; }
-    .praticas-item > span { display: inline; margin-right: 7px; }
-    .praticas-item > p { display: inline; }
-    .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
-    .praticas-item p { font-size: var(--fs-corpo); color: var(--creme); text-wrap: balance; text-align: center; }
-    .praticas-item strong { color: var(--laranja-2); }
+    /* item de pratica: o losango fica numa coluna propria e o texto alinhado a
+       esquerda, com recuo pendurado. Centralizado com bullet ficava desalinhado
+       (o ✦ no meio da primeira linha e as demais linhas soltas) */
+    .praticas-item {
+      display: grid; grid-template-columns: auto 1fr; gap: 0 12px;
+      max-width: 600px; margin: 0 auto 16px; text-align: left;
+      padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+    .praticas-item:last-of-type { padding-bottom: 0; border-bottom: 0; margin-bottom: 0; }
+    .praticas-item > span {
+      color: var(--laranja-2); font-size: 1rem; line-height: 1.62;
+      display: block; margin: 0;
+    }
+    .praticas-item > p {
+      display: block; margin: 0; font-size: var(--fs-corpo); line-height: 1.62;
+      color: rgba(255,255,255,.9); text-align: left; text-wrap: pretty;
+    }
+    .praticas-item strong { color: #fff; font-weight: 600; }
 
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
