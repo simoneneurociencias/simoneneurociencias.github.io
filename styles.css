@@ -776,7 +776,7 @@
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
-    .cta-final { padding: 60px 0; }
+    .cta-final { padding: 60px 0 22px; }
     .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
@@ -1604,7 +1604,7 @@
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
-    .cta-final { padding: 60px 0; }
+    .cta-final { padding: 60px 0 22px; }
     .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
