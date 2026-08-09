@@ -483,7 +483,9 @@
     /* manifesto: caixa rosada, na mesma coluna e largura da .mentora-box */
     .manifesto {
       margin: 16px 0 0; text-align: center;
-      background: linear-gradient(160deg, rgba(195,48,92,.34) 0%, rgba(195,48,92,.14) 100%);
+      /* mais escura (pedido dela): a secao da mentora virou laranja e o rosado a
+         34% clareava demais — agora o rosado entra sobre uma base quase preta */
+      background: linear-gradient(160deg, rgba(120,26,56,.62) 0%, rgba(20,10,16,.78) 100%);
       border: 1px solid rgba(255,255,255,.16); border-radius: 18px;
       padding: 20px 26px; box-shadow: 0 14px 38px rgba(0,0,0,.24);
     }
