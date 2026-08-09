@@ -1139,7 +1139,9 @@
         /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
            a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
         row-gap: min(20px, 2vh); column-gap: 4px;
-        padding: min(14px, 1.2vh) 0 min(14px, 1.2vh);
+        /* assimetrico de proposito: com align-content:center, padding maior embaixo
+           sobe o bloco todo, aproximando o titulo do topo sem sair do centro */
+        padding: min(6px, .6vh) 0 min(30px, 3.2vh);
       }
       .hero-copy { display: contents; }
       .hero-lockup {
@@ -1182,7 +1184,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: 0 !important; }
+      .lead-form { margin-top: min(30px, 3.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -1999,7 +2001,9 @@
         /* column-gap de 4px e o padding de 12px abaixo devolvem 28px de largura
            a coluna do titulo (193 -> 221px), o que deixa a fonte crescer */
         row-gap: min(20px, 2vh); column-gap: 4px;
-        padding: min(14px, 1.2vh) 0 min(14px, 1.2vh);
+        /* assimetrico de proposito: com align-content:center, padding maior embaixo
+           sobe o bloco todo, aproximando o titulo do topo sem sair do centro */
+        padding: min(6px, .6vh) 0 min(30px, 3.2vh);
       }
       .hero-copy { display: contents; }
       .hero-lockup {
@@ -2042,7 +2046,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: 0 !important; }
+      .lead-form { margin-top: min(30px, 3.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
