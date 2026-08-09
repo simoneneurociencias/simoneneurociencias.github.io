@@ -525,7 +525,8 @@
     .para-quem h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 12px; }
     /* maior que as demais aberturas de secao, a pedido dela: e a frase que
        qualifica o publico. Por isso saiu da lista do --fs-intro */
-    .para-quem .pq-sub { text-align: center; font-size: var(--fs-destaque); margin: 0 auto 36px; max-width: 660px; }
+    /* entrelinha mais fechada e corpo menor: cabe em 3 linhas no celular */
+    .para-quem .pq-sub { text-align: center; font-size: var(--fs-intro); line-height: 1.35; margin: 0 auto 30px; max-width: 620px; }
     .pq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; max-width: 980px; margin: 0 auto; }
     .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     /* fecho da secao 'O que muda', abaixo da dupla foto+lista */
@@ -1377,7 +1378,8 @@
     .para-quem h2 { text-align: center; font-size: var(--fs-h2); margin-bottom: 12px; }
     /* maior que as demais aberturas de secao, a pedido dela: e a frase que
        qualifica o publico. Por isso saiu da lista do --fs-intro */
-    .para-quem .pq-sub { text-align: center; font-size: var(--fs-destaque); margin: 0 auto 36px; max-width: 660px; }
+    /* entrelinha mais fechada e corpo menor: cabe em 3 linhas no celular */
+    .para-quem .pq-sub { text-align: center; font-size: var(--fs-intro); line-height: 1.35; margin: 0 auto 30px; max-width: 620px; }
     .pq-grid { display: grid; grid-template-columns: 320px 1fr; gap: 40px; align-items: start; max-width: 980px; margin: 0 auto; }
     .pq-foto img { width: 100%; aspect-ratio: 1/1; object-fit: cover; height: auto; display: block; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45); }
     /* fecho da secao 'O que muda', abaixo da dupla foto+lista */
