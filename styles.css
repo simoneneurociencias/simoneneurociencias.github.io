@@ -496,7 +496,7 @@
       padding: 20px 26px; box-shadow: 0 14px 38px rgba(0,0,0,.24);
     }
     .manifesto .m-label { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
-    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.1rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
+    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
     /* ════════ IMAGENS DAS SECOES ════════
        Pedido dela: toda arte de secao entra LOGO ABAIXO DO TITULO e com a
