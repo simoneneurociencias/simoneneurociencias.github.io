@@ -808,9 +808,9 @@
     .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
     /* ultima linha da pagina: cresce e volta ao branco cheio - e nela que a
        leitora se ve, entao ela nao pode ter o mesmo peso do resto */
+    /* mesmo corpo do resto do punch (tinha clamp proprio, maior) */
     .cta-final .cta-punch .punch-final {
-      margin-top: 16px; color: #fff;
-      font-size: clamp(1.18rem, 2.4vw, 1.5rem); line-height: 1.4;
+      margin-top: 16px; color: #fff; font-size: inherit; line-height: 1.5;
     }
     /* ── OS 3 GANHOS (padrao da referencia): lead + tres cards com icone ── */
     .cta-final .ganhos-lead {
@@ -824,7 +824,7 @@
       max-width: 840px; margin: 0 auto 30px;
     }
     .cta-final .ganho {
-      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.14);
+      background: rgba(8,7,10,.72); border: 1px solid rgba(255,255,255,.16);
       border-radius: 14px; padding: 22px 18px; text-align: center;
     }
     .cta-final .ganho-ico { width: 54px; height: 54px; color: var(--laranja-2); margin-bottom: 12px; }
@@ -838,7 +838,8 @@
     }
 
     /* o virada da frase em laranja, como na referencia que ela mandou */
-    .cta-final .cta-punch .punch-hi { font-style: normal; color: var(--laranja-2); }
+    /* a secao virou laranja: o laranja-2 sumia no fundo. Branco com peso. */
+    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 600; }
     .cta-final .cta-punch strong { color: #fff; }
 
     /* ── Dois caminhos (CTA final) ── */
@@ -1630,9 +1631,9 @@
     .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
     /* ultima linha da pagina: cresce e volta ao branco cheio - e nela que a
        leitora se ve, entao ela nao pode ter o mesmo peso do resto */
+    /* mesmo corpo do resto do punch (tinha clamp proprio, maior) */
     .cta-final .cta-punch .punch-final {
-      margin-top: 16px; color: #fff;
-      font-size: clamp(1.18rem, 2.4vw, 1.5rem); line-height: 1.4;
+      margin-top: 16px; color: #fff; font-size: inherit; line-height: 1.5;
     }
     /* ── OS 3 GANHOS (padrao da referencia): lead + tres cards com icone ── */
     .cta-final .ganhos-lead {
@@ -1646,7 +1647,7 @@
       max-width: 840px; margin: 0 auto 30px;
     }
     .cta-final .ganho {
-      background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.14);
+      background: rgba(8,7,10,.72); border: 1px solid rgba(255,255,255,.16);
       border-radius: 14px; padding: 22px 18px; text-align: center;
     }
     .cta-final .ganho-ico { width: 54px; height: 54px; color: var(--laranja-2); margin-bottom: 12px; }
@@ -1660,7 +1661,8 @@
     }
 
     /* o virada da frase em laranja, como na referencia que ela mandou */
-    .cta-final .cta-punch .punch-hi { font-style: normal; color: var(--laranja-2); }
+    /* a secao virou laranja: o laranja-2 sumia no fundo. Branco com peso. */
+    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 600; }
     .cta-final .cta-punch strong { color: #fff; }
 
     /* ── Dois caminhos (CTA final) ── */
