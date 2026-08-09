@@ -830,12 +830,17 @@
       .cta-final .cta-risco { flex-direction: column; text-align: center; gap: 16px; padding: 20px 22px; }
       .cta-final .risco-selo { width: 96px; }
     }
+    /* PAINEL: a secao e laranja, e o punch solto sobre ela nao tinha peso.
+       Painel escuro com moldura fina, sombra e um filete de luz no topo. */
     .cta-final .cta-punch {
       font-family: 'Marcellus', Georgia, serif;
-      /* um pouco menor (pedido dela): era --fs-destaque */
       font-size: var(--fs-intro);
-      line-height: 1.55; color: #fff;
-      max-width: 640px; margin: 0 auto 26px;
+      line-height: 1.6; color: #fff;
+      max-width: 600px; margin: 0 auto 22px;
+      background: linear-gradient(165deg, rgba(10,9,12,.80) 0%, rgba(26,12,18,.90) 100%);
+      border: 1px solid rgba(255,255,255,.16); border-radius: 20px;
+      padding: 26px 28px;
+      box-shadow: 0 22px 56px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.06);
       text-wrap: balance;
     }
     /* as duas frases no mesmo branco: a 86% a segunda parecia menor que a primeira */
@@ -1683,12 +1688,17 @@
       .cta-final .cta-risco { flex-direction: column; text-align: center; gap: 16px; padding: 20px 22px; }
       .cta-final .risco-selo { width: 96px; }
     }
+    /* PAINEL: a secao e laranja, e o punch solto sobre ela nao tinha peso.
+       Painel escuro com moldura fina, sombra e um filete de luz no topo. */
     .cta-final .cta-punch {
       font-family: 'Marcellus', Georgia, serif;
-      /* um pouco menor (pedido dela): era --fs-destaque */
       font-size: var(--fs-intro);
-      line-height: 1.55; color: #fff;
-      max-width: 640px; margin: 0 auto 26px;
+      line-height: 1.6; color: #fff;
+      max-width: 600px; margin: 0 auto 22px;
+      background: linear-gradient(165deg, rgba(10,9,12,.80) 0%, rgba(26,12,18,.90) 100%);
+      border: 1px solid rgba(255,255,255,.16); border-radius: 20px;
+      padding: 26px 28px;
+      box-shadow: 0 22px 56px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.06);
       text-wrap: balance;
     }
     /* as duas frases no mesmo branco: a 86% a segunda parecia menor que a primeira */
