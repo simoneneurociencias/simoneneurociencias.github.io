@@ -392,7 +392,7 @@
     .vivencia.sec-laranja .center-cta { margin-bottom: 54px; }
     /* o topo da vivencia cede espaco: a faixa laranja comeca mais tarde e a
        secao dos 3 segredos ganha respiro no fim (pedido dela) */
-    .vivencia.sec-laranja { padding-top: 20px; }
+    .vivencia.sec-laranja { padding-top: 20px; padding-bottom: 22px; }
     .segredos { padding-bottom: 56px; }
     /* text-wrap:balance divide as linhas por igual — sem ele o "3h30" caia sozinho
        na segunda linha */
