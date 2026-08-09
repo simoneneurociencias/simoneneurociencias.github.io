@@ -1106,7 +1106,8 @@
     /* teto em vw para o titulo fechar em 2 linhas ate 320px */
     .segredos .section-title h2 { font-size: min(var(--fs-h2), 7.5vw); }
     /* entrelinha mais fechada na subheadline (pedido dela) */
-    .segredos .section-title p { line-height: 1.35; }
+    /* entrelinha fechada e corpo um pouco menor que o padrao de abertura */
+    .segredos .section-title p { line-height: 1.28; font-size: var(--fs-corpo) !important; }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
@@ -1970,7 +1971,8 @@
     /* teto em vw para o titulo fechar em 2 linhas ate 320px */
     .segredos .section-title h2 { font-size: min(var(--fs-h2), 7.5vw); }
     /* entrelinha mais fechada na subheadline (pedido dela) */
-    .segredos .section-title p { line-height: 1.35; }
+    /* entrelinha fechada e corpo um pouco menor que o padrao de abertura */
+    .segredos .section-title p { line-height: 1.28; font-size: var(--fs-corpo) !important; }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
