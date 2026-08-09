@@ -751,7 +751,7 @@
         // a partir de 60% nenhum eixo se destaca — grava o grau, mesmo texto
         // da pilula na tela, para planilha e resultado contarem a mesma coisa
         eixoFragil: r.pct >= 60 ? 'BLOQUEIOS LEVES' : r.fragil,
-        respostas: perguntas.map((p, i) => escala[respostas[i] - PONTO_MIN]),
+        // as respostas frase a frase não são enviadas: ela não quer guardá-las
         data: new Date().toISOString()
       })
     }).catch(function (e) { console.warn('Falha ao enviar:', e); });
