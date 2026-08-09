@@ -1223,7 +1223,9 @@
     .ciencias-ponte strong { color: var(--laranja-2); }
     /* titulo do diferencial: estava do mesmo peso do texto em volta */
     .escada h3 {
-      font-size: var(--fs-h2); color: #fff; margin-bottom: 10px;
+      /* era --fs-h2 e quebrava em 2 linhas no celular */
+      font-size: var(--fs-h3); color: #fff; margin-bottom: 10px;
+      text-wrap: balance;
     }
     .escada .esc-sub { color: rgba(255,255,255,.94); }
 
@@ -2030,7 +2032,9 @@
     .ciencias-ponte strong { color: var(--laranja-2); }
     /* titulo do diferencial: estava do mesmo peso do texto em volta */
     .escada h3 {
-      font-size: var(--fs-h2); color: #fff; margin-bottom: 10px;
+      /* era --fs-h2 e quebrava em 2 linhas no celular */
+      font-size: var(--fs-h3); color: #fff; margin-bottom: 10px;
+      text-wrap: balance;
     }
     .escada .esc-sub { color: rgba(255,255,255,.94); }
 
