@@ -275,7 +275,8 @@
     }
 
     /* ════════ PROBLEMA ════════ */
-    .problema h2 { font-size: var(--fs-h2); text-align: center; margin-bottom: 24px; }
+    /* teto em vw para "O que te impede de chegar ao proximo nivel?" fechar em 2 linhas */
+    .problema h2 { font-size: min(var(--fs-h2), 6vw); text-align: center; margin-bottom: 24px; }
     .problema p { color: var(--cinza); margin-bottom: 16px; text-align: center; }
     .problema p strong { color: var(--creme); }
     /* as cenas da secao do problema: cada uma e um flash concreto, com um
@@ -1103,7 +1104,7 @@
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
     /* teto em vw para o titulo fechar em 2 linhas ate 320px */
-    .segredos .section-title h2 { font-size: min(var(--fs-h2), 5.7vw); }
+    .segredos .section-title h2 { font-size: min(var(--fs-h2), 7.5vw); }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
@@ -1965,7 +1966,7 @@
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
     /* teto em vw para o titulo fechar em 2 linhas ate 320px */
-    .segredos .section-title h2 { font-size: min(var(--fs-h2), 5.7vw); }
+    .segredos .section-title h2 { font-size: min(var(--fs-h2), 7.5vw); }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
