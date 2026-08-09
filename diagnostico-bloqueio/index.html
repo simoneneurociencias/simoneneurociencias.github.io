@@ -3,350 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Diagnóstico — Qual é o seu nível de bloqueio financeiro?</title>
+  <title>Autodiagnóstico de Potencial de Crescimento</title>
   <meta name="robots" content="noindex, nofollow" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet">
+  <!--
+    Esta página virou um redirecionamento em 09/08/2026.
+
+    Ela servia o diagnóstico ANTIGO: eixos Visibilidade / Consistência / Cobrança,
+    nota de 0 a 36 onde número alto era ruim, faixas Leve / Moderado / Profundo.
+    Nada disso bate com o diagnóstico em uso hoje, que mede Visibilidade,
+    Permissão e Autovalor em percentual de potencial ativado, onde número alto é
+    bom. Quem abrisse este link recebia um resultado incomparável com o do
+    webinário. Por isso ela foi aposentada em vez de atualizada.
+
+    Destino: /diagnostico/?isca=1 — mesmo motor de pontuação do webinário, com
+    captura de contato e faixa de faturamento.
+
+    ⚠️ No gh-pages esta pasta NÃO vem de apps/lp-terapeutas: ela foi commitada
+    direto no branch publicado. Este arquivo precisa ser copiado à mão para
+    /diagnostico-bloqueio/index.html no worktree do gh-pages.
+
+    A versão anterior está no histórico do git.
+  -->
+  <meta http-equiv="refresh" content="0; url=../diagnostico/?isca=1" />
+  <link rel="canonical" href="../diagnostico/?isca=1" />
+  <script>location.replace('../diagnostico/?isca=1' + location.hash);</script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ouro:       #d4af37;
-      --ouro-suave: #e7cd83;
-      --preto:      #0b0b0d;
-      --grafite:    #17171e;
-      --card:       #1f1f28;
-      --roxo-mid:   #1b1b21;
-      --texto:      #f2efe9;
-      --cinza:      #b5b0a6;
-      --borda:      rgba(212,175,55,.16);
-      --verde:      #5cb87a;
-      --amber:      #e0a13c;
-      --vermelho:   #d4574e;
-    }
-
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      color: var(--texto);
-      background:
-        radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.10) 0%, transparent 55%),
-        var(--preto);
-      line-height: 1.6;
-      min-height: 100vh;
+      margin: 0; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; background: #0b0b0d; color: #f2efe9;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; text-align: center;
     }
-
-    h1, h2, h3 { font-family: 'Marcellus', Georgia, serif; font-weight: 400; }
-
-    .wrap { max-width: 760px; margin: 0 auto; padding: 48px 22px 80px; }
-
-    header { text-align: center; margin-bottom: 40px; }
-    .kicker {
-      display: inline-block;
-      font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      color: var(--ouro); margin-bottom: 14px;
-    }
-    h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px; }
-    h1 em { font-style: normal; color: var(--ouro-suave); }
-    header p { color: var(--cinza); max-width: 540px; margin: 0 auto; font-size: 1rem; }
-
-    /* ── Grupos de perguntas ── */
-    .grupo { margin-bottom: 34px; }
-    .grupo-tit {
-      display: flex; align-items: center; gap: 12px;
-      font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--ouro-suave); margin-bottom: 16px;
-    }
-    .grupo-tit::before {
-      content: ""; width: 26px; height: 2px; background: var(--ouro); flex-shrink: 0;
-    }
-
-    .q {
-      background: var(--card);
-      border: 1px solid var(--borda);
-      border-radius: 12px;
-      padding: 18px 18px 16px;
-      margin-bottom: 14px;
-    }
-    .q-txt { font-size: .97rem; margin-bottom: 14px; }
-    .q-num { color: var(--ouro); font-weight: 700; margin-right: 6px; }
-
-    .opts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-    @media (max-width: 460px) { .opts { grid-template-columns: repeat(2, 1fr); } }
-
-    .opt {
-      cursor: pointer;
-      text-align: center;
-      border: 1px solid rgba(212,175,55,.3);
-      border-radius: 8px;
-      padding: 10px 6px;
-      font-size: .8rem;
-      color: var(--cinza);
-      background: transparent;
-      transition: all .15s;
-      line-height: 1.25;
-    }
-    .opt:hover { border-color: var(--ouro); color: var(--texto); }
-    .opt .pt { display: block; font-family: 'Marcellus', serif; font-size: 1.25rem; color: var(--ouro-suave); margin-bottom: 2px; }
-    .opt.sel {
-      background: linear-gradient(135deg, var(--ouro-suave), var(--ouro));
-      border-color: var(--ouro);
-      color: #1a1400;
-    }
-    .opt.sel .pt { color: #1a1400; }
-
-    .btn {
-      display: block; width: 100%; max-width: 380px; margin: 8px auto 0;
-      padding: 16px 30px; border: none; border-radius: 8px; cursor: pointer;
-      font-size: 1rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-      background: linear-gradient(135deg, var(--ouro-suave) 0%, var(--ouro) 55%, #b8901f 100%);
-      color: #1a1400; transition: transform .15s, box-shadow .2s;
-      box-shadow: 0 8px 26px rgba(212,175,55,.3);
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .aviso { text-align: center; color: var(--amber); font-size: .85rem; margin-top: 14px; min-height: 20px; }
-
-    /* ── Resultado ── */
-    #resultado { display: none; margin-top: 10px; }
-    .res-card {
-      background: var(--grafite);
-      border: 1px solid var(--borda);
-      border-radius: 16px;
-      padding: 32px 26px;
-      text-align: center;
-    }
-    .res-score {
-      font-family: 'Marcellus', serif;
-      font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px;
-    }
-    .res-score small { font-size: 1.1rem; color: var(--cinza); }
-    .res-faixa { font-family: 'Marcellus', serif; font-size: 1.7rem; margin: 10px 0 6px; }
-    .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
-
-    /* escala */
-    .escala { margin: 28px 0 8px; }
-    .barra {
-      position: relative; height: 14px; border-radius: 10px; overflow: visible;
-      background: linear-gradient(90deg, var(--verde) 0%, var(--verde) 25%, var(--amber) 25%, var(--amber) 58%, var(--vermelho) 58%, var(--vermelho) 100%);
-    }
-    .marker {
-      position: absolute; top: -8px; width: 4px; height: 30px; background: #fff;
-      border-radius: 3px; box-shadow: 0 0 0 3px rgba(0,0,0,.5); transition: left .5s ease;
-    }
-    .escala-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cinza); margin-top: 10px; }
-
-    /* faixas detalhadas */
-    .faixas { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
-    .faixa {
-      display: flex; gap: 16px; align-items: flex-start;
-      background: var(--card); border: 1px solid var(--borda);
-      border-left: 5px solid var(--borda);
-      border-radius: 10px; padding: 18px 20px; opacity: .55; transition: opacity .3s, transform .3s;
-    }
-    .faixa.ativa { opacity: 1; transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
-    .faixa.leve     { border-left-color: var(--verde); }
-    .faixa.moderado { border-left-color: var(--amber); }
-    .faixa.profundo { border-left-color: var(--vermelho); }
-    .faixa-range {
-      font-family: 'Marcellus', serif; font-size: 1.05rem; color: var(--ouro-suave);
-      flex-shrink: 0; min-width: 78px;
-    }
-    .faixa h3 { font-size: 1.05rem; margin-bottom: 4px; }
-    .faixa p { font-size: .9rem; color: var(--cinza); }
-
-    /* breakdown por segredo */
-    .bd { margin-top: 32px; text-align: left; }
-    .bd-tit { font-size: .76rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ouro); margin-bottom: 14px; text-align: center; }
-    .bd-row { margin-bottom: 14px; }
-    .bd-row .lab { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 5px; }
-    .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; }
-    .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
-    .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease; }
-    .bd-tag { font-size: .78rem; color: var(--amber); margin-top: 14px; text-align: center; }
-
-    .refazer { background: none; border: 1px solid var(--ouro); color: var(--ouro-suave); margin-top: 26px; box-shadow: none; }
-    .refazer:hover { background: rgba(212,175,55,.1); }
+    a { color: #e7cd83; }
   </style>
 </head>
 <body>
-<div class="wrap">
-
-  <header>
-    <span class="kicker">Autodiagnóstico</span>
-    <h1>Qual é o seu <em>nível de bloqueio financeiro</em>?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê em qual faixa está — e qual dos 3 padrões mais te trava.</p>
-  </header>
-
-  <form id="form"></form>
-
-  <button class="btn" id="verBtn" type="button">Ver meu resultado</button>
-  <p class="aviso" id="aviso"></p>
-
-  <section id="resultado">
-    <div class="res-card">
-      <div class="res-score" id="score">0<small>/36</small></div>
-      <div class="res-faixa" id="faixaNome">—</div>
-      <p class="res-desc" id="faixaDesc">—</p>
-
-      <div class="escala">
-        <div class="barra"><div class="marker" id="marker" style="left:0%"></div></div>
-        <div class="escala-labels"><span>0</span><span>9</span><span>20</span><span>36</span></div>
-      </div>
-
-      <div class="bd">
-        <div class="bd-tit">Onde está o seu maior bloqueio</div>
-        <div class="bd-row">
-          <div class="lab"><span>Visibilidade (atrair clientes)</span><span id="s1v">0/12</span></div>
-          <div class="bd-bar"><div class="bd-fill" id="s1f" style="width:0%"></div></div>
-        </div>
-        <div class="bd-row">
-          <div class="lab"><span>Consistência (teto / altos e baixos)</span><span id="s2v">0/12</span></div>
-          <div class="bd-bar"><div class="bd-fill" id="s2f" style="width:0%"></div></div>
-        </div>
-        <div class="bd-row">
-          <div class="lab"><span>Cobrança (dizer o preço)</span><span id="s3v">0/12</span></div>
-          <div class="bd-bar"><div class="bd-fill" id="s3f" style="width:0%"></div></div>
-        </div>
-        <p class="bd-tag" id="bdTag"></p>
-      </div>
-    </div>
-
-    <div class="faixas">
-      <div class="faixa leve" id="fx-leve">
-        <div class="faixa-range">0–9</div>
-        <div>
-          <h3>Bloqueio leve</h3>
-          <p>Você já tem uma relação saudável com dinheiro e valor. Os bloqueios são pontuais — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
-        </div>
-      </div>
-      <div class="faixa moderado" id="fx-moderado">
-        <div class="faixa-range">10–20</div>
-        <div>
-          <h3>Bloqueio moderado</h3>
-          <p>Há padrões subconscientes claros te sabotando em momentos-chave (cobrar, aparecer, manter consistência). Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar os resultados.</p>
-        </div>
-      </div>
-      <div class="faixa profundo" id="fx-profundo">
-        <div class="faixa-range">21–36</div>
-        <div>
-          <h3>Bloqueio profundo</h3>
-          <p>O teto é estrutural: crenças profundas associam prosperar a perigo ou a perder a essência. Qualquer estratégia "escorrega" porque o seu sistema puxa de volta ao familiar. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
-        </div>
-      </div>
-    </div>
-
-    <button class="btn refazer" type="button" onclick="location.reload()">Refazer o diagnóstico</button>
-  </section>
-
-</div>
-
-<script>
-  const perguntas = [
-    { g: 1, t: "Evito me promover ou aparecer porque parece forçado." },
-    { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
-    { g: 1, t: "Tenho receio de ser vista como “comercial demais”." },
-    { g: 1, t: "Sinto que mereço mais clientes do que consigo atrair." },
-    { g: 2, t: "Meu faturamento sobe e desce sem eu entender bem por quê." },
-    { g: 2, t: "Existe um valor-teto que eu raramente ultrapasso." },
-    { g: 2, t: "Quando ganho mais, vem ansiedade ou autossabotagem." },
-    { g: 2, t: "Procrastino justamente quando as coisas vão bem." },
-    { g: 3, t: "Travo, gaguejo ou suo na hora de dizer o preço." },
-    { g: 3, t: "Dou desconto sem o cliente nem pedir." },
-    { g: 3, t: "Sinto culpa depois de receber um valor alto." },
-    { g: 3, t: "Acho, no fundo, que cobrar caro é “feio” ou egoísta." }
-  ];
-  const grupos = {
-    1: "Segredo 1 · Visibilidade",
-    2: "Segredo 2 · Consistência",
-    3: "Segredo 3 · Cobrança"
-  };
-  const escala = ["Não me representa", "Um pouco", "Bastante", "Totalmente"];
-
-  const respostas = {};
-  const form = document.getElementById('form');
-  let gAtual = 0;
-  perguntas.forEach((p, i) => {
-    if (p.g !== gAtual) {
-      gAtual = p.g;
-      const gt = document.createElement('div');
-      gt.className = 'grupo-tit';
-      gt.textContent = grupos[p.g];
-      form.appendChild(gt);
-    }
-    const q = document.createElement('div');
-    q.className = 'q';
-    q.innerHTML = '<div class="q-txt"><span class="q-num">' + (i+1) + '.</span>' + p.t + '</div>';
-    const opts = document.createElement('div');
-    opts.className = 'opts';
-    for (let v = 0; v <= 3; v++) {
-      const o = document.createElement('button');
-      o.type = 'button';
-      o.className = 'opt';
-      o.innerHTML = '<span class="pt">' + v + '</span>' + escala[v];
-      o.onclick = () => {
-        respostas[i] = v;
-        opts.querySelectorAll('.opt').forEach(el => el.classList.remove('sel'));
-        o.classList.add('sel');
-        document.getElementById('aviso').textContent = '';
-      };
-      opts.appendChild(o);
-    }
-    q.appendChild(opts);
-    form.appendChild(q);
-  });
-
-  document.getElementById('verBtn').onclick = () => {
-    if (Object.keys(respostas).length < perguntas.length) {
-      document.getElementById('aviso').textContent = 'Responda todas as 12 frases para ver o resultado.';
-      return;
-    }
-    let total = 0, s1 = 0, s2 = 0, s3 = 0;
-    perguntas.forEach((p, i) => {
-      const v = respostas[i];
-      total += v;
-      if (p.g === 1) s1 += v; else if (p.g === 2) s2 += v; else s3 += v;
-    });
-
-    document.getElementById('score').innerHTML = total + '<small>/36</small>';
-
-    let nome, desc, fxId;
-    if (total <= 9) {
-      nome = 'Bloqueio leve'; fxId = 'fx-leve';
-      desc = 'Sua base é saudável. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava rápido.';
-    } else if (total <= 20) {
-      nome = 'Bloqueio moderado'; fxId = 'fx-moderado';
-      desc = 'Há padrões subconscientes claros te sabotando. Você precisa de reprogramação dirigida para destravar e sustentar resultados.';
-    } else {
-      nome = 'Bloqueio profundo'; fxId = 'fx-profundo';
-      desc = 'O teto é estrutural. Sem trabalho consistente no subconsciente, nenhuma estratégia se sustenta — e é justamente isso que pode ser reescrito.';
-    }
-    document.getElementById('faixaNome').textContent = nome;
-    document.getElementById('faixaDesc').textContent = desc;
-
-    document.getElementById('marker').style.left = (total / 36 * 100) + '%';
-
-    document.getElementById('s1v').textContent = s1 + '/12';
-    document.getElementById('s2v').textContent = s2 + '/12';
-    document.getElementById('s3v').textContent = s3 + '/12';
-    document.getElementById('s1f').style.width = (s1 / 12 * 100) + '%';
-    document.getElementById('s2f').style.width = (s2 / 12 * 100) + '%';
-    document.getElementById('s3f').style.width = (s3 / 12 * 100) + '%';
-
-    const maxv = Math.max(s1, s2, s3);
-    const nomes = [];
-    if (s1 === maxv) nomes.push('Visibilidade');
-    if (s2 === maxv) nomes.push('Consistência');
-    if (s3 === maxv) nomes.push('Cobrança');
-    document.getElementById('bdTag').textContent = 'Seu padrão mais forte: ' + nomes.join(' + ') + '. É por aqui que a reprogramação deve começar.';
-
-    ['fx-leve','fx-moderado','fx-profundo'].forEach(id => document.getElementById(id).classList.remove('ativa'));
-    document.getElementById(fxId).classList.add('ativa');
-
-    document.getElementById('resultado').style.display = 'block';
-    document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
-  };
-</script>
+  <p>Levando você para o diagnóstico…<br />
+    <a href="../diagnostico/?isca=1">Clique aqui se não abrir sozinho.</a></p>
 </body>
 </html>

@@ -165,7 +165,12 @@
       border: 1px solid var(--borda); background: var(--preto); color: var(--texto);
       font-size: .95rem; font-family: inherit;
     }
-    .campo input:focus { outline: none; border-color: var(--ouro); }
+    .campo select {
+      width: 100%; padding: 13px 14px; border-radius: 8px;
+      border: 1px solid var(--borda); background: var(--preto); color: var(--texto);
+      font-size: .95rem; font-family: inherit; appearance: none;
+    }
+    .campo input:focus, .campo select:focus { outline: none; border-color: var(--ouro); }
     .gate-sub { font-size: .78rem; color: var(--cinza); opacity: .8; margin-top: 6px; }
 
     /* ── Resultado ── */
@@ -360,6 +365,41 @@
   <button class="btn" id="verBtn" type="button">Ver meu resultado</button>
   <p class="aviso" id="aviso"></p>
 
+  <!-- GATE: só aparece na versão isca (/diagnostico/?isca=1). No webinário ao
+       vivo a pessoa vê o resultado direto, sem cadastro. -->
+  <section id="gate">
+    <div class="gate-card">
+      <h2>Quase lá!</h2>
+      <p>Preencha abaixo para liberar o seu resultado completo.</p>
+      <div class="campo">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" placeholder="Como você se chama?" autocomplete="name" />
+      </div>
+      <div class="campo">
+        <label for="email">Seu melhor e-mail</label>
+        <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" />
+      </div>
+      <div class="campo">
+        <label for="whatsapp">Seu WhatsApp</label>
+        <input type="tel" id="whatsapp" placeholder="(DDD) 90000-0000" autocomplete="tel" />
+      </div>
+      <div class="campo">
+        <label for="faturamento">Sua faixa de faturamento mensal</label>
+        <select id="faturamento">
+          <option value="" disabled selected>Selecione...</option>
+          <option value="Sem remuneração">Sem remuneração</option>
+          <option value="Até R$ 5 mil">Até R$ 5 mil</option>
+          <option value="R$ 5 mil a R$ 10 mil">R$ 5 mil a R$ 10 mil</option>
+          <option value="R$ 10 mil a R$ 20 mil">R$ 10 mil a R$ 20 mil</option>
+          <option value="Acima de R$ 20 mil">Acima de R$ 20 mil</option>
+        </select>
+      </div>
+      <button class="btn" id="liberarBtn" type="button">Liberar meu resultado</button>
+      <p class="aviso" id="avisoGate"></p>
+      <p class="gate-sub">Seus dados estão seguros e não serão compartilhados.</p>
+    </div>
+  </section>
+
   <!-- RESULTADO -->
   <section id="resultado">
     <div class="print-marca">
@@ -468,6 +508,13 @@
   // identificam a turma na planilha (mesmo valor em todas as linhas)
   const ORIGEM = "webinario TAV1";
   const NOME = "cliente TAV";
+
+  // ?isca=1 → versão de captação (anúncio, story, bio): pede nome/e-mail/WhatsApp
+  // antes de mostrar o resultado e grava numa ABA SEPARADA da planilha.
+  // Sem o parâmetro, é o link do webinário ao vivo: nenhum cadastro, para não
+  // quebrar o foco da turma. Mesmo arquivo, um motor de pontuação só.
+  const ISCA = new URLSearchParams(location.search).get('isca') === '1';
+  const ORIGEM_ISCA = "isca";
 
   const perguntas = [
     { g: 1, t: "Evito me promover ou aparecer por medo do julgamento." },
@@ -601,25 +648,65 @@
       return;
     }
 
-    const r = calcular();
-    enviarResultado(r);   // sem await: o resultado nao espera a rede
     aviso.textContent = '';
+    const r = calcular();
+
+    if (ISCA) {
+      // guarda o resultado e pede o contato antes de revelar
+      ultimoResultado = r;
+      document.getElementById('verBtn').style.display = 'none';
+      const gate = document.getElementById('gate');
+      gate.style.display = 'block';
+      gate.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
+
+    enviarResultado(r);   // sem await: o resultado nao espera a rede
     document.getElementById('verBtn').style.display = 'none';
     mostrarResultado(r);
   };
 
+  // guarda o resultado calculado enquanto o gate está aberto
+  let ultimoResultado = null;
+
+  // "Liberar meu resultado" (só existe na versão isca) → valida contato,
+  // envia o lead junto com o resultado e revela a tela
+  document.getElementById('liberarBtn').onclick = () => {
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+    const faturamento = document.getElementById('faturamento').value;
+    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const okWhats = whatsapp.replace(/\D/g, '').length >= 10;
+    if (!nome || !okEmail || !okWhats || !faturamento) {
+      document.getElementById('avisoGate').textContent =
+        'Preencha seu nome, um e-mail válido, o WhatsApp com DDD e a faixa de faturamento.';
+      return;
+    }
+    document.getElementById('avisoGate').textContent = '';
+    enviarResultado(ultimoResultado, {
+      nome: nome, email: email, whatsapp: whatsapp, faturamento: faturamento
+    });
+    document.getElementById('gate').style.display = 'none';
+    mostrarResultado(ultimoResultado);
+  };
+
   // Envia para a planilha em segundo plano. Se falhar, a pessoa nem percebe —
   // o resultado ja esta na tela; text/plain evita o preflight CORS.
-  function enviarResultado(r) {
-    if (!WEBHOOK_URL) return;
+  function enviarResultado(r, contato) {
+    if (!WEBHOOK_URL || !r) return;
     fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({
-        nome: NOME,
-        email: '',
-        whatsapp: '',
-        origem: ORIGEM,
+        nome: contato ? contato.nome : NOME,
+        email: contato ? contato.email : '',
+        whatsapp: contato ? contato.whatsapp : '',
+        faturamento: contato ? contato.faturamento : '',
+        origem: ISCA ? ORIGEM_ISCA : ORIGEM,
+        // o script usa isto para escolher a PLANILHA: isca vai para a planilha
+        // de leads, o webinário continua na planilha TAV
+        isca: ISCA,
         indice: r.pct,
         faixa: r.faixa,
         visibilidade: r.s1,
