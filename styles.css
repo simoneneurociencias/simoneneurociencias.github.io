@@ -467,7 +467,8 @@
     .mentora h2, .mentora-copy h2 { color: #fff; font-size: var(--fs-h2); margin-bottom: 20px; }
     /* texto corrido: os 6 cards de credencial viraram prosa, entao o bloco
        passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
-    .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-intro); text-align: left; }
+    /* mesmo corpo do texto corrido das outras secoes (era --fs-intro e destoava) */
+    .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-corpo); text-align: left; }
     .mentora-copy p strong { color: #fff; font-weight: 700; }
     /* o texto da bio inteiro dentro de uma caixa (formato da ref que ela
        mandou); o manifesto fica FORA dela, solto embaixo da secao */
@@ -484,8 +485,8 @@
       border: 1px solid rgba(255,255,255,.16); border-radius: 18px;
       padding: 20px 26px; box-shadow: 0 14px 38px rgba(0,0,0,.24);
     }
-    .manifesto .m-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
-    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.05rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
+    .manifesto .m-label { font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #ffd9c2; margin-bottom: 10px; }
+    .manifesto p { font-family: 'Marcellus', Georgia, serif; font-style: italic; font-size: 1.22rem; line-height: 1.6; color: #fff; margin: 0; text-align: center; }
 
     /* ════════ IMAGENS DAS SECOES ════════
        Pedido dela: toda arte de secao entra LOGO ABAIXO DO TITULO e com a
