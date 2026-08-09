@@ -1102,6 +1102,8 @@
        Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
+    /* teto em vw para o titulo fechar em 2 linhas ate 320px */
+    .segredos .section-title h2 { font-size: min(var(--fs-h2), 5.7vw); }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
@@ -1960,6 +1962,8 @@
        Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
+    /* teto em vw para o titulo fechar em 2 linhas ate 320px */
+    .segredos .section-title h2 { font-size: min(var(--fs-h2), 5.7vw); }
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
