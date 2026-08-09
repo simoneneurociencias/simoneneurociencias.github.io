@@ -808,8 +808,9 @@
     }
     .cta-final .cta-punch {
       font-family: 'Marcellus', Georgia, serif;
-      font-size: var(--fs-destaque);
-      line-height: 1.5; color: #fff;
+      /* um pouco menor (pedido dela): era --fs-destaque */
+      font-size: var(--fs-intro);
+      line-height: 1.55; color: #fff;
       max-width: 640px; margin: 0 auto 26px;
       text-wrap: balance;
     }
@@ -848,8 +849,9 @@
 
     /* o virada da frase em laranja, como na referencia que ela mandou */
     /* a secao virou laranja: o laranja-2 sumia no fundo. Branco com peso. */
-    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 600; }
-    .cta-final .cta-punch strong { color: #fff; }
+    /* mesmo peso do resto: o negrito fazia a frase PARECER de outro tamanho */
+    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 400; }
+    .cta-final .cta-punch strong { color: #fff; font-weight: 400; }
 
     /* ── Dois caminhos (CTA final) ── */
     /* pedido dela: o kicker desta secao e maior que os das outras e em laranja */
@@ -1634,8 +1636,9 @@
     }
     .cta-final .cta-punch {
       font-family: 'Marcellus', Georgia, serif;
-      font-size: var(--fs-destaque);
-      line-height: 1.5; color: #fff;
+      /* um pouco menor (pedido dela): era --fs-destaque */
+      font-size: var(--fs-intro);
+      line-height: 1.55; color: #fff;
       max-width: 640px; margin: 0 auto 26px;
       text-wrap: balance;
     }
@@ -1674,8 +1677,9 @@
 
     /* o virada da frase em laranja, como na referencia que ela mandou */
     /* a secao virou laranja: o laranja-2 sumia no fundo. Branco com peso. */
-    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 600; }
-    .cta-final .cta-punch strong { color: #fff; }
+    /* mesmo peso do resto: o negrito fazia a frase PARECER de outro tamanho */
+    .cta-final .cta-punch .punch-hi { font-style: normal; color: #fff; font-weight: 400; }
+    .cta-final .cta-punch strong { color: #fff; font-weight: 400; }
 
     /* ── Dois caminhos (CTA final) ── */
     /* pedido dela: o kicker desta secao e maior que os das outras e em laranja */
