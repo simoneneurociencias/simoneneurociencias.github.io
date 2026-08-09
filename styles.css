@@ -276,7 +276,7 @@
 
     /* ════════ PROBLEMA ════════ */
     /* teto em vw para "O que te impede de chegar ao proximo nivel?" fechar em 2 linhas */
-    .problema h2 { font-size: min(var(--fs-h2), 6vw); text-align: center; margin-bottom: 24px; }
+    .problema h2 { font-size: min(var(--fs-h2), 8vw); text-align: center; margin-bottom: 24px; }
     .problema p { color: var(--cinza); margin-bottom: 16px; text-align: center; }
     .problema p strong { color: var(--creme); }
     /* as cenas da secao do problema: cada uma e um flash concreto, com um
