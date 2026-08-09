@@ -593,7 +593,8 @@
     /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
     /* vence .escura h3 (mesma especificidade) por vir depois no arquivo */
     .escada h3 { text-align: center; font-size: var(--fs-h3); margin-bottom: 6px; color: var(--laranja-2); }
-    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-destaque); margin-bottom: 14px; }
+    /* mesmo corpo do .esc-lead logo abaixo (era --fs-destaque) */
+    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-intro); margin-bottom: 14px; }
     .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
     /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
        as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
@@ -1402,7 +1403,8 @@
     /* o nome do bloco e o titulo grande; a pergunta vira subtitulo abaixo dele */
     /* vence .escura h3 (mesma especificidade) por vir depois no arquivo */
     .escada h3 { text-align: center; font-size: var(--fs-h3); margin-bottom: 6px; color: var(--laranja-2); }
-    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-destaque); margin-bottom: 14px; }
+    /* mesmo corpo do .esc-lead logo abaixo (era --fs-destaque) */
+    .esc-sub { text-align: center; color: var(--creme); font-size: var(--fs-intro); margin-bottom: 14px; }
     .esc-lead { text-align: center; color: var(--cinza); font-size: var(--fs-intro); margin-bottom: 22px; }
     /* cada degrau numa caixa; a cor da caixa sobe junto com a profundidade —
        as duas primeiras neutras, a terceira em ambar, e o rotulo sempre na cor
