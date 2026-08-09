@@ -749,8 +749,9 @@
 
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
-    /* 1 linha no celular: o vw e quem manda, imune a fonte do sistema */
-    .oferta h2 { font-size: min(var(--fs-h2), 6vw); margin-bottom: 30px; }
+    /* o teto em vw era para o titulo longo; com "O evento" o corpo volta ao
+       padrao das outras secoes */
+    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
     /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
        o cartao do investimento ocupa a linha inteira */
     .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
@@ -1614,8 +1615,9 @@
 
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
-    /* 1 linha no celular: o vw e quem manda, imune a fonte do sistema */
-    .oferta h2 { font-size: min(var(--fs-h2), 6vw); margin-bottom: 30px; }
+    /* o teto em vw era para o titulo longo; com "O evento" o corpo volta ao
+       padrao das outras secoes */
+    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
     /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
        o cartao do investimento ocupa a linha inteira */
     .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
