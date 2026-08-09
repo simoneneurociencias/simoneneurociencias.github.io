@@ -781,13 +781,16 @@
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
-    .cta-final { padding: 60px 0 22px; }
+    .cta-final { padding: 30px 0 22px; }
     .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
     /* a secao virou escura: o botao volta ao degrade da paleta (preto sobre
        fundo preto sumia) */
-    .cta-final .btn-note { color: rgba(255,255,255,.75); }
+    /* margin-bottom 0: .cta-final p (0,1,1) dava 30px embaixo e separava as duas notas */
+    .cta-final .btn-note { color: rgba(255,255,255,.75); margin: 8px auto 0; line-height: 1.35; }
+    /* a segunda nota (disclaimer) cola na primeira */
+    .cta-final .btn-note + .btn-note { margin-top: 2px !important; }
     .cta-final .cta-lead p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto 15px; }
     /* Caixa da garantia: selo dourado a esquerda + o texto. O selo e o UNICO
        elemento dourado da pagina - proposital, le como carimbo de autoridade.
@@ -959,10 +962,10 @@
     @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
     /* ════════ FOOTER ════════ */
-    footer { background: var(--preto); padding: 40px 22px; text-align: center; border-top: 1px solid var(--borda); }
-    .social-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    footer { background: var(--preto); padding: 26px 22px 22px; text-align: center; border-top: 1px solid var(--borda); }
+    .social-row { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; row-gap: 8px; }
     .social-row a { color: var(--laranja-2); text-decoration: none; font-size: .9rem; display: flex; align-items: center; gap: 6px; }
-    footer p { color: var(--cinza); font-size: .82rem; }
+    footer p { color: var(--cinza); font-size: .82rem; line-height: 1.4; }
 
     /* ════════ SEÇÕES LARANJA (alternadas com o preto) ════════ */
     .sec-laranja { background: var(--grad-secao); }
@@ -1614,13 +1617,16 @@
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
-    .cta-final { padding: 60px 0 22px; }
+    .cta-final { padding: 30px 0 22px; }
     .cta-final h2 { color: #fff; font-size: var(--fs-h2); line-height: 1.28; letter-spacing: .01em; margin: 0 auto 26px; max-width: 720px; text-wrap: balance; }
     .cta-final h2 span { display: inline-block; margin-top: 6px; }
     .cta-final p { color: rgba(255,255,255,.9); max-width: 620px; margin: 0 auto 30px; }
     /* a secao virou escura: o botao volta ao degrade da paleta (preto sobre
        fundo preto sumia) */
-    .cta-final .btn-note { color: rgba(255,255,255,.75); }
+    /* margin-bottom 0: .cta-final p (0,1,1) dava 30px embaixo e separava as duas notas */
+    .cta-final .btn-note { color: rgba(255,255,255,.75); margin: 8px auto 0; line-height: 1.35; }
+    /* a segunda nota (disclaimer) cola na primeira */
+    .cta-final .btn-note + .btn-note { margin-top: 2px !important; }
     .cta-final .cta-lead p { color: rgba(255,255,255,.92); max-width: 640px; margin: 0 auto 15px; }
     /* Caixa da garantia: selo dourado a esquerda + o texto. O selo e o UNICO
        elemento dourado da pagina - proposital, le como carimbo de autoridade.
@@ -1792,10 +1798,10 @@
     @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
     /* ════════ FOOTER ════════ */
-    footer { background: var(--preto); padding: 40px 22px; text-align: center; border-top: 1px solid var(--borda); }
-    .social-row { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    footer { background: var(--preto); padding: 26px 22px 22px; text-align: center; border-top: 1px solid var(--borda); }
+    .social-row { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; row-gap: 8px; }
     .social-row a { color: var(--laranja-2); text-decoration: none; font-size: .9rem; display: flex; align-items: center; gap: 6px; }
-    footer p { color: var(--cinza); font-size: .82rem; }
+    footer p { color: var(--cinza); font-size: .82rem; line-height: 1.4; }
 
     /* ════════ SEÇÕES LARANJA (alternadas com o preto) ════════ */
     .sec-laranja { background: var(--grad-secao); }
