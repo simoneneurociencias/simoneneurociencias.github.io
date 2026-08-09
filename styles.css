@@ -118,9 +118,10 @@
     .bonus-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .bonus-valor {
       font-size: 1.28rem; font-weight: 800; letter-spacing: .01em;
-      color: #fff; white-space: nowrap; margin-bottom: 14px;
+      /* numero laranja, risco branco (pedido dela) */
+      color: var(--laranja-2); white-space: nowrap; margin-bottom: 14px;
       text-decoration: line-through; text-decoration-thickness: 2px;
-      text-decoration-color: rgba(255,255,255,.85);
+      text-decoration-color: rgba(255,255,255,.9);
     }
     /* fecho da secao: soma dos bonus e a frase que tira o medo de estar comprando */
     .bonus-total {
@@ -159,7 +160,7 @@
       flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; color: var(--laranja-2);
     }
     .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-h3); color: var(--creme); margin-bottom: 10px; }
-    .bonus-card p { color: var(--cinza); font-size: .98rem; line-height: 1.6; }
+    .bonus-card p { color: var(--cinza); font-size: var(--fs-corpo); line-height: 1.6; }
     .bonus-card strong { color: var(--creme); }
     .section-title { text-align: center; }
     .section-title h2 { font-size: var(--fs-h2); text-wrap: balance; }
@@ -529,7 +530,7 @@
     }
     .fecho-muda strong { color: #fff; font-weight: 700; }
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
-    .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
+    .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.06rem; line-height: 1.4; }
     .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
     /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
        outro lado para nao repetir o desenho da secao "para quem e" */
@@ -687,7 +688,7 @@
        700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
        o resultado fica limpo no tamanho em que o titulo aparece. */
     .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
-    .etapa p { color: var(--cinza); font-size: .96rem; }
+    .etapa p { color: var(--cinza); font-size: var(--fs-corpo); }
     .etapa p strong { color: var(--creme); font-weight: 600; }
     /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
        centralizava mas a estrela ficava sozinha na margem esquerda. Agora
@@ -697,7 +698,7 @@
     .praticas-item > span { display: inline; margin-right: 7px; }
     .praticas-item > p { display: inline; }
     .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
-    .praticas-item p { font-size: .95rem; color: var(--creme); text-wrap: balance; text-align: center; }
+    .praticas-item p { font-size: var(--fs-corpo); color: var(--creme); text-wrap: balance; text-align: center; }
     .praticas-item strong { color: var(--laranja-2); }
 
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
@@ -749,7 +750,7 @@
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja); font-size: 1.3rem; }
     .faq details[open] summary::after { content: "–"; }
-    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: .96rem; }
+    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: var(--fs-corpo); }
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
@@ -922,7 +923,7 @@
     }
     .caminho--inerte .c-titulo { color: rgba(255,255,255,.82); }
     .caminho--ativo  .c-titulo { color: var(--creme); }
-    .caminho p { font-size: 1.08rem; line-height: 1.55; margin: 0; max-width: none; }
+    .caminho p { font-size: var(--fs-corpo); line-height: 1.55; margin: 0; max-width: none; }
     .caminho strong { color: var(--laranja-2); font-weight: 600; }
     @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
@@ -1045,7 +1046,6 @@
        Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
-    .problema p,
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
@@ -1337,7 +1337,7 @@
     }
     .fecho-muda strong { color: #fff; font-weight: 700; }
     .pq-list { list-style: none; margin: 0; display: grid; gap: 20px; }
-    .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.12rem; line-height: 1.4; }
+    .pq-list li { position: relative; padding-left: 34px; color: var(--creme); font-size: 1.06rem; line-height: 1.4; }
     .pq-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--laranja); font-weight: 700; }
     /* mesma dupla imagem+lista na secao laranja (beneficios), com a foto do
        outro lado para nao repetir o desenho da secao "para quem e" */
@@ -1495,7 +1495,7 @@
        700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
        o resultado fica limpo no tamanho em que o titulo aparece. */
     .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
-    .etapa p { color: var(--cinza); font-size: .96rem; }
+    .etapa p { color: var(--cinza); font-size: var(--fs-corpo); }
     .etapa p strong { color: var(--creme); font-weight: 600; }
     /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
        centralizava mas a estrela ficava sozinha na margem esquerda. Agora
@@ -1505,7 +1505,7 @@
     .praticas-item > span { display: inline; margin-right: 7px; }
     .praticas-item > p { display: inline; }
     .praticas-item span { color: var(--laranja); font-size: 1.1rem; line-height: 1.4; flex-shrink: 0; }
-    .praticas-item p { font-size: .95rem; color: var(--creme); text-wrap: balance; text-align: center; }
+    .praticas-item p { font-size: var(--fs-corpo); color: var(--creme); text-wrap: balance; text-align: center; }
     .praticas-item strong { color: var(--laranja-2); }
 
     /* ════════ GRIDS (autoridade / benefícios / resultados) ════════ */
@@ -1557,7 +1557,7 @@
     .faq summary::-webkit-details-marker { display: none; }
     .faq summary::after { content: "+"; position: absolute; right: 4px; top: 14px; color: var(--laranja); font-size: 1.3rem; }
     .faq details[open] summary::after { content: "–"; }
-    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: .96rem; }
+    .faq details p { color: var(--cinza); padding: 0 0 18px; font-size: var(--fs-corpo); }
 
     /* ════════ CTA FINAL ════════ */
     .cta-final { text-align: center; }
@@ -1730,7 +1730,7 @@
     }
     .caminho--inerte .c-titulo { color: rgba(255,255,255,.82); }
     .caminho--ativo  .c-titulo { color: var(--creme); }
-    .caminho p { font-size: 1.08rem; line-height: 1.55; margin: 0; max-width: none; }
+    .caminho p { font-size: var(--fs-corpo); line-height: 1.55; margin: 0; max-width: none; }
     .caminho strong { color: var(--laranja-2); font-weight: 600; }
     @media (max-width: 760px) { .caminhos { grid-template-columns: 1fr; } }
 
@@ -1853,7 +1853,6 @@
        Todo paragrafo que abre uma secao (logo abaixo do h2) usa o MESMO
        tamanho. Antes cada secao herdava 1rem do body ou tinha o seu proprio
        clamp, e as aberturas nao batiam entre si. */
-    .problema p,
     .segredos .section-title p,
     .como > .container > p.intro,
     .bonus > .container > p,
