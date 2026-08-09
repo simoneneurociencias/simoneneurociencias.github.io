@@ -734,8 +734,10 @@
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
     .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
-    .info-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 580px; margin: 0 auto 36px; }
-    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 170px; flex: 1; overflow: hidden; }
+    /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
+       o cartao do investimento ocupa a linha inteira */
+    .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
+    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 0; overflow: hidden; }
     /* as 3 imagens sao 1.751 — aspect-ratio exibe cada uma inteira, sem corte em nenhuma largura */
     .info-card img { width: 100%; aspect-ratio: 1.751; height: auto; display: block; }
     .info-card .ic-body { padding: 18px 20px 22px; }
@@ -747,8 +749,11 @@
        altura. Empilha os 3 na largura da coluna central (245px = calendario,
        investimento e botao), mantendo a imagem em 140px. */
     @media (max-width: 592px) {
-      .info-cards { max-width: 245px; }
-      .info-card { min-width: 0; flex: 1 1 100%; }
+      /* mantem 2 por linha tambem no celular */
+      .info-cards { max-width: 100%; gap: 12px; }
+      .info-card .ic-body { padding: 14px 14px 18px; }
+      .info-card .ic-main { font-size: 1rem; }
+      .info-card .ic-sub { font-size: .78rem; }
     }
     .price-card {
       background: var(--preto-2); border: 1px solid rgba(229,67,42,.5); border-radius: 16px;
@@ -1023,10 +1028,10 @@
     .oferta .info-card .ic-sub, .oferta .price-card .pc-sub { color: #b3aea6; }
     .oferta .price-card .pc-value { color: var(--laranja); }
     .oferta .data-box {
-      display: inline-flex; flex-direction: column;
+      display: flex; flex-direction: column;
       background: #211d24; border: 1px solid rgba(229,67,42,.55); border-radius: 14px;
-      margin: 0 auto 30px; box-shadow: 0 12px 34px rgba(0,0,0,.22);
-      overflow: hidden; width: 245px; max-width: 100%;
+      margin: 0; box-shadow: 0 12px 34px rgba(0,0,0,.22);
+      overflow: hidden; width: auto; max-width: 100%;
     }
     .oferta .data-box img { width: 100%; aspect-ratio: 1.78; height: auto; display: block; }
     .oferta .data-box .db-body { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 24px 20px; }
@@ -1562,8 +1567,10 @@
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
     .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
-    .info-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; max-width: 580px; margin: 0 auto 36px; }
-    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 170px; flex: 1; overflow: hidden; }
+    /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
+       o cartao do investimento ocupa a linha inteira */
+    .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
+    .info-card { background: var(--preto-2); border: 1px solid var(--borda); border-radius: 14px; min-width: 0; overflow: hidden; }
     /* as 3 imagens sao 1.751 — aspect-ratio exibe cada uma inteira, sem corte em nenhuma largura */
     .info-card img { width: 100%; aspect-ratio: 1.751; height: auto; display: block; }
     .info-card .ic-body { padding: 18px 20px 22px; }
@@ -1575,8 +1582,11 @@
        altura. Empilha os 3 na largura da coluna central (245px = calendario,
        investimento e botao), mantendo a imagem em 140px. */
     @media (max-width: 592px) {
-      .info-cards { max-width: 245px; }
-      .info-card { min-width: 0; flex: 1 1 100%; }
+      /* mantem 2 por linha tambem no celular */
+      .info-cards { max-width: 100%; gap: 12px; }
+      .info-card .ic-body { padding: 14px 14px 18px; }
+      .info-card .ic-main { font-size: 1rem; }
+      .info-card .ic-sub { font-size: .78rem; }
     }
     .price-card {
       background: var(--preto-2); border: 1px solid rgba(229,67,42,.5); border-radius: 16px;
@@ -1851,10 +1861,10 @@
     .oferta .info-card .ic-sub, .oferta .price-card .pc-sub { color: #b3aea6; }
     .oferta .price-card .pc-value { color: var(--laranja); }
     .oferta .data-box {
-      display: inline-flex; flex-direction: column;
+      display: flex; flex-direction: column;
       background: #211d24; border: 1px solid rgba(229,67,42,.55); border-radius: 14px;
-      margin: 0 auto 30px; box-shadow: 0 12px 34px rgba(0,0,0,.22);
-      overflow: hidden; width: 245px; max-width: 100%;
+      margin: 0; box-shadow: 0 12px 34px rgba(0,0,0,.22);
+      overflow: hidden; width: auto; max-width: 100%;
     }
     .oferta .data-box img { width: 100%; aspect-ratio: 1.78; height: auto; display: block; }
     .oferta .data-box .db-body { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 24px 20px; }
