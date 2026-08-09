@@ -747,7 +747,8 @@
 
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
-    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
+    /* 1 linha no celular: o vw e quem manda, imune a fonte do sistema */
+    .oferta h2 { font-size: min(var(--fs-h2), 6vw); margin-bottom: 30px; }
     /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
        o cartao do investimento ocupa a linha inteira */
     .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
@@ -1053,7 +1054,8 @@
     .oferta .data-box img { width: 100%; aspect-ratio: 1.78; height: auto; display: block; }
     .oferta .data-box .db-body { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 24px 20px; }
     .oferta .data-box .db-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .oferta .data-box .db-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1.4rem; line-height: 1.1; color: #f4f0e9; }
+    /* mesmo corpo do .ic-main dos outros cards (era 1.4rem e destoava) */
+    .oferta .data-box .db-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.2; color: #f4f0e9; }
 
 
     /* ── GATE DO LEAD: quem clica em checkout sem cadastro vai para o formulario ── */
@@ -1597,7 +1599,8 @@
 
     /* ════════ OFERTA / EVENTO ════════ */
     .oferta { text-align: center; }
-    .oferta h2 { font-size: var(--fs-h2); margin-bottom: 30px; }
+    /* 1 linha no celular: o vw e quem manda, imune a fonte do sistema */
+    .oferta h2 { font-size: min(var(--fs-h2), 6vw); margin-bottom: 30px; }
     /* 2 por linha (pedido dela): os 3 cards mais a caixa da data fecham 2x2, e so
        o cartao do investimento ocupa a linha inteira */
     .info-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 580px; margin: 0 auto 36px; }
@@ -1903,7 +1906,8 @@
     .oferta .data-box img { width: 100%; aspect-ratio: 1.78; height: auto; display: block; }
     .oferta .data-box .db-body { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 16px 24px 20px; }
     .oferta .data-box .db-label { font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-    .oferta .data-box .db-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1.4rem; line-height: 1.1; color: #f4f0e9; }
+    /* mesmo corpo do .ic-main dos outros cards (era 1.4rem e destoava) */
+    .oferta .data-box .db-value { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 700; font-size: 1rem; line-height: 1.2; color: #f4f0e9; }
 
 
     /* ── GATE DO LEAD: quem clica em checkout sem cadastro vai para o formulario ── */
