@@ -807,7 +807,8 @@
       max-width: 640px; margin: 0 auto 26px;
       text-wrap: balance;
     }
-    .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
+    /* as duas frases no mesmo branco: a 86% a segunda parecia menor que a primeira */
+    .cta-final .cta-punch span { display: block; margin-top: 6px; color: #fff; }
     /* ultima linha da pagina: cresce e volta ao branco cheio - e nela que a
        leitora se ve, entao ela nao pode ter o mesmo peso do resto */
     /* mesmo corpo do resto do punch (tinha clamp proprio, maior) */
@@ -1630,7 +1631,8 @@
       max-width: 640px; margin: 0 auto 26px;
       text-wrap: balance;
     }
-    .cta-final .cta-punch span { display: block; margin-top: 6px; color: rgba(255,255,255,.86); }
+    /* as duas frases no mesmo branco: a 86% a segunda parecia menor que a primeira */
+    .cta-final .cta-punch span { display: block; margin-top: 6px; color: #fff; }
     /* ultima linha da pagina: cresce e volta ao branco cheio - e nela que a
        leitora se ve, entao ela nao pode ter o mesmo peso do resto */
     /* mesmo corpo do resto do punch (tinha clamp proprio, maior) */
