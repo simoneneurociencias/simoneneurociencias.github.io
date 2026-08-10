@@ -101,21 +101,24 @@
 
     header { text-align: center; margin-bottom: 14px; }
     .kicker {
-      display: inline-block;
-      font-size: .88rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-      color: var(--ouro); margin-bottom: 16px;
+      display: block;
+      font-family: 'Marcellus', Georgia, serif; font-weight: 400;
+      font-size: clamp(1.7rem, 5vw, 2.5rem); line-height: 1.15;
+      letter-spacing: .02em; text-transform: none;
+      color: var(--ouro-suave); margin-bottom: 16px;
     }
     /* no celular o nome quebra em duas linhas: line-height menor p/ elas
        ficarem como um bloco so, nao como duas frases soltas */
-    @media (max-width: 460px) { .kicker { letter-spacing: .05em; font-size: .74rem; line-height: 1.35; } }
+    @media (max-width: 460px) { .kicker { letter-spacing: .01em; line-height: 1.2; } }
     h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px; }
     h1 em { font-style: normal; color: var(--ouro-suave); }
     header p { color: var(--cinza); max-width: 540px; margin: 0 auto; font-size: 1rem; }
     /* sem H1: esta e a primeira coisa que a pessoa le, entao ela ganha corpo
        de titulo sem virar titulo */
     .abertura {
-      font-size: clamp(1.02rem, 2.6vw, 1.22rem); line-height: 1.5;
-      color: var(--texto); max-width: 600px; margin: 0 auto 14px;
+      font-size: clamp(.98rem, 2.2vw, 1.1rem); line-height: 1.5;
+      color: var(--texto); max-width: 700px; margin: 0 auto 6px;
+      text-wrap: balance;   /* as duas linhas saem com peso parecido */
     }
     .abertura em { font-style: normal; color: var(--ouro-suave); }
     .abertura-nota { font-size: .88rem; color: var(--cinza); }
@@ -461,7 +464,7 @@
   <header>
     <span class="kicker">Termostato de Crescimento</span>
     <p class="abertura">Existe um <em>limite interno</em> que decide o quanto é seguro
-      você crescer, e ele foi regulado sem você escolher. Descubra em que ponto está o seu.</p>
+      você crescer. Descubra em que ponto está o seu.</p>
     <p class="abertura-nota">Responda com sinceridade, é ela que faz o resultado valer.</p>
   </header>
 
