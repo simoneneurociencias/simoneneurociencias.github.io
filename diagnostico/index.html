@@ -831,10 +831,12 @@
       'fx-moderado': ['34–59%', 'Potencial de crescimento moderado'],
       'fx-leve':     ['60%+',   'Potencial de crescimento destravado']
     };
+    // uma palavra só, ao lado do número: PROFUNDO / MODERADO / LEVE.
+    // A linha logo abaixo já diz que é o grau do bloqueio.
     const GRAU = {
-      'fx-profundo': 'Bloqueio profundo',
-      'fx-moderado': 'Bloqueio moderado',
-      'fx-leve':     'Bloqueio leve'
+      'fx-profundo': 'Profundo',
+      'fx-moderado': 'Moderado',
+      'fx-leve':     'Leve'
     };
     const grau = document.getElementById('resGrau');
     grau.textContent = GRAU[fxId];
