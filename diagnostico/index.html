@@ -201,14 +201,16 @@
     /* o grau da trava anda junto do numero: o percentual diz o quanto esta
        ativado, o grau diz o quanto esta travado. Sao a mesma informacao lida
        pelos dois lados, e a pessoa entende mais rapido vendo os dois juntos. */
+    /* so a palavra, sem moldura: a pilula pedia uma segunda leitura para dizer
+       o que ja estava escrito, e disputava atencao com o proprio numero */
     .res-grau {
-      font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-      padding: 5px 13px; border-radius: 999px; white-space: nowrap;
+      font-size: 1.15rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; white-space: nowrap;
     }
-    .res-grau.n-baixo { color: var(--vermelho); border: 1px solid rgba(212,87,78,.42); background: rgba(212,87,78,.09); }
-    .res-grau.n-medio { color: var(--amber);    border: 1px solid rgba(224,161,60,.42); background: rgba(224,161,60,.09); }
-    .res-grau.n-alto  { color: var(--verde);    border: 1px solid rgba(92,184,122,.42); background: rgba(92,184,122,.09); }
-    @media (max-width: 420px) { .res-grau { font-size: .72rem; letter-spacing: .1em; } }
+    .res-grau.n-baixo { color: var(--vermelho); }
+    .res-grau.n-medio { color: var(--amber); }
+    .res-grau.n-alto  { color: var(--verde); }
+    @media (max-width: 420px) { .res-grau { font-size: .95rem; letter-spacing: .08em; } }
     .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px; transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
     .res-score.n-baixo  { color: var(--vermelho); }
@@ -369,7 +371,7 @@
       .res-card { padding: 24px 22px; }
       .res-legenda { font-size: .68rem; margin-bottom: 5px; }
       .res-score { font-size: 2.9rem; }
-      .res-grau { font-size: .68rem; padding: 3px 10px; letter-spacing: .1em; }
+      .res-grau { font-size: .9rem; letter-spacing: .1em; }
       .res-faixa { font-size: 1.32rem; margin: 6px 0 5px; }
       .res-desc { font-size: .84rem; line-height: 1.42; }
       .escala { margin: 20px 0 6px; }
