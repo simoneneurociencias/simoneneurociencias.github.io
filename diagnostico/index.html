@@ -205,10 +205,10 @@
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
     /* o percentual sozinho, dentro da pilula: o grau ja e o titulo do cartao
        logo abaixo, e repetir aqui duplicava a mesma leitura */
+    /* sem a pilula: a cápsula fechava o numero numa caixa e competia com o
+       cartao que ja o envolve. O numero pesa sozinho. */
     .res-linha-score {
       display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
-      padding: 16px 40px; border-radius: 999px;
-      background: var(--preto); border: 1px solid rgba(212,175,55,.28);
     }
     /* o adjetivo do potencial, ao lado do numero: 14% sozinho nao diz se e
        pouco ou muito. Mesmas quatro faixas das barras dos eixos. */
@@ -239,7 +239,7 @@
     /* clamp + line-height: "Potencial de crescimento travado" quebrava em 3 linhas soltas no celular */
     /* Logo abaixo do numero: qual dos 3 eixos mais trava. O nome da faixa nao
        vem aqui de proposito, ele ja e o titulo do cartao logo abaixo. */
-    .res-eixo { font-size: 1.05rem; color: var(--cinza); margin: 14px 0 10px; }
+    .res-eixo { font-size: 1.05rem; color: var(--cinza); margin: 14px 0 0; }
     .res-eixo strong { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.35rem; color: var(--ouro-suave); }
     .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
     /* a leitura do numero: sem ela, um percentual baixo e lido como "eu nao
@@ -507,9 +507,7 @@
         <div class="res-score" id="score">0<small>%</small></div>
         <span class="res-grau" id="resGrau"></span>
       </div>
-      <p class="res-termostato">É aqui que o seu termostato interno está regulado hoje.
-        Não é o seu limite, é o ponto em que ele foi ajustado. Quanto mais alto o índice,
-        mais alto está regulado o seu termostato.</p>
+      <p class="res-termostato">Não é o seu limite. É o ponto onde o seu termostato está regulado.</p>
       <p class="res-eixo" id="resEixo"></p>
       <p class="res-desc" id="faixaDesc"></p>
 
@@ -862,13 +860,13 @@
     let desc, fxId;
     if (r.pct <= 33) {
       fxId = 'fx-profundo';
-      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. A trava não está na sua estratégia: o seu termostato interno está regulado baixo e te puxa de volta a cada avanço. Enquanto esse ponto não subir, nenhuma estratégia se sustenta.';
+      desc = 'O seu termostato te puxa de volta a cada avanço. Enquanto esse ponto não subir, nenhuma estratégia se sustenta.';
     } else if (r.pct <= 59) {
       fxId = 'fx-moderado';
-      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Enquanto o termostato não subir de ponto, a trava volta.';
+      desc = 'Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Enquanto o ponto não subir, a trava volta.';
     } else {
       fxId = 'fx-leve';
-      desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
+      desc = 'A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
 
     const grau = document.getElementById('resGrau');
@@ -903,9 +901,9 @@
       // travas" contradiria as respostas — ela marcou "um pouco" em todas
       tag = 'Suas travas são <strong>leves</strong>';
     } else if (nomes.length === 3) {
-      tag = 'Os <strong>três eixos</strong> pedem recalibração por igual';
+      tag = 'Foco de Recalibragem · <strong>OS 3 EIXOS</strong>';
     } else {
-      tag = 'É em <strong>' + nomes.join(' + ') + '</strong> que o seu termostato precisa ser recalibrado';
+      tag = 'Foco de Recalibragem · <strong>' + nomes.join(' + ').toUpperCase() + '</strong>';
     }
     // fica logo abaixo do percentual: e a leitura que a pessoa procura primeiro.
     // innerHTML: a tag tem <strong> e o conteudo e interno, nao vem do usuario
