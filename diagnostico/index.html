@@ -236,6 +236,12 @@
     .res-eixo { font-size: 1.05rem; color: var(--cinza); margin: 14px 0 10px; }
     .res-eixo strong { font-family: 'Marcellus', serif; font-weight: 400; font-size: 1.35rem; color: var(--ouro-suave); }
     .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
+    /* a leitura do numero: sem ela, um percentual baixo e lido como "eu nao
+       tenho potencial", e a pessoa fecha a pagina antes do resto */
+    .res-termostato {
+      color: var(--ouro-suave); font-size: .95rem; line-height: 1.45;
+      max-width: 520px; margin: 2px auto 14px;
+    }
 
     .escala { margin: 28px 0 8px; }
     /* escala invertida: 0% (esquerda) = crítico → 100% (direita) = saudável */
@@ -509,6 +515,8 @@
         <div class="res-score" id="score">0<small>%</small></div>
         <span class="res-grau" id="resGrau"></span>
       </div>
+      <p class="res-termostato">É aqui que o seu termostato interno está regulado hoje.
+        Não é o seu limite, é o ponto em que ele foi ajustado.</p>
       <p class="res-eixo" id="resEixo"></p>
       <p class="res-desc" id="faixaDesc"></p>
 
@@ -861,10 +869,10 @@
     let desc, fxId;
     if (r.pct <= 33) {
       fxId = 'fx-profundo';
-      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. A trava não está na sua estratégia, está na programação que roda por baixo dela e te puxa de volta a cada avanço. Sem trabalhar a raiz, nenhuma estratégia se sustenta.';
+      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. A trava não está na sua estratégia: o seu termostato interno está regulado baixo e te puxa de volta a cada avanço. Enquanto esse ponto não subir, nenhuma estratégia se sustenta.';
     } else if (r.pct <= 59) {
       fxId = 'fx-moderado';
-      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Sem reprogramar a raiz, a trava volta.';
+      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Enquanto o termostato não subir de ponto, a trava volta.';
     } else {
       fxId = 'fx-leve';
       desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
@@ -904,7 +912,7 @@
     } else if (nomes.length === 3) {
       tag = 'Os <strong>três eixos</strong> pesam por igual';
     } else {
-      tag = 'Sua maior fragilidade está em: <strong>' + nomes.join(' + ') + '</strong>';
+      tag = 'É em <strong>' + nomes.join(' + ') + '</strong> que o seu termostato está mais baixo';
     }
     // fica logo abaixo do percentual: e a leitura que a pessoa procura primeiro.
     // innerHTML: a tag tem <strong> e o conteudo e interno, nao vem do usuario
