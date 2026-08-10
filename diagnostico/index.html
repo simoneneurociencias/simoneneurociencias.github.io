@@ -541,19 +541,19 @@
     <div class="faixas">
       <div class="faixa profundo" id="fx-profundo">
         <div>
-          <h3>Termostato regulado baixo</h3>
+          <h3>Termostato baixo</h3>
           <p>A maior parte do seu potencial está travada. A trava é profunda: crenças antigas associam prosperar a perigo ou a perder a essência, e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete, e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
         <div>
-          <h3>Termostato regulado moderado</h3>
+          <h3>Termostato moderado</h3>
           <p>Boa parte do seu potencial está disponível, mas some nos momentos-chave (cobrar, aparecer, manter consistência), e é justamente onde o resultado se decide. Estratégia sozinha não basta: você precisa subir o ponto do seu termostato interno para destravar e, principalmente, sustentar o que conquista.</p>
         </div>
       </div>
       <div class="faixa leve" id="fx-leve">
         <div>
-          <h3>Termostato regulado alto</h3>
+          <h3>Termostato alto</h3>
           <p>Você já tem uma relação saudável com valor e visibilidade. O que trava é pontual: ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
         </div>
       </div>
@@ -872,7 +872,7 @@
     }
 
     const grau = document.getElementById('resGrau');
-    grau.textContent = 'Termostato ' + palavra(r.pct);
+    grau.textContent = 'Potencial ' + palavra(r.pct);
     grau.className = 'res-grau ' + nivelBarra(r.pct);
 
     document.getElementById('faixaDesc').textContent = desc;
@@ -888,7 +888,7 @@
     const nomes = eixos.filter(e => e.v === minv).map(e => e.nome);
     eixos.forEach(e => {
       const lab = document.getElementById(e.val);
-      lab.textContent = e.v + '% · regulado ' + palavra(e.v);
+      lab.textContent = e.v + '% · ' + palavra(e.v);
       lab.className = nivelBarra(e.v);   // quatro faixas, igual a barra e ao adjetivo
       const f = document.getElementById(e.fill);
       f.style.width = e.v + '%';
