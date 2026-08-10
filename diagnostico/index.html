@@ -197,27 +197,14 @@
 
     #resultado { display: none; margin-top: 10px; }
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
-    /* numero e grau na mesma pilula: sao uma leitura so, "14% de trava profunda",
-       e a moldura em volta dos dois mostra isso sem precisar dizer */
+    /* o percentual sozinho, dentro da pilula: o grau ja e o titulo do cartao
+       logo abaixo, e repetir aqui duplicava a mesma leitura */
     .res-linha-score {
-      display: inline-flex; align-items: baseline; justify-content: center; gap: 14px;
-      flex-wrap: wrap; padding: 14px 30px; border-radius: 999px;
+      display: inline-flex; align-items: baseline; justify-content: center;
+      padding: 10px 34px; border-radius: 999px;
       background: var(--preto); border: 1px solid rgba(212,175,55,.28);
     }
-    /* o grau da trava anda junto do numero: o percentual diz o quanto esta
-       ativado, o grau diz o quanto esta travado. Sao a mesma informacao lida
-       pelos dois lados, e a pessoa entende mais rapido vendo os dois juntos. */
-    /* so a palavra, sem moldura: a pilula pedia uma segunda leitura para dizer
-       o que ja estava escrito, e disputava atencao com o proprio numero */
-    .res-grau {
-      font-size: 1.15rem; font-weight: 700; letter-spacing: .12em;
-      text-transform: uppercase; white-space: nowrap;
-    }
-    .res-grau.n-baixo { color: var(--vermelho); }
-    .res-grau.n-medio { color: var(--amber); }
-    .res-grau.n-alto  { color: var(--verde); }
-    @media (max-width: 420px) { .res-grau { font-size: .95rem; letter-spacing: .08em; } }
-    .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px; transition: color .3s; }
+    .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
     .res-score.n-baixo  { color: var(--vermelho); }
     .res-score.n-medio  { color: var(--amber); }
@@ -377,7 +364,6 @@
       .res-card { padding: 24px 22px; }
       .res-legenda { font-size: .68rem; margin-bottom: 5px; }
       .res-score { font-size: 2.9rem; }
-      .res-grau { font-size: .9rem; letter-spacing: .1em; }
       .res-faixa { font-size: 1.32rem; margin: 6px 0 5px; }
       .res-desc { font-size: .84rem; line-height: 1.42; }
       .escala { margin: 20px 0 6px; }
@@ -497,7 +483,6 @@
       <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
       <div class="res-linha-score">
         <div class="res-score" id="score">0<small>%</small></div>
-        <span class="res-grau" id="resGrau"></span>
       </div>
       <p class="res-eixo" id="resEixo"></p>
       <p class="res-desc" id="faixaDesc"></p>
@@ -850,14 +835,6 @@
     score.innerHTML = r.pct + '<small>%</small>';
     score.className = 'res-score ' + nivel(r.pct);
 
-    // etiqueta ao lado do numero: TRAVA PROFUNDA / MODERADA / LEVE.
-    // O percentual diz o quanto do potencial esta ativado; a etiqueta diz o
-    // quanto esta travado. A mesma informacao, lida pelos dois lados.
-    const GRAU = {
-      'fx-profundo': 'Trava profunda',
-      'fx-moderado': 'Trava moderada',
-      'fx-leve':     'Trava leve'
-    };
 
     let desc, fxId;
     if (r.pct <= 33) {
@@ -870,9 +847,6 @@
       fxId = 'fx-leve';
       desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
-    const grau = document.getElementById('resGrau');
-    grau.textContent = GRAU[fxId];
-    grau.className = 'res-grau ' + nivel(r.pct);
 
     document.getElementById('faixaDesc').textContent = desc;
     // clamp: nos extremos (0% / 100%) o marcador sairia meio corpo para fora da barra
