@@ -295,8 +295,14 @@
       padding: 32px 26px; text-align: center;
     }
     .cta-final .cta-kicker {
-      display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: var(--ouro); margin-bottom: 12px;
+      display: inline-block; font-size: .88rem; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--ouro); margin-bottom: 14px;
+    }
+    /* a frase de gancho muda por faixa; o título acima é sempre o mesmo, para
+       a oferta ser a primeira coisa que a pessoa lê */
+    .cta-final .cta-gancho {
+      color: var(--texto); font-size: 1.06rem; font-weight: 600;
+      max-width: 540px; margin: 0 auto 12px;
     }
     .cta-final h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
     .cta-final h2 em { font-style: normal; color: var(--ouro-suave); }
@@ -537,7 +543,8 @@
 
     <div class="cta-final" id="ctaFinal">
       <span class="cta-kicker">Próximo passo</span>
-      <h2 id="ctaTitulo"></h2>
+      <h2>Agende sua Análise de Caso gratuita</h2>
+      <p class="cta-gancho" id="ctaGancho"></p>
       <p id="ctaTexto"></p>
       <p class="cta-destaque" id="ctaDestaque"></p>
       <p class="cta-urgencia">⏳ Vagas limitadas: abro poucos horários por semana e eles se esgotam rápido.</p>
@@ -928,7 +935,7 @@
       }
     };
     const c = copy[fxId];
-    document.getElementById('ctaTitulo').innerHTML = c.titulo;
+    document.getElementById('ctaGancho').innerHTML = c.titulo;
     document.getElementById('ctaTexto').textContent = c.texto;
     document.getElementById('ctaDestaque').textContent = c.destaque;
     document.getElementById('ctaBtn').href = AGENDA_URL;
