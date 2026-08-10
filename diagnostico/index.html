@@ -542,11 +542,17 @@
   const ORIGEM = "webinario TAV1";
   const NOME = "cliente TAV";
 
-  // ?isca=1 → versão de captação (anúncio, story, bio): pede nome/e-mail/WhatsApp
-  // antes de mostrar o resultado e grava numa ABA SEPARADA da planilha.
-  // Sem o parâmetro, é o link do webinário ao vivo: nenhum cadastro, para não
-  // quebrar o foco da turma. Mesmo arquivo, um motor de pontuação só.
-  const ISCA = new URLSearchParams(location.search).get('isca') === '1';
+  // ?faixa=1 → versão de captação (anúncio, story, bio): pede nome, e-mail,
+  // WhatsApp e faixa de faturamento antes de mostrar o resultado, e grava na
+  // planilha de leads. Sem o parâmetro, é o link do webinário ao vivo: nenhum
+  // cadastro, para não quebrar o foco da turma. Mesmo arquivo, um motor de
+  // pontuação só.
+  //
+  // ?isca=1 continua valendo: foi o nome usado no primeiro dia e pode ter
+  // sobrado em algum link. Dentro do código e no payload o campo continua se
+  // chamando "isca", para não precisar reimplantar o Apps Script.
+  const _q = new URLSearchParams(location.search);
+  const ISCA = _q.get('faixa') === '1' || _q.get('isca') === '1';
   const ORIGEM_ISCA = "isca";
 
   const perguntas = [
@@ -741,7 +747,7 @@
         faturamento: contato ? contato.faturamento : '',
         origem: ISCA ? ORIGEM_ISCA : ORIGEM,
         // o script usa isto para escolher a PLANILHA: isca vai para a planilha
-        // de leads, o webinário continua na planilha TAV
+        // de leads, o webinário continua na planilha dele
         isca: ISCA,
         indice: r.pct,
         faixa: r.faixa,
