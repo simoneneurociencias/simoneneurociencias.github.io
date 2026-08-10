@@ -200,8 +200,8 @@
     /* o percentual sozinho, dentro da pilula: o grau ja e o titulo do cartao
        logo abaixo, e repetir aqui duplicava a mesma leitura */
     .res-linha-score {
-      display: inline-flex; align-items: baseline; justify-content: center; gap: 14px;
-      flex-wrap: wrap; padding: 12px 30px; border-radius: 999px;
+      display: inline-flex; flex-direction: column; align-items: center; gap: 2px;
+      padding: 16px 40px; border-radius: 999px;
       background: var(--preto); border: 1px solid rgba(212,175,55,.28);
     }
     /* o adjetivo do potencial, ao lado do numero: 14% sozinho nao diz se e
@@ -217,9 +217,10 @@
     @media (max-width: 420px) { .res-grau { font-size: .88rem; letter-spacing: .06em; } }
     .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
-    .res-score.n-baixo  { color: var(--vermelho); }
-    .res-score.n-medio  { color: var(--amber); }
-    .res-score.n-alto   { color: var(--verde); }
+    .res-score.n-critico { color: #ff922b; }
+    .res-score.n-baixo   { color: var(--vermelho); }
+    .res-score.n-medio   { color: var(--amber); }
+    .res-score.n-alto    { color: var(--verde); }
     .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
     /* clamp + line-height: "Potencial de crescimento travado" quebrava em 3 linhas soltas no celular */
     /* Logo abaixo do numero: qual dos 3 eixos mais trava. O nome da faixa nao
@@ -840,7 +841,7 @@
   function mostrarResultado(r) {
     const score = document.getElementById('score');
     score.innerHTML = r.pct + '<small>%</small>';
-    score.className = 'res-score ' + nivel(r.pct);
+    score.className = 'res-score ' + nivelBarra(r.pct);   // mesma cor do adjetivo
 
 
     let desc, fxId;
