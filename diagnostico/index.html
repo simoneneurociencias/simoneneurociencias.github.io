@@ -210,14 +210,15 @@
       font-size: 1.1rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; white-space: nowrap;
     }
-    .res-grau.n-critico { color: #ff922b; }
+    .res-grau.n-critico { color: #9a6ad4; }
     .res-grau.n-baixo   { color: var(--vermelho); }
     .res-grau.n-medio   { color: var(--amber); }
     .res-grau.n-alto    { color: var(--verde); }
     @media (max-width: 420px) { .res-grau { font-size: .88rem; letter-spacing: .06em; } }
     .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
-    .res-score small { font-size: 1.1rem; color: var(--cinza); }
-    .res-score.n-critico { color: #ff922b; }
+    /* o % era pequeno e cinza, como se fosse legenda: ele faz parte do numero */
+    .res-score small { font-size: inherit; color: inherit; }
+    .res-score.n-critico { color: #9a6ad4; }
     .res-score.n-baixo   { color: var(--vermelho); }
     .res-score.n-medio   { color: var(--amber); }
     .res-score.n-alto    { color: var(--verde); }
@@ -233,7 +234,12 @@
     /* escala invertida: 0% (esquerda) = crítico → 100% (direita) = saudável */
     .barra {
       position: relative; height: 14px; border-radius: 10px;
-      background: linear-gradient(90deg, var(--vermelho) 0%, var(--vermelho) 33%, var(--amber) 33%, var(--amber) 60%, var(--verde) 60%, var(--verde) 100%);
+      /* os mesmos quatro cortes do resultado: 15, 33 e 60 */
+      background: linear-gradient(90deg,
+        #9a6ad4 0%, #9a6ad4 15%,
+        var(--vermelho) 15%, var(--vermelho) 33%,
+        var(--amber) 33%, var(--amber) 60%,
+        var(--verde) 60%, var(--verde) 100%);
     }
     .marker { position: absolute; top: -8px; width: 4px; height: 30px; transform: translateX(-50%); background: #fff; border-radius: 3px; box-shadow: 0 0 0 3px rgba(0,0,0,.5); transition: left .5s ease; }
     .escala-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cinza); margin-top: 10px; }
@@ -267,9 +273,9 @@
     .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease, background .3s; }
     /* Quatro cores, os mesmos cortes da palavra que descreve o eixo. A escala
-       anda por matiz, laranja > vermelho > ambar > verde, e nao por claridade:
+       anda por matiz, lilas > vermelho > ambar > verde, e nao por claridade:
        um vinho escuro some no fundo preto. */
-    .bd-fill.n-critico { background: linear-gradient(90deg, #e06a11, #ff922b); }
+    .bd-fill.n-critico { background: linear-gradient(90deg, #6d3fa8, #9a6ad4); }
     .bd-fill.n-baixo   { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
     .bd-fill.n-medio   { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
     .bd-fill.n-alto    { background: linear-gradient(90deg, #479560, var(--verde)); }
@@ -500,7 +506,7 @@
 
       <div class="escala">
         <div class="barra"><div class="marker" id="marker" style="left:0%"></div></div>
-        <div class="escala-labels"><span>0%</span><span>33%</span><span>60%</span><span>100%</span></div>
+        <div class="escala-labels"><span>0%</span><span>15%</span><span>33%</span><span>60%</span><span>100%</span></div>
       </div>
 
       <div class="bd">
