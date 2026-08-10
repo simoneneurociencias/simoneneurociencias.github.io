@@ -236,12 +236,21 @@
     .escala-labels { display: flex; justify-content: space-between; font-size: .72rem; color: var(--cinza); margin-top: 10px; }
 
     .faixas { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
-    .faixa { display: flex; gap: 16px; align-items: flex-start; background: var(--card); border: 1px solid var(--borda); border-left: 5px solid var(--borda); border-radius: 10px; padding: 18px 20px; opacity: .55; transition: opacity .3s, transform .3s; }
-    .faixa.ativa { opacity: 1; transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,.4); }
+    /* Só o cartão da faixa da pessoa aparece. Mostrar os três fazia ela
+       comparar o resultado com os outros dois em vez de ler o dela, e as duas
+       caixas apagadas ainda pareciam desativadas por engano. */
+    .faixa { display: none; }
+    .faixa.ativa {
+      display: block; background: var(--card);
+      border: 1px solid var(--borda); border-left: 5px solid var(--borda);
+      border-radius: 10px; padding: 18px 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
     .faixa.leve { border-left-color: var(--verde); }
     .faixa.moderado { border-left-color: var(--amber); }
     .faixa.profundo { border-left-color: var(--vermelho); }
-    .faixa-range { font-family: 'Marcellus', serif; font-size: 1.05rem; color: var(--ouro-suave); flex-shrink: 0; min-width: 78px; }
+    /* o intervalo vai no topo, e o texto ocupa a largura inteira da caixa */
+    .faixa-range { font-family: 'Marcellus', serif; font-size: 1.05rem; color: var(--ouro-suave); margin-bottom: 8px; }
     .faixa h3 { font-size: 1.05rem; margin-bottom: 4px; }
     .faixa p { font-size: .9rem; color: var(--cinza); }
 
@@ -335,8 +344,7 @@
       .print-marca span { display: block; }
       .res-titulo { margin-top: 0; }
       /* no PDF so faz sentido a faixa em que a pessoa caiu */
-      .faixa:not(.ativa) { display: none; }
-      .faixa.ativa { opacity: 1; transform: none; box-shadow: none; }
+      .faixa.ativa { box-shadow: none; }
       /* tudo em UMA pagina: espacamentos e corpo de texto comprimidos.
          html{font-size} encolhe de uma vez tudo que esta em rem. */
       html { font-size: 15.5px; }
@@ -363,7 +371,7 @@
       .bd-nota { font-size: .76rem; line-height: 1.35; margin-top: 4px; }
       .bd-tag { margin-top: 9px; }
       .faixas { margin-top: 18px; }
-      .faixa { padding: 16px 18px; }
+      .faixa.ativa { padding: 16px 18px; }
       .faixa p { font-size: .82rem; line-height: 1.4; }
       /* CTA da agenda (so existe no diagnostico-financeiro): comprimido para
          caber junto na mesma pagina. A pill de urgencia sai — no PDF, que a
