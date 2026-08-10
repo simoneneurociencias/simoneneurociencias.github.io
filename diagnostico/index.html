@@ -207,7 +207,7 @@
     /* o adjetivo do potencial, ao lado do numero: 14% sozinho nao diz se e
        pouco ou muito. Mesmas quatro faixas das barras dos eixos. */
     .res-grau {
-      font-size: 1.1rem; font-weight: 700; letter-spacing: .1em;
+      font-size: .95rem; font-weight: 700; letter-spacing: .1em;
       text-transform: uppercase; white-space: nowrap;
     }
     .res-grau.n-critico { color: #9a6ad4; }
@@ -215,14 +215,21 @@
     .res-grau.n-medio   { color: var(--amber); }
     .res-grau.n-alto    { color: var(--verde); }
     @media (max-width: 420px) { .res-grau { font-size: .88rem; letter-spacing: .06em; } }
-    .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
+    .res-score { font-family: 'Marcellus', serif; font-size: 2.7rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
     /* o % era pequeno e cinza, como se fosse legenda: ele faz parte do numero */
     .res-score small { font-size: inherit; color: inherit; }
     .res-score.n-critico { color: #9a6ad4; }
     .res-score.n-baixo   { color: var(--vermelho); }
     .res-score.n-medio   { color: var(--amber); }
     .res-score.n-alto    { color: var(--verde); }
-    .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
+    /* e o titulo do resultado, nao uma legenda: e por ele que a pessoa sabe
+       o que o numero abaixo esta medindo */
+    .res-legenda {
+      font-family: 'Marcellus', Georgia, serif;
+      font-size: clamp(1.15rem, 3.4vw, 1.5rem); line-height: 1.25;
+      letter-spacing: .04em; text-transform: none;
+      color: var(--ouro-suave); margin-bottom: 18px;
+    }
     /* clamp + line-height: "Potencial de crescimento travado" quebrava em 3 linhas soltas no celular */
     /* Logo abaixo do numero: qual dos 3 eixos mais trava. O nome da faixa nao
        vem aqui de proposito, ele ja e o titulo do cartao logo abaixo. */
@@ -378,8 +385,8 @@
       .res-titulo { font-size: 1.6rem; letter-spacing: .13em; margin-bottom: 14px; }
       .res-titulo::after { margin-top: 7px; width: 42px; }
       .res-card { padding: 24px 22px; }
-      .res-legenda { font-size: .68rem; margin-bottom: 5px; }
-      .res-score { font-size: 2.9rem; }
+      .res-legenda { font-size: 1rem; margin-bottom: 8px; }
+      .res-score { font-size: 2.3rem; }
       .res-faixa { font-size: 1.32rem; margin: 6px 0 5px; }
       .res-desc { font-size: .84rem; line-height: 1.42; }
       .escala { margin: 20px 0 6px; }
