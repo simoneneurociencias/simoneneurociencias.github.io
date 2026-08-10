@@ -261,12 +261,13 @@
     .bd-row .lab span:last-child.n-alto  { color: var(--verde); }
     .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease, background .3s; }
-    /* quatro cores, os mesmos cortes da palavra que descreve o eixo: baixissimo
-       e baixo dividiam o mesmo vermelho, e 8% saia igual a 30% */
-    .bd-fill.n-critico { background: linear-gradient(90deg, #7d2018, #a8322a); }
-    .bd-fill.n-baixo { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
-    .bd-fill.n-medio { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
-    .bd-fill.n-alto  { background: linear-gradient(90deg, #479560, var(--verde)); }
+    /* Quatro cores, os mesmos cortes da palavra que descreve o eixo. A escala
+       anda por matiz, vermelho > laranja > ambar > verde, e nao por
+       claridade: um vinho escuro some no fundo preto. */
+    .bd-fill.n-critico { background: linear-gradient(90deg, #c9291c, #f24236); }
+    .bd-fill.n-baixo   { background: linear-gradient(90deg, #d4651f, #f5883a); }
+    .bd-fill.n-medio   { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
+    .bd-fill.n-alto    { background: linear-gradient(90deg, #479560, var(--verde)); }
     /* branco a 75%: o texto e claro, mas nao compete com o percentual colorido acima */
     .bd-nota { font-size: .84rem; color: rgba(242,239,233,.75); margin-top: 7px; line-height: 1.45; }
     /* no celular o label + "0% de 100% · baixíssimo" nao cabem lado a lado */
