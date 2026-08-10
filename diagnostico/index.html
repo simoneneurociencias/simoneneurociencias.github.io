@@ -286,7 +286,7 @@
     .bd-tag strong { color: var(--texto); font-weight: 700; }
     @media (max-width: 560px) { .bd-tag { border-radius: 18px; padding: 12px 18px; font-size: .86rem; } }
 
-    /* CTA final → Análise Diagnóstica gratuita. Só existe na versão isca:
+    /* CTA final → Análise de Caso gratuita. Só existe na versão isca:
        no webinário ao vivo a oferta é feita por ela, não pela página. */
     .cta-final {
       display: none; margin-top: 36px;
@@ -892,7 +892,7 @@
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // ⚙️ CONFIGURAÇÃO — página de agendamento da Análise Diagnóstica gratuita.
+  // ⚙️ CONFIGURAÇÃO — página de agendamento da Análise de Caso gratuita.
   // Vazio esconde o botão.
   const AGENDA_URL = "https://calendar.app.google/vub9HiAtn2FEMymU8";
 
@@ -905,7 +905,7 @@
     'Acima de R$ 20 mil'
   ];
 
-  // Convite para a Análise Diagnóstica gratuita, com o texto adaptado ao nível
+  // Convite para a Análise de Caso gratuita, com o texto adaptado ao nível
   // do bloqueio. Só na isca: no webinário ao vivo quem faz a oferta é ela.
   function montarCta(fxId) {
     const cta = document.getElementById('ctaFinal');
@@ -921,17 +921,17 @@
       'fx-leve': {
         titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
         texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais.',
-        destaque: 'Numa Análise Diagnóstica gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
+        destaque: 'Na sua Análise de Caso gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
       },
       'fx-moderado': {
         titulo: 'Você está a <em>um passo</em> de destravar.',
         texto: 'Parte do seu potencial já responde, mas some justamente quando mais importa, e isso tem solução.',
-        destaque: 'Numa Análise Diagnóstica gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
+        destaque: 'Na sua Análise de Caso gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
       },
       'fx-profundo': {
         titulo: 'Esse padrão <em>pode ser reescrito</em>, e você não precisa fazer isso por conta própria.',
         texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz.',
-        destaque: 'Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
+        destaque: 'Na sua Análise de Caso gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
       }
     };
     const c = copy[fxId];
