@@ -205,6 +205,13 @@
     .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
     /* clamp + line-height: "Potencial de crescimento bloqueado" quebrava em 3 linhas soltas no celular */
     .res-faixa { font-family: 'Marcellus', serif; font-size: clamp(1.3rem, 4.6vw, 1.7rem); line-height: 1.2; margin: 12px 0 8px; }
+    /* o intervalo vem antes do nome, num tom mais discreto: informa sem
+       disputar a leitura com a faixa em si */
+    .res-faixa-range {
+      display: inline-block; font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: .72em; color: var(--ouro); letter-spacing: .04em;
+      margin-right: 12px; vertical-align: 2px;
+    }
     .res-desc { color: var(--cinza); font-size: .98rem; max-width: 560px; margin: 0 auto; }
 
     .escala { margin: 28px 0 8px; }
@@ -393,7 +400,7 @@
   <header>
     <span class="kicker">Autodiagnóstico de Potencial de Crescimento</span>
     <h1>Quanto do seu <em>potencial</em> está ativado?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong> — de 0% a 100% — e qual é o seu <strong>Bloqueio Dominante</strong>.</p>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong>, de 0% a 100%, e qual é o seu <strong>Bloqueio Dominante</strong>.</p>
   </header>
 
   <form id="form"></form>
@@ -447,7 +454,8 @@
     <div class="res-card">
       <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
       <div class="res-score" id="score">0<small>%</small></div>
-      <p class="res-desc" id="faixaDesc">—</p>
+      <div class="res-faixa" id="resFaixa"></div>
+      <p class="res-desc" id="faixaDesc"></p>
 
       <div class="escala">
         <div class="barra"><div class="marker" id="marker" style="left:0%"></div></div>
@@ -480,21 +488,21 @@
         <div class="faixa-range">0–33%</div>
         <div>
           <h3>Potencial de crescimento bloqueado</h3>
-          <p>A maior parte do seu potencial está travada. O bloqueio é profundo: crenças antigas associam prosperar a perigo ou a perder a essência — e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete — e é exatamente isso que pode ser reescrito.</p>
+          <p>A maior parte do seu potencial está travada. O bloqueio é profundo: crenças antigas associam prosperar a perigo ou a perder a essência, e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete, e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
         <div class="faixa-range">34–59%</div>
         <div>
-          <h3>Potencial de crescimento intermitente</h3>
-          <p>Boa parte do seu potencial está disponível, mas some nos momentos-chave (cobrar, aparecer, manter consistência) — e é justamente onde o resultado se decide. Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar o que conquista.</p>
+          <h3>Potencial de crescimento moderado</h3>
+          <p>Boa parte do seu potencial está disponível, mas some nos momentos-chave (cobrar, aparecer, manter consistência), e é justamente onde o resultado se decide. Estratégia sozinha não basta: você precisa de reprogramação dirigida das crenças para destravar e, principalmente, sustentar o que conquista.</p>
         </div>
       </div>
       <div class="faixa leve" id="fx-leve">
         <div class="faixa-range">60%+</div>
         <div>
           <h3>Potencial de crescimento destravado</h3>
-          <p>Você já tem uma relação saudável com valor e visibilidade. O que trava é pontual — ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
+          <p>Você já tem uma relação saudável com valor e visibilidade. O que trava é pontual: ajustes de posicionamento, consistência e prática de cobrança resolvem boa parte. Seu maior ganho é refinar o que já funciona e ousar um pouco mais.</p>
         </div>
       </div>
     </div>
@@ -650,7 +658,7 @@
     const pct = Math.max(PISO, Math.round((MAX_TOTAL - b) / MAX_TOTAL * 100));
     const s1 = pctEixo(b1), s2 = pctEixo(b2), s3 = pctEixo(b3);
     let faixa;
-    if (pct <= 33) faixa = 'Bloqueado'; else if (pct <= 59) faixa = 'Intermitente'; else faixa = 'Livre';
+    if (pct <= 33) faixa = 'Bloqueado'; else if (pct <= 59) faixa = 'Moderado'; else faixa = 'Livre';
     const menor = Math.min(s1, s2, s3);
     const fragil = [];
     if (s1 === menor) fragil.push('Visibilidade');
@@ -664,17 +672,17 @@
   // prática. Sem promessa de faturamento: descreve o sintoma, não o resultado.
   const LEITURA = {
     'Visibilidade': {
-      'n-baixo': 'Você está invisível para quem mais precisa de você — e quem não te vê, não te procura. A agenda depende de indicação e sorte.',
+      'n-baixo': 'Você está invisível para quem mais precisa de você, e quem não te vê, não te procura. A agenda depende de indicação e sorte.',
       'n-medio': 'Você aparece quando dá, e some justamente nas semanas em que mais precisaria estar visível. Por isso o movimento nunca vira constante.',
       'n-alto':  'Você aparece com naturalidade e já é lembrança na cabeça de quem precisa. Aqui o ganho é ampliar o alcance.'
     },
     'Permissão': {
-      'n-baixo': 'Toda vez que você cresce, alguma coisa em você desliga o motor: vem a ansiedade, a procrastinação, e tudo volta ao lugar de sempre. Não é falta de capacidade — é permissão.',
+      'n-baixo': 'Toda vez que você cresce, alguma coisa em você desliga o motor: vem a ansiedade, a procrastinação, e tudo volta ao lugar de sempre. Não é falta de capacidade: é permissão.',
       'n-medio': 'Você até chega a valores maiores, mas não se permite ficar neles. O melhor mês vira exceção, e o seguinte devolve você ao patamar antigo.',
       'n-alto':  'Você recebe mais sem se sabotar e sustenta o que conquista. Aqui o ganho é subir de patamar sem culpa.'
     },
     'Autovalor': {
-      'n-baixo': 'Você entrega muito mais do que cobra — e sente isso a cada atendimento. O preço sai menor do que vale, e o cansaço cobra a diferença.',
+      'n-baixo': 'Você entrega muito mais do que cobra, e sente isso a cada atendimento. O preço sai menor do que vale, e o cansaço cobra a diferença.',
       'n-medio': 'Você até diz o seu preço, mas hesita. E a hesitação aparece: é nela que o desconto nasce, antes mesmo de o cliente pedir.',
       'n-alto':  'Você diz o seu preço sem pedir desculpas. Aqui o ganho é sustentar isso quando o valor subir.'
     }
@@ -792,14 +800,25 @@
     let desc, fxId;
     if (r.pct <= 33) {
       fxId = 'fx-profundo';
-      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é PROFUNDO: não está na sua estratégia, está na programação que roda por baixo dela — antiga, silenciosa, e é ela que te puxa de volta toda vez que você avança. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta — e é justamente isso que pode ser reescrito.';
+      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é PROFUNDO: não está na sua estratégia, está na programação que roda por baixo dela: antiga, silenciosa, e é ela que te puxa de volta toda vez que você avança. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta, e é justamente isso que pode ser reescrito.';
     } else if (r.pct <= 59) {
       fxId = 'fx-moderado';
-      desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. Os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado — cobrar, aparecer, sustentar o que conquistou. Sem uma reprogramação dirigida, você destrava e perde de novo.';
+      desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. Os ' + (100 - r.pct) + '% que faltam somem justamente nos momentos que decidem o resultado: cobrar, aparecer, sustentar o que conquistou. Sem uma reprogramação dirigida, você destrava e perde de novo.';
     } else {
       fxId = 'fx-leve';
       desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. A sua base é saudável e o que trava é pontual. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
+    // faixa logo abaixo do numero: o percentual sozinho nao diz onde a pessoa
+    // esta. Os mesmos cortes e os mesmos nomes dos cartoes mais abaixo.
+    const FAIXA_TITULO = {
+      'fx-profundo': ['0–33%',  'Potencial de crescimento bloqueado'],
+      'fx-moderado': ['34–59%', 'Potencial de crescimento moderado'],
+      'fx-leve':     ['60%+',   'Potencial de crescimento destravado']
+    };
+    const ft = FAIXA_TITULO[fxId];
+    document.getElementById('resFaixa').innerHTML =
+      '<span class="res-faixa-range">' + ft[0] + '</span>' + ft[1];
+
     document.getElementById('faixaDesc').textContent = desc;
     // clamp: nos extremos (0% / 100%) o marcador sairia meio corpo para fora da barra
     document.getElementById('marker').style.left = Math.min(Math.max(r.pct, 2), 98) + '%';
