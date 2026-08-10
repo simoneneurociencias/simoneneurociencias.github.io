@@ -198,7 +198,7 @@
     #resultado { display: none; margin-top: 10px; }
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
     .res-linha-score { display: flex; align-items: baseline; justify-content: center; gap: 16px; flex-wrap: wrap; }
-    /* o grau de bloqueio anda junto do numero: o percentual diz o quanto esta
+    /* o grau da trava anda junto do numero: o percentual diz o quanto esta
        ativado, o grau diz o quanto esta travado. Sao a mesma informacao lida
        pelos dois lados, e a pessoa entende mais rapido vendo os dois juntos. */
     .res-grau {
@@ -215,7 +215,7 @@
     .res-score.n-medio  { color: var(--amber); }
     .res-score.n-alto   { color: var(--verde); }
     .res-legenda { font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cinza); margin-bottom: 10px; }
-    /* clamp + line-height: "Potencial de crescimento bloqueado" quebrava em 3 linhas soltas no celular */
+    /* clamp + line-height: "Potencial de crescimento travado" quebrava em 3 linhas soltas no celular */
     /* Logo abaixo do numero: qual dos 3 eixos mais trava. O nome da faixa nao
        vem aqui de proposito, ele ja e o titulo do cartao logo abaixo. */
     .res-eixo { font-size: 1.05rem; color: var(--cinza); margin: 14px 0 10px; }
@@ -434,7 +434,7 @@
   <header>
     <span class="kicker">Autodiagnóstico de Potencial de Crescimento</span>
     <h1>Quanto do seu <em>potencial</em> está ativado?</h1>
-    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong>, de 0% a 100%, e qual é o seu <strong>Bloqueio Dominante</strong>.</p>
+    <p>Responda com sinceridade. Para cada frase, escolha o quanto ela representa você hoje. No final, você vê o seu <strong>Índice de Potencial de Crescimento</strong>, de 0% a 100%, e qual é a sua <strong>Trava Dominante</strong>.</p>
   </header>
 
   <form id="form"></form>
@@ -523,8 +523,8 @@
       <div class="faixa profundo" id="fx-profundo">
         <div class="faixa-range">0–33%</div>
         <div>
-          <h3>Potencial de crescimento bloqueado</h3>
-          <p>A maior parte do seu potencial está travada. O bloqueio é profundo: crenças antigas associam prosperar a perigo ou a perder a essência, e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete, e é exatamente isso que pode ser reescrito.</p>
+          <h3>Potencial de crescimento travado</h3>
+          <p>A maior parte do seu potencial está travada. A trava é profunda: crenças antigas associam prosperar a perigo ou a perder a essência, e o seu sistema protege você mantendo tudo exatamente onde está. Sem um trabalho consistente no subconsciente, o padrão se repete, e é exatamente isso que pode ser reescrito.</p>
         </div>
       </div>
       <div class="faixa moderado" id="fx-moderado">
@@ -627,7 +627,7 @@
     { g: 3, t: "Acho, no fundo, que cobrar caro é errado ou é egoísta." }
   ];
   const grupos = { 1: "Segredo 1 · Visibilidade", 2: "Segredo 2 · Permissão", 3: "Segredo 3 · Autovalor" };
-  // Índice = intensidade do bloqueio. Não existe resposta "zero bloqueio":
+  // Índice = intensidade da trava. Não existe resposta "zero trava":
   // a opção mais branda ("Um pouco") já vale 1 ponto, então o limite do índice
   // é 67% — ninguém sai ileso. Os cortes das faixas (33/60) respeitam isso.
   const escala = ["Um pouco", "Bastante", "Totalmente"];
@@ -679,7 +679,7 @@
   });
 
   // calcula o ÍNDICE DE CRESCIMENTO: quanto do potencial está ativado.
-  // As frases medem bloqueio, então o índice é o INVERSO — quanto mais a frase
+  // As frases medem trava, então o índice é o INVERSO — quanto mais a frase
   // representa a pessoa, MENOR o percentual. Nota baixa = ruim.
   // piso: zero absoluto e lido como erro do sistema, entao 5% e o minimo exibido
   const PISO = 5;
@@ -695,7 +695,7 @@
     const pct = Math.max(PISO, Math.round((MAX_TOTAL - b) / MAX_TOTAL * 100));
     const s1 = pctEixo(b1), s2 = pctEixo(b2), s3 = pctEixo(b3);
     let faixa;
-    if (pct <= 33) faixa = 'Bloqueado'; else if (pct <= 59) faixa = 'Moderado'; else faixa = 'Livre';
+    if (pct <= 33) faixa = 'Travado'; else if (pct <= 59) faixa = 'Moderado'; else faixa = 'Livre';
     const menor = Math.min(s1, s2, s3);
     const fragil = [];
     if (s1 === menor) fragil.push('Visibilidade');
@@ -821,7 +821,7 @@
         autovalor: r.s3,
         // a partir de 60% nenhum eixo se destaca — grava o grau, mesmo texto
         // da pilula na tela, para planilha e resultado contarem a mesma coisa
-        eixoFragil: r.pct >= 60 ? 'BLOQUEIOS LEVES' : r.fragil,
+        eixoFragil: r.pct >= 60 ? 'TRAVAS LEVES' : r.fragil,
         // as respostas frase a frase não são enviadas: ela não quer guardá-las
         data: new Date().toISOString()
       })
@@ -842,10 +842,19 @@
     score.innerHTML = r.pct + '<small>%</small>';
     score.className = 'res-score ' + nivel(r.pct);
 
+    // etiqueta ao lado do numero: TRAVA PROFUNDA / MODERADA / LEVE.
+    // O percentual diz o quanto do potencial esta ativado; a etiqueta diz o
+    // quanto esta travado. A mesma informacao, lida pelos dois lados.
+    const GRAU = {
+      'fx-profundo': 'Trava profunda',
+      'fx-moderado': 'Trava moderada',
+      'fx-leve':     'Trava leve'
+    };
+
     let desc, fxId;
     if (r.pct <= 33) {
       fxId = 'fx-profundo';
-      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. O bloqueio não está na sua estratégia, está na programação que roda por baixo dela e te puxa de volta a cada avanço. Sem trabalhar a raiz, nenhuma estratégia se sustenta.';
+      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. A trava não está na sua estratégia, está na programação que roda por baixo dela e te puxa de volta a cada avanço. Sem trabalhar a raiz, nenhuma estratégia se sustenta.';
     } else if (r.pct <= 59) {
       fxId = 'fx-moderado';
       desc = 'Você usa apenas ' + r.pct + '% do seu potencial. Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Sem reprogramar a raiz, a trava volta.';
@@ -853,6 +862,10 @@
       fxId = 'fx-leve';
       desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
+    const grau = document.getElementById('resGrau');
+    grau.textContent = GRAU[fxId];
+    grau.className = 'res-grau ' + nivel(r.pct);
+
     document.getElementById('faixaDesc').textContent = desc;
     // clamp: nos extremos (0% / 100%) o marcador sairia meio corpo para fora da barra
     document.getElementById('marker').style.left = Math.min(Math.max(r.pct, 2), 98) + '%';
@@ -877,9 +890,9 @@
 
     let tag;
     if (r.pct >= 60) {
-      // potencial destravado: nao ha um bloqueio a eleger, mas dizer "sem
-      // bloqueios" contradiria as respostas — ela marcou "um pouco" em todas
-      tag = 'Seus bloqueios são <strong>leves</strong>';
+      // potencial destravado: nao ha uma trava a eleger, mas dizer "sem
+      // travas" contradiria as respostas — ela marcou "um pouco" em todas
+      tag = 'Suas travas são <strong>leves</strong>';
     } else if (nomes.length === 3) {
       tag = 'Os <strong>três eixos</strong> pesam por igual';
     } else {
@@ -915,7 +928,7 @@
   ];
 
   // Convite para a Análise de Caso gratuita, com o texto adaptado ao nível
-  // do bloqueio. Só na isca: no webinário ao vivo quem faz a oferta é ela.
+  // da trava. Só na isca: no webinário ao vivo quem faz a oferta é ela.
   function montarCta(fxId) {
     const cta = document.getElementById('ctaFinal');
     if (!ISCA || !AGENDA_URL ||
@@ -930,7 +943,7 @@
       'fx-leve': {
         titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
         texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais.',
-        destaque: 'Na sua Análise de Caso gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
+        destaque: 'Na sua Análise de Caso gratuita a gente mapeia a sua trava atual e traça o caminho para subir de nível.'
       },
       'fx-moderado': {
         titulo: 'Você está a <em>um passo</em> de destravar.',
@@ -939,7 +952,7 @@
       },
       'fx-profundo': {
         titulo: 'Esse padrão <em>pode ser reescrito</em>, e você não precisa fazer isso por conta própria.',
-        texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz.',
+        texto: 'A maior parte do seu potencial está travada, e a trava é profunda: nenhuma estratégia se sustenta sem trabalhar a raiz.',
         destaque: 'Na sua Análise de Caso gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
       }
     };
