@@ -261,6 +261,9 @@
     .bd-row .lab span:last-child.n-alto  { color: var(--verde); }
     .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease, background .3s; }
+    /* quatro cores, os mesmos cortes da palavra que descreve o eixo: baixissimo
+       e baixo dividiam o mesmo vermelho, e 8% saia igual a 30% */
+    .bd-fill.n-critico { background: linear-gradient(90deg, #7d2018, #a8322a); }
     .bd-fill.n-baixo { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
     .bd-fill.n-medio { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
     .bd-fill.n-alto  { background: linear-gradient(90deg, #479560, var(--verde)); }
@@ -718,6 +721,14 @@
       'n-alto':  'Você diz o seu preço sem pedir desculpas. Aqui o ganho é sustentar isso quando o valor subir.'
     }
   };
+  // cor da barra de cada eixo. Quatro faixas, os mesmos cortes de palavra().
+  function nivelBarra(p) {
+    if (p <= 15) return 'n-critico';
+    if (p <= 33) return 'n-baixo';
+    if (p <= 59) return 'n-medio';
+    return 'n-alto';
+  }
+
   // qualificador em palavra do percentual — a nota é mais concreta lida
   // como "baixíssimo" do que como um numero solto
   function palavra(p) {
@@ -856,7 +867,7 @@
       lab.className = nivel(e.v);
       const f = document.getElementById(e.fill);
       f.style.width = e.v + '%';
-      f.className = 'bd-fill ' + nivel(e.v);
+      f.className = 'bd-fill ' + nivelBarra(e.v);
       // o numero sozinho nao di: a leitura nomeia o custo daquele nivel
       document.getElementById(e.nota).textContent = LEITURA[e.nome][nivel(e.v)];
     });
