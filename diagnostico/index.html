@@ -99,7 +99,7 @@
     .rodape-copy { font-size: .7rem; color: var(--cinza); opacity: .6; }
     .rodape-print { display: none; }
 
-    header { text-align: center; margin-bottom: 40px; }
+    header { text-align: center; margin-bottom: 14px; }
     .kicker {
       display: inline-block;
       font-size: .88rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
@@ -111,6 +111,14 @@
     h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); line-height: 1.2; margin-bottom: 14px; }
     h1 em { font-style: normal; color: var(--ouro-suave); }
     header p { color: var(--cinza); max-width: 540px; margin: 0 auto; font-size: 1rem; }
+    /* sem H1: esta e a primeira coisa que a pessoa le, entao ela ganha corpo
+       de titulo sem virar titulo */
+    .abertura {
+      font-size: clamp(1.02rem, 2.6vw, 1.22rem); line-height: 1.5;
+      color: var(--texto); max-width: 600px; margin: 0 auto 14px;
+    }
+    .abertura em { font-style: normal; color: var(--ouro-suave); }
+    .abertura-nota { font-size: .88rem; color: var(--cinza); }
 
     /* ── Grupos de perguntas ── */
     .grupo-tit {
@@ -452,12 +460,11 @@
 
   <header>
     <span class="kicker">Termostato de Crescimento</span>
-    <h1>Até onde você tem <em>permissão</em> de crescer?</h1>
-    <p>Existe um termostato interno que regula isso, e ele foi regulado sem você escolher.
-      Em 3 minutos, você descobre onde o seu está.</p>
+    <p class="abertura">Existe um <em>termostato interno</em> que regula o quanto é seguro
+      você crescer, e ele foi regulado sem você escolher. Em 3 minutos, você descobre qual é
+      a margem de segurança que te mantém no mesmo lugar.</p>
+    <p class="abertura-nota">Responda com sinceridade, é ela que faz o resultado valer.</p>
   </header>
-
-  <p class="form-nota">12 frases. Responda com sinceridade, é ela que faz o resultado valer.</p>
 
   <form id="form"></form>
 
