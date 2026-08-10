@@ -200,10 +200,21 @@
     /* o percentual sozinho, dentro da pilula: o grau ja e o titulo do cartao
        logo abaixo, e repetir aqui duplicava a mesma leitura */
     .res-linha-score {
-      display: inline-flex; align-items: baseline; justify-content: center;
-      padding: 10px 34px; border-radius: 999px;
+      display: inline-flex; align-items: baseline; justify-content: center; gap: 14px;
+      flex-wrap: wrap; padding: 12px 30px; border-radius: 999px;
       background: var(--preto); border: 1px solid rgba(212,175,55,.28);
     }
+    /* o adjetivo do potencial, ao lado do numero: 14% sozinho nao diz se e
+       pouco ou muito. Mesmas quatro faixas das barras dos eixos. */
+    .res-grau {
+      font-size: 1.1rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .res-grau.n-critico { color: #ff922b; }
+    .res-grau.n-baixo   { color: var(--vermelho); }
+    .res-grau.n-medio   { color: var(--amber); }
+    .res-grau.n-alto    { color: var(--verde); }
+    @media (max-width: 420px) { .res-grau { font-size: .88rem; letter-spacing: .06em; } }
     .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
     .res-score.n-baixo  { color: var(--vermelho); }
@@ -483,6 +494,7 @@
       <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
       <div class="res-linha-score">
         <div class="res-score" id="score">0<small>%</small></div>
+        <span class="res-grau" id="resGrau"></span>
       </div>
       <p class="res-eixo" id="resEixo"></p>
       <p class="res-desc" id="faixaDesc"></p>
@@ -847,6 +859,10 @@
       fxId = 'fx-leve';
       desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
+
+    const grau = document.getElementById('resGrau');
+    grau.textContent = 'Potencial ' + palavra(r.pct);
+    grau.className = 'res-grau ' + nivelBarra(r.pct);
 
     document.getElementById('faixaDesc').textContent = desc;
     // clamp: nos extremos (0% / 100%) o marcador sairia meio corpo para fora da barra
