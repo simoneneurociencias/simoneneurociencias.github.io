@@ -197,7 +197,13 @@
 
     #resultado { display: none; margin-top: 10px; }
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
-    .res-linha-score { display: flex; align-items: baseline; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    /* numero e grau na mesma pilula: sao uma leitura so, "14% de trava profunda",
+       e a moldura em volta dos dois mostra isso sem precisar dizer */
+    .res-linha-score {
+      display: inline-flex; align-items: baseline; justify-content: center; gap: 14px;
+      flex-wrap: wrap; padding: 14px 30px; border-radius: 999px;
+      background: var(--preto); border: 1px solid rgba(212,175,55,.28);
+    }
     /* o grau da trava anda junto do numero: o percentual diz o quanto esta
        ativado, o grau diz o quanto esta travado. Sao a mesma informacao lida
        pelos dois lados, e a pessoa entende mais rapido vendo os dois juntos. */
@@ -264,10 +270,10 @@
     .bd-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 6px; overflow: hidden; }
     .bd-fill { height: 100%; background: linear-gradient(90deg, var(--ouro-suave), var(--ouro)); border-radius: 6px; transition: width .6s ease, background .3s; }
     /* Quatro cores, os mesmos cortes da palavra que descreve o eixo. A escala
-       anda por matiz, vermelho > lilas > ambar > verde, e nao por claridade:
+       anda por matiz, laranja > vermelho > ambar > verde, e nao por claridade:
        um vinho escuro some no fundo preto. */
-    .bd-fill.n-critico { background: linear-gradient(90deg, #c9291c, #f24236); }
-    .bd-fill.n-baixo   { background: linear-gradient(90deg, #6d3fa8, #9a6ad4); }
+    .bd-fill.n-critico { background: linear-gradient(90deg, #e06a11, #ff922b); }
+    .bd-fill.n-baixo   { background: linear-gradient(90deg, #b0433b, var(--vermelho)); }
     .bd-fill.n-medio   { background: linear-gradient(90deg, #c08a2e, var(--amber)); }
     .bd-fill.n-alto    { background: linear-gradient(90deg, #479560, var(--verde)); }
     /* branco a 75%: o texto e claro, mas nao compete com o percentual colorido acima */
