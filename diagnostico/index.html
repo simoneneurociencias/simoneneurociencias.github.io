@@ -197,6 +197,18 @@
 
     #resultado { display: none; margin-top: 10px; }
     .res-card { background: var(--grafite); border: 1px solid var(--borda); border-radius: 16px; padding: 32px 26px; text-align: center; }
+    .res-linha-score { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+    /* o grau de bloqueio anda junto do numero: o percentual diz o quanto esta
+       ativado, o grau diz o quanto esta travado. Sao a mesma informacao lida
+       pelos dois lados, e a pessoa entende mais rapido vendo os dois juntos. */
+    .res-grau {
+      font-size: .82rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+      padding: 5px 13px; border-radius: 999px; white-space: nowrap;
+    }
+    .res-grau.n-baixo { color: var(--vermelho); border: 1px solid rgba(212,87,78,.42); background: rgba(212,87,78,.09); }
+    .res-grau.n-medio { color: var(--amber);    border: 1px solid rgba(224,161,60,.42); background: rgba(224,161,60,.09); }
+    .res-grau.n-alto  { color: var(--verde);    border: 1px solid rgba(92,184,122,.42); background: rgba(92,184,122,.09); }
+    @media (max-width: 420px) { .res-grau { font-size: .72rem; letter-spacing: .1em; } }
     .res-score { font-family: 'Marcellus', serif; font-size: 3.4rem; line-height: 1; color: var(--ouro-suave); margin-bottom: 4px; transition: color .3s; }
     .res-score small { font-size: 1.1rem; color: var(--cinza); }
     .res-score.n-baixo  { color: var(--vermelho); }
@@ -337,6 +349,7 @@
       .res-card { padding: 24px 22px; }
       .res-legenda { font-size: .68rem; margin-bottom: 5px; }
       .res-score { font-size: 2.9rem; }
+      .res-grau { font-size: .68rem; padding: 3px 10px; letter-spacing: .1em; }
       .res-faixa { font-size: 1.32rem; margin: 6px 0 5px; }
       .res-desc { font-size: .84rem; line-height: 1.42; }
       .escala { margin: 20px 0 6px; }
@@ -453,7 +466,10 @@
     <h2 class="res-titulo">Resultado</h2>
     <div class="res-card">
       <div class="res-legenda">Seu Índice de Potencial de Crescimento</div>
-      <div class="res-score" id="score">0<small>%</small></div>
+      <div class="res-linha-score">
+        <div class="res-score" id="score">0<small>%</small></div>
+        <span class="res-grau" id="resGrau"></span>
+      </div>
       <div class="res-faixa" id="resFaixa"></div>
       <p class="res-desc" id="faixaDesc"></p>
 
@@ -800,13 +816,13 @@
     let desc, fxId;
     if (r.pct <= 33) {
       fxId = 'fx-profundo';
-      desc = 'Você está operando com apenas ' + r.pct + '% de 100% que é o seu potencial. O seu bloqueio é PROFUNDO: não está na sua estratégia, está na programação que roda por baixo dela: antiga, silenciosa, e é ela que te puxa de volta toda vez que você avança. Sem uma intervenção consistente no subconsciente, nenhuma estratégia de crescimento se sustenta, e é justamente isso que pode ser reescrito.';
+      desc = 'Você usa apenas ' + r.pct + '% do seu potencial. O bloqueio não está na sua estratégia, está na programação que roda por baixo dela e te puxa de volta a cada avanço. Sem trabalhar a raiz, nenhuma estratégia se sustenta.';
     } else if (r.pct <= 59) {
       fxId = 'fx-moderado';
       desc = 'Você usa apenas ' + r.pct + '% do seu potencial. Os outros ' + (100 - r.pct) + '% somem na hora de cobrar, aparecer e sustentar resultados. Sem reprogramar a raiz, a trava volta.';
     } else {
       fxId = 'fx-leve';
-      desc = 'Você está operando com ' + r.pct + '% de 100% que é o seu potencial. A sua base é saudável e o que trava é pontual. Com ajustes de posicionamento e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
+      desc = 'Você já usa ' + r.pct + '% do seu potencial. A base é saudável e o que trava é pontual. Com posicionamento mais claro e mais ousadia na cobrança, você destrava os ' + (100 - r.pct) + '% que faltam.';
     }
     // faixa logo abaixo do numero: o percentual sozinho nao diz onde a pessoa
     // esta. Os mesmos cortes e os mesmos nomes dos cartoes mais abaixo.
@@ -815,6 +831,15 @@
       'fx-moderado': ['34–59%', 'Potencial de crescimento moderado'],
       'fx-leve':     ['60%+',   'Potencial de crescimento destravado']
     };
+    const GRAU = {
+      'fx-profundo': 'Bloqueio profundo',
+      'fx-moderado': 'Bloqueio moderado',
+      'fx-leve':     'Bloqueio leve'
+    };
+    const grau = document.getElementById('resGrau');
+    grau.textContent = GRAU[fxId];
+    grau.className = 'res-grau ' + nivel(r.pct);
+
     const ft = FAIXA_TITULO[fxId];
     document.getElementById('resFaixa').innerHTML =
       '<span class="res-faixa-range">' + ft[0] + '</span>' + ft[1];
