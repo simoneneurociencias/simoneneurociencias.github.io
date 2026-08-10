@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Descubra o que trava o seu crescimento</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <!--
+    ENDEREÇO PÚBLICO DA VERSÃO DE CAPTAÇÃO. É este que vai no story, no anúncio
+    e na bio, não o /diagnostico/?faixa=1 direto.
+
+    Por que uma página só para encaminhar: a prévia do link no WhatsApp é
+    montada a partir do HTML puro do endereço colado, sem executar JavaScript e
+    sem olhar o parâmetro da URL. Os dois links apontando para o mesmo arquivo
+    mostravam a mesma prévia. Com endereço próprio, cada um tem o seu texto.
+
+    O diagnóstico em si continua sendo um arquivo só, em /diagnostico/.
+  -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:title"       content="Descubra o que trava o seu crescimento" />
+  <meta property="og:description" content="Autodiagnóstico gratuito para terapeutas: 12 frases, 3 minutos, e você recebe o seu Índice de Potencial de Crescimento com o eixo que mais te trava." />
+  <meta property="og:image"       content="https://simoneneurociencias.github.io/lp-webinarterapeutas/og-preview.jpg" />
+  <meta name="twitter:card"       content="summary_large_image" />
+
+  <meta http-equiv="refresh" content="0; url=../diagnostico/?faixa=1" />
+  <link rel="canonical" href="../diagnostico/?faixa=1" />
+  <script>location.replace('../diagnostico/?faixa=1' + location.hash);</script>
+
+  <style>
+    body {
+      margin: 0; min-height: 100vh; display: flex; align-items: center;
+      justify-content: center; background: #0b0b0d; color: #f2efe9;
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; text-align: center;
+    }
+    a { color: #e7cd83; }
+  </style>
+</head>
+<body>
+  <p>Abrindo o seu diagnóstico…<br />
+    <a href="../diagnostico/?faixa=1">Clique aqui se não abrir sozinho.</a></p>
+</body>
+</html>
