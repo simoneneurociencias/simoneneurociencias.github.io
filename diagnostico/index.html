@@ -298,12 +298,8 @@
       display: inline-block; font-size: .88rem; font-weight: 700; letter-spacing: .18em;
       text-transform: uppercase; color: var(--ouro); margin-bottom: 14px;
     }
-    /* a frase de gancho muda por faixa; o título acima é sempre o mesmo, para
-       a oferta ser a primeira coisa que a pessoa lê */
-    .cta-final .cta-gancho {
-      color: var(--texto); font-size: 1.06rem; font-weight: 600;
-      max-width: 540px; margin: 12px auto 0;
-    }
+    /* a virada, dentro do paragrafo: destaca sem abrir outro bloco */
+    .cta-final p em { font-style: normal; color: var(--ouro-suave); font-weight: 600; }
     .cta-final h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
     .cta-final h2 em { font-style: normal; color: var(--ouro-suave); }
     .cta-final p { color: var(--cinza); font-size: .98rem; max-width: 540px; margin: 0 auto 22px; }
@@ -545,7 +541,6 @@
       <span class="cta-kicker">Próximo passo</span>
       <h2>Agende sua Análise de Caso gratuita</h2>
       <p id="ctaTexto"></p>
-      <p class="cta-gancho" id="ctaGancho"></p>
       <p class="cta-destaque" id="ctaDestaque"></p>
       <p class="cta-urgencia">⏳ Vagas limitadas: abro poucos horários por semana e eles se esgotam rápido.</p>
       <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
@@ -935,8 +930,10 @@
       }
     };
     const c = copy[fxId];
-    document.getElementById('ctaGancho').innerHTML = c.titulo;
-    document.getElementById('ctaTexto').textContent = c.texto;
+    // leitura do resultado e virada no mesmo paragrafo: sao uma frase e a
+    // resposta dela. Empilhadas, com pesos diferentes e uma caixa logo abaixo,
+    // viravam tres blocos brigando pela mesma atencao.
+    document.getElementById('ctaTexto').innerHTML = c.texto + ' ' + c.titulo;
     document.getElementById('ctaDestaque').textContent = c.destaque;
     document.getElementById('ctaBtn').href = AGENDA_URL;
     cta.style.display = 'block';
