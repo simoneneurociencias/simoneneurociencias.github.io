@@ -305,6 +305,14 @@
     .cta-final h2 { font-size: 1.5rem; line-height: 1.25; margin-bottom: 12px; }
     .cta-final h2 em { font-style: normal; color: var(--ouro-suave); }
     .cta-final p { color: var(--cinza); font-size: .98rem; max-width: 540px; margin: 0 auto 22px; }
+    /* a frase da oferta, destacada: e o que a pessoa precisa ler se bater o
+       olho e pular o paragrafo de cima */
+    .cta-final .cta-destaque {
+      color: var(--texto); font-size: 1.06rem; font-weight: 600; line-height: 1.5;
+      max-width: 540px; margin: 0 auto 22px; padding: 14px 20px;
+      border-left: 3px solid var(--ouro); background: rgba(212,175,55,.07);
+      border-radius: 0 10px 10px 0; text-align: left;
+    }
     .cta-final .btn { text-decoration: none; }
     .cta-final .cta-urgencia {
       display: inline-flex; align-items: center; gap: 8px;
@@ -380,6 +388,7 @@
       .cta-final .cta-kicker { font-size: .62rem; margin-bottom: 6px; }
       .cta-final h2 { font-size: 1.12rem; margin-bottom: 6px; }
       .cta-final p { font-size: .82rem; margin-bottom: 10px; }
+      .cta-final .cta-destaque { font-size: .84rem; padding: 8px 12px; margin-bottom: 10px; }
       .cta-final .cta-urgencia { display: none; }
       /* no PDF a marca ja abre a folha; embaixo fica so o aviso de uso */
       .rodape { margin-top: 10px; padding-top: 8px; }
@@ -535,6 +544,7 @@
       <span class="cta-kicker">Próximo passo</span>
       <h2 id="ctaTitulo"></h2>
       <p id="ctaTexto"></p>
+      <p class="cta-destaque" id="ctaDestaque"></p>
       <p class="cta-urgencia">⏳ Vagas limitadas: abro poucos horários por semana e eles se esgotam rápido.</p>
       <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
       <p class="cta-sub">Conversa individual e sem compromisso.</p>
@@ -922,23 +932,29 @@
       return;
     }
 
+    // 'texto' prepara, 'destaque' é a oferta. A frase da Análise vem separada
+    // porque é ela que a pessoa precisa ler se bater o olho e não ler o resto.
     const copy = {
       'fx-leve': {
         titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
-        texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais. Numa Análise Diagnóstica gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
+        texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais.',
+        destaque: 'Numa Análise Diagnóstica gratuita a gente mapeia o seu bloqueio atual e traça o caminho para subir de nível.'
       },
       'fx-moderado': {
         titulo: 'Você está a <em>um passo</em> de destravar.',
-        texto: 'Parte do seu potencial já responde, mas some justamente quando mais importa, e isso tem solução. Numa Análise Diagnóstica gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
+        texto: 'Parte do seu potencial já responde, mas some justamente quando mais importa, e isso tem solução.',
+        destaque: 'Numa Análise Diagnóstica gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
       },
       'fx-profundo': {
         titulo: 'Esse padrão <em>pode ser reescrito</em>, e você não precisa fazer isso sozinha.',
-        texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz. Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
+        texto: 'A maior parte do seu potencial está travada, e o bloqueio é profundo: nenhuma estratégia se sustenta sem trabalhar a raiz.',
+        destaque: 'Numa Análise Diagnóstica gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
       }
     };
     const c = copy[fxId];
     document.getElementById('ctaTitulo').innerHTML = c.titulo;
     document.getElementById('ctaTexto').textContent = c.texto;
+    document.getElementById('ctaDestaque').textContent = c.destaque;
     document.getElementById('ctaBtn').href = AGENDA_URL;
     cta.style.display = 'block';
   }
