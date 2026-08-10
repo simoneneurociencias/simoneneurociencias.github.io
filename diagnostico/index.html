@@ -274,6 +274,7 @@
     .bd-row .lab { display: flex; justify-content: space-between; font-size: .88rem; margin-bottom: 5px; }
     /* nowrap: "25% de 100%" nao pode quebrar em duas linhas no celular */
     .bd-row .lab span:last-child { color: var(--ouro-suave); font-weight: 700; white-space: nowrap; padding-left: 10px; }
+    .bd-row .lab span:last-child.n-critico { color: #9a6ad4; }
     .bd-row .lab span:last-child.n-baixo { color: var(--vermelho); }
     .bd-row .lab span:last-child.n-medio { color: var(--amber); }
     .bd-row .lab span:last-child.n-alto  { color: var(--verde); }
@@ -887,7 +888,7 @@
     eixos.forEach(e => {
       const lab = document.getElementById(e.val);
       lab.textContent = e.v + '% de 100% · ' + palavra(e.v);
-      lab.className = nivel(e.v);
+      lab.className = nivelBarra(e.v);   // quatro faixas, igual a barra e ao adjetivo
       const f = document.getElementById(e.fill);
       f.style.width = e.v + '%';
       f.className = 'bd-fill ' + nivelBarra(e.v);
