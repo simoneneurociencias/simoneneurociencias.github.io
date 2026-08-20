@@ -641,6 +641,21 @@
   const ISCA = _q.get('faixa') === '1' || _q.get('isca') === '1';
   const ORIGEM_ISCA = "isca";
 
+  // ?origem= (ou ?utm_source=) identifica o CANAL que trouxe a pessoa: bio,
+  // stories, anuncio... Quando vem preenchido, vai para a coluna Origem no
+  // lugar do valor padrao. O roteamento entre as duas planilhas NAO depende
+  // disto: quem decide e o campo "isca" do payload.
+  function canalDaUrl(){
+    const bruta = _q.get('origem') || _q.get('utm_source') || '';
+    let limpa = String(bruta).toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+    try {
+      if (limpa) sessionStorage.setItem('lead_origem', limpa);
+      else limpa = sessionStorage.getItem('lead_origem') || '';
+    } catch(_){}
+    return limpa;
+  }
+  const CANAL = canalDaUrl();
+
   const perguntas = [
     { g: 1, t: "Evito me promover ou aparecer por medo do julgamento." },
     { g: 1, t: "Dependo quase só de indicações para conseguir clientes." },
@@ -843,7 +858,7 @@
         email: contato ? contato.email : '',
         whatsapp: contato ? contato.whatsapp : '',
         faturamento: contato ? contato.faturamento : '',
-        origem: ISCA ? ORIGEM_ISCA : ORIGEM,
+        origem: CANAL || (ISCA ? ORIGEM_ISCA : ORIGEM),
         // o script usa isto para escolher a PLANILHA: isca vai para a planilha
         // de leads, o webinário continua na planilha dele
         isca: ISCA,
