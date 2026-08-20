@@ -2,6 +2,25 @@
   // Cole aqui a URL que termina em /exec depois de implantar.
   var WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbwG_Xm2Ym3hJ5jFOtsCxKALEIeqmRN1pMJ-7-s3x_4HHjkGqop6e7Ety3BF1OycXmk/exec";
 
+  // Origem do lead: le ?origem= (ou ?utm_source=) da URL e guarda na sessao,
+  // para o rastreio sobreviver a uma navegacao dentro da pagina.
+  // Sem parametro nenhum, o lead entra como 'direto'.
+  var ORIGEM_PADRAO = 'direto';
+  function lerOrigem(){
+    var bruta = '';
+    try {
+      var q = new URLSearchParams(window.location.search);
+      bruta = q.get('origem') || q.get('utm_source') || '';
+    } catch(_){}
+    var limpa = String(bruta).toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40);
+    try {
+      if (limpa) sessionStorage.setItem('lead_origem', limpa);
+      else limpa = sessionStorage.getItem('lead_origem') || '';
+    } catch(_){}
+    return limpa || ORIGEM_PADRAO;
+  }
+
+
   var CHECKOUT_URL = "https://chk.eduzz.com/797ZYA480E";
 
   var LEAD_KEY = 'tav_lead_ok';
@@ -80,7 +99,7 @@
             nome: nome,
             email: email,
             whatsapp: whatsapp,
-            origem: 'lp-tav',
+            origem: lerOrigem(),
             data: new Date().toISOString()
           })
         });
