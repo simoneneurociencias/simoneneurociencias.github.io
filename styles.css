@@ -2706,3 +2706,34 @@
 
 /* Fronteira: subtitulos das colunas mais discretos (25/08) */
 .fronteira .fr-sublead{ font-size:clamp(.94rem,1.7vw,1.08rem) !important; }
+
+/* ── Fronteira: correcao definitiva do grid das colunas (25/08) ──
+   A regra que igualou as larguras ficou depois da media query e fora dela, o
+   que quebrava o empilhamento no mobile. Este bloco fica por ultimo e resolve
+   os dois casos de forma explicita. O corte desceu de 820 para 700px, para as
+   colunas sobreviverem numa janela menor no desktop. */
+@media (min-width:701px){
+  .fronteira .fr-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr);
+    gap:0 clamp(30px,4.5vw,64px);
+    align-items:start;
+  }
+  .fronteira .fr-grid::before{ display:block; grid-column:2; grid-row:1; }
+  .fronteira .fr-col--faz{ grid-column:1; grid-row:1; margin-top:0; padding-top:0; border-top:none; }
+  .fronteira .fr-col--nao{ grid-column:3; grid-row:1; margin-top:0; padding-top:0; border-top:none; }
+}
+@media (max-width:700px){
+  .fronteira .fr-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    gap:0;
+  }
+  .fronteira .fr-grid::before{ display:none; }
+  .fronteira .fr-col--faz{ grid-column:1; grid-row:1; }
+  .fronteira .fr-col--nao{
+    grid-column:1; grid-row:2;
+    margin-top:40px; padding-top:40px;
+    border-top:1px solid rgba(247,242,234,.12);
+  }
+}
