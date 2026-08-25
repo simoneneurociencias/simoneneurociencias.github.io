@@ -2204,3 +2204,505 @@
 
     /* (as regras da .virada ficam mais acima, no bloco unico — este trecho era
        uma duplicata que sobrescrevia a hierarquia e foi removida) */
+
+/* Pergunta de abertura da secao do metodo RSN (25/08) */
+.como .metodo-pergunta{
+  max-width:640px;
+  margin:22px auto 0;
+  text-align:center;
+  font-family:'Marcellus', Georgia, serif;
+  font-size:clamp(1.15rem,2.4vw,1.5rem);
+  line-height:1.4;
+  color:var(--creme);
+  opacity:.95;
+}
+
+/* Etapas do encontro: respiro entre paragrafos da mesma etapa (25/08) */
+.etapa p + p{ margin-top:10px; }
+
+/* Praticas do encontro: subtitulo por item e linha de abertura (25/08) */
+.card-dark .praticas-lead{ margin:0 0 18px; opacity:.9; }
+.praticas-item .pr-nome{
+  display:block;
+  font-family:'Marcellus', Georgia, serif;
+  font-size:1.06rem;
+  color:var(--creme);
+  margin-bottom:5px;
+}
+
+/* Respiro entre a pergunta de abertura e a imagem do metodo (25/08) */
+.como .metodo-pergunta + .sec-img{ margin-top:34px; }
+
+/* Guia de boas-vindas: valor sem risco e respiro antes da nota (25/08) */
+.bt-valor{ text-decoration:none; }
+.bonus-total .bt-nota{ margin-top:22px; }
+
+/* ══════════════════ FRONTEIRA — redesenho editorial (25/08) ══════════════════
+   Sem cards, sem sombra, sem gradiente. O peso vem do espaco negativo, da
+   hierarquia tipografica e de um unico fio dourado. Verde e vermelho aparecem
+   SO nos dois simbolos. */
+.fronteira{
+  --fr-creme:#f7f2ea;
+  --fr-texto:rgba(247,242,234,.76);
+  --fr-ouro:#c8a35e;
+  --fr-fio:rgba(200,163,94,.34);
+  margin:72px 0 0;
+  padding:60px 48px 54px;
+  background:rgba(24,10,10,.5);
+  border:1px solid rgba(247,242,234,.09);
+  border-radius:2px;
+}
+
+/* ── cabecalho ── */
+.fronteira .fr-head{ text-align:center; margin-bottom:64px; }
+.fronteira .fr-titulo{
+  font-family:'Marcellus', Georgia, serif;
+  font-weight:400;
+  font-size:clamp(1.35rem,3vw,1.95rem);
+  line-height:1.2;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--fr-creme);
+  margin:0;
+  text-indent:.2em; /* compensa o tracking na ultima letra */
+}
+.fronteira .fr-subtitulo{
+  font-family:'Marcellus', Georgia, serif;
+  font-size:clamp(.86rem,1.7vw,1rem);
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:var(--fr-ouro);
+  opacity:.85;
+  margin:16px 0 0;
+  text-indent:.26em;
+}
+.fronteira .fr-rule{
+  display:block;
+  width:56px; height:1px;
+  margin:32px auto 0;
+  background:var(--fr-ouro);
+  opacity:.6;
+}
+.fronteira .fr-rule--largo{
+  width:100%; margin:0;
+  background:linear-gradient(to right,transparent,var(--fr-fio) 22%,var(--fr-fio) 78%,transparent);
+}
+
+/* ── as duas colunas ── */
+.fronteira .fr-grid{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:0 clamp(36px,5vw,72px);
+  align-items:start;
+  padding-bottom:60px;
+}
+.fronteira .fr-grid::before{
+  content:"";
+  grid-column:2; grid-row:1;
+  align-self:stretch; width:1px;
+  background:linear-gradient(to bottom,transparent,var(--fr-fio) 18%,var(--fr-fio) 82%,transparent);
+}
+.fronteira .fr-col{ grid-row:1; }
+.fronteira .fr-col--faz{ grid-column:1; }
+.fronteira .fr-col--nao{ grid-column:3; }
+
+.fronteira .fr-icone{
+  width:34px; height:34px;
+  margin:0 0 30px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.86rem; line-height:1;
+  border:1px solid;
+}
+.fronteira .fr-icone--sim{ color:#3fae70; border-color:rgba(63,174,112,.55); }
+.fronteira .fr-icone--nao{ color:#d9542f; border-color:rgba(217,84,47,.55); }
+
+.fronteira .fr-lead{
+  font-family:'Marcellus', Georgia, serif;
+  font-weight:400;
+  font-size:clamp(1.24rem,2.3vw,1.52rem);
+  line-height:1.34;
+  letter-spacing:.005em;
+  color:var(--fr-creme);
+  margin:0 0 34px;
+  text-wrap:balance;
+}
+.fronteira .fr-col p{
+  font-family:'Segoe UI', Arial, sans-serif;
+  font-size:1.02rem;
+  line-height:1.82;
+  color:var(--fr-texto);
+  margin:0 0 22px;
+}
+.fronteira .fr-col p:last-child{ margin-bottom:0; }
+.fronteira .fr-col em{
+  font-style:normal;
+  color:var(--fr-creme);
+}
+.fronteira .fr-enfase{
+  font-family:'Marcellus', Georgia, serif !important;
+  font-size:1.14rem !important;
+  line-height:1.62 !important;
+  color:var(--fr-creme) !important;
+  padding-left:20px;
+  border-left:1px solid var(--fr-fio);
+  margin:30px 0 !important;
+}
+
+/* ── manifesto ── */
+.fronteira .fr-manifesto{
+  padding:60px 0 56px;
+  text-align:center;
+}
+.fronteira .fr-manifesto p{
+  font-family:'Marcellus', Georgia, serif;
+  text-transform:uppercase;
+  color:rgba(247,242,234,.58);
+  margin:0 0 18px;
+  line-height:1.3;
+}
+.fronteira .fr-manifesto p:last-child{ margin-bottom:0; }
+.fronteira .fr-manifesto p:nth-child(1){ font-size:.92rem; letter-spacing:.3em; text-indent:.3em; }
+.fronteira .fr-manifesto p:nth-child(2){ font-size:1.06rem; letter-spacing:.26em; text-indent:.26em; }
+.fronteira .fr-manifesto p:nth-child(3){ font-size:1.22rem; letter-spacing:.22em; text-indent:.22em; color:rgba(247,242,234,.82); }
+.fronteira .fr-manifesto span{ color:var(--fr-ouro); }
+
+/* ── fecho editorial ── */
+.fronteira .fr-fecho{
+  margin:0;
+  padding-top:52px;
+  border-top:1px solid rgba(247,242,234,.07);
+  text-align:center;
+  font-family:'Marcellus', Georgia, serif;
+  font-size:clamp(1.08rem,2vw,1.28rem);
+  line-height:2;
+  letter-spacing:.04em;
+  color:rgba(247,242,234,.6);
+}
+.fronteira .fr-fecho em{
+  font-style:normal;
+  display:inline-block;
+  font-size:clamp(1.24rem,2.6vw,1.6rem);
+  letter-spacing:.06em;
+  color:var(--fr-creme);
+}
+
+/* ── mobile: sequencia vertical, os dois blocos bem separados ── */
+@media (max-width:820px){
+  .fronteira{ margin-top:52px; padding:44px 24px 40px; }
+  .fronteira .fr-head{ margin-bottom:46px; }
+  .fronteira .fr-grid{
+    grid-template-columns:1fr;
+    gap:0;
+    padding-bottom:46px;
+  }
+  .fronteira .fr-grid::before{ display:none; }
+  .fronteira .fr-col--faz,
+  .fronteira .fr-col--nao{ grid-column:1; }
+  .fronteira .fr-col--faz{ grid-row:1; }
+  .fronteira .fr-col--nao{
+    grid-row:2;
+    margin-top:52px; padding-top:52px;
+    border-top:1px solid rgba(247,242,234,.09);
+  }
+  .fronteira .fr-manifesto{ padding:46px 0 44px; }
+  .fronteira .fr-fecho{ padding-top:40px; line-height:1.9; }
+}
+
+/* Fronteira: simbolo ao lado do titulo, em negrito, e titulos em caixa alta (25/08) */
+.fronteira .fr-topo{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  margin-bottom:34px;
+}
+.fronteira .fr-topo .fr-icone{
+  flex:0 0 auto;
+  margin:0;
+  font-weight:800;
+  font-size:.95rem;
+  border-width:1.5px;
+  margin-top:.18em;
+}
+.fronteira .fr-topo .fr-lead{
+  margin:0;
+  font-size:clamp(1rem,1.9vw,1.2rem);
+  line-height:1.5;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+  text-wrap:pretty;
+}
+
+/* Fronteira: subtitulo do cabecalho em negrito (25/08) */
+.fronteira .fr-subtitulo{ font-weight:700; opacity:1; }
+
+/* Fronteira: aproxima o cabecalho das colunas (25/08) */
+.fronteira .fr-head{ margin-bottom:38px; }
+.fronteira .fr-rule{ margin-top:24px; }
+@media (max-width:820px){
+  .fronteira .fr-head{ margin-bottom:30px; }
+}
+
+/* Fronteira: titulo curto em caixa alta ao lado do simbolo + subtitulo em caixa normal (25/08) */
+.fronteira .fr-topo{ align-items:center; gap:14px; margin-bottom:20px; }
+.fronteira .fr-topo .fr-icone{ margin-top:0; }
+.fronteira .fr-topo .fr-lead{
+  font-size:.92rem;
+  letter-spacing:.2em;
+  text-indent:.2em;
+  line-height:1.2;
+  color:rgba(247,242,234,.66);
+  white-space:nowrap;
+}
+.fronteira .fr-sublead{
+  font-family:'Marcellus', Georgia, serif !important;
+  font-size:clamp(1.24rem,2.3vw,1.5rem) !important;
+  line-height:1.36 !important;
+  letter-spacing:.005em;
+  color:var(--fr-creme) !important;
+  margin:0 0 32px !important;
+  text-wrap:balance;
+}
+
+/* Fronteira: rotulo da coluna maior que o subtitulo e em negrito (25/08) */
+.fronteira .fr-topo .fr-lead{
+  font-size:clamp(1.4rem,2.7vw,1.74rem);
+  font-weight:700;
+  letter-spacing:.14em;
+  text-indent:.14em;
+  color:var(--fr-creme);
+}
+.fronteira .fr-topo .fr-icone{
+  width:40px; height:40px;
+  font-size:1.05rem;
+}
+.fronteira .fr-sublead{
+  font-size:clamp(1.06rem,1.9vw,1.2rem) !important;
+  line-height:1.5 !important;
+  color:rgba(247,242,234,.82) !important;
+}
+
+/* Fronteira: subtitulo maior e colunas centralizadas (25/08) */
+.fronteira .fr-sublead{
+  font-size:clamp(1.2rem,2.2vw,1.4rem) !important;
+}
+.fronteira .fr-col{ text-align:center; }
+.fronteira .fr-topo{ justify-content:center; }
+.fronteira .fr-enfase{
+  padding-left:0;
+  border-left:none;
+  padding-top:20px;
+  border-top:1px solid var(--fr-fio);
+  display:inline-block;
+}
+
+/* Fronteira: fecho de cada coluna com a mesma voz do manifesto (25/08) */
+.fronteira .fr-col p:last-of-type{
+  font-family:'Marcellus', Georgia, serif;
+  text-transform:uppercase;
+  font-size:1rem;
+  line-height:1.85;
+  letter-spacing:.16em;
+  text-indent:.16em;
+  color:rgba(247,242,234,.72);
+  margin-top:30px;
+  margin-bottom:0;
+}
+.fronteira .fr-col p:last-of-type em{ color:var(--fr-creme); }
+
+/* Fronteira: colunas com largura exatamente igual (25/08)
+   1fr tem min-width:auto, entao o rotulo em nowrap alargava a coluna 2 */
+.fronteira .fr-grid{ grid-template-columns:minmax(0,1fr) 1px minmax(0,1fr); }
+.fronteira .fr-col{ min-width:0; }
+
+/* Fronteira: fecho das colunas em corpo fluido, para as quebras fixas caberem
+   tanto no desktop quanto no celular (25/08) */
+.fronteira .fr-col p:last-of-type{
+  font-size:clamp(.76rem,1.55vw,.98rem);
+  letter-spacing:.12em;
+  text-indent:.12em;
+  line-height:1.9;
+}
+@media (max-width:820px){
+  .fronteira .fr-col p:last-of-type{ font-size:clamp(.82rem,3.5vw,.98rem); }
+}
+
+/* Fronteira: aproxima o manifesto e o fecho das colunas (25/08) */
+.fronteira .fr-grid{ padding-bottom:30px; }
+.fronteira .fr-manifesto{ padding:30px 0 28px; }
+.fronteira .fr-fecho{ padding-top:26px; }
+@media (max-width:820px){
+  .fronteira .fr-grid{ padding-bottom:26px; }
+  .fronteira .fr-manifesto{ padding:26px 0 24px; }
+  .fronteira .fr-fecho{ padding-top:22px; }
+}
+
+/* Fronteira: manifesto e fecho ainda mais colados nas colunas (25/08) */
+.fronteira .fr-grid{ padding-bottom:14px; }
+.fronteira .fr-manifesto{ padding:16px 0 16px; }
+.fronteira .fr-manifesto p{ margin-bottom:10px; }
+.fronteira .fr-fecho{ padding-top:16px; }
+@media (max-width:820px){
+  .fronteira .fr-grid{ padding-bottom:14px; }
+  .fronteira .fr-manifesto{ padding:16px 0 14px; }
+  .fronteira .fr-fecho{ padding-top:14px; }
+}
+
+/* Fronteira: fecho como paragrafo corrido, sem quebras fixas (25/08) */
+.fronteira .fr-fecho{
+  max-width:46ch;
+  margin-left:auto;
+  margin-right:auto;
+  line-height:1.65;
+  text-wrap:balance;
+}
+.fronteira .fr-fecho em{
+  display:inline;
+  font-size:clamp(1.16rem,2.3vw,1.42rem);
+}
+
+/* Fronteira: fecho todo em negrito (25/08) */
+.fronteira .fr-fecho{ font-weight:700; color:rgba(247,242,234,.82); }
+.fronteira .fr-fecho em{ font-weight:700; }
+
+/* Fronteira: manifesto praticamente encostado nas colunas (25/08) */
+.fronteira .fr-grid{ padding-bottom:4px; }
+.fronteira .fr-manifesto{ padding-top:6px; }
+@media (max-width:820px){
+  .fronteira .fr-grid{ padding-bottom:4px; }
+  .fronteira .fr-manifesto{ padding-top:6px; }
+}
+
+/* Guia de boas-vindas: volta o risco no valor, agora que ele tem preco (25/08) */
+.bt-valor{ text-decoration:line-through; }
+
+/* Fronteira: fio discreto acima do fecho de cada coluna (25/08) */
+.fronteira .fr-col p:last-of-type{
+  position:relative;
+  padding-top:28px;
+  margin-top:26px;
+}
+.fronteira .fr-col p:last-of-type::before{
+  content:"";
+  position:absolute;
+  top:0; left:50%;
+  transform:translateX(-50%);
+  width:44px; height:1px;
+  background:var(--fr-ouro);
+  opacity:.45;
+}
+
+/* ── CTA final: mais respiro entre os blocos (25/08) ──
+   A sequencia garantia → 3 ganhos → punch → botao estava empilhada com pouca
+   margem, o que fazia a decisao final parecer amontoada. */
+.cta-final .cta-risco{
+  margin:72px auto;
+  padding:30px 34px;
+  gap:28px;
+}
+.cta-final .ganhos-lead{
+  margin:0 auto 34px;
+  font-size:1.08rem;
+  line-height:1.6;
+  max-width:46ch;
+}
+.cta-final .ganhos{
+  gap:24px;
+  margin-bottom:72px;
+}
+.cta-final .ganho{
+  padding:38px 26px 34px;
+  border-radius:14px;
+}
+.cta-final .ganho .ganho-ico{
+  margin-bottom:22px;
+}
+.cta-final .ganho p{
+  line-height:1.7;
+  max-width:26ch;
+  margin-left:auto;
+  margin-right:auto;
+}
+.cta-final .cta-punch{
+  margin:0 auto 44px;
+  padding:40px 38px;
+  line-height:1.9;
+  max-width:60ch;
+}
+.cta-final .cta-punch .punch-final{ margin-bottom:16px; }
+.cta-final .btn--full{ margin-top:8px !important; }
+.cta-final .btn-note{ margin-top:18px; }
+.cta-final .btn-note + .btn-note{ margin-top:8px; }
+
+@media (max-width:820px){
+  .cta-final .cta-risco{ margin:52px auto; padding:26px 22px; gap:20px; }
+  .cta-final .ganhos{ gap:18px; margin-bottom:52px; }
+  .cta-final .ganho{ padding:32px 22px 28px; }
+  .cta-final .cta-punch{ margin-bottom:36px; padding:32px 24px; }
+}
+
+/* Fronteira: subtitulo mais perto das colunas (25/08) */
+.fronteira .fr-rule{ margin-top:16px; }
+.fronteira .fr-head{ margin-bottom:22px; }
+@media (max-width:820px){
+  .fronteira .fr-head{ margin-bottom:18px; }
+}
+
+/* Fronteira: subtitulo das colunas um pouco menor (25/08) */
+.fronteira .fr-sublead{ font-size:clamp(1.06rem,1.95vw,1.24rem) !important; }
+
+/* Fronteira: simbolos com mais peso (25/08) */
+.fronteira .fr-topo .fr-icone{
+  font-weight:900;
+  font-size:1.24rem;
+  border-width:2px;
+  -webkit-text-stroke:.6px currentColor;
+}
+
+/* Fronteira: o fio desce, fica junto das colunas (25/08) */
+.fronteira .fr-rule{ margin-top:32px; }
+.fronteira .fr-head{ margin-bottom:8px; }
+@media (max-width:820px){
+  .fronteira .fr-rule{ margin-top:26px; }
+  .fronteira .fr-head{ margin-bottom:6px; }
+}
+
+/* Fronteira: fecho ganha faixa de fundo propria (25/08) */
+.fronteira .fr-fecho{
+  margin:16px -48px -54px;
+  padding:34px 48px;
+  border-top:1px solid rgba(200,163,94,.22);
+  border-radius:0 0 2px 2px;
+  background:rgba(0,0,0,.28);
+  max-width:none;
+}
+.fronteira .fr-fecho em{ max-width:none; }
+@media (max-width:820px){
+  .fronteira .fr-fecho{
+    margin:14px -24px -40px;
+    padding:28px 24px;
+  }
+}
+
+/* Fronteira: rotulo das colunas um pouco menor (25/08) */
+.fronteira .fr-topo .fr-lead{ font-size:clamp(1.16rem,2.2vw,1.42rem); }
+
+/* Fronteira: subtitulos das colunas em caixa alta (25/08) */
+.fronteira .fr-sublead{
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  line-height:1.5 !important;
+}
+
+/* Fronteira: manifesto e fecho colados nas colunas (25/08) */
+.fronteira .fr-grid{ padding-bottom:0; }
+.fronteira .fr-rule--largo{ display:none; }
+.fronteira .fr-manifesto{ padding:14px 0 12px; }
+.fronteira .fr-manifesto p{ margin-bottom:7px; }
+.fronteira .fr-fecho{ margin-top:6px; }
+@media (max-width:820px){
+  .fronteira .fr-manifesto{ padding:14px 0 10px; }
+}
+
+/* Fronteira: subtitulos das colunas mais discretos (25/08) */
+.fronteira .fr-sublead{ font-size:clamp(.94rem,1.7vw,1.08rem) !important; }
