@@ -2799,3 +2799,15 @@
   .fronteira .fr-rule{ margin-top:12px; }
   .fronteira .fr-head{ margin-bottom:2px; }
 }
+
+/* Fronteira: cabecalho colado nas colunas (27/08) */
+.fronteira .fr-subtitulo{ margin-top:8px; }
+.fronteira .fr-rule{ margin-top:8px; }
+.fronteira .fr-head{ margin-bottom:0; }
+.fronteira .fr-topo{ margin-bottom:6px; }
+.fronteira .fr-sublead{ margin-bottom:10px !important; }
+.fronteira{ padding-top:42px; }
+@media (max-width:700px){
+  .fronteira{ padding-top:34px; }
+  .fronteira .fr-rule{ margin-top:8px; }
+}
