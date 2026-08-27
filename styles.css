@@ -2782,3 +2782,10 @@
     border-radius:16px;
   }
 }
+
+/* Pilula da hero: a data e o horario um pouco maiores (27/08) */
+.hero-badge .hb-data{
+  font-size:1.16em;
+  letter-spacing:.09em;
+  white-space:nowrap;
+}
