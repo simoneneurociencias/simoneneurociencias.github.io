@@ -2756,3 +2756,14 @@
   .etapa p + p{ margin-top:18px; }
   .etapa{ padding:34px 18px 24px; }
 }
+
+/* Pilares: card mais compacto (27/08) */
+.etapa p{ line-height:1.5; }
+.etapa p + p{ margin-top:10px; }
+.etapa h4{ margin-bottom:8px; }
+.etapa{ padding:30px 20px 16px; }
+@media (max-width:700px){
+  .etapa p{ line-height:1.5; }
+  .etapa p + p{ margin-top:9px; }
+  .etapa{ padding:28px 16px 14px; }
+}
