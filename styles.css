@@ -2737,3 +2737,22 @@
     border-top:1px solid rgba(247,242,234,.12);
   }
 }
+
+/* Pilares do encontro: respiro do texto (27/08)
+   Os paragrafos nao tinham entrelinha propria e o intervalo entre eles era de
+   10px, o que deixava os blocos apertados nas etapas com mais de um paragrafo. */
+.etapa p{
+  line-height:1.8;
+  margin:0;
+  max-width:62ch;
+  margin-left:auto;
+  margin-right:auto;
+}
+.etapa p + p{ margin-top:20px; }
+.etapa h4{ margin-bottom:14px; line-height:1.35; }
+.etapa{ padding:38px 24px 28px; }
+@media (max-width:700px){
+  .etapa p{ line-height:1.75; }
+  .etapa p + p{ margin-top:18px; }
+  .etapa{ padding:34px 18px 24px; }
+}
