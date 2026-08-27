@@ -2767,3 +2767,18 @@
   .etapa p + p{ margin-top:9px; }
   .etapa{ padding:28px 16px 14px; }
 }
+
+/* Pilula da hero: agora carrega data e horario, entao precisa caber (27/08) */
+.hero-badge{
+  max-width:min(100%, 34ch);
+  text-wrap:balance;
+  line-height:1.5;
+}
+@media (max-width:560px){
+  .hero-badge{
+    font-size:.72rem;
+    letter-spacing:.08em;
+    padding:8px 16px;
+    border-radius:16px;
+  }
+}
