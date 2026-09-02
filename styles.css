@@ -2751,3 +2751,72 @@
   .fronteira{ padding-top:34px; }
   .fronteira .fr-rule{ margin-top:8px; }
 }
+
+/* ══════ FRONTEIRA: alinhada a paleta e a tipografia da pagina (02/09) ══════
+   Ela tinha paleta propria (ouro #c8a35e, verde #3fae70) e Marcellus em caixa
+   alta em quase tudo, inclusive nos textos de corpo. Aqui as variaveis locais
+   passam a apontar para os tokens do :root, o negrito sintetico sai da
+   Marcellus (ela so tem o peso 400) e a caixa alta fica so nos dois rotulos
+   que sao titulo de verdade. Bloco no fim do arquivo de proposito: a secao
+   acumulou overrides desde 25/08 e este precisa vir depois de todos. */
+.fronteira{
+  --fr-creme: var(--creme);
+  --fr-texto: var(--cinza);
+  --fr-ouro:  var(--laranja-2);
+  --fr-fio:   rgba(229,67,42,.28);
+  background: var(--preto-2);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+}
+/* os dois simbolos: laranja no que o encontro faz, cinza no que ele nao faz.
+   O verde nunca existiu na paleta */
+.fronteira .fr-icone--sim{ color: var(--laranja); border-color: rgba(229,67,42,.55); }
+.fronteira .fr-icone--nao{ color: var(--cinza);   border-color: rgba(184,179,170,.42); }
+
+/* Marcellus nao tem peso 700: onde pediam negrito o navegador engordava a
+   letra na marra. Volta para 400 em todos os pontos */
+.fronteira .fr-subtitulo,
+.fronteira .fr-topo .fr-lead,
+.fronteira .fr-fecho,
+.fronteira .fr-fecho em{ font-weight: 400; }
+
+/* escala tipografica da pagina no lugar dos clamps proprios */
+.fronteira .fr-titulo{ font-size: var(--fs-h3); letter-spacing: .14em; text-indent: .14em; }
+.fronteira .fr-subtitulo{ font-size: var(--fs-corpo); color: var(--laranja-2); }
+.fronteira .fr-topo .fr-lead{ font-size: var(--fs-h3); }
+.fronteira .fr-sublead{
+  font-size: var(--fs-h3) !important; color: var(--creme) !important;
+  text-transform: none; letter-spacing: .01em;
+}
+.fronteira .fr-col p{ font-size: var(--fs-corpo); color: var(--cinza); }
+
+/* o fecho de cada coluna era caixa alta com tracking largo: vira frase normal,
+   na Marcellus, como as outras frases de virada da pagina */
+.fronteira .fr-col p:last-of-type{
+  text-transform: none;
+  letter-spacing: .01em;
+  text-indent: 0;
+  font-size: var(--fs-destaque);
+  line-height: 1.5;
+  color: var(--creme);
+}
+.fronteira .fr-col p:last-of-type em{ color: var(--laranja-2); }
+@media (max-width:820px){
+  .fronteira .fr-col p:last-of-type{ font-size: var(--fs-destaque); }
+}
+
+/* manifesto: sai a caixa alta e o tracking de .3em, fica a escada de tamanhos */
+.fronteira .fr-manifesto p{
+  text-transform: none;
+  letter-spacing: .01em;
+  text-indent: 0;
+  color: var(--cinza);
+}
+.fronteira .fr-manifesto p:nth-child(1){ font-size: var(--fs-corpo);    letter-spacing: .01em; text-indent: 0; }
+.fronteira .fr-manifesto p:nth-child(2){ font-size: var(--fs-intro);    letter-spacing: .01em; text-indent: 0; }
+.fronteira .fr-manifesto p:nth-child(3){ font-size: var(--fs-destaque); letter-spacing: .01em; text-indent: 0; color: var(--creme); }
+.fronteira .fr-manifesto span{ color: var(--laranja); }
+
+/* fecho: cinza da paleta, com o destaque em creme */
+.fronteira .fr-fecho{ color: var(--cinza); letter-spacing: .01em; }
+.fronteira .fr-fecho em{ color: var(--creme); }
