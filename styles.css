@@ -212,14 +212,14 @@
       text-transform: uppercase; line-height: 1.1; letter-spacing: .04em;
     }
     /* as tres linhas do lockup tem o mesmo corpo; o que separa e a cor */
-    .lk-l1, .lk-l2 { font-size: clamp(1.25rem, 3.4vw, 2.1rem); }
+    .lk-l1, .lk-l2 { font-size: clamp(1.4rem, 3.9vw, 2.55rem); }
     .lk-l1 { color: var(--creme); }
     .lk-l2 { color: var(--laranja); }
     .lk-orn { display: flex; align-items: center; justify-content: center; gap: 9px; margin: 11px 0; }
-    .lk-orn i { flex: 0 0 auto; width: clamp(20px, 6vw, 52px); height: 1px; background: linear-gradient(90deg, transparent, var(--laranja)); }
+    .lk-orn i { flex: 0 0 auto; width: clamp(22px, 6.4vw, 58px); height: 1px; background: linear-gradient(90deg, transparent, var(--laranja)); }
     .lk-orn i:last-child { background: linear-gradient(90deg, var(--laranja), transparent); }
     .lk-orn span {
-      font-family: 'Marcellus', Georgia, serif; font-size: clamp(.58rem, 1.5vw, .74rem);
+      font-family: 'Marcellus', Georgia, serif; font-size: clamp(.62rem, 1.6vw, .8rem);
       letter-spacing: .26em; text-transform: uppercase; color: var(--cinza);
     }
     /* camada 2 — headline publicitaria: sans-serif pesada, abaixo do nome do evento */
@@ -253,17 +253,10 @@
       display: block; margin-top: 14px; text-align: center;
       font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; color: var(--laranja-2);
     }
-    .lead-form { display: flex; flex-direction: column; gap: 12px; max-width: 430px; margin: 0 auto 12px; }
-    .lead-form input {
-      width: 100%; padding: 15px 18px; border-radius: 8px; font-size: 1rem; font-family: inherit;
-      border: 1px solid rgba(255,255,255,.20); background: rgba(255,255,255,.06); color: var(--creme);
-      transition: border-color .15s ease, background .15s ease;
-    }
-    .lead-form input::placeholder { color: rgba(255,255,255,.5); }
-    .lead-form input:focus { outline: none; border-color: var(--laranja); background: rgba(255,255,255,.10); }
+    /* a caixa do CTA da hero: era o formulario, hoje segura so o botao */
+    .hero-cta { max-width: 430px; margin: 0 auto 12px; }
     /* o botao ganha um vao proprio, maior que o gap entre os campos
        (pedido dela): ele deixa de parecer o 4o campo da lista */
-    .lead-form button { border: none; cursor: pointer; margin-top: 10px; }
     .form-note { font-size: .78rem; color: var(--cinza); max-width: 430px; margin: 0 auto 10px; }
 
     .hero-photo { position: relative; z-index: 1; align-self: end; min-height: 640px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; }
@@ -1072,24 +1065,7 @@
 
 
     /* ── GATE DO LEAD: quem clica em checkout sem cadastro vai para o formulario ── */
-    .toast-lead {
-      position: fixed; left: 50%; bottom: 18px;
-      transform: translateX(-50%) translateY(14px);
-      background: var(--grad-secao); color: #fff;
-      padding: 12px 22px; border-radius: 999px;
-      font-size: .88rem; font-weight: 600; line-height: 1.35; text-align: center;
-      box-shadow: 0 12px 32px rgba(0,0,0,.45);
-      max-width: calc(100% - 32px);
-      opacity: 0; pointer-events: none; z-index: 60;
-      transition: opacity .25s ease, transform .25s ease;
-    }
-    .toast-lead.on { opacity: 1; transform: translateX(-50%) translateY(0); }
-    .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
     /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
-    .pilares-img {
-      width: 100%; max-width: 640px; height: auto; display: block;
-      margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
     .vivencia h2 { font-size: var(--fs-h2); margin-bottom: 8px; }
     /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
        queimar sobre o branco */
@@ -1175,17 +1151,17 @@
       /* .hero-sub NAO existe mais no HTML: deixar o formulario na linha 5 criava
          uma linha fantasma vazia entre a promessa e o cadastro, cobrando DOIS
          row-gaps (40px em vez de 20). Renumerado. */
-      .lead-form     { grid-row: 4; }
+      .hero-cta     { grid-row: 4; }
       .form-note     { grid-row: 5; }
-      .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
+      .hero-badge, .hero-headline, .hero-sub, .hero-cta, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
-      .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
+      .hero-cta, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
          lateral para o titulo crescer, mas os campos encostavam na borda */
-      .lead-form { width: 100%; padding-inline: 4px; }
+      .hero-cta { width: 100%; padding-inline: 4px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
@@ -1194,7 +1170,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(30px, 3.2vh) !important; }
+      .hero-cta { margin-top: min(30px, 3.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -1206,20 +1182,18 @@
       /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
          cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
          virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
-      .lk-l1 { font-size: min(1.5rem, 3.6vh, 5.9vw); }
+      .lk-l1 { font-size: min(1.75rem, 4.4vh, 5.9vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.55rem, 3.7vh, 6.1vw); }
+      .lk-l2 { font-size: min(1.8rem, 4.5vh, 6.1vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
       .hero-headline { font-size: min(1.3rem, 2.4vh); line-height: 1.26; }
       .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
-      .lead-form { gap: min(10px, .85vh); }
-      .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
-      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
+      .hero-cta .btn { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); }
       /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
          e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
       .form-note { font-size: min(.7rem, 1.45vh, 2.85vw); line-height: 1.3; }
@@ -1255,7 +1229,7 @@
       .problema .destaque-box { margin-top: 14px; padding: 16px 20px; }
       /* no celular 320px ocupam 82% da largura da tela: as artes caem para
          250px (e a capa do livro, que e retrato, para 140px) */
-      .sec-img, .pilares-img { width: 100%; }
+      .sec-img { width: 100%; }
       /* no celular a foto tambem fica nos 320px das demais imagens */
       .pq-foto img { max-width: 100%; margin: 0 auto; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
@@ -1322,14 +1296,6 @@
     .como .metodo-ciencias { text-align: center; margin: 26px auto 12px !important; }
     .como .pills { justify-content: center; margin-bottom: 4px; }
 
-    /* a dimensao embaixo do "Segredo NN": fecha a promessa das 3 dimensoes da
-       mente feita na secao do metodo. NAO revela o mecanismo — so o territorio */
-    .segredo-dim {
-      display: block; margin-top: 8px;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: .78rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(255,255,255,.62);
-    }
 
     /* ── A VIRADA (fim da secao do metodo) ────────────────────────────────
        Sai a caixa pesada: aqui a pagina passa da explicacao para o motivo de
@@ -1364,15 +1330,6 @@
          so o destaque das dimensoes, por contraste */
       font-size: var(--fs-intro); line-height: 1.55;
       max-width: 700px; margin: 26px auto 18px;
-    }
-    /* destaque premium, sem pilula: caixa alta, entrelinha aberta e um filete
-       fino em ambar por baixo */
-    .dim-destaque {
-      color: var(--laranja-2); letter-spacing: .04em;
-      /* destaque sem sublinhado: mesmo corpo da frase, so a cor e o brilho.
-         sem font-size maior (pedido dela) e sem nowrap — no celular a frase
-         estouraria a largura */
-      text-shadow: 0 0 20px rgba(229,67,42,.55), 0 0 3px rgba(255,106,77,.4);
     }
     .virada-gancho {
       font-family: 'Marcellus', Georgia, serif; color: rgba(255,255,255,.94);
@@ -1943,24 +1900,7 @@
 
 
     /* ── GATE DO LEAD: quem clica em checkout sem cadastro vai para o formulario ── */
-    .toast-lead {
-      position: fixed; left: 50%; bottom: 18px;
-      transform: translateX(-50%) translateY(14px);
-      background: var(--grad-secao); color: #fff;
-      padding: 12px 22px; border-radius: 999px;
-      font-size: .88rem; font-weight: 600; line-height: 1.35; text-align: center;
-      box-shadow: 0 12px 32px rgba(0,0,0,.45);
-      max-width: calc(100% - 32px);
-      opacity: 0; pointer-events: none; z-index: 60;
-      transition: opacity .25s ease, transform .25s ease;
-    }
-    .toast-lead.on { opacity: 1; transform: translateX(-50%) translateY(0); }
-    .lead-form--pisca input { border-color: var(--laranja); box-shadow: 0 0 0 3px rgba(229,67,42,.22); }
     /* ════════ A VIVENCIA (secao clara, aberta pela arte dos pilares) ════════ */
-    .pilares-img {
-      width: 100%; max-width: 640px; height: auto; display: block;
-      margin: 0 auto 26px; border-radius: 12px; box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
     .vivencia h2 { font-size: var(--fs-h2); margin-bottom: 8px; }
     /* as caixas dos pilares no tema claro: o mesmo ambar, mais leve p/ nao
        queimar sobre o branco */
@@ -2046,17 +1986,17 @@
       /* .hero-sub NAO existe mais no HTML: deixar o formulario na linha 5 criava
          uma linha fantasma vazia entre a promessa e o cadastro, cobrando DOIS
          row-gaps (40px em vez de 20). Renumerado. */
-      .lead-form     { grid-row: 4; }
+      .hero-cta     { grid-row: 4; }
       .form-note     { grid-row: 5; }
-      .hero-badge, .hero-headline, .hero-sub, .lead-form, .form-note { grid-column: 1 / -1; }
+      .hero-badge, .hero-headline, .hero-sub, .hero-cta, .form-note { grid-column: 1 / -1; }
 
       /* .hero-copy some como caixa (display:contents), entao o z-index dele nao
          vale mais — os textos garantem o proprio lugar acima do fundo e da foto */
       .hero-kicker, .hero-copy h1, .hero-headline, .hero-badge, .hero-sub,
-      .lead-form, .form-note { margin: 0 !important; position: relative; z-index: 2; }
+      .hero-cta, .form-note { margin: 0 !important; position: relative; z-index: 2; }
       /* devolve os 10px de padding SO no formulario: a hero perdeu o padding
          lateral para o titulo crescer, mas os campos encostavam na borda */
-      .lead-form { width: 100%; padding-inline: 4px; }
+      .hero-cta { width: 100%; padding-inline: 4px; }
       /* a junta entre a faixa da foto e a promessa e a maior de todas (pedido
          dela); as outras ficam iguais, distribuidas pelo space-between */
       /* a pilula desce um pouco (pedido dela) — precisa de !important porque o
@@ -2065,7 +2005,7 @@
       .hero-headline { margin-top: min(14px, 1.8vh) !important; }
       /* promessa e apoio andam juntos; o cadastro e que ganha o vao maior */
       .hero-sub  { margin-top: min(-6px, -.7vh) !important; }
-      .lead-form { margin-top: min(30px, 3.2vh) !important; }
+      .hero-cta { margin-top: min(30px, 3.2vh) !important; }
 
       /* ELASTICO: quem manda e o valor em vh — o rem e so um teto de seguranca
          para tablet (~860px de altura), senao a fonte trava, o conteudo para de
@@ -2077,20 +2017,18 @@
       /* 🚨 o 3o termo em vw e OBRIGATORIO: com a fonte do sistema aumentada o rem
          cresce (1.72rem virava 31-34px no celular dela) e "DE ALTO VALOR" quebrava,
          virando 3 linhas. O vw nao depende da fonte do sistema e trava o tamanho. */
-      .lk-l1 { font-size: min(1.5rem, 3.6vh, 5.9vw); }
+      .lk-l1 { font-size: min(1.75rem, 4.4vh, 5.9vw); }
       /* o nome do publico um degrau acima da linha de cima. Teto: em 390px a
          coluna tem 225px e este corpo mede 218px — 7px de folga. Nao subir mais
          sem diminuir a foto, senao "DE ALTO VALOR" quebra e o titulo vira 3 linhas */
-      .lk-l2 { font-size: min(1.55rem, 3.7vh, 6.1vw); }
+      .lk-l2 { font-size: min(1.8rem, 4.5vh, 6.1vw); }
       .lk-orn { margin: min(4px, .5vh) 0; }
       .lk-orn i { width: min(34px, 9vw); }
       .lk-orn span { font-size: min(.58rem, 1.4vh); }
       .hero-headline { font-size: min(1.3rem, 2.4vh); line-height: 1.26; }
       .hero-badge { font-size: min(.9rem, 1.6vh); padding: min(9px, .8vh) 16px; }
       .hero-sub { font-size: min(1rem, 1.82vh); line-height: 1.38; }
-      .lead-form { gap: min(10px, .85vh); }
-      .lead-form input { padding: min(14px, 1.3vh) 14px; font-size: min(1.1rem, 2.1vh); }
-      .lead-form button { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); margin-top: min(8px, .9vh); }
+      .hero-cta .btn { padding: min(16px, 1.5vh) 14px; font-size: min(1.05rem, 2vh); }
       /* teto de 11.2px: o aperto e o celular ALTO (390x844), onde o rem manda
          e o texto media 363px em 346px uteis. Em 360x640 o vh ja da 9.3px */
       .form-note { font-size: min(.7rem, 1.45vh, 2.85vw); line-height: 1.3; }
@@ -2126,7 +2064,7 @@
       .problema .destaque-box { margin-top: 14px; padding: 16px 20px; }
       /* no celular 320px ocupam 82% da largura da tela: as artes caem para
          250px (e a capa do livro, que e retrato, para 140px) */
-      .sec-img, .pilares-img { width: 100%; }
+      .sec-img { width: 100%; }
       /* no celular a foto tambem fica nos 320px das demais imagens */
       .pq-foto img { max-width: 100%; margin: 0 auto; }
       .pq-list li { font-size: .98rem; padding-left: 30px; }
@@ -2193,14 +2131,6 @@
     .como .metodo-ciencias { text-align: center; margin: 26px auto 12px !important; }
     .como .pills { justify-content: center; margin-bottom: 4px; }
 
-    /* a dimensao embaixo do "Segredo NN": fecha a promessa das 3 dimensoes da
-       mente feita na secao do metodo. NAO revela o mecanismo — so o territorio */
-    .segredo-dim {
-      display: block; margin-top: 8px;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      font-size: .78rem; font-weight: 700; letter-spacing: .14em;
-      text-transform: uppercase; color: rgba(255,255,255,.62);
-    }
 
     /* (as regras da .virada ficam mais acima, no bloco unico — este trecho era
        uma duplicata que sobrescrevia a hierarquia e foi removida) */
