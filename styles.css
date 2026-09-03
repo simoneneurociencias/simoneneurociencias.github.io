@@ -551,7 +551,7 @@
       border: 1.5px solid var(--laranja-2);
       box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
     }
-    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-destaque); font-weight: 400; line-height: 1.45; }
+    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-family: 'Marcellus', Georgia, serif; font-size: clamp(1rem, 4.6vw, var(--fs-destaque)); font-weight: 400; line-height: 1.45; text-align: center; white-space: nowrap; }
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
     .nao-para li::before { content: "✕"; position: absolute; left: 0; color: var(--laranja); font-size: .85rem; }
@@ -1396,7 +1396,7 @@
       border: 1.5px solid var(--laranja-2);
       box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
     }
-    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-destaque); font-weight: 400; line-height: 1.45; }
+    .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-family: 'Marcellus', Georgia, serif; font-size: clamp(1rem, 4.6vw, var(--fs-destaque)); font-weight: 400; line-height: 1.45; text-align: center; white-space: nowrap; }
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
     .nao-para li::before { content: "✕"; position: absolute; left: 0; color: var(--laranja); font-size: .85rem; }
@@ -3242,4 +3242,39 @@
 }
 @media (max-width: 860px){
   .hero-badge{ padding: min(9px, 1vh) 16px; gap: 3px 8px; }
+}
+
+/* ── PUNCH FINAL EM FORMATO PREMIUM (pedido dela) ──
+   Era um painel escuro simples. Ganha: filete de luz em degrade no topo,
+   moldura com o tom da marca (nao branco neutro), aspas decorativas grandes
+   atras do texto, e a linha de virada ("E a trava continua.") destacada em
+   laranja em vez de branco puro — o olho pousa exatamente onde vira o sentido. */
+.cta-final .cta-punch{
+  position: relative;
+  border-color: rgba(255,106,77,.24);
+  background: linear-gradient(165deg, rgba(14,10,14,.86) 0%, rgba(32,14,20,.94) 100%);
+  box-shadow: 0 26px 64px rgba(0,0,0,.48), 0 0 0 1px rgba(255,106,77,.06) inset, inset 0 1px 0 rgba(255,255,255,.07);
+  overflow: hidden;
+}
+/* filete de luz no topo, na cor da marca */
+.cta-final .cta-punch::before{
+  content: ""; position: absolute; top: 0; left: 18%; right: 18%; height: 2px;
+  background: var(--grad-secao); opacity: .85;
+}
+/* aspas gigantes, soltas atras do texto, bem discretas */
+.cta-final .cta-punch::after{
+  content: "\201C"; position: absolute; top: -.36em; left: 18px;
+  font-family: 'Marcellus', Georgia, serif; font-size: 4.6rem; line-height: 1;
+  color: rgba(255,106,77,.16); pointer-events: none;
+}
+/* a virada de sentido ganha a cor da marca, com um brilho leve — antes era
+   branco puro, do mesmo peso da frase anterior */
+.cta-final .cta-punch .punch-hi{
+  color: var(--laranja-2); font-weight: 500;
+  text-shadow: 0 0 22px rgba(255,106,77,.35);
+}
+/* a ultima frase fecha em creme, mais quente que o branco frio do resto */
+.cta-final .cta-punch strong{ color: var(--creme); font-weight: 600; }
+@media (max-width: 620px){
+  .cta-final .cta-punch::after{ font-size: 3.4rem; left: 12px; }
 }
