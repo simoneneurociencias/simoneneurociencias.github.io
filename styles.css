@@ -711,7 +711,7 @@
     /* caixa alta + negrito (pedido dela). O Marcellus so vem em 400, entao o
        700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
        o resultado fica limpo no tamanho em que o titulo aparece. */
-    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
+    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; letter-spacing: .045em; }
     .etapa p { color: var(--cinza); font-size: var(--fs-corpo); }
     .etapa p strong { color: var(--creme); font-weight: 600; }
     /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
@@ -1556,7 +1556,7 @@
     /* caixa alta + negrito (pedido dela). O Marcellus so vem em 400, entao o
        700 aqui e sintetizado pelo navegador; com o uppercase e o letter-spacing
        o resultado fica limpo no tamanho em que o titulo aparece. */
-    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; text-transform: uppercase; letter-spacing: .045em; }
+    .etapa h4 { color: var(--creme); margin-bottom: 6px; font-size: var(--fs-h4); font-weight: 700; letter-spacing: .045em; }
     .etapa p { color: var(--cinza); font-size: var(--fs-corpo); }
     .etapa p strong { color: var(--creme); font-weight: 600; }
     /* centralizado (pedido dela). Deixou de ser flex: com flex o texto
@@ -2846,6 +2846,43 @@
 @media (max-width:820px){
   .fronteira-img{ margin-top: 52px; }
 }
+
+/* ══════ FRONTEIRA NO CELULAR: volta a paleta preto/dourado da arte (03/09) ══════
+   Abaixo de 820px quem aparece e o bloco em HTML (a arte fica ilegivel), mas
+   ele tinha sido realinhado a paleta laranja da pagina (02/09) e ficou
+   diferente da arte que continua no desktop. Aqui ele volta a bater com a
+   arte: fundo preto, dourado unico nos dois icones (a arte nao usa verde/
+   vermelho), e ganham os icones extras (relogio, ciclo, bussola, brilho) que
+   a arte tem e o HTML nao tinha. So importa abaixo de 820px: acima disso a
+   .fronteira continua com display:none. */
+.fronteira{
+  --fr-creme: #f7f2ea;
+  --fr-texto: rgba(247,242,234,.76);
+  --fr-ouro:  #c8a35e;
+  --fr-fio:   rgba(200,163,94,.34);
+  background: rgba(24,10,10,.5);
+  border: 1px solid rgba(247,242,234,.09);
+}
+.fronteira .fr-icone--sim,
+.fronteira .fr-icone--nao{ color: var(--fr-ouro); border-color: rgba(200,163,94,.5); }
+.fronteira .fr-subtitulo{ color: var(--fr-ouro); }
+.fronteira .fr-manifesto .fr-mi-txt{ color: inherit; }
+.fronteira .fr-manifesto .fr-mi-txt span{ color: var(--fr-ouro); }
+.fronteira .fr-col p:last-of-type em{ color: var(--fr-ouro); }
+.fronteira .fr-fecho em{ color: var(--fr-creme); }
+
+/* icones do manifesto: alinhados com o texto, na cor dourada, como badges
+   discretos antes de cada linha "Reconstruir/Sustentar/Transformar exige..." */
+.fronteira .fr-manifesto p{
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.fronteira .fr-mi-ico{
+  flex: 0 0 auto; width: 20px; height: 20px; color: var(--fr-ouro); opacity: .85;
+}
+/* icone de brilho antes do fecho: centralizado, acima do texto. display:block
+   (nao flex) para o texto do paragrafo continuar fluindo e quebrando linha
+   normalmente por baixo do icone */
+.fronteira .fr-fc-ico{ display: block; width: 30px; height: 30px; margin: 0 auto 14px; color: var(--fr-ouro); }
 
 /* metodo: entrelinha mais fechada nos tres paragrafos (02/09, pedido dela).
    Herdavam o 1.65 do body; 1.42 aproxima as linhas sem colar */
