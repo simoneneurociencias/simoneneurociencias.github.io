@@ -3131,8 +3131,14 @@
   .hero-kicker { font-size: min(.95rem, 1.7vh); letter-spacing: .24em; }
 
   /* a foto deixa de disputar largura com o titulo e cresce */
-  /* a foto cede altura para o respiro entre os blocos (pedido dela) */
-  .hero-photo img{ height: min(240px, 26vh); }
+  /* a foto cresce de novo e sobe em direcao ao titulo, sem encostar: a
+     margem negativa fecha so a junta de cima, e o space-evenly redistribui o
+     que sobra entre os outros blocos */
+  .hero-photo img{ height: min(272px, 29vh); }
+  /* max() e nao min(): entre dois negativos, o min pegava o MAIS negativo e
+     colava a foto no titulo no aparelho baixo (0px em 320x568). Com max o
+     recuo encolhe junto com a tela */
+  .hero-photo{ margin-top: max(-11px, -1.3vh); }
 
   .hero-headline { font-size: min(1.4rem, 2.5vh); line-height: 1.3; }
   .hero-badge { font-size: min(.85rem, 1.5vh); padding: min(8px, .9vh) 14px; }
