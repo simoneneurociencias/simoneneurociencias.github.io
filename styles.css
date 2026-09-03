@@ -2910,3 +2910,50 @@
   border: 1px solid rgba(229,67,42,.6);
   color: #fff;
 }
+
+/* ── METODO: acabamento premium da caixa de texto (02/09) ──
+   O peso vem de camadas finas, nao de mais cor: um brilho quente no topo do
+   degrade, um fio de luz na borda de cima, sombra mais funda e um ornamento
+   entre os paragrafos, o mesmo losango do lockup da hero. */
+.como .metodo-texto{
+  position: relative;
+  padding: 38px 40px 34px;
+  border-radius: 20px;
+  border: 1px solid rgba(229,67,42,.42);
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgba(255,106,77,.16) 0%, transparent 58%),
+    linear-gradient(155deg, #0a0a0c 0%, #2a1209 48%, #7d2c12 100%);
+  box-shadow:
+    0 26px 60px rgba(0,0,0,.46),
+    inset 0 1px 0 rgba(255,255,255,.10);
+  overflow: hidden;
+}
+/* o fio de luz que corre no alto da caixa */
+.como .metodo-texto::before{
+  content: "";
+  position: absolute; top: 0; left: 12%; right: 12%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--laranja-2), transparent);
+  opacity: .75;
+}
+/* o primeiro paragrafo abre a caixa: um degrau maior e em creme */
+.como .metodo-texto p.intro:first-child{
+  font-size: var(--fs-destaque);
+  line-height: 1.5;
+  color: var(--creme);
+}
+/* ornamento entre os paragrafos, no lugar do vao seco */
+.como .metodo-texto p.intro + p.intro{
+  margin-top: 26px;
+  padding-top: 26px;
+  position: relative;
+}
+.como .metodo-texto p.intro + p.intro::before{
+  content: "";
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 74px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,106,77,.55), transparent);
+}
+@media (max-width:860px){
+  .como .metodo-texto{ padding: 26px 20px 24px; border-radius: 18px; }
+  .como .metodo-texto p.intro + p.intro{ margin-top: 20px; padding-top: 20px; }
+}
