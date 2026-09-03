@@ -3034,3 +3034,19 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+/* "O que voce vai viver em 3h30" no mesmo rosa alaranjado */
+.pilares-h3{
+  color: var(--laranja-2);
+  background: var(--grad-secao);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* "Voce sabe que tem competencia." em preto sobre o laranja: o contraste
+   inverte e a frase salta no meio do subtitulo */
+.problema .prob-abre strong{ color: var(--preto); }
