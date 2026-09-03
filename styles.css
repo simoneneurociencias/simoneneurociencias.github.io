@@ -2847,7 +2847,8 @@
 .problema .prob-abre,
 .custo .sec-sub,
 .bonus .sec-sub,
-.para-quem .pq-sub{
+.para-quem .pq-sub,
+.cta-final .cta-intro{
   font-family: 'Marcellus', Georgia, serif;
   font-size: var(--fs-destaque);
   line-height: 1.45;
@@ -2892,3 +2893,6 @@
 /* no laranja do bonus o texto fica branco, como estava no estilo inline que
    saiu daqui */
 .bonus .sec-sub{ max-width: 640px; margin-bottom: 8px; color: rgba(255,255,255,.94); }
+
+/* o "Um deles voce ja testou por anos..." guarda a largura e o vao que tinha */
+.cta-final .cta-intro{ max-width: 620px; margin-bottom: 34px; color: rgba(255,255,255,.9); }
