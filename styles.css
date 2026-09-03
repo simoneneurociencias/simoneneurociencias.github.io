@@ -2964,4 +2964,7 @@
    a grade vira uma coluna so */
 @media (min-width: 861px){
   .custo .pq-grid{ align-items: center; }
+  /* mesma coisa na secao do problema, onde a foto fica a direita e sobrava
+     para baixo da lista */
+  .problema .pq-grid{ align-items: center; }
 }
