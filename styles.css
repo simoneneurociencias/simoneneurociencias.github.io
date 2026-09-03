@@ -2992,3 +2992,13 @@
 
 /* o rotulo "Investimento" cresce (02/09, pedido dela): era .72rem */
 .oferta .price-card .pc-label{ font-size: .92rem; }
+
+/* a caixa do investimento cresce de novo e o botao acompanha (02/09). Os
+   tetos em vw ficam onde estao: sao eles que seguram a linha do preco em uma
+   linha so no aparelho estreito e com a fonte do sistema aumentada */
+.oferta .price-card{ width: 400px; padding: 30px 22px; }
+.oferta .btn{ width: 400px; }
+.oferta .price-card .pc-label{ font-size: 1.05rem; }
+.oferta .price-card .pc-value{ font-size: min(2.5rem, 8.7vw); }
+.price-card .pc-mini{ font-size: min(1.4rem, 4.2vw); }
+.oferta .price-card .pc-sub{ font-size: 1rem; }
