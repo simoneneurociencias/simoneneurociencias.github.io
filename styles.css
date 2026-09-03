@@ -2957,3 +2957,11 @@
   .como .metodo-texto{ padding: 26px 20px 24px; border-radius: 18px; }
   .como .metodo-texto p.intro + p.intro{ margin-top: 20px; padding-top: 20px; }
 }
+
+/* a lista do custo centraliza na vertical em relacao a foto (02/09, pedido
+   dela): a foto e quadrada e bem mais alta que os quatro itens, entao com
+   align-items:start a lista ficava colada no topo. So no desktop: no celular
+   a grade vira uma coluna so */
+@media (min-width: 861px){
+  .custo .pq-grid{ align-items: center; }
+}
