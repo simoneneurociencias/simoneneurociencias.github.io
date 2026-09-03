@@ -2975,3 +2975,8 @@
 
 /* a linha de abertura das praticas centraliza, como o titulo do card (02/09) */
 .card-dark .praticas-lead{ text-align: center; }
+
+/* a arte do livro passou a declarar width/height no HTML, o que reserva o
+   espaco e evita o pulo ao carregar. A regra da LP nao tinha height:auto,
+   entao a altura do atributo (960px) virava altura de verdade */
+.livro-img img{ height: auto; }
