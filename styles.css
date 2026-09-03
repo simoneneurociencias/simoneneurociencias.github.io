@@ -3175,3 +3175,15 @@
   hyphens: auto;
   -webkit-hyphens: auto;
 }
+
+/* "A Recalibracao une 3 abordagens..." com a tipografia dos botoes (02/09):
+   Segoe UI, peso 700, caixa alta e o mesmo tracking. Sai da Marcellus, onde o
+   negrito era sintetico */
+.como .metodo-ciencias{
+  font-family: 'Segoe UI', Arial, sans-serif !important;
+  font-weight: 700;
+  font-size: 1.02rem !important;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  line-height: 1.35;
+}
