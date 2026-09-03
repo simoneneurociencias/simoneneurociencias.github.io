@@ -2861,7 +2861,9 @@
 /* no escuro o destaque vai para o laranja, como na .custo-virada. Na secao
    laranja o strong fica como esta: laranja sobre laranja nao le */
 .custo .sec-sub{ margin-top: 18px; color: var(--creme); }
-.custo .sec-sub strong{ color: var(--laranja-2); }
+/* peso 400 pelo mesmo motivo da frase da competencia: a Marcellus nao tem
+   negrito e o navegador engorda a letra, dando impressao de corpo maior */
+.custo .sec-sub strong{ color: var(--laranja-2); font-weight: 400; }
 
 /* METODO: os tres paragrafos entram numa caixa igual a do titulo (02/09,
    pedido dela). Ao sair de baixo de ".como > .container > p.intro" eles
