@@ -2968,3 +2968,7 @@
      para baixo da lista */
   .problema .pq-grid{ align-items: center; }
 }
+
+/* pilares: entrelinha mais fechada nos textos, como na caixa do metodo
+   (02/09, pedido dela). Herdavam o 1.65 do body */
+.etapa p{ line-height: 1.42; }
