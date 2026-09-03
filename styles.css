@@ -3008,3 +3008,15 @@
 .cta-final .ganhos-lead{ max-width: 840px; margin-bottom: 34px; color: rgba(255,255,255,.86); }
 /* o punch final: some o vao entre as duas frases, a entrelinha ja separa */
 .cta-final .cta-punch span{ margin-top: 0; }
+
+/* os dois nomes das praticas em rosa alaranjado: o proprio degrade da marca
+   (--grad-secao, magenta -> laranja) recortado no texto. A cor solida vem
+   antes como reserva, para o caso de o recorte nao pegar */
+.praticas-item .pr-nome{
+  color: var(--laranja-2);
+  background: var(--grad-secao);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: fit-content;
+}
