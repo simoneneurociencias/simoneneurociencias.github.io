@@ -3170,7 +3170,7 @@
 /* so o primeiro paragrafo do metodo em justificado (02/09, pedido dela).
    hyphens:auto entra junto: sem ele o justificado abre buracos entre as
    palavras no celular, onde a linha e curta */
-.como .metodo-texto p.intro:first-child{
+.como .metodo-texto p.intro{
   text-align: justify;
   text-align-last: center;
   hyphens: auto;
