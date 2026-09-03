@@ -3324,3 +3324,10 @@
 @media (max-width: 700px){
   .fronteira .fr-col--nao{ margin-top: 8px; padding-top: 8px; }
 }
+
+/* "Voce se dedica, estuda e transforma vidas..." em branco (pedido dela,
+   03/09). O trecho ja usava o estilo de subtitulo (Marcellus, --fs-destaque,
+   1.45); o que muda e a cor, que era preta sobre o laranja */
+.problema .prob-abre,
+.problema .prob-abre strong,
+.problema .prob-abre .pa-preto{ color: #fff; }
