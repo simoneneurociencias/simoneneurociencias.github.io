@@ -2840,3 +2840,21 @@
 /* metodo: entrelinha mais fechada nos tres paragrafos (02/09, pedido dela).
    Herdavam o 1.65 do body; 1.42 aproxima as linhas sem colar */
 .como > .container > p.intro{ line-height: 1.42; }
+
+/* subtitulo de secao (02/09, pedido dela): as duas frases logo abaixo do h2
+   passam a usar o mesmo tratamento da .custo-virada, que ela apontou como o
+   estilo de subtitulo da pagina: Marcellus, --fs-destaque e entrelinha 1.45 */
+.problema .prob-abre,
+.custo .sec-sub{
+  font-family: 'Marcellus', Georgia, serif;
+  font-size: var(--fs-destaque);
+  line-height: 1.45;
+  text-align: center;
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* no escuro o destaque vai para o laranja, como na .custo-virada. Na secao
+   laranja o strong fica como esta: laranja sobre laranja nao le */
+.custo .sec-sub{ margin-top: 18px; color: var(--creme); }
+.custo .sec-sub strong{ color: var(--laranja-2); }
