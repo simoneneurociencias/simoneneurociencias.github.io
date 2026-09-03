@@ -3142,3 +3142,8 @@
      agora e o space-evenly */
   .hero-badge, .hero-headline, .hero-cta{ margin-top: 0 !important; }
 }
+
+/* "Metodo RSN" maior dentro da caixa (02/09, pedido dela): era 1.18em do
+   corpo do h2. O nome por extenso nao muda, porque ele tem nowrap e o teto em
+   vw dele e que garante a linha unica em 320px */
+.metodo-h2 .mn-sigla{ font-size: 1.45em; }
