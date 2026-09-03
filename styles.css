@@ -3115,7 +3115,8 @@
     /* piso de respiro: o space-evenly sozinho dava 5px entre os blocos num
        aparelho de 844px e 2px num de 568px, e tudo ficava colado */
     row-gap: min(12px, 1.4vh);
-    padding: min(14px, 1.6vh) 0 min(16px, 1.8vh);
+    /* base maior: o botao precisa terminar longe da borda de baixo */
+    padding: min(14px, 1.6vh) 0 min(42px, 4.8vh);
   }
   .hero-lockup{ grid-column: 1; grid-row: 1; width: 100%; gap: min(6px, .8vh); }
   .hero-photo { grid-column: 1; grid-row: 2; }
@@ -3125,8 +3126,8 @@
   .form-note { grid-row: 6; }
 
   /* o titulo agora tem a largura toda: o teto em vw sobe de 5.9/6.1 para 9.2 */
-  .lk-l1 { font-size: min(2.2rem, 5.2vh, 9.2vw); }
-  .lk-l2 { font-size: min(2.3rem, 5.4vh, 9.5vw); }
+  .lk-l1 { font-size: min(2rem, 4.8vh, 8.4vw); }
+  .lk-l2 { font-size: min(2.1rem, 5vh, 8.7vw); }
   .lk-orn { margin: min(6px, .7vh) 0; }
   .lk-orn i { width: min(52px, 13vw); }
   .lk-orn span { font-size: min(.72rem, 1.6vh); }
@@ -3186,4 +3187,49 @@
   letter-spacing: .04em;
   text-transform: uppercase;
   line-height: 1.35;
+}
+
+/* ── PILULA DA HERO: acabamento (02/09) ──
+   Era um retangulo arredondado de fundo chapado. Agora: vidro escuro com
+   degrade, filete de luz na borda de cima, um ponto pulsante de "ao vivo" e
+   hierarquia entre o rotulo e a data. */
+.hero-badge{
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 4px 10px;
+  background:
+    linear-gradient(180deg, rgba(255,106,77,.20) 0%, rgba(229,67,42,.10) 100%),
+    rgba(10,9,12,.55);
+  border: 1px solid rgba(255,106,77,.42);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 10px 26px rgba(0,0,0,.34);
+  color: rgba(255,255,255,.74);
+  letter-spacing: .16em;
+  padding: 10px 20px;
+}
+/* o ponto de "ao vivo" */
+.hero-badge::before{
+  content: "";
+  flex: 0 0 auto;
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--laranja-2);
+  box-shadow: 0 0 0 0 rgba(255,106,77,.55);
+  animation: pulso-vivo 2.4s ease-out infinite;
+}
+@keyframes pulso-vivo{
+  0%   { box-shadow: 0 0 0 0 rgba(255,106,77,.5); }
+  70%  { box-shadow: 0 0 0 7px rgba(255,106,77,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,106,77,0); }
+}
+/* quem pediu para o sistema parar de animar, o ponto respeita */
+@media (prefers-reduced-motion: reduce){
+  .hero-badge::before{ animation: none; }
+}
+/* a data ganha o contraste, o rotulo fica em segundo plano */
+.hero-badge .hb-data{
+  color: var(--creme);
+  letter-spacing: .05em;
+}
+@media (max-width: 860px){
+  .hero-badge{ padding: min(9px, 1vh) 16px; gap: 3px 8px; }
 }
