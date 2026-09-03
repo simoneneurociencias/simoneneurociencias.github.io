@@ -3049,4 +3049,5 @@
 
 /* "Voce sabe que tem competencia." em preto sobre o laranja: o contraste
    inverte e a frase salta no meio do subtitulo */
-.problema .prob-abre strong{ color: var(--preto); }
+.problema .prob-abre strong,
+.problema .prob-abre .pa-preto{ color: var(--preto); }
