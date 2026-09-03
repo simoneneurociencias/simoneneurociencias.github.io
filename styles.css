@@ -3155,3 +3155,13 @@
    corpo do h2. O nome por extenso nao muda, porque ele tem nowrap e o teto em
    vw dele e que garante a linha unica em 320px */
 .metodo-h2 .mn-sigla{ font-size: 1.45em; }
+
+/* metodo: corpo um degrau abaixo e a arte do cerebro mais baixa (02/09) */
+.como .metodo-texto p.intro{ font-size: var(--fs-corpo); }
+.como .metodo-texto p.intro:first-child{ font-size: var(--fs-intro); }
+/* a arte e retrato 2:3, entao mexer na largura e o que baixa a altura:
+   240px davam 360px de altura, 200px dao 300px */
+.como .sec-img{ width: 200px; }
+@media (max-width: 860px){
+  .como .sec-img{ width: 200px; max-width: 62%; }
+}
