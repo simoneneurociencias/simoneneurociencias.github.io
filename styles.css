@@ -142,8 +142,8 @@
       text-decoration-color: rgba(255,255,255,.9);
     }
     .bt-frase {
-      font-family: 'Marcellus', Georgia, serif; font-size: clamp(1.3rem, 3vw, 1.62rem);
-      color: var(--creme); margin: 14px 0 10px;
+      font-family: 'Marcellus', Georgia, serif; font-size: clamp(1.05rem, 4.2vw, 1.62rem);
+      color: var(--creme); margin: 14px 0 10px; white-space: nowrap;
     }
     .bt-nota { font-size: 1rem; line-height: 1.55; color: var(--cinza); margin: 0; }
     .bt-nota strong { color: var(--creme); }
@@ -160,7 +160,7 @@
     .bonus-ico {
       flex: 0 0 auto; width: 19px; height: 19px; margin-top: 2px; color: var(--laranja-2);
     }
-    .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: var(--fs-h3); color: var(--creme); margin-bottom: 10px; }
+    .bonus-card h3 { font-family: 'Marcellus', Georgia, serif; font-size: clamp(1.5rem, 3vw, 1.9rem); color: var(--creme); margin-bottom: 10px; }
     .bonus-card p { color: var(--cinza); font-size: var(--fs-corpo); line-height: 1.6; }
     .bonus-card strong { color: var(--creme); }
     .section-title { text-align: center; }
@@ -470,7 +470,7 @@
     /* texto corrido: os 6 cards de credencial viraram prosa, entao o bloco
        passa a ser alinhado a esquerda (bloco longo centralizado cansa) */
     /* mesmo corpo do texto corrido das outras secoes (era --fs-intro e destoava) */
-    .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-corpo); text-align: left; }
+    .mentora-copy p { color: rgba(255,255,255,.94); margin-bottom: 15px; font-size: var(--fs-corpo); text-align: justify; }
     .mentora-copy p strong { color: #fff; font-weight: 700; }
     /* o texto da bio inteiro dentro de uma caixa (formato da ref que ela
        mandou); o manifesto fica FORA dela, solto embaixo da secao */
@@ -545,7 +545,12 @@
     .sec-laranja .pq-list li { color: #fff; }
     .sec-laranja .pq-list li::before { color: #fff; }
     .beneficios h2 { font-size: var(--fs-h2); margin-bottom: 38px; }
-    .nao-para { margin: 34px 0 0; padding: 24px 26px; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; }
+    .nao-para {
+      margin: 34px 0 0; padding: 24px 26px; border-radius: 14px;
+      background: linear-gradient(160deg, #4a2233 0%, #331624 58%, #24101a 100%);
+      border: 1.5px solid var(--laranja-2);
+      box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
+    }
     .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: var(--fs-h4); }
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
@@ -1385,7 +1390,12 @@
     .sec-laranja .pq-list li { color: #fff; }
     .sec-laranja .pq-list li::before { color: #fff; }
     .beneficios h2 { font-size: var(--fs-h2); margin-bottom: 38px; }
-    .nao-para { margin: 34px 0 0; padding: 24px 26px; background: var(--preto-2); border: 1px solid var(--borda); border-radius: 12px; }
+    .nao-para {
+      margin: 34px 0 0; padding: 24px 26px; border-radius: 14px;
+      background: linear-gradient(160deg, #4a2233 0%, #331624 58%, #24101a 100%);
+      border: 1.5px solid var(--laranja-2);
+      box-shadow: 0 14px 44px rgba(0,0,0,.45), 0 0 0 3px rgba(255,106,77,.16);
+    }
     .nao-para h4 { color: var(--laranja-2); margin-bottom: 12px; font-size: var(--fs-h4); }
     .nao-para ul { list-style: none; }
     .nao-para li { position: relative; padding-left: 26px; color: var(--cinza); margin-bottom: 8px; }
