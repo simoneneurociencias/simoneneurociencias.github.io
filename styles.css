@@ -3049,8 +3049,11 @@
 
 /* "Voce sabe que tem competencia." em preto sobre o laranja: o contraste
    inverte e a frase salta no meio do subtitulo */
+/* a Marcellus so tem o peso 400: pedir negrito faz o navegador engordar a
+   letra na marra, e e isso que deixava esses dois trechos com cara de corpo
+   maior que o resto da frase. Voltam ao 400; quem destaca e o preto */
 .problema .prob-abre strong,
-.problema .prob-abre .pa-preto{ color: var(--preto); font-weight: 700; }
+.problema .prob-abre .pa-preto{ color: var(--preto); font-weight: 400; }
 
 /* ── FRONTEIRA: arte no computador, texto no celular (02/09) ──
    A arte tem 1197px de largura e o texto dela nasce com ~22px. Num aparelho
@@ -3132,7 +3135,7 @@
   .hero-photo img{ height: min(240px, 26vh); }
 
   .hero-headline { font-size: min(1.4rem, 2.5vh); line-height: 1.3; }
-  .hero-badge { font-size: min(.95rem, 1.7vh); }
+  .hero-badge { font-size: min(.85rem, 1.5vh); padding: min(8px, .9vh) 14px; }
   .form-note { font-size: min(.78rem, 1.5vh, 3.1vw); }
 
   /* as margens que empurravam os blocos no arranjo antigo saem: quem separa
