@@ -2980,3 +2980,7 @@
    espaco e evita o pulo ao carregar. A regra da LP nao tinha height:auto,
    entao a altura do atributo (960px) virava altura de verdade */
 .livro-img img{ height: auto; }
+
+/* caminhos 01 e 02: um degrau acima do corpo, os textos ficaram curtos e
+   sobrou espaco nos dois cards (02/09, pedido dela) */
+.caminho p{ font-size: var(--fs-intro); }
