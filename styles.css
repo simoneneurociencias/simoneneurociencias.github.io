@@ -3315,3 +3315,8 @@
 @media (max-width: 620px){
   .cta-final .cta-punch::after{ font-size: 3.4rem; left: 12px; }
 }
+
+/* o paragrafo do termostato (Metodo RSN) entra no mesmo formato de fonte da
+   bio da Simone (.mentora-copy p): corpo padrao, nao o tamanho maior que os
+   outros dois paragrafos do bloco ja tinham por ser o primeiro (pedido dela) */
+.como .metodo-texto p.intro.intro--termostato{ font-size: var(--fs-corpo); }
