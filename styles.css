@@ -3320,3 +3320,7 @@
    bio da Simone (.mentora-copy p): corpo padrao, nao o tamanho maior que os
    outros dois paragrafos do bloco ja tinham por ser o primeiro (pedido dela) */
 .como .metodo-texto p.intro.intro--termostato{ font-size: var(--fs-corpo); }
+
+/* texto de dentro das 4 etapas (pedido dela, 03/09): so o corpo diminui,
+   os titulos (.etapa h4) ficam do jeito que sempre estiveram */
+.etapa p{ font-size: .92rem; }
