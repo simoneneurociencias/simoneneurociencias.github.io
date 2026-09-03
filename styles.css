@@ -2858,3 +2858,27 @@
    laranja o strong fica como esta: laranja sobre laranja nao le */
 .custo .sec-sub{ margin-top: 18px; color: var(--creme); }
 .custo .sec-sub strong{ color: var(--laranja-2); }
+
+/* METODO: os tres paragrafos entram numa caixa igual a do titulo (02/09,
+   pedido dela). Ao sair de baixo de ".como > .container > p.intro" eles
+   perderiam centralizacao, largura e cor, entao a tipografia e redeclarada
+   aqui. Dentro da caixa escura o texto fica claro, nao cinza */
+.como .metodo-texto{
+  max-width: 640px; margin: 0 auto 18px; padding: 26px 28px;
+  background: linear-gradient(155deg, #0a0a0c 0%, #2a1209 48%, #7d2c12 100%);
+  border: 1px solid rgba(229,67,42,.6); border-radius: 16px;
+  box-shadow: 0 16px 46px rgba(0,0,0,.34);
+}
+.como .metodo-texto p.intro{
+  text-align: center;
+  color: rgba(255,255,255,.9);
+  font-size: var(--fs-intro);
+  line-height: 1.42;
+  margin: 0 auto 16px;
+  max-width: 100%;
+}
+.como .metodo-texto p.intro:last-child{ margin-bottom: 0; }
+.como .metodo-texto strong{ color: #fff; }
+@media (max-width:860px){
+  .como .metodo-texto{ padding: 22px 18px; }
+}
