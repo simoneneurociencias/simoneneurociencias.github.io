@@ -3072,3 +3072,23 @@
   .livro-img{ max-width: 240px; }
   .livro-img img{ max-width: 240px; }
 }
+
+/* HERO no computador: tudo centralizado na vertical (02/09, pedido dela).
+   O padding era 70px em cima e o conteudo sobrava 80px embaixo, entao o bloco
+   ficava 10px acima do centro, e a foto 12px. Agora a coluna de texto centra
+   pelo flex e a foto se alinha ao centro do grid, com padding simetrico.
+   So no desktop: no celular a hero tem a propria grade em 100svh. */
+@media (min-width: 861px){
+  .hero-grid{ align-items: center; }
+  .hero-copy{
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 48px 40px 48px 0;
+  }
+  /* a foto estava presa embaixo (align-self:end) e a imagem subia 48px por
+     transform para compensar. As duas coisas saem: agora ela centra sozinha */
+  .hero-photo{ align-self: center; justify-content: center; }
+  .hero-photo img{ transform: none; object-position: center; }
+  /* a nota do bonus e o ultimo elemento: a margem dela puxava o bloco 10px
+     para cima do centro */
+  .form-note{ margin-bottom: 0; }
+}
