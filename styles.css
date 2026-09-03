@@ -2972,3 +2972,6 @@
 /* pilares: entrelinha mais fechada nos textos, como na caixa do metodo
    (02/09, pedido dela). Herdavam o 1.65 do body */
 .etapa p{ line-height: 1.42; }
+
+/* a linha de abertura das praticas centraliza, como o titulo do card (02/09) */
+.card-dark .praticas-lead{ text-align: center; }
