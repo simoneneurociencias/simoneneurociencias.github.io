@@ -2848,6 +2848,7 @@
 .custo .sec-sub,
 .bonus .sec-sub,
 .para-quem .pq-sub,
+.cta-final .ganhos-lead,
 .cta-final .cta-intro{
   font-family: 'Marcellus', Georgia, serif;
   font-size: var(--fs-destaque);
@@ -3002,3 +3003,8 @@
 .oferta .price-card .pc-value{ font-size: min(2.5rem, 8.7vw); }
 .price-card .pc-mini{ font-size: min(1.4rem, 4.2vw); }
 .oferta .price-card .pc-sub{ font-size: 1rem; }
+
+/* "No final dessa jornada..." guarda a largura e o vao que ja tinha */
+.cta-final .ganhos-lead{ max-width: 840px; margin-bottom: 34px; color: rgba(255,255,255,.86); }
+/* o punch final: some o vao entre as duas frases, a entrelinha ja separa */
+.cta-final .cta-punch span{ margin-top: 0; }
