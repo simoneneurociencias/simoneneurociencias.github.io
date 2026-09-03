@@ -2896,3 +2896,17 @@
 
 /* o "Um deles voce ja testou por anos..." guarda a largura e o vao que tinha */
 .cta-final .cta-intro{ max-width: 620px; margin-bottom: 34px; color: rgba(255,255,255,.9); }
+
+/* "A Recalibracao une 3 abordagens..." entra no tratamento de subtitulo.
+   Precisa de !important porque a regra de cima declara o font-size assim */
+.como .metodo-ciencias{
+  font-family: 'Marcellus', Georgia, serif;
+  font-size: var(--fs-destaque) !important;
+  line-height: 1.45;
+}
+/* as pilulas ganham o mesmo degrade e a mesma borda das caixas do metodo */
+.como .pills .pill{
+  background: linear-gradient(155deg, #0a0a0c 0%, #2a1209 48%, #7d2c12 100%);
+  border: 1px solid rgba(229,67,42,.6);
+  color: #fff;
+}
