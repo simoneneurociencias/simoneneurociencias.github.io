@@ -2989,3 +2989,6 @@
    1.5 na ultima frase */
 .cta-final .cta-punch{ line-height: 1.38; }
 .cta-final .cta-punch .punch-final{ line-height: 1.38; }
+
+/* o rotulo "Investimento" cresce (02/09, pedido dela): era .72rem */
+.oferta .price-card .pc-label{ font-size: .92rem; }
