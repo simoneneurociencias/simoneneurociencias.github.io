@@ -3290,5 +3290,7 @@
 
 /* "Os 4 pilares do encontro" em uma linha so (pedido dela, 03/09). Mesmo
    recurso do titulo dos 3 segredos: teto em vw alem do clamp do --fs-h2, que
-   no celular parava no minimo de 1.85rem e quebrava em duas linhas */
-.vivencia h2{ font-size: min(var(--fs-h2), 6.4vw); white-space: nowrap; }
+   no celular parava no minimo de 1.85rem e quebrava em duas linhas.
+   :not(.segredos) porque a secao dos 3 Segredos tambem e .vivencia, e o
+   titulo dela e longo: com nowrap ele estourava a linha */
+.vivencia:not(.segredos) h2{ font-size: min(var(--fs-h2), 6.4vw); white-space: nowrap; }
