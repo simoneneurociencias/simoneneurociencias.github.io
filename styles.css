@@ -3165,3 +3165,13 @@
 @media (max-width: 860px){
   .como .sec-img{ width: 200px; max-width: 62%; }
 }
+
+/* so o primeiro paragrafo do metodo em justificado (02/09, pedido dela).
+   hyphens:auto entra junto: sem ele o justificado abre buracos entre as
+   palavras no celular, onde a linha e curta */
+.como .metodo-texto p.intro:first-child{
+  text-align: justify;
+  text-align-last: center;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
