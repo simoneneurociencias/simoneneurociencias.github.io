@@ -3050,7 +3050,7 @@
 /* "Voce sabe que tem competencia." em preto sobre o laranja: o contraste
    inverte e a frase salta no meio do subtitulo */
 .problema .prob-abre strong,
-.problema .prob-abre .pa-preto{ color: var(--preto); }
+.problema .prob-abre .pa-preto{ color: var(--preto); font-weight: 700; }
 
 /* ── FRONTEIRA: arte no computador, texto no celular (02/09) ──
    A arte tem 1197px de largura e o texto dela nasce com ~22px. Num aparelho
@@ -3091,4 +3091,48 @@
   /* a nota do bonus e o ultimo elemento: a margem dela puxava o bloco 10px
      para cima do centro */
   .form-note{ margin-bottom: 0; }
+}
+
+/* ══════ HERO NO CELULAR, REFEITA (02/09) ══════
+   O formulario saiu da hero e o conteudo encolheu: com align-content:center
+   sobravam 142px vazios no topo e 152 embaixo num aparelho de 844px, e a
+   foto ficava presa em 180px.
+   Agora a coluna e uma so: o titulo deixa de dividir a linha com a foto e
+   passa a usar a largura inteira, o que permite quase dobrar o corpo dele
+   (o teto sobe de 6,1vw para 9,2vw). A foto cresce junto e o conjunto se
+   distribui pela tela em vez de se amontoar no meio.
+   Os tres termos do min() continuam obrigatorios: rem para tablet, vh para o
+   aparelho baixo e vw para quando a fonte do sistema esta aumentada. */
+@media (max-width: 860px){
+  .hero-grid{
+    grid-template-columns: 1fr;
+    align-content: space-evenly;
+    row-gap: 0;
+    padding: min(18px, 2vh) 0 min(22px, 2.4vh);
+  }
+  .hero-lockup{ grid-column: 1; grid-row: 1; width: 100%; gap: min(6px, .8vh); }
+  .hero-photo { grid-column: 1; grid-row: 2; }
+  .hero-badge { grid-row: 3; }
+  .hero-headline { grid-row: 4; }
+  .hero-cta { grid-row: 5; }
+  .form-note { grid-row: 6; }
+
+  /* o titulo agora tem a largura toda: o teto em vw sobe de 5.9/6.1 para 9.2 */
+  .lk-l1 { font-size: min(2.2rem, 5.2vh, 9.2vw); }
+  .lk-l2 { font-size: min(2.3rem, 5.4vh, 9.5vw); }
+  .lk-orn { margin: min(6px, .7vh) 0; }
+  .lk-orn i { width: min(52px, 13vw); }
+  .lk-orn span { font-size: min(.72rem, 1.6vh); }
+  .hero-kicker { font-size: min(.95rem, 1.7vh); letter-spacing: .24em; }
+
+  /* a foto deixa de disputar largura com o titulo e cresce */
+  .hero-photo img{ height: min(300px, 34vh); }
+
+  .hero-headline { font-size: min(1.4rem, 2.5vh); line-height: 1.3; }
+  .hero-badge { font-size: min(.95rem, 1.7vh); }
+  .form-note { font-size: min(.78rem, 1.5vh, 3.1vw); }
+
+  /* as margens que empurravam os blocos no arranjo antigo saem: quem separa
+     agora e o space-evenly */
+  .hero-badge, .hero-headline, .hero-cta{ margin-top: 0 !important; }
 }
