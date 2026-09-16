@@ -28,3 +28,17 @@
   var _fitT;
   window.addEventListener('load', fitButtons);
   window.addEventListener('resize', function(){ clearTimeout(_fitT); _fitT = setTimeout(fitButtons, 120); });
+
+  // Rastreio de origem (16/09/2026): ?origem=bio (ou ?utm_source=) segue para o
+  // checkout como utm_source, e a Eduzz mostra a origem em cada venda.
+  (function(){
+    var p = new URLSearchParams(location.search), o = p.get('origem') || p.get('utm_source');
+    try {
+      if(o){ o = o.toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,40); sessionStorage.setItem('origem', o); }
+      else { o = sessionStorage.getItem('origem'); }
+    } catch(e){}
+    if(!o) return;
+    document.querySelectorAll('a[href*="chk.eduzz.com"]').forEach(function(a){
+      var u = new URL(a.href); u.searchParams.set('utm_source', o); a.href = u.toString();
+    });
+  })();
