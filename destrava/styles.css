@@ -297,7 +297,14 @@ em{font-style:normal;color:var(--ouro)}
   .topbar-in{gap:10px}
   .container{padding:0 16px}
   /* padrão de distância no celular: 32px entre a borda e o conteúdo de toda seção (23/09) */
-  :root{--esp-sec:32px;--esp-bloco:28px}
+  /* no celular o #010c14 vira preto (tela OLED); um marinho mais aberto mantém o azul que ela vê no computador */
+  :root{--esp-sec:32px;--esp-bloco:28px;--bg:#041a2b;--bg-2:#03182a}
+  .card-just,.etapa{background:linear-gradient(160deg,#08293d,#05202f)}
+  .lado-nao{background:linear-gradient(180deg,#07263a,#041c2c)}
+  .ingresso{background:linear-gradient(180deg,#062538,#041c2c)}
+  .video-slot{background:linear-gradient(170deg,#082b3f,#041c2c)}
+  .faq details{background:#072638}
+  .faixa{background:#062133}
   /* hero cabe numa tela: altura da tela menos a barra fixa, e toda distância
      vertical em min(px, vh) para encolher junto no aparelho baixo */
   /* hero ocupa a tela toda (menos a barra fixa). A foto cresce e preenche o que sobra,
@@ -306,7 +313,7 @@ em{font-style:normal;color:var(--ouro)}
   .hero-in{justify-content:space-evenly}
   /* fundo da plateia mais visível no celular (pedido de 23/09); o degradê de baixo segura a leitura do texto */
   .hero-bg{filter:saturate(.85) brightness(.7) contrast(1.1);background-position:0% 30%}
-  .hero::after{background:radial-gradient(ellipse at 50% 40%,rgba(1,12,21,.38),rgba(1,12,21,.82) 80%),linear-gradient(180deg,rgba(1,12,20,.1) 36%,rgba(1,12,20,.88) 52%,var(--bg) 60%)}
+  .hero::after{background:radial-gradient(ellipse at 50% 40%,rgba(4,26,43,.38),rgba(4,26,43,.82) 80%),linear-gradient(180deg,rgba(4,26,43,.1) 36%,rgba(4,26,43,.88) 52%,var(--bg) 60%)}
   .marca{margin-bottom:min(2px,.3vh);font-size:min(1.6rem,3.4vh,7vw)}
   .marca-logo{width:min(290px,72vw,34vh);margin:0 auto}
   /* a foto ocupa o que sobra da tela depois do resto da hero (~560px), com piso em 30vh para o aparelho baixo e teto de 340px */
