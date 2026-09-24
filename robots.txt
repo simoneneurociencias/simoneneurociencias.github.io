@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://simoneneurociencias.github.io/sitemap.xml
+Sitemap: https://lp.selfcreation.com.br/sitemap.xml
