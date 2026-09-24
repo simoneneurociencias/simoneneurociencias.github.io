@@ -1,7 +1,7 @@
 // DESTRAVA · botões e entrada suave das seções
 
-// PENDENTE: link do checkout de R$ 47. Enquanto estiver vazio, os botões levam até a oferta.
-var CHECKOUT_URL = '';
+// Checkout da Eduzz: produto "Webinario Destrava" (mesmo código do antigo webinário, renomeado)
+var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
 
 (function () {
   // Origem do link (?origem= ou ?utm_source=) segue para o checkout como utm_source
