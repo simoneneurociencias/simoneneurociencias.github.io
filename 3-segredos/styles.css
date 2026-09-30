@@ -412,3 +412,4 @@ em{font-style:normal;color:var(--ouro)}
 .linha-livre{display:block}
 .fecho span.reset{display:inline;margin:0;font-family:var(--display);font-size:1em;font-weight:inherit;text-transform:uppercase}
 .hero .sub strong{display:inline}
+.hero h1{margin-bottom:22px}
