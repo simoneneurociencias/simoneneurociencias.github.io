@@ -477,3 +477,9 @@ em{font-style:normal;color:var(--ouro)}
 /* seção dos 3 Segredos: logo no lugar do título em texto */
 .titulo-logo{line-height:0}
 .titulo-logo img{display:block;width:min(460px,86vw);height:auto;margin:0 auto}
+/* fecho da seção do custo menor, e mais ar antes do logo do RE:SET (30/09) */
+.fecho-custo{font-size:clamp(.95rem,1.6vw,1.2rem)}
+.fecho-custo span{font-size:clamp(.9rem,1.3vw,1.05rem)}
+.sec.metodo{padding-top:calc(var(--esp-sec) * 1.8)}
+.fecho-custo{margin-bottom:calc(var(--esp-sec) * .6)}
+@media (max-width:640px){.fecho-custo{font-size:.88rem}.fecho-custo span{font-size:.9rem}}
