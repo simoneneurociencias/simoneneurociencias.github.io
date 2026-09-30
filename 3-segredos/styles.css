@@ -426,3 +426,51 @@ em{font-style:normal;color:var(--ouro)}
 /* respiro menor entre as seções (pedido dela em 30/09) */
 :root{--esp-sec:64px;--esp-bloco:34px}
 @media (max-width:900px){:root{--esp-sec:22px;--esp-bloco:20px}}
+
+/* ════════ Ajustes de 30/09 (tarde) ════════ */
+/* respiro entre seções: meio-termo entre o original e o apertado */
+:root{--esp-sec:80px;--esp-bloco:40px}
+@media (max-width:900px){:root{--esp-sec:30px;--esp-bloco:24px}}
+/* títulos de borda um pouco menores (e resumidos no HTML para 2 linhas) */
+.titulo{font-size:clamp(1.3rem,2.9vw,2.1rem)}
+.lado h3{font-size:clamp(1.05rem,1.8vw,1.4rem)}
+/* ingresso e rodapé com a logo */
+.ingresso-logo-3s{position:relative;z-index:1;display:block;width:min(270px,72%);height:auto;margin:4px 0 0 -8px}
+.rodape-marca img{width:240px}
+/* fecho final: 2 linhas, branco + dourado dos botões */
+.fecho-final b{display:block;font-weight:700;text-transform:none;font-size:clamp(1.05rem,2vw,1.5rem);line-height:1.35}
+.fecho-final .ff-branco{color:var(--txt)}
+.fecho-final .ff-ouro{color:var(--ouro-btn)}
+@media (max-width:640px){
+  .titulo{font-size:min(1.28rem,5.4vw)}
+  .lado h3{font-size:min(1.05rem,4.5vw)}
+  /* hero: título mais alto, foto maior */
+  .hero{padding-top:min(14px,1.8vh)}
+  .marca-kicker{margin-bottom:min(4px,.5vh)}
+  .hero-foto{min-height:30vh;max-height:470px;margin-bottom:min(10px,1.2vh)}
+  .pill-data{margin-bottom:min(12px,1.4vh)}
+  .sub{margin-top:min(8px,1vh);font-size:min(.95rem,2vh,3.9vw)}
+  .hero .btn-ring{margin-top:min(14px,1.7vh)}
+  /* quem conduz: nome e foto menores */
+  .card-simone h2{font-size:min(1.6rem,7.6vw)}
+  .simone-foto-cel{width:62%;margin:18px auto 0}
+  /* bônus: capa menor, cabe na tela */
+  .capa-img{width:150px}
+  .bonus-capa{gap:12px}
+  .fecho-final b{font-size:min(1rem,4.2vw)}
+  .ingresso-logo-3s{width:min(230px,70%)}
+  .rodape-marca img{width:200px}
+}
+/* caixa da garantia com o selo */
+.caixa-garantia{display:flex;align-items:center;gap:22px;max-width:640px;margin:var(--esp-bloco) auto 0;padding:24px 26px;border:1px solid rgba(185,145,91,.45);border-radius:14px;background:linear-gradient(160deg,#021a28,#010f18);text-align:left}
+.cg-selo{width:96px;height:96px;flex:0 0 auto;border-radius:50%;object-fit:cover}
+.caixa-garantia p{color:var(--txt-2);font-size:1rem;line-height:1.6}
+.caixa-garantia strong{color:var(--ouro-claro)}
+@media (max-width:640px){
+  .caixa-garantia{flex-direction:column;text-align:center;gap:14px;padding:22px 18px}
+  .cg-selo{width:84px;height:84px}
+}
+@media (max-width:640px){.fecho-final b{font-size:min(.92rem,3.55vw);letter-spacing:-.01em}}
+/* ganhos intercalados: 1 e 3 azul-marinho, 2 no dourado dos botões com letra branca */
+.ganhos-3 li:nth-child(2){background:var(--ouro-btn);border-color:var(--ouro-btn);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+.ganhos-3 li:nth-child(2) strong{color:#fff}
