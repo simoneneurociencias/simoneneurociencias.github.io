@@ -490,3 +490,11 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-ponte{margin:var(--esp-bloco) 0 0}
 .metodo-ponte + .metodo-etapas{margin-top:16px}
 .metodo .kicker.metodo-ponte{margin:calc(var(--esp-bloco) + 12px) 0 0}
+/* logo do hero entra como a do DESTRAVA: desliza e se revela da esquerda para a direita */
+.logo-3s{animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .15s both}
+@media (prefers-reduced-motion:reduce){.logo-3s{animation:none}}
+/* bônus no celular: selo mais afastado da capa, texto mais perto dela, tudo numa tela */
+@media (max-width:900px){
+  .bonus-in{gap:18px}
+  .bonus-capa{gap:22px}
+}
