@@ -413,3 +413,7 @@ em{font-style:normal;color:var(--ouro)}
 .fecho span.reset{display:inline;margin:0;font-family:var(--display);font-size:1em;font-weight:inherit;text-transform:uppercase}
 .hero .sub strong{display:inline}
 .hero h1{margin-bottom:22px}
+/* logo do título no hero (30/09): imagem com fundo recortado */
+.hero h1.h1-logo{line-height:0;max-width:none}
+.logo-3s{display:block;width:min(560px,100%);height:auto}
+@media (max-width:900px){.logo-3s{width:min(420px,88vw);margin:0 auto}}
