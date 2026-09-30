@@ -498,3 +498,9 @@ em{font-style:normal;color:var(--ouro)}
   .bonus-in{gap:18px}
   .bonus-capa{gap:22px}
 }
+/* texto do hero maior no celular, com respiro para a data e o botão (30/09) */
+@media (max-width:640px){
+  .hero .sub{font-size:min(1.08rem,2.55vh,4.4vw);line-height:1.45;margin-top:min(14px,1.8vh)}
+  .hero .btn-ring{margin-top:min(20px,2.6vh)}
+  .pill-data{margin-bottom:min(4px,.6vh)}
+}
