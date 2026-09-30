@@ -504,3 +504,5 @@ em{font-style:normal;color:var(--ouro)}
   .hero .btn-ring{margin-top:min(20px,2.6vh)}
   .pill-data{margin-bottom:min(4px,.6vh)}
 }
+/* numeração discreta dos caminhos */
+.caminho-num{display:block;font-family:var(--texto);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:6px}
