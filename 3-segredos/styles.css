@@ -483,3 +483,6 @@ em{font-style:normal;color:var(--ouro)}
 .sec.metodo{padding-top:calc(var(--esp-sec) * 1.8)}
 .fecho-custo{margin-bottom:calc(var(--esp-sec) * .6)}
 @media (max-width:640px){.fecho-custo{font-size:.88rem}.fecho-custo span{font-size:.9rem}}
+/* "O que está faltando em mim?" bem menor (30/09) */
+.fecho-pergunta{font-size:clamp(1rem,1.7vw,1.25rem)}
+@media (max-width:640px){.fecho-pergunta{font-size:.95rem}.fecho-pergunta span{font-size:.9rem}}
