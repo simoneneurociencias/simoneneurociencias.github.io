@@ -486,3 +486,7 @@ em{font-style:normal;color:var(--ouro)}
 /* "O que está faltando em mim?" bem menor (30/09) */
 .fecho-pergunta{font-size:clamp(1rem,1.7vw,1.25rem)}
 @media (max-width:640px){.fecho-pergunta{font-size:.95rem}.fecho-pergunta span{font-size:.9rem}}
+/* ponte entre "atua na causa" e as caixas das etapas */
+.metodo-ponte{margin:var(--esp-bloco) 0 0}
+.metodo-ponte + .metodo-etapas{margin-top:16px}
+.metodo .kicker.metodo-ponte{margin:calc(var(--esp-bloco) + 12px) 0 0}
