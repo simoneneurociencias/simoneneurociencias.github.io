@@ -506,3 +506,6 @@ em{font-style:normal;color:var(--ouro)}
 }
 /* numeração discreta dos caminhos */
 .caminho-num{display:block;font-family:var(--texto);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:6px}
+/* entrada das caixas mais perceptível que no DESTRAVA: sobe mais e demora um pouco mais */
+.revela{transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.visivel{transform:none}

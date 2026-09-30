@@ -18,9 +18,15 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   }
 
   // Seções entram ao rolar
-  var alvos = document.querySelectorAll('.sec .titulo, .card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .capa, .bonus-txt, .faq details, .metodo-logo, .metodo-etapas li, .ganhos-3 li');
+  var alvos = document.querySelectorAll('.sec .titulo, .sec .sub-sec, .card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .cta-linha');
   if (!('IntersectionObserver' in window)) return;
-  alvos.forEach(function (el) { el.classList.add('revela'); });
+  alvos.forEach(function (el) {
+    el.classList.add('revela');
+    // caixas lado a lado entram uma depois da outra (cascata), não todas juntas
+    var irmaos = el.parentElement ? [].filter.call(el.parentElement.children, function (x) { return x.matches && x.matches(el.tagName); }) : [];
+    var i = irmaos.indexOf(el);
+    if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 0.14 + 's';
+  });
   var obs = new IntersectionObserver(function (itens) {
     itens.forEach(function (it) {
       if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); }
