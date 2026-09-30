@@ -423,3 +423,6 @@ em{font-style:normal;color:var(--ouro)}
   .hero h1.h1-logo{margin-bottom:0}
   .logo-3s{width:min(340px,82vw,40vh)}
 }
+/* respiro menor entre as seções (pedido dela em 30/09) */
+:root{--esp-sec:64px;--esp-bloco:34px}
+@media (max-width:900px){:root{--esp-sec:22px;--esp-bloco:20px}}
