@@ -509,3 +509,35 @@ em{font-style:normal;color:var(--ouro)}
 /* entrada das caixas mais perceptível que no DESTRAVA: sobe mais e demora um pouco mais */
 .revela{transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
 .revela.visivel{transform:none}
+
+/* ════════ 03/10: frase da virada em destaque ════════ */
+.virada-destaque{max-width:880px;margin:var(--esp-bloco) auto 0;padding:40px 44px 44px;border:1px solid rgba(185,145,91,.55);border-radius:18px;background:radial-gradient(ellipse at 50% 0%,rgba(185,145,91,.12),transparent 65%),linear-gradient(180deg,#021723,#010c14);box-shadow:0 0 48px rgba(185,145,91,.08)}
+.virada-destaque .virada-a{display:grid;grid-template-columns:repeat(3,1fr);letter-spacing:.14em;line-height:1.5}
+.virada-destaque .virada-a span{padding:2px 18px;display:flex;align-items:center;justify-content:center}
+.virada-destaque .virada-a span + span{border-left:1px solid rgba(185,145,91,.45)}
+.virada-destaque .virada-b{margin-top:30px;padding-top:30px;border-top:1px solid var(--linha)}
+@media (max-width:900px){
+  .virada-destaque{padding:28px 18px 30px}
+  .virada-destaque .virada-a{grid-template-columns:1fr;gap:10px;letter-spacing:.08em}
+  .virada-destaque .virada-a span{padding:0}
+  .virada-destaque .virada-a span + span{border-left:0}
+  .virada-destaque .virada-b{margin-top:22px;padding-top:22px}
+}
+
+/* cascata dentro da caixa: as três frases sobem uma depois da outra, depois a frase da ponte */
+.virada-destaque.revela .virada-a span,.virada-destaque.revela .virada-b{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.virada-destaque.visivel .virada-a span,.virada-destaque.visivel .virada-b{opacity:1;transform:none}
+.virada-destaque.visivel .virada-a span:nth-child(1){transition-delay:.3s}
+.virada-destaque.visivel .virada-a span:nth-child(2){transition-delay:.48s}
+.virada-destaque.visivel .virada-a span:nth-child(3){transition-delay:.66s}
+.virada-destaque.visivel .virada-b{transition-delay:.9s}
+
+/* ════════ 03/10: manifesto em caixa ════════ */
+.manifesto-caixa{position:relative;margin-top:28px;padding:26px 28px 28px;border:1px solid rgba(185,145,91,.55);border-radius:14px;background:radial-gradient(ellipse at 0% 0%,rgba(185,145,91,.12),transparent 60%),linear-gradient(180deg,#021723,#010c14);box-shadow:0 0 40px rgba(185,145,91,.07);overflow:hidden}
+.manifesto-caixa::before{content:"“";position:absolute;right:20px;top:4px;font-family:Georgia,serif;font-size:7.5rem;line-height:1;color:var(--ouro);opacity:.16;pointer-events:none}
+.manifesto-caixa .manifesto-tit{margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--linha)}
+@media (max-width:900px){.manifesto-caixa{padding:22px 18px 22px}}
+@media (prefers-reduced-motion:reduce){
+  .virada-destaque.revela .virada-a span,.virada-destaque.revela .virada-b{opacity:1;transform:none;transition:none}
+}
+

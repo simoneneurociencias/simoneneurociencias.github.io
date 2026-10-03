@@ -18,7 +18,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   }
 
   // Seções entram ao rolar
-  var alvos = document.querySelectorAll('.sec .titulo, .sec .sub-sec, .card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .cta-linha');
+  var alvos = document.querySelectorAll('.sec .titulo, .sec .sub-sec, .card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .cta-linha');
   if (!('IntersectionObserver' in window)) return;
   alvos.forEach(function (el) {
     el.classList.add('revela');
