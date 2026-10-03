@@ -582,3 +582,8 @@ em{font-style:normal;color:var(--ouro)}
 .frase-reset .reset span{display:inline}
 @media (max-width:900px){.frase-reset{font-size:min(1.3rem,5.6vw);max-width:none}}
 .frase-reset span.nw{display:inline;white-space:nowrap}
+/* rodapé: nome em texto, duas cores, no lugar da logo (03/10) */
+.rodape-texto{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:1.05rem;line-height:1.35;color:var(--txt)}
+.rodape-texto em{color:var(--ouro-claro)}
+@media (max-width:900px){.rodape-texto{font-size:min(.95rem,4vw)}.rodape-texto em{display:block}}
+
