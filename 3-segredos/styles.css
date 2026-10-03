@@ -605,4 +605,17 @@ em{font-style:normal;color:var(--ouro)}
 /* "No final dessa jornada..." sempre em 2 linhas */
 .ganhos-tit .gt-1,.ganhos-tit .gt-2{display:block;white-space:nowrap}
 @media (max-width:900px){.ganhos-tit{font-size:min(1.25rem,4.2vw)}}
+/* virada: no celular as 3 frases também lado a lado, com linha vertical; frase da ponte menor */
+.virada-destaque .virada-b{font-size:clamp(1.1rem,2.1vw,1.55rem)}
+@media (max-width:900px){
+  .virada-destaque .virada-a{grid-template-columns:repeat(3,1fr);gap:0;font-size:min(.7rem,3vw);letter-spacing:.06em;line-height:1.45}
+  .virada-destaque .virada-a span{padding:2px 6px}
+  .virada-destaque .virada-a span + span{border-left:1px solid rgba(185,145,91,.45)}
+  .virada-destaque .virada-b{font-size:min(1.02rem,4.4vw)}
+}
+.virada-destaque .nw{white-space:nowrap}
+/* ícones das 3 fases (tijolos, ciclo, bússola) */
+.virada-destaque .virada-a span{flex-direction:column;gap:10px}
+.vi-ico{width:26px;height:26px;fill:none;stroke:var(--ouro);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:900px){.virada-destaque .virada-a span{display:flex;align-items:center;justify-content:flex-start;gap:8px}.vi-ico{width:22px;height:22px}}
 
