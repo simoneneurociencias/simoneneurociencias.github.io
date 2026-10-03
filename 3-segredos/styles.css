@@ -618,4 +618,16 @@ em{font-style:normal;color:var(--ouro)}
 .virada-destaque .virada-a span{flex-direction:column;gap:10px}
 .vi-ico{width:26px;height:26px;fill:none;stroke:var(--ouro);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:900px){.virada-destaque .virada-a span{display:flex;align-items:center;justify-content:flex-start;gap:8px}.vi-ico{width:22px;height:22px}}
+/* celular: cada fase em 2 linhas exatas (palavra / "exige ...") */
+.virada-destaque .virada-a span.va-l{display:inline;padding:0;border:0}
+@media (max-width:900px){
+  .virada-destaque{padding-left:12px;padding-right:12px}
+  .virada-destaque .virada-a{font-size:min(.66rem,2.7vw);letter-spacing:.03em}
+  .virada-destaque .virada-a > span{padding:2px 4px}
+  .virada-destaque .virada-a span.va-l{display:block;white-space:nowrap}
+}
+/* espaço só entre o ícone e o texto; as 2 linhas do texto ficam juntas */
+.virada-destaque .virada-a > span{gap:0}
+.vi-ico{margin-bottom:10px}
+@media (max-width:900px){.vi-ico{margin-bottom:8px}}
 
