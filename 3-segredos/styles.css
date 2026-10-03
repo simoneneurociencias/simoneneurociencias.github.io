@@ -638,4 +638,6 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:900px){.virada-destaque .virada-b{font-size:min(1.02rem,3.55vw)}}
 /* "Experiência prática com o Método RE:SET" em branco (RE:SET segue dourado) */
 .virada-b em.em-branco{color:var(--txt)}
+/* frase do método em 4 linhas no celular */
+@media (max-width:900px){.metodo-def{font-size:min(1.08rem,4.1vw)}}
 
