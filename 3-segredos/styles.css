@@ -541,3 +541,13 @@ em{font-style:normal;color:var(--ouro)}
   .virada-destaque.revela .virada-a span,.virada-destaque.revela .virada-b{opacity:1;transform:none;transition:none}
 }
 
+/* ════════ 03/10 (tarde) ════════ */
+/* "Método RE:SET" não se separa e fica todo no dourado do RE:SET */
+.metodo-junto{white-space:nowrap;color:#d9b774}
+/* ingresso: fundo um pouco mais escuro e logo um pouco menor */
+.ingresso-topo{background:linear-gradient(120deg,#06202f 0%,#041723 55%,#6b5230 140%)}
+.ingresso-logo-3s{width:min(240px,64%)}
+@media (max-width:900px){.ingresso-logo-3s{width:min(205px,62%)}}
+/* rótulo "Caminho 1 / Caminho 2" um pouco maior */
+.caminho-num{font-size:.86rem;opacity:.75;margin-bottom:8px}
+
