@@ -602,4 +602,7 @@ em{font-style:normal;color:var(--ouro)}
 .fecho-final b{font-size:clamp(.95rem,1.4vw,1.1rem)}
 .fecho-final span{font-size:clamp(.92rem,1.3vw,1.05rem)}
 @media (max-width:640px){.fecho-final b{font-size:min(.86rem,3.4vw)}}
+/* "No final dessa jornada..." sempre em 2 linhas */
+.ganhos-tit .gt-1,.ganhos-tit .gt-2{display:block;white-space:nowrap}
+@media (max-width:900px){.ganhos-tit{font-size:min(1.25rem,4.2vw)}}
 
