@@ -636,4 +636,6 @@ em{font-style:normal;color:var(--ouro)}
 /* "Este encontro é a ponte..." sempre nas 3 linhas que ela definiu */
 .virada-destaque .virada-b .vb-l{display:block;white-space:nowrap}
 @media (max-width:900px){.virada-destaque .virada-b{font-size:min(1.02rem,3.55vw)}}
+/* "Experiência prática com o Método RE:SET" em branco (RE:SET segue dourado) */
+.virada-b em.em-branco{color:var(--txt)}
 
