@@ -563,4 +563,8 @@ em{font-style:normal;color:var(--ouro)}
 /* logo do rodapé menor (03/10) */
 .rodape-marca img{width:180px}
 @media (max-width:900px){.rodape-marca img{width:150px}}
+/* menos espaço entre o último botão e a linha do rodapé (03/10) */
+.sec-decisao{padding-bottom:36px}
+.rodape{padding-top:36px}
+@media (max-width:900px){.sec-decisao{padding-bottom:20px}.rodape{padding-top:28px}}
 
