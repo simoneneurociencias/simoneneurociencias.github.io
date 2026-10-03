@@ -596,4 +596,6 @@ em{font-style:normal;color:var(--ouro)}
 /* frase RE:SET menor, para não competir com o "Não porque você falhou" de cima */
 .frase-reset{font-size:clamp(1.05rem,1.8vw,1.35rem);padding:30px 32px;max-width:640px}
 @media (max-width:900px){.frase-reset{font-size:min(1.05rem,4.6vw);padding:22px 16px;max-width:none}}
+/* texto do manifesto menor (03/10) */
+.manifesto-caixa .simone-fecho.manifesto{font-size:.88rem;line-height:1.6}
 
