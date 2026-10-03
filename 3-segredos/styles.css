@@ -630,4 +630,7 @@ em{font-style:normal;color:var(--ouro)}
 .virada-destaque .virada-a > span{gap:0}
 .vi-ico{margin-bottom:10px}
 @media (max-width:900px){.vi-ico{margin-bottom:8px}}
+/* mais espaço entre a caixa azul do RE:SET e o último botão */
+.frase-reset + .cta-linha{margin-top:64px}
+@media (max-width:900px){.frase-reset + .cta-linha{margin-top:40px}}
 
