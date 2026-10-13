@@ -29,7 +29,17 @@ p{margin:0 0 14px}
 .mut{color:var(--mut)}
 .player{background:var(--s1);border:1px solid var(--hair);border-radius:4px;padding:20px 16px;margin:24px 0}
 .player audio{width:100%}
-.baixar{display:inline-block;margin-top:12px;color:var(--glow);font-size:16px}
+.cad{background:var(--s1);border:1px solid var(--hair);border-radius:4px;padding:24px 16px;margin:24px 0}
+.cad .tit{font-family:"Cormorant Garamond",serif;font-size:28px;line-height:1.15;margin:0 0 18px}
+.cad label{display:block;font-size:15px;color:var(--mut);margin:14px 0 6px}
+.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--s0);border:1px solid var(--hair);border-radius:4px;padding:12px}
+.cad fieldset{border:0;padding:0;margin:18px 0 0}
+.cad legend{font-size:16px;line-height:1.45;margin-bottom:10px;padding:0}
+.cad .op{display:flex;gap:10px;align-items:center;font-size:17px;color:var(--ink);margin:8px 0;padding:10px 12px;border:1px solid var(--hair);border-radius:4px;cursor:pointer}
+.cad .op input{accent-color:var(--gold);width:18px;height:18px}
+.cad button{margin-top:20px;width:100%;font:inherit;font-weight:500;background:var(--gold);color:#071618;border:0;border-radius:999px;padding:15px;cursor:pointer}
+.cad .erro{color:#f0a58f;font-size:15px;margin:12px 0 0;min-height:1em}
+.cad .priv{font-size:13px;color:var(--mut);margin:12px 0 0}
 h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:30px;margin:36px 0 12px}
 ol{padding-left:22px;margin:0}
 ol li{margin-bottom:10px}
@@ -47,7 +57,26 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding-bottom:24px}
   <p>São 10 minutos para a sua mente sair do modo de alerta e você chegar na hora da oferta com calma e segurança para falar o seu valor.</p>
   <p class="mut">Use fone de ouvido, sente num lugar tranquilo e ouça até o fim.</p>
 
-  <div class="player">
+  <!-- Cadastro antes do áudio (pedido da Simone, 12/10): nome, WhatsApp e a pergunta de faturamento
+       do jeito dela, para qualificar o lead. Grava pelo Apps Script dos diagnósticos (tipo "audio"). -->
+  <form class="cad" id="cad" novalidate>
+    <p class="tit">Para ouvir o áudio, me conta rapidinho:</p>
+    <label for="nome">Seu nome</label>
+    <input type="text" id="nome" autocomplete="name" required>
+    <label for="whats">Seu WhatsApp</label>
+    <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel" required>
+    <fieldset>
+      <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
+      <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
+      <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
+      <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
+    </fieldset>
+    <p class="erro" id="erro" role="alert"></p>
+    <button type="submit">Liberar o áudio</button>
+    <p class="priv">Seus dados ficam só comigo.</p>
+  </form>
+
+  <div class="player" id="player" hidden>
     <!-- Só para ouvir aqui (pedido da Simone, 12/10): sem link de baixar e sem o "baixar" do player.
          Não impede 100% (quem sabe mexer acha o arquivo), mas tira o caminho fácil. -->
     <audio controls preload="none" src="calma.mp3" controlslist="nodownload noplaybackrate" oncontextmenu="return false"></audio>
@@ -68,5 +97,38 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding-bottom:24px}
   <p class="nota">Não ouça dirigindo nem operando máquinas. Este áudio não substitui acompanhamento profissional.</p>
 </main>
 <footer>Simone Carneiro · @sicarneironeurociencia</footer>
+<script>
+(function () {
+  var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
+  var CHAVE = 'calma_liberado';
+  var form = document.getElementById('cad'), player = document.getElementById('player'), erro = document.getElementById('erro');
+  function liberar() { form.hidden = true; player.hidden = false; }
+  try { if (localStorage.getItem(CHAVE)) liberar(); } catch (e) {}
+  var q = new URLSearchParams(location.search);
+  var origem = 'calma' + (q.get('origem') ? ' · ' + q.get('origem') : '');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var nome = document.getElementById('nome').value.trim();
+    var whats = document.getElementById('whats').value.trim();
+    var fat = form.querySelector('input[name=fat]:checked');
+    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
+    if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
+    if (!fat) { erro.textContent = 'Escolhe uma das opções.'; return; }
+    erro.textContent = '';
+    // tipo "audio" vai para a aba Leads Áudios; isca:true e os campos vazios do
+    // diagnóstico mantêm a gravação funcionando no script antigo até ele ser reimplantado
+    fetch(URL_LEADS, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ tipo: 'audio', audio: 'CALMA', isca: true, nome: nome, email: '',
+        whatsapp: whats, faturamento: fat.value, origem: origem, indice: '', faixa: '',
+        eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '', data: new Date().toISOString() })
+    }).catch(function () {});
+    try { localStorage.setItem(CHAVE, '1'); } catch (e) {}
+    liberar();
+    player.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+})();
+</script>
 </body>
 </html>
