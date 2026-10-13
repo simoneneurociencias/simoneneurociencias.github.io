@@ -48,8 +48,9 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding-bottom:24px}
   <p class="mut">Use fone de ouvido, sente num lugar tranquilo e ouça até o fim.</p>
 
   <div class="player">
-    <audio controls preload="none" src="calma.mp3"></audio>
-    <a class="baixar" href="calma.mp3" download="audio-calma-simone-carneiro.mp3">Baixar o áudio</a>
+    <!-- Só para ouvir aqui (pedido da Simone, 12/10): sem link de baixar e sem o "baixar" do player.
+         Não impede 100% (quem sabe mexer acha o arquivo), mas tira o caminho fácil. -->
+    <audio controls preload="none" src="calma.mp3" controlslist="nodownload noplaybackrate" oncontextmenu="return false"></audio>
   </div>
 
   <h2>Como usar</h2>
