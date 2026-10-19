@@ -804,6 +804,18 @@
     const r = calcular();
 
     if (ISCA) {
+      // quem já se cadastrou na página da bio (/comece/) não preenche de novo:
+      // o lead vem do localStorage e o resultado aparece direto
+      let leadBio = null;
+      try { leadBio = JSON.parse(localStorage.getItem('reset_lead') || 'null'); } catch (_) {}
+      if (leadBio && leadBio.nome && leadBio.whatsapp) {
+        faturamentoInformado = leadBio.faturamento || '';
+        enviarResultado(r, { nome: leadBio.nome, email: '', whatsapp: leadBio.whatsapp,
+          faturamento: faturamentoInformado });
+        document.getElementById('verBtn').style.display = 'none';
+        mostrarResultado(r);
+        return;
+      }
       // guarda o resultado e pede o contato antes de revelar
       ultimoResultado = r;
       document.getElementById('verBtn').style.display = 'none';
@@ -964,7 +976,10 @@
   const FATURAMENTO_QUALIFICA = [
     'R$ 5 mil a R$ 10 mil',
     'R$ 10 mil a R$ 20 mil',
-    'Acima de R$ 20 mil'
+    'Acima de R$ 20 mil',
+    // faixas da pergunta de renda da página da bio (/comece/)
+    'R$ 11 mil a R$ 21 mil',
+    'Mais de R$ 21 mil'
   ];
 
   // Convite para a Análise de Caso gratuita, com o texto adaptado ao nível
