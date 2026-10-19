@@ -9,7 +9,7 @@
      nunca pela bio nem pela /comece/, que virou a porta única de conversa.
      Isca do áudio Confiança na Oferta (era "Áudio CALMA" até 18/10; arquivo ../calma/calma.mp3), um presente só (pedido da Simone): o cadastro (perfil, nome,
      WhatsApp e a pergunta de renda dela) libera o pedido do áudio no WhatsApp. A consulta
-     gratuita (/consulta/) só aparece para quem marcou de R$ 5 mil para cima.
+     gratuita (/consulta/) só aparece para quem marcou de R$ 7 mil para cima (corte de 19/10).
      Atende terapeuta, expert e outras áreas. Logo do RE:SET, pele da LP Os 3 Segredos (apps/3segredos).
      A consulta é "gratuita até" o último dia do mês: o script calcula sozinho. -->
 <title>Comece por aqui · Simone Carneiro</title>
@@ -161,8 +161,8 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <fieldset>
       <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
       <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
-      <label class="op"><input type="radio" name="fat" value="Menos de R$ 5 mil"> Menos de R$ 5 mil</label>
-      <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
+      <label class="op"><input type="radio" name="fat" value="Menos de R$ 7 mil"> Menos de R$ 7 mil</label>
+      <label class="op"><input type="radio" name="fat" value="R$ 7 mil a R$ 10 mil"> R$ 7 mil a R$ 10 mil</label>
       <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
       <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
     </fieldset>
@@ -186,7 +186,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="dica">O áudio termina com algo que fica com você: um jeito de trazer essa confiança de volta na hora da oferta, sempre que precisar.</p>
     </article>
 
-    <!-- Consulta só para quem marcou de R$ 5 mil para cima (FAIXAS_CONSULTA, no script).
+    <!-- Consulta só para quem marcou de R$ 7 mil para cima (FAIXAS_CONSULTA, no script).
          Um presente por isca (18/10): o Termostato tem a página dele, /diagnostico/?isca=1. -->
     <article class="pres claro" id="cardConsulta" hidden>
       <p class="num">Um convite para você</p>
@@ -244,7 +244,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     document.querySelectorAll('.fim-mes').forEach(function (el) { el.textContent = txt; });
   })();
 
-  var FAIXAS_CONSULTA = ['R$ 5 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+  var FAIXAS_CONSULTA = ['R$ 7 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
 
   var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
 
