@@ -90,14 +90,16 @@ p{margin:0 0 14px}
 .pres.claro em,.pres.claro .num{color:#9a7440}
 .nota{font-size:.78rem;color:var(--txt-3);margin-top:28px;text-align:center}
 
-/* mini currículo: cartão com a foto e o texto num vidro, como o "Quem vai te conduzir" */
-.cv{margin:36px 0 32px}
-.cv h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,8vw,2.4rem);line-height:1.05;margin:0 0 22px;text-align:center}
-.cv-card{border:1px solid var(--borda);border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 78% 30%,rgba(24,69,96,.6),transparent 60%),linear-gradient(160deg,#031a26,#010c14)}
-.cv-card img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
-.cv-vidro{margin:-56px 14px 14px;position:relative;background:rgba(255,255,255,.045);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--borda);border-radius:10px;padding:22px 18px}
-.cv-vidro p{font-size:.94rem;color:rgba(255,255,255,.85)}
-.cv-vidro p:last-child{margin:0}
+/* mini currículo curto: foto pequena e redonda + 4 linhas, num cartão de vidro */
+.cv{margin:32px 0}
+.cv .eyebrow{margin-bottom:12px}
+.cv-card{display:flex;gap:16px;align-items:flex-start;padding:18px 16px;border:1px solid var(--borda);border-radius:14px;
+  background:radial-gradient(ellipse at 85% 0%,rgba(24,69,96,.55),transparent 60%),rgba(255,255,255,.035);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cv-card img{width:84px;height:84px;flex:none;border-radius:999px;object-fit:cover;box-shadow:0 0 0 2px rgba(185,145,91,.5)}
+.cv h2{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.25;margin:2px 0 8px}
+.cv ul{list-style:none;margin:0;padding:0}
+.cv li{position:relative;padding-left:16px;font-size:.86rem;line-height:1.45;color:var(--txt-2);margin:0 0 5px}
+.cv li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--ouro)}
 footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
 /* entrada ao rolar, mesma curva dos 3 Segredos */
@@ -116,16 +118,20 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   <h1>Você já sabe o que fazer para crescer. <em>O que trava é a mente.</em></h1>
   <p class="lead">Não é falta de técnica nem de esforço. Na hora de falar o preço, aparecer ou fazer a oferta, a mente lê o crescimento como perigo e trava. Comece por aqui: o Áudio CALMA, 10 minutos na minha voz para ouvir antes de uma consulta ou de uma conversa de venda.</p>
 
-  <!-- Mini currículo aprovado (copy-chief, 14/10): fonte em
-       Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. Não reescrever. -->
+  <!-- Mini currículo curto (pedido da Simone, 18/10: foto pequena e poucas linhas).
+       Fatos do currículo aprovado em Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. -->
   <section class="cv">
     <p class="eyebrow">Quem vai conversar com você</p>
-    <h2 id="cvTit">Simone Carneiro</h2>
     <div class="cv-card">
-      <img src="simone-retrato.webp" alt="Simone Carneiro" width="600" height="750">
-      <div class="cv-vidro">
-        <p>Simone Carneiro é neurocientista e mentora de terapeutas e experts, graduada em Neurociências e em Coaching e Desenvolvimento Humano e pós-graduada em Neurologia e Neurociências, com 25 anos de experiência em desenvolvimento humano e prática clínica. É analista comportamental pelo Big Five Factor Model, o modelo de personalidade com maior respaldo científico, expert em PSYCH-K® e hipnoterapeuta Faixa Ouro. É criadora do Método RE:SET (Reconfiguração do Sistema Emocional), método autoral baseado em neurociência, e coautora do livro "Mente de Alta Performance para Líderes Extraordinários", da Literare Books International, distribuído no Brasil, na Europa, nos EUA e no Japão.</p>
-        <p>Sua missão é ajudar terapeutas a romper bloqueios emocionais, reconhecer seu valor e transformar seu potencial em uma carreira próspera, com liberdade, realização e alto impacto.</p>
+      <img src="simone.webp" alt="Simone Carneiro" width="320" height="320">
+      <div>
+        <h2>Simone Carneiro</h2>
+        <ul>
+          <li>Neurocientista, pós-graduada em Neurologia e Neurociências</li>
+          <li>25 anos em desenvolvimento humano e prática clínica</li>
+          <li>Criadora do Método RE:SET</li>
+          <li>Coautora do livro "Mente de Alta Performance para Líderes Extraordinários"</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -287,7 +293,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
   // Entrada suave ao rolar (mesmo efeito dos 3 Segredos)
   if ('IntersectionObserver' in window) {
-    var alvos = document.querySelectorAll('.cad, .cv .eyebrow, .cv h2, .cv-card');
+    var alvos = document.querySelectorAll('.cad, .cv-card');
     var obs = new IntersectionObserver(function (itens) {
       itens.forEach(function (it) {
         if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); }
