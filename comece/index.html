@@ -6,12 +6,13 @@
 <meta name="robots" content="noindex">
 <!-- Porta única (19/10/2026): lp.selfcreation.com.br/comece/
      Todo mundo que chega pelo Instagram passa por aqui antes de conversar com a Simone
-     (link da bio, seguidor novo, direct, WhatsApp). A 1ª pergunta separa pela intenção:
-       A "Algo me trava no trabalho": perfil + pergunta de renda dela.
-          R$ 5 mil ou mais → consulta diagnóstica no WhatsApp (cartão A1).
-          Abaixo disso → Venda com Segurança · 21 dias, R$ 97 (cartão A2), botão direto para o
-          checkout da Eduzz (decisão de 19/10). O checkout ainda não existe: colar o link em CHECKOUT_EDUZZ.
-       B "Algo me trava na vida pessoal": tema → conversa gratuita no WhatsApp (cartão B).
+     (link da bio, seguidor novo, direct, WhatsApp). A 1ª pergunta separa pela intenção (19/10):
+       A "Algo me trava como terapeuta ou expert" (o nicho dela): perfil Terapeuta ou Expert.
+       B "Algo me trava na minha vida pessoal" (público clínico): um dos 7 temas.
+     Os dois respondem a mesma pergunta de renda dela, com o mesmo corte:
+       R$ 11 a 21 mil ou mais de R$ 21 mil → consulta diagnóstica no WhatsApp (A1 / B1).
+       Até R$ 10 mil → produto pelo checkout da Eduzz: A2 Venda com Segurança · 21 dias (R$ 97),
+       B2 pack de áudios "Lugar Seguro" (nome provisório do copy-chief). Os checkouts ainda não existem: colar os links em CHECKOUT_A2 e CHECKOUT_B2.
      O áudio Confiança na Oferta NÃO aparece aqui (decisão de 19/10): mora em /confia/ e só
      recebe quem comenta CONFIA. Versão anterior em index.html.antes-porta-unica.
      Copy do copy-chief (19/10). Pele da LP Os 3 Segredos (apps/3segredos). -->
@@ -22,9 +23,9 @@
     location.replace('../confia/' + location.search);
 </script>
 <title>Comece por aqui · Simone Carneiro</title>
-<meta name="description" content="Algo trava você no trabalho ou na vida pessoal? Responda umas perguntas rápidas e, quando a gente conversar, eu já sei como ajudar.">
+<meta name="description" content="É terapeuta ou expert e algo trava você na hora de aparecer ou cobrar? Ou a trava está na sua vida pessoal? Responda umas perguntas rápidas e, quando a gente conversar, eu já sei como ajudar.">
 <meta property="og:title" content="Me conta o que trava você · Simone Carneiro">
-<meta property="og:description" content="No trabalho ou na vida pessoal, a trava é da mente. Comece por aqui.">
+<meta property="og:description" content="Como terapeuta, como expert ou na vida pessoal, a trava é da mente. Comece por aqui.">
 <meta property="og:image" content="https://lp.selfcreation.com.br/comece/og-comece.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -127,9 +128,9 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 <main>
   <img class="marca" src="reset-logo.webp" alt="RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
 
-  <p class="eyebrow">No trabalho ou na vida pessoal</p>
+  <p class="eyebrow">Como terapeuta, como expert ou na vida pessoal</p>
   <h1>Você sabe o que precisa mudar. <em>O que trava é a mente.</em></h1>
-  <p class="lead">No trabalho, ela trava na hora de aparecer, crescer ou dizer o preço. Na vida pessoal, vira ansiedade, noites sem sono ou um padrão que se repete. Me responde umas perguntinhas, leva menos de 1 minuto, e quando a gente conversar eu já sei como ajudar você.</p>
+  <p class="lead">Para terapeutas e experts, ela trava na hora de aparecer, crescer ou dizer o preço. Na vida pessoal, vira ansiedade, medo, noites sem sono ou um padrão que se repete no amor ou na carreira. Me responde umas perguntinhas, leva menos de 1 minuto, e quando a gente conversar eu já sei como ajudar você.</p>
 
   <!-- Mini currículo curto (pedido da Simone, 18/10: foto pequena e poucas linhas).
        Fatos do currículo aprovado em Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. -->
@@ -154,30 +155,20 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <span>COMECE POR AQUI · UMA CONVERSA COMIGO · MÉTODO RE:SET ·</span><span>COMECE POR AQUI · UMA CONVERSA COMIGO · MÉTODO RE:SET ·</span><span>COMECE POR AQUI · UMA CONVERSA COMIGO · MÉTODO RE:SET ·</span><span>COMECE POR AQUI · UMA CONVERSA COMIGO · MÉTODO RE:SET ·</span>
   </div></div>
 
-  <!-- CADASTRO: a 1ª pergunta abre o bloco A (perfil + renda) ou o B (tema) -->
+  <!-- CADASTRO: a 1ª pergunta abre o bloco A (perfil) ou o B (tema); a renda vale para os dois -->
   <form class="cad" id="cad" novalidate>
     <h2>Me conta o que trava você</h2>
     <fieldset>
       <legend>Onde você sente mais a trava hoje?</legend>
-      <label class="op"><input type="radio" name="intencao" value="Trabalho"><span>Algo me trava no trabalho<small>Na hora de aparecer, de crescer ou de dizer o preço</small></span></label>
-      <label class="op"><input type="radio" name="intencao" value="Vida pessoal"><span>Algo me trava na vida pessoal<small>Ansiedade, sono, relacionamentos, autoestima ou dinheiro</small></span></label>
+      <label class="op"><input type="radio" name="intencao" value="Trabalho"><span>Algo me trava como terapeuta ou expert<small>Na hora de aparecer, crescer ou dizer o preço do que eu entrego</small></span></label>
+      <label class="op"><input type="radio" name="intencao" value="Vida pessoal"><span>Algo me trava na minha vida pessoal<small>Ansiedade, medos, sono, saúde, relacionamentos ou carreira</small></span></label>
     </fieldset>
 
     <div class="cond" id="blocoA">
       <fieldset>
         <legend>Você é:</legend>
-        <label class="op"><input type="radio" name="perfil" value="Terapeuta"> Terapeuta</label>
+        <label class="op"><input type="radio" name="perfil" value="Terapeuta"><span>Terapeuta<small>psicologia ou terapias, atendendo ou em formação</small></span></label>
         <label class="op"><input type="radio" name="perfil" value="Expert"><span>Expert<small>curso, mentoria ou consultoria</small></span></label>
-        <label class="op"><input type="radio" name="perfil" value="Outra área"><span>Outra área<small>vivo do meu trabalho</small></span></label>
-      </fieldset>
-      <!-- Pergunta de renda nas palavras da Simone (12/10): não reescrever. -->
-      <fieldset>
-        <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
-        <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
-        <label class="op"><input type="radio" name="fat" value="Menos de R$ 5 mil"> Menos de R$ 5 mil</label>
-        <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
-        <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
-        <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
       </fieldset>
     </div>
 
@@ -185,12 +176,25 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <!-- Autolesão fica dentro de "Outro assunto" (copy-chief, 19/10): nada exposto na lista. -->
       <fieldset>
         <legend>O que mais pesa para você hoje?</legend>
-        <label class="op"><input type="radio" name="tema" value="ansiedade e medos"><span>Ansiedade e medos<small>preocupação constante, fobias</small></span></label>
-        <label class="op"><input type="radio" name="tema" value="noites sem sono"><span>Noites sem sono<small>dormir mal, acordar de madrugada</small></span></label>
+        <label class="op"><input type="radio" name="tema" value="ansiedade e medos"><span>Ansiedade e medos<small>preocupação constante, pânico, fobias</small></span></label>
+        <label class="op"><input type="radio" name="tema" value="tristeza e desânimo"><span>Tristeza e desânimo<small>sem energia, sem vontade de nada</small></span></label>
+        <label class="op"><input type="radio" name="tema" value="sono e saúde"><span>Sono e saúde<small>noites sem dormir, sintomas que o exame não explica</small></span></label>
         <label class="op"><input type="radio" name="tema" value="relacionamentos"><span>Relacionamentos<small>casal, família, padrões que se repetem</small></span></label>
+        <label class="op"><input type="radio" name="tema" value="carreira e dinheiro"><span>Carreira e dinheiro<small>emprego, negócio próprio, dinheiro que nunca sobra</small></span></label>
         <label class="op"><input type="radio" name="tema" value="autoestima e autossabotagem"><span>Autoestima e autossabotagem<small>duvidar de mim, adiar o que importa</small></span></label>
-        <label class="op"><input type="radio" name="tema" value="dinheiro e escassez"><span>Dinheiro e escassez<small>sempre falta, nunca sobra</small></span></label>
         <label class="op"><input type="radio" name="tema" value="outro assunto"><span>Outro assunto<small>até o que é difícil de dizer</small></span></label>
+      </fieldset>
+    </div>
+
+    <div class="cond" id="blocoRenda">
+      <!-- Pergunta de renda nas palavras da Simone (12/10): não reescrever. Vale para A e B (19/10). -->
+      <fieldset>
+        <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
+        <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
+        <label class="op"><input type="radio" name="fat" value="Menos de R$ 5 mil"> Menos de R$ 5 mil</label>
+        <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
+        <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
+        <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
       </fieldset>
     </div>
 
@@ -208,29 +212,38 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <h2 class="tit" id="saud">Obrigada. Agora eu sei por onde a gente começa.</h2>
     <p class="apoio" id="apoio">A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.</p>
 
-    <!-- A1: trabalho + R$ 5 mil ou mais (FAIXAS_CONSULTA, no script) -->
+    <!-- A1: terapeuta/expert + R$ 11 mil ou mais (FAIXAS_CONSULTA, no script) -->
     <article class="pres claro" id="cardA1" hidden>
       <p class="num">Um convite para você</p>
       <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
-      <p id="txtA1">Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de dizer o preço ou cobrar pelo seu trabalho. Você sai sabendo onde está a trava.</p>
+      <p id="txtA1">Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de aparecer ou dizer o seu preço. Você sai sabendo onde está a trava.</p>
       <a class="btn-ring" id="btnA1" href="#" target="_blank" rel="noopener"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
-    <!-- A2: trabalho + "Sem renda" ou "Menos de R$ 5 mil" → Venda com Segurança · 21 dias (R$ 97).
+    <!-- A2: terapeuta/expert + até R$ 10 mil → Venda com Segurança · 21 dias (R$ 97), checkout CHECKOUT_A2.
          Plano em Marketing-Os/produtos/venda-com-seguranca/PLANO.md. -->
     <article class="pres" id="cardA2" hidden>
-      <p class="num">Um caminho para você</p>
+      <p class="num">O começo ideal é por aqui</p>
       <h3>Venda com Segurança · 21 dias</h3>
-      <p>Para quando a mente trava na hora do preço. São 21 dias de prática, com áudios e um caderno, para a segurança na oferta virar hábito. Valor: R$ 97. Toque no botão para começar.</p>
+      <p>Crescer é um processo estratégico. Para dar o próximo passo comigo, primeiro a gente cria a base: segurança na hora do preço e da oferta. São 21 dias de prática, com áudios guiados por mim, até essa segurança virar hábito. Quem completa os 21 dias ganha uma consulta diagnóstica comigo.</p>
       <a class="btn-ring" id="btnA2" href="#"><span class="btn-face">Começar os 21 dias por R$ 97&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
-    <!-- B: vida pessoal → conversa gratuita, com o tema escrito na mensagem -->
-    <article class="pres" id="cardB" hidden>
-      <p class="num">Uma conversa comigo</p>
-      <h3>Você não precisa lidar com isso por conta própria</h3>
-      <p>Me manda a mensagem que já está pronta e a gente conversa sobre <span id="temaB">o que pesa para você</span>, com calma. A conversa é gratuita e fica só entre nós.</p>
-      <a class="btn-ring" id="btnB" href="#" target="_blank" rel="noopener"><span class="btn-face">Conversar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+    <!-- B1: vida pessoal + R$ 11 mil ou mais → consulta diagnóstica sobre o tema -->
+    <article class="pres claro" id="cardB1" hidden>
+      <p class="num">Um convite para você</p>
+      <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
+      <p id="txtB1">Uma conversa comigo, só sobre o seu caso, para entender o que faz a sua mente travar no que pesa para você hoje. Você sai sabendo onde está a trava. E tudo fica só entre nós.</p>
+      <a class="btn-ring" id="btnB1" href="#" target="_blank" rel="noopener"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+      <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </article>
+
+    <!-- B2: vida pessoal + até R$ 10 mil → pack de áudios, checkout CHECKOUT_B2 (produto ainda sem nome final nem preço) -->
+    <article class="pres" id="cardB2" hidden>
+      <p class="num">Um começo para você</p>
+      <h3>Lugar Seguro · áudios de auto-hipnose</h3>
+      <p id="txtB2">Áudios de auto-hipnose guiados por mim. O primeiro ajuda você a reconhecer as crenças que fazem a sua mente travar e a reconfigurar cada uma. Ele vai te ajudar, te preparar e te fazer bem. Depois você me conta como foi.</p>
+      <a class="btn-ring" id="btnB2" href="#"><span class="btn-face">Quero o meu Lugar Seguro&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
   </section>
@@ -246,25 +259,24 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var CHAVE = 'reset_lead';
   // WhatsApp da Simone (consulta e conversa). Chip novo? Troque só este número.
   var WHATS = '5521972511809';
-  // Checkout da Eduzz do Venda com Segurança · 21 dias (R$ 97), cartão A2.
-  // AINDA NÃO EXISTE (19/10): quando a Simone cadastrar o produto na Eduzz, colar o link aqui.
-  // Enquanto estiver vazio, o botão do cartão A2 não leva a lugar nenhum.
-  var CHECKOUT_EDUZZ = '';
+  // Checkouts da Eduzz. AINDA NÃO EXISTEM (19/10): quando a Simone cadastrar os produtos, colar os links.
+  // Enquanto estiverem vazios, o botão do cartão não leva a lugar nenhum (o lead já ficou na planilha).
+  var CHECKOUT_A2 = '';   // Venda com Segurança · 21 dias (R$ 97), terapeuta ou expert
+  var CHECKOUT_B2 = '';   // pack de áudios, vida pessoal
 
   var MSG_A1 = {
     'Terapeuta': 'Oi, Simone! Sou {nome}, terapeuta. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.',
     'Expert': 'Oi, Simone! Sou {nome}, vendo curso, mentoria ou consultoria. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.',
-    'Outra área': 'Oi, Simone! Sou {nome} e vivo do meu trabalho em outra área. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.',
     padrao: 'Oi, Simone! Sou {nome}. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
   };
-  var MSG_B = 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero conversar com você sobre {tema}.';
+  var MSG_B1 = 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita para falar sobre {tema}.';
   // Texto da consulta na língua de cada perfil ("consulta" e "atendimento" só para terapeuta)
   var TXT_A1 = {
     'Terapeuta': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de cobrar o que o seu atendimento vale. Você sai sabendo onde está a trava.',
-    'Expert': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de aparecer, lançar ou fazer a sua oferta. Você sai sabendo onde está a trava.',
-    'Outra área': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de dizer o preço ou cobrar pelo seu trabalho. Você sai sabendo onde está a trava.'
+    'Expert': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de aparecer, lançar ou fazer a sua oferta. Você sai sabendo onde está a trava.'
   };
-  var FAIXAS_CONSULTA = ['R$ 5 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+  // Corte da consulta (19/10, A e B): só R$ 11 a 21 mil e mais de R$ 21 mil. Até R$ 10 mil vai para o produto.
+  var FAIXAS_CONSULTA = ['R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
 
   function primeiro(lead) { return String(lead.nome || '').trim().split(' ')[0]; }
   function wa(msg) { return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg); }
@@ -280,13 +292,14 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   })();
 
   var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
-  var blocoA = document.getElementById('blocoA'), blocoB = document.getElementById('blocoB');
+  var blocoA = document.getElementById('blocoA'), blocoB = document.getElementById('blocoB'), blocoRenda = document.getElementById('blocoRenda');
 
   // a 1ª pergunta abre só o bloco do caminho escolhido
   form.querySelectorAll('input[name=intencao]').forEach(function (r) {
     r.addEventListener('change', function () {
       blocoA.classList.toggle('on', r.value === 'Trabalho');
       blocoB.classList.toggle('on', r.value === 'Vida pessoal');
+      blocoRenda.classList.add('on');
       erro.textContent = '';
     });
   });
@@ -296,29 +309,37 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     pres.hidden = false;
     var nome = primeiro(lead);
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
-    var card;
-    if (lead.intencao === 'Vida pessoal') {
-      card = document.getElementById('cardB');
-      document.getElementById('temaB').textContent = lead.tema;
-      document.getElementById('btnB').href = wa(MSG_B.replace('{nome}', nome).replace('{tema}', lead.tema));
-    } else if (FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1) {
+    var card, consulta = FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1;
+    // textos do B com o tema; "outro assunto" fica com a versão sem tema que está no HTML
+    if (lead.tema && lead.tema !== 'outro assunto') {
+      document.getElementById('txtB1').textContent = 'Uma conversa comigo, só sobre o seu caso, para entender o que faz a sua mente travar quando o assunto é ' + lead.tema + '. Você sai sabendo onde está a trava. E tudo fica só entre nós.';
+      document.getElementById('txtB2').textContent = 'Áudios de auto-hipnose guiados por mim. O primeiro ajuda você a reconhecer as crenças que fazem a sua mente travar e a reconfigurar cada uma. Os outros são por tema, e um deles é sobre ' + lead.tema + '. Ele vai te ajudar, te preparar e te fazer bem. Depois você me conta como foi.';
+    }
+    if (lead.intencao === 'Vida pessoal' && consulta) {
+      card = document.getElementById('cardB1');
+      document.getElementById('btnB1').href = wa(MSG_B1.replace('{nome}', nome).replace('{tema}', lead.tema));
+    } else if (lead.intencao === 'Vida pessoal') {
+      card = document.getElementById('cardB2');
+      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso aos áudios chega no seu WhatsApp.';
+      document.getElementById('btnB2').href = CHECKOUT_B2 || '#';
+    } else if (consulta) {
       card = document.getElementById('cardA1');
       if (TXT_A1[lead.perfil]) document.getElementById('txtA1').textContent = TXT_A1[lead.perfil];
       document.getElementById('btnA1').href = wa((MSG_A1[lead.perfil] || MSG_A1.padrao).replace('{nome}', nome));
     } else {
       card = document.getElementById('cardA2');
-      document.getElementById('apoio').textContent = 'O botão leva direto ao pagamento, em ambiente seguro da Eduzz.';
-      document.getElementById('btnA2').href = CHECKOUT_EDUZZ || '#';
+      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso chega no seu WhatsApp.';
+      document.getElementById('btnA2').href = CHECKOUT_A2 || '#';
     }
     card.hidden = false;
     card.classList.add('revela');
     setTimeout(function () { card.classList.add('visivel'); }, 120);
   }
 
-  // só reaproveita cadastro feito AQUI (o da /confia/ não tem a intenção)
+  // só reaproveita cadastro feito AQUI e já com a renda nos dois caminhos (19/10)
   try {
     var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
-    if (salvo && salvo.nome && salvo.intencao) mostrar(salvo);
+    if (salvo && salvo.nome && salvo.intencao && salvo.faturamento) mostrar(salvo);
   } catch (e) {}
 
   // ?origem= diz por qual porta a pessoa chegou (novoseguidor, direct, whatsapp...). Sem ele, é a bio.
@@ -330,19 +351,20 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var intencao = form.querySelector('input[name=intencao]:checked');
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
-    if (!intencao) { erro.textContent = 'Escolhe se a trava aparece no trabalho ou na vida pessoal.'; return; }
+    if (!intencao) { erro.textContent = 'Escolhe uma das duas: como terapeuta ou expert, ou na vida pessoal.'; return; }
     var lead = { nome: nome, whatsapp: whats, intencao: intencao.value };
     if (intencao.value === 'Trabalho') {
       var perfil = form.querySelector('input[name=perfil]:checked');
-      var fat = form.querySelector('input[name=fat]:checked');
-      if (!perfil) { erro.textContent = 'Escolhe se você é terapeuta, expert ou de outra área.'; return; }
-      if (!fat) { erro.textContent = 'Escolhe uma das opções de faturamento.'; return; }
-      lead.perfil = perfil.value; lead.faturamento = fat.value;
+      if (!perfil) { erro.textContent = 'Escolhe se você é terapeuta ou expert.'; return; }
+      lead.perfil = perfil.value;
     } else {
       var tema = form.querySelector('input[name=tema]:checked');
       if (!tema) { erro.textContent = 'Escolhe o assunto que mais pesa hoje.'; return; }
       lead.tema = tema.value;
     }
+    var fat = form.querySelector('input[name=fat]:checked');
+    if (!fat) { erro.textContent = 'Escolhe uma das opções de faturamento.'; return; }
+    lead.faturamento = fat.value;
     if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
     if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
     erro.textContent = '';
@@ -352,7 +374,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       method: 'POST', keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Porta única', isca: true, nome: nome, email: '',
-        whatsapp: whats, faturamento: lead.faturamento || '',
+        whatsapp: whats, faturamento: lead.faturamento,
         origem: porta + ' · ' + lead.intencao + ' · ' + (lead.perfil || lead.tema),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
