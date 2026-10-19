@@ -193,7 +193,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 <script>
 (function () {
   // Mesmo Web App dos diagnósticos e da /calma/. tipo "audio" grava na aba
-  // "Leads Áudios" (Áudio = "Página da bio", Origem = "bio · <perfil>").
+  // "Leads Áudios" (Áudio = "Página da bio", Origem = "<porta> · <perfil>", porta = bio ou ?origem=).
   var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
   // 'reset_lead' também é lido pelo /diagnostico/ para não pedir o cadastro de novo.
   var CHAVE = 'reset_lead';
@@ -251,8 +251,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     if (salvo && salvo.nome) mostrar(salvo);
   } catch (e) {}
 
+  // ?origem= diz por qual porta a pessoa chegou (ex.: comenta-calma, o cartão da automação).
+  // Sem ele, é o link da bio. Vai para a coluna Origem: "<porta> · <perfil>".
   var q = new URLSearchParams(location.search);
-  var canal = q.get('origem') ? ' · ' + q.get('origem') : '';
+  var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
@@ -272,7 +274,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       method: 'POST', keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Página da bio', isca: true, nome: nome, email: '',
-        whatsapp: whats, faturamento: fat.value, origem: 'bio · ' + perfil.value + canal,
+        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + perfil.value,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).catch(function () {});
