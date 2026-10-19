@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- Página da isca CONFIA: lp.selfcreation.com.br/confia/ (19/10/2026, era a /comece/ até essa data).
+     Só recebe quem comenta CONFIA no post da trava na hora do preço (decisão da Simone, 19/10):
+     nunca pela bio nem pela /comece/, que virou a porta única de conversa.
+     Isca do áudio Confiança na Oferta (era "Áudio CALMA" até 18/10; arquivo ../calma/calma.mp3), um presente só (pedido da Simone): o cadastro (perfil, nome,
+     WhatsApp e a pergunta de renda dela) libera o pedido do áudio no WhatsApp. A consulta
+     gratuita (/consulta/) só aparece para quem marcou de R$ 5 mil para cima.
+     Atende terapeuta, expert e outras áreas. Logo do RE:SET, pele da LP Os 3 Segredos (apps/3segredos).
+     A consulta é "gratuita até" o último dia do mês: o script calcula sozinho. -->
+<title>Comece por aqui · Simone Carneiro</title>
+<meta name="description" content="Confiança na Oferta: 10 minutos na voz de Simone Carneiro para ouvir antes de vender. Para terapeutas, experts e quem vive do próprio trabalho.">
+<meta property="og:title" content="Confiança na Oferta · Método RE:SET">
+<meta property="og:description" content="Confiança na Oferta: 10 minutos na voz de Simone Carneiro para ouvir antes de vender.">
+<meta property="og:image" content="https://lp.selfcreation.com.br/confia/og-confia.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Mesma pele da LP Os 3 Segredos (apps/3segredos/styles.css), pedido da Simone em 18/10:
+   navy quase preto, dourado #b9915b, Unbounded nos títulos, Manrope no texto,
+   botão em anel com o ícone girando, faixa corrida e entrada suave ao rolar. */
+:root{--bg:#010c14;--card:linear-gradient(160deg,#021a28,#010f18);--ouro:#b9915b;--ouro-claro:#d2ae79;--ouro-btn:#c9a169;
+  --txt:#f5f4f3;--txt-2:#aeb6bc;--txt-3:#7e8991;--borda:rgba(255,255,255,.08);--claro:#ebe8e3;
+  --display:"Unbounded",Arial,sans-serif;--texto:"Manrope",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.65 var(--texto);overflow-x:hidden}
+img{max-width:100%}
+em{font-style:normal;color:var(--ouro)}
+main{max-width:600px;margin:0 auto;padding:0 16px 48px}
+.marca{display:block;width:calc(100% + 32px);max-width:600px;height:auto;margin:0 -16px 8px;
+  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent);
+  animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .15s both}
+@keyframes logo-entra{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@media (min-width:632px){.marca{margin:0 auto 8px}}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 16px;text-align:center}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
+p{margin:0 0 14px}
+.lead{text-align:center;font-size:1.05rem}
+
+/* faixa corrida, igual à dos 3 Segredos */
+.faixa{background:#06141d;border-top:1px solid rgba(185,145,91,.45);border-bottom:1px solid rgba(185,145,91,.45);overflow:hidden;padding:6px 0;margin:0 -16px 32px}
+.faixa-trilho{display:flex;width:max-content;animation:rola 40s linear infinite}
+.faixa-trilho span{font-size:.66rem;font-weight:800;letter-spacing:.2em;color:var(--ouro);padding-right:16px;white-space:nowrap}
+@keyframes rola{to{transform:translateX(-50%)}}
+
+.cad{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 18px}
+.cad h2{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;margin:0 0 6px;text-align:center}
+.cad label.c{display:block;font-size:.9rem;color:var(--txt-2);margin:18px 0 6px}
+.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
+.cad input:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.cad fieldset{border:0;padding:0;margin:20px 0 0}
+.cad legend{font-size:.95rem;font-weight:500;line-height:1.5;margin-bottom:10px;padding:0}
+.op{display:flex;gap:12px;align-items:center;font-size:1rem;line-height:1.35;margin:8px 0;padding:13px 14px;border:1px solid var(--borda);border-radius:10px;cursor:pointer;transition:border-color .25s,background .25s}
+.op:hover{border-color:rgba(185,145,91,.5)}
+.op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
+.op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
+.op small{display:block;font-size:.82rem;color:var(--txt-3)}
+
+/* botão em anel com o ícone girando (mesmo dos 3 Segredos) */
+.btn-ring{display:flex;align-items:center;gap:10px;width:100%;margin-top:24px;padding:6px 12px 6px 6px;font:inherit;background:none;
+  border:1px solid rgba(185,145,91,.49);border-radius:100px;text-decoration:none;color:inherit;cursor:pointer;transition:border-color .25s,transform .25s}
+.btn-face{flex:1;background:var(--ouro-btn);color:#0a1620;border-radius:100px;padding:15px 14px;font-family:var(--texto);font-weight:700;font-size:.8rem;line-height:1.25;text-transform:uppercase;letter-spacing:.01em;text-align:center;transition:background .25s}
+.btn-ring:hover{border-color:var(--ouro);transform:translateY(-2px)}
+.btn-ring:hover .btn-face{background:var(--ouro-claro)}
+.seta{display:inline-block;transition:transform .25s}
+.btn-ring:hover .seta{transform:translateX(4px)}
+.giro{width:30px;height:30px;flex:none;stroke:var(--ouro);stroke-width:2.6;stroke-linecap:round;fill:none}
+.giro g{transform-origin:20px 20px;animation:gira 9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.erro{color:#f0a58f;font-size:.9rem;margin:12px 0 0;min-height:1em;text-align:center}
+.priv{font-size:.8rem;color:var(--txt-3);margin:12px 0 0;text-align:center}
+
+#presentes h2.tit{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,5.4vw,1.8rem);line-height:1.25;margin:0 0 10px;text-align:center}
+.apoio{color:var(--txt-2);margin:0 0 26px;text-align:center}
+.pres{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:26px 18px 22px;margin:0 0 16px}
+.num{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 10px}
+.pres h3{font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.3;margin:0 0 12px}
+.sub-card{font-size:.9rem;font-weight:500;color:var(--ouro-claro);margin:-6px 0 12px}
+.pres p{font-size:.98rem}
+.dica{font-size:.9rem;color:var(--txt-2);border-left:2px solid var(--ouro);padding-left:12px;margin:18px 0 0}
+.pres .btn-ring{margin-top:18px}
+/* convite em cartão claro, como o "O que faz" dos 3 Segredos */
+.pres.claro{background:var(--claro);color:#0b1a24;border-color:transparent}
+.pres.claro em,.pres.claro .num{color:#9a7440}
+.nota{font-size:.78rem;color:var(--txt-3);margin-top:28px;text-align:center}
+
+/* mini currículo curto: foto pequena e redonda + 4 linhas, num cartão de vidro */
+.cv{margin:32px 0}
+.cv .eyebrow{margin-bottom:12px}
+.cv-card{display:flex;gap:16px;align-items:flex-start;padding:18px 16px;border:1px solid var(--borda);border-radius:14px;
+  background:radial-gradient(ellipse at 85% 0%,rgba(24,69,96,.55),transparent 60%),rgba(255,255,255,.035);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cv-card img{width:84px;height:84px;flex:none;border-radius:999px;object-fit:cover;box-shadow:0 0 0 2px rgba(185,145,91,.5)}
+.cv h2{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.25;margin:2px 0 8px}
+.cv ul{list-style:none;margin:0;padding:0}
+.cv li{position:relative;padding-left:16px;font-size:.86rem;line-height:1.45;color:var(--txt-2);margin:0 0 5px}
+.cv li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--ouro)}
+footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
+
+/* entrada ao rolar, mesma curva dos 3 Segredos */
+.revela{opacity:0;transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.visivel{opacity:1;transform:none}
+/* no celular o #010c14 vira preto (OLED); o marinho mais aberto dos 3 Segredos mantém o azul */
+@media (max-width:640px){:root{--bg:#041a2b;--card:linear-gradient(160deg,#08293d,#05202f)}.faixa{background:#062133}}
+@media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
+</style>
+</head>
+<body>
+<main>
+  <img class="marca" src="reset-logo.webp" alt="RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
+
+  <p class="eyebrow">Para terapeutas, experts e quem vive do próprio trabalho</p>
+  <h1>Você já sabe o que fazer para crescer. <em>O que trava é a mente.</em></h1>
+  <p class="lead">Não é falta de técnica nem de esforço. Na hora de falar o preço, aparecer ou fazer a oferta, a mente lê o crescimento como perigo e trava. Comece por aqui: o áudio Confiança na Oferta, 10 minutos na minha voz para ouvir antes de uma consulta ou de uma conversa de venda.</p>
+
+  <!-- Mini currículo curto (pedido da Simone, 18/10: foto pequena e poucas linhas).
+       Fatos do currículo aprovado em Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. -->
+  <section class="cv">
+    <p class="eyebrow">Quem vai conversar com você</p>
+    <div class="cv-card">
+      <img src="simone.webp" alt="Simone Carneiro" width="320" height="320">
+      <div>
+        <h2>Simone Carneiro</h2>
+        <ul>
+          <li>Neurocientista, pós-graduada em Neurologia e Neurociências</li>
+          <li>25 anos em desenvolvimento humano e prática clínica</li>
+          <li>Criadora do Método RE:SET</li>
+          <li>Coautora do livro "Mente de Alta Performance para Líderes Extraordinários"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
+    <span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span>
+    <span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>CONFIANÇA NA OFERTA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span>
+  </div></div>
+
+  <!-- CADASTRO ÚNICO -->
+  <form class="cad" id="cad" novalidate>
+    <h2>Para receber o áudio, me conta quem é você</h2>
+    <fieldset>
+      <legend>Você é:</legend>
+      <label class="op"><input type="radio" name="perfil" value="Terapeuta"> Terapeuta</label>
+      <label class="op"><input type="radio" name="perfil" value="Expert"><span>Expert<small>curso, mentoria ou consultoria</small></span></label>
+      <label class="op"><input type="radio" name="perfil" value="Outra área"><span>Outra área<small>vivo do meu trabalho</small></span></label>
+    </fieldset>
+    <label class="c" for="nome">Seu nome</label>
+    <input type="text" id="nome" autocomplete="name" required>
+    <label class="c" for="whats">Seu WhatsApp</label>
+    <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel" required>
+    <!-- Pergunta de renda nas palavras da Simone (12/10): não reescrever. -->
+    <fieldset>
+      <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
+      <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
+      <label class="op"><input type="radio" name="fat" value="Menos de R$ 5 mil"> Menos de R$ 5 mil</label>
+      <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
+      <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
+      <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
+    </fieldset>
+    <p class="erro" id="erro" role="alert"></p>
+    <button class="btn-ring" type="submit"><span class="btn-face">Quero receber o áudio&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+    <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
+  </form>
+
+  <!-- O PRESENTE (aparece depois do cadastro) -->
+  <section id="presentes" hidden>
+    <h2 class="tit" id="saud">Pronto. Falta só pedir o seu áudio.</h2>
+    <p class="apoio">A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.</p>
+
+    <article class="pres">
+      <p class="num">Seu presente</p>
+      <h3>Confiança na Oferta · 10 minutos na minha voz</h3>
+      <p class="sub-card">Segurança na hora do preço, ansiedade em segundo plano</p>
+      <p><span id="usoAudio">Para ouvir antes de uma consulta ou de uma conversa de venda.</span> Toque no botão, me mande a mensagem pronta e eu envio o áudio direto no seu WhatsApp.</p>
+      <!-- O áudio chega numa conversa individual no WhatsApp dela (18/10). Número em WHATS_AUDIO, no script. -->
+      <a class="btn-ring" id="btnAudio" href="#" target="_blank" rel="noopener"><span class="btn-face">Receber o áudio no WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+      <p class="dica">O áudio termina com algo que fica com você: um jeito de trazer essa confiança de volta na hora da oferta, sempre que precisar.</p>
+    </article>
+
+    <!-- Consulta só para quem marcou de R$ 5 mil para cima (FAIXAS_CONSULTA, no script).
+         Um presente por isca (18/10): o Termostato tem a página dele, /diagnostico/?isca=1. -->
+    <article class="pres claro" id="cardConsulta" hidden>
+      <p class="num">Um convite para você</p>
+      <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
+      <p><span id="txtConsulta">Uma conversa comigo para olhar o seu caso de perto e descobrir o que faz a sua mente travar na hora de crescer.</span> Traga o que você percebeu ao ouvir o áudio.</p>
+      <a class="btn-ring" href="../consulta/"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+    </article>
+
+    <p class="nota">Não ouça o áudio dirigindo nem operando máquinas. Ele não substitui acompanhamento profissional.</p>
+  </section>
+
+</main>
+<footer>Simone Carneiro · @sicarneironeurociencia</footer>
+<script>
+(function () {
+  // Mesmo Web App dos diagnósticos e da /calma/. tipo "audio" grava na aba
+  // "Leads Áudios" (Áudio = "Confiança na Oferta", Origem = "<porta> · <perfil>", porta = ?origem= ou comenta-confia).
+  var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
+  // 'reset_lead' também é lido pelo /diagnostico/ para não pedir o cadastro de novo.
+  var CHAVE = 'reset_lead';
+  // WhatsApp que recebe o pedido do áudio Confiança na Oferta (conversa individual, decisão de 18/10).
+  // Chip novo? Troque só este número (55 + DDD + número, sem espaço).
+  var WHATS_AUDIO = '5521972511809';
+  function linkAudio(lead) {
+    var msg = (MSG_AUDIO[lead.perfil] || MSG_AUDIO.padrao).replace('{nome}', String(lead.nome || '').split(' ')[0]);
+    return 'https://wa.me/' + WHATS_AUDIO + '?text=' + encodeURIComponent(msg);
+  }
+  var MSG_AUDIO = {
+    'Terapeuta': 'Oi, Simone! Sou {nome}, terapeuta, e acabei de me cadastrar na sua página. Quero receber o áudio Confiança na Oferta.',
+    'Expert': 'Oi, Simone! Sou {nome}, vendo curso, mentoria ou consultoria, e acabei de me cadastrar na sua página. Quero receber o áudio Confiança na Oferta.',
+    'Outra área': 'Oi, Simone! Sou {nome}, vivo do meu trabalho em outra área e acabei de me cadastrar na sua página. Quero receber o áudio Confiança na Oferta.',
+    padrao: 'Oi, Simone! Sou {nome} e acabei de me cadastrar na sua página. Quero receber o áudio Confiança na Oferta.'
+  };
+
+  // Texto da consulta ajustado ao perfil escolhido.
+  var CONSULTA = {
+    'Terapeuta': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de cobrar o que o seu atendimento vale.',
+    'Expert': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de aparecer, lançar ou fazer a oferta.',
+    'Outra área': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de apresentar o preço ou cobrar pelo seu trabalho.'
+  };
+  // Para que serve o áudio, na língua de cada perfil (18/10: "consulta" e "atendimento" só para terapeuta)
+  var USO_AUDIO = {
+    'Terapeuta': 'Para ouvir antes de uma consulta ou de uma conversa de venda.',
+    'Expert': 'Para ouvir antes de uma conversa de venda ou de apresentar a sua oferta.',
+    'Outra área': 'Para ouvir antes de apresentar o preço, negociar ou cobrar pelo seu trabalho.'
+  };
+
+  // "gratuita até" o último dia do mês corrente, no horário de Brasília.
+  // Exceção da Simone (18/10/2026): ao virar para novembro, o prazo vai até 10/11.
+  (function () {
+    var hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+    var fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    if (hoje.getFullYear() === 2026 && hoje.getMonth() === 10 && hoje.getDate() <= 10) fim = new Date(2026, 10, 10);
+    var txt = ('0' + fim.getDate()).slice(-2) + '/' + ('0' + (fim.getMonth() + 1)).slice(-2);
+    document.querySelectorAll('.fim-mes').forEach(function (el) { el.textContent = txt; });
+  })();
+
+  var FAIXAS_CONSULTA = ['R$ 5 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+
+  var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
+
+  function mostrar(lead) {
+    form.hidden = true;
+    pres.hidden = false;
+    var primeiro = String(lead.nome || '').split(' ')[0];
+    if (primeiro) document.getElementById('saud').textContent = 'Pronto, ' + primeiro + '. Falta só pedir o seu áudio.';
+    if (CONSULTA[lead.perfil]) document.getElementById('txtConsulta').textContent = CONSULTA[lead.perfil];
+    if (USO_AUDIO[lead.perfil]) document.getElementById('usoAudio').textContent = USO_AUDIO[lead.perfil];
+    document.getElementById('btnAudio').href = linkAudio(lead);
+    document.getElementById('cardConsulta').hidden = FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1;
+    // os cartões entram um depois do outro, com a curva dos 3 Segredos
+    var cards = pres.querySelectorAll('.pres:not([hidden])');
+    cards.forEach(function (c, i) {
+      c.classList.add('revela');
+      setTimeout(function () { c.classList.add('visivel'); }, 120 + i * 180);
+    });
+  }
+
+  try {
+    var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
+    // o cadastro da /comece/ não traz renda: aí a pessoa preenche aqui
+    if (salvo && salvo.nome && salvo.faturamento && salvo.perfil) mostrar(salvo);
+  } catch (e) {}
+
+  // ?origem= diz por qual porta a pessoa chegou (ex.: comenta-calma, o cartão da automação).
+  // Sem ele, é o comentário CONFIA. Vai para a coluna Origem: "<porta> · <perfil>".
+  var q = new URLSearchParams(location.search);
+  var porta = (q.get('origem') || 'comenta-confia').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'comenta-confia';
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var perfil = form.querySelector('input[name=perfil]:checked');
+    var nome = document.getElementById('nome').value.trim();
+    var whats = document.getElementById('whats').value.trim();
+    var fat = form.querySelector('input[name=fat]:checked');
+    if (!perfil) { erro.textContent = 'Escolhe se você é terapeuta, expert ou de outra área.'; return; }
+    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
+    if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
+    if (!fat) { erro.textContent = 'Escolhe uma das opções de faturamento.'; return; }
+    erro.textContent = '';
+    var lead = { nome: nome, whatsapp: whats, perfil: perfil.value, faturamento: fat.value };
+    // isca:true e os campos vazios do diagnóstico mantêm a gravação funcionando
+    // também no script antigo (que ignora o tipo e grava na aba Leads Isca)
+    fetch(URL_LEADS, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ tipo: 'audio', audio: 'Confiança na Oferta', isca: true, nome: nome, email: '',
+        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + perfil.value,
+        indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
+        data: new Date().toISOString() })
+    }).catch(function () {});
+    try {
+      localStorage.setItem(CHAVE, JSON.stringify(lead));
+    } catch (e) {}
+    mostrar(lead);
+    window.scrollTo({ top: pres.offsetTop - 16, behavior: 'smooth' });
+  });
+
+  // Entrada suave ao rolar (mesmo efeito dos 3 Segredos)
+  if ('IntersectionObserver' in window) {
+    var alvos = document.querySelectorAll('.cad, .cv-card');
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) {
+        if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    alvos.forEach(function (el) { el.classList.add('revela'); obs.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
