@@ -492,14 +492,16 @@
         <input type="tel" id="whatsapp" placeholder="(DDD) 90000-0000" autocomplete="tel" />
       </div>
       <div class="campo">
-        <label for="faturamento">Sua faixa de faturamento mensal</label>
+        <!-- Mesma pergunta de renda da /comece/ (pedido da Simone, 18/10), nas palavras dela:
+             as duas iscas gravam a mesma medida na planilha. -->
+        <label for="faturamento">Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</label>
         <select id="faturamento">
           <option value="" disabled selected>Selecione...</option>
-          <option value="Sem remuneração">Sem remuneração</option>
-          <option value="Até R$ 5 mil">Até R$ 5 mil</option>
+          <option value="Sem renda">Sem renda</option>
+          <option value="Menos de R$ 5 mil">Menos de R$ 5 mil</option>
           <option value="R$ 5 mil a R$ 10 mil">R$ 5 mil a R$ 10 mil</option>
-          <option value="R$ 10 mil a R$ 20 mil">R$ 10 mil a R$ 20 mil</option>
-          <option value="Acima de R$ 20 mil">Acima de R$ 20 mil</option>
+          <option value="R$ 11 mil a R$ 21 mil">R$ 11 mil a R$ 21 mil</option>
+          <option value="Mais de R$ 21 mil">Mais de R$ 21 mil</option>
         </select>
       </div>
       <button class="btn" id="liberarBtn" type="button">Liberar meu resultado</button>
@@ -574,11 +576,11 @@
 
     <div class="cta-final" id="ctaFinal">
       <span class="cta-kicker">Próximo passo</span>
-      <h2>Agende sua Análise de Caso gratuita</h2>
+      <h2>Agende a sua consulta diagnóstica</h2>
       <p id="ctaTexto"></p>
       <p class="cta-destaque" id="ctaDestaque"></p>
-      <p class="cta-urgencia">⏳ Vagas limitadas: abro poucos horários por semana e eles se esgotam rápido.</p>
-      <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Garantir minha vaga na Análise gratuita</a>
+      <p class="cta-urgencia">⏳ <span>Gratuita até <span class="fim-mes">31/10</span>. Abro poucos horários por semana e eles se esgotam rápido.</span></p>
+      <a id="ctaBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">Agendar pelo WhatsApp</a>
       <p class="cta-sub">Conversa individual e sem compromisso.</p>
     </div>
 
@@ -966,23 +968,21 @@
     document.getElementById('resultado').scrollIntoView({ behavior: 'smooth' });
   }
 
-  // ⚙️ CONFIGURAÇÃO — página de agendamento da Análise de Caso gratuita.
+  // ⚙️ CONFIGURAÇÃO — para onde vai o botão da consulta diagnóstica gratuita.
   // Vazio esconde o botão.
-  const AGENDA_URL = "https://calendar.app.google/vub9HiAtn2FEMymU8";
+  // 18/10: a consulta é a mesma da /comece/, pelo WhatsApp (link curto /consulta/).
+  const AGENDA_URL = "../consulta/";
 
   // Faixas que liberam a agenda. Abaixo de R$ 5 mil a conversa individual não
   // se paga, então o convite nem aparece: some sem dizer que a pessoa foi
   // recusada.
   const FATURAMENTO_QUALIFICA = [
     'R$ 5 mil a R$ 10 mil',
-    'R$ 10 mil a R$ 20 mil',
-    'Acima de R$ 20 mil',
-    // faixas da pergunta de renda da página da bio (/comece/)
     'R$ 11 mil a R$ 21 mil',
     'Mais de R$ 21 mil'
   ];
 
-  // Convite para a Análise de Caso gratuita, com o texto adaptado ao nível
+  // Convite para a consulta diagnóstica gratuita, com o texto adaptado ao nível
   // da trava. Só na isca: no webinário ao vivo quem faz a oferta é ela.
   function montarCta(fxId) {
     const cta = document.getElementById('ctaFinal');
@@ -998,17 +998,17 @@
       'fx-leve': {
         titulo: 'Você tem uma base forte. Bora dar o <em>próximo salto</em>?',
         texto: 'Seu índice está alto, e esse é justamente o momento de ousar mais.',
-        destaque: 'Na sua Análise de Caso gratuita a gente mapeia a sua trava atual e traça o caminho para subir de nível.'
+        destaque: 'Na sua consulta diagnóstica, a gente mapeia a trava que ainda existe e traça o caminho para você subir de nível.'
       },
       'fx-moderado': {
         titulo: 'Você está a <em>um passo</em> de destravar.',
         texto: 'Parte do seu potencial já responde, mas some justamente quando mais importa, e isso tem solução.',
-        destaque: 'Na sua Análise de Caso gratuita a gente identifica o que precisa ser reprogramado para você destravar e sustentar o resultado.'
+        destaque: 'Na sua consulta diagnóstica, a gente identifica o que faz a sua mente travar e o que precisa mudar para o crescimento se sustentar.'
       },
       'fx-profundo': {
         titulo: 'Esse padrão <em>pode ser reescrito</em>, e você não precisa fazer isso por conta própria.',
         texto: 'A maior parte do seu potencial está travada, e a trava é profunda: nenhuma estratégia se sustenta sem trabalhar a raiz.',
-        destaque: 'Na sua Análise de Caso gratuita a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
+        destaque: 'Na sua consulta diagnóstica, a gente olha o seu caso a fundo e define o primeiro passo para reverter isso.'
       }
     };
     const c = copy[fxId];
@@ -1018,6 +1018,12 @@
     document.getElementById('ctaTexto').innerHTML = c.texto + ' ' + c.titulo;
     document.getElementById('ctaDestaque').textContent = c.destaque;
     document.getElementById('ctaBtn').href = AGENDA_URL;
+    // "gratuita até" o último dia do mês corrente, no horário de Brasília
+    const hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+    const fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    cta.querySelectorAll('.fim-mes').forEach(el => {
+      el.textContent = String(fim.getDate()).padStart(2, '0') + '/' + String(fim.getMonth() + 1).padStart(2, '0');
+    });
     cta.style.display = 'block';
   }
 </script>
