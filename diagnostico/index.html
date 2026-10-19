@@ -1020,7 +1020,9 @@
     document.getElementById('ctaBtn').href = AGENDA_URL;
     // "gratuita até" o último dia do mês corrente, no horário de Brasília
     const hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
-    const fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    let fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    // exceção da Simone (18/10/2026): ao virar para novembro, o prazo vai até 10/11
+    if (hoje.getFullYear() === 2026 && hoje.getMonth() === 10 && hoje.getDate() <= 10) fim = new Date(2026, 10, 10);
     cta.querySelectorAll('.fim-mes').forEach(el => {
       el.textContent = String(fim.getDate()).padStart(2, '0') + '/' + String(fim.getMonth() + 1).padStart(2, '0');
     });
