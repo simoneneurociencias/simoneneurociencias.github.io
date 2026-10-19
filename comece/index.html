@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <!-- Página do link da bio (18/10/2026): lp.selfcreation.com.br/comece/
-     Um cadastro só (perfil, nome, WhatsApp e a pergunta de renda da Simone) libera
-     os 3 presentes: Áudio CALMA (toca aqui), diagnóstico (/diagnostico/?isca=1, que
-     reaproveita este cadastro e não pede de novo) e consulta gratuita (/consulta/).
+     Isca do Áudio CALMA, um presente só (pedido da Simone): o cadastro (perfil, nome,
+     WhatsApp e a pergunta de renda dela) libera o pedido do áudio no WhatsApp. A consulta
+     gratuita (/consulta/) só aparece para quem marcou de R$ 5 mil para cima.
      Atende terapeuta, expert e outras áreas. Pele do RE:SET (.claude/skills/marca-reset).
      A consulta é "gratuita até" o último dia do mês: FIM_DO_MES no script calcula sozinho. -->
 <title>Comece por aqui · Simone Carneiro</title>
-<meta name="description" content="Três presentes para entender a sua trava e chegar na hora da oferta com calma: o Áudio CALMA, o diagnóstico e uma consulta com Simone Carneiro.">
-<meta property="og:title" content="Comece por aqui · Método RE:SET">
-<meta property="og:description" content="Áudio CALMA, diagnóstico e consulta gratuita com Simone Carneiro.">
+<meta name="description" content="Áudio CALMA: 10 minutos na voz de Simone Carneiro para ouvir antes de uma conversa de venda. Para terapeutas, experts e quem vive do próprio trabalho.">
+<meta property="og:title" content="Áudio CALMA · Método RE:SET">
+<meta property="og:description" content="Áudio CALMA: 10 minutos na voz de Simone Carneiro para ouvir antes de uma conversa de venda.">
 <meta property="og:image" content="https://lp.selfcreation.com.br/comece/og-comece.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -60,7 +60,7 @@ p{margin:0 0 14px}
 .pres{position:relative;background:var(--s1);border:1px solid var(--hair);border-radius:4px;padding:22px 16px 20px;margin:0 0 16px;
   opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
 .pres.ve{opacity:1;transform:none}
-.num{font-family:"Cormorant Garamond",serif;font-size:22px;color:var(--gold);margin:0 0 4px}
+.num{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
 .pres h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:28px;line-height:1.12;margin:0 0 10px}
 .pres p{font-size:17px}
 .pres audio{width:100%;margin:6px 0 10px}
@@ -82,7 +82,7 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
 
   <p class="eyebrow">Para terapeutas, experts e quem vive do próprio trabalho</p>
   <h1>Você já sabe o que fazer para crescer. <em>O que trava é a mente.</em></h1>
-  <p class="lead">Não é falta de técnica nem de esforço. Na hora de falar o preço, aparecer ou fazer a oferta, a mente lê o crescimento como perigo e trava. Comece por aqui, com três presentes: um áudio, um diagnóstico e uma conversa comigo.</p>
+  <p class="lead">Não é falta de técnica nem de esforço. Na hora de falar o preço, aparecer ou fazer a oferta, a mente lê o crescimento como perigo e trava. Comece por aqui: o Áudio CALMA, 10 minutos na minha voz para ouvir antes de uma consulta ou de uma conversa de venda.</p>
 
   <div class="quem">
     <img src="simone.webp" alt="Simone Carneiro" width="320" height="320">
@@ -91,7 +91,7 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
 
   <!-- CADASTRO ÚNICO -->
   <form class="cad" id="cad" novalidate>
-    <h2>Para liberar os presentes, me conta quem é você</h2>
+    <h2>Para receber o áudio, me conta quem é você</h2>
     <fieldset>
       <legend>Você é:</legend>
       <label class="op"><input type="radio" name="perfil" value="Terapeuta"> Terapeuta</label>
@@ -111,17 +111,17 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
       <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
     </fieldset>
     <p class="erro" id="erro" role="alert"></p>
-    <button class="btn" type="submit">Liberar meus 3 presentes</button>
+    <button class="btn" type="submit">Quero receber o áudio</button>
     <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
   </form>
 
-  <!-- OS 3 PRESENTES (aparecem depois do cadastro) -->
+  <!-- O PRESENTE (aparece depois do cadastro) -->
   <section id="presentes" hidden>
-    <h2 class="tit" id="saud">Pronto. Seus três presentes estão liberados.</h2>
-    <p class="apoio">Peça o áudio no WhatsApp, faça o diagnóstico e leve o resultado para a nossa conversa.</p>
+    <h2 class="tit" id="saud">Pronto. Falta só pedir o seu áudio.</h2>
+    <p class="apoio">A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.</p>
 
     <article class="pres">
-      <p class="num">01</p>
+      <p class="num">Seu presente</p>
       <h3>Áudio CALMA · 10 minutos na minha voz</h3>
       <p>Para ouvir antes de uma consulta ou de uma conversa de venda. Toque no botão, me mande a mensagem pronta e eu envio o áudio direto no seu WhatsApp.</p>
       <!-- O áudio chega numa conversa individual no WhatsApp dela (18/10). Número em WHATS_AUDIO, no script. -->
@@ -129,17 +129,12 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
       <p class="dica">No fim, você aprende um gesto que guarda essa calma: na hora de falar o seu valor, junte o polegar e o indicador e respire fundo.</p>
     </article>
 
-    <article class="pres">
-      <p class="num">02</p>
-      <h3>Termostato de Crescimento</h3>
-      <p>12 frases que mostram quanto do seu potencial está disponível hoje e qual eixo está mais frágil: visibilidade, previsibilidade ou autovalor.</p>
-      <a class="btn" href="../diagnostico/?isca=1&origem=bio">Descobrir meu índice</a>
-    </article>
-
-    <article class="pres">
-      <p class="num">03</p>
+    <!-- Consulta só para quem marcou de R$ 5 mil para cima (FAIXAS_CONSULTA, no script).
+         Um presente por isca (18/10): o Termostato tem a página dele, /diagnostico/?isca=1. -->
+    <article class="pres" id="cardConsulta" hidden>
+      <p class="num">Um convite para você</p>
       <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
-      <p><span id="txtConsulta">Uma conversa comigo para olhar o seu caso de perto e descobrir o que faz a sua mente travar na hora de crescer.</span> Traga o resultado do Termostato.</p>
+      <p><span id="txtConsulta">Uma conversa comigo para olhar o seu caso de perto e descobrir o que faz a sua mente travar na hora de crescer.</span> Traga o que você percebeu ao ouvir o áudio.</p>
       <a class="btn" href="../consulta/">Agendar pelo WhatsApp</a>
     </article>
 
@@ -193,16 +188,19 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
     document.querySelectorAll('.fim-mes').forEach(function (el) { el.textContent = txt; });
   })();
 
+  var FAIXAS_CONSULTA = ['R$ 5 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+
   var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
 
   function mostrar(lead) {
     form.hidden = true;
     pres.hidden = false;
     var primeiro = String(lead.nome || '').split(' ')[0];
-    if (primeiro) document.getElementById('saud').textContent = 'Pronto, ' + primeiro + '. Seus três presentes estão liberados.';
+    if (primeiro) document.getElementById('saud').textContent = 'Pronto, ' + primeiro + '. Falta só pedir o seu áudio.';
     if (CONSULTA[lead.perfil]) document.getElementById('txtConsulta').textContent = CONSULTA[lead.perfil];
     document.getElementById('btnAudio').href = linkAudio(lead);
-    var cards = pres.querySelectorAll('.pres');
+    document.getElementById('cardConsulta').hidden = FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1;
+    var cards = pres.querySelectorAll('.pres:not([hidden])');
     cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('ve'); }, 120 + i * 160); });
   }
 
