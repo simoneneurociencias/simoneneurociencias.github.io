@@ -8,8 +8,8 @@
      Isca do Áudio CALMA, um presente só (pedido da Simone): o cadastro (perfil, nome,
      WhatsApp e a pergunta de renda dela) libera o pedido do áudio no WhatsApp. A consulta
      gratuita (/consulta/) só aparece para quem marcou de R$ 5 mil para cima.
-     Atende terapeuta, expert e outras áreas. Pele do RE:SET (.claude/skills/marca-reset).
-     A consulta é "gratuita até" o último dia do mês: FIM_DO_MES no script calcula sozinho. -->
+     Atende terapeuta, expert e outras áreas. Logo do RE:SET, pele da LP Os 3 Segredos (apps/3segredos).
+     A consulta é "gratuita até" o último dia do mês: o script calcula sozinho. -->
 <title>Comece por aqui · Simone Carneiro</title>
 <meta name="description" content="Áudio CALMA: 10 minutos na voz de Simone Carneiro para ouvir antes de uma conversa de venda. Para terapeutas, experts e quem vive do próprio trabalho.">
 <meta property="og:title" content="Áudio CALMA · Método RE:SET">
@@ -20,65 +20,102 @@
 <link rel="icon" href="../favicon-32.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--s0:#133338;--s1:#1b4248;--s2:#25525a;--ink:#eeeae2;--mut:#9aa9a8;--gold:#c9a15a;--glow:#e8c98a;--hair:#415a67;--on:#071618;--fundo:#03141a}
+/* Mesma pele da LP Os 3 Segredos (apps/3segredos/styles.css), pedido da Simone em 18/10:
+   navy quase preto, dourado #b9915b, Unbounded nos títulos, Manrope no texto,
+   botão em anel com o ícone girando, faixa corrida e entrada suave ao rolar. */
+:root{--bg:#010c14;--card:linear-gradient(160deg,#021a28,#010f18);--ouro:#b9915b;--ouro-claro:#d2ae79;--ouro-btn:#c9a169;
+  --txt:#f5f4f3;--txt-2:#aeb6bc;--txt-3:#7e8991;--borda:rgba(255,255,255,.08);--claro:#ebe8e3;
+  --display:"Unbounded",Arial,sans-serif;--texto:"Manrope",Arial,sans-serif}
 *{box-sizing:border-box}
-html{background:var(--s0)}
-body{margin:0;color:var(--ink);font:18px/1.6 Jost,system-ui,sans-serif;
-  background:linear-gradient(180deg,var(--fundo) 0,var(--fundo) 150px,var(--s0) 520px) no-repeat,var(--s0)}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.65 var(--texto);overflow-x:hidden}
+img{max-width:100%}
+em{font-style:normal;color:var(--ouro)}
 main{max-width:600px;margin:0 auto;padding:0 16px 48px}
-.marca{display:block;width:100%;max-width:340px;height:auto;margin:20px auto 32px}
-.eyebrow{font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
-h1{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:44px;line-height:1.06;margin:0 0 16px}
-h1 em,h2 em{color:var(--gold)}
+.marca{display:block;width:calc(100% + 32px);max-width:600px;height:auto;margin:0 -16px 8px;
+  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent);
+  animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .15s both}
+@keyframes logo-entra{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@media (min-width:632px){.marca{margin:0 auto 8px}}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 16px;text-align:center}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
 p{margin:0 0 14px}
-.lead{font-size:19px}
-.quem{display:flex;gap:14px;align-items:center;margin:26px 0 30px;padding-top:22px;border-top:1px solid var(--hair)}
-.quem img{width:64px;height:64px;border-radius:999px;flex:none;object-fit:cover}
-.quem p{margin:0;font-size:15px;line-height:1.45;color:var(--mut)}
-.quem b{display:block;color:var(--ink);font-weight:500;font-size:16px}
+.lead{text-align:center;font-size:1.05rem}
+.quem{display:flex;gap:14px;align-items:center;margin:28px 0 32px;padding:16px;border:1px solid var(--borda);border-radius:14px;
+  background:rgba(255,255,255,.045);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.quem img{width:64px;height:64px;border-radius:999px;flex:none;object-fit:cover;box-shadow:0 0 0 2px rgba(185,145,91,.45)}
+.quem p{margin:0;font-size:.86rem;line-height:1.5;color:var(--txt-2)}
+.quem b{display:block;color:var(--txt);font-weight:700;font-size:.95rem}
 
-.cad{background:var(--s1);border:1px solid var(--hair);border-radius:4px;padding:24px 16px}
-.cad h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:30px;line-height:1.12;margin:0 0 6px}
-.cad label.c{display:block;font-size:15px;color:var(--mut);margin:16px 0 6px}
-.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:17px;color:var(--ink);background:var(--s0);border:1px solid var(--hair);border-radius:4px;padding:12px}
-.cad input:focus{outline:2px solid var(--gold);outline-offset:1px}
-.cad fieldset{border:0;padding:0;margin:18px 0 0}
-.cad legend{font-size:16px;line-height:1.45;margin-bottom:8px;padding:0}
-.op{display:flex;gap:10px;align-items:center;font-size:17px;line-height:1.35;margin:8px 0;padding:12px;border:1px solid var(--hair);border-radius:4px;cursor:pointer;transition:border-color .2s,background .2s}
-.op:has(input:checked){border-color:var(--gold);background:rgba(201,161,90,.08)}
-.op input{accent-color:var(--gold);width:18px;height:18px;flex:none;margin:0}
-.op small{display:block;font-size:14px;color:var(--mut)}
-.btn{display:block;width:100%;margin-top:22px;font:inherit;font-weight:500;font-size:17px;text-align:center;text-decoration:none;background:var(--gold);color:var(--on);border:0;border-radius:999px;padding:15px 20px;cursor:pointer}
-.btn:active{transform:translateY(1px)}
-.erro{color:#f0a58f;font-size:15px;margin:12px 0 0;min-height:1em}
-.priv{font-size:13px;color:var(--mut);margin:12px 0 0;text-align:center}
+/* faixa corrida, igual à dos 3 Segredos */
+.faixa{background:#06141d;border-top:1px solid rgba(185,145,91,.45);border-bottom:1px solid rgba(185,145,91,.45);overflow:hidden;padding:6px 0;margin:0 -16px 32px}
+.faixa-trilho{display:flex;width:max-content;animation:rola 40s linear infinite}
+.faixa-trilho span{font-size:.66rem;font-weight:800;letter-spacing:.2em;color:var(--ouro);padding-right:16px;white-space:nowrap}
+@keyframes rola{to{transform:translateX(-50%)}}
 
-#presentes h2.tit{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:36px;line-height:1.1;margin:0 0 10px}
-.apoio{color:var(--mut);margin:0 0 22px}
-.pres{position:relative;background:var(--s1);border:1px solid var(--hair);border-radius:4px;padding:22px 16px 20px;margin:0 0 16px;
-  opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
-.pres.ve{opacity:1;transform:none}
-.num{font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
-.pres h3{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:28px;line-height:1.12;margin:0 0 10px}
-.pres p{font-size:17px}
-.pres audio{width:100%;margin:6px 0 10px}
-.dica{font-size:15px;color:var(--mut);border-left:2px solid var(--gold);padding-left:12px;margin:4px 0 0}
-.pres .btn{margin-top:8px}
-.nota{font-size:13px;color:var(--mut);margin-top:28px}
-.cv{margin-top:48px;padding-top:36px;border-top:1px solid var(--hair)}
-.cv h2{font-family:"Cormorant Garamond",serif;font-weight:500;font-size:36px;line-height:1.1;margin:0 0 20px}
-.cv img{display:block;width:100%;max-width:420px;height:auto;margin:0 auto 22px;border-radius:4px}
-.cv p{font-size:17px}
-footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
-@media (prefers-reduced-motion:reduce){.pres{transition:none;opacity:1;transform:none}}
-@media (min-width:600px){h1{font-size:52px}}
+.cad{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 18px}
+.cad h2{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;margin:0 0 6px;text-align:center}
+.cad label.c{display:block;font-size:.9rem;color:var(--txt-2);margin:18px 0 6px}
+.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
+.cad input:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.cad fieldset{border:0;padding:0;margin:20px 0 0}
+.cad legend{font-size:.95rem;font-weight:500;line-height:1.5;margin-bottom:10px;padding:0}
+.op{display:flex;gap:12px;align-items:center;font-size:1rem;line-height:1.35;margin:8px 0;padding:13px 14px;border:1px solid var(--borda);border-radius:10px;cursor:pointer;transition:border-color .25s,background .25s}
+.op:hover{border-color:rgba(185,145,91,.5)}
+.op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
+.op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
+.op small{display:block;font-size:.82rem;color:var(--txt-3)}
+
+/* botão em anel com o ícone girando (mesmo dos 3 Segredos) */
+.btn-ring{display:flex;align-items:center;gap:10px;width:100%;margin-top:24px;padding:6px 12px 6px 6px;font:inherit;background:none;
+  border:1px solid rgba(185,145,91,.49);border-radius:100px;text-decoration:none;color:inherit;cursor:pointer;transition:border-color .25s,transform .25s}
+.btn-face{flex:1;background:var(--ouro-btn);color:#0a1620;border-radius:100px;padding:15px 14px;font-family:var(--texto);font-weight:700;font-size:.8rem;line-height:1.25;text-transform:uppercase;letter-spacing:.01em;text-align:center;transition:background .25s}
+.btn-ring:hover{border-color:var(--ouro);transform:translateY(-2px)}
+.btn-ring:hover .btn-face{background:var(--ouro-claro)}
+.seta{display:inline-block;transition:transform .25s}
+.btn-ring:hover .seta{transform:translateX(4px)}
+.giro{width:30px;height:30px;flex:none;stroke:var(--ouro);stroke-width:2.6;stroke-linecap:round;fill:none}
+.giro g{transform-origin:20px 20px;animation:gira 9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.erro{color:#f0a58f;font-size:.9rem;margin:12px 0 0;min-height:1em;text-align:center}
+.priv{font-size:.8rem;color:var(--txt-3);margin:12px 0 0;text-align:center}
+
+#presentes h2.tit{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,5.4vw,1.8rem);line-height:1.25;margin:0 0 10px;text-align:center}
+.apoio{color:var(--txt-2);margin:0 0 26px;text-align:center}
+.pres{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:26px 18px 22px;margin:0 0 16px}
+.num{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 10px}
+.pres h3{font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.3;margin:0 0 12px}
+.pres p{font-size:.98rem}
+.dica{font-size:.9rem;color:var(--txt-2);border-left:2px solid var(--ouro);padding-left:12px;margin:18px 0 0}
+.pres .btn-ring{margin-top:18px}
+/* convite em cartão claro, como o "O que faz" dos 3 Segredos */
+.pres.claro{background:var(--claro);color:#0b1a24;border-color:transparent}
+.pres.claro em,.pres.claro .num{color:#9a7440}
+.nota{font-size:.78rem;color:var(--txt-3);margin-top:28px;text-align:center}
+
+/* mini currículo: cartão com a foto e o texto num vidro, como o "Quem vai te conduzir" */
+.cv{margin-top:56px;padding-top:44px;border-top:1px solid rgba(185,145,91,.14)}
+.cv h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,8vw,2.4rem);line-height:1.05;margin:0 0 22px;text-align:center}
+.cv-card{border:1px solid var(--borda);border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 78% 30%,rgba(24,69,96,.6),transparent 60%),linear-gradient(160deg,#031a26,#010c14)}
+.cv-card img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+.cv-vidro{margin:-56px 14px 14px;position:relative;background:rgba(255,255,255,.045);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--borda);border-radius:10px;padding:22px 18px}
+.cv-vidro p{font-size:.94rem;color:rgba(255,255,255,.85)}
+.cv-vidro p:last-child{margin:0}
+footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
+
+/* entrada ao rolar, mesma curva dos 3 Segredos */
+.revela{opacity:0;transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.visivel{opacity:1;transform:none}
+/* no celular o #010c14 vira preto (OLED); o marinho mais aberto dos 3 Segredos mantém o azul */
+@media (max-width:640px){:root{--bg:#041a2b;--card:linear-gradient(160deg,#08293d,#05202f)}.faixa{background:#062133}}
+@media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
 </style>
 </head>
 <body>
 <main>
-  <img class="marca" src="reset-marca.webp" alt="RE:SET · Reconfiguração do Sistema Emocional" width="800" height="240">
+  <img class="marca" src="reset-logo.webp" alt="RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
 
   <p class="eyebrow">Para terapeutas, experts e quem vive do próprio trabalho</p>
   <h1>Você já sabe o que fazer para crescer. <em>O que trava é a mente.</em></h1>
@@ -88,6 +125,11 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
     <img src="simone.webp" alt="Simone Carneiro" width="320" height="320">
     <p><b>Simone Carneiro</b>Graduada em Neurociências, pós em Neurologia e Neurociências · 25 anos em desenvolvimento humano e prática clínica · Criadora do Método RE:SET e coautora do livro "Mente de Alta Performance para Líderes Extraordinários"</p>
   </div>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
+    <span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span>
+    <span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span>
+  </div></div>
 
   <!-- CADASTRO ÚNICO -->
   <form class="cad" id="cad" novalidate>
@@ -112,7 +154,7 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
       <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
     </fieldset>
     <p class="erro" id="erro" role="alert"></p>
-    <button class="btn" type="submit">Quero receber o áudio</button>
+    <button class="btn-ring" type="submit"><span class="btn-face">Quero receber o áudio&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
     <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
   </form>
 
@@ -126,17 +168,17 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
       <h3>Áudio CALMA · 10 minutos na minha voz</h3>
       <p>Para ouvir antes de uma consulta ou de uma conversa de venda. Toque no botão, me mande a mensagem pronta e eu envio o áudio direto no seu WhatsApp.</p>
       <!-- O áudio chega numa conversa individual no WhatsApp dela (18/10). Número em WHATS_AUDIO, no script. -->
-      <a class="btn" id="btnAudio" href="#" target="_blank" rel="noopener">Receber o áudio no WhatsApp</a>
+      <a class="btn-ring" id="btnAudio" href="#" target="_blank" rel="noopener"><span class="btn-face">Receber o áudio no WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="dica">No fim, você aprende um gesto que guarda essa calma: na hora de falar o seu valor, junte o polegar e o indicador e respire fundo.</p>
     </article>
 
     <!-- Consulta só para quem marcou de R$ 5 mil para cima (FAIXAS_CONSULTA, no script).
          Um presente por isca (18/10): o Termostato tem a página dele, /diagnostico/?isca=1. -->
-    <article class="pres" id="cardConsulta" hidden>
+    <article class="pres claro" id="cardConsulta" hidden>
       <p class="num">Um convite para você</p>
       <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
       <p><span id="txtConsulta">Uma conversa comigo para olhar o seu caso de perto e descobrir o que faz a sua mente travar na hora de crescer.</span> Traga o que você percebeu ao ouvir o áudio.</p>
-      <a class="btn" href="../consulta/">Agendar pelo WhatsApp</a>
+      <a class="btn-ring" href="../consulta/"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
     <p class="nota">Não ouça o áudio dirigindo nem operando máquinas. Ele não substitui acompanhamento profissional.</p>
@@ -147,9 +189,13 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
   <section class="cv">
     <p class="eyebrow">Quem vai conversar com você</p>
     <h2 id="cvTit">Simone Carneiro</h2>
-    <img src="simone-retrato.webp" alt="Simone Carneiro" width="600" height="750" loading="lazy">
-    <p>Simone Carneiro é neurocientista e mentora de terapeutas e experts, graduada em Neurociências e em Coaching e Desenvolvimento Humano e pós-graduada em Neurologia e Neurociências, com 25 anos de experiência em desenvolvimento humano e prática clínica. É analista comportamental pelo Big Five Factor Model, o modelo de personalidade com maior respaldo científico, expert em PSYCH-K® e hipnoterapeuta Faixa Ouro. É criadora do Método RE:SET (Reconfiguração do Sistema Emocional), método autoral baseado em neurociência, e coautora do livro "Mente de Alta Performance para Líderes Extraordinários", da Literare Books International, distribuído no Brasil, na Europa, nos EUA e no Japão.</p>
-    <p>Sua missão é ajudar terapeutas a romper bloqueios emocionais, reconhecer seu valor e transformar seu potencial em uma carreira próspera, com liberdade, realização e alto impacto.</p>
+    <div class="cv-card">
+      <img src="simone-retrato.webp" alt="Simone Carneiro" width="600" height="750" loading="lazy">
+      <div class="cv-vidro">
+        <p>Simone Carneiro é neurocientista e mentora de terapeutas e experts, graduada em Neurociências e em Coaching e Desenvolvimento Humano e pós-graduada em Neurologia e Neurociências, com 25 anos de experiência em desenvolvimento humano e prática clínica. É analista comportamental pelo Big Five Factor Model, o modelo de personalidade com maior respaldo científico, expert em PSYCH-K® e hipnoterapeuta Faixa Ouro. É criadora do Método RE:SET (Reconfiguração do Sistema Emocional), método autoral baseado em neurociência, e coautora do livro "Mente de Alta Performance para Líderes Extraordinários", da Literare Books International, distribuído no Brasil, na Europa, nos EUA e no Japão.</p>
+        <p>Sua missão é ajudar terapeutas a romper bloqueios emocionais, reconhecer seu valor e transformar seu potencial em uma carreira próspera, com liberdade, realização e alto impacto.</p>
+      </div>
+    </div>
   </section>
 </main>
 <footer>Simone Carneiro · @sicarneironeurociencia</footer>
@@ -201,8 +247,12 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
     if (CONSULTA[lead.perfil]) document.getElementById('txtConsulta').textContent = CONSULTA[lead.perfil];
     document.getElementById('btnAudio').href = linkAudio(lead);
     document.getElementById('cardConsulta').hidden = FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1;
+    // os cartões entram um depois do outro, com a curva dos 3 Segredos
     var cards = pres.querySelectorAll('.pres:not([hidden])');
-    cards.forEach(function (c, i) { setTimeout(function () { c.classList.add('ve'); }, 120 + i * 160); });
+    cards.forEach(function (c, i) {
+      c.classList.add('revela');
+      setTimeout(function () { c.classList.add('visivel'); }, 120 + i * 180);
+    });
   }
 
   try {
@@ -241,6 +291,17 @@ footer{text-align:center;font-size:14px;color:var(--mut);padding:0 16px 28px}
     mostrar(lead);
     window.scrollTo({ top: pres.offsetTop - 16, behavior: 'smooth' });
   });
+
+  // Entrada suave ao rolar (mesmo efeito dos 3 Segredos)
+  if ('IntersectionObserver' in window) {
+    var alvos = document.querySelectorAll('.quem, .cad, .cv .eyebrow, .cv h2, .cv-card');
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) {
+        if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    alvos.forEach(function (el) { el.classList.add('revela'); obs.observe(el); });
+  }
 })();
 </script>
 </body>
