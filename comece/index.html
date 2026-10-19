@@ -43,11 +43,6 @@ main{max-width:600px;margin:0 auto;padding:0 16px 48px}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
 p{margin:0 0 14px}
 .lead{text-align:center;font-size:1.05rem}
-.quem{display:flex;gap:14px;align-items:center;margin:28px 0 32px;padding:16px;border:1px solid var(--borda);border-radius:14px;
-  background:rgba(255,255,255,.045);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-.quem img{width:64px;height:64px;border-radius:999px;flex:none;object-fit:cover;box-shadow:0 0 0 2px rgba(185,145,91,.45)}
-.quem p{margin:0;font-size:.86rem;line-height:1.5;color:var(--txt-2)}
-.quem b{display:block;color:var(--txt);font-weight:700;font-size:.95rem}
 
 /* faixa corrida, igual à dos 3 Segredos */
 .faixa{background:#06141d;border-top:1px solid rgba(185,145,91,.45);border-bottom:1px solid rgba(185,145,91,.45);overflow:hidden;padding:6px 0;margin:0 -16px 32px}
@@ -96,7 +91,7 @@ p{margin:0 0 14px}
 .nota{font-size:.78rem;color:var(--txt-3);margin-top:28px;text-align:center}
 
 /* mini currículo: cartão com a foto e o texto num vidro, como o "Quem vai te conduzir" */
-.cv{margin-top:56px;padding-top:44px;border-top:1px solid rgba(185,145,91,.14)}
+.cv{margin:36px 0 32px}
 .cv h2{font-family:var(--display);font-weight:700;text-transform:uppercase;font-size:clamp(1.6rem,8vw,2.4rem);line-height:1.05;margin:0 0 22px;text-align:center}
 .cv-card{border:1px solid var(--borda);border-radius:14px;overflow:hidden;background:radial-gradient(ellipse at 78% 30%,rgba(24,69,96,.6),transparent 60%),linear-gradient(160deg,#031a26,#010c14)}
 .cv-card img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
@@ -121,10 +116,19 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   <h1>Você já sabe o que fazer para crescer. <em>O que trava é a mente.</em></h1>
   <p class="lead">Não é falta de técnica nem de esforço. Na hora de falar o preço, aparecer ou fazer a oferta, a mente lê o crescimento como perigo e trava. Comece por aqui: o Áudio CALMA, 10 minutos na minha voz para ouvir antes de uma consulta ou de uma conversa de venda.</p>
 
-  <div class="quem">
-    <img src="simone.webp" alt="Simone Carneiro" width="320" height="320">
-    <p><b>Simone Carneiro</b>Graduada em Neurociências, pós em Neurologia e Neurociências · 25 anos em desenvolvimento humano e prática clínica · Criadora do Método RE:SET e coautora do livro "Mente de Alta Performance para Líderes Extraordinários"</p>
-  </div>
+  <!-- Mini currículo aprovado (copy-chief, 14/10): fonte em
+       Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. Não reescrever. -->
+  <section class="cv">
+    <p class="eyebrow">Quem vai conversar com você</p>
+    <h2 id="cvTit">Simone Carneiro</h2>
+    <div class="cv-card">
+      <img src="simone-retrato.webp" alt="Simone Carneiro" width="600" height="750">
+      <div class="cv-vidro">
+        <p>Simone Carneiro é neurocientista e mentora de terapeutas e experts, graduada em Neurociências e em Coaching e Desenvolvimento Humano e pós-graduada em Neurologia e Neurociências, com 25 anos de experiência em desenvolvimento humano e prática clínica. É analista comportamental pelo Big Five Factor Model, o modelo de personalidade com maior respaldo científico, expert em PSYCH-K® e hipnoterapeuta Faixa Ouro. É criadora do Método RE:SET (Reconfiguração do Sistema Emocional), método autoral baseado em neurociência, e coautora do livro "Mente de Alta Performance para Líderes Extraordinários", da Literare Books International, distribuído no Brasil, na Europa, nos EUA e no Japão.</p>
+        <p>Sua missão é ajudar terapeutas a romper bloqueios emocionais, reconhecer seu valor e transformar seu potencial em uma carreira próspera, com liberdade, realização e alto impacto.</p>
+      </div>
+    </div>
+  </section>
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
     <span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span><span>ÁUDIO CALMA · 10 MINUTOS NA MINHA VOZ · MÉTODO RE:SET ·</span>
@@ -184,19 +188,6 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <p class="nota">Não ouça o áudio dirigindo nem operando máquinas. Ele não substitui acompanhamento profissional.</p>
   </section>
 
-  <!-- Mini currículo aprovado (copy-chief, 14/10): fonte em
-       Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. Não reescrever. -->
-  <section class="cv">
-    <p class="eyebrow">Quem vai conversar com você</p>
-    <h2 id="cvTit">Simone Carneiro</h2>
-    <div class="cv-card">
-      <img src="simone-retrato.webp" alt="Simone Carneiro" width="600" height="750" loading="lazy">
-      <div class="cv-vidro">
-        <p>Simone Carneiro é neurocientista e mentora de terapeutas e experts, graduada em Neurociências e em Coaching e Desenvolvimento Humano e pós-graduada em Neurologia e Neurociências, com 25 anos de experiência em desenvolvimento humano e prática clínica. É analista comportamental pelo Big Five Factor Model, o modelo de personalidade com maior respaldo científico, expert em PSYCH-K® e hipnoterapeuta Faixa Ouro. É criadora do Método RE:SET (Reconfiguração do Sistema Emocional), método autoral baseado em neurociência, e coautora do livro "Mente de Alta Performance para Líderes Extraordinários", da Literare Books International, distribuído no Brasil, na Europa, nos EUA e no Japão.</p>
-        <p>Sua missão é ajudar terapeutas a romper bloqueios emocionais, reconhecer seu valor e transformar seu potencial em uma carreira próspera, com liberdade, realização e alto impacto.</p>
-      </div>
-    </div>
-  </section>
 </main>
 <footer>Simone Carneiro · @sicarneironeurociencia</footer>
 <script>
@@ -294,7 +285,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
   // Entrada suave ao rolar (mesmo efeito dos 3 Segredos)
   if ('IntersectionObserver' in window) {
-    var alvos = document.querySelectorAll('.quem, .cad, .cv .eyebrow, .cv h2, .cv-card');
+    var alvos = document.querySelectorAll('.cad, .cv .eyebrow, .cv h2, .cv-card');
     var obs = new IntersectionObserver(function (itens) {
       itens.forEach(function (it) {
         if (it.isIntersecting) { it.target.classList.add('visivel'); obs.unobserve(it.target); }
