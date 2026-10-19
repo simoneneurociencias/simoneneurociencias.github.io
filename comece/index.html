@@ -178,7 +178,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="num">Seu presente</p>
       <h3>Confiança na Oferta · 10 minutos na minha voz</h3>
       <p class="sub-card">Segurança na hora do preço, ansiedade em segundo plano</p>
-      <p>Para ouvir antes de uma consulta ou de uma conversa de venda. Toque no botão, me mande a mensagem pronta e eu envio o áudio direto no seu WhatsApp.</p>
+      <p><span id="usoAudio">Para ouvir antes de uma consulta ou de uma conversa de venda.</span> Toque no botão, me mande a mensagem pronta e eu envio o áudio direto no seu WhatsApp.</p>
       <!-- O áudio chega numa conversa individual no WhatsApp dela (18/10). Número em WHATS_AUDIO, no script. -->
       <a class="btn-ring" id="btnAudio" href="#" target="_blank" rel="noopener"><span class="btn-face">Receber o áudio no WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="dica">O áudio termina com algo que fica com você: um jeito de trazer essa confiança de volta na hora da oferta, sempre que precisar.</p>
@@ -223,7 +223,13 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var CONSULTA = {
     'Terapeuta': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de cobrar o que o seu atendimento vale.',
     'Expert': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de aparecer, lançar ou fazer a oferta.',
-    'Outra área': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de dar o próximo passo no seu trabalho.'
+    'Outra área': 'Uma conversa comigo para olhar o seu caso e descobrir o que faz a sua mente travar na hora de apresentar o preço ou cobrar pelo seu trabalho.'
+  };
+  // Para que serve o áudio, na língua de cada perfil (18/10: "consulta" e "atendimento" só para terapeuta)
+  var USO_AUDIO = {
+    'Terapeuta': 'Para ouvir antes de uma consulta ou de uma conversa de venda.',
+    'Expert': 'Para ouvir antes de uma conversa de venda ou de apresentar a sua oferta.',
+    'Outra área': 'Para ouvir antes de apresentar o preço, negociar ou cobrar pelo seu trabalho.'
   };
 
   // "gratuita até" o último dia do mês corrente, no horário de Brasília.
@@ -246,6 +252,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var primeiro = String(lead.nome || '').split(' ')[0];
     if (primeiro) document.getElementById('saud').textContent = 'Pronto, ' + primeiro + '. Falta só pedir o seu áudio.';
     if (CONSULTA[lead.perfil]) document.getElementById('txtConsulta').textContent = CONSULTA[lead.perfil];
+    if (USO_AUDIO[lead.perfil]) document.getElementById('usoAudio').textContent = USO_AUDIO[lead.perfil];
     document.getElementById('btnAudio').href = linkAudio(lead);
     document.getElementById('cardConsulta').hidden = FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1;
     // os cartões entram um depois do outro, com a curva dos 3 Segredos
