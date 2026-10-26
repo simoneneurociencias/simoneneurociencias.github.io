@@ -11,6 +11,8 @@
        B "Algo me trava na minha vida pessoal" (público clínico): um dos 7 temas.
      Os dois respondem a mesma pergunta de renda dela, com o mesmo corte:
        R$ 7 mil ou mais (7 a 10, 11 a 21, mais de 21) → consulta diagnóstica no WhatsApp (A1 / B1).
+         26/10: a faixa R$ 7 a 10 mil só vai para a consulta enquanto o produto do caminho não tem checkout;
+         com o link colado, ela passa para o produto (FAIXA_ENTRADA no script) e a consulta fica a partir de R$ 11 mil.
        Sem renda ou menos de R$ 7 mil → produto pelo checkout da Eduzz: A2 21 Dias para Vender com Segurança (R$ 97),
        B2 pack de áudios "Lugar Seguro" (nome provisório do copy-chief). Os checkouts ainda não existem: colar os links em CHECKOUT_A2 e CHECKOUT_B2.
      O áudio Confiança na Oferta NÃO aparece aqui (decisão de 19/10): mora em /confia/ e só
@@ -280,6 +282,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   // Corte da consulta (19/10, A e B): de R$ 7 mil para cima ("quem ganha de 7 a 10 mil consegue fazer a mentoria").
   // Sem renda ou menos de R$ 7 mil vai para o produto.
   var FAIXAS_CONSULTA = ['R$ 7 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+  // Faixa de entrada (decisão de 26/10): "R$ 7 mil a R$ 10 mil" vai para a consulta só enquanto o produto
+  // do caminho não existe. Com o checkout colado (CHECKOUT_A2 ou CHECKOUT_B2), essa faixa passa sozinha para
+  // o produto, que dá a consulta de bônus a quem completa. A consulta direta fica a partir de R$ 11 mil.
+  var FAIXA_ENTRADA = 'R$ 7 mil a R$ 10 mil';
 
   function primeiro(lead) { return String(lead.nome || '').trim().split(' ')[0]; }
   function wa(msg) { return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg); }
@@ -313,6 +319,8 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var nome = primeiro(lead);
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
     var card, consulta = FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1;
+    var checkout = lead.intencao === 'Vida pessoal' ? CHECKOUT_B2 : CHECKOUT_A2;
+    if (lead.faturamento === FAIXA_ENTRADA && checkout) consulta = false;
     // textos do B com o tema; "outro assunto" fica com a versão sem tema que está no HTML
     if (lead.tema && lead.tema !== 'outro assunto') {
       document.getElementById('txtB1').textContent = 'Uma conversa comigo, só sobre o seu caso, para entender o que faz a sua mente travar quando o assunto é ' + lead.tema + '. Você sai sabendo onde está a trava. E tudo fica só entre nós.';
