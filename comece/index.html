@@ -75,6 +75,9 @@ p{margin:0 0 14px}
 .op:hover{border-color:rgba(185,145,91,.5)}
 .op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
 .op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
+/* bolinhas das 2 opções "Algo me trava" (28/10): fundo azul, borda dourada */
+.op input[name=intencao]{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
+.op input[name=intencao]:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
 .op small{display:block;font-size:.82rem;color:var(--txt-3)}
 /* blocos que só abrem depois da 1ª pergunta */
 .cond{display:none}
