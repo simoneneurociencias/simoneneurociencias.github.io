@@ -194,10 +194,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <!-- 28/10: 1º quem a pessoa é, depois onde trava. Terapeuta ou expert também pode travar nas emoções,
          então quem é terapeuta/expert escolhe entre trabalho e emoções; quem não é vai direto para os temas. -->
     <fieldset>
-      <legend>O que você faz hoje?</legend>
+      <legend>Qual é a sua área de atuação?</legend>
       <label class="op"><input type="radio" name="perfil" value="Terapeuta"><span>Sou terapeuta<small>psicologia ou terapias, atendendo ou em formação</small></span></label>
       <label class="op"><input type="radio" name="perfil" value="Expert"><span>Sou expert<small>empreendo, tenho empresa ou faço gestão; curso, mentoria ou consultoria</small></span></label>
-      <label class="op"><input type="radio" name="perfil" value="Não"><span>Tenho outra profissão<small>ou não trabalho no momento</small></span></label>
+      <label class="op"><input type="radio" name="perfil" value="Não"><span>Outra área<small>ou não trabalho no momento</small></span></label>
     </fieldset>
 
     <div class="cond" id="blocoA">
@@ -490,7 +490,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var perfil = form.querySelector('input[name=perfil]:checked');
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
-    if (!perfil) { erro.textContent = 'Me conta o que você faz hoje.'; return; }
+    if (!perfil) { erro.textContent = 'Me conta a sua área de atuação.'; return; }
     var intencao = perfil.value === 'Não' ? 'Vida pessoal' : (form.querySelector('input[name=intencao]:checked') || {}).value;
     if (!intencao) { erro.textContent = 'Escolhe onde a trava pesa mais hoje.'; return; }
     var lead = { nome: nome, whatsapp: whats, intencao: intencao };
