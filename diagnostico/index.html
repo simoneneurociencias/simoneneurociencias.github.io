@@ -494,14 +494,14 @@
       <div class="campo">
         <!-- Mesma pergunta de renda da /comece/ (pedido da Simone, 18/10), nas palavras dela:
              as duas iscas gravam a mesma medida na planilha. -->
-        <label for="faturamento">Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</label>
+        <label for="faturamento">Quanto você ganha por mês hoje? (É só para eu indicar o melhor caminho para você.)</label>
         <select id="faturamento">
           <option value="" disabled selected>Selecione...</option>
           <option value="Sem renda">Sem renda</option>
-          <option value="Menos de R$ 7 mil">Menos de R$ 7 mil</option>
-          <option value="R$ 7 mil a R$ 10 mil">R$ 7 mil a R$ 10 mil</option>
-          <option value="R$ 11 mil a R$ 21 mil">R$ 11 mil a R$ 21 mil</option>
-          <option value="Mais de R$ 21 mil">Mais de R$ 21 mil</option>
+          <option value="Até R$ 3 mil">Até R$ 3 mil</option>
+          <option value="R$ 3 mil a R$ 5 mil">R$ 3 mil a R$ 5 mil</option>
+          <option value="R$ 5 mil a R$ 10 mil">R$ 5 mil a R$ 10 mil</option>
+          <option value="Mais de R$ 10 mil">Mais de R$ 10 mil</option>
         </select>
       </div>
       <button class="btn" id="liberarBtn" type="button">Liberar meu resultado</button>
@@ -973,7 +973,7 @@
   // 18/10: a consulta é a mesma da /comece/, pelo WhatsApp (link curto /consulta/).
   const AGENDA_URL = "../consulta/";
 
-  // Faixas que liberam a agenda (corte de 19/10). Abaixo de R$ 7 mil a conversa individual não
+  // Faixas que liberam a agenda (corte de 28/10, renda de hoje). Até R$ 3 mil a conversa individual não
   // se paga, então o convite nem aparece: some sem dizer que a pessoa foi
   // recusada.
   // 28/10: + faixas da pergunta nova da /comece/ (renda de hoje, consulta a partir de R$ 3 mil),
