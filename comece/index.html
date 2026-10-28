@@ -58,7 +58,17 @@ p{margin:0 0 14px}
 .lead{text-align:center;font-size:1.05rem}
 .travas{display:grid;gap:12px;margin:14px 0 18px}
 @media (min-width:560px){.travas{grid-template-columns:1fr 1fr}}
-.trava-cx{background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left}
+.trava-cx{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left;
+  opacity:0;animation:trava-entra .9s cubic-bezier(.22,.61,.36,1) .35s forwards,trava-brilho 4.5s ease-in-out 1.6s infinite;transition:translate .35s ease,border-color .35s ease}
+.trava-cx+.trava-cx{animation-delay:.6s,3.85s}
+/* faixa de luz dourada que atravessa a caixa de tempos em tempos */
+.trava-cx::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(210,174,121,.16) 50%,transparent 65%);transform:translateX(-120%);animation:trava-luz 4.5s ease-in-out 1.6s infinite;pointer-events:none}
+.trava-cx+.trava-cx::before{animation-delay:3.85s}
+.trava-cx:hover{translate:0 -3px;border-color:var(--ouro)}
+@keyframes trava-entra{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes trava-brilho{0%,100%{box-shadow:0 0 0 rgba(185,145,91,0)}50%{box-shadow:0 0 22px rgba(185,145,91,.18)}}
+@keyframes trava-luz{0%{transform:translateX(-120%)}45%,100%{transform:translateX(120%)}}
+@media (prefers-reduced-motion:reduce){.trava-cx{opacity:1;animation:none}.trava-cx::before{animation:none;display:none}}
 .trava-cx p{margin:0;font-size:1rem;line-height:1.45}
 .trava-cx .trava-tit{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);margin:0 0 6px}
 
