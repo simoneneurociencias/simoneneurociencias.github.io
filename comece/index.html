@@ -250,6 +250,15 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <a class="btn-ring" id="btnB2" href="#"><span class="btn-face">Quero o meu Lugar Seguro&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
+
+    <!-- B3: vida pessoal + tema "dinheiro e escassez" + abaixo de R$ 11 mil → áudio Prosperidade Segura (R$ 37), checkout CHECKOUT_B3 (27/10) -->
+    <article class="pres" id="cardB3" hidden>
+      <p class="num">Para o medo de faltar</p>
+      <h3>Prosperidade Segura · áudio de auto-hipnose</h3>
+      <p>Gravei este áudio para quando o dinheiro parece nunca sobrar e o medo de faltar aparece. São 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a crença de escassez que faz a sua mente travar. Tudo por R$ 37.</p>
+      <a class="btn-ring" id="btnB3" href="#"><span class="btn-face">Quero ouvir por R$ 37&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+      <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </article>
   </section>
 
 </main>
@@ -266,7 +275,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   // Checkouts da Eduzz. AINDA NÃO EXISTEM (19/10): quando a Simone cadastrar os produtos, colar os links.
   // Enquanto estiverem vazios, o botão do cartão não leva a lugar nenhum (o lead já ficou na planilha).
   var CHECKOUT_A2 = '';   // 21 Dias para Vender com Segurança (R$ 97), terapeuta ou expert
-  var CHECKOUT_B2 = '';   // pack de áudios, vida pessoal
+  var CHECKOUT_B2 = '';   // pack de áudios, vida pessoal (temas sem áudio próprio)
+  // Prosperidade Segura (R$ 37), só para o tema dinheiro e escassez (27/10). Os outros temas seguem no B2.
+  var CHECKOUT_B3 = 'https://chk.eduzz.com/60E2OX3KW3';
+  var TEMA_B3 = 'dinheiro e escassez';
 
   var MSG_A1 = {
     'Terapeuta': 'Oi, Simone! Sou {nome}, terapeuta. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.',
@@ -319,7 +331,8 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var nome = primeiro(lead);
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
     var card, consulta = FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1;
-    var checkout = lead.intencao === 'Vida pessoal' ? CHECKOUT_B2 : CHECKOUT_A2;
+    var b3 = lead.intencao === 'Vida pessoal' && lead.tema === TEMA_B3;
+    var checkout = b3 ? CHECKOUT_B3 : lead.intencao === 'Vida pessoal' ? CHECKOUT_B2 : CHECKOUT_A2;
     if (lead.faturamento === FAIXA_ENTRADA && checkout) consulta = false;
     // textos do B com o tema; "outro assunto" fica com a versão sem tema que está no HTML
     if (lead.tema && lead.tema !== 'outro assunto') {
@@ -329,6 +342,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     if (lead.intencao === 'Vida pessoal' && consulta) {
       card = document.getElementById('cardB1');
       document.getElementById('btnB1').href = wa(MSG_B1.replace('{nome}', nome).replace('{tema}', lead.tema));
+    } else if (b3) {
+      card = document.getElementById('cardB3');
+      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro. O acesso chega no seu e-mail, para ouvir no celular ou no computador, sem download.';
+      document.getElementById('btnB3').href = CHECKOUT_B3;
     } else if (lead.intencao === 'Vida pessoal') {
       card = document.getElementById('cardB2');
       document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso aos áudios chega no seu WhatsApp.';
