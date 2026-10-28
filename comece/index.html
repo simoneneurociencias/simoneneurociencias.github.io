@@ -10,11 +10,9 @@
        A "Algo me trava como terapeuta ou expert" (o nicho dela): perfil Terapeuta ou Expert.
        B "Algo me trava na minha vida pessoal" (público clínico): um dos 7 temas.
      Os dois respondem a mesma pergunta de renda dela, com o mesmo corte:
-       R$ 7 mil ou mais (7 a 10, 11 a 21, mais de 21) → consulta diagnóstica no WhatsApp (A1 / B1).
-         26/10: a faixa R$ 7 a 10 mil só vai para a consulta enquanto o produto do caminho não tem checkout;
-         com o link colado, ela passa para o produto (FAIXA_ENTRADA no script) e a consulta fica a partir de R$ 11 mil.
-       Sem renda ou menos de R$ 7 mil → produto pelo checkout da Eduzz: A2 21 Dias para Vender com Segurança (R$ 97),
-       B2 pack de áudios "Lugar Seguro" (nome provisório do copy-chief). Os checkouts ainda não existem: colar os links em CHECKOUT_A2 e CHECKOUT_B2.
+       28/10: a pergunta é a renda de HOJE. R$ 3 mil ou mais (3 a 5, 5 a 10, mais de 10) → consulta diagnóstica no WhatsApp (A1 / B1).
+       Sem renda ou até R$ 3 mil → produto pelo checkout da Eduzz: A2 21 Dias para Vender com Segurança (R$ 97),
+       B2 pack de áudios "Lugar Seguro" (sem checkout ainda), B3 Prosperidade Segura (R$ 37, só tema dinheiro e escassez).
      O áudio Confiança na Oferta NÃO aparece aqui (decisão de 19/10): mora em /confia/ e só
      recebe quem comenta CONFIA. Versão anterior em index.html.antes-porta-unica.
      Copy do copy-chief (19/10). Pele da LP Os 3 Segredos (apps/3segredos). -->
@@ -194,14 +192,14 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     </div>
 
     <div class="cond" id="blocoRenda">
-      <!-- Pergunta de renda nas palavras da Simone (12/10): não reescrever. Vale para A e B (19/10). -->
+      <!-- Pergunta de renda de HOJE, aprovada pela Simone em 28/10 (texto do copy-chief). Vale para A e B. -->
       <fieldset>
-        <legend>Com base nos seus ganhos mensais hoje: se você destravasse e passasse a ganhar 2 vezes mais, quanto poderia faturar por mês?</legend>
+        <legend>Quanto você ganha por mês hoje? (É só para eu indicar o melhor caminho para você.)</legend>
         <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
-        <label class="op"><input type="radio" name="fat" value="Menos de R$ 7 mil"> Menos de R$ 7 mil</label>
-        <label class="op"><input type="radio" name="fat" value="R$ 7 mil a R$ 10 mil"> R$ 7 mil a R$ 10 mil</label>
-        <label class="op"><input type="radio" name="fat" value="R$ 11 mil a R$ 21 mil"> R$ 11 mil a R$ 21 mil</label>
-        <label class="op"><input type="radio" name="fat" value="Mais de R$ 21 mil"> Mais de R$ 21 mil</label>
+        <label class="op"><input type="radio" name="fat" value="Até R$ 3 mil"> Até R$ 3 mil</label>
+        <label class="op"><input type="radio" name="fat" value="R$ 3 mil a R$ 5 mil"> R$ 3 mil a R$ 5 mil</label>
+        <label class="op"><input type="radio" name="fat" value="R$ 5 mil a R$ 10 mil"> R$ 5 mil a R$ 10 mil</label>
+        <label class="op"><input type="radio" name="fat" value="Mais de R$ 10 mil"> Mais de R$ 10 mil</label>
       </fieldset>
     </div>
 
@@ -219,7 +217,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <h2 class="tit" id="saud">Obrigada. Agora eu sei por onde a gente começa.</h2>
     <p class="apoio" id="apoio">A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.</p>
 
-    <!-- A1: terapeuta/expert + R$ 7 mil ou mais (FAIXAS_CONSULTA, no script) -->
+    <!-- A1: terapeuta/expert + R$ 3 mil ou mais (FAIXAS_CONSULTA, no script) -->
     <article class="pres claro" id="cardA1" hidden>
       <p class="num">Um convite para você</p>
       <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
@@ -227,7 +225,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <a class="btn-ring" id="btnA1" href="#" target="_blank" rel="noopener"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
-    <!-- A2: terapeuta/expert + abaixo de R$ 7 mil → 21 Dias para Vender com Segurança (R$ 97), checkout CHECKOUT_A2.
+    <!-- A2: terapeuta/expert + até R$ 3 mil → 21 Dias para Vender com Segurança (R$ 97), checkout CHECKOUT_A2.
          Plano em Marketing-Os/produtos/venda-com-seguranca/PLANO.md. -->
     <article class="pres" id="cardA2" hidden>
       <p class="num">O começo ideal é por aqui</p>
@@ -236,7 +234,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <a class="btn-ring" id="btnA2" href="#"><span class="btn-face">Começar os 21 dias por R$ 97&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
-    <!-- B1: vida pessoal + R$ 7 mil ou mais → consulta diagnóstica sobre o tema -->
+    <!-- B1: vida pessoal + R$ 3 mil ou mais → consulta diagnóstica sobre o tema -->
     <article class="pres claro" id="cardB1" hidden>
       <p class="num">Um convite para você</p>
       <h3>Consulta diagnóstica · <em>gratuita até <span class="fim-mes">31/10</span></em></h3>
@@ -245,7 +243,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
 
-    <!-- B2: vida pessoal + abaixo de R$ 7 mil → pack de áudios, checkout CHECKOUT_B2 (produto ainda sem nome final nem preço) -->
+    <!-- B2: vida pessoal + até R$ 3 mil → pack de áudios, checkout CHECKOUT_B2 (produto ainda sem nome final nem preço) -->
     <article class="pres" id="cardB2" hidden>
       <p class="num">Um começo para você</p>
       <h3>Lugar Seguro · áudios de auto-hipnose</h3>
@@ -254,7 +252,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
 
-    <!-- B3: vida pessoal + tema "dinheiro e escassez" + abaixo de R$ 11 mil → áudio Prosperidade Segura (R$ 37), checkout CHECKOUT_B3 (27/10) -->
+    <!-- B3: vida pessoal + tema "dinheiro e escassez" + até R$ 3 mil → áudio Prosperidade Segura (R$ 37), checkout CHECKOUT_B3 (27/10) -->
     <article class="pres" id="cardB3" hidden>
       <p class="num">Para o medo de faltar</p>
       <h3>Prosperidade Segura · áudio de auto-hipnose</h3>
@@ -294,13 +292,14 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     'Terapeuta': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de cobrar o que o seu atendimento vale. Você sai sabendo onde está a trava.',
     'Expert': 'Uma conversa comigo, só sobre o seu caso, para descobrir o que faz a sua mente travar na hora de aparecer, lançar ou fazer a sua oferta. Você sai sabendo onde está a trava.'
   };
-  // Corte da consulta (19/10, A e B): de R$ 7 mil para cima ("quem ganha de 7 a 10 mil consegue fazer a mentoria").
-  // Sem renda ou menos de R$ 7 mil vai para o produto.
-  var FAIXAS_CONSULTA = ['R$ 7 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
-  // Faixa de entrada (decisão de 26/10): "R$ 7 mil a R$ 10 mil" vai para a consulta só enquanto o produto
-  // do caminho não existe. Com o checkout colado (CHECKOUT_A2 ou CHECKOUT_B2), essa faixa passa sozinha para
-  // o produto, que dá a consulta de bônus a quem completa. A consulta direta fica a partir de R$ 11 mil.
-  var FAIXA_ENTRADA = 'R$ 7 mil a R$ 10 mil';
+  // 28/10: a pergunta passou a ser a renda de HOJE (antes era "se ganhasse 2 vezes mais") e a consulta vale
+  // a partir de R$ 3 mil reais (mentoria R$ 7.497, parcelável). Abaixo disso, o produto do caminho.
+  // As 3 últimas faixas são da pergunta antiga, para quem já tinha cadastro salvo no celular.
+  var FAIXAS_CONSULTA = ['R$ 3 mil a R$ 5 mil', 'R$ 5 mil a R$ 10 mil', 'Mais de R$ 10 mil',
+    'R$ 7 mil a R$ 10 mil', 'R$ 11 mil a R$ 21 mil', 'Mais de R$ 21 mil'];
+  // Faixa de entrada (26/10, suspensa em 28/10): a faixa aqui ia para o produto quando o checkout existisse.
+  // Vazia = nenhuma faixa da consulta passa para o produto.
+  var FAIXA_ENTRADA = '';
 
   function primeiro(lead) { return String(lead.nome || '').trim().split(' ')[0]; }
   function wa(msg) { return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg); }
