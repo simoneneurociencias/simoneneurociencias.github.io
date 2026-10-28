@@ -498,10 +498,10 @@
         <select id="faturamento">
           <option value="" disabled selected>Selecione...</option>
           <option value="Sem renda">Sem renda</option>
-          <option value="Até R$ 3 mil">Até R$ 3 mil</option>
-          <option value="R$ 3 mil a R$ 5 mil">R$ 3 mil a R$ 5 mil</option>
-          <option value="R$ 5 mil a R$ 10 mil">R$ 5 mil a R$ 10 mil</option>
-          <option value="Mais de R$ 10 mil">Mais de R$ 10 mil</option>
+          <option value="Menos de R$ 3 mil">Menos de R$ 3 mil</option>
+          <option value="De R$ 3 mil a R$ 4.999">De R$ 3 mil a R$ 4.999</option>
+          <option value="De R$ 5 mil a R$ 9.999">De R$ 5 mil a R$ 9.999</option>
+          <option value="R$ 10 mil ou mais">R$ 10 mil ou mais</option>
         </select>
       </div>
       <button class="btn" id="liberarBtn" type="button">Liberar meu resultado</button>
@@ -973,16 +973,16 @@
   // 18/10: a consulta é a mesma da /comece/, pelo WhatsApp (link curto /consulta/).
   const AGENDA_URL = "../consulta/";
 
-  // Faixas que liberam a agenda (corte de 28/10, renda de hoje). Até R$ 3 mil a conversa individual não
+  // Faixas que liberam a agenda (corte de 28/10, renda de hoje). Abaixo de R$ 5 mil a conversa individual não
   // se paga, então o convite nem aparece: some sem dizer que a pessoa foi
   // recusada.
-  // 28/10: + faixas da pergunta nova da /comece/ (renda de hoje, consulta a partir de R$ 3 mil),
-  // que chegam aqui pelo cadastro salvo (reset_lead).
+  // 28/10: renda de hoje, consulta a partir de R$ 5 mil. As 4 últimas são de versões anteriores
+  // (cadastro salvo da /comece/, reset_lead); na pergunta do dobro, 11 a 21 mil = 5,5 a 10,5 mil de hoje.
   const FATURAMENTO_QUALIFICA = [
-    'R$ 3 mil a R$ 5 mil',
+    'De R$ 5 mil a R$ 9.999',
+    'R$ 10 mil ou mais',
     'R$ 5 mil a R$ 10 mil',
     'Mais de R$ 10 mil',
-    'R$ 7 mil a R$ 10 mil',
     'R$ 11 mil a R$ 21 mil',
     'Mais de R$ 21 mil'
   ];
