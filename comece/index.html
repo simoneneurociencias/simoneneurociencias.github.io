@@ -9,7 +9,7 @@
      (link da bio, seguidor novo, direct, WhatsApp). A 1ª pergunta separa pela intenção (19/10):
        A "Algo me trava como terapeuta ou expert" (o nicho dela): perfil Terapeuta ou Expert.
        B "Algo me trava na minha vida pessoal" (público clínico): um dos 6 temas dos áudios (28/10: ansiedade, medos, sono, saúde, relacionamentos, dinheiro)
-       ou "Outro assunto", que pede um texto livre e manda direto para o WhatsApp dela (cartão B5).
+       Sem "Outro assunto": WhatsApp só para a consulta (renda de R$ 5 mil ou mais).
      Os dois respondem a mesma pergunta de renda dela, com o mesmo corte:
        28/10: a pergunta é a renda de HOJE. R$ 5 mil ou mais (5 a 9.999, 10 mil ou mais) → consulta diagnóstica no WhatsApp (A1 / B1).
        Sem renda ou menos de R$ 5 mil → produto pelo checkout da Eduzz: A2 21 Dias para Vender com Segurança (R$ 97),
@@ -66,8 +66,7 @@ p{margin:0 0 14px}
 .cad{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 18px}
 .cad h2{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;margin:0 0 6px;text-align:center}
 .cad label.c{display:block;font-size:.9rem;color:var(--txt-2);margin:18px 0 6px}
-.cad textarea{resize:vertical;line-height:1.4}
-.cad input[type=text],.cad input[type=tel],.cad textarea{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
+.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
 .cad input:focus{outline:2px solid var(--ouro);outline-offset:1px}
 .cad fieldset{border:0;padding:0;margin:20px 0 0}
 .cad legend{font-size:.95rem;font-weight:500;line-height:1.5;margin-bottom:10px;padding:0}
@@ -189,20 +188,14 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <!-- Autolesão fica dentro de "Outro assunto" (copy-chief, 19/10): nada exposto na lista. -->
       <fieldset>
         <legend>O que mais pesa para você hoje?</legend>
-        <!-- 28/10: os 6 temas da regra dos áudios (1 áudio de R$ 37 por tema) + "Outro assunto" com campo livre -->
+        <!-- 28/10: só os 6 temas da regra dos áudios (1 áudio de R$ 37 por tema). Sem "Outro assunto" nem campo livre (decisão da Simone). -->
         <label class="op"><input type="radio" name="tema" value="ansiedade"><span>Ansiedade<small>mente acelerada, preocupação que não para</small></span></label>
         <label class="op"><input type="radio" name="tema" value="medos"><span>Medos<small>pânico, fobias, medo que paralisa</small></span></label>
         <label class="op"><input type="radio" name="tema" value="sono"><span>Sono<small>noites sem dormir, mente que não desliga</small></span></label>
         <label class="op"><input type="radio" name="tema" value="saúde"><span>Saúde<small>sintomas que o exame não explica</small></span></label>
         <label class="op"><input type="radio" name="tema" value="relacionamentos"><span>Relacionamentos<small>casal, família, padrões que se repetem</small></span></label>
         <label class="op"><input type="radio" name="tema" value="dinheiro e escassez"><span>Dinheiro<small>dinheiro que nunca sobra, medo de faltar</small></span></label>
-        <label class="op"><input type="radio" name="tema" value="outro assunto"><span>Outro assunto<small>até o que é difícil de dizer</small></span></label>
       </fieldset>
-      <!-- "Outro assunto": a pessoa escreve e o texto vai pronto para o WhatsApp da Simone (cartão B5) -->
-      <div class="cond" id="blocoOutro">
-        <label class="c" for="outroTxt">Me conta, em poucas palavras, o que está pesando</label>
-        <textarea id="outroTxt" rows="3" maxlength="500" placeholder="Escreve do seu jeito. Só eu vou ler."></textarea>
-      </div>
     </div>
 
     <div class="cond" id="blocoRenda">
@@ -285,15 +278,6 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="total" id="b4Total"></p>
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
-
-    <!-- B5: vida pessoal + "Outro assunto" (qualquer renda) → o texto que a pessoa escreveu vai pronto para o WhatsApp da Simone (28/10) -->
-    <article class="pres claro" id="cardB5" hidden>
-      <p class="num">Me conta por lá</p>
-      <h3>Uma conversa comigo pelo WhatsApp</h3>
-      <p>O que você escreveu já vai na mensagem. Eu mesma leio e respondo por lá, e tudo fica só entre nós.</p>
-      <a class="btn-ring" id="btnB5" href="#" target="_blank" rel="noopener"><span class="btn-face">Enviar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
-      <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
-    </article>
   </section>
 
 </main>
@@ -327,7 +311,6 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     'saúde': { nome: '', checkout: '' },            // sem áudio ainda
     'relacionamentos': { nome: '', checkout: '' }   // vida-pessoal-relacionamentos
   };
-  var MSG_B5 = 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. O que mais pesa para mim hoje: {texto}';
   var TXT_B4 = {
     pergunta: 'O que mais pesa para você hoje? (Pode marcar mais de um.)',
     num: 'Para cada trava que você marcou', tit: 'Seus áudios de auto-hipnose',
@@ -384,14 +367,6 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       erro.textContent = '';
     });
   });
-  // "Outro assunto" abre o campo de texto
-  var blocoOutro = document.getElementById('blocoOutro');
-  form.querySelectorAll('input[name=tema]').forEach(function (r) {
-    r.addEventListener('change', function () {
-      blocoOutro.classList.toggle('on', !!form.querySelector('input[name=tema][value="outro assunto"]:checked'));
-    });
-  });
-
   function mostrar(lead) {
     form.hidden = true;
     pres.hidden = false;
@@ -407,11 +382,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       document.getElementById('txtB2').textContent = 'Áudios de auto-hipnose guiados por mim. O primeiro ajuda você a reconhecer as crenças que fazem a sua mente travar e a reconfigurar cada uma. Os outros são por tema, e um deles é sobre ' + lead.tema + '. Ele vai te ajudar, te preparar e te fazer bem. Depois você me conta como foi.';
     }
     var compraveis = (MULTI_TEMAS && lead.temas || []).filter(function (t) { return AUDIOS[t] && AUDIOS[t].checkout; });
-    if (lead.intencao === 'Vida pessoal' && lead.outro) {
-      card = document.getElementById('cardB5');
-      document.getElementById('apoio').textContent = 'A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.';
-      document.getElementById('btnB5').href = wa(MSG_B5.replace('{nome}', nome).replace('{texto}', lead.outro));
-    } else if (lead.intencao === 'Vida pessoal' && consulta) {
+    if (lead.intencao === 'Vida pessoal' && consulta) {
       card = document.getElementById('cardB1');
       document.getElementById('btnB1').href = wa(MSG_B1.replace('{nome}', nome).replace('{tema}', lead.tema));
     } else if (lead.intencao === 'Vida pessoal' && compraveis.length) {
@@ -494,12 +465,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       var temas = Array.prototype.map.call(form.querySelectorAll('input[name=tema]:checked'), function (i) { return i.value; });
       if (!temas.length) { erro.textContent = 'Escolhe o assunto que mais pesa hoje.'; return; }
       if (MULTI_TEMAS) lead.temas = temas;
-      lead.tema = emLista(temas);
-      if (temas.indexOf('outro assunto') !== -1) {
-        lead.outro = document.getElementById('outroTxt').value.trim().replace(/\s+/g, ' ');
-        if (lead.outro.length < 3) { erro.textContent = 'Me conta em poucas palavras o que está pesando.'; return; }
-      }
-    }
+      lead.tema = emLista(temas);    }
     var fat = form.querySelector('input[name=fat]:checked');
     if (!fat) { erro.textContent = 'Escolhe uma das opções de faturamento.'; return; }
     lead.faturamento = fat.value;
@@ -513,7 +479,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Porta única', isca: true, nome: nome, email: '',
         whatsapp: whats, faturamento: lead.faturamento,
-        origem: porta + ' · ' + lead.intencao + ' · ' + (lead.perfil || lead.tema) + (lead.outro ? ': ' + lead.outro : ''),
+        origem: porta + ' · ' + lead.intencao + ' · ' + (lead.perfil || lead.tema),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).catch(function () {});
