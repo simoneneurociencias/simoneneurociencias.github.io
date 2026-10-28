@@ -90,8 +90,8 @@ p{margin:0 0 14px}
 .op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
 .op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
 /* bolinhas das 2 opções "Algo me trava" (28/10): fundo azul, borda dourada */
-.op input[name=intencao]{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
-.op input[name=intencao]:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
+.op input[name=intencao],.op input[name=perfil]{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
+.op input[name=intencao]:checked,.op input[name=perfil]:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
 .op small{display:block;font-size:.82rem;color:var(--txt-3)}
 /* blocos que só abrem depois da 1ª pergunta */
 .cond{display:none}
@@ -191,17 +191,20 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   <!-- CADASTRO: a 1ª pergunta abre o bloco A (perfil) ou o B (tema); a renda vale para os dois -->
   <form class="cad" id="cad" novalidate>
     <h2>Me conta o que trava você</h2>
+    <!-- 28/10: 1º quem a pessoa é, depois onde trava. Terapeuta ou expert também pode travar nas emoções,
+         então quem é terapeuta/expert escolhe entre trabalho e emoções; quem não é vai direto para os temas. -->
     <fieldset>
-      <legend>Onde você sente mais a trava hoje?</legend>
-      <label class="op"><input type="radio" name="intencao" value="Trabalho"><span>Algo me trava como terapeuta ou expert<small>Na hora de aparecer, crescer ou dizer o preço do que eu entrego</small></span></label>
-      <label class="op"><input type="radio" name="intencao" value="Vida pessoal"><span>Algo me trava na minha vida pessoal<small>Ansiedade, medos, sono, saúde, relacionamentos ou dinheiro</small></span></label>
+      <legend>Você é terapeuta ou expert?</legend>
+      <label class="op"><input type="radio" name="perfil" value="Terapeuta"><span>Sim, sou terapeuta<small>psicologia ou terapias, atendendo ou em formação</small></span></label>
+      <label class="op"><input type="radio" name="perfil" value="Expert"><span>Sim, sou expert<small>curso, mentoria ou consultoria</small></span></label>
+      <label class="op"><input type="radio" name="perfil" value="Não"><span>Não sou terapeuta nem expert<small>tenho outra profissão ou não trabalho no momento</small></span></label>
     </fieldset>
 
     <div class="cond" id="blocoA">
       <fieldset>
-        <legend>Você é:</legend>
-        <label class="op"><input type="radio" name="perfil" value="Terapeuta"><span>Terapeuta<small>psicologia ou terapias, atendendo ou em formação</small></span></label>
-        <label class="op"><input type="radio" name="perfil" value="Expert"><span>Expert<small>curso, mentoria ou consultoria</small></span></label>
+        <legend>Onde a trava pesa mais hoje?</legend>
+        <label class="op"><input type="radio" name="intencao" value="Trabalho"><span>No meu trabalho<small>cobrar, aparecer, vender ou crescer</small></span></label>
+        <label class="op"><input type="radio" name="intencao" value="Vida pessoal"><span>Nas minhas emoções e na minha saúde<small>ansiedade, medos, sono, saúde, relacionamentos ou dinheiro</small></span></label>
       </fieldset>
     </div>
 
@@ -379,10 +382,21 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
   var blocoA = document.getElementById('blocoA'), blocoB = document.getElementById('blocoB'), blocoRenda = document.getElementById('blocoRenda');
 
-  // a 1ª pergunta abre só o bloco do caminho escolhido
+  // 1ª pergunta (perfil): terapeuta/expert abre "onde trava"; "Não" vai direto para os temas
+  form.querySelectorAll('input[name=perfil]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      var nao = r.value === 'Não';
+      blocoA.classList.toggle('on', !nao);
+      if (nao) form.querySelectorAll('input[name=intencao]').forEach(function (i) { i.checked = false; });
+      var vida = nao || !!form.querySelector('input[name=intencao][value="Vida pessoal"]:checked');
+      blocoB.classList.toggle('on', vida);
+      blocoRenda.classList.toggle('on', nao || !!form.querySelector('input[name=intencao]:checked'));
+      erro.textContent = '';
+    });
+  });
+  // 2ª pergunta (onde trava): emoções abre os temas
   form.querySelectorAll('input[name=intencao]').forEach(function (r) {
     r.addEventListener('change', function () {
-      blocoA.classList.toggle('on', r.value === 'Trabalho');
       blocoB.classList.toggle('on', r.value === 'Vida pessoal');
       blocoRenda.classList.add('on');
       erro.textContent = '';
@@ -473,16 +487,15 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var intencao = form.querySelector('input[name=intencao]:checked');
+    var perfil = form.querySelector('input[name=perfil]:checked');
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
-    if (!intencao) { erro.textContent = 'Escolhe uma das duas: como terapeuta ou expert, ou na vida pessoal.'; return; }
-    var lead = { nome: nome, whatsapp: whats, intencao: intencao.value };
-    if (intencao.value === 'Trabalho') {
-      var perfil = form.querySelector('input[name=perfil]:checked');
-      if (!perfil) { erro.textContent = 'Escolhe se você é terapeuta ou expert.'; return; }
-      lead.perfil = perfil.value;
-    } else {
+    if (!perfil) { erro.textContent = 'Me conta se você é terapeuta, expert ou não.'; return; }
+    var intencao = perfil.value === 'Não' ? 'Vida pessoal' : (form.querySelector('input[name=intencao]:checked') || {}).value;
+    if (!intencao) { erro.textContent = 'Escolhe onde a trava pesa mais hoje.'; return; }
+    var lead = { nome: nome, whatsapp: whats, intencao: intencao };
+    if (perfil.value !== 'Não') lead.perfil = perfil.value;
+    if (intencao === 'Vida pessoal') {
       var temas = Array.prototype.map.call(form.querySelectorAll('input[name=tema]:checked'), function (i) { return i.value; });
       if (!temas.length) { erro.textContent = 'Escolhe o assunto que mais pesa hoje.'; return; }
       if (MULTI_TEMAS) lead.temas = temas;
@@ -500,7 +513,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Porta única', isca: true, nome: nome, email: '',
         whatsapp: whats, faturamento: lead.faturamento,
-        origem: porta + ' · ' + lead.intencao + ' · ' + (lead.perfil || lead.tema),
+        origem: porta + ' · ' + lead.intencao + ' · ' + [lead.perfil, lead.tema].filter(Boolean).join(' · '),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).catch(function () {});
