@@ -102,6 +102,12 @@ p{margin:0 0 14px}
 .pres h3{font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.3;margin:0 0 12px}
 .pres p{font-size:.98rem}
 .pres .btn-ring{margin-top:18px}
+/* lista de áudios do cartão B4 (vários temas) */
+.audios{list-style:none;margin:16px 0 0;padding:0}
+.audios li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--borda);font-size:.95rem}
+.audios a{flex:none;color:#10161b;background:var(--ouro-btn);border-radius:999px;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none}
+.audios .breve{flex:none;font-size:.8rem;color:var(--txt-3);text-align:right}
+.pres .total{margin-top:12px;font-weight:700;color:var(--ouro-claro)}
 .cvv{font-size:.82rem;color:var(--txt-2);margin:16px 0 0}
 /* convite em cartão claro, como o "O que faz" dos 3 Segredos */
 .pres.claro{background:var(--claro);color:#0b1a24;border-color:transparent}
@@ -261,6 +267,17 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <a class="btn-ring" id="btnB3" href="#"><span class="btn-face">Quero ouvir por R$ 37&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
+
+    <!-- B4 (desligado até MULTI_TEMAS = true, 28/10): vida pessoal com VÁRIOS temas marcados + menos de R$ 5 mil.
+         Lista 1 áudio de R$ 37 por tema marcado, cada um com o seu checkout (AUDIOS no script), e o total. -->
+    <article class="pres" id="cardB4" hidden>
+      <p class="num" id="b4Num"></p>
+      <h3 id="b4Tit"></h3>
+      <p id="b4Txt"></p>
+      <ul class="audios" id="b4Lista"></ul>
+      <p class="total" id="b4Total"></p>
+      <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </article>
   </section>
 
 </main>
@@ -281,6 +298,29 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   // Prosperidade Segura (R$ 37), só para o tema dinheiro e escassez (27/10). Os outros temas seguem no B2.
   var CHECKOUT_B3 = 'https://chk.eduzz.com/60E2OX3KW3';
   var TEMA_B3 = 'dinheiro e escassez';
+  // Vários temas na vida pessoal (pedido de 28/10): DESLIGADO até os áudios estarem prontos.
+  // Com true, os temas viram caixas de marcar e quem fica abaixo da consulta vê o cartão B4:
+  // 1 áudio de R$ 37 por tema marcado, cada um com o seu checkout. Tema sem checkout aparece como "em breve".
+  var MULTI_TEMAS = false;
+  var PRECO_AUDIO = 37;
+  var AUDIOS = {
+    'dinheiro e escassez': { nome: 'Prosperidade Segura', checkout: CHECKOUT_B3 },
+    'ansiedade e medos': { nome: '', checkout: '' },               // vida-pessoal-ansiedade
+    'tristeza e desânimo': { nome: '', checkout: '' },             // sem áudio ainda
+    'sono e saúde': { nome: '', checkout: '' },                    // vida-pessoal-insonia
+    'relacionamentos': { nome: '', checkout: '' },                 // vida-pessoal-relacionamentos
+    'autoestima': { nome: '', checkout: '' },                      // sem áudio ainda
+    'autossabotagem e procrastinação': { nome: '', checkout: '' }  // vida-pessoal-procrastinacao
+  };
+  var TXT_B4 = {
+    pergunta: 'O que mais pesa para você hoje? (Pode marcar mais de um.)',
+    num: 'Para cada trava que você marcou', tit: 'Seus áudios de auto-hipnose',
+    txt: 'Gravei um áudio para cada trava que você marcou. Cada um tem cerca de 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar o que faz a sua mente travar. Você escolhe por qual começar.',
+    total1: '1 áudio · R$ {total}', totalN: '{n} áudios · R$ {total}',
+    botao: 'Quero ouvir este', breve: 'Esse áudio ainda está sendo gravado.'
+  };
+  function rotulo(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
+  function emLista(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' e ' + a[a.length - 1]; }
 
   var MSG_A1 = {
     'Terapeuta': 'Oi, Simone! Sou {nome}, terapeuta. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.',
@@ -343,9 +383,37 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       document.getElementById('txtB1').textContent = 'Uma conversa comigo, só sobre o seu caso, para entender o que faz a sua mente travar quando o assunto é ' + lead.tema + '. Você sai sabendo onde está a trava. E tudo fica só entre nós.';
       document.getElementById('txtB2').textContent = 'Áudios de auto-hipnose guiados por mim. O primeiro ajuda você a reconhecer as crenças que fazem a sua mente travar e a reconfigurar cada uma. Os outros são por tema, e um deles é sobre ' + lead.tema + '. Ele vai te ajudar, te preparar e te fazer bem. Depois você me conta como foi.';
     }
+    var compraveis = (MULTI_TEMAS && lead.temas || []).filter(function (t) { return AUDIOS[t] && AUDIOS[t].checkout; });
     if (lead.intencao === 'Vida pessoal' && consulta) {
       card = document.getElementById('cardB1');
       document.getElementById('btnB1').href = wa(MSG_B1.replace('{nome}', nome).replace('{tema}', lead.tema));
+    } else if (lead.intencao === 'Vida pessoal' && compraveis.length) {
+      card = document.getElementById('cardB4');
+      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro. O acesso chega no seu e-mail, para ouvir no celular ou no computador, sem download.';
+      document.getElementById('b4Num').textContent = TXT_B4.num;
+      document.getElementById('b4Tit').textContent = TXT_B4.tit;
+      document.getElementById('b4Txt').textContent = TXT_B4.txt;
+      var lista = document.getElementById('b4Lista');
+      lista.textContent = '';
+      lead.temas.forEach(function (t) {
+        var a = AUDIOS[t], li = document.createElement('li'), nomeA = document.createElement('span');
+        nomeA.textContent = (a && a.nome) || rotulo(t);
+        li.appendChild(nomeA);
+        var acao;
+        if (a && a.checkout) {
+          acao = document.createElement('a');
+          acao.href = a.checkout;
+          acao.textContent = TXT_B4.botao;
+        } else {
+          acao = document.createElement('span');
+          acao.className = 'breve';
+          acao.textContent = TXT_B4.breve;
+        }
+        li.appendChild(acao);
+        lista.appendChild(li);
+      });
+      var n = compraveis.length, total = (n * PRECO_AUDIO).toLocaleString('pt-BR');
+      document.getElementById('b4Total').textContent = (n === 1 ? TXT_B4.total1 : TXT_B4.totalN).replace('{n}', n).replace('{total}', total);
     } else if (b3) {
       card = document.getElementById('cardB3');
       document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro. O acesso chega no seu e-mail, para ouvir no celular ou no computador, sem download.';
@@ -378,6 +446,12 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
 
+  // modo vários temas: as bolinhas viram caixas de marcar
+  if (MULTI_TEMAS) {
+    form.querySelectorAll('input[name=tema]').forEach(function (i) { i.type = 'checkbox'; });
+    document.querySelector('#blocoB legend').textContent = TXT_B4.pergunta;
+  }
+
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     var intencao = form.querySelector('input[name=intencao]:checked');
@@ -390,9 +464,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       if (!perfil) { erro.textContent = 'Escolhe se você é terapeuta ou expert.'; return; }
       lead.perfil = perfil.value;
     } else {
-      var tema = form.querySelector('input[name=tema]:checked');
-      if (!tema) { erro.textContent = 'Escolhe o assunto que mais pesa hoje.'; return; }
-      lead.tema = tema.value;
+      var temas = Array.prototype.map.call(form.querySelectorAll('input[name=tema]:checked'), function (i) { return i.value; });
+      if (!temas.length) { erro.textContent = 'Escolhe o assunto que mais pesa hoje.'; return; }
+      if (MULTI_TEMAS) lead.temas = temas;
+      lead.tema = emLista(temas);
     }
     var fat = form.querySelector('input[name=fat]:checked');
     if (!fat) { erro.textContent = 'Escolhe uma das opções de faturamento.'; return; }
