@@ -56,6 +56,11 @@ main{max-width:600px;margin:0 auto;padding:0 16px 48px}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
 p{margin:0 0 14px}
 .lead{text-align:center;font-size:1.05rem}
+.travas{display:grid;gap:12px;margin:14px 0 18px}
+@media (min-width:560px){.travas{grid-template-columns:1fr 1fr}}
+.trava-cx{background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left}
+.trava-cx p{margin:0;font-size:1rem;line-height:1.45}
+.trava-cx .trava-tit{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);margin:0 0 6px}
 
 /* faixa corrida, igual à dos 3 Segredos */
 .faixa{background:#06141d;border-top:1px solid rgba(185,145,91,.45);border-bottom:1px solid rgba(185,145,91,.45);overflow:hidden;padding:6px 0;margin:0 -16px 32px}
@@ -140,7 +145,13 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
   <p class="eyebrow">Como terapeuta, como expert ou na vida pessoal</p>
   <h1>Você sabe o que precisa mudar. <em>O que trava é a mente.</em></h1>
-  <p class="lead">A sua mente pode travar na hora de cobrar, de aparecer ou de crescer. Ou virar ansiedade, medo, noites sem dormir e problemas na saúde, no amor ou no dinheiro. Em menos de 1 minuto você me conta onde trava, e eu te mostro o próximo passo.</p>
+  <!-- 28/10: o parágrafo de abertura virou 2 caixas (pedido da Simone) -->
+  <p class="lead">A sua mente pode travar:</p>
+  <div class="travas">
+    <div class="trava-cx"><p class="trava-tit">Como terapeuta ou expert</p><p>Na hora de cobrar, de aparecer ou de crescer.</p></div>
+    <div class="trava-cx"><p class="trava-tit">Na vida pessoal</p><p>Virando ansiedade, medo, noites sem dormir e problemas na saúde, no amor ou no dinheiro.</p></div>
+  </div>
+  <p class="lead">Em menos de 1 minuto você me conta onde trava, e eu te mostro o próximo passo.</p>
 
   <!-- Mini currículo curto (pedido da Simone, 18/10: foto pequena e poucas linhas).
        Fatos do currículo aprovado em Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. -->
