@@ -421,7 +421,7 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){
   .marca-kicker{font-size:min(.72rem,1.7vh);letter-spacing:.28em;margin-bottom:min(10px,1.2vh)}
   .hero h1.h1-logo{margin-bottom:0}
-  .logo-3s{width:min(340px,82vw,40vh)}
+  .logo-3s{width:min(280px,68vw,31vh)}
   .hero .assinatura{font-size:min(1.7rem,7vw,3.6vh);margin:min(2px,.3vh) 0 0}
 }
 /* assinatura cursiva abaixo do título (28/10) */
