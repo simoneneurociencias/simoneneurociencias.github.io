@@ -656,3 +656,11 @@ em{font-style:normal;color:var(--ouro)}
   .hero .sub{margin-top:min(8px,1vh)}
   .hero .btn-ring{margin-top:min(12px,1.5vh)}
 }
+/* foto do hero mais um pouco maior (29/10): respiros do celular no mínimo, botão segue na 1ª tela */
+@media (min-width:901px){.hero-foto{max-width:540px;max-height:min(860px,90vh)}}
+@media (max-width:640px){
+  .hero{padding-top:min(8px,1vh);padding-bottom:min(4px,.5vh)}
+  .hero-foto{margin-top:0;margin-bottom:min(2px,.3vh)}
+  .hero .sub{margin-top:min(4px,.5vh);line-height:1.38}
+  .hero .btn-ring{margin-top:min(8px,1vh)}
+}
