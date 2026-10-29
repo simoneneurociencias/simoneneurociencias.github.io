@@ -55,11 +55,16 @@ main{max-width:600px;margin:0 auto;padding:0 16px 48px}
 /* assinatura cursiva abaixo da logo, mesma fonte da LP 3 Segredos: Petit Formal Script (29/10) */
 .assinatura{font-family:'Petit Formal Script',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(.88rem,3.4vw,1.08rem);line-height:1.3;text-align:center;margin:6px 0 26px;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .55s both}
 /* Trauma · Travas · Transformação: saiu da imagem (ficava fina e apagada pelo degradê) e virou texto (29/10) */
-.pilares{font-family:var(--texto);font-weight:700;font-size:clamp(.62rem,2.7vw,.8rem);letter-spacing:.28em;text-transform:uppercase;color:var(--ouro-claro);text-align:center;line-height:1.2;margin:max(-15.4vw,-86px) 0 0;padding-left:.28em;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .35s both}
+.pilares{font-family:var(--texto);font-weight:600;font-size:clamp(.56rem,2.3vw,.7rem);letter-spacing:.26em;text-transform:uppercase;color:var(--ouro);text-align:center;line-height:1.2;margin:8px 0 0;padding-left:.26em;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .35s both}
+/* 29/10: Reconfiguração do Sistema Emocional também saiu da imagem e tem mais destaque que a linha de baixo */
+.reconf{display:flex;align-items:center;gap:10px;margin:max(-20.5vw,-116px) 0 0;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .25s both}
+.reconf::before,.reconf::after{content:"";flex:1;min-width:10px;max-width:60px;height:1px;background:var(--ouro)}
+.reconf span{font-family:var(--texto);font-weight:700;font-size:clamp(.64rem,2.9vw,.9rem);letter-spacing:.12em;text-transform:uppercase;color:var(--txt);white-space:nowrap}
 .eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 16px;text-align:center}
 h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
 p{margin:0 0 14px}
 .lead{text-align:center;font-size:1.05rem}
+.lead-menor{font-size:.95rem}
 .travas{display:grid;gap:12px;margin:14px 0 18px}
 @media (min-width:560px){.travas{grid-template-columns:1fr 1fr}}
 .trava-cx{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left;
@@ -73,7 +78,7 @@ p{margin:0 0 14px}
 @keyframes trava-brilho{0%,100%{box-shadow:0 0 0 rgba(185,145,91,0)}50%{box-shadow:0 0 22px rgba(185,145,91,.18)}}
 @keyframes trava-luz{0%{transform:translateX(-120%)}45%,100%{transform:translateX(120%)}}
 @media (prefers-reduced-motion:reduce){.trava-cx{opacity:1;animation:none}.trava-cx::before{animation:none;display:none}}
-.trava-cx p{margin:0;font-size:1rem;line-height:1.45}
+.trava-cx p{margin:0;font-size:.95rem;line-height:1.45}
 .trava-cx .trava-tit{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);margin:0 0 6px}
 
 /* faixa corrida, igual à dos 3 Segredos */
@@ -164,13 +169,14 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 .revela.visivel{opacity:1;transform:none}
 /* no celular o #010c14 vira preto (OLED); o marinho mais aberto dos 3 Segredos mantém o azul */
 @media (max-width:640px){:root{--bg:#041a2b;--card:linear-gradient(160deg,#08293d,#05202f)}.faixa{background:#062133}}
-@media (prefers-reduced-motion:reduce){.pilares,.assinatura{animation:none}}
+@media (prefers-reduced-motion:reduce){.reconf,.pilares,.assinatura{animation:none}}
 @media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
 </style>
 </head>
 <body>
 <main>
-  <img class="marca" src="reset-logo.webp?v=2026-10-29" alt="Método RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
+  <img class="marca" src="reset-logo.webp?v=2026-10-29b" alt="Método RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
+  <p class="reconf"><span>Reconfiguração do Sistema Emocional</span></p>
   <p class="pilares">Trauma · Travas · Transformação</p>
   <p class="assinatura">por Simone Carneiro</p>
 
@@ -181,7 +187,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <div class="trava-cx"><p class="trava-tit">Como terapeuta ou expert</p><p>Na hora de cobrar, de aparecer ou de crescer.</p></div>
     <div class="trava-cx"><p class="trava-tit">Na vida pessoal</p><p>Virando ansiedade, medo, noites sem dormir e problemas na saúde, no amor ou no dinheiro.</p></div>
   </div>
-  <p class="lead">Em menos de 1 minuto você me conta onde trava, e eu te mostro o próximo passo.</p>
+  <p class="lead lead-menor">Em menos de 1 minuto você me conta onde trava, e eu te mostro o próximo passo.</p>
 
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho">
