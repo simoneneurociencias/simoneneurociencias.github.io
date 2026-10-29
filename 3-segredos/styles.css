@@ -422,10 +422,10 @@ em{font-style:normal;color:var(--ouro)}
   .marca-kicker{font-size:min(.72rem,1.7vh);letter-spacing:.28em;margin-bottom:min(10px,1.2vh)}
   .hero h1.h1-logo{margin-bottom:0}
   .logo-3s{width:min(280px,68vw,31vh)}
-  .hero .assinatura{font-size:min(1.7rem,7vw,3.6vh);margin:min(2px,.3vh) 0 0}
+  .hero .assinatura{font-size:min(1.45rem,6vw,3.1vh);margin:min(2px,.3vh) 0 0}
 }
 /* assinatura cursiva abaixo do título (28/10) */
-.assinatura{font-family:'Pinyon Script',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;margin:6px 0 22px}
+.assinatura{font-family:'Pinyon Script',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(1.55rem,2.7vw,2.1rem);line-height:1.1;margin:6px 0 22px}
 @media (max-width:900px){.assinatura{text-align:center;align-self:center}}
 /* respiro menor entre as seções (pedido dela em 30/09) */
 :root{--esp-sec:64px;--esp-bloco:34px}
