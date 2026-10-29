@@ -474,7 +474,9 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   }
 
   // só reaproveita cadastro feito AQUI e já com a renda nos dois caminhos (19/10)
+  // ?novo=1 apaga o cadastro guardado, para a Simone testar como visitante novo (29/10)
   try {
+    if (/[?&]novo=1/.test(location.search)) localStorage.removeItem(CHAVE);
     var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
     if (salvo && salvo.nome && salvo.intencao && salvo.faturamento) mostrar(salvo);
   } catch (e) {}
