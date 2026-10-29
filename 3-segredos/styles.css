@@ -425,7 +425,7 @@ em{font-style:normal;color:var(--ouro)}
   .hero .assinatura{font-size:min(1.7rem,7vw,3.6vh);margin:min(2px,.3vh) 0 0}
 }
 /* assinatura cursiva abaixo do título (28/10) */
-.assinatura{font-family:'Great Vibes',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;margin:6px 0 22px}
+.assinatura{font-family:'Pinyon Script',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.1;margin:6px 0 22px}
 @media (max-width:900px){.assinatura{text-align:center;align-self:center}}
 /* respiro menor entre as seções (pedido dela em 30/09) */
 :root{--esp-sec:64px;--esp-bloco:34px}
