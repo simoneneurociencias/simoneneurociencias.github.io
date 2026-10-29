@@ -645,3 +645,14 @@ em{font-style:normal;color:var(--ouro)}
 /* frase do método em 4 linhas no celular */
 @media (max-width:900px){.metodo-def{font-size:min(1.08rem,4.1vw)}}
 
+/* assinatura entra com o mesmo movimento do título, logo depois dele (29/10) */
+.assinatura{animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .55s both}
+@media (prefers-reduced-motion:reduce){.assinatura{animation:none}}
+/* foto do hero maior (29/10): no celular cresce com os respiros menores, tudo segue numa tela */
+@media (min-width:901px){.hero-foto{max-width:500px;max-height:min(800px,86vh)}}
+@media (max-width:640px){
+  .hero{padding-bottom:min(10px,1.2vh)}
+  .hero-foto{margin-bottom:min(4px,.5vh)}
+  .hero .sub{margin-top:min(8px,1vh)}
+  .hero .btn-ring{margin-top:min(12px,1.5vh)}
+}
