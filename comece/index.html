@@ -261,7 +261,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     <article class="pres" id="cardA2" hidden>
       <p class="num">O começo ideal é por aqui</p>
       <h3>21 Dias para Vender com Segurança</h3>
-      <p>Crescer é um processo estratégico. Para dar o próximo passo comigo, primeiro a gente cria a base: segurança na hora do preço e da oferta. São 21 dias de prática, com áudios guiados por mim, até essa segurança virar hábito. Quem completa os 21 dias ganha uma consulta diagnóstica comigo.</p>
+      <p>Crescer é um processo estratégico. Para dar o próximo passo comigo, primeiro a gente cria a base: segurança na hora do preço e da oferta. São 21 dias de prática, com áudios guiados por mim, até essa segurança virar hábito. Se depois você decidir entrar na minha mentoria, os R$ 97 entram como crédito no valor dela.</p>
       <a class="btn-ring" id="btnA2" href="#"><span class="btn-face">Começar os 21 dias por R$ 97&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     </article>
 
@@ -317,7 +317,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var WHATS = '5521972511809';
   // Checkouts da Eduzz. AINDA NÃO EXISTEM (19/10): quando a Simone cadastrar os produtos, colar os links.
   // Enquanto estiverem vazios, o botão do cartão não leva a lugar nenhum (o lead já ficou na planilha).
-  var CHECKOUT_A2 = '';   // 21 Dias para Vender com Segurança (R$ 97), terapeuta ou expert
+  var CHECKOUT_A2 = 'https://chk.eduzz.com/39ZR1ZN7WE';   // 21 Dias para Vender com Segurança (R$ 97), terapeuta ou expert
   var CHECKOUT_B2 = '';   // pack de áudios, vida pessoal (temas sem áudio próprio)
   // Prosperidade Segura (R$ 37), só para o tema dinheiro e escassez (27/10). Os outros temas seguem no B2.
   var CHECKOUT_B3 = 'https://chk.eduzz.com/60E2OX3KW3';
@@ -461,7 +461,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       document.getElementById('btnA1').href = wa((MSG_A1[lead.perfil] || MSG_A1.padrao).replace('{nome}', nome));
     } else {
       card = document.getElementById('cardA2');
-      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso chega no seu WhatsApp.';
+      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso aos áudios e ao caderno é liberado na hora.';
       document.getElementById('btnA2').href = CHECKOUT_A2 || '#';
     }
     card.hidden = false;
