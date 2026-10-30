@@ -312,10 +312,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   </section>
 
 
-  <!-- 29/10: currículo depois do cadastro (pedido da Simone); depois do envio fica logo abaixo do cartão do próximo passo -->
+  <!-- 29/10: currículo depois do cadastro (pedido da Simone); 30/10: escondido até o envio, aparece logo abaixo do cartão do próximo passo -->
   <!-- Mini currículo curto (pedido da Simone, 18/10: foto pequena e poucas linhas).
        Fatos do currículo aprovado em Documents\Simone\Marketing Digital\Simone Carneiro - mini currículo.txt. -->
-  <section class="cv">
+  <section class="cv" id="cv" hidden>
     <p class="eyebrow">Quem está com você nesse caminho</p>
     <div class="cv-card">
       <div class="cv-foto"><img src="simone-retrato.webp" alt="Simone Carneiro" width="560" height="954"></div>
@@ -434,6 +434,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   function mostrar(lead) {
     form.hidden = true;
     pres.hidden = false;
+    document.getElementById('cv').hidden = false;
     var nome = primeiro(lead);
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
     var card, consulta = FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1;
