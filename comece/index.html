@@ -355,6 +355,13 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   // Com true, os temas viram caixas de marcar e quem fica abaixo da consulta vê o cartão B4:
   // 1 áudio de R$ 37 por tema marcado, cada um com o seu checkout. Tema sem checkout aparece como "em breve".
   var MULTI_TEMAS = false;
+  // Lista de espera (30/10): enquanto CHECKOUT_B2 estiver vazio, os temas sem áudio gravado veem este cartão, sem botão
+  var TXT_ESPERA = {
+    num: 'Lista de espera',
+    tit: 'O seu áudio está a caminho',
+    txt: 'Estou preparando com todo o cuidado o áudio de auto-hipnose sobre {tema}. O seu nome já está na lista: assim que o áudio ficar pronto, eu te aviso pelo WhatsApp, antes de todo mundo.',
+    apoio: 'Tudo certo, o seu contato ficou guardado comigo. Você não precisa fazer mais nada.'
+  };
   var PRECO_AUDIO = 37;
   var AUDIOS = {
     'dinheiro e escassez': { nome: 'Prosperidade Segura', checkout: CHECKOUT_B3 },
@@ -371,6 +378,11 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     total1: '1 áudio · R$ {total}', totalN: '{n} áudios · R$ {total}',
     botao: 'Quero ouvir este', breve: 'Esse áudio ainda está sendo gravado.'
   };
+  // 30/10: vida pessoal abaixo da faixa da consulta, tema sem áudio gravado e sem CHECKOUT_B2 → lista de espera (sem botão)
+  function emEspera(lead) {
+    return lead.intencao === 'Vida pessoal' && FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1 &&
+      lead.tema !== TEMA_B3 && !CHECKOUT_B2 && !(MULTI_TEMAS && lead.temas);
+  }
   function rotulo(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
   function emLista(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' e ' + a[a.length - 1]; }
 
@@ -483,8 +495,16 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       document.getElementById('btnB3').href = CHECKOUT_B3;
     } else if (lead.intencao === 'Vida pessoal') {
       card = document.getElementById('cardB2');
-      document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso aos áudios chega no seu WhatsApp.';
-      document.getElementById('btnB2').href = CHECKOUT_B2 || '#';
+      if (CHECKOUT_B2) {
+        document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro, e o acesso aos áudios chega no seu WhatsApp.';
+        document.getElementById('btnB2').href = CHECKOUT_B2;
+      } else {
+        document.getElementById('apoio').textContent = TXT_ESPERA.apoio;
+        card.querySelector('.num').textContent = TXT_ESPERA.num;
+        card.querySelector('h3').textContent = TXT_ESPERA.tit;
+        document.getElementById('txtB2').textContent = TXT_ESPERA.txt.replace('{tema}', lead.tema || 'o que pesa para você');
+        document.getElementById('btnB2').style.display = 'none';
+      }
     } else if (consulta) {
       card = document.getElementById('cardA1');
       if (TXT_A1[lead.perfil]) document.getElementById('txtA1').textContent = TXT_A1[lead.perfil];
@@ -545,7 +565,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Porta única', isca: true, nome: nome, email: '',
         whatsapp: whats, faturamento: lead.faturamento,
-        origem: porta + ' · ' + lead.intencao + ' · ' + [lead.perfil, lead.tema].filter(Boolean).join(' · '),
+        origem: porta + ' · ' + lead.intencao + ' · ' + [lead.perfil, lead.tema].filter(Boolean).join(' · ') + (emEspera(lead) ? ' · lista de espera' : ''),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).catch(function () {});
