@@ -290,11 +290,12 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
 
-    <!-- B3: vida pessoal + tema "dinheiro e escassez" + menos de R$ 5 mil → áudio Prosperidade Segura (R$ 37), checkout CHECKOUT_B3 (27/10) -->
+    <!-- B3: vida pessoal + menos de R$ 5 mil → o áudio do tema (R$ 37). 27/10 só dinheiro (Prosperidade Segura);
+         30/10 os 6 temas, cada um com o seu checkout e textos no objeto AUDIOS do script -->
     <article class="pres" id="cardB3" hidden>
       <p class="num">Para o medo de faltar</p>
       <h3>Prosperidade Segura · áudio de auto-hipnose</h3>
-      <p>Gravei este áudio para quando o dinheiro parece nunca sobrar e o medo de faltar aparece. São 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a crença de escassez que faz a sua mente travar. Tudo por R$ 37.</p>
+      <p id="txtB3">Gravei este áudio para quando o dinheiro parece nunca sobrar e o medo de faltar aparece. São 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a crença de escassez que faz a sua mente travar. Tudo por R$ 37.</p>
       <a class="btn-ring" id="btnB3" href="#"><span class="btn-face">Quero ouvir por R$ 37&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
       <p class="cvv">Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </article>
@@ -363,13 +364,20 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     apoio: 'Tudo certo, o seu contato ficou guardado comigo. Você não precisa fazer mais nada.'
   };
   var PRECO_AUDIO = 37;
+  // 30/10: os 6 áudios no ar na Eduzz (R$ 37 cada, Eduzz Membros). num/txt = sobretítulo e texto do cartão B3.
   var AUDIOS = {
-    'dinheiro e escassez': { nome: 'Prosperidade Segura', checkout: CHECKOUT_B3 },
-    'ansiedade': { nome: '', checkout: '' },        // vida-pessoal-ansiedade
-    'medos': { nome: '', checkout: '' },            // sem áudio ainda
-    'sono': { nome: '', checkout: '' },             // vida-pessoal-insonia
-    'saúde': { nome: '', checkout: '' },            // sem áudio ainda
-    'relacionamentos': { nome: '', checkout: '' }   // vida-pessoal-relacionamentos
+    'dinheiro e escassez': { nome: 'Prosperidade Segura', checkout: CHECKOUT_B3, num: 'Para o medo de faltar',
+      txt: 'Gravei este áudio para quando o dinheiro parece nunca sobrar e o medo de faltar aparece. São 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a crença de escassez que faz a sua mente travar. Tudo por R$ 37.' },
+    'ansiedade': { nome: 'Mente Segura', checkout: 'https://chk.eduzz.com/89AX8RJO0D', num: 'Para a mente que não para',   // produto 3141535
+      txt: 'Gravei este áudio para quando a mente acelera e a preocupação toma conta. São 11 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a preocupação constante que faz a sua mente travar. Tudo por R$ 37.' },
+    'medos': { nome: 'Coragem Segura', checkout: 'https://chk.eduzz.com/39ZR78JOWE', num: 'Para o medo que paralisa',     // produto 3141543
+      txt: 'Gravei este áudio para quando o medo aparece maior do que a situação. São 11 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar a reação de medo que faz a sua mente travar. Tudo por R$ 37.' },
+    'sono': { nome: 'Sono Seguro', checkout: 'https://chk.eduzz.com/E9OG76K5WB', num: 'Para as noites sem dormir',         // produto 3141545
+      txt: 'Gravei este áudio para quando você deita e a mente continua ligada. São 13 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar o hábito da mente de acelerar na hora de dormir. No final, ele conduz você ao sono. Tudo por R$ 37.' },
+    'saúde': { nome: 'Cuidado Seguro', checkout: 'https://chk.eduzz.com/6W4GP3ZN0Z', num: 'Para os sinais do corpo',     // produto 3141546
+      txt: 'Gravei este áudio para quando o corpo dá sinais e a preocupação com a saúde não deixa a mente descansar. São 11 minutos de auto-hipnose guiada por mim, para você reconhecer o recado da mente por trás desses sinais e reconfigurar o jeito de responder a ele. Não substitui o acompanhamento médico. Tudo por R$ 37.' },
+    'relacionamentos': { nome: 'Vínculo Seguro', checkout: 'https://chk.eduzz.com/R9JXPQ280X', num: 'Para o padrão que se repete', // produto 3141547
+      txt: 'Gravei este áudio para quando a mesma cena volta a acontecer no casal ou na família. São 12 minutos de auto-hipnose guiada por mim, para você reconhecer e reconfigurar o padrão que faz a sua mente travar na relação. Tudo por R$ 37.' }
   };
   var TXT_B4 = {
     pergunta: 'O que mais pesa para você hoje? (Pode marcar mais de um.)',
@@ -381,7 +389,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   // 30/10: vida pessoal abaixo da faixa da consulta, tema sem áudio gravado e sem CHECKOUT_B2 → lista de espera (sem botão)
   function emEspera(lead) {
     return lead.intencao === 'Vida pessoal' && FAIXAS_CONSULTA.indexOf(lead.faturamento) === -1 &&
-      lead.tema !== TEMA_B3 && !CHECKOUT_B2 && !(MULTI_TEMAS && lead.temas);
+      !(AUDIOS[lead.tema] && AUDIOS[lead.tema].checkout) && !CHECKOUT_B2 && !(MULTI_TEMAS && lead.temas);
   }
   function rotulo(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
   function emLista(a) { return a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' e ' + a[a.length - 1]; }
@@ -450,8 +458,9 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var nome = primeiro(lead);
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
     var card, consulta = FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1;
-    var b3 = lead.intencao === 'Vida pessoal' && lead.tema === TEMA_B3;
-    var checkout = b3 ? CHECKOUT_B3 : lead.intencao === 'Vida pessoal' ? CHECKOUT_B2 : CHECKOUT_A2;
+    var audio = lead.intencao === 'Vida pessoal' && AUDIOS[lead.tema] && AUDIOS[lead.tema].checkout ? AUDIOS[lead.tema] : null;
+    var b3 = !!audio;
+    var checkout = b3 ? audio.checkout : lead.intencao === 'Vida pessoal' ? CHECKOUT_B2 : CHECKOUT_A2;
     if (lead.faturamento === FAIXA_ENTRADA && checkout) consulta = false;
     // textos do B com o tema; "outro assunto" fica com a versão sem tema que está no HTML
     if (lead.tema && lead.tema !== 'outro assunto') {
@@ -492,7 +501,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     } else if (b3) {
       card = document.getElementById('cardB3');
       document.getElementById('apoio').textContent = 'O pagamento é na Eduzz, em ambiente seguro. O acesso chega no seu e-mail, para ouvir no celular ou no computador, sem download.';
-      document.getElementById('btnB3').href = CHECKOUT_B3;
+      card.querySelector('.num').textContent = audio.num;
+      card.querySelector('h3').textContent = audio.nome + ' · áudio de auto-hipnose';
+      document.getElementById('txtB3').textContent = audio.txt;
+      document.getElementById('btnB3').href = audio.checkout;
     } else if (lead.intencao === 'Vida pessoal') {
       card = document.getElementById('cardB2');
       if (CHECKOUT_B2) {
