@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex">
 <!-- Página própria do link da bio (01/11/2026): lp.selfcreation.com.br/empreendedor/
      Copiada da pele da /comece/. Todo mundo passa pelo cadastro (trava, renda, nome e WhatsApp);
-     R$ 5 mil ou mais vê a consulta no WhatsApp, abaixo disso vê o produto da trava.
+     R$ 5 mil ou mais vai para a LP consulta/ (botão para o WhatsApp), abaixo disso vê o produto da trava.
      Link de anúncio/direct/stories: ?trava=<slug> pula a pergunta da trava e leva ao produto dela, sem consulta.
      Nada promete consulta gratuita antes da pergunta de renda. Copy do copy-chief. -->
 <title>Para quem empreende · Simone Carneiro</title>
@@ -345,10 +345,8 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     var nome = primeiro(lead.nome), card;
     if (nome) document.getElementById('saud').textContent = 'Obrigada, ' + nome + '. Agora eu sei por onde a gente começa.';
     if (lead.caminho === 'conversa' && FAIXAS_CONSULTA.indexOf(lead.faturamento) !== -1) {
-      card = document.getElementById('cardConsulta');
-      document.getElementById('apoio').textContent = 'A mensagem já vai pronta para o meu WhatsApp, é só tocar no botão e enviar.';
-      document.getElementById('txtConsulta').textContent = trocar(C.ctxt, nome, lead.trava);
-      document.getElementById('btnConsulta').href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(trocar(C.cmsg, nome, lead.trava));
+      location.replace('consulta/');   // LP da área, com o botão para o WhatsApp
+      return true;
     } else {
       var p = C.produtos[trava.produto];
       card = document.getElementById('cardProduto');
