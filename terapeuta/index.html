@@ -180,7 +180,8 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span><span>PARA TERAPEUTAS · RECONHECER E RECONFIGURAR · MÉTODO RE:SET ·</span></div></div>
 
   <form class="cad" id="cad" novalidate>
-    <h2>Me conta o que trava você</h2>
+    <h2>Quero conversar com a mentora</h2>
+    <p class="apoio" id="cadSub">Em poucas perguntas, vejo o seu momento e indico o seu caminho</p>
     <div class="cond on" id="blocoTrava">
       <fieldset>
         <legend>Onde a sua mente trava mais hoje?</legend>
@@ -337,6 +338,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   if (travaLink) {
     document.getElementById('blocoTrava').classList.remove('on');
     form.querySelector('h2').hidden = true;
+    document.getElementById('cadSub').hidden = true;
   }
 
   // Toda combinação cai em um cartão só: bio + R$ 5 mil ou mais = consulta; o resto = produto da trava.
