@@ -86,8 +86,8 @@ p{margin:0 0 14px}
 .op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
 .op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
 /* bolinhas das 2 opções "Algo me trava" (28/10): fundo azul, borda dourada */
-.op input[name=inicio],.op input[name=inicio]{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
-.op input[name=inicio]:checked,.op input[name=inicio]:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
+.op input{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
+.op input:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
 .op small{display:block;font-size:.82rem;color:var(--txt-3)}
 /* blocos que só abrem depois da 1ª pergunta */
 .cond{display:none}
@@ -165,7 +165,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 @media (max-width:640px){:root{--bg:#041a2b;--card:linear-gradient(160deg,#08293d,#05202f)}.faixa{background:#062133}}
 @media (prefers-reduced-motion:reduce){.reconf,.pilares,.assinatura{animation:none}}
 @media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
-</style>
+.cad .op input:focus{outline:none} .op:has(input:focus-visible){outline:2px solid var(--ouro);outline-offset:1px}</style>
 </head>
 <body>
 <main>
