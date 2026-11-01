@@ -309,11 +309,10 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   var CHAVE = 'funil_empreendedor_lead';   // própria: não se mistura com a /comece/ nem com as outras páginas
   var FAIXAS_CONSULTA = ['De R$ 5 mil a R$ 9.999', 'R$ 10 mil ou mais'];
 
-  // Consulta "gratuita até" o fim do mês; exceção da Simone: até 10/11/2026 (igual à /comece/)
+  // Consulta "gratuita até" o fim do mês
   (function () {
     var hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
     var fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
-    if (hoje.getFullYear() === 2026 && hoje.getMonth() === 10 && hoje.getDate() <= 10) fim = new Date(2026, 10, 10);
     document.querySelectorAll('.fim-mes').forEach(function (el) {
       el.textContent = ('0' + fim.getDate()).slice(-2) + '/' + ('0' + (fim.getMonth() + 1)).slice(-2);
     });

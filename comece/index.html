@@ -434,11 +434,9 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   function wa(msg) { return 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg); }
 
   // "gratuita até" o último dia do mês corrente, no horário de Brasília.
-  // Exceção da Simone (18/10/2026): ao virar para novembro, o prazo vai até 10/11.
   (function () {
     var hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
     var fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
-    if (hoje.getFullYear() === 2026 && hoje.getMonth() === 10 && hoje.getDate() <= 10) fim = new Date(2026, 10, 10);
     var txt = ('0' + fim.getDate()).slice(-2) + '/' + ('0' + (fim.getMonth() + 1)).slice(-2);
     document.querySelectorAll('.fim-mes').forEach(function (el) { el.textContent = txt; });
   })();
