@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <!-- Página própria do link da bio (01/11/2026): lp.selfcreation.com.br/empreendedor/
-     Copiada da pele da /comece/. Duas entradas: "Quero conversar com você" pergunta trava, renda e cadastro;
+     Copiada da pele da /comece/. Todo mundo passa pelo cadastro (trava, renda, nome e WhatsApp);
      R$ 5 mil ou mais vê a consulta no WhatsApp, abaixo disso vê o produto da trava.
-     "Quero o áudio" pergunta só a trava e mostra o produto, sem renda nem cadastro.
+     Link de anúncio/direct/stories: ?trava=<slug> pula a pergunta da trava e leva ao produto dela, sem consulta.
      Nada promete consulta gratuita antes da pergunta de renda. Copy do copy-chief. -->
 <title>Para quem empreende · Simone Carneiro</title>
 <meta name="description" content="Para quem tem um negócio: me conta onde a sua mente trava, no preço, em delegar ou em terminar o que importa, e eu te mostro o próximo passo. Método RE:SET, de Simone Carneiro.">
@@ -181,13 +181,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 
   <form class="cad" id="cad" novalidate>
     <h2>Me conta o que trava você</h2>
-    <fieldset>
-      <legend>Como você quer começar?</legend>
-      <label class="op"><input type="radio" name="inicio" value="conversa"><span>Quero conversar com você<small>você me conta o momento do seu negócio e eu indico o melhor caminho</small></span></label>
-      <label class="op"><input type="radio" name="inicio" value="audio"><span>Quero o áudio<small>você escolhe a sua trava e vê direto o áudio que gravei para ela</small></span></label>
-    </fieldset>
-
-    <div class="cond" id="blocoTrava">
+    <div class="cond on" id="blocoTrava">
       <fieldset>
         <legend>Onde a sua mente trava mais no negócio?</legend>
         <label class="op"><input type="radio" name="trava" value="preço"><span>Preço<small>baixo o preço ou dou desconto antes de pensar</small></span></label>
@@ -196,7 +190,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
       </fieldset>
     </div>
 
-    <div class="cond" id="blocoConversa">
+    <div class="cond on" id="blocoConversa">
       <fieldset>
         <legend>Quanto você ganha por mês hoje? (É só para eu indicar o melhor caminho para você.)</legend>
         <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
@@ -213,7 +207,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
     </div>
 
     <p class="erro" id="erro" role="alert"></p>
-    <div class="cond" id="blocoEnvio">
+    <div class="cond on" id="blocoEnvio">
       <button class="btn-ring" type="submit"><span class="btn-face"><span id="txtBotao">Ver meu próximo passo</span>&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
     </div>
   </form>
@@ -325,24 +319,21 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   })();
 
   var form = document.getElementById('cad'), pres = document.getElementById('presentes'), erro = document.getElementById('erro');
-  var blocoTrava = document.getElementById('blocoTrava'), blocoConversa = document.getElementById('blocoConversa'), blocoEnvio = document.getElementById('blocoEnvio');
-  var txtBotao = document.getElementById('txtBotao');
   function achar(v) { return C.travas.filter(function (t) { return t.valor === v; })[0]; }
   function primeiro(n) { return String(n || '').trim().split(' ')[0]; }
   function trocar(t, nome, trava) { return t.replace('{nome}', nome).replace('{trava}', trava); }
 
-  form.querySelectorAll('input[name=inicio]').forEach(function (r) {
-    r.addEventListener('change', function () {
-      var conversa = r.value === 'conversa';
-      blocoTrava.classList.add('on');
-      blocoEnvio.classList.add('on');
-      blocoConversa.classList.toggle('on', conversa);
-      txtBotao.textContent = conversa ? 'Ver meu próximo passo' : 'Ver o meu áudio';
-      erro.textContent = '';
-    });
-  });
+  // ?trava=<slug> (link de anúncio, direct ou stories): sem acento e com hífen, ex.: fechar-a-venda
+  function slug(v) { return String(v || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-'); }
+  var q = new URLSearchParams(location.search);
+  var travaLink = C.travas.filter(function (t) { return slug(t.valor) === slug(q.get('trava')); })[0];
+  if (travaLink) {
+    document.getElementById('blocoTrava').classList.remove('on');
+    form.querySelector('h2').hidden = true;
+  }
 
-  // Toda combinação cai em um cartão só: conversa + R$ 5 mil ou mais = consulta; o resto = produto da trava.
+  // Toda combinação cai em um cartão só: bio + R$ 5 mil ou mais = consulta; o resto = produto da trava.
+  // Quem veio pelo link do produto (caminho 'audio') sempre vê o produto prometido.
   function mostrar(lead) {
     var trava = achar(lead.trava);
     if (!trava) return false;
@@ -379,37 +370,31 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
   try {
     if (/[?&]novo=1/.test(location.search)) localStorage.removeItem(CHAVE);
     var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
-    if (salvo) mostrar(salvo);
+    if (salvo && salvo.nome && (!travaLink || salvo.trava === travaLink.valor)) mostrar(salvo);
   } catch (e) {}
 
-  var q = new URLSearchParams(location.search);
-  var porta = (q.get('origem') || 'bio-empreendedor').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio-empreendedor';
+  var porta = (q.get('origem') || (travaLink ? 'link-produto' : 'bio-empreendedor')).toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio-empreendedor';
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var inicio = form.querySelector('input[name=inicio]:checked');
-    var trava = form.querySelector('input[name=trava]:checked');
-    if (!inicio) { erro.textContent = 'Escolhe como você quer começar.'; return; }
+    var trava = travaLink ? { value: travaLink.valor } : form.querySelector('input[name=trava]:checked');
+    var fat = form.querySelector('input[name=fat]:checked');
+    var nome = document.getElementById('nome').value.trim();
+    var whats = document.getElementById('whats').value.trim();
     if (!trava) { erro.textContent = 'Escolhe o que mais pesa hoje.'; return; }
-    var lead = { caminho: inicio.value, trava: trava.value };
-    if (inicio.value === 'conversa') {
-      var fat = form.querySelector('input[name=fat]:checked');
-      var nome = document.getElementById('nome').value.trim();
-      var whats = document.getElementById('whats').value.trim();
-      if (!fat) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
-      if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
-      if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
-      lead.faturamento = fat.value; lead.nome = nome;
-      // Mesma planilha da /comece/. Só o caminho da conversa tem cadastro.
-      fetch(URL_LEADS, {
-        method: 'POST', keepalive: true,
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-        body: JSON.stringify({ tipo: 'audio', audio: 'Página empreendedor', isca: true, nome: nome, email: '',
-          whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + trava.value,
-          indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
-          data: new Date().toISOString() })
-      }).catch(function () {});
-    }
+    if (!fat) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
+    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
+    if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
+    var lead = { caminho: travaLink ? 'audio' : 'conversa', trava: trava.value, faturamento: fat.value, nome: nome };
+    // Mesma planilha da /comece/.
+    fetch(URL_LEADS, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ tipo: 'audio', audio: 'Página empreendedor', isca: true, nome: nome, email: '',
+        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + trava.value,
+        indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
+        data: new Date().toISOString() })
+    }).catch(function () {});
     erro.textContent = '';
     try { localStorage.setItem(CHAVE, JSON.stringify(lead)); } catch (e) {}
     mostrar(lead);
