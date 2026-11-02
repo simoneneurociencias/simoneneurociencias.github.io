@@ -184,6 +184,12 @@ section{scroll-margin-top:16px}
 }
 .cv-foto img{object-position:50% 20%}
 @media (max-width:640px){.cv-foto{aspect-ratio:4/5}.cv-foto img{object-position:50% 20%}}
+.destaque{border:1px solid var(--ouro);box-shadow:0 0 22px rgba(185,145,91,.22);text-align:center;padding:20px 18px}
+.destaque p{margin:0;font-size:1.05rem;font-weight:600}
+.destaque strong{color:var(--ouro-claro);font-weight:800}
+.passo{min-height:150px;border-color:rgba(185,145,91,.35)}
+.passo h3{margin:0}
+.fecho{text-align:center;font-weight:600;color:var(--ouro-claro);font-size:.98rem;margin:6px 0 0}
 .metodo{text-align:center;font-size:1rem;color:var(--txt-2);margin:0 0 34px}
 .sec-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,5vw,1.5rem);line-height:1.3;text-align:center;margin:0 0 18px}
 .passos{margin:0 0 14px;padding:0;list-style:none;counter-reset:p}
@@ -253,15 +259,25 @@ body.feito .etapa{display:none}
 
   <section class="bloco">
     <h2 class="sec-tit">Como funciona a consulta diagnóstica</h2>
-    <article class="pres claro">
-      <p>Uma conversa individual comigo, online, de no máximo 50 minutos. Gratuita até <span class="fim-mes"></span>.</p>
-      <ol class="passos">
-        <li>Você me conta o que está acontecendo.</li>
-        <li>Eu mostro como a mente criou esse padrão.</li>
-        <li>Você sai sabendo onde está a trava e como o Método RE:SET trabalha isso.</li>
-      </ol>
-      <p id="fechamento">Para começar, escolha acima a opção que mais combina com você. O agendamento é pelo WhatsApp.</p>
+    <article class="pres destaque">
+      <p>Uma conversa individual comigo, online, de no máximo 50 minutos. <strong>Gratuita até <span class="fim-mes"></span>.</strong></p>
     </article>
+    <article class="pres passo">
+      <img class="foto-lado" src="img/momento.webp" alt="Rosto tenso com as mãos na cabeça" width="130" height="130" loading="lazy">
+      <p class="num">Passo 1</p>
+      <h3>Você me conta o que está acontecendo.</h3>
+    </article>
+    <article class="pres passo">
+      <img class="foto-lado" src="img/crenca.webp" alt="Homem com a mente aberta em engrenagens" width="130" height="130" loading="lazy">
+      <p class="num">Passo 2</p>
+      <h3>Eu mostro como a mente criou esse padrão.</h3>
+    </article>
+    <article class="pres passo">
+      <img class="foto-lado" src="img/resposta.webp" alt="Pessoa de braços abertos para a luz, se libertando" width="130" height="130" loading="lazy">
+      <p class="num">Passo 3</p>
+      <h3>Você sai sabendo onde está a trava e como o Método RE:SET trabalha isso.</h3>
+    </article>
+    <p class="fecho" id="fechamento">Para começar, escolha acima a opção que mais combina com você. O agendamento é pelo WhatsApp.</p>
   </section>
 
   <section id="cadastro" class="bloco">
