@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <!-- Página única do link da bio (01/11/2026): lp.selfcreation.com.br/bio/
-     Três categorias em cards; o card abre as perguntas (trava, renda, nome, WhatsApp).
+     Três categorias em cards; o card abre nome, WhatsApp e renda; o botão leva direto ao WhatsApp com a mensagem pronta.
      Regra da Simone: TODO MUNDO vai para a consulta diagnóstica pelo WhatsApp. A renda é só cadastro,
      não desvia ninguém para produto; o áudio ou plano de 21 dias é oferecido por ela na consulta.
      Copy do copy-chief; headline é texto dela. -->
@@ -197,13 +197,10 @@ section{scroll-margin-top:16px}
 .passos li::before{content:counter(p);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--ouro);color:#0a1620;font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:center}
 .pres.claro .passos li::before{background:#9a7440;color:#fff}
 .bloco{margin:0 0 34px}
-.cad[hidden],#confirma[hidden]{display:none}
+.cad[hidden]{display:none}
+.cad{background:none;border:0;border-radius:0;padding:0}
 .apoio-renda{font-size:.84rem;color:var(--txt-3);margin:-4px 0 8px}
 .aviso{font-size:.8rem;line-height:1.45;color:var(--txt-2);margin:14px 0 0;text-align:center}
-.pres.claro .aviso{color:#33505e}
-body.feito .etapa{display:none}
-#confirma{margin:0 0 16px}
-#confirma .tit{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5.2vw,1.6rem);line-height:1.28;text-align:center;margin:0 0 10px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -217,15 +214,6 @@ body.feito .etapa{display:none}
       <p class="cargo">Neurocientista e Mentora</p>
     </div>
   </header>
-
-  <section id="confirma" hidden>
-    <article class="pres claro">
-      <h2 class="tit" id="saud"></h2>
-      <p>Recebi as suas respostas. A mensagem já está pronta: é só enviar pelo WhatsApp para a gente combinar o dia e o horário.</p>
-      <a class="btn-ring" id="btnZap" href="#" target="_blank" rel="noopener"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
-      <p class="aviso" id="avisoConfirma" hidden>A consulta não substitui acompanhamento médico. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
-    </article>
-  </section>
 
   <div class="etapa">
   <h1>Eu destravo os bloqueios emocionais que impedem terapeutas e empreendedores de <em>prosperar e ter sucesso na carreira.</em></h1>
@@ -282,11 +270,10 @@ body.feito .etapa{display:none}
 
   <section id="cadastro" class="bloco">
     <form class="cad" id="cad" novalidate hidden>
-      <h2>Me conta um pouco sobre você</h2>
-      <fieldset>
-        <legend id="legTrava"></legend>
-        <div id="opcoesTrava"></div>
-      </fieldset>
+      <label class="c" for="nome">Seu nome</label>
+      <input type="text" id="nome" autocomplete="name">
+      <label class="c" for="whats">Seu WhatsApp</label>
+      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel">
       <fieldset>
         <legend>Quanto você ganha por mês hoje?</legend>
         <p class="apoio-renda">Pergunto só para conhecer melhor quem chega até mim. A consulta é a mesma para qualquer resposta.</p>
@@ -296,10 +283,6 @@ body.feito .etapa{display:none}
         <label class="op"><input type="radio" name="fat" value="De R$ 5 mil a R$ 9.999"> De R$ 5 mil a R$ 9.999</label>
         <label class="op"><input type="radio" name="fat" value="R$ 10 mil ou mais"> R$ 10 mil ou mais</label>
       </fieldset>
-      <label class="c" for="nome">Seu nome</label>
-      <input type="text" id="nome" autocomplete="name">
-      <label class="c" for="whats">Seu WhatsApp</label>
-      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel">
       <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
       <p class="erro" id="erro" role="alert"></p>
       <button class="btn-ring" type="submit"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
@@ -333,43 +316,20 @@ body.feito .etapa{display:none}
   var CATS = {
     terapeuta: {
       rotulo: 'terapeuta ou expert',
-      pergunta: 'Onde a sua mente trava mais hoje?',
-      msg: 'Oi, Simone! Sou {nome}, atuo como terapeuta ou expert. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
-      travas: [
-        ['cobrar', 'Cobrar', 'culpa ou medo na hora de dizer o valor'],
-        ['fechar a venda', 'Fechar a venda', 'recuo na oferta, ou a pessoa some depois do preço'],
-        ['dinheiro', 'Dinheiro', 'dinheiro que nunca sobra, medo de faltar'],
-        ['aparecer', 'Aparecer', 'medo de me expor e do que vão pensar']
-      ]
+      msg: 'Oi, Simone! Sou {nome}, atuo como terapeuta ou expert. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
     },
     empreendedor: {
       rotulo: 'quem empreende',
-      pergunta: 'Onde a sua mente trava mais no negócio?',
-      msg: 'Oi, Simone! Sou {nome}, tenho um negócio. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
-      travas: [
-        ['preço', 'Preço', 'baixo o preço ou dou desconto antes de pensar'],
-        ['delegar', 'Delegar', 'tudo passa pelas minhas mãos, não consigo soltar'],
-        ['terminar o que importa', 'Terminar o que importa', 'começo muito, adio o que importa e não termino']
-      ]
+      msg: 'Oi, Simone! Sou {nome}, tenho um negócio. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
     },
     pessoal: {
       rotulo: 'vida pessoal',
       aviso: true,
-      pergunta: 'O que mais pesa para você hoje?',
-      msg: 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
-      travas: [
-        ['ansiedade', 'Ansiedade', 'mente acelerada, preocupação que não para'],
-        ['medos', 'Medos', 'pânico, fobias, medo que paralisa'],
-        ['sono', 'Sono', 'noites sem dormir, mente que não desliga'],
-        ['saúde', 'Saúde', 'sintomas que o exame não explica'],
-        ['relacionamentos', 'Relacionamentos', 'casal, família, padrões que se repetem'],
-        ['dinheiro e escassez', 'Dinheiro', 'dinheiro que nunca sobra, medo de faltar']
-      ]
+      msg: 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita.'
     }
   };
   var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
   var WHATS = '5521972511809';
-  var CHAVE = 'funil_bio_lead';   // própria: não se mistura com as outras páginas
 
   // Consulta "gratuita até" o fim do mês
   (function () {
@@ -386,16 +346,6 @@ body.feito .etapa{display:none}
   function escolher(cat) {
     var c = CATS[cat];
     categoria = cat;
-    document.getElementById('legTrava').textContent = c.pergunta;
-    var caixa = document.getElementById('opcoesTrava');
-    caixa.textContent = '';
-    c.travas.forEach(function (t) {
-      var l = document.createElement('label'); l.className = 'op';
-      var i = document.createElement('input'); i.type = 'radio'; i.name = 'trava'; i.value = t[0];
-      var s = document.createElement('span'); s.textContent = t[1];
-      var m = document.createElement('small'); m.textContent = t[2];
-      s.appendChild(m); l.appendChild(i); l.appendChild(s); caixa.appendChild(l);
-    });
     document.getElementById('avisoForm').hidden = !c.aviso;
     document.getElementById('fechamento').hidden = true;
     erro.textContent = '';
@@ -407,52 +357,28 @@ body.feito .etapa{display:none}
     b.addEventListener('click', function () { escolher(b.getAttribute('data-cat')); });
   });
 
-  function mostrar(lead) {
-    var c = CATS[lead.categoria];
-    if (!c) return false;
-    var nome = String(lead.nome || '').trim().split(' ')[0];
-    var msg = c.msg.replace('{nome}', nome).replace('{trava}', lead.trava);
-    document.getElementById('saud').textContent = nome + ', falta só agendar.';
-    document.getElementById('btnZap').href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
-    document.getElementById('avisoConfirma').hidden = !c.aviso;
-    document.getElementById('confirma').hidden = false;
-    document.body.classList.add('feito');
-    return true;
-  }
-
-  // ?novo=1 apaga o que ficou guardado, para testar como visitante novo
-  try {
-    if (/[?&]novo=1/.test(location.search)) localStorage.removeItem(CHAVE);
-    var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
-    if (salvo && salvo.nome) mostrar(salvo);
-  } catch (e) {}
-
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
 
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    var trava = form.querySelector('input[name=trava]:checked');
-    var fat = form.querySelector('input[name=fat]:checked');
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
-    if (!trava) { erro.textContent = 'Escolhe o que mais pesa hoje.'; return; }
-    if (!fat) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
     if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
-    var lead = { categoria: categoria, trava: trava.value, faturamento: fat.value, nome: nome };
+    var fat = form.querySelector('input[name=fat]:checked');
+    if (!fat) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     fetch(URL_LEADS, {
       method: 'POST', keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Página bio', isca: true, nome: nome, email: '',
-        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + CATS[categoria].rotulo + ' · ' + trava.value,
+        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + CATS[categoria].rotulo,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).catch(function () {});
     erro.textContent = '';
-    try { localStorage.setItem(CHAVE, JSON.stringify(lead)); } catch (e) {}
-    mostrar(lead);
-    window.scrollTo({ top: 0 });
+    var primeiro = nome.split(' ')[0];
+    location.href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(CATS[categoria].msg.replace('{nome}', primeiro));
   });
 })();
 </script>
