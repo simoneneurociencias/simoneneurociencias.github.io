@@ -186,7 +186,8 @@ section{scroll-margin-top:16px}
   .capa::after{background:radial-gradient(ellipse at 50% 45%,rgba(1,12,20,.35),rgba(1,12,20,.85) 75%),linear-gradient(180deg,transparent 60%,var(--bg) 98%)}
 }
 .cv-foto img{object-position:50% 20%}
-@media (max-width:640px){.cv-foto{aspect-ratio:4/5}.cv-foto img{object-position:50% 20%}}
+.cv-foto{flex-basis:30%}
+@media (max-width:640px){.cv-foto{aspect-ratio:4/5;width:58%;margin:18px auto 0;border:1px solid var(--ouro);border-radius:12px;overflow:hidden}.cv-foto img{object-position:50% 20%}.cv-texto{text-align:left}}
 .destaque{border:1px solid var(--ouro);box-shadow:0 0 22px rgba(185,145,91,.22);text-align:center;padding:20px 18px}
 .destaque p{margin:0;font-size:1.05rem;font-weight:600}
 .destaque strong{color:var(--ouro-claro);font-weight:800}
