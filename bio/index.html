@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <!-- Página única do link da bio (01/11/2026): lp.selfcreation.com.br/bio/
-     as caixas só explicam; o cadastro fica no fim da página (nome, WhatsApp, Sou, renda) e o botão leva ao WhatsApp com a mensagem pronta.
-     Regra da Simone: TODO MUNDO vai para a consulta diagnóstica pelo WhatsApp. A renda é só cadastro,
+     as caixas só explicam; o Formulário 1 fica no fim da página (nome, WhatsApp, quem é, renda) e o botão leva à /aplicacao/ (02/11).
+     Regra da Simone: TODO MUNDO vai para a consulta diagnóstica. A renda é só cadastro,
      não desvia ninguém para produto; o áudio ou plano de 21 dias é oferecido por ela na consulta.
      Copy do copy-chief; headline é texto dela. -->
 <title>Consulta diagnóstica · Simone Carneiro</title>
@@ -208,6 +208,12 @@ section{scroll-margin-top:16px}
 .cad .erro{color:#b3321c}
 .cad h2{color:var(--ouro-btn)}
 .cad-sub{color:#0b3a5b;text-align:center;font-size:.95rem;line-height:1.4;margin:0}
+/* 02/11: opções do Formulário 1 no cartão branco */
+.cad legend{color:#0b3a5b;font-size:.9rem;font-weight:500}
+.cad .op{color:#0b3a5b;background:#fff;border-color:#9db4c4;margin:8px 0;padding:11px 13px;font-size:.95rem}
+.cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
+.cad .op input{background:#fff;border-color:#9a7440}
+.cad .op input:checked{background:radial-gradient(circle,#9a7440 0 42%,#fff 46%)}
 main{padding-bottom:0}
 .etapa>.cv{margin:0 0 34px}
 #cadastro{margin-bottom:0}
@@ -299,6 +305,7 @@ footer{padding:16px 16px 20px}
       <p class="num">Passo 3</p>
       <h3>Você sai sabendo onde está a trava e como trabalhar isso.</h3>
     </article>
+    <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
   </section>
 
   <section class="cv">
@@ -323,30 +330,28 @@ footer{padding:16px 16px 20px}
     <form class="cad" id="cad" novalidate>
       <h2>Formulário de cadastro</h2>
       <p class="cad-sub">Cadastre-se para agendar sua consulta diagnóstica gratuita.</p>
-      <label class="c" for="nome">Seu nome</label>
-      <input type="text" id="nome" autocomplete="name">
-      <label class="c" for="whats">Seu WhatsApp</label>
-      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel">
-      <label class="c" for="cat">Sou</label>
-      <select id="cat" required>
-        <option value="" selected disabled>Selecione</option>
-        <option value="terapeuta">Terapeuta ou Expert</option>
-        <option value="empreendedor">Quem empreende</option>
-        <option value="pessoal">Vida pessoal</option>
-      </select>
-      <label class="c" for="fat">Quanto você ganha por mês hoje?</label>
-      <select id="fat" required>
-        <option value="" selected disabled>Selecione</option>
-        <option>Sem renda</option>
-        <option>Menos de R$ 3 mil</option>
-        <option>De R$ 3 mil a R$ 4.999</option>
-        <option>De R$ 5 mil a R$ 9.999</option>
-        <option>R$ 10 mil ou mais</option>
-      </select>
+      <label class="c" for="nome">Nome completo</label>
+      <input type="text" id="nome" autocomplete="name" maxlength="120">
+      <label class="c" for="whats">WhatsApp com DDD</label>
+      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel" maxlength="30">
+      <fieldset>
+        <legend>Quem você é?</legend>
+        <label class="op"><input type="radio" name="cat" value="terapeuta"><span>Sou terapeuta ou expert</span></label>
+        <label class="op"><input type="radio" name="cat" value="empreendedor"><span>Tenho meu próprio negócio</span></label>
+        <label class="op"><input type="radio" name="cat" value="vida-pessoal"><span>Quero trabalhar minha vida pessoal</span></label>
+      </fieldset>
+      <fieldset>
+        <legend>Quanto você ganha por mês?</legend>
+        <label class="op"><input type="radio" name="fat" value="Sem renda"><span>Sem renda</span></label>
+        <label class="op"><input type="radio" name="fat" value="Menos de R$ 3 mil"><span>Menos de R$ 3 mil</span></label>
+        <label class="op"><input type="radio" name="fat" value="De R$ 3 mil a R$ 4.999"><span>De R$ 3 mil a R$ 4.999</span></label>
+        <label class="op"><input type="radio" name="fat" value="De R$ 5 mil a R$ 9.999"><span>De R$ 5 mil a R$ 9.999</span></label>
+        <label class="op"><input type="radio" name="fat" value="R$ 10 mil ou mais"><span>R$ 10 mil ou mais</span></label>
+      </fieldset>
       <p class="apoio-renda apoio-abaixo">Pergunto só para conhecer melhor quem chega até mim. A consulta é a mesma para qualquer resposta.</p>
       <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
       <p class="erro" id="erro" role="alert"></p>
-      <button class="btn-ring" type="submit"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+      <button class="btn-ring" type="submit"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
       <p class="aviso" id="avisoForm" hidden>A consulta não substitui acompanhamento médico. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
     </form>
   </section>
@@ -365,14 +370,14 @@ footer{padding:16px 16px 20px}
       rotulo: 'quem empreende',
       msg: 'Oi, Simone! Sou {nome}, tenho um negócio. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
     },
-    pessoal: {
+    'vida-pessoal': {
       rotulo: 'vida pessoal',
       aviso: true,
       msg: 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita.'
     }
   };
+  var ROTULO_BOTAO = 'Quero minha consulta gratuita ';
   var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
-  var WHATS = '5521972511809';
 
   // Consulta "gratuita até" o fim do mês
   (function () {
@@ -385,10 +390,15 @@ footer{padding:16px 16px 20px}
 
   var form = document.getElementById('cad'), erro = document.getElementById('erro');
   // Vida pessoal mostra o aviso do CVV
-  var campoCat = document.getElementById('cat'), campoFat = document.getElementById('fat');
-  campoCat.addEventListener('change', function () {
-    document.getElementById('avisoForm').hidden = !CATS[campoCat.value].aviso;
+  form.querySelectorAll('input[name=cat]').forEach(function (r) {
+    r.addEventListener('change', function () {
+      document.getElementById('avisoForm').hidden = !CATS[r.value].aviso;
+    });
   });
+  function marcado(nome) {
+    var el = form.querySelector('input[name=' + nome + ']:checked');
+    return el ? el.value : '';
+  }
 
   // Caixas entram ao rolar, uma depois da outra
   if ('IntersectionObserver' in window) {
@@ -407,11 +417,11 @@ footer{padding:16px 16px 20px}
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
 
-  // Voltar do WhatsApp para a página: o botão volta ao normal
+  // Voltar da aplicação para a página: o botão volta ao normal
   window.addEventListener('pageshow', function () {
     var botao = form.querySelector('button[type=submit]');
     botao.disabled = false;
-    botao.querySelector('.btn-face').firstChild.textContent = 'Agendar pelo WhatsApp ';
+    botao.querySelector('.btn-face').firstChild.textContent = ROTULO_BOTAO;
   });
 
   form.addEventListener('submit', function (ev) {
@@ -420,27 +430,32 @@ footer{padding:16px 16px 20px}
     var whats = document.getElementById('whats').value.trim();
     if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
     if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
-    var categoria = campoCat.value;
-    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Sou".'; return; }
-    var fat = campoFat;
-    if (!fat.value) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
-    // Espera a planilha confirmar antes de sair para o WhatsApp: no celular, trocar de app cancelaria o envio.
+    var categoria = marcado('cat');
+    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Quem você é?".'; return; }
+    var renda = marcado('fat');
+    if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
+    // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
     var botao = form.querySelector('button[type=submit]');
     if (botao.disabled) return;
     botao.disabled = true;
     botao.querySelector('.btn-face').firstChild.textContent = 'Enviando...';
-    var primeiro = nome.split(' ')[0], foi = false;
+    var foi = false;
     function seguir() {
       if (foi) return;
       foi = true;
-      location.href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(CATS[categoria].msg.replace('{nome}', primeiro));
+      // A /aplicacao/ lê o cadastro daqui, para não pedir os dados de novo.
+      try {
+        sessionStorage.setItem('consulta_lead', JSON.stringify({ nome: nome, whatsapp: whats, faturamento: renda,
+          categoria: categoria, porta: porta, msg: CATS[categoria].msg }));
+      } catch (e) {}
+      location.href = '../aplicacao/?categoria=' + categoria;
     }
     setTimeout(seguir, 4000);
     fetch(URL_LEADS, {
       method: 'POST', keepalive: true,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'audio', audio: 'Página bio', isca: true, nome: nome, email: '',
-        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + CATS[categoria].rotulo,
+        whatsapp: whats, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(seguir, seguir);

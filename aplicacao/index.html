@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- Formulário 2 da consulta diagnóstica (02/11/2026): lp.selfcreation.com.br/aplicacao/?categoria=terapeuta|empreendedor|vida-pessoal
+     Vem depois do Formulário 1 da /bio/, que deixa o cadastro em sessionStorage (consulta_lead).
+     Mostra só o bloco da categoria. Perguntas do briefing da Simone: trocar texto é só no objeto BLOCOS. -->
+<title>Aplicação · Consulta diagnóstica</title>
+<link rel="icon" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Unbounded:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#010c14;--ouro:#b9915b;--ouro-escuro:#9a7440;--ouro-btn:#c9a169;--ouro-claro:#d2ae79;--txt:#f5f4f3;--azul:#0b3a5b;--azul-2:#4a6374;--linha:#9db4c4;
+  --display:"Unbounded",Arial,sans-serif;--texto:"Manrope",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.6 var(--texto);overflow-x:hidden}
+main{max-width:600px;margin:0 auto;padding:32px 16px 24px}
+[hidden]{display:none!important}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5.4vw,1.6rem);line-height:1.3;text-align:center;margin:0 0 10px}
+.sub{text-align:center;font-size:1rem;margin:0 0 24px}
+.cad{background:#fff;color:var(--azul);border-radius:14px;padding:22px 18px}
+fieldset{border:0;padding:0;margin:0 0 26px;min-width:0}
+legend{display:block;width:100%;padding:0;margin:0 0 10px;font-size:1rem;font-weight:700;line-height:1.4;color:var(--azul)}
+.dica{font-size:.84rem;line-height:1.4;color:var(--azul-2);margin:-4px 0 10px}
+.op{display:flex;gap:12px;align-items:center;font-size:.95rem;line-height:1.35;margin:8px 0;padding:11px 13px;border:1px solid var(--linha);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s}
+.op:has(input:checked){border-color:var(--ouro-escuro);background:#fbf5ea}
+.op:has(input:focus-visible){outline:2px solid var(--ouro-escuro);outline-offset:1px}
+.op input{-webkit-appearance:none;appearance:none;flex:none;width:18px;height:18px;margin:0;background:#fff;border:2px solid var(--ouro-escuro);cursor:pointer}
+.op input[type=radio]{border-radius:50%}
+.op input[type=checkbox]{border-radius:4px}
+.op input:checked{background:radial-gradient(circle,var(--ouro-escuro) 0 42%,#fff 46%)}
+.op input[type=checkbox]:checked{background:var(--ouro-escuro);box-shadow:inset 0 0 0 2px #fff}
+.escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+@media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
+.nota{position:relative;display:block;cursor:pointer}
+.nota input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.nota span{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid var(--linha);border-radius:10px;font-weight:700;font-size:.95rem;transition:background .2s,border-color .2s}
+.nota input:checked+span{background:var(--ouro-escuro);border-color:var(--ouro-escuro);color:#fff}
+.nota input:focus-visible+span{outline:2px solid var(--ouro-escuro);outline-offset:1px}
+textarea,input[type=text]{width:100%;font:inherit;font-size:1rem;color:var(--azul);background:#fff;border:1px solid var(--linha);border-radius:10px;padding:12px 13px}
+textarea{resize:vertical;line-height:1.45}
+textarea:focus,input[type=text]:focus{outline:2px solid var(--ouro-escuro);outline-offset:1px}
+.outro{margin:0 0 8px}
+.erro{color:#b3321c;font-size:.9rem;margin:0;min-height:1em;text-align:center}
+.aviso{font-size:.8rem;line-height:1.45;margin:14px 0 0;text-align:center}
+.btn-ring{display:flex;align-items:center;gap:10px;width:100%;margin-top:16px;padding:6px 12px 6px 6px;font:inherit;background:none;border:1px solid rgba(185,145,91,.6);border-radius:100px;text-decoration:none;color:inherit;cursor:pointer;transition:border-color .25s,transform .25s}
+.btn-ring:hover{border-color:var(--ouro);transform:translateY(-2px)}
+.btn-ring[disabled]{opacity:.7;cursor:default;transform:none}
+.btn-face{flex:1;background:var(--ouro-btn);color:#0a1620;border-radius:100px;padding:15px 14px;font-weight:700;font-size:.8rem;line-height:1.25;text-transform:uppercase;text-align:center}
+.giro{width:30px;height:30px;flex:none;stroke:var(--ouro);stroke-width:2.6;stroke-linecap:round;fill:none}
+.giro g{transform-origin:20px 20px;animation:gira 9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.giro g{animation:none}}
+.confirma{text-align:center;padding-top:8vh}
+.confirma p{margin:0 0 8px}
+.confirma .btn-ring{margin-top:24px}
+footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
+</style>
+</head>
+<body>
+<main>
+  <div id="etapa" hidden>
+    <h1>Falta pouco para a sua consulta</h1>
+    <p class="sub">Responda com calma. Leio tudo antes de conversar com você.</p>
+    <form class="cad" id="apl" novalidate>
+      <div id="perguntas"></div>
+      <p class="erro" id="erro" role="alert"></p>
+      <button class="btn-ring" type="submit"><span class="btn-face" id="btnTxt">Enviar minhas respostas</span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+      <p class="aviso" id="avisoCvv" hidden>A consulta não substitui acompanhamento médico. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </form>
+  </div>
+  <div class="confirma" id="confirma" hidden>
+    <h1 id="confTit"></h1>
+    <p>Vou ler com atenção antes da nossa conversa. Agora é só me chamar no WhatsApp para escolhermos o melhor horário.</p>
+    <a class="btn-ring" id="btnZap" href="#"><span class="btn-face">Agendar pelo WhatsApp</span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+  </div>
+</main>
+<footer>Simone Carneiro · @sicarneironeurociencia</footer>
+<script>
+(function () {
+  var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
+  var WHATS = '5521972511809';
+  var P6 = { tipo: 'texto', linhas: 3, opcional: true, p: 'Tem alguma pergunta específica que você quer trazer para a consulta?', dica: 'Opcional' };
+
+  var BLOCOS = {
+    terapeuta: { rotulo: 'terapeuta ou expert', perguntas: [
+      { tipo: 'radio', p: 'O que você cobra hoje por sessão ou hora?',
+        ops: ['Até R$ 100', 'Entre R$ 100 e R$ 200', 'Entre R$ 200 e R$ 350', 'Acima de R$ 350'] },
+      { tipo: 'radio', p: 'Qual dessas situações mais te trava hoje?', dica: 'Escolha a principal',
+        ops: ['Tenho dificuldade de cobrar mais ou aumentar meu preço', 'Tenho medo de me expor nas redes ou criar conteúdo',
+          'Não consigo fechar novos clientes com consistência', 'Sei que preciso me posicionar mas não sei como começar',
+          'Acho que preciso de mais formação antes de crescer'] },
+      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto essa trava está impactando seu faturamento hoje?',
+        dica: '0 = quase nada · 10 = me custa clientes e dinheiro todo mês' },
+      { tipo: 'check', p: 'O que você já tentou fazer para mudar isso?', dica: 'Pode marcar mais de uma',
+        ops: ['Fiz cursos de marketing ou vendas', 'Tentei aumentar o preço mas recuei', 'Criei perfil nas redes mas parei',
+          'Nunca tentei, não sei por onde começar'] },
+      { tipo: 'texto', linhas: 3, p: 'Se você resolvesse essa trava nos próximos 3 meses, o que mudaria na sua prática?' },
+      P6
+    ] },
+    empreendedor: { rotulo: 'quem empreende', perguntas: [
+      { tipo: 'radio', p: 'Qual é o principal obstáculo que está impedindo seu negócio de crescer agora?', dica: 'Escolha o que mais se aproxima',
+        ops: ['Travo na hora de tomar decisões importantes', 'Cobro pouco e tenho medo de perder clientes se aumentar',
+          'Começo projetos mas não consigo manter consistência', 'Tenho medo de me expor, lançar ou aparecer',
+          'Associo crescer a trabalhar mais e perder tempo com a família ou qualidade de vida',
+          'Quero crescer, mas já sinto esgotamento e tenho medo de me desgastar ainda mais'] },
+      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está custando ao seu negócio?',
+        dica: '0 = pouco impacto · 10 = está travando meu crescimento todo mês' },
+      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está afetando você pessoalmente, sua confiança e seu bem-estar?' },
+      { tipo: 'check', p: 'O que você já tentou para resolver isso?', dica: 'Pode marcar mais de uma',
+        ops: ['Fiz cursos de mindset ou produtividade', 'Tentei colocar metas mas não mantive', 'Busquei terapia ou coaching',
+          'Ainda não tentei nada estruturado'] },
+      { tipo: 'texto', linhas: 3, p: 'Se esse bloqueio fosse resolvido, onde estaria seu negócio em 12 meses?' },
+      P6
+    ] },
+    'vida-pessoal': { rotulo: 'vida pessoal', aviso: true, perguntas: [
+      { tipo: 'radio', p: 'Em qual dessas áreas você mais se reconhece hoje?', dica: 'Escolha a principal',
+        ops: ['Ansiedade: mente acelerada, preocupação constante', 'Medos: situações que evito ou que me paralisam',
+          'Sono: dificuldade de dormir ou de descansar de verdade', 'Saúde: meu corpo sente o que minha mente não processa',
+          'Relacionamentos: me anulo, me afasto ou me perco no outro', 'Dinheiro: bloqueio, escassez ou sabotagem com dinheiro'] },
+      { tipo: 'texto', linhas: 3, p: 'Como isso aparece no seu dia a dia?' },
+      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está afetando sua qualidade de vida?' },
+      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está afetando seus relacionamentos ou seu trabalho?' },
+      { tipo: 'texto', linhas: 2, p: 'O que mudaria na sua vida se você resolvesse isso?' }
+    ] }
+  };
+
+  var q = new URLSearchParams(location.search);
+  var categoria = q.get('categoria') || '';
+  var lead = null;
+  try { lead = JSON.parse(sessionStorage.getItem('consulta_lead')); } catch (e) {}
+  // Sem cadastro ou sem categoria válida, volta para o Formulário 1.
+  if (!Object.prototype.hasOwnProperty.call(BLOCOS, categoria) || !lead || !lead.nome) {
+    location.replace('../bio/#cadastro');
+    return;
+  }
+  var bloco = BLOCOS[categoria];
+  var caixa = document.getElementById('perguntas');
+  var form = document.getElementById('apl'), erro = document.getElementById('erro');
+
+  function criar(tag, cls, texto) {
+    var el = document.createElement(tag);
+    if (cls) el.className = cls;
+    if (texto) el.textContent = texto;
+    return el;
+  }
+  function opcao(tipo, nome, valor) {
+    var rot = criar('label', 'op'), inp = criar('input');
+    inp.type = tipo; inp.name = nome; inp.value = valor;
+    rot.appendChild(inp); rot.appendChild(criar('span', '', valor));
+    return rot;
+  }
+
+  bloco.perguntas.forEach(function (item, i) {
+    var nome = 'p' + i, grupo = criar('fieldset');
+    grupo.appendChild(criar('legend', '', (i + 1) + '. ' + item.p));
+    if (item.dica) grupo.appendChild(criar('p', 'dica', item.dica));
+    if (item.tipo === 'radio' || item.tipo === 'check') {
+      var tipo = item.tipo === 'radio' ? 'radio' : 'checkbox';
+      item.ops.forEach(function (v) { grupo.appendChild(opcao(tipo, nome, v)); });
+      if (item.tipo === 'check') {
+        var marcaOutro = opcao('checkbox', nome, 'Outro');
+        var campoOutro = criar('input', 'outro');
+        campoOutro.type = 'text'; campoOutro.id = nome + 'outro'; campoOutro.maxLength = 120;
+        campoOutro.placeholder = 'Qual?'; campoOutro.setAttribute('aria-label', 'Outro: qual?'); campoOutro.hidden = true;
+        marcaOutro.querySelector('input').addEventListener('change', function () {
+          campoOutro.hidden = !this.checked;
+          if (this.checked) campoOutro.focus();
+        });
+        grupo.appendChild(marcaOutro); grupo.appendChild(campoOutro);
+      }
+    } else if (item.tipo === 'escala') {
+      var esc = criar('div', 'escala');
+      for (var n = 0; n <= 10; n++) {
+        var nota = criar('label', 'nota'), inp = criar('input');
+        inp.type = 'radio'; inp.name = nome; inp.value = String(n);
+        nota.appendChild(inp); nota.appendChild(criar('span', '', String(n)));
+        esc.appendChild(nota);
+      }
+      grupo.appendChild(esc);
+    } else {
+      var txt = criar('textarea');
+      txt.name = nome; txt.rows = item.linhas; txt.maxLength = 800;
+      txt.setAttribute('aria-label', item.p);
+      grupo.appendChild(txt);
+    }
+    caixa.appendChild(grupo);
+  });
+
+  // Devolve a resposta da pergunta, ou '' se faltar algo.
+  function resposta(item, i) {
+    var nome = 'p' + i;
+    if (item.tipo === 'texto') return form.elements[nome].value.trim();
+    if (item.tipo === 'check') {
+      var marcados = [], faltaOutro = false;
+      form.querySelectorAll('input[name=' + nome + ']:checked').forEach(function (el) {
+        if (el.value !== 'Outro') { marcados.push(el.value); return; }
+        var v = document.getElementById(nome + 'outro').value.trim();
+        if (v) marcados.push('Outro: ' + v); else faltaOutro = true;
+      });
+      return faltaOutro ? '' : marcados.join('; ');
+    }
+    var el = form.querySelector('input[name=' + nome + ']:checked');
+    return el ? el.value : '';
+  }
+
+  document.getElementById('avisoCvv').hidden = !bloco.aviso;
+  document.getElementById('etapa').hidden = false;
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var botao = form.querySelector('button[type=submit]');
+    if (botao.disabled) return;
+    var respostas = [];
+    for (var i = 0; i < bloco.perguntas.length; i++) {
+      var item = bloco.perguntas[i], r = resposta(item, i);
+      if (!r && !item.opcional) {
+        erro.textContent = 'Falta responder a pergunta ' + (i + 1) + '.';
+        caixa.children[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      respostas.push({ p: item.p, r: r });
+    }
+    erro.textContent = '';
+    var btnTxt = document.getElementById('btnTxt');
+    botao.disabled = true;
+    btnTxt.textContent = 'Enviando...';
+
+    function falhou() {
+      botao.disabled = false;
+      btnTxt.textContent = 'Enviar minhas respostas';
+      erro.textContent = 'Não consegui enviar. Confere a internet e tenta de novo.';
+    }
+    // eixoFragil leva tudo em texto: até o Apps Script novo entrar no ar, é a coluna que guarda as respostas.
+    var resumo = respostas.map(function (x, n) { return 'P' + (n + 1) + '. ' + x.p + ' ' + x.r; }).join(' | ');
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var limite = ctrl ? setTimeout(function () { ctrl.abort(); }, 20000) : null;
+    fetch(URL_LEADS, {
+      method: 'POST', signal: ctrl ? ctrl.signal : undefined,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ tipo: 'aplicacao', isca: true, categoria: categoria, respostas: respostas,
+        nome: lead.nome, email: '', whatsapp: lead.whatsapp, faturamento: lead.faturamento,
+        origem: (lead.porta || 'bio') + ' · aplicação · ' + bloco.rotulo,
+        indice: '', faixa: '', eixoFragil: resumo, visibilidade: '', previsibilidade: '', autovalor: '',
+        data: new Date().toISOString() })
+    }).then(function (res) { return res.json(); }).then(function (d) {
+      clearTimeout(limite);
+      if (!d || !d.ok) { falhou(); return; }
+      var primeiro = lead.nome.split(' ')[0];
+      document.getElementById('confTit').textContent = 'Recebi suas respostas, ' + primeiro;
+      document.getElementById('btnZap').href = 'https://wa.me/' + WHATS + '?text=' +
+        encodeURIComponent(String(lead.msg || 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita.').replace('{nome}', primeiro));
+      document.getElementById('etapa').hidden = true;
+      document.getElementById('confirma').hidden = false;
+      window.scrollTo(0, 0);
+    }).catch(function () { clearTimeout(limite); falhou(); });
+  });
+})();
+</script>
+</body>
+</html>
