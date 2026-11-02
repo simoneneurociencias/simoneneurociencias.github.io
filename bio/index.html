@@ -211,7 +211,28 @@ section{scroll-margin-top:16px}
 main{padding-bottom:0}
 main>.cv{margin-bottom:0}
 footer{padding:16px 16px 20px}
-.metodo{text-align:center;font-size:1rem;color:var(--txt-2);margin:0 0 34px}
+/* motion da capa e das caixas */
+@keyframes foto-entra{from{opacity:0;transform:translateX(-54%) translateY(34px) scale(.96)}to{opacity:1;transform:translateX(-54%)}}
+@keyframes foto-flutua{0%,100%{transform:translateX(-54%) translateY(0)}50%{transform:translateX(-54%) translateY(-8px)}}
+@keyframes fundo-respira{from{transform:scale(1.05)}to{transform:scale(1.14)}}
+@keyframes fundo-respira-esp{from{transform:scaleX(-1) scale(1.05)}to{transform:scaleX(-1) scale(1.14)}}
+@keyframes nome-entra{from{opacity:0;transform:translateY(20px);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
+@keyframes cargo-entra{from{opacity:0;letter-spacing:.42em}to{opacity:1;letter-spacing:.2em}}
+.capa-foto{animation:foto-entra 1.2s cubic-bezier(.22,.61,.36,1) both,foto-flutua 7s ease-in-out 1.3s infinite}
+.capa-bg{animation:fundo-respira 18s ease-in-out infinite alternate}
+.nome{animation:nome-entra 1s cubic-bezier(.22,.61,.36,1) .45s both}
+.cargo{animation:cargo-entra 1.1s cubic-bezier(.22,.61,.36,1) .8s both}
+@media (min-width:561px){.capa-bg{animation-name:fundo-respira-esp}}
+.pres{transition:translate .3s ease,border-color .3s ease,box-shadow .3s ease}
+.pres.revela{transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1),translate .3s ease,border-color .3s ease,box-shadow .3s ease}
+.pres:hover{translate:0 -4px;border-color:rgba(185,145,91,.6);box-shadow:0 12px 30px rgba(0,0,0,.28)}
+.revela .foto-lado{transform:scale(.86);opacity:0;transition:transform .9s cubic-bezier(.22,.61,.36,1) .25s,opacity .9s ease .25s}
+.revela.visivel .foto-lado{transform:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.capa-foto{animation:none;transform:translateX(-54%)}.capa-bg,.nome,.cargo{animation:none}.pres{transition:none}.pres:hover{translate:none}.revela .foto-lado{transform:none;opacity:1;transition:none}}
+.pilares-met .pres{margin:0 0 12px;padding:18px;border-left:3px solid var(--ouro)}
+.pilares-met h3{color:var(--ouro-claro);font-size:1rem;margin:0 0 6px}
+.pilares-met p{margin:0;font-size:.95rem;line-height:1.5}
+.metodo{text-align:center;font-size:1rem;color:var(--txt);margin:0 0 20px}
 .sec-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,5vw,1.5rem);line-height:1.3;text-align:center;margin:0 0 18px}
 .passos{margin:0 0 14px;padding:0;list-style:none;counter-reset:p}
 .passos li{counter-increment:p;position:relative;padding:0 0 10px 34px;font-size:.98rem;line-height:1.5}
@@ -242,7 +263,15 @@ footer{padding:16px 16px 20px}
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span></div></div>
 
-  <p class="metodo">O Método RE:SET integra Neurociência, Hipnoterapia e PNL para reconhecer e reconfigurar a trava onde ela nasce: na mente.</p>
+  <section class="bloco" id="metodo">
+    <h2 class="sec-tit">O Método RE:SET</h2>
+    <p class="metodo">O RE:SET é a Reconfiguração do Sistema Emocional, o método que criei unindo Neurociência, Hipnoterapia e Programação Neurolinguística. A sua mente aprendeu a tratar certas situações como perigo, e essa proteção automática é a trava. O RE:SET atua na origem dela, para reconhecer e reconfigurar.</p>
+    <div class="pilares-met">
+      <article class="pres"><h3>Neurociência</h3><p>Mostra como a trava se formou e por que ela pode ser atualizada.</p></article>
+      <article class="pres"><h3>Hipnoterapia</h3><p>Acessa o que opera abaixo do nível consciente, onde a lógica não alcança.</p></article>
+      <article class="pres"><h3>PNL</h3><p>Reorganiza os significados e as associações que sustentam o comportamento repetitivo.</p></article>
+    </div>
+  </section>
 
   <section id="para-quem" class="bloco">
     <h2 class="sec-tit">Onde está a sua trava?</h2>
@@ -373,6 +402,20 @@ footer{padding:16px 16px 20px}
   campoCat.addEventListener('change', function () {
     document.getElementById('avisoForm').hidden = !CATS[campoCat.value].aviso;
   });
+
+  // Caixas entram ao rolar, uma depois da outra
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (itens) {
+      itens.forEach(function (it) {
+        if (it.isIntersecting) { var el = it.target; el.classList.add('visivel'); obs.unobserve(el); setTimeout(function () { el.style.transitionDelay = ''; }, 1400); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.pres, .cad, .cv-card').forEach(function (el, i) {
+      el.classList.add('revela');
+      el.style.transitionDelay = (i % 3) * 90 + 'ms';
+      obs.observe(el);
+    });
+  }
 
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
