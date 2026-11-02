@@ -170,6 +170,22 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 html{scroll-behavior:smooth}
 section{scroll-margin-top:16px}
 .etapa>.faixa{margin-top:22px}
+.capa{position:relative;overflow:hidden;height:min(66svh,560px);min-height:430px;width:100vw;margin:0 0 26px calc(50% - 50vw);display:flex;justify-content:center;align-items:flex-end}
+.capa-bg{position:absolute;inset:0;background:url(simone-palco.jpg) center 30%/cover no-repeat;filter:saturate(.75) brightness(.55);transform:scale(1.05)}
+.capa::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(4,26,43,.3),rgba(4,26,43,.85) 80%),linear-gradient(180deg,transparent 55%,var(--bg) 96%)}
+.capa-foto{position:absolute;z-index:1;bottom:0;left:50%;transform:translateX(-50%);height:100%;width:auto;max-width:none;filter:drop-shadow(0 18px 38px rgba(0,0,0,.5));-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 94%);mask-image:linear-gradient(180deg,#000 66%,transparent 94%)}
+.capa-nome{position:relative;z-index:2;text-align:center;padding:0 16px 6px}
+.nome{font-family:'Petit Formal Script',cursive;font-size:clamp(1.9rem,8.4vw,2.6rem);line-height:1.2;color:#fff;margin:0;text-shadow:0 2px 16px rgba(0,0,0,.65)}
+.cargo{font-family:var(--texto);font-weight:700;font-size:clamp(.72rem,3.1vw,.86rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ouro-claro);margin:6px 0 0;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+@media (min-width:430px){.capa-foto{left:auto;right:0;transform:none}}
+@media (min-width:901px){
+  .capa{justify-content:flex-start;align-items:center}
+  .capa-bg{transform:scaleX(-1) scale(1.05);background-position:center 62%;filter:saturate(.7) brightness(.4)}
+  .capa::after{background:linear-gradient(90deg,rgba(1,12,20,.82),rgba(1,12,20,.35) 70%),linear-gradient(180deg,transparent 60%,var(--bg) 98%)}
+  .capa-nome{text-align:left;padding:0 0 0 max(40px,calc(50vw - 420px))}
+  .nome{font-size:3.4rem}
+  .cargo{font-size:1rem;margin-top:10px}
+}
 .metodo{text-align:center;font-size:1rem;color:var(--txt-2);margin:0 0 34px}
 .sec-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,5vw,1.5rem);line-height:1.3;text-align:center;margin:0 0 18px}
 .passos{margin:0 0 14px;padding:0;list-style:none;counter-reset:p}
@@ -189,10 +205,14 @@ body.feito .etapa{display:none}
 </head>
 <body>
 <main>
-  <img class="marca" src="reset-logo.webp?v=2026-10-29b" alt="Método RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
-  <p class="reconf"><span>Reconfiguração do Sistema Emocional</span></p>
-  <p class="pilares">Trauma · Travas · Transformação</p>
-  <p class="assinatura">por Simone Carneiro</p>
+  <header class="capa">
+    <div class="capa-bg" aria-hidden="true"></div>
+    <img class="capa-foto" src="simone-capa.webp" alt="Simone Carneiro" width="560" height="765" fetchpriority="high">
+    <div class="capa-nome">
+      <p class="nome">Simone Carneiro</p>
+      <p class="cargo">Neurocientista e Mentora</p>
+    </div>
+  </header>
 
   <section id="confirma" hidden>
     <article class="pres claro">
