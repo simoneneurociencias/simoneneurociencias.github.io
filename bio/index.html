@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<!-- Página única do link da bio (01/11/2026): lp.selfcreation.com.br/bio/
+     Três categorias em cards; o card abre as perguntas (trava, renda, nome, WhatsApp).
+     Regra da Simone: TODO MUNDO vai para a consulta diagnóstica pelo WhatsApp. A renda é só cadastro,
+     não desvia ninguém para produto; o áudio ou plano de 21 dias é oferecido por ela na consulta.
+     Copy do copy-chief; headline é texto dela. -->
+<title>Consulta diagnóstica · Simone Carneiro</title>
+<meta name="description" content="Consulta diagnóstica individual com Simone Carneiro, criadora do Método RE:SET, para terapeutas, quem empreende e quem sente a trava na vida pessoal.">
+<meta property="og:title" content="Consulta diagnóstica · Simone Carneiro">
+<meta property="og:description" content="Uma conversa individual para descobrir onde está a sua trava.">
+<meta property="og:url" content="https://lp.selfcreation.com.br/bio/">
+<meta property="og:image" content="https://lp.selfcreation.com.br/comece/og-comece.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="icon" href="../favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Petit+Formal+Script&family=Manrope:wght@300;400;500;700;800&family=Unbounded:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Mesma pele da LP Os 3 Segredos (apps/3segredos/styles.css), pedido da Simone em 18/10:
+   navy quase preto, dourado #b9915b, Unbounded nos títulos, Manrope no texto,
+   botão em anel com o ícone girando, faixa corrida e entrada suave ao rolar. */
+:root{--bg:#010c14;--card:linear-gradient(160deg,#021a28,#010f18);--ouro:#b9915b;--ouro-claro:#d2ae79;--ouro-btn:#c9a169;
+  --txt:#f5f4f3;--txt-2:#aeb6bc;--txt-3:#7e8991;--borda:rgba(255,255,255,.08);--claro:#ebe8e3;
+  --display:"Unbounded",Arial,sans-serif;--texto:"Manrope",Arial,sans-serif}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--txt);font:17px/1.65 var(--texto);overflow-x:hidden}
+img{max-width:100%}
+em{font-style:normal;color:var(--ouro)}
+main{max-width:600px;margin:0 auto;padding:0 16px 48px}
+.marca{display:block;width:calc(100% + 32px);max-width:600px;height:auto;margin:0 -16px 8px;
+  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent);
+  animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .15s both}
+@keyframes logo-entra{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@media (min-width:632px){.marca{margin:0 auto 8px}}
+/* assinatura cursiva abaixo da logo, mesma fonte da LP 3 Segredos: Petit Formal Script (29/10) */
+.assinatura{font-family:'Petit Formal Script',cursive;font-weight:400;color:var(--ouro-claro);font-size:clamp(.88rem,3.4vw,1.08rem);line-height:1.3;text-align:center;margin:6px 0 26px;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .55s both}
+/* Trauma · Travas · Transformação: saiu da imagem (ficava fina e apagada pelo degradê) e virou texto (29/10) */
+.pilares{font-family:var(--texto);font-weight:600;font-size:clamp(.56rem,2.3vw,.7rem);letter-spacing:.26em;text-transform:uppercase;color:var(--ouro);text-align:center;line-height:1.2;margin:8px 0 0;padding-left:.26em;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .35s both}
+/* 29/10: Reconfiguração do Sistema Emocional também saiu da imagem e tem mais destaque que a linha de baixo */
+.reconf{display:flex;align-items:center;gap:10px;margin:max(-20.5vw,-116px) 0 0;position:relative;animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .25s both}
+.reconf::before,.reconf::after{content:"";flex:1;min-width:10px;max-width:60px;height:1px;background:var(--ouro)}
+.reconf span{font-family:var(--texto);font-weight:700;font-size:clamp(.64rem,2.9vw,.9rem);letter-spacing:.12em;text-transform:uppercase;color:var(--txt);white-space:nowrap}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 16px;text-align:center}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3rem);line-height:1.22;letter-spacing:-.01em;margin:0 0 18px;text-align:center}
+p{margin:0 0 14px}
+.lead{text-align:center;font-size:1.05rem}
+.lead-menor{font-size:.95rem}
+.travas{display:grid;gap:12px;margin:14px 0 18px}
+@media (min-width:560px){.travas{grid-template-columns:1fr 1fr}}
+.trava-cx{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left;
+  opacity:0;animation:trava-entra .9s cubic-bezier(.22,.61,.36,1) .35s forwards,trava-brilho 4.5s ease-in-out 1.6s infinite;transition:translate .35s ease,border-color .35s ease}
+.trava-cx+.trava-cx{animation-delay:.6s,3.85s}
+/* faixa de luz dourada que atravessa a caixa de tempos em tempos */
+.trava-cx::before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(210,174,121,.16) 50%,transparent 65%);transform:translateX(-120%);animation:trava-luz 4.5s ease-in-out 1.6s infinite;pointer-events:none}
+.trava-cx+.trava-cx::before{animation-delay:3.85s}
+.trava-cx:hover{translate:0 -3px;border-color:var(--ouro)}
+@keyframes trava-entra{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes trava-brilho{0%,100%{box-shadow:0 0 0 rgba(185,145,91,0)}50%{box-shadow:0 0 22px rgba(185,145,91,.18)}}
+@keyframes trava-luz{0%{transform:translateX(-120%)}45%,100%{transform:translateX(120%)}}
+@media (prefers-reduced-motion:reduce){.trava-cx{opacity:1;animation:none}.trava-cx::before{animation:none;display:none}}
+.trava-cx p{margin:0;font-size:.95rem;line-height:1.45}
+.trava-cx .trava-tit{font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ouro);margin:0 0 6px}
+
+/* faixa corrida, igual à dos 3 Segredos */
+.faixa{background:#06141d;border-top:1px solid rgba(185,145,91,.45);border-bottom:1px solid rgba(185,145,91,.45);overflow:hidden;padding:6px 0;margin:0 -16px 32px}
+.faixa-trilho{display:flex;width:max-content;animation:rola 40s linear infinite}
+.faixa-trilho span{font-size:.66rem;font-weight:800;letter-spacing:.2em;color:var(--ouro);padding-right:16px;white-space:nowrap}
+@keyframes rola{to{transform:translateX(-50%)}}
+
+.cad{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 18px}
+.cad h2{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;margin:0 0 6px;text-align:center}
+.cad label.c{display:block;font-size:.9rem;color:var(--txt-2);margin:18px 0 6px}
+.cad input[type=text],.cad input[type=tel]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
+.cad input:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.cad fieldset{border:0;padding:0;margin:20px 0 0}
+.cad legend{font-size:.95rem;font-weight:500;line-height:1.5;margin-bottom:10px;padding:0}
+.op{display:flex;gap:12px;align-items:center;font-size:1rem;line-height:1.35;margin:8px 0;padding:13px 14px;border:1px solid var(--borda);border-radius:10px;cursor:pointer;transition:border-color .25s,background .25s}
+.op:hover{border-color:rgba(185,145,91,.5)}
+.op:has(input:checked){border-color:var(--ouro);background:rgba(185,145,91,.1)}
+.op input{accent-color:var(--ouro);width:18px;height:18px;flex:none;margin:0}
+/* bolinhas das 2 opções "Algo me trava" (28/10): fundo azul, borda dourada */
+.op input{-webkit-appearance:none;appearance:none;border-radius:50%;background:#1b5590;border:2px solid var(--ouro);cursor:pointer}
+.op input:checked{background:radial-gradient(circle,var(--ouro-claro) 0 38%,#1b5590 42%)}
+.op small{display:block;font-size:.82rem;color:var(--txt-3)}
+/* blocos que só abrem depois da 1ª pergunta */
+.cond{display:none}
+.cond.on{display:block}
+
+/* botão em anel com o ícone girando (mesmo dos 3 Segredos) */
+.btn-ring{display:flex;align-items:center;gap:10px;width:100%;margin-top:24px;padding:6px 12px 6px 6px;font:inherit;background:none;
+  border:1px solid rgba(185,145,91,.49);border-radius:100px;text-decoration:none;color:inherit;cursor:pointer;transition:border-color .25s,transform .25s}
+.btn-face{flex:1;background:var(--ouro-btn);color:#0a1620;border-radius:100px;padding:15px 14px;font-family:var(--texto);font-weight:700;font-size:.8rem;line-height:1.25;text-transform:uppercase;letter-spacing:.01em;text-align:center;transition:background .25s}
+.btn-ring:hover{border-color:var(--ouro);transform:translateY(-2px)}
+.btn-ring:hover .btn-face{background:var(--ouro-claro)}
+.seta{display:inline-block;transition:transform .25s}
+.btn-ring:hover .seta{transform:translateX(4px)}
+.giro{width:30px;height:30px;flex:none;stroke:var(--ouro);stroke-width:2.6;stroke-linecap:round;fill:none}
+.giro g{transform-origin:20px 20px;animation:gira 9s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+.erro{color:#f0a58f;font-size:.9rem;margin:12px 0 0;min-height:1em;text-align:center}
+.priv{font-size:.8rem;color:var(--txt-3);margin:12px 0 0;text-align:center}
+
+#presentes h2.tit{font-family:var(--display);font-weight:600;font-size:clamp(1.25rem,5.4vw,1.8rem);line-height:1.25;margin:0 0 10px;text-align:center}
+.apoio{color:var(--txt-2);margin:0 0 26px;text-align:center}
+.pres{position:relative;background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:26px 18px 22px;margin:0 0 16px}
+.num{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin:0 0 10px}
+.pres h3{font-family:var(--display);font-weight:600;font-size:1.12rem;line-height:1.3;margin:0 0 12px}
+.pres p{font-size:.98rem}
+.pres .btn-ring{margin-top:18px}
+/* 31/10: destaque do crédito na mentoria (cartão do 21 Dias) */
+.credito{margin:16px 0 0;padding:14px 16px;border:2px solid #d9b46c;border-radius:10px;background:linear-gradient(135deg,#1f5560,#133338);box-shadow:0 0 0 1px rgba(232,201,138,.25),0 0 22px rgba(217,180,108,.35)}
+.credito .credito-rot{font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:#f2d38a;margin:0 0 6px}
+.credito .credito-txt{font-size:1rem;font-weight:600;line-height:1.45;color:#fff;margin:0}
+/* 31/10: cartão do áudio com a capa em cima */
+.capa-audio{display:block;max-width:none;width:calc(100% + 36px);height:auto;aspect-ratio:16/9;object-fit:cover;margin:-26px -18px 18px;border-radius:14px 14px 0 0}
+#presentes .capa-audio{width:calc(100% + 32px);margin:-18px -16px 14px}
+/* lista de áudios do cartão B4 (vários temas) */
+.audios{list-style:none;margin:16px 0 0;padding:0}
+.audios li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 0;border-top:1px solid var(--borda);font-size:.95rem}
+.audios a{flex:none;color:#10161b;background:var(--ouro-btn);border-radius:999px;padding:8px 14px;font-weight:700;font-size:.82rem;text-decoration:none}
+.audios .breve{flex:none;font-size:.8rem;color:var(--txt-3);text-align:right}
+.pres .total{margin-top:12px;font-weight:700;color:var(--ouro-claro)}
+.cvv{font-size:.82rem;color:var(--txt-2);margin:16px 0 0}
+/* convite em cartão claro, como o "O que faz" dos 3 Segredos */
+.pres.claro{background:var(--claro);color:#0b1a24;border-color:transparent}
+.pres.claro em,.pres.claro .num{color:#9a7440}
+
+/* mini currículo: retrato vertical à esquerda ocupando a altura toda do cartão (28/10) */
+.cv{margin:32px 0}
+.cv .eyebrow{margin-bottom:12px}
+.cv-card{display:flex;align-items:stretch;overflow:hidden;border:1px solid var(--borda);border-radius:14px;
+  background:radial-gradient(ellipse at 85% 0%,rgba(24,69,96,.55),transparent 60%),rgba(255,255,255,.035);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cv-foto{position:relative;flex:0 0 38%;min-height:220px;border-right:1px solid var(--borda)}
+.cv-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.cv-texto{flex:1;padding:18px 16px}
+/* no celular a foto sobe e fica acima do texto, largura toda (29/10) */
+@media (max-width:640px){.cv-card{flex-direction:column}.cv-foto{flex:none;aspect-ratio:1/1;min-height:0;border-right:0;border-bottom:1px solid var(--borda)}.cv-foto img{object-position:50% 12%}}
+.cv h2{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.25;margin:2px 0 8px}
+.cv ul{list-style:none;margin:0;padding:0}
+.cv li{position:relative;padding-left:16px;font-size:.86rem;line-height:1.45;color:var(--txt-2);margin:0 0 5px}
+.cv li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--ouro)}
+footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
+
+/* 29/10: o próximo passo cabe em uma tela de celular (título, apoio e cartão com o botão) */
+#presentes h2.tit{font-size:clamp(1.08rem,4.6vw,1.6rem);margin:0 0 6px}
+#presentes .apoio{font-size:.88rem;line-height:1.45;margin:0 0 14px}
+#presentes .pres{padding:18px 16px 16px}
+#presentes .num{margin:0 0 6px}
+#presentes .pres h3{font-size:1.02rem;margin:0 0 8px}
+#presentes .pres p{font-size:.9rem;line-height:1.5;margin:0 0 8px}
+#presentes .pres .btn-ring{margin-top:12px}
+#presentes .pres .cvv{font-size:.76rem;line-height:1.4;margin:10px 0 0}
+
+/* entrada ao rolar, mesma curva dos 3 Segredos */
+.revela{opacity:0;transform:translateY(46px);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)}
+.revela.visivel{opacity:1;transform:none}
+/* no celular o #010c14 vira preto (OLED); o marinho mais aberto dos 3 Segredos mantém o azul */
+@media (max-width:640px){:root{--bg:#041a2b;--card:linear-gradient(160deg,#08293d,#05202f)}.faixa{background:#062133}}
+@media (prefers-reduced-motion:reduce){.reconf,.pilares,.assinatura{animation:none}}
+@media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
+.cad .op input:focus{outline:none} .op:has(input:focus-visible){outline:2px solid var(--ouro);outline-offset:1px}</style>
+<style>.assinatura{color:#fff}.faixa-trilho span{background:linear-gradient(180deg,#ffe574,#ffc61a 55%,#eeaa00);-webkit-background-clip:text;background-clip:text;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:transparent;font-weight:800;font-size:.74rem}.faixa-trilho b{font-weight:800;font-size:.9rem}.foto-lado{float:right;width:112px;height:112px;object-fit:cover;border-radius:12px;border:1px solid var(--ouro);margin:2px 0 8px 14px}.pres:has(.foto-lado){display:flow-root}h1{font-family:var(--texto);font-weight:800;font-size:clamp(1.12rem,5.3vw,1.7rem);line-height:1.28;letter-spacing:-.01em}.crencas{list-style:none;margin:0 0 14px;padding:0}.crencas li{color:var(--ouro-claro);font-weight:600;padding:4px 0 4px 14px;border-left:2px solid var(--ouro);margin:6px 0}.apoio-btn{font-size:.88rem;line-height:1.45;margin:14px 0 0;text-align:center}.pres.claro .cvv{color:#33505e}
+html{scroll-behavior:smooth}
+section{scroll-margin-top:16px}
+.btn-hero{margin:22px 0 30px}
+.metodo{text-align:center;font-size:1rem;color:var(--txt-2);margin:0 0 34px}
+.sec-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.15rem,5vw,1.5rem);line-height:1.3;text-align:center;margin:0 0 18px}
+.passos{margin:0 0 14px;padding:0;list-style:none;counter-reset:p}
+.passos li{counter-increment:p;position:relative;padding:0 0 10px 34px;font-size:.98rem;line-height:1.5}
+.passos li::before{content:counter(p);position:absolute;left:0;top:0;width:24px;height:24px;border-radius:50%;background:var(--ouro);color:#0a1620;font-size:.78rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.pres.claro .passos li::before{background:#9a7440;color:#fff}
+.bloco{margin:0 0 34px}
+.cad[hidden],#confirma[hidden]{display:none}
+.apoio-renda{font-size:.84rem;color:var(--txt-3);margin:-4px 0 8px}
+.aviso{font-size:.8rem;line-height:1.45;color:var(--txt-2);margin:14px 0 0;text-align:center}
+.pres.claro .aviso{color:#33505e}
+body.feito .etapa{display:none}
+#confirma{margin:0 0 16px}
+#confirma .tit{font-family:var(--display);font-weight:600;font-size:clamp(1.2rem,5.2vw,1.6rem);line-height:1.28;text-align:center;margin:0 0 10px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<main>
+  <img class="marca" src="reset-logo.webp?v=2026-10-29b" alt="Método RE:SET · Reconfiguração do Sistema Emocional · Trauma, Travas, Transformação" width="900" height="600">
+  <p class="reconf"><span>Reconfiguração do Sistema Emocional</span></p>
+  <p class="pilares">Trauma · Travas · Transformação</p>
+  <p class="assinatura">por Simone Carneiro</p>
+
+  <section id="confirma" hidden>
+    <article class="pres claro">
+      <h2 class="tit" id="saud"></h2>
+      <p>Recebi as suas respostas. A mensagem já está pronta: é só enviar pelo WhatsApp para a gente combinar o dia e o horário.</p>
+      <a class="btn-ring" id="btnZap" href="#" target="_blank" rel="noopener"><span class="btn-face">Agendar pelo WhatsApp&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+      <p class="aviso" id="avisoConfirma" hidden>A consulta não substitui acompanhamento médico. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </article>
+  </section>
+
+  <div class="etapa">
+  <h1>Eu destravo os bloqueios emocionais que impedem terapeutas e empreendedores de <em>prosperar e ter sucesso na carreira.</em></h1>
+  <p class="lead lead-menor">E se a trava hoje está na sua vida pessoal, a consulta também é para você.</p>
+  <a class="btn-ring btn-hero" href="#para-quem"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+
+  <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span></div></div>
+
+  <p class="metodo">O Método RE:SET integra Neurociência, Hipnoterapia e PNL para reconhecer e reconfigurar a trava onde ela nasce: na mente.</p>
+
+  <section id="para-quem" class="bloco">
+    <h2 class="sec-tit">Onde está a sua trava?</h2>
+    <article class="pres">
+      <h3>Terapeuta ou Expert</h3>
+      <p>Cobrar, vender, falar de dinheiro, aparecer: sua mente lê esses momentos como risco e recua. Você reconhece essa trava e reconfigura a resposta, para agir com segurança.</p>
+      <button class="btn-ring" type="button" data-cat="terapeuta"><span class="btn-face">Quero minha consulta&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+    </article>
+    <article class="pres">
+      <h3>Quem empreende</h3>
+      <p>Sua mente baixa o preço, não solta o que está nas suas mãos e adia o que importa. Você reconhece essa trava e reconfigura a resposta, para decidir com clareza.</p>
+      <button class="btn-ring" type="button" data-cat="empreendedor"><span class="btn-face">Quero minha consulta&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+    </article>
+    <article class="pres">
+      <h3>Vida pessoal</h3>
+      <p>Ansiedade, medos, sono, saúde, relacionamentos, dinheiro: sua mente repete o que aprendeu para proteger você. Você reconhece essa trava e reconfigura a resposta, no seu ritmo.</p>
+      <button class="btn-ring" type="button" data-cat="pessoal"><span class="btn-face">Quero minha consulta&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+    </article>
+  </section>
+
+  <section class="bloco">
+    <h2 class="sec-tit">Como funciona a consulta diagnóstica</h2>
+    <article class="pres claro">
+      <p>Uma conversa individual comigo, online, de no máximo 50 minutos. Gratuita até <span class="fim-mes"></span>.</p>
+      <ol class="passos">
+        <li>Você me conta o que está acontecendo.</li>
+        <li>Eu mostro como a mente criou esse padrão.</li>
+        <li>Você sai sabendo onde está a trava e como o Método RE:SET trabalha isso.</li>
+      </ol>
+      <p id="fechamento">Para começar, escolha acima a opção que mais combina com você. O agendamento é pelo WhatsApp.</p>
+    </article>
+  </section>
+
+  <section id="cadastro" class="bloco">
+    <form class="cad" id="cad" novalidate hidden>
+      <h2>Me conta um pouco sobre você</h2>
+      <fieldset>
+        <legend id="legTrava"></legend>
+        <div id="opcoesTrava"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Quanto você ganha por mês hoje?</legend>
+        <p class="apoio-renda">Pergunto só para conhecer melhor quem chega até mim. A consulta é a mesma para qualquer resposta.</p>
+        <label class="op"><input type="radio" name="fat" value="Sem renda"> Sem renda</label>
+        <label class="op"><input type="radio" name="fat" value="Menos de R$ 3 mil"> Menos de R$ 3 mil</label>
+        <label class="op"><input type="radio" name="fat" value="De R$ 3 mil a R$ 4.999"> De R$ 3 mil a R$ 4.999</label>
+        <label class="op"><input type="radio" name="fat" value="De R$ 5 mil a R$ 9.999"> De R$ 5 mil a R$ 9.999</label>
+        <label class="op"><input type="radio" name="fat" value="R$ 10 mil ou mais"> R$ 10 mil ou mais</label>
+      </fieldset>
+      <label class="c" for="nome">Seu nome</label>
+      <input type="text" id="nome" autocomplete="name">
+      <label class="c" for="whats">Seu WhatsApp</label>
+      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel">
+      <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
+      <p class="erro" id="erro" role="alert"></p>
+      <button class="btn-ring" type="submit"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></button>
+      <p class="aviso" id="avisoForm" hidden>A consulta não substitui acompanhamento médico. Se você estiver em crise ou pensando em se machucar, ligue 188 (CVV): é gratuito e funciona 24 horas.</p>
+    </form>
+  </section>
+  </div>
+
+  <section class="cv">
+    <p class="eyebrow">Quem vai conversar com você</p>
+    <div class="cv-card">
+      <div class="cv-foto"><img src="simone-retrato.webp" alt="Simone Carneiro" width="560" height="954"></div>
+      <div class="cv-texto">
+        <h2>Simone Carneiro</h2>
+        <ul>
+          <li>Neurocientista, pós-graduada em Neurologia e Neurociências</li>
+          <li>25 anos em desenvolvimento humano e prática clínica</li>
+          <li>Mais de 5 mil vidas transformadas</li>
+          <li>Terapeuta Faixa Ouro (faturamento acima de R$ 100 mil)</li>
+          <li>Criadora do Método RE:SET</li>
+          <li>Coautora do livro "Mente de Alta Performance para Líderes Extraordinários"</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Simone Carneiro · @sicarneironeurociencia</footer>
+<script>
+(function () {
+  // Categorias, perguntas e mensagens. Trocar texto é só aqui.
+  var CATS = {
+    terapeuta: {
+      rotulo: 'terapeuta ou expert',
+      pergunta: 'Onde a sua mente trava mais hoje?',
+      msg: 'Oi, Simone! Sou {nome}, atuo como terapeuta ou expert. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
+      travas: [
+        ['cobrar', 'Cobrar', 'culpa ou medo na hora de dizer o valor'],
+        ['fechar a venda', 'Fechar a venda', 'recuo na oferta, ou a pessoa some depois do preço'],
+        ['dinheiro', 'Dinheiro', 'dinheiro que nunca sobra, medo de faltar'],
+        ['aparecer', 'Aparecer', 'medo de me expor e do que vão pensar']
+      ]
+    },
+    empreendedor: {
+      rotulo: 'quem empreende',
+      pergunta: 'Onde a sua mente trava mais no negócio?',
+      msg: 'Oi, Simone! Sou {nome}, tenho um negócio. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
+      travas: [
+        ['preço', 'Preço', 'baixo o preço ou dou desconto antes de pensar'],
+        ['delegar', 'Delegar', 'tudo passa pelas minhas mãos, não consigo soltar'],
+        ['terminar o que importa', 'Terminar o que importa', 'começo muito, adio o que importa e não termino']
+      ]
+    },
+    pessoal: {
+      rotulo: 'vida pessoal',
+      aviso: true,
+      pergunta: 'O que mais pesa para você hoje?',
+      msg: 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita para falar sobre {trava}.',
+      travas: [
+        ['ansiedade', 'Ansiedade', 'mente acelerada, preocupação que não para'],
+        ['medos', 'Medos', 'pânico, fobias, medo que paralisa'],
+        ['sono', 'Sono', 'noites sem dormir, mente que não desliga'],
+        ['saúde', 'Saúde', 'sintomas que o exame não explica'],
+        ['relacionamentos', 'Relacionamentos', 'casal, família, padrões que se repetem'],
+        ['dinheiro e escassez', 'Dinheiro', 'dinheiro que nunca sobra, medo de faltar']
+      ]
+    }
+  };
+  var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
+  var WHATS = '5521972511809';
+  var CHAVE = 'funil_bio_lead';   // própria: não se mistura com as outras páginas
+
+  // Consulta "gratuita até" o fim do mês
+  (function () {
+    var hoje = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' }));
+    var fim = new Date(hoje.getFullYear(), hoje.getMonth() + 1, 0);
+    document.querySelectorAll('.fim-mes').forEach(function (el) {
+      el.textContent = ('0' + fim.getDate()).slice(-2) + '/' + ('0' + (fim.getMonth() + 1)).slice(-2);
+    });
+  })();
+
+  var form = document.getElementById('cad'), erro = document.getElementById('erro');
+  var categoria = null;
+
+  function escolher(cat) {
+    var c = CATS[cat];
+    categoria = cat;
+    document.getElementById('legTrava').textContent = c.pergunta;
+    var caixa = document.getElementById('opcoesTrava');
+    caixa.textContent = '';
+    c.travas.forEach(function (t) {
+      var l = document.createElement('label'); l.className = 'op';
+      var i = document.createElement('input'); i.type = 'radio'; i.name = 'trava'; i.value = t[0];
+      var s = document.createElement('span'); s.textContent = t[1];
+      var m = document.createElement('small'); m.textContent = t[2];
+      s.appendChild(m); l.appendChild(i); l.appendChild(s); caixa.appendChild(l);
+    });
+    document.getElementById('avisoForm').hidden = !c.aviso;
+    document.getElementById('fechamento').hidden = true;
+    erro.textContent = '';
+    form.hidden = false;
+    document.getElementById('cadastro').scrollIntoView();
+  }
+
+  document.querySelectorAll('[data-cat]').forEach(function (b) {
+    b.addEventListener('click', function () { escolher(b.getAttribute('data-cat')); });
+  });
+
+  function mostrar(lead) {
+    var c = CATS[lead.categoria];
+    if (!c) return false;
+    var nome = String(lead.nome || '').trim().split(' ')[0];
+    var msg = c.msg.replace('{nome}', nome).replace('{trava}', lead.trava);
+    document.getElementById('saud').textContent = nome + ', falta só agendar.';
+    document.getElementById('btnZap').href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
+    document.getElementById('avisoConfirma').hidden = !c.aviso;
+    document.getElementById('confirma').hidden = false;
+    document.body.classList.add('feito');
+    return true;
+  }
+
+  // ?novo=1 apaga o que ficou guardado, para testar como visitante novo
+  try {
+    if (/[?&]novo=1/.test(location.search)) localStorage.removeItem(CHAVE);
+    var salvo = JSON.parse(localStorage.getItem(CHAVE) || 'null');
+    if (salvo && salvo.nome) mostrar(salvo);
+  } catch (e) {}
+
+  var q = new URLSearchParams(location.search);
+  var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
+
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var trava = form.querySelector('input[name=trava]:checked');
+    var fat = form.querySelector('input[name=fat]:checked');
+    var nome = document.getElementById('nome').value.trim();
+    var whats = document.getElementById('whats').value.trim();
+    if (!trava) { erro.textContent = 'Escolhe o que mais pesa hoje.'; return; }
+    if (!fat) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
+    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
+    if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
+    var lead = { categoria: categoria, trava: trava.value, faturamento: fat.value, nome: nome };
+    fetch(URL_LEADS, {
+      method: 'POST', keepalive: true,
+      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      body: JSON.stringify({ tipo: 'audio', audio: 'Página bio', isca: true, nome: nome, email: '',
+        whatsapp: whats, faturamento: fat.value, origem: porta + ' · ' + CATS[categoria].rotulo + ' · ' + trava.value,
+        indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
+        data: new Date().toISOString() })
+    }).catch(function () {});
+    erro.textContent = '';
+    try { localStorage.setItem(CHAVE, JSON.stringify(lead)); } catch (e) {}
+    mostrar(lead);
+    window.scrollTo({ top: 0 });
+  });
+})();
+</script>
+</body>
+</html>
