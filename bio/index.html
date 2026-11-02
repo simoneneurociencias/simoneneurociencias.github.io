@@ -335,18 +335,24 @@ footer{padding:16px 16px 20px}
       <label class="c" for="whats">WhatsApp com DDD</label>
       <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel" maxlength="30">
       <fieldset>
-        <legend>Quem você é?</legend>
-        <label class="op"><input type="radio" name="cat" value="terapeuta"><span>Sou terapeuta ou expert</span></label>
-        <label class="op"><input type="radio" name="cat" value="empreendedor"><span>Tenho meu próprio negócio</span></label>
-        <label class="op"><input type="radio" name="cat" value="vida-pessoal"><span>Quero trabalhar minha vida pessoal</span></label>
+        <legend id="cat-rotulo">Quem você é?</legend>
+        <select id="cat" name="cat" aria-labelledby="cat-rotulo" required>
+          <option value="" disabled selected>Quem você é?</option>
+          <option value="terapeuta">Sou terapeuta ou expert</option>
+          <option value="empreendedor">Tenho meu próprio negócio</option>
+          <option value="vida-pessoal">Quero trabalhar minha vida pessoal</option>
+        </select>
       </fieldset>
       <fieldset>
-        <legend>Quanto você ganha por mês?</legend>
-        <label class="op"><input type="radio" name="fat" value="Sem renda"><span>Sem renda</span></label>
-        <label class="op"><input type="radio" name="fat" value="Menos de R$ 3 mil"><span>Menos de R$ 3 mil</span></label>
-        <label class="op"><input type="radio" name="fat" value="De R$ 3 mil a R$ 4.999"><span>De R$ 3 mil a R$ 4.999</span></label>
-        <label class="op"><input type="radio" name="fat" value="De R$ 5 mil a R$ 9.999"><span>De R$ 5 mil a R$ 9.999</span></label>
-        <label class="op"><input type="radio" name="fat" value="R$ 10 mil ou mais"><span>R$ 10 mil ou mais</span></label>
+        <legend id="fat-rotulo">Quanto você ganha por mês?</legend>
+        <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
+          <option value="" disabled selected>Quanto você ganha por mês?</option>
+          <option value="Sem renda">Sem renda</option>
+          <option value="Menos de R$ 3 mil">Menos de R$ 3 mil</option>
+          <option value="De R$ 3 mil a R$ 4.999">De R$ 3 mil a R$ 4.999</option>
+          <option value="De R$ 5 mil a R$ 9.999">De R$ 5 mil a R$ 9.999</option>
+          <option value="R$ 10 mil ou mais">R$ 10 mil ou mais</option>
+        </select>
       </fieldset>
       <p class="apoio-renda apoio-abaixo">Pergunto só para conhecer melhor quem chega até mim. A consulta é a mesma para qualquer resposta.</p>
       <p class="priv">Seus dados ficam só comigo e nunca são repassados.</p>
@@ -390,13 +396,11 @@ footer{padding:16px 16px 20px}
 
   var form = document.getElementById('cad'), erro = document.getElementById('erro');
   // Vida pessoal mostra o aviso do CVV
-  form.querySelectorAll('input[name=cat]').forEach(function (r) {
-    r.addEventListener('change', function () {
-      document.getElementById('avisoForm').hidden = !CATS[r.value].aviso;
-    });
+  form.elements.cat.addEventListener('change', function () {
+    document.getElementById('avisoForm').hidden = !(CATS[this.value] && CATS[this.value].aviso);
   });
   function marcado(nome) {
-    var el = form.querySelector('input[name=' + nome + ']:checked');
+    var el = form.elements[nome];
     return el ? el.value : '';
   }
 
