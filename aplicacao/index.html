@@ -134,7 +134,8 @@ footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
   var lead = null;
   try { lead = JSON.parse(sessionStorage.getItem('consulta_lead')); } catch (e) {}
   // Sem cadastro ou sem categoria válida, volta para o Formulário 1.
-  if (!Object.prototype.hasOwnProperty.call(BLOCOS, categoria) || !lead || !lead.nome) {
+  if (!Object.prototype.hasOwnProperty.call(BLOCOS, categoria) || !lead || !lead.nome ||
+      !lead.cadastroId || !lead.confirmado || lead.categoria !== categoria) {
     location.replace('../bio/#cadastro');
     return;
   }
@@ -235,21 +236,18 @@ footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
       btnTxt.textContent = 'Enviar minhas respostas';
       erro.textContent = 'Não consegui enviar. Confere a internet e tenta de novo.';
     }
-    // eixoFragil leva tudo em texto: até o Apps Script novo entrar no ar, é a coluna que guarda as respostas.
-    var resumo = respostas.map(function (x, n) { return 'P' + (n + 1) + '. ' + x.p + ' ' + x.r; }).join(' | ');
     var ctrl = window.AbortController ? new AbortController() : null;
     var limite = ctrl ? setTimeout(function () { ctrl.abort(); }, 20000) : null;
     fetch(URL_LEADS, {
       method: 'POST', signal: ctrl ? ctrl.signal : undefined,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body: JSON.stringify({ tipo: 'aplicacao', isca: true, categoria: categoria, respostas: respostas,
+      body: JSON.stringify({ tipo: 'aplicacao', cadastroId: lead.cadastroId, categoria: categoria, respostas: respostas,
         nome: lead.nome, email: '', whatsapp: lead.whatsapp, faturamento: lead.faturamento,
         origem: (lead.porta || 'bio') + ' · aplicação · ' + bloco.rotulo,
-        indice: '', faixa: '', eixoFragil: resumo, visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
-    }).then(function (res) { return res.json(); }).then(function (d) {
+    }).then(function (res) { if (!res.ok) throw new Error('HTTP'); return res.json(); }).then(function (d) {
       clearTimeout(limite);
-      if (!d || !d.ok) { falhou(); return; }
+      if (!d || !d.ok || !d.gravado || d.tipo !== 'aplicacao' || d.cadastroId !== lead.cadastroId) { falhou(); return; }
       var primeiro = lead.nome.split(' ')[0];
       document.getElementById('confTit').textContent = 'Recebi suas respostas, ' + primeiro;
       document.getElementById('btnZap').href = 'https://wa.me/' + WHATS + '?text=' +

@@ -439,27 +439,48 @@ footer{padding:16px 16px 20px}
     if (botao.disabled) return;
     botao.disabled = true;
     botao.querySelector('.btn-face').firstChild.textContent = 'Enviando...';
-    var foi = false;
+    erro.textContent = '';
+    var lead;
+    try {
+      var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
+      lead = { nome: nome, whatsapp: whats, faturamento: renda, categoria: categoria,
+        porta: porta, msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'faturamento', 'categoria', 'porta'].every(function (k) {
+        return anterior[k] === lead[k];
+      });
+      lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
+      sessionStorage.setItem('consulta_lead', JSON.stringify(lead));
+    } catch (e) { falhou(); return; }
+    var ctrl = new AbortController();
+    var limite = setTimeout(function () { ctrl.abort(); }, 20000);
+    function falhou() {
+      clearTimeout(limite);
+      botao.disabled = false;
+      botao.querySelector('.btn-face').firstChild.textContent = ROTULO_BOTAO;
+      erro.textContent = 'Não consegui enviar. Confere a internet e tenta de novo.';
+    }
     function seguir() {
-      if (foi) return;
-      foi = true;
-      // A /aplicacao/ lê o cadastro daqui, para não pedir os dados de novo.
-      try {
-        sessionStorage.setItem('consulta_lead', JSON.stringify({ nome: nome, whatsapp: whats, faturamento: renda,
-          categoria: categoria, porta: porta, msg: CATS[categoria].msg }));
-      } catch (e) {}
+      lead.confirmado = true;
+      sessionStorage.setItem('consulta_lead', JSON.stringify(lead));
+      clearTimeout(limite);
       location.href = '../aplicacao/?categoria=' + categoria;
     }
-    setTimeout(seguir, 4000);
     fetch(URL_LEADS, {
-      method: 'POST', keepalive: true,
+      method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body: JSON.stringify({ tipo: 'audio', audio: 'Página bio', isca: true, nome: nome, email: '',
+      body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
         whatsapp: whats, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
-    }).then(seguir, seguir);
-    erro.textContent = '';
+    }).then(function (res) {
+      if (!res.ok) throw new Error('HTTP');
+      return res.json();
+    }).then(function (d) {
+      if (!d || !d.ok || !d.gravado || d.tipo !== 'consulta' || d.cadastroId !== lead.cadastroId) {
+        throw new Error('Sem comprovante de gravação');
+      }
+      seguir();
+    }).catch(falhou);
   });
 })();
 </script>
