@@ -334,6 +334,10 @@ footer{padding:16px 16px 20px}
       <input type="text" id="nome" autocomplete="name" maxlength="120">
       <label class="c" for="whats">WhatsApp com DDD</label>
       <input type="tel" id="whats" placeholder="(DDD) 00000-0000" autocomplete="tel" maxlength="30">
+      <label class="c" for="idade">Idade</label>
+      <input type="number" id="idade" name="idade" min="18" max="120" inputmode="numeric">
+      <label class="c" for="areaAtuacao">Área de atuação profissional</label>
+      <input type="text" id="areaAtuacao" name="areaAtuacao" maxlength="120">
       <fieldset>
         <legend id="cat-rotulo">Eu sou</legend>
         <select id="cat" name="cat" aria-labelledby="cat-rotulo" required>
@@ -344,9 +348,9 @@ footer{padding:16px 16px 20px}
         </select>
       </fieldset>
       <fieldset>
-        <legend id="fat-rotulo">Qual sua renda salarial?</legend>
+        <legend id="fat-rotulo">Qual sua renda mensal?</legend>
         <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
-          <option value="" disabled selected>Qual sua renda salarial?</option>
+          <option value="" disabled selected>Qual sua renda mensal?</option>
           <option value="Sem renda">Sem renda</option>
           <option value="Menos de R$ 3 mil">Menos de R$ 3 mil</option>
           <option value="De R$ 3 mil a R$ 4.999">De R$ 3 mil a R$ 4.999</option>
@@ -432,8 +436,12 @@ footer{padding:16px 16px 20px}
     ev.preventDefault();
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
+    var idade = document.getElementById('idade').value.trim();
+    var areaAtuacao = document.getElementById('areaAtuacao').value.trim();
     if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
     if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
+    if (!idade || Number(idade) < 18 || Number(idade) > 120) { erro.textContent = 'Informe uma idade entre 18 e 120 anos.'; return; }
+    if (!areaAtuacao) { erro.textContent = 'Informe sua área de atuação profissional.'; return; }
     var categoria = marcado('cat');
     if (!categoria) { erro.textContent = 'Escolhe uma opção em "Eu sou".'; return; }
     var renda = marcado('fat');
@@ -447,9 +455,9 @@ footer{padding:16px 16px 20px}
     var lead;
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
-      lead = { nome: nome, whatsapp: whats, faturamento: renda, categoria: categoria,
+      lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
         porta: porta, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'faturamento', 'categoria', 'porta'].every(function (k) {
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -473,7 +481,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
