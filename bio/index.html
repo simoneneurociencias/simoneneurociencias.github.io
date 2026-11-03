@@ -188,9 +188,9 @@ section{scroll-margin-top:16px}
 .cv-foto img{object-position:50% 20%}
 .cv-foto{flex-basis:30%}
 @media (max-width:640px){.cv-foto{aspect-ratio:4/5;width:58%;margin:18px auto 0;border:1px solid var(--ouro);border-radius:12px;overflow:hidden}.cv-foto img{object-position:50% 20%}.cv-texto{text-align:left}}
-.destaque{border:1px solid var(--ouro);box-shadow:0 0 22px rgba(185,145,91,.22);text-align:center;padding:20px 18px}
-.destaque p{margin:0;font-size:1.05rem;font-weight:600}
-.destaque strong{color:var(--ouro-claro);font-weight:800}
+.pres.destaque{background:linear-gradient(135deg,var(--ouro-btn),var(--ouro-claro));border:1px solid var(--ouro-claro);box-shadow:0 0 22px rgba(185,145,91,.28);color:#132938;text-align:center;padding:20px 18px}
+.pres.destaque p{margin:0;font-size:1.05rem;font-weight:600;color:#132938}
+.pres.destaque strong{color:#010c14;font-weight:800}
 .passo{min-height:150px;border-color:rgba(185,145,91,.35)}
 .passo h3{margin:0}
 .cad select{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2ae79' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid var(--borda);border-radius:10px;padding:13px 44px 13px 14px;-webkit-appearance:none;appearance:none;cursor:pointer}
@@ -270,13 +270,13 @@ footer{padding:16px 16px 20px}
     <h2 class="sec-tit">Onde está a sua trava?</h2>
     <article class="pres">
       <img class="foto-lado" src="terapeuta.webp" alt="Mulher de blazer claro sorrindo, sentada em uma poltrona" width="149" height="149" loading="lazy">
-      <h3>Terapeuta ou Expert</h3>
+      <h3>Terapeuta</h3>
       <p>Cobrar, vender, falar de dinheiro, aparecer: sua mente lê esses momentos como risco e recua. Você reconhece essa trava e reconfigura a resposta, para agir com segurança.</p>
     </article>
     <article class="pres">
       <img class="foto-lado" src="empreendedor.webp" alt="Homem de terno sentado à mesa com o notebook" width="149" height="149" loading="lazy">
       <h3>Quem empreende</h3>
-      <p>Sua mente baixa o preço, não solta o que está nas suas mãos e adia o que importa. Você reconhece essa trava e reconfigura a resposta, para decidir com clareza.</p>
+      <p>Sua mente baixa o preço, centraliza e adia o que importa. Se crescer parece exigir mais trabalho, delegar vira risco, a sobrecarga aumenta e falta tempo para a família. Você reconhece essa trava e reconfigura a resposta para decidir com clareza.</p>
     </article>
     <article class="pres">
       <img class="foto-lado" src="vida-pessoal.webp" alt="Mulher serena olhando pela janela" width="149" height="149" loading="lazy">
@@ -296,7 +296,7 @@ footer{padding:16px 16px 20px}
       <h3>Você me conta o que está acontecendo.</h3>
     </article>
     <article class="pres passo">
-      <img class="foto-lado" src="img/crenca.webp" alt="Homem com a mente aberta em engrenagens" width="130" height="130" loading="lazy">
+      <img class="foto-lado" src="img/mente-padrao-v2.png" alt="Cérebro formado por conexões neurais douradas sobre fundo azul" width="130" height="130" loading="lazy">
       <p class="num">Passo 2</p>
       <h3>Eu mostro como a mente criou esse padrão.</h3>
     </article>
@@ -333,20 +333,20 @@ footer{padding:16px 16px 20px}
       <label class="c" for="nome">Nome completo</label>
       <input type="text" id="nome" autocomplete="name" maxlength="120">
       <label class="c" for="whats">WhatsApp com DDD</label>
-      <input type="tel" id="whats" placeholder="(DDD) 90000-0000" autocomplete="tel" maxlength="30">
+      <input type="tel" id="whats" placeholder="(DDD) 00000-0000" autocomplete="tel" maxlength="30">
       <fieldset>
-        <legend id="cat-rotulo">Quem você é?</legend>
+        <legend id="cat-rotulo">Eu sou</legend>
         <select id="cat" name="cat" aria-labelledby="cat-rotulo" required>
-          <option value="" disabled selected>Quem você é?</option>
-          <option value="terapeuta">Sou terapeuta ou expert</option>
+          <option value="" disabled selected>Eu sou</option>
+          <option value="terapeuta">Sou terapeuta</option>
           <option value="empreendedor">Tenho meu próprio negócio</option>
           <option value="vida-pessoal">Quero trabalhar minha vida pessoal</option>
         </select>
       </fieldset>
       <fieldset>
-        <legend id="fat-rotulo">Quanto você ganha por mês?</legend>
+        <legend id="fat-rotulo">Qual sua renda salarial?</legend>
         <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
-          <option value="" disabled selected>Quanto você ganha por mês?</option>
+          <option value="" disabled selected>Qual sua renda salarial?</option>
           <option value="Sem renda">Sem renda</option>
           <option value="Menos de R$ 3 mil">Menos de R$ 3 mil</option>
           <option value="De R$ 3 mil a R$ 4.999">De R$ 3 mil a R$ 4.999</option>
@@ -369,8 +369,8 @@ footer{padding:16px 16px 20px}
   // Categorias, perguntas e mensagens. Trocar texto é só aqui.
   var CATS = {
     terapeuta: {
-      rotulo: 'terapeuta ou expert',
-      msg: 'Oi, Simone! Sou {nome}, atuo como terapeuta ou expert. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
+      rotulo: 'terapeuta',
+      msg: 'Oi, Simone! Sou {nome}, atuo como terapeuta. Respondi as perguntas da sua página e quero agendar a consulta diagnóstica gratuita.'
     },
     empreendedor: {
       rotulo: 'quem empreende',
@@ -435,7 +435,7 @@ footer{padding:16px 16px 20px}
     if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
     if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
     var categoria = marcado('cat');
-    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Quem você é?".'; return; }
+    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Eu sou".'; return; }
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
