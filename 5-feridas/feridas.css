@@ -104,3 +104,31 @@
   .etapas.cinco{grid-template-columns:1fr}
   .etapas.cinco .etapa:last-child{max-width:none}
 }
+
+/* ── Seções de fundo branco (as de mais texto), pedido de 10/11 ── */
+.sec.claro{background:#fff;color:#0b1a24;--txt:#0b1a24;--txt-2:#45535d;--txt-3:#6b7780;--linha:rgba(154,116,64,.35)}
+.sec.claro + .sec,.sec + .sec.claro{border-top-color:rgba(154,116,64,.18)}
+.claro em,.claro .titulo em{color:#8a6a3d}
+.claro .kicker{color:#8a6a3d}
+.claro .sub-sec{color:#45535d}
+.claro .sub-sec strong{color:#0b1a24}
+/* aviso: caixa escura vira caixa clara com borda */
+.claro .lado-nao{background:#f7f3ec;border:1px solid rgba(154,116,64,.3)}
+.claro .lado-nao h3{border-color:rgba(154,116,64,.25);color:#0b1a24}
+.claro .aviso-caixa .lado-lead{color:#0b1a24}
+.claro .aviso-caixa .nao-compre{color:#8a6a3d}
+/* cards das feridas: o card desenhado continua azul, a caixa fica clara */
+.claro .ferida{background:#f7f3ec;border:1px solid rgba(154,116,64,.22)}
+.claro .ferida:hover{border-color:rgba(154,116,64,.55);box-shadow:0 18px 40px rgba(11,26,36,.10)}
+.claro .ferida-card{color:#f5f4f3}
+.claro .ferida-txt .fe-rot,.claro .fe-masc{color:#8a6a3d}
+.claro .ferida-txt p{color:#45535d}
+/* FAQ */
+.claro.faq details,body .claro.faq details{background:#f7f3ec;border:1px solid rgba(154,116,64,.22)}
+.claro.faq summary{color:#0b1a24}
+.claro.faq details p,body .claro.faq details p{color:#45535d}
+.claro.faq summary::after{border-color:#8a6a3d;color:#8a6a3d}
+
+/* ── Imagem do material no topo (capa em espiral + páginas), 10/11 ── */
+.hero-material{width:min(820px,100%);height:auto;margin:34px auto 0;filter:drop-shadow(0 30px 50px rgba(0,0,0,.35))}
+@media (max-width:640px){.hero-material{margin-top:24px;width:112%;max-width:none;margin-left:-6%}}
