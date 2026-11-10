@@ -1,0 +1,106 @@
+/* Manual Clínico das 5 Feridas Emocionais (10/11/2026)
+   Base: styles.css da LP Os 3 Segredos (paleta azul + dourado, caixas e entrada em cascata).
+   Aqui só o que é desta página: o topo com o leque de cards e os cards das feridas. */
+
+/* ── Topo ── */
+.topo{position:relative;overflow:hidden;padding:72px 0 80px;text-align:center;
+  background:radial-gradient(ellipse at 50% 0%,rgba(185,145,91,.16),transparent 55%),
+             radial-gradient(ellipse at 85% 80%,rgba(24,69,96,.45),transparent 60%),var(--bg)}
+.topo-in{display:flex;flex-direction:column;align-items:center}
+.topo .kicker{margin-bottom:18px}
+.topo h1{font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.6vw,3.4rem);line-height:1.12;letter-spacing:-.015em;max-width:900px}
+.topo h1 em{display:block}
+.topo .sub{margin:22px auto 0;max-width:680px;font-size:1.1rem;color:var(--txt-2)}
+.topo .sub strong{display:inline;color:var(--txt);font-weight:600}
+.topo .btn-ring{margin-top:36px}
+
+/* leque com os 5 cards (vira o print do material quando os cards chegarem) */
+.leque{position:relative;width:min(640px,100%);height:330px;margin:44px auto 0}
+.leque .mini{position:absolute;left:50%;bottom:0;width:190px;height:270px;margin-left:-95px;border-radius:14px;
+  background:linear-gradient(165deg,#0b2d42 0%,#041a28 60%,#02101a 100%);border:1px solid rgba(185,145,91,.55);
+  box-shadow:0 24px 48px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.06);
+  transform-origin:50% 100%;display:flex;flex-direction:column;justify-content:space-between;padding:20px 18px;text-align:left;
+  transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.leque .mini{--dx:0px;--rot:0deg;--dy:0px;transform:translateX(calc(var(--dx) * var(--abre,1))) translateY(var(--dy)) rotate(calc(var(--rot) * var(--abre,1)))}
+.leque .mini:nth-child(1){--dx:-200px;--rot:-14deg;--dy:16px;z-index:1}
+.leque .mini:nth-child(2){--dx:-104px;--rot:-7deg;--dy:-2px;z-index:2}
+.leque .mini:nth-child(3){--dy:-14px;z-index:3}
+.leque .mini:nth-child(4){--dx:104px;--rot:7deg;--dy:-2px;z-index:2}
+.leque .mini:nth-child(5){--dx:200px;--rot:14deg;--dy:16px;z-index:1}
+.leque:hover .mini{--abre:1.12}
+.mini-num{font-family:var(--display);font-size:2.4rem;line-height:1;color:var(--ouro)}
+.mini-rot{font-size:.62rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--txt-3)}
+.mini-nome{font-family:var(--display);font-weight:600;font-size:1.05rem;line-height:1.2;display:block}
+.mini-masc{display:block;margin-top:4px;font-size:.72rem;color:var(--ouro-claro)}
+.fe-masc{display:inline-block;margin:-4px 0 14px;font-size:.88rem;color:var(--ouro-claro)}
+.fe-masc b{font-weight:700}
+.mini-linha{height:1px;background:linear-gradient(90deg,var(--ouro),transparent);margin:10px 0 8px}
+
+/* ── Aviso ── */
+.aviso-caixa{max-width:760px;margin:var(--esp-bloco) auto 0}
+.aviso-caixa .lado-lead{padding:0 30px;color:var(--txt);font-size:1.02rem}
+.aviso-caixa .lado-lead + .lado-lead{margin-top:14px}
+.aviso-caixa .nao-compre{display:block;margin-top:18px;font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--ouro-claro);text-transform:uppercase;letter-spacing:.02em}
+.lado-lead{padding:0 30px}
+
+/* ── Benefícios: 5 caixas (2 + 2 + 1 centralizada) ── */
+.etapas.cinco{max-width:980px}
+.etapas.cinco .etapa:last-child{grid-column:1 / -1;max-width:calc(50% - 6px);justify-self:center;width:100%}
+.etapa{transition:border-color .3s,transform .3s,box-shadow .3s}
+.etapa:hover{border-color:var(--linha);transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+
+/* ── Cards das feridas ── */
+.feridas{display:grid;gap:22px;max-width:980px;margin:var(--esp-bloco) auto 0}
+.ferida{display:grid;grid-template-columns:240px 1fr;gap:34px;align-items:center;padding:24px;border-radius:16px;
+  background:linear-gradient(160deg,#021a28,#010f18);border:1px solid rgba(255,255,255,.06);
+  transition:border-color .3s,transform .3s,box-shadow .3s}
+.ferida:hover{border-color:var(--linha);transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.ferida-card{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;
+  background:linear-gradient(165deg,#0b2d42 0%,#041a28 60%,#02101a 100%);border:1px solid rgba(185,145,91,.55);
+  display:flex;flex-direction:column;justify-content:space-between;padding:22px 20px}
+.ferida-card::after{content:"";position:absolute;inset:auto -30% -40% auto;width:80%;aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(circle,rgba(185,145,91,.22),transparent 70%)}
+.ferida-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ferida-txt .fe-rot{display:block;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ouro);margin-bottom:10px}
+.ferida-txt h3{font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.2;margin-bottom:14px}
+.ferida-txt p{color:var(--txt-2);font-size:1rem}
+.ferida-txt p strong{color:var(--txt);font-weight:600}
+.fe-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;list-style:none}
+.fe-tags li{font-size:.8rem;padding:6px 12px;border-radius:100px;border:1px solid rgba(185,145,91,.4);color:var(--ouro-claro)}
+
+/* ── Oferta ── */
+.ingresso-topo .ing-nome{position:relative;z-index:1;display:block;margin-top:6px;font-family:var(--display);font-weight:600;font-size:1.25rem;line-height:1.2;color:var(--txt)}
+.ingresso-topo .ing-num{position:absolute;right:18px;top:50%;transform:translateY(-50%);font-family:var(--display);font-size:4.6rem;line-height:1;color:rgba(210,174,121,.5)}
+
+/* ── Garantia ── */
+.caixa-garantia{display:flex;align-items:center;gap:26px;max-width:760px;margin:var(--esp-bloco) auto 0;padding:26px 30px;border-radius:14px;border:1px solid var(--linha);background:linear-gradient(160deg,#021a28,#010f18)}
+.cg-selo{width:120px;height:auto;flex:none;border-radius:50%}
+.caixa-garantia h3{font-family:var(--display);font-weight:600;font-size:1.2rem;margin-bottom:8px;color:var(--ouro-claro)}
+.caixa-garantia p{color:var(--txt-2)}
+.caixa-garantia p strong{color:var(--txt)}
+
+/* ── Celular ── */
+@media (max-width:900px){
+  .ferida{grid-template-columns:150px 1fr;gap:20px;padding:18px}
+}
+@media (max-width:640px){
+  .topo{padding:44px 0 56px}
+  .topo .sub{font-size:1rem}
+  .leque{height:230px;margin-top:30px}
+  .leque .mini{width:118px;height:172px;margin-left:-59px;padding:14px 12px;border-radius:10px;--abre:.5}
+  .leque:hover .mini{--abre:.55}
+  .mini-num{font-size:1.6rem}
+  .mini-nome{font-size:.78rem}
+  .mini-masc{font-size:.6rem}
+  .mini-rot{font-size:.5rem;letter-spacing:.16em}
+  .etapas.cinco .etapa:last-child{max-width:none}
+  .ferida{grid-template-columns:1fr;gap:18px}
+  .ferida-card{aspect-ratio:4/3;max-height:240px}
+  .aviso-caixa .lado-lead{padding:0 22px}
+  .caixa-garantia{flex-direction:column;text-align:center;padding:24px 22px}
+  .cg-selo{width:100px}
+}
+@media (max-width:900px){
+  .etapas.cinco{grid-template-columns:1fr}
+  .etapas.cinco .etapa:last-child{max-width:none}
+}
