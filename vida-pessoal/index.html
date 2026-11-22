@@ -222,8 +222,10 @@ section{scroll-margin-top:16px}
 .como-cx.dourada .como-ic{border-color:#132938}
 .como-cx.dourada .como-gratis{color:#1d3342;border-top-color:rgba(1,12,20,.25)}
 .como-cx.dourada .como-gratis b{color:#010c14;font-weight:800}
-@media (max-width:640px){.dobra{display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100svh - max(300px, min(42svh,380px)) - 26px)}.dobra h1{margin:4px 0 0}.dobra .cta-topo{margin:0}.dobra .faixa{margin-top:0}}
-.cta-guia{text-align:center;font-family:var(--texto);font-weight:500;font-size:.8rem;color:var(--txt-2);margin:0 0 2px;white-space:nowrap}
+@media (max-width:640px){.dobra{display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100svh - max(300px, min(42svh,380px)) - 26px)}.dobra h1{margin:4px 0 0}.dobra .cta-topo{margin:0 0 34px}.dobra .faixa{margin-top:0}}
+.cta-guia{text-align:center;font-family:var(--texto);font-weight:700;font-size:clamp(.9rem,4vw,1.02rem);color:var(--ouro-claro);margin:0 0 6px;white-space:nowrap;animation:guia-pisca 1.8s ease-in-out infinite}
+@keyframes guia-pisca{0%,100%{opacity:1;text-shadow:0 0 12px rgba(210,174,121,.55)}50%{opacity:.45;text-shadow:none}}
+@media (prefers-reduced-motion:reduce){.cta-guia{animation:none}}
 .cta-nota{text-align:center;font-family:var(--texto);font-weight:600;font-size:.8rem;letter-spacing:.02em;color:var(--ouro-claro);margin:12px 0 0}
 .infos{display:flex;justify-content:center;margin:26px 0 4px;padding:24px 0;border-top:1px solid rgba(185,145,91,.28);border-bottom:1px solid rgba(185,145,91,.28)}
 .info{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;padding:0 14px;border-left:1px solid rgba(255,255,255,.12)}
