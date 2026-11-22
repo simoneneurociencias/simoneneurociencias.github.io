@@ -196,15 +196,16 @@ section{scroll-margin-top:16px}
 .pres.destaque strong{color:#010c14;font-weight:800}
 .destaque-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,4.6vw,1.35rem);line-height:1.3;margin:0;color:#132938}
 .como-cx{border:1px solid var(--ouro);border-radius:18px;padding:26px 16px 20px;margin:0 0 26px;background:linear-gradient(160deg,rgba(185,145,91,.08),rgba(185,145,91,.02))}
-.como-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px 12px}
+.como-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 10px}
 .como-it{text-align:center}
-.como-ic{display:inline-flex;align-items:center;justify-content:center;width:64px;height:64px;border-radius:50%;border:1px solid var(--ouro);color:var(--ouro-claro);background:rgba(185,145,91,.1);margin:0 0 10px}
-.como-ic svg{width:32px;height:32px}
-.como-foto{overflow:hidden;padding:0;border-width:2px}
-.como-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.como-ic{display:inline-flex;width:68px;height:68px;border-radius:50%;border:2px solid var(--ouro);overflow:hidden;margin:0 0 10px;background:#010c14}
+.como-ic img{width:100%;height:100%;object-fit:cover}
+.como-ic img[src*="simone"]{object-position:50% 18%}
+.como-gratis{display:flex;align-items:center;justify-content:center;gap:10px;margin:20px 0 0;padding-top:16px;border-top:1px solid rgba(185,145,91,.3);font-size:.86rem;color:var(--txt-2)}
+.como-gratis img{width:34px;height:34px;border-radius:50%;object-fit:cover;flex:none;border:1px solid var(--ouro)}
+.como-gratis b{color:var(--ouro-claro);font-weight:700}
 .como-t{font-family:var(--display);font-weight:600;font-size:.95rem;line-height:1.3;margin:0 0 4px;color:var(--txt)}
 .como-s{font-size:.84rem;line-height:1.45;margin:0;color:var(--txt-2)}
-@media (min-width:640px){.como-grid{grid-template-columns:repeat(4,1fr)}}
 .passo{min-height:150px;border-color:rgba(185,145,91,.35)}
 .passo h3{margin:0}
 .cad select{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2ae79' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid var(--borda);border-radius:10px;padding:13px 44px 13px 14px;-webkit-appearance:none;appearance:none;cursor:pointer}
@@ -319,27 +320,23 @@ footer{padding:16px 16px 20px}
     <div class="como-cx">
       <h2 class="sec-tit">Como funciona a consulta diagnóstica</h2>
       <div class="como-grid">
-      <div class="como-it">
-        <span class="como-ic como-foto"><img src="../bio/simone-curriculo-v2.webp" alt="Simone Carneiro" width="64" height="64" loading="lazy"></span>
-        <p class="como-t">Com a Simone Carneiro</p>
-        <p class="como-s">Conversa individual, só você e eu.</p>
+        <div class="como-it">
+          <span class="como-ic"><img src="../bio/simone-curriculo-v2.webp" alt="Simone Carneiro" width="64" height="64" loading="lazy"></span>
+          <p class="como-t">Com a Simone Carneiro</p>
+          <p class="como-s">Conversa individual, só você e eu.</p>
+        </div>
+        <div class="como-it">
+          <span class="como-ic"><img src="img/online.webp" alt="Pessoa em conversa por vídeo no notebook" width="64" height="64" loading="lazy"></span>
+          <p class="como-t">Online</p>
+          <p class="como-s">De onde você estiver.</p>
+        </div>
+        <div class="como-it">
+          <span class="como-ic"><img src="img/ampulheta.webp" alt="Ampulheta dourada" width="64" height="64" loading="lazy"></span>
+          <p class="como-t">Até 50 minutos</p>
+          <p class="como-s">Tempo para entender o que está acontecendo.</p>
+        </div>
       </div>
-      <div class="como-it">
-        <span class="como-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><path d="M9.5 9.2l1.8 1.8 3.4-3.4"/></svg></span>
-        <p class="como-t">Online</p>
-        <p class="como-s">De onde você estiver.</p>
-      </div>
-      <div class="como-it">
-        <span class="como-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12M6 21h12"/><path d="M7 3c0 5 5 6 5 9s-5 4-5 9M17 3c0 5-5 6-5 9s5 4 5 9"/><path d="M9.5 18.5c1-1.2 4-1.2 5 0" /></svg></span>
-        <p class="como-t">Até 50 minutos</p>
-        <p class="como-s">Tempo para entender o que está acontecendo.</p>
-      </div>
-      <div class="como-it">
-        <span class="como-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="9" width="17" height="11.5" rx="1.2"/><path d="M2.5 9h19v-3h-19zM12 6v14.5"/><path d="M12 6c-1.5-3-5.5-3.2-5.5-.8C6.5 6.6 9.8 6 12 6zM12 6c1.5-3 5.5-3.2 5.5-.8 0 1.4-3.3.8-5.5.8z"/></svg></span>
-        <p class="como-t">Gratuita até <span class="fim-mes"></span></p>
-        <p class="como-s">Um presente de Black Friday.</p>
-      </div>
-      </div>
+      <p class="como-gratis"><img src="img/presente.webp" alt="Caixa de presente dourada" width="34" height="34" loading="lazy"> <span><b>Gratuita até <span class="fim-mes"></span></b> · Um presente de Black Friday.</span></p>
     </div>
     <article class="pres passo">
       <img class="foto-lado" src="../bio/img/momento.webp" alt="Rosto tenso com as mãos na cabeça" width="130" height="130" loading="lazy">
