@@ -435,11 +435,6 @@ footer{padding:16px 16px 20px}
           </div>
         </details>
       </fieldset>
-      <fieldset>
-        <legend id="conexRotulo">Hoje, de 0 a 10, quanto você sente que está em contato com você e com o seu poder interior?</legend>
-        <p class="nota-guia">0 = muito longe de mim · 10 = em paz e em contato comigo</p>
-        <div class="escala" role="radiogroup" aria-labelledby="conexRotulo"><label class="nota"><input type="radio" name="conexNota" value="0"><span>0</span></label><label class="nota"><input type="radio" name="conexNota" value="1"><span>1</span></label><label class="nota"><input type="radio" name="conexNota" value="2"><span>2</span></label><label class="nota"><input type="radio" name="conexNota" value="3"><span>3</span></label><label class="nota"><input type="radio" name="conexNota" value="4"><span>4</span></label><label class="nota"><input type="radio" name="conexNota" value="5"><span>5</span></label><label class="nota"><input type="radio" name="conexNota" value="6"><span>6</span></label><label class="nota"><input type="radio" name="conexNota" value="7"><span>7</span></label><label class="nota"><input type="radio" name="conexNota" value="8"><span>8</span></label><label class="nota"><input type="radio" name="conexNota" value="9"><span>9</span></label><label class="nota"><input type="radio" name="conexNota" value="10"><span>10</span></label></div>
-      </fieldset>
       <label class="c" for="impTxt" id="impRotulo">Como isso está impactando a sua vida pessoal, a sua carreira, os seus relacionamentos e a sua saúde? Conte de que forma.</label>
       <textarea id="impTxt" rows="6" maxlength="1500" placeholder="Escreva com as suas palavras, do jeito que vier."></textarea>
       <fieldset>
@@ -573,8 +568,6 @@ footer{padding:16px 16px 20px}
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
     if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "Em que momentos você percebe mais essa desconexão?".'; return; }
-    var conexNota = (form.querySelector('input[name=conexNota]:checked') || {}).value;
-    if (conexNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10 para continuar.'; return; }
     var impTxt = document.getElementById('impTxt').value.trim();
     if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
     var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
@@ -593,8 +586,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, sintomas: sintomas.join(', '), contato: conexNota + '/10', impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem: vidaTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'contato', 'impacto', 'vidaSem'].every(function (k) {
+        porta: porta, sintomas: sintomas.join(', '), impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem: vidaTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'impacto', 'vidaSem'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -618,7 +611,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · contato com o poder interior: ' + lead.contato + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
