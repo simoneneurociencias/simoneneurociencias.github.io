@@ -263,7 +263,7 @@ section{scroll-margin-top:16px}
 .cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
 .cad .op.op-cx input{border-radius:5px}
 .cad .op.op-cx input:checked{background:#9a7440 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
-#sintOutroTxt,#entOutroTxt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
+#sintOutroTxt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
 .sint-cx summary{list-style:none;font-size:1rem;color:#4a6374;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid #9db4c4;border-radius:10px;padding:13px 44px 13px 14px;cursor:pointer;line-height:1.4}
 .sint-cx summary::-webkit-details-marker{display:none}
 .sint-cx[open] summary{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E");border-color:#9a7440}
@@ -416,7 +416,7 @@ footer{padding:16px 16px 20px}
       <input type="text" id="areaAtuacao" name="areaAtuacao" maxlength="120">
       <input type="hidden" id="cat" name="cat" value="vida-pessoal">
       <fieldset>
-        <legend>O que está pesando mais na sua vida hoje?</legend>
+        <legend>Em que momentos você percebe mais essa desconexão?</legend>
         <details class="sint-cx" id="sintCx">
           <summary id="sintResumo">Toque para escolher (pode marcar mais de um)</summary>
           <div class="sint-lista">
@@ -425,29 +425,16 @@ footer{padding:16px 16px 20px}
         <label class="op op-cx"><input type="checkbox" name="sint" value="Ansiedade ou preocupação constante"> Ansiedade ou preocupação constante</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Medo do futuro"> Medo do futuro</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Mente que não desliga"> Mente que não desliga</label>
-        <label class="op op-cx"><input type="checkbox" name="sint" value="Desconexão, falta de paz interior"> Desconexão, falta de paz interior</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Falta de paz interior"> Falta de paz interior</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Sensação de desconexão do meu poder interior"> Sensação de desconexão do meu poder interior</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade para dormir"> Dificuldade para dormir</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Tristeza ou desânimo"> Tristeza ou desânimo</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade nos relacionamentos"> Dificuldade nos relacionamentos</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Sensação de que o dinheiro nunca sobra"> Sensação de que o dinheiro nunca sobra</label>
-<label class="op op-cx"><input type="checkbox" name="sint" value="Outro" id="sintOutro"> Outro</label>
+<label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade de decidir sem um sinal de fora"> Dificuldade de decidir sem um sinal de fora</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Não confio no meu poder nem na minha própria intuição"> Não confio no meu poder nem na minha própria intuição</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Outro" id="sintOutro"> Outro</label>
         <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Outro? Escreva aqui qual é">
-          </div>
-        </details>
-      </fieldset>
-      <fieldset>
-        <legend>Em quais momentos você percebe mais essa desconexão?</legend>
-        <details class="sint-cx" id="entCx">
-          <summary id="entResumo">Toque para escolher (pode marcar mais de um)</summary>
-          <div class="sint-lista">
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero que alguém mude para eu ficar em paz"> Espero que alguém mude para eu ficar em paz</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero a aprovação dos outros para me sentir bem"> Espero a aprovação dos outros para me sentir bem</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero um sinal antes de decidir"> Espero um sinal antes de decidir</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Não confio no meu poder nem na minha própria intuição"> Não confio no meu poder nem na minha própria intuição</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Coloco a vida dos outros antes da minha"> Coloco a vida dos outros antes da minha</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Outro" id="entOutro"> Outro</label>
-        <input type="text" id="entOutroTxt" class="outro-txt" maxlength="120" placeholder="Outro? Escreva aqui qual é">
           </div>
         </details>
       </fieldset>
@@ -553,22 +540,6 @@ footer{padding:16px 16px 20px}
     if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoSint(); }
   });
 
-  // Pergunta do poder entregue para fora (Simone 23/11/2026): mesma caixa das opções acima.
-  var entCx = document.getElementById('entCx'), entResumo = document.getElementById('entResumo');
-  function resumoEnt() {
-    var m = [].slice.call(form.querySelectorAll('input[name=entrega]:checked')).map(function (c) { return c.value; });
-    entResumo.textContent = m.length ? m.join(', ') : 'Toque para escolher (pode marcar mais de um)';
-    entCx.classList.toggle('escolhido', m.length > 0);
-  }
-  [].forEach.call(form.querySelectorAll('input[name=entrega]'), function (c) { c.addEventListener('change', resumoEnt); });
-  document.getElementById('entOutro').addEventListener('change', function () {
-    if (this.checked) document.getElementById('entOutroTxt').focus();
-  });
-  document.getElementById('entOutroTxt').addEventListener('input', function () {
-    var o = document.getElementById('entOutro');
-    if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoEnt(); }
-  });
-
   function verTela() {
     var f = location.hash === '#cadastro';
     document.body.classList.toggle('so-form', f);
@@ -604,12 +575,7 @@ footer{padding:16px 16px 20px}
       var outro = document.getElementById('sintOutroTxt').value.trim();
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
-    if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "O que está pesando mais na sua vida hoje?".'; return; }
-    var entrega = [].slice.call(form.querySelectorAll('input[name=entrega]:checked')).map(function (c) {
-      var outro = document.getElementById('entOutroTxt').value.trim();
-      return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
-    });
-    if (!entrega.length) { entCx.open = true; erro.textContent = 'Escolha pelo menos um momento para continuar.'; return; }
+    if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "Em que momentos você percebe mais essa desconexão?".'; return; }
     var conexNota = (form.querySelector('input[name=conexNota]:checked') || {}).value;
     if (conexNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10 para continuar.'; return; }
     var impTxt = document.getElementById('impTxt').value.trim();
@@ -630,8 +596,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, sintomas: sintomas.join(', '), entrega: entrega.join(', '), contato: conexNota + '/10', impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem: vidaTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'entrega', 'contato', 'impacto', 'vidaSem'].every(function (k) {
+        porta: porta, sintomas: sintomas.join(', '), contato: conexNota + '/10', impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem: vidaTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'contato', 'impacto', 'vidaSem'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -655,7 +621,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · momentos da desconexão: ' + lead.entrega + ' · contato com o poder interior: ' + lead.contato + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · contato com o poder interior: ' + lead.contato + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
