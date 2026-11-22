@@ -223,6 +223,17 @@ section{scroll-margin-top:16px}
 .como-cx.dourada .como-gratis{color:#1d3342;border-top-color:rgba(1,12,20,.25)}
 .como-cx.dourada .como-gratis b{color:#010c14;font-weight:800}
 .cta-nota{text-align:center;font-family:var(--texto);font-weight:600;font-size:.8rem;letter-spacing:.02em;color:var(--ouro-claro);margin:12px 0 0}
+.infos{display:flex;justify-content:center;margin:26px 0 4px;padding:24px 0;border-top:1px solid rgba(185,145,91,.28);border-bottom:1px solid rgba(185,145,91,.28)}
+.info{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;padding:0 14px;border-left:1px solid rgba(255,255,255,.12)}
+.info:first-child{border-left:0;padding-left:0}
+.info-ic{width:30px;height:30px;stroke:var(--ouro);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.info-l{display:flex;flex-direction:column;gap:6px}
+.info strong{font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1;white-space:nowrap;color:var(--txt)}
+.info span{font-size:.8rem;color:rgba(255,255,255,.56);line-height:1.4}
+.info span.fim-mes{font-size:inherit;color:inherit}
+@media (max-width:640px){.infos{display:grid;grid-template-columns:1fr 1fr;gap:22px 0}
+.info{gap:8px;padding:0 0 0 16px}.info:nth-child(odd){border-left:0;padding-left:0}
+.info-ic{width:22px;height:22px}.info strong{font-size:min(1.25rem,5.2vw)}.info span{font-size:.72rem}}
 .passo{min-height:150px;border-color:rgba(185,145,91,.35)}
 .passo h3{margin:0}
 .cad select{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2ae79' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid var(--borda);border-radius:10px;padding:13px 44px 13px 14px;-webkit-appearance:none;appearance:none;cursor:pointer}
@@ -320,7 +331,7 @@ footer{padding:16px 16px 20px}
   </header>
 
   <div class="etapa">
-  <h1>Eu ajudo você a reconhecer os bloqueios emocionais que <em>afetam sua saúde, dinheiro, carreira e relacionamentos</em>: o primeiro passo para destravar.</h1>
+  <h1>Eu ajudo você a reconhecer os bloqueios emocionais que <em>afetam sua saúde, dinheiro, carreira e vida pessoal</em>: o primeiro passo para destravar.</h1>
   <div class="cta-topo">
     <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
   </div>
@@ -353,24 +364,12 @@ footer{padding:16px 16px 20px}
       <p class="num">Passo 3</p>
       <h3>Você sai sabendo onde está a trava e como trabalhar isso.</h3>
     </article>
-    <div class="como-cx dourada">
-      <div class="como-grid">
-        <div class="como-it">
-          <span class="como-ic"><img src="../bio/simone-curriculo-v2.webp" alt="Simone Carneiro" width="64" height="64" loading="lazy"></span>
-          <div><p class="como-t">Com a Simone Carneiro</p> <p class="como-s">Conversa individual, só você e eu.</p></div>
-        </div>
-        <div class="como-it">
-          <span class="como-ic solto"><img src="img/online.png" alt="Notebook aberto" width="96" height="72" loading="lazy"></span>
-          <div><p class="como-t">Online</p> <p class="como-s">De onde você estiver.</p></div>
-        </div>
-        <div class="como-it">
-          <span class="como-ic solto"><img src="img/ampulheta-clara.png" alt="Ampulheta dourada" width="72" height="72" loading="lazy"></span>
-          <div><p class="como-t">Até 50 minutos</p> <p class="como-s">Tempo para entender o que está acontecendo.</p></div>
-        </div>
-      </div>
-
+    <div class="infos">
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5"/></svg><div class="info-l"><strong>Individual</strong><span>com a Simone<br>Carneiro</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><circle cx="12" cy="10" r="2.2"/></svg><div class="info-l"><strong>Online</strong><span>de onde você<br>estiver</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><div class="info-l"><strong>50 min</strong><span>para entender o que<br>está acontecendo</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.8 2.8 5.2-5.6"/></svg><div class="info-l"><strong>Gratuita</strong><span>até <span class="fim-mes"></span>,<br>presente de Black Friday</span></div></div>
     </div>
-      <p class="como-gratis como-fora"><img src="img/check.png" alt="" width="30" height="30" loading="lazy"> <span><b>Gratuita até <span class="fim-mes"></span></b> · Um presente de Black Friday.</span></p>
   </section>
 
   <section class="cv">
