@@ -224,6 +224,24 @@ section{scroll-margin-top:16px}
 .sint-cx.escolhido summary{color:#0b3a5b}
 .sint-cx summary:focus-visible{outline:2px solid var(--ouro);outline-offset:1px}
 .sint-lista{padding:4px 0 0}
+/* Formulário em tela própria (22/11/2026): só aparece ao tocar em "Quero minha consulta" (#cadastro). */
+#cadastro{display:none}
+body.so-form #cadastro{display:block;margin-top:24px}
+body.so-form main>header,body.so-form .etapa>*:not(#cadastro){display:none}
+body.so-form .cad.revela{opacity:1;transform:none}
+.voltar{display:none;font-size:.9rem;font-weight:600;color:#9a7440;text-decoration:none;margin:0 0 10px}
+body.so-form .voltar{display:inline-block}
+#impTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
+#impTxt::placeholder{color:#4a6374;opacity:1}
+#impTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.nota-guia{font-size:.84rem;color:#4a6374;margin:-4px 0 10px}
+.escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+@media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
+.nota{position:relative;display:block;cursor:pointer}
+.nota input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.nota span{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #9db4c4;border-radius:10px;font-weight:700;font-size:.95rem;color:#0b3a5b;background:#fff;transition:background .2s,border-color .2s}
+.nota input:checked+span{background:#9a7440;border-color:#9a7440;color:#fff}
+.nota input:focus-visible+span{outline:2px solid var(--ouro);outline-offset:1px}
 .cad .op input{background:#fff;border-color:#9a7440}
 .cad .op input:checked{background:radial-gradient(circle,#9a7440 0 42%,#fff 46%)}
 main{padding-bottom:0}
@@ -325,8 +343,13 @@ footer{padding:16px 16px 20px}
     </div>
   </section>
 
+  <div class="bloco cta-fim">
+    <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+  </div>
+
   <section id="cadastro" class="bloco">
     <form class="cad" id="cad" novalidate>
+      <a class="voltar" href="#inicio">← Voltar</a>
       <h2>Formulário de cadastro</h2>
       <p class="cad-sub">Cadastre-se para agendar sua consulta diagnóstica gratuita.</p>
       <label class="c" for="nome">Nome completo</label>
@@ -355,6 +378,13 @@ footer{padding:16px 16px 20px}
         <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Conte em poucas palavras" hidden>
           </div>
         </details>
+      </fieldset>
+      <label class="c" for="impTxt" id="impRotulo">Como isso está impactando a sua vida pessoal, a sua carreira, os seus relacionamentos e a sua saúde? Conte de que forma.</label>
+      <textarea id="impTxt" rows="6" maxlength="1500" placeholder="Escreva com as suas palavras, do jeito que vier."></textarea>
+      <fieldset>
+        <legend id="notaRotulo">De 0 a 10, quanto isso impacta a sua vida hoje?</legend>
+        <p class="nota-guia" id="notaGuia">0 = quase não impacta · 10 = impacta muito</p>
+        <div class="escala" role="radiogroup" aria-labelledby="notaRotulo"><label class="nota"><input type="radio" name="impNota" value="0"><span>0</span></label><label class="nota"><input type="radio" name="impNota" value="1"><span>1</span></label><label class="nota"><input type="radio" name="impNota" value="2"><span>2</span></label><label class="nota"><input type="radio" name="impNota" value="3"><span>3</span></label><label class="nota"><input type="radio" name="impNota" value="4"><span>4</span></label><label class="nota"><input type="radio" name="impNota" value="5"><span>5</span></label><label class="nota"><input type="radio" name="impNota" value="6"><span>6</span></label><label class="nota"><input type="radio" name="impNota" value="7"><span>7</span></label><label class="nota"><input type="radio" name="impNota" value="8"><span>8</span></label><label class="nota"><input type="radio" name="impNota" value="9"><span>9</span></label><label class="nota"><input type="radio" name="impNota" value="10"><span>10</span></label></div>
       </fieldset>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
@@ -438,6 +468,14 @@ footer{padding:16px 16px 20px}
     var c = document.getElementById('sintOutroTxt'); c.hidden = !this.checked; if (this.checked) c.focus();
   });
 
+  function verTela() {
+    var f = location.hash === '#cadastro';
+    document.body.classList.toggle('so-form', f);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', verTela);
+  verTela();
+
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'vida-pessoal').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'vida-pessoal';
 
@@ -466,6 +504,10 @@ footer{padding:16px 16px 20px}
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
     if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "O que você tem sentido?".'; return; }
+    var impTxt = document.getElementById('impTxt').value.trim();
+    if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
+    var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
+    if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
@@ -478,8 +520,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, sintomas: sintomas.join(', '), msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas'].every(function (k) {
+        porta: porta, sintomas: sintomas.join(', '), impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'impacto'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -503,7 +545,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · impacto: ' + lead.impacto,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
