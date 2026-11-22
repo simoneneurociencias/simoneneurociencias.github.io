@@ -422,26 +422,28 @@ footer{padding:16px 16px 20px}
           <div class="sint-lista">
         <label class="op op-cx"><input type="checkbox" name="sint" value="Culpa ou cobrança excessiva"> Culpa ou cobrança excessiva</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Medo de me mostrar, de ser quem eu sou"> Medo de me mostrar, de ser quem eu sou</label>
-        <label class="op op-cx"><input type="checkbox" name="sint" value="Ansiedade ou medo do futuro"> Ansiedade ou medo do futuro</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Ansiedade ou preocupação constante"> Ansiedade ou preocupação constante</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Medo do futuro"> Medo do futuro</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Mente que não desliga"> Mente que não desliga</label>
-        <label class="op op-cx"><input type="checkbox" name="sint" value="Sensação de estar longe de mim e do meu poder"> Sensação de estar longe de mim e do meu poder</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Desconexão, falta de paz interior"> Desconexão, falta de paz interior</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade para dormir"> Dificuldade para dormir</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Tristeza ou desânimo"> Tristeza ou desânimo</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade nos relacionamentos"> Dificuldade nos relacionamentos</label>
-        <label class="op op-cx"><input type="checkbox" name="sint" value="Dinheiro que nunca sobra"> Dinheiro que nunca sobra</label>
+        <label class="op op-cx"><input type="checkbox" name="sint" value="Sensação de que o dinheiro nunca sobra"> Sensação de que o dinheiro nunca sobra</label>
 <label class="op op-cx"><input type="checkbox" name="sint" value="Outro" id="sintOutro"> Outro</label>
         <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Outro? Escreva aqui qual é">
           </div>
         </details>
       </fieldset>
       <fieldset>
-        <legend>Em quais situações você sente que entrega o seu poder para fora?</legend>
+        <legend>Em quais momentos você percebe mais essa desconexão?</legend>
         <details class="sint-cx" id="entCx">
           <summary id="entResumo">Toque para escolher (pode marcar mais de um)</summary>
           <div class="sint-lista">
         <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero que alguém mude para eu ficar em paz"> Espero que alguém mude para eu ficar em paz</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Preciso da aprovação dos outros para me sentir bem"> Preciso da aprovação dos outros para me sentir bem</label>
+        <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero a aprovação dos outros para me sentir bem"> Espero a aprovação dos outros para me sentir bem</label>
         <label class="op op-cx"><input type="checkbox" name="entrega" value="Espero um sinal antes de decidir"> Espero um sinal antes de decidir</label>
-        <label class="op op-cx"><input type="checkbox" name="entrega" value="Não confio na minha própria intuição"> Não confio na minha própria intuição</label>
+        <label class="op op-cx"><input type="checkbox" name="entrega" value="Não confio no meu poder nem na minha própria intuição"> Não confio no meu poder nem na minha própria intuição</label>
         <label class="op op-cx"><input type="checkbox" name="entrega" value="Coloco a vida dos outros antes da minha"> Coloco a vida dos outros antes da minha</label>
         <label class="op op-cx"><input type="checkbox" name="entrega" value="Outro" id="entOutro"> Outro</label>
         <input type="text" id="entOutroTxt" class="outro-txt" maxlength="120" placeholder="Outro? Escreva aqui qual é">
@@ -606,7 +608,7 @@ footer{padding:16px 16px 20px}
       var outro = document.getElementById('entOutroTxt').value.trim();
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
-    if (!entrega.length) { entCx.open = true; erro.textContent = 'Escolha pelo menos uma situação para continuar.'; return; }
+    if (!entrega.length) { entCx.open = true; erro.textContent = 'Escolha pelo menos um momento para continuar.'; return; }
     var conexNota = (form.querySelector('input[name=conexNota]:checked') || {}).value;
     if (conexNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10 para continuar.'; return; }
     var impTxt = document.getElementById('impTxt').value.trim();
@@ -652,7 +654,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · entrega o poder: ' + lead.entrega + ' · contato com o poder interior: ' + lead.contato + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · momentos da desconexão: ' + lead.entrega + ' · contato com o poder interior: ' + lead.contato + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
