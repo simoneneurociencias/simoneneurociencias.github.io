@@ -263,7 +263,7 @@ section{scroll-margin-top:16px}
 .cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
 .cad .op.op-cx input{border-radius:5px}
 .cad .op.op-cx input:checked{background:#9a7440 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
-#sintOutroTxt{margin-top:4px}
+#sintOutroTxt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
 .sint-cx summary{list-style:none;font-size:1rem;color:#4a6374;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid #9db4c4;border-radius:10px;padding:13px 44px 13px 14px;cursor:pointer;line-height:1.4}
 .sint-cx summary::-webkit-details-marker{display:none}
 .sint-cx[open] summary{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E");border-color:#9a7440}
@@ -429,7 +429,7 @@ footer{padding:16px 16px 20px}
         <label class="op op-cx"><input type="checkbox" name="sint" value="Tristeza ou desânimo"> Tristeza ou desânimo</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade nos relacionamentos"> Dificuldade nos relacionamentos</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Outro" id="sintOutro"> Outro</label>
-        <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Conte em poucas palavras" hidden>
+        <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Outro? Escreva aqui qual é">
           </div>
         </details>
       </fieldset>
@@ -521,8 +521,13 @@ footer{padding:16px 16px 20px}
     sintCx.classList.toggle('escolhido', m.length > 0);
   }
   [].forEach.call(form.querySelectorAll('input[name=sint]'), function (c) { c.addEventListener('change', resumoSint); });
+  // Caixinha do "Outro" sempre à vista (Simone 22/11/2026): escrever nela já marca o Outro.
   document.getElementById('sintOutro').addEventListener('change', function () {
-    var c = document.getElementById('sintOutroTxt'); c.hidden = !this.checked; if (this.checked) c.focus();
+    if (this.checked) document.getElementById('sintOutroTxt').focus();
+  });
+  document.getElementById('sintOutroTxt').addEventListener('input', function () {
+    var o = document.getElementById('sintOutro');
+    if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoSint(); }
   });
 
   function verTela() {
