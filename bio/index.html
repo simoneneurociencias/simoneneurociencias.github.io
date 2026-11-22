@@ -424,6 +424,12 @@ footer{padding:16px 16px 20px}
 
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
+  // Origens de vida pessoal (22/11/2026: Reels do Osho) já abrem com "Quero trabalhar minha vida pessoal" marcado.
+  var PORTAS_VIDA = ['osho'];
+  if (PORTAS_VIDA.indexOf(porta) > -1 && !form.elements.cat.value) {
+    form.elements.cat.value = 'vida-pessoal';
+    form.elements.cat.dispatchEvent(new Event('change'));
+  }
 
   // Voltar da aplicação para a página: o botão volta ao normal
   window.addEventListener('pageshow', function () {
