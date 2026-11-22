@@ -416,7 +416,7 @@ footer{padding:16px 16px 20px}
       <input type="text" id="areaAtuacao" name="areaAtuacao" maxlength="120">
       <input type="hidden" id="cat" name="cat" value="vida-pessoal">
       <fieldset>
-        <legend>O que você tem sentido?</legend>
+        <legend>O que está pesando mais na sua vida hoje?</legend>
         <details class="sint-cx" id="sintCx">
           <summary id="sintResumo">Toque para escolher (pode marcar mais de um)</summary>
           <div class="sint-lista">
@@ -561,7 +561,7 @@ footer{padding:16px 16px 20px}
       var outro = document.getElementById('sintOutroTxt').value.trim();
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
-    if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "O que você tem sentido?".'; return; }
+    if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "O que está pesando mais na sua vida hoje?".'; return; }
     var impTxt = document.getElementById('impTxt').value.trim();
     if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
     var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
