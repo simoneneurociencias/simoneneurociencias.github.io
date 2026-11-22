@@ -231,9 +231,9 @@ body.so-form main>header,body.so-form .etapa>*:not(#cadastro){display:none}
 body.so-form .cad.revela{opacity:1;transform:none}
 .voltar{display:none;font-size:.9rem;font-weight:600;color:#9a7440;text-decoration:none;margin:0 0 10px}
 body.so-form .voltar{display:inline-block}
-#impTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
-#impTxt::placeholder{color:#4a6374;opacity:1}
-#impTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
+#impTxt,#vidaTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
+#impTxt::placeholder,#vidaTxt::placeholder{color:#4a6374;opacity:1}
+#impTxt:focus,#vidaTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
 .nota-guia{font-size:.84rem;color:#4a6374;margin:-4px 0 10px}
 .escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 @media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
@@ -386,6 +386,9 @@ footer{padding:16px 16px 20px}
         <p class="nota-guia" id="notaGuia">0 = quase não impacta · 10 = impacta muito</p>
         <div class="escala" role="radiogroup" aria-labelledby="notaRotulo"><label class="nota"><input type="radio" name="impNota" value="0"><span>0</span></label><label class="nota"><input type="radio" name="impNota" value="1"><span>1</span></label><label class="nota"><input type="radio" name="impNota" value="2"><span>2</span></label><label class="nota"><input type="radio" name="impNota" value="3"><span>3</span></label><label class="nota"><input type="radio" name="impNota" value="4"><span>4</span></label><label class="nota"><input type="radio" name="impNota" value="5"><span>5</span></label><label class="nota"><input type="radio" name="impNota" value="6"><span>6</span></label><label class="nota"><input type="radio" name="impNota" value="7"><span>7</span></label><label class="nota"><input type="radio" name="impNota" value="8"><span>8</span></label><label class="nota"><input type="radio" name="impNota" value="9"><span>9</span></label><label class="nota"><input type="radio" name="impNota" value="10"><span>10</span></label></div>
       </fieldset>
+      <label class="c" for="vidaTxt">Se você pudesse viver sem esse problema, como seria a sua vida? Escreva com detalhes.</label>
+      <p class="nota-guia" id="vidaGuia">Por exemplo: o que você estaria fazendo? O que estaria vestindo? Que lugares estaria visitando? Como estaria o seu relacionamento? E a sua vida financeira? E a sua saúde?</p>
+      <textarea id="vidaTxt" rows="8" maxlength="2500" placeholder="Imagine um dia comum dessa nova vida e descreva." aria-describedby="vidaGuia"></textarea>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
         <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
@@ -508,6 +511,8 @@ footer{padding:16px 16px 20px}
     if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
     var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
     if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
+    var vidaTxt = document.getElementById('vidaTxt').value.trim();
+    if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
@@ -520,8 +525,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, sintomas: sintomas.join(', '), impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'impacto'].every(function (k) {
+        porta: porta, sintomas: sintomas.join(', '), impacto: impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem: vidaTxt.replace(/\s+/g, ' '), msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'sintomas', 'impacto', 'vidaSem'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -545,7 +550,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · impacto: ' + lead.impacto,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + ' · sintomas: ' + lead.sintomas + ' · impacto: ' + lead.impacto + ' · vida sem o problema: ' + lead.vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
