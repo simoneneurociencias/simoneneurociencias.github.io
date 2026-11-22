@@ -215,9 +215,15 @@ section{scroll-margin-top:16px}
 .cad legend{color:#0b3a5b;font-size:.9rem;font-weight:500}
 .cad .op{color:#0b3a5b;background:#fff;border-color:#9db4c4;margin:8px 0;padding:11px 13px;font-size:.95rem}
 .cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
-.op-cx input{border-radius:5px}
-.op-cx input:checked{background:var(--ouro-claro) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
+.cad .op.op-cx input{border-radius:5px}
+.cad .op.op-cx input:checked{background:#9a7440 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
 #sintOutroTxt{margin-top:4px}
+.sint-cx summary{list-style:none;font-size:1rem;color:#4a6374;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid #9db4c4;border-radius:10px;padding:13px 44px 13px 14px;cursor:pointer;line-height:1.4}
+.sint-cx summary::-webkit-details-marker{display:none}
+.sint-cx[open] summary{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E");border-color:#9a7440}
+.sint-cx.escolhido summary{color:#0b3a5b}
+.sint-cx summary:focus-visible{outline:2px solid var(--ouro);outline-offset:1px}
+.sint-lista{padding:4px 0 0}
 .cad .op input{background:#fff;border-color:#9a7440}
 .cad .op input:checked{background:radial-gradient(circle,#9a7440 0 42%,#fff 46%)}
 main{padding-bottom:0}
@@ -333,7 +339,10 @@ footer{padding:16px 16px 20px}
       <input type="text" id="areaAtuacao" name="areaAtuacao" maxlength="120">
       <input type="hidden" id="cat" name="cat" value="vida-pessoal">
       <fieldset>
-        <legend>O que você tem sentido? Pode marcar mais de um.</legend>
+        <legend>O que você tem sentido?</legend>
+        <details class="sint-cx" id="sintCx">
+          <summary id="sintResumo">Toque para escolher (pode marcar mais de um)</summary>
+          <div class="sint-lista">
         <label class="op op-cx"><input type="checkbox" name="sint" value="Culpa ou cobrança excessiva"> Culpa ou cobrança excessiva</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Medo de me mostrar, de ser quem eu sou"> Medo de me mostrar, de ser quem eu sou</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Ansiedade ou preocupação constante"> Ansiedade ou preocupação constante</label>
@@ -344,6 +353,8 @@ footer{padding:16px 16px 20px}
         <label class="op op-cx"><input type="checkbox" name="sint" value="Dificuldade nos relacionamentos"> Dificuldade nos relacionamentos</label>
         <label class="op op-cx"><input type="checkbox" name="sint" value="Outro" id="sintOutro"> Outro</label>
         <input type="text" id="sintOutroTxt" maxlength="120" placeholder="Conte em poucas palavras" hidden>
+          </div>
+        </details>
       </fieldset>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
@@ -416,6 +427,13 @@ footer{padding:16px 16px 20px}
     });
   }
 
+  var sintCx = document.getElementById('sintCx'), sintResumo = document.getElementById('sintResumo');
+  function resumoSint() {
+    var m = [].slice.call(form.querySelectorAll('input[name=sint]:checked')).map(function (c) { return c.value; });
+    sintResumo.textContent = m.length ? m.join(', ') : 'Toque para escolher (pode marcar mais de um)';
+    sintCx.classList.toggle('escolhido', m.length > 0);
+  }
+  [].forEach.call(form.querySelectorAll('input[name=sint]'), function (c) { c.addEventListener('change', resumoSint); });
   document.getElementById('sintOutro').addEventListener('change', function () {
     var c = document.getElementById('sintOutroTxt'); c.hidden = !this.checked; if (this.checked) c.focus();
   });
@@ -447,7 +465,7 @@ footer{padding:16px 16px 20px}
       var outro = document.getElementById('sintOutroTxt').value.trim();
       return c.value === 'Outro' && outro ? 'Outro: ' + outro : c.value;
     });
-    if (!sintomas.length) { erro.textContent = 'Marque pelo menos uma opção em "O que você tem sentido?".'; return; }
+    if (!sintomas.length) { sintCx.open = true; erro.textContent = 'Marque pelo menos uma opção em "O que você tem sentido?".'; return; }
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
