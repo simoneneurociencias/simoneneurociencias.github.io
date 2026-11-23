@@ -436,6 +436,18 @@ footer{padding:16px 16px 20px}
           <div class="sint-lista" id="travasLista"></div>
         </details>
       </fieldset>
+      <div id="medida" hidden>
+      <label class="c" for="impTxt" id="impRotulo">Como isso está impactando a sua vida pessoal, a sua carreira, os seus relacionamentos e a sua saúde? Conte de que forma.</label>
+      <textarea id="impTxt" rows="6" maxlength="1500" placeholder="Escreva com as suas palavras, do jeito que vier."></textarea>
+      <fieldset>
+        <legend id="notaRotulo">De 0 a 10, quanto isso impacta a sua vida hoje?</legend>
+        <p class="nota-guia" id="notaGuia">0 = quase não impacta · 10 = impacta muito</p>
+        <div class="escala" role="radiogroup" aria-labelledby="notaRotulo"><label class="nota"><input type="radio" name="impNota" value="0"><span>0</span></label><label class="nota"><input type="radio" name="impNota" value="1"><span>1</span></label><label class="nota"><input type="radio" name="impNota" value="2"><span>2</span></label><label class="nota"><input type="radio" name="impNota" value="3"><span>3</span></label><label class="nota"><input type="radio" name="impNota" value="4"><span>4</span></label><label class="nota"><input type="radio" name="impNota" value="5"><span>5</span></label><label class="nota"><input type="radio" name="impNota" value="6"><span>6</span></label><label class="nota"><input type="radio" name="impNota" value="7"><span>7</span></label><label class="nota"><input type="radio" name="impNota" value="8"><span>8</span></label><label class="nota"><input type="radio" name="impNota" value="9"><span>9</span></label><label class="nota"><input type="radio" name="impNota" value="10"><span>10</span></label></div>
+      </fieldset>
+      <label class="c" for="vidaTxt">Se você pudesse viver sem esse problema, como seria a sua vida? Escreva com detalhes.</label>
+      <p class="nota-guia" id="vidaGuia">Por exemplo: o que você estaria fazendo? O que estaria vestindo? Que lugares estaria visitando? Como estaria o seu relacionamento? E a sua vida financeira? E a sua saúde?</p>
+      <textarea id="vidaTxt" rows="8" maxlength="2500" placeholder="Imagine um dia comum dessa nova vida e descreva." aria-describedby="vidaGuia"></textarea>
+      </div>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
         <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
@@ -529,6 +541,7 @@ footer{padding:16px 16px 20px}
   function montarTravas(cat) {
     var t = TRAVAS[cat];
     travasCampo.hidden = !t;
+    document.getElementById('medida').hidden = !t;
     travasLista.innerHTML = '';
     travasCx.open = false;
     if (!t) return;
@@ -611,6 +624,14 @@ footer{padding:16px 16px 20px}
       if (document.getElementById('travaOutro').checked && !outroTxt) { travasCx.open = true; erro.textContent = 'Escreve qual é a outra trava.'; document.getElementById('travaOutroTxt').focus(); return; }
       travas = lista.join(', ');
     }
+    // Mensuração (23/11/2026): mesmas perguntas da /vida-pessoal/.
+    var impTxt = document.getElementById('impTxt').value.trim();
+    if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
+    var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
+    if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
+    var vidaTxt = document.getElementById('vidaTxt').value.trim();
+    if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
+    var impacto = impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
@@ -623,8 +644,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, travas: travas, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas'].every(function (k) {
+        porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -648,7 +669,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + (travas ? ' · travas: ' + travas : ''),
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
