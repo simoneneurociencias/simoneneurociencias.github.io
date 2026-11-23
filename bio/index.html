@@ -262,7 +262,7 @@ section{scroll-margin-top:16px}
 .cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
 .cad .op.op-cx input{border-radius:5px}
 .cad .op.op-cx input:checked{background:#9a7440 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
-#sintOutroTxt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
+#sintOutroTxt,.outro-txt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
 .sint-cx summary{list-style:none;font-size:1rem;color:#4a6374;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid #9db4c4;border-radius:10px;padding:13px 44px 13px 14px;cursor:pointer;line-height:1.4}
 .sint-cx summary::-webkit-details-marker{display:none}
 .sint-cx[open] summary{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E");border-color:#9a7440}
@@ -276,9 +276,9 @@ body.so-form main>header,body.so-form .etapa>*:not(#cadastro){display:none}
 body.so-form .cad.revela{opacity:1;transform:none}
 .voltar{display:none;font-size:.9rem;font-weight:600;color:#9a7440;text-decoration:none;margin:0 0 10px}
 body.so-form .voltar{display:inline-block}
-#impTxt,#vidaTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
-#impTxt::placeholder,#vidaTxt::placeholder{color:#4a6374;opacity:1}
-#impTxt:focus,#vidaTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
+#impTxt,#vidaTxt,#tentTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
+#impTxt::placeholder,#vidaTxt::placeholder,#tentTxt::placeholder{color:#4a6374;opacity:1}
+#impTxt:focus,#vidaTxt:focus,#tentTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
 .nota-guia{font-size:.84rem;color:#4a6374;margin:-4px 0 10px}
 .escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 @media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
@@ -322,6 +322,7 @@ footer{padding:16px 16px 20px}
 .apoio-renda{font-size:.84rem;color:var(--txt-3);margin:-4px 0 8px}
 .aviso{font-size:.8rem;line-height:1.45;color:var(--txt-2);margin:14px 0 0;text-align:center}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+#tentTxt::placeholder{font-size:.78rem;line-height:1.45;color:#8193a0}
 </style>
 </head>
 <body>
@@ -449,6 +450,10 @@ footer{padding:16px 16px 20px}
       <label class="c" for="vidaTxt">Se você pudesse viver sem esse problema, como seria a sua vida? Escreva com detalhes.</label>
       <p class="nota-guia" id="vidaGuia">Por exemplo: o que você estaria fazendo? O que estaria vestindo? Que lugares estaria visitando? Como estaria o seu relacionamento? E a sua vida financeira? E a sua saúde?</p>
       <textarea id="vidaTxt" rows="8" maxlength="2500" placeholder="Imagine um dia comum dessa nova vida e descreva." aria-describedby="vidaGuia"></textarea>
+      <div id="tentCampo" hidden>
+        <label class="c" for="tentTxt">O que você já tentou antes para resolver esse problema e não conseguiu até hoje?</label>
+        <textarea id="tentTxt" rows="4" maxlength="1500"></textarea>
+      </div>
       </div>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
@@ -516,6 +521,11 @@ footer{padding:16px 16px 20px}
         'Quero crescer, mas já vivo em sobrecarga e esgotamento'
       ] }
   };
+  // "O que já tentou" (23/11/2026): exemplos por categoria.
+  var TENTOU = {
+    terapeuta: 'Por exemplo: fiz vários cursos, li vários livros, participei de várias imersões, paguei vários profissionais de marketing, tentei aumentar o preço, mas recuei.',
+    empreendedor: 'Por exemplo: fiz cursos de mindset ou produtividade, li vários livros, participei de várias imersões, paguei vários profissionais de marketing, busquei terapia ou coaching.'
+  };
   var ERRO_TRAVAS = 'Marca pelo menos uma trava, ou escreve em Outro.';
   var RESUMO_VAZIO = 'Toque para escolher (pode marcar mais de um)';
   var ROTULO_BOTAO = 'Quero minha consulta gratuita ';
@@ -561,6 +571,11 @@ footer{padding:16px 16px 20px}
       if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoTravas(); }
     });
     resumoTravas();
+    montarTentou(cat);
+  }
+  function montarTentou(cat) {
+    document.getElementById('tentCampo').hidden = !TENTOU[cat];
+    document.getElementById('tentTxt').placeholder = TENTOU[cat] || '';
   }
   form.elements.cat.addEventListener('change', function () {
     montarTravas(this.value);
@@ -673,6 +688,11 @@ footer{padding:16px 16px 20px}
     if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
     var vidaTxt = document.getElementById('vidaTxt').value.trim();
     if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
+    var tentou = '';
+    if (TENTOU[categoria]) {
+      tentou = document.getElementById('tentTxt').value.trim().replace(/\s+/g, ' ');
+      if (tentou.length < 3) { erro.textContent = 'Conte o que você já tentou antes para resolver isso.'; document.getElementById('tentTxt').focus(); return; }
+    }
     var impacto = impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; document.getElementById('fat').focus(); return; }
@@ -694,8 +714,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, email: email, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'email', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem'].every(function (k) {
+        porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, tentou: tentou, msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'email', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem', 'tentou'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -719,7 +739,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, email: email, origem: porta + ' · ' + CATS[categoria].rotulo + ' · e-mail: ' + email + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, email: email, origem: porta + ' · ' + CATS[categoria].rotulo + ' · e-mail: ' + email + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem + (tentou ? ' · já tentou: ' + tentou : ''),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
