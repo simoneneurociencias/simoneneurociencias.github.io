@@ -8,7 +8,8 @@
      as caixas só explicam; o Formulário 1 fica no fim da página (nome, WhatsApp, quem é, renda) e o botão leva à /aplicacao/ (02/11).
      Regra da Simone: TODO MUNDO vai para a consulta diagnóstica. A renda é só cadastro,
      não desvia ninguém para produto; o áudio ou plano de 21 dias é oferecido por ela na consulta.
-     Copy do copy-chief; headline é texto dela. -->
+     Copy do copy-chief; headline é texto dela.
+     23/11/2026: mesmo padrão visual da /vida-pessoal/ (CTA no topo, ícones, formulário em tela própria), textos da bio. -->
 <title>Consulta diagnóstica · Simone Carneiro</title>
 <meta name="description" content="Consulta diagnóstica individual com Simone Carneiro para terapeutas e quem empreende.">
 <meta property="og:title" content="Consulta diagnóstica · Simone Carneiro">
@@ -55,7 +56,7 @@ h1{font-family:var(--display);font-weight:700;font-size:clamp(1.45rem,6.2vw,2.3r
 p{margin:0 0 14px}
 .lead{text-align:center;font-size:1.05rem}
 .lead-menor{font-size:.95rem}
-.lead-destaque{font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,4.4vw,1.3rem);line-height:1.35;max-width:30em;margin:4px auto 22px;padding:14px 18px;border:1px solid var(--ouro);border-radius:16px;background:rgba(185,145,91,.1)}
+.lead-destaque{font-family:var(--texto);font-weight:500;font-size:clamp(.92rem,3.6vw,1.02rem);line-height:1.55;color:var(--txt-2);max-width:30em;margin:4px auto 22px;padding:14px 18px;border:1px solid var(--ouro);border-radius:16px;background:rgba(185,145,91,.1)}
 .travas{display:grid;gap:12px;margin:14px 0 18px}
 @media (min-width:560px){.travas{grid-template-columns:1fr 1fr}}
 .trava-cx{position:relative;overflow:hidden;background:var(--card);border:1px solid rgba(185,145,91,.35);border-radius:12px;padding:16px 18px;text-align:left;
@@ -104,6 +105,7 @@ p{margin:0 0 14px}
 .btn-ring:hover{border-color:var(--ouro);transform:translateY(-2px)}
 .btn-ring:hover .btn-face{background:var(--ouro-claro)}
 .seta{display:inline-block;transition:transform .25s}
+.btn-face{white-space:nowrap;font-size:clamp(.66rem,3.2vw,.8rem);padding:15px 8px;letter-spacing:0}
 .btn-ring:hover .seta{transform:translateX(4px)}
 .giro{width:30px;height:30px;flex:none;stroke:var(--ouro);stroke-width:2.6;stroke-linecap:round;fill:none}
 .giro g{transform-origin:20px 20px;animation:gira 9s linear infinite}
@@ -170,7 +172,7 @@ footer{text-align:center;font-size:.8rem;color:var(--txt-3);padding:0 16px 28px}
 @media (prefers-reduced-motion:reduce){.reconf,.pilares,.assinatura{animation:none}}
 @media (prefers-reduced-motion:reduce){.revela{opacity:1;transform:none;transition:none}.giro g,.faixa-trilho,.marca{animation:none}}
 .cad .op input:focus{outline:none} .op:has(input:focus-visible){outline:2px solid var(--ouro);outline-offset:1px}</style>
-<style>.assinatura{color:#fff}.faixa-trilho span{background:linear-gradient(180deg,#ffe574,#ffc61a 55%,#eeaa00);-webkit-background-clip:text;background-clip:text;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:transparent;font-weight:800;font-size:.74rem}.faixa-trilho b{font-weight:800;font-size:.9rem}.foto-lado{float:right;width:112px;height:112px;object-fit:cover;border-radius:12px;border:1px solid var(--ouro);margin:2px 0 8px 14px}.pres:has(.foto-lado){display:flow-root}h1{font-family:var(--texto);font-weight:800;font-size:clamp(1.12rem,5.3vw,1.7rem);line-height:1.28;letter-spacing:-.01em}.crencas{list-style:none;margin:0 0 14px;padding:0}.crencas li{color:var(--ouro-claro);font-weight:600;padding:4px 0 4px 14px;border-left:2px solid var(--ouro);margin:6px 0}.apoio-btn{font-size:.88rem;line-height:1.45;margin:14px 0 0;text-align:center}.pres.claro .cvv{color:#33505e}
+<style>.assinatura{color:#fff}.faixa-trilho span{background:linear-gradient(180deg,#ffe574,#ffc61a 55%,#eeaa00);-webkit-background-clip:text;background-clip:text;-webkit-box-decoration-break:clone;box-decoration-break:clone;color:transparent;font-weight:800;font-size:.74rem}.faixa-trilho b{font-weight:800;font-size:.9rem}.foto-lado{float:right;width:112px;height:112px;object-fit:cover;border-radius:12px;border:1px solid var(--ouro);margin:2px 0 8px 14px}.pres:has(.foto-lado){display:flow-root}h1{font-family:var(--texto);font-weight:800;font-size:clamp(1rem,4.6vw,1.45rem);line-height:1.3;letter-spacing:-.01em}.crencas{list-style:none;margin:0 0 14px;padding:0}.crencas li{color:var(--ouro-claro);font-weight:600;padding:4px 0 4px 14px;border-left:2px solid var(--ouro);margin:6px 0}.apoio-btn{font-size:.88rem;line-height:1.45;margin:14px 0 0;text-align:center}.pres.claro .cvv{color:#33505e}
 html{scroll-behavior:smooth}
 section{scroll-margin-top:16px}
 .etapa>.faixa{margin-top:22px}
@@ -179,6 +181,7 @@ section{scroll-margin-top:16px}
 .capa::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%,rgba(4,26,43,.3),rgba(4,26,43,.85) 80%),linear-gradient(180deg,transparent 55%,var(--bg) 96%)}
 .capa-foto{position:absolute;z-index:1;bottom:0;left:50%;transform:translateX(-54%);height:88%;width:auto;max-width:none;filter:drop-shadow(0 18px 38px rgba(0,0,0,.5));-webkit-mask-image:linear-gradient(180deg,#000 66%,transparent 94%),linear-gradient(90deg,#000 86%,transparent 100%);mask-image:linear-gradient(180deg,#000 66%,transparent 94%),linear-gradient(90deg,#000 86%,transparent 100%);-webkit-mask-composite:source-in;mask-composite:intersect}
 .capa-nome{position:relative;z-index:2;text-align:center;padding:0 16px 6px}
+.capa{height:min(48svh,440px);min-height:330px}
 .nome{font-family:'Petit Formal Script',cursive;font-size:clamp(1.9rem,8.4vw,2.6rem);line-height:1.2;color:#fff;margin:0;text-shadow:0 2px 16px rgba(0,0,0,.65)}
 .cargo{font-family:var(--texto);font-weight:700;font-size:clamp(.72rem,3.1vw,.86rem);letter-spacing:.2em;text-transform:uppercase;color:var(--ouro-claro);margin:6px 0 0;text-shadow:0 2px 10px rgba(0,0,0,.7)}
 @media (max-width:560px){.capa-bg{background-size:auto 160%;background-position:0% 40%}}
@@ -188,10 +191,54 @@ section{scroll-margin-top:16px}
 }
 .cv-foto img{object-position:50% 20%}
 .cv-foto{flex-basis:30%}
-@media (max-width:640px){.cv-foto{aspect-ratio:4/5;width:58%;margin:18px auto 0;border:1px solid var(--ouro);border-radius:12px;overflow:hidden}.cv-foto img{object-position:50% 20%}.cv-texto{text-align:left}}
+@media (max-width:640px){.cv-foto{aspect-ratio:4/5;width:42%;margin:18px auto 0;border:1px solid var(--ouro);border-radius:12px;overflow:hidden}.cv-foto img{object-position:50% 20%}.cv-texto{text-align:left}}
 .pres.destaque{background:linear-gradient(135deg,var(--ouro-btn),var(--ouro-claro));border:1px solid var(--ouro-claro);box-shadow:0 0 22px rgba(185,145,91,.28);color:#132938;text-align:center;padding:20px 18px}
 .pres.destaque p{margin:0;font-size:1.05rem;font-weight:600;color:#132938}
 .pres.destaque strong{color:#010c14;font-weight:800}
+.destaque-tit{font-family:var(--display);font-weight:600;font-size:clamp(1.05rem,4.6vw,1.35rem);line-height:1.3;margin:0;color:#132938}
+.como-cx{border:1px solid var(--ouro);border-radius:18px;padding:22px 14px 18px;margin:8px 0 4px;background:linear-gradient(160deg,rgba(185,145,91,.08),rgba(185,145,91,.02))}
+.como-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 10px}
+.como-it{text-align:center}
+.como-ic{display:inline-flex;width:72px;height:72px;box-sizing:border-box;vertical-align:top;border-radius:50%;border:2px solid var(--ouro);overflow:hidden;margin:0 0 10px;background:#010c14}
+.como-ic img{width:100%;height:100%;object-fit:cover}
+.como-ic.solto{width:96px;height:72px;border:0;border-radius:0;background:none;overflow:visible}
+.como-ic.solto img{object-fit:contain}
+.como-ic img[src*="simone"]{object-position:50% 18%}
+.como-gratis{display:flex;align-items:center;justify-content:center;gap:10px;margin:20px 0 0;padding-top:16px;border-top:1px solid rgba(185,145,91,.3);font-size:.86rem;color:var(--txt-2)}
+.como-gratis img{width:30px;height:30px;flex:none}
+.como-gratis b{color:var(--ouro-claro);font-weight:700}
+.como-t{font-family:var(--texto);font-weight:700;font-size:.82rem;line-height:1.3;margin:0 0 3px;color:var(--ouro-claro)}
+.como-s{font-size:.76rem;line-height:1.4;margin:0;color:var(--txt-2)}
+.como-cx.dourada{background:var(--ouro);border-color:var(--ouro);box-shadow:none;padding:18px 18px}
+.como-cx.dourada .como-grid{grid-template-columns:1fr;gap:16px}
+.como-cx.dourada .como-it{display:flex;align-items:center;gap:16px;text-align:left}
+.como-cx.dourada .como-ic{margin:0;flex:none;width:64px;height:64px}
+.como-cx.dourada .como-ic.solto{width:64px;height:64px}
+.como-cx.dourada .como-it>div{flex:1}
+.como-fora{margin:16px 0 0;padding:0;border:0}
+.como-cx.dourada .como-t{color:#010c14;font-weight:800}
+.como-cx.dourada .como-s{color:#1d3342}
+.como-cx.dourada .como-ic{border-color:#132938}
+.como-cx.dourada .como-gratis{color:#1d3342;border-top-color:rgba(1,12,20,.25)}
+.como-cx.dourada .como-gratis b{color:#010c14;font-weight:800}
+@media (max-width:640px){.dobra{display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100svh - max(330px, min(48svh,440px)) - 26px)}.dobra h1{margin:4px 0 0}.dobra .cta-topo{margin:0 0 34px}.dobra .faixa{margin-top:0}}
+@media (min-width:641px){.cta-topo{margin-bottom:44px}}
+.cta-guia{text-align:center;font-family:var(--texto);font-weight:700;font-size:clamp(.9rem,4vw,1.02rem);color:#fff;margin:0 0 6px;white-space:nowrap;animation:guia-pisca 1.8s ease-in-out infinite}
+@keyframes guia-pisca{0%,100%{opacity:1;text-shadow:0 0 12px rgba(255,255,255,.45)}50%{opacity:.45;text-shadow:none}}
+@media (prefers-reduced-motion:reduce){.cta-guia{animation:none}}
+.cta-nota{text-align:center;font-family:var(--texto);font-weight:600;font-size:.84rem;letter-spacing:.02em;color:#fff;margin:12px 0 0;animation:guia-pisca 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.cta-nota{animation:none}}
+.infos{display:flex;justify-content:center;margin:26px 0 4px;padding:24px 0;border-top:1px solid rgba(185,145,91,.28);border-bottom:1px solid rgba(185,145,91,.28)}
+.info{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-width:0;padding:0 14px;border-left:1px solid rgba(255,255,255,.12)}
+.info:first-child{border-left:0;padding-left:0}
+.info-ic{width:30px;height:30px;stroke:var(--ouro);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.info-l{display:flex;flex-direction:column;gap:6px}
+.info strong{font-family:var(--display);font-weight:500;font-size:1.15rem;line-height:1;white-space:nowrap;color:var(--txt)}
+.info span{font-size:.8rem;color:rgba(255,255,255,.56);line-height:1.4}
+.info span.fim-mes{font-size:inherit;color:inherit}
+@media (max-width:640px){.infos{display:grid;grid-template-columns:1fr 1fr;gap:22px 0}
+.info{gap:8px;padding:0 0 0 16px}.info:nth-child(odd){border-left:0;padding-left:0}
+.info-ic{width:22px;height:22px}.info strong{font-size:min(1.25rem,5.2vw)}.info span{font-size:.72rem}}
 .passo{min-height:150px;border-color:rgba(185,145,91,.35)}
 .passo h3{margin:0}
 .cad select{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23d2ae79' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid var(--borda);border-radius:10px;padding:13px 44px 13px 14px;-webkit-appearance:none;appearance:none;cursor:pointer}
@@ -213,6 +260,33 @@ section{scroll-margin-top:16px}
 .cad legend{color:#0b3a5b;font-size:.9rem;font-weight:500}
 .cad .op{color:#0b3a5b;background:#fff;border-color:#9db4c4;margin:8px 0;padding:11px 13px;font-size:.95rem}
 .cad .op:has(input:checked){border-color:#9a7440;background:#fbf5ea}
+.cad .op.op-cx input{border-radius:5px}
+.cad .op.op-cx input:checked{background:#9a7440 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E") center/14px no-repeat}
+#sintOutroTxt{margin-top:4px;display:block;width:100%;box-sizing:border-box}
+.sint-cx summary{list-style:none;font-size:1rem;color:#4a6374;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center/20px;border:1px solid #9db4c4;border-radius:10px;padding:13px 44px 13px 14px;cursor:pointer;line-height:1.4}
+.sint-cx summary::-webkit-details-marker{display:none}
+.sint-cx[open] summary{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 15l6-6 6 6'/%3E%3C/svg%3E");border-color:#9a7440}
+.sint-cx.escolhido summary{color:#0b3a5b}
+.sint-cx summary:focus-visible{outline:2px solid var(--ouro);outline-offset:1px}
+.sint-lista{padding:4px 0 0}
+/* Formulário em tela própria (22/11/2026): só aparece ao tocar em "Quero minha consulta" (#cadastro). */
+#cadastro{display:none}
+body.so-form #cadastro{display:block;margin-top:24px}
+body.so-form main>header,body.so-form .etapa>*:not(#cadastro){display:none}
+body.so-form .cad.revela{opacity:1;transform:none}
+.voltar{display:none;font-size:.9rem;font-weight:600;color:#9a7440;text-decoration:none;margin:0 0 10px}
+body.so-form .voltar{display:inline-block}
+#impTxt,#vidaTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
+#impTxt::placeholder,#vidaTxt::placeholder{color:#4a6374;opacity:1}
+#impTxt:focus,#vidaTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
+.nota-guia{font-size:.84rem;color:#4a6374;margin:-4px 0 10px}
+.escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+@media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
+.nota{position:relative;display:block;cursor:pointer}
+.nota input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.nota span{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #9db4c4;border-radius:10px;font-weight:700;font-size:.95rem;color:#0b3a5b;background:#fff;transition:background .2s,border-color .2s}
+.nota input:checked+span{background:#9a7440;border-color:#9a7440;color:#fff}
+.nota input:focus-visible+span{outline:2px solid var(--ouro);outline-offset:1px}
 .cad .op input{background:#fff;border-color:#9a7440}
 .cad .op input:checked{background:radial-gradient(circle,#9a7440 0 42%,#fff 46%)}
 main{padding-bottom:0}
@@ -262,9 +336,15 @@ footer{padding:16px 16px 20px}
   </header>
 
   <div class="etapa">
+  <div class="dobra">
   <h1>Eu destravo os bloqueios emocionais que impedem terapeutas e empreendedores de <em>prosperar e ter sucesso na carreira.</em></h1>
+  <div class="cta-topo">
+    <p class="cta-guia">O primeiro passo é a consulta gratuita:</p>
+    <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+  </div>
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span></div></div>
+  </div>
 
   <section id="para-quem" class="bloco">
     <h2 class="sec-tit">Onde está a sua trava?</h2>
@@ -282,9 +362,6 @@ footer{padding:16px 16px 20px}
 
   <section class="bloco">
     <h2 class="sec-tit">Como funciona a consulta diagnóstica</h2>
-    <article class="pres destaque">
-      <p>Uma conversa individual comigo, online, de no máximo 50 minutos. <strong>Gratuita até <span class="fim-mes"></span>.</strong></p>
-    </article>
     <article class="pres passo">
       <img class="foto-lado" src="img/momento.webp" alt="Rosto tenso com as mãos na cabeça" width="130" height="130" loading="lazy">
       <p class="num">Passo 1</p>
@@ -300,11 +377,16 @@ footer{padding:16px 16px 20px}
       <p class="num">Passo 3</p>
       <h3>Você sai sabendo onde está a trava e como trabalhar isso.</h3>
     </article>
-    <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+    <div class="infos">
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7.5 8-7.5s8 3.1 8 7.5"/></svg><div class="info-l"><strong>Individual</strong><span>com a Simone<br>Carneiro</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.6"/><path d="M8 20h8M12 16v4"/><circle cx="12" cy="10" r="2.2"/></svg><div class="info-l"><strong>Online</strong><span>de onde você<br>estiver</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg><div class="info-l"><strong>50 min</strong><span>para entender<br>o&nbsp;que está acontecendo</span></div></div>
+      <div class="info"><svg class="info-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.2l2.8 2.8 5.2-5.6"/></svg><div class="info-l"><strong>Gratuita</strong><span>até <span class="fim-mes"></span>,<br>presente de Black&nbsp;Friday</span></div></div>
+    </div>
   </section>
 
   <section class="cv">
-    <p class="eyebrow">Quem vai conversar com você</p>
+    <h2 class="sec-tit" style="color:var(--ouro)">Quem vai conversar com você</h2>
     <div class="cv-card">
       <div class="cv-foto"><img src="simone-curriculo-v2.webp" alt="Simone Carneiro" width="800" height="1000" loading="lazy"></div>
       <div class="cv-texto">
@@ -321,8 +403,14 @@ footer{padding:16px 16px 20px}
     </div>
   </section>
 
+  <div class="bloco cta-fim">
+    <a class="btn-ring" href="#cadastro"><span class="btn-face">Quero minha consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
+    <p class="cta-nota">Online · até 50 minutos · gratuita até <span class="fim-mes"></span></p>
+  </div>
+
   <section id="cadastro" class="bloco">
     <form class="cad" id="cad" novalidate>
+      <a class="voltar" href="#inicio">← Voltar</a>
       <h2>Formulário de cadastro</h2>
       <p class="cad-sub">Cadastre-se para agendar sua consulta diagnóstica gratuita.</p>
       <label class="c" for="nome">Nome completo</label>
@@ -415,6 +503,14 @@ footer{padding:16px 16px 20px}
       obs.observe(el);
     });
   }
+
+  function verTela() {
+    var f = location.hash === '#cadastro';
+    document.body.classList.toggle('so-form', f);
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', verTela);
+  verTela();
 
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
