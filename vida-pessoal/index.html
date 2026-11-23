@@ -608,7 +608,11 @@ footer{padding:16px 16px 20px}
       clearTimeout(limite);
       // 23/11/2026 (Simone): daqui vai direto para o WhatsApp agendar. A /aplicacao/ repetia as
       // perguntas que este formulário já faz (área, nota de 0 a 10, vida sem o problema).
-      location.href = 'https://wa.me/5521978849744?text=' + encodeURIComponent(String(lead.msg).replace('{nome}', nome.split(' ')[0]));
+      // Veio do teste RESET do Instagram (Simone 23/11/2026): a mensagem diz isso, para ela saber a origem.
+      var msgZap = porta.indexOf('reset') === 0
+        ? 'Oi, Simone! Sou {nome}. Comentei RESET no Instagram e respondi o formulário da sua página. Quero agendar a consulta diagnóstica gratuita.'
+        : String(lead.msg);
+      location.href = 'https://wa.me/5521978849744?text=' + encodeURIComponent(msgZap.replace('{nome}', nome.split(' ')[0]));
     }
     fetch(URL_LEADS, {
       method: 'POST', signal: ctrl.signal,
