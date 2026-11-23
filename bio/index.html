@@ -10,7 +10,7 @@
      não desvia ninguém para produto; o áudio ou plano de 21 dias é oferecido por ela na consulta.
      Copy do copy-chief; headline é texto dela. -->
 <title>Consulta diagnóstica · Simone Carneiro</title>
-<meta name="description" content="Consulta diagnóstica individual com Simone Carneiro para terapeutas, quem empreende e quem sente a trava na vida pessoal.">
+<meta name="description" content="Consulta diagnóstica individual com Simone Carneiro para terapeutas e quem empreende.">
 <meta property="og:title" content="Consulta diagnóstica · Simone Carneiro">
 <meta property="og:description" content="Uma conversa individual para descobrir onde está a sua trava.">
 <meta property="og:url" content="https://lp.selfcreation.com.br/bio/">
@@ -263,7 +263,6 @@ footer{padding:16px 16px 20px}
 
   <div class="etapa">
   <h1>Eu destravo os bloqueios emocionais que impedem terapeutas e empreendedores de <em>prosperar e ter sucesso na carreira.</em></h1>
-  <p class="lead lead-destaque">E se a trava hoje está na sua <em>vida pessoal</em>, a consulta também é para você.</p>
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span></div></div>
 
@@ -278,11 +277,6 @@ footer{padding:16px 16px 20px}
       <img class="foto-lado" src="empreendedor.webp" alt="Homem de terno sentado à mesa com o notebook" width="149" height="149" loading="lazy">
       <h3>Quem empreende</h3>
       <p>Sua mente baixa o preço, centraliza e adia o que importa. Se crescer parece exigir mais trabalho, delegar vira risco, a sobrecarga aumenta e falta tempo para a família. Você reconhece essa trava e reconfigura a resposta para decidir com clareza.</p>
-    </article>
-    <article class="pres">
-      <img class="foto-lado" src="vida-pessoal.webp" alt="Mulher serena olhando pela janela" width="149" height="149" loading="lazy">
-      <h3>Vida pessoal</h3>
-      <p>Ansiedade, medos, sono, saúde, relacionamentos, dinheiro: sua mente repete o que aprendeu para proteger você. Você reconhece essa trava e reconfigura a resposta, no seu ritmo.</p>
     </article>
   </section>
 
@@ -345,7 +339,6 @@ footer{padding:16px 16px 20px}
           <option value="" disabled selected>Eu sou</option>
           <option value="terapeuta">Sou terapeuta</option>
           <option value="empreendedor">Tenho meu próprio negócio</option>
-          <option value="vida-pessoal">Quero trabalhar minha vida pessoal</option>
         </select>
       </fieldset>
       <fieldset>
@@ -425,12 +418,7 @@ footer{padding:16px 16px 20px}
 
   var q = new URLSearchParams(location.search);
   var porta = (q.get('origem') || 'bio').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 40) || 'bio';
-  // Origens de vida pessoal (22/11/2026: Reels do Osho) já abrem com "Quero trabalhar minha vida pessoal" marcado.
-  var PORTAS_VIDA = ['osho'];
-  if (PORTAS_VIDA.indexOf(porta) > -1 && !form.elements.cat.value) {
-    form.elements.cat.value = 'vida-pessoal';
-    form.elements.cat.dispatchEvent(new Event('change'));
-  }
+  // 23/11/2026: vida pessoal saiu da /bio/ (pedido da Simone); esse público vai para /vida-pessoal/.
 
   // Voltar da aplicação para a página: o botão volta ao normal
   window.addEventListener('pageshow', function () {
