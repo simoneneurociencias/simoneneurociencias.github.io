@@ -659,7 +659,9 @@ footer{padding:16px 16px 20px}
       lead.confirmado = true;
       sessionStorage.setItem('consulta_lead', JSON.stringify(lead));
       clearTimeout(limite);
-      location.href = '../aplicacao/?categoria=' + categoria;
+      // 23/11/2026 (Simone): daqui vai direto para o WhatsApp agendar. A /aplicacao/ repetia as
+      // perguntas que este formulário já faz (área, nota de 0 a 10, vida sem o problema).
+      location.href = 'https://wa.me/5521978849744?text=' + encodeURIComponent(String(lead.msg).replace('{nome}', nome.split(' ')[0]));
     }
     fetch(URL_LEADS, {
       method: 'POST', signal: ctrl.signal,
