@@ -276,9 +276,9 @@ body.so-form main>header,body.so-form .etapa>*:not(#cadastro){display:none}
 body.so-form .cad.revela{opacity:1;transform:none}
 .voltar{display:none;font-size:.9rem;font-weight:600;color:#9a7440;text-decoration:none;margin:0 0 10px}
 body.so-form .voltar{display:inline-block}
-#impTxt,#vidaTxt,#tentTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
-#impTxt::placeholder,#vidaTxt::placeholder,#tentTxt::placeholder{color:#4a6374;opacity:1}
-#impTxt:focus,#vidaTxt:focus,#tentTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
+#impTxt,#vidaTxt,#tentTxt,#gastoTxt{width:100%;font:inherit;font-size:1rem;color:#0b3a5b;background:#fff;border:1px solid #9db4c4;border-radius:10px;padding:12px 13px;resize:vertical;line-height:1.45}
+#impTxt::placeholder,#vidaTxt::placeholder,#tentTxt::placeholder,#gastoTxt::placeholder{color:#4a6374;opacity:1}
+#impTxt:focus,#vidaTxt:focus,#tentTxt:focus,#gastoTxt:focus{outline:2px solid var(--ouro);outline-offset:1px}
 .nota-guia{font-size:.84rem;color:#4a6374;margin:-4px 0 10px}
 .escala{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
 @media (min-width:520px){.escala{grid-template-columns:repeat(11,1fr)}}
@@ -322,7 +322,7 @@ footer{padding:16px 16px 20px}
 .apoio-renda{font-size:.84rem;color:var(--txt-3);margin:-4px 0 8px}
 .aviso{font-size:.8rem;line-height:1.45;color:var(--txt-2);margin:14px 0 0;text-align:center}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-#tentTxt::placeholder{font-size:.78rem;line-height:1.45;color:#8193a0}
+#tentTxt::placeholder,#gastoTxt::placeholder{font-size:.78rem;line-height:1.45;color:#8193a0}
 </style>
 </head>
 <body>
@@ -453,6 +453,8 @@ footer{padding:16px 16px 20px}
       <div id="tentCampo" hidden>
         <label class="c" for="tentTxt">O que você já tentou antes para resolver esse problema e não conseguiu até hoje?</label>
         <textarea id="tentTxt" rows="4" maxlength="1500"></textarea>
+        <label class="c" for="gastoTxt">Quanto tempo você gastou para tentar resolver isso até agora e não conseguiu? E quanto em valores você já investiu durante esse tempo para resolver isso e não conseguiu?</label>
+        <textarea id="gastoTxt" rows="3" maxlength="800" placeholder="Escreva o tempo e o valor, mesmo que seja uma estimativa."></textarea>
       </div>
       </div>
       <fieldset>
@@ -688,10 +690,12 @@ footer{padding:16px 16px 20px}
     if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
     var vidaTxt = document.getElementById('vidaTxt').value.trim();
     if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
-    var tentou = '';
+    var tentou = '', gasto = '';
     if (TENTOU[categoria]) {
       tentou = document.getElementById('tentTxt').value.trim().replace(/\s+/g, ' ');
       if (tentou.length < 3) { erro.textContent = 'Conte o que você já tentou antes para resolver isso.'; document.getElementById('tentTxt').focus(); return; }
+      gasto = document.getElementById('gastoTxt').value.trim().replace(/\s+/g, ' ');
+      if (gasto.length < 2) { erro.textContent = 'Conte quanto tempo e quanto em valores você já investiu.'; document.getElementById('gastoTxt').focus(); return; }
     }
     var impacto = impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
     var renda = marcado('fat');
@@ -714,8 +718,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, email: email, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, tentou: tentou, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'email', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem', 'tentou'].every(function (k) {
+        porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, tentou: tentou, gasto: gasto, msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'email', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem', 'tentou', 'gasto'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -739,7 +743,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, email: email, origem: porta + ' · ' + CATS[categoria].rotulo + ' · e-mail: ' + email + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem + (tentou ? ' · já tentou: ' + tentou : ''),
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, email: email, origem: porta + ' · ' + CATS[categoria].rotulo + ' · e-mail: ' + email + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem + (tentou ? ' · já tentou: ' + tentou + ' · tempo e valor investidos: ' + gasto : ''),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
