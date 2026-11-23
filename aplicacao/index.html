@@ -75,7 +75,7 @@ footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
   </div>
   <div class="confirma" id="confirma" hidden>
     <h1 id="confTit"></h1>
-    <p id="confAnalise" hidden>Vou analisar a sua aplicação com atenção. Se o seu perfil estiver alinhado ao momento, você recebe o convite para a sua consulta diagnóstica gratuita pelo WhatsApp.</p>
+    <p id="confAnalise" hidden>Agora é só me avisar pelo WhatsApp que você aplicou. Vou analisar a sua aplicação com atenção e, se o seu perfil estiver alinhado ao momento, você recebe o convite para a sua consulta diagnóstica gratuita.</p>
     <p id="confAgenda"><strong>As vagas são limitadas.</strong> Vou ler com atenção antes da nossa conversa. Agora é só me chamar no WhatsApp para escolhermos o melhor horário.</p>
     <a class="btn-ring" id="btnZap" href="#"><span class="btn-face">Agendar pelo WhatsApp</span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
   </div>
@@ -231,11 +231,11 @@ footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
       if (!d || !d.ok || !d.gravado || d.tipo !== 'aplicacao' || d.cadastroId !== lead.cadastroId) { falhou(); return; }
       var primeiro = lead.nome.split(' ')[0];
       document.getElementById('confTit').textContent = (bloco.analise ? 'Recebi sua aplicação, ' : 'Recebi suas respostas, ') + primeiro;
-      // 23/11/2026: terapeuta e empreendedor (vindos da /bio/) não agendam direto; recebem convite depois da análise.
+      // 23/11/2026: terapeuta e empreendedor (vindos da /bio/) avisam pelo WhatsApp que aplicaram; o convite vem depois da análise.
       if (bloco.analise) {
         document.getElementById('confAnalise').hidden = false;
         document.getElementById('confAgenda').hidden = true;
-        document.getElementById('btnZap').hidden = true;
+        document.getElementById('btnZap').querySelector('.btn-face').textContent = 'Avisar pelo WhatsApp';
       }
       document.getElementById('btnZap').href = 'https://wa.me/' + WHATS + '?text=' +
         encodeURIComponent(String(lead.msg || 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita.').replace('{nome}', primeiro));
