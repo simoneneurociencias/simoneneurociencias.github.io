@@ -600,6 +600,9 @@ footer{padding:16px 16px 20px}
       erro.textContent = 'Não consegui enviar. Confere a internet e tenta de novo.';
     }
     function seguir() {
+      // Avisa o robô que o formulário terminou (Simone 23/11/2026): sem pergunta no dia seguinte.
+      var u = (q.get('u') || '').replace(/[^0-9]/g, '');
+      if (u) { try { fetch('https://instagram-automacao.simonecarneiro.workers.dev/feito?u=' + u, { mode: 'no-cors', keepalive: true }); } catch (e) {} }
       lead.confirmado = true;
       sessionStorage.setItem('consulta_lead', JSON.stringify(lead));
       clearTimeout(limite);
