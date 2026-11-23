@@ -82,7 +82,7 @@ p{margin:0 0 14px}
 .cad{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:28px 18px}
 .cad h2{font-family:var(--display);font-weight:600;font-size:1.2rem;line-height:1.3;margin:0 0 6px;text-align:center}
 .cad label.c{display:block;font-size:.9rem;color:var(--txt-2);margin:18px 0 6px}
-.cad input[type=text],.cad input[type=tel],.cad input[type=number]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
+.cad input[type=text],.cad input[type=tel],.cad input[type=email],.cad input[type=number]{width:100%;font:inherit;font-size:1rem;color:var(--txt);background:rgba(0,0,0,.25);border:1px solid var(--borda);border-radius:10px;padding:13px 14px}
 .cad input:focus{outline:2px solid var(--ouro);outline-offset:1px}
 .cad fieldset{border:0;padding:0;margin:20px 0 0}
 .cad legend{font-size:.95rem;font-weight:500;line-height:1.5;margin-bottom:10px;padding:0}
@@ -247,8 +247,8 @@ section{scroll-margin-top:16px}
 .cad select option{background:#062133;color:#f5f4f3}
 .cad .apoio-abaixo{margin:16px 0 0;text-align:center}
 .cad label.c,.cad .priv,.cad .apoio-renda,.cad .aviso{color:#0b3a5b}
-.cad input[type=text],.cad input[type=tel],.cad input[type=number],.cad select{color:#0b3a5b;border:1px solid #9db4c4}
-.cad input[type=text],.cad input[type=tel],.cad input[type=number]{background:#fff}
+.cad input[type=text],.cad input[type=tel],.cad input[type=email],.cad input[type=number],.cad select{color:#0b3a5b;border:1px solid #9db4c4}
+.cad input[type=text],.cad input[type=tel],.cad input[type=email],.cad input[type=number]{background:#fff}
 .cad input::placeholder{color:#4a6374;opacity:1}
 .cad select{background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b3a5b' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")}
 .cad select:invalid{color:#4a6374}
@@ -417,6 +417,8 @@ footer{padding:16px 16px 20px}
       <input type="text" id="nome" autocomplete="name" maxlength="120">
       <label class="c" for="whats">WhatsApp com DDD</label>
       <input type="tel" id="whats" placeholder="(DDD) 00000-0000" autocomplete="tel" maxlength="30">
+      <label class="c" for="email">E-mail</label>
+      <input type="email" id="email" placeholder="seuemail@exemplo.com" autocomplete="email" inputmode="email" maxlength="120">
       <label class="c" for="idade">Idade</label>
       <input type="number" id="idade" name="idade" min="18" max="120" inputmode="numeric">
       <label class="c" for="areaAtuacao">Área de atuação profissional</label>
@@ -602,18 +604,58 @@ footer{padding:16px 16px 20px}
     botao.querySelector('.btn-face').firstChild.textContent = ROTULO_BOTAO;
   });
 
+  // Segurança do cadastro (Simone 23/11/2026): WhatsApp de celular brasileiro com DDD que existe e
+  // e-mail cujo domínio recebe e-mail (consulta MX por DNS). Todos os campos são obrigatórios.
+  var DDDS = [11,12,13,14,15,16,17,18,19,21,22,24,27,28,31,32,33,34,35,37,38,41,42,43,44,45,46,47,48,49,51,53,54,55,61,62,63,64,65,66,67,68,69,71,73,74,75,77,79,81,82,83,84,85,86,87,88,89,91,92,93,94,95,96,97,98,99];
+  function whatsValido(w) {
+    var d = w.replace(/\D/g, '');
+    if (d.length === 13 && d.indexOf('55') === 0) d = d.slice(2);
+    if (d.length !== 11) return false;
+    if (DDDS.indexOf(Number(d.slice(0, 2))) < 0) return false;
+    if (d.charAt(2) !== '9') return false;
+    var n = d.slice(3);
+    if (/^(\d)\1+$/.test(n) || n === '12345678' || n === '87654321') return false;
+    return true;
+  }
+  var ERROS_DOMINIO = { 'gmial.com': 'gmail.com', 'gmai.com': 'gmail.com', 'gmail.con': 'gmail.com', 'gmail.co': 'gmail.com', 'gmail.com.br': 'gmail.com', 'gamil.com': 'gmail.com', 'gmil.com': 'gmail.com', 'hotmai.com': 'hotmail.com', 'hotmail.con': 'hotmail.com', 'hotmal.com': 'hotmail.com', 'hotmial.com': 'hotmail.com', 'outlok.com': 'outlook.com', 'outlook.con': 'outlook.com', 'yaho.com': 'yahoo.com', 'yahoo.con': 'yahoo.com', 'icloud.con': 'icloud.com' };
+  function emailErro(e) {
+    if (!e) return 'Escreva o seu e-mail.';
+    if (!/^[a-z0-9._%+-]+@[a-z0-9-]+(\.[a-z0-9-]+)*\.[a-z]{2,}$/.test(e) || e.indexOf('..') >= 0) return 'Confere o e-mail: parece que falta ou sobra alguma coisa.';
+    var dom = e.split('@')[1];
+    if (ERROS_DOMINIO[dom]) return 'Confere o e-mail: você quis dizer ' + e.split('@')[0] + '@' + ERROS_DOMINIO[dom] + '?';
+    return '';
+  }
+  // O domínio do e-mail existe e recebe e-mail? Se a consulta falhar (sem internet), deixa passar.
+  function dominioRecebe(e) {
+    var dom = e.split('@')[1];
+    var ctrl = new AbortController();
+    var t = setTimeout(function () { ctrl.abort(); }, 5000);
+    return fetch('https://cloudflare-dns.com/dns-query?name=' + encodeURIComponent(dom) + '&type=MX', { headers: { accept: 'application/dns-json' }, signal: ctrl.signal })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        clearTimeout(t);
+        if (d.Status === 3) return false; // domínio não existe
+        if (d.Status !== 0) return true;  // resposta duvidosa: não barra
+        return (d.Answer || []).some(function (a) { return a.type === 15; });
+      })
+      .catch(function () { clearTimeout(t); return true; });
+  }
+
   form.addEventListener('submit', function (ev) {
     ev.preventDefault();
     var nome = document.getElementById('nome').value.trim();
     var whats = document.getElementById('whats').value.trim();
     var idade = document.getElementById('idade').value.trim();
     var areaAtuacao = document.getElementById('areaAtuacao').value.trim();
-    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; return; }
-    if (whats.replace(/\D/g, '').length < 10) { erro.textContent = 'Confere o WhatsApp com DDD.'; return; }
-    if (!idade || Number(idade) < 18 || Number(idade) > 120) { erro.textContent = 'Informe uma idade entre 18 e 120 anos.'; return; }
-    if (!areaAtuacao) { erro.textContent = 'Informe sua área de atuação profissional.'; return; }
+    if (nome.length < 2) { erro.textContent = 'Escreve o seu nome, por favor.'; document.getElementById('nome').focus(); return; }
+    if (!whatsValido(whats)) { erro.textContent = 'Confere o WhatsApp: DDD + celular com 9 dígitos, por exemplo (11) 91234-5678.'; document.getElementById('whats').focus(); return; }
+    var email = document.getElementById('email').value.trim().toLowerCase();
+    var errEmail = emailErro(email);
+    if (errEmail) { erro.textContent = errEmail; document.getElementById('email').focus(); return; }
+    if (!idade || Number(idade) < 18 || Number(idade) > 120) { erro.textContent = 'Informe uma idade entre 18 e 120 anos.'; document.getElementById('idade').focus(); return; }
+    if (!areaAtuacao) { erro.textContent = 'Informe sua área de atuação profissional.'; document.getElementById('areaAtuacao').focus(); return; }
     var categoria = marcado('cat');
-    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Eu sou".'; return; }
+    if (!categoria) { erro.textContent = 'Escolhe uma opção em "Eu sou".'; document.getElementById('cat').focus(); return; }
     var travas = '';
     if (TRAVAS[categoria]) {
       var outroTxt = document.getElementById('travaOutroTxt').value.trim();
@@ -633,19 +675,27 @@ footer{padding:16px 16px 20px}
     if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
     var impacto = impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
     var renda = marcado('fat');
-    if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
+    if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; document.getElementById('fat').focus(); return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
     var botao = form.querySelector('button[type=submit]');
     if (botao.disabled) return;
     botao.disabled = true;
     botao.querySelector('.btn-face').firstChild.textContent = 'Enviando...';
     erro.textContent = '';
+    dominioRecebe(email).then(function (recebe) {
+    if (!recebe) {
+      botao.disabled = false;
+      botao.querySelector('.btn-face').firstChild.textContent = ROTULO_BOTAO;
+      erro.textContent = 'Esse e-mail não existe. Confere o que vem depois do @.';
+      document.getElementById('email').focus();
+      return;
+    }
     var lead;
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
-      lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
+      lead = { nome: nome, whatsapp: whats, email: email, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
         porta: porta, travas: travas, impacto: impacto, vidaSem: vidaSem, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem'].every(function (k) {
+      var igual = anterior && ['nome', 'whatsapp', 'email', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas', 'impacto', 'vidaSem'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -669,7 +719,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, email: email, origem: porta + ' · ' + CATS[categoria].rotulo + ' · e-mail: ' + email + (travas ? ' · travas: ' + travas : '') + ' · impacto: ' + impacto + ' · vida sem o problema: ' + vidaSem,
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
@@ -681,6 +731,7 @@ footer{padding:16px 16px 20px}
       }
       seguir();
     }).catch(falhou);
+    });
   });
 })();
 </script>
