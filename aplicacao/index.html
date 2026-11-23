@@ -86,35 +86,14 @@ footer{text-align:center;font-size:.8rem;color:#7e8991;padding:8px 16px 20px}
   var WHATS = '5521972511809';
   var P6 = { tipo: 'texto', linhas: 3, opcional: true, p: 'Tem alguma pergunta específica que você quer trazer para a consulta?', dica: 'Opcional' };
 
+  // 23/11/2026: terapeuta e empreendedor sem as perguntas que o formulário da /bio/ já faz (trava, nota, já tentou, vida sem o problema).
   var BLOCOS = {
     terapeuta: { rotulo: 'terapeuta', perguntas: [
       { tipo: 'radio', p: 'O que você cobra hoje por sessão ou hora?',
         ops: ['Até R$ 100', 'Entre R$ 100 e R$ 200', 'Entre R$ 200 e R$ 350', 'Acima de R$ 350'] },
-      { tipo: 'radio', p: 'Qual dessas situações mais te trava hoje?', dica: 'Escolha a principal',
-        ops: ['Tenho dificuldade de cobrar mais ou aumentar meu preço', 'Tenho medo de me expor nas redes ou criar conteúdo',
-          'Não consigo fechar novos clientes com consistência', 'Sei que preciso me posicionar mas não sei como começar',
-          'Acho que preciso de mais formação antes de crescer'] },
-      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto essa trava está impactando seu faturamento hoje?',
-        dica: '0 = quase nada · 10 = me custa clientes e dinheiro todo mês' },
-      { tipo: 'check', p: 'O que você já tentou fazer para mudar isso?', dica: 'Pode marcar mais de uma',
-        ops: ['Fiz cursos de marketing ou vendas', 'Tentei aumentar o preço mas recuei', 'Criei perfil nas redes mas parei',
-          'Nunca tentei, não sei por onde começar'] },
-      { tipo: 'texto', linhas: 3, p: 'Se você resolvesse essa trava nos próximos 3 meses, o que mudaria na sua prática?' },
       P6
     ] },
     empreendedor: { rotulo: 'quem empreende', perguntas: [
-      { tipo: 'radio', p: 'Qual é o principal obstáculo que está impedindo seu negócio de crescer agora?', dica: 'Escolha o que mais se aproxima',
-        ops: ['Travo na hora de tomar decisões importantes', 'Cobro pouco e tenho medo de perder clientes se aumentar',
-          'Começo projetos mas não consigo manter consistência', 'Tenho medo de me expor, lançar ou aparecer',
-          'Associo crescer a trabalhar mais e perder tempo com a família ou qualidade de vida',
-          'Quero crescer, mas já sinto esgotamento e tenho medo de me desgastar ainda mais'] },
-      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está custando ao seu negócio?',
-        dica: '0 = pouco impacto · 10 = está travando meu crescimento todo mês' },
-      { tipo: 'escala', p: 'Em uma escala de 0 a 10, o quanto isso está afetando você pessoalmente, sua confiança e seu bem-estar?' },
-      { tipo: 'check', p: 'O que você já tentou para resolver isso?', dica: 'Pode marcar mais de uma',
-        ops: ['Fiz cursos de mindset ou produtividade', 'Tentei colocar metas mas não mantive', 'Busquei terapia ou coaching',
-          'Ainda não tentei nada estruturado'] },
-      { tipo: 'texto', linhas: 3, p: 'Se esse bloqueio fosse resolvido, onde estaria seu negócio em 12 meses?' },
       P6
     ] },
     'vida-pessoal': { rotulo: 'vida pessoal', aviso: true, perguntas: [
