@@ -323,18 +323,6 @@ footer{padding:16px 16px 20px}
 .aviso{font-size:.8rem;line-height:1.45;color:var(--txt-2);margin:14px 0 0;text-align:center}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 #tentTxt::placeholder,#gastoTxt::placeholder{font-size:.78rem;line-height:1.45;color:#8193a0}
-/* Nota por trava (23/11/2026): um cartão para cada trava marcada (até 3). */
-.tn{border:1px solid #d9c6a5;background:#fbf7f0;border-radius:12px;padding:14px 14px 16px;margin:12px 0 0}
-.tn-tit{font-weight:700;color:#0b3a5b;font-size:.95rem;line-height:1.35;margin:0 0 10px}
-.tn-p{font-size:.86rem;color:#0b3a5b;margin:10px 0 6px}
-.areas{display:flex;flex-wrap:wrap;gap:6px}
-.area{position:relative;cursor:pointer}
-.area input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
-.area span{display:inline-block;padding:8px 12px;border:1px solid #9db4c4;border-radius:999px;background:#fff;color:#0b3a5b;font-size:.86rem;font-weight:600}
-.area input:checked+span{background:#9a7440;border-color:#9a7440;color:#fff}
-.area input:focus-visible+span{outline:2px solid var(--ouro);outline-offset:1px}
-.tn .escala{margin-top:2px}
-.cad .op.op-cx.limite{opacity:.45}
 </style>
 </head>
 <body>
@@ -447,14 +435,18 @@ footer{padding:16px 16px 20px}
       <fieldset id="travasCampo" hidden>
         <legend id="travasRotulo"></legend>
         <details class="sint-cx" id="travasCx">
-          <summary id="travasResumo">Toque para escolher (até 3)</summary>
+          <summary id="travasResumo">Toque para escolher (pode marcar mais de um)</summary>
           <div class="sint-lista" id="travasLista"></div>
         </details>
       </fieldset>
-      <div id="travasNotas"></div>
       <div id="medida" hidden>
-      <label class="c" for="impTxt" id="impRotulo">Como isso está impactando a sua vida pessoal, a sua carreira, os seus relacionamentos e a sua saúde? Conte de que forma.</label>
+      <label class="c" for="impTxt" id="impRotulo">Qual dessas travas mais te limita, e em que área da sua vida?</label>
       <textarea id="impTxt" rows="6" maxlength="1500" placeholder="Escreva com as suas palavras, do jeito que vier."></textarea>
+      <fieldset>
+        <legend id="notaRotulo">De 0 a 10, quanto isso impacta a sua vida hoje?</legend>
+        <p class="nota-guia" id="notaGuia">0 = quase não impacta · 10 = impacta muito</p>
+        <div class="escala" role="radiogroup" aria-labelledby="notaRotulo"><label class="nota"><input type="radio" name="impNota" value="0"><span>0</span></label><label class="nota"><input type="radio" name="impNota" value="1"><span>1</span></label><label class="nota"><input type="radio" name="impNota" value="2"><span>2</span></label><label class="nota"><input type="radio" name="impNota" value="3"><span>3</span></label><label class="nota"><input type="radio" name="impNota" value="4"><span>4</span></label><label class="nota"><input type="radio" name="impNota" value="5"><span>5</span></label><label class="nota"><input type="radio" name="impNota" value="6"><span>6</span></label><label class="nota"><input type="radio" name="impNota" value="7"><span>7</span></label><label class="nota"><input type="radio" name="impNota" value="8"><span>8</span></label><label class="nota"><input type="radio" name="impNota" value="9"><span>9</span></label><label class="nota"><input type="radio" name="impNota" value="10"><span>10</span></label></div>
+      </fieldset>
       <div id="tentCampo" hidden>
         <label class="c" for="tentTxt">O que você já tentou antes para resolver esse problema e não conseguiu até hoje?</label>
         <textarea id="tentTxt" rows="4" maxlength="1500"></textarea>
@@ -555,70 +547,25 @@ footer{padding:16px 16px 20px}
     travasResumo.textContent = m.length ? m.join(', ') : RESUMO_VAZIO;
     travasCx.classList.toggle('escolhido', m.length > 0);
   }
-  var LIMITE_TRAVAS = 3;
-  var AREAS = ['Vida pessoal', 'Carreira', 'Finanças', 'Relacionamentos', 'Saúde'];
-  var travasNotas = document.getElementById('travasNotas');
-  function nomeTrava(c) {
-    var o = document.getElementById('travaOutroTxt');
-    return c.value === 'Outro' ? 'Outro' + (o && o.value.trim() ? ': ' + o.value.trim() : '') : c.value;
-  }
-  // Guarda o que já foi marcado em cada cartão para não perder ao redesenhar.
-  function lerCartoes() {
-    var st = {};
-    [].forEach.call(travasNotas.querySelectorAll('.tn'), function (tn) {
-      st[tn.getAttribute('data-v')] = {
-        areas: [].slice.call(tn.querySelectorAll('input[type=checkbox]:checked')).map(function (a) { return a.value; }),
-        nota: (tn.querySelector('input[type=radio]:checked') || {}).value
-      };
-    });
-    return st;
-  }
-  function montarCartoes() {
-    var st = lerCartoes();
-    var marcadas = [].slice.call(form.querySelectorAll('input[name=trava]:checked'));
-    // Até 3 travas: as outras ficam apagadas até desmarcar uma.
-    [].forEach.call(form.querySelectorAll('input[name=trava]'), function (c) {
-      var bloq = !c.checked && marcadas.length >= LIMITE_TRAVAS;
-      c.disabled = bloq;
-      c.parentNode.classList.toggle('limite', bloq);
-      if (c.value === 'Outro') { var ot = document.getElementById('travaOutroTxt'); if (ot) ot.disabled = bloq; }
-    });
-    travasNotas.innerHTML = marcadas.map(function (c, i) {
-      var v = c.value, s = st[v] || { areas: [], nota: undefined };
-      var areas = AREAS.map(function (a) {
-        return '<label class="area"><input type="checkbox" value="' + esc(a) + '"' + (s.areas.indexOf(a) > -1 ? ' checked' : '') + '><span>' + esc(a) + '</span></label>';
-      }).join('');
-      var notas = '';
-      for (var n = 0; n <= 10; n++) {
-        notas += '<label class="nota"><input type="radio" name="tn' + i + '" value="' + n + '"' + (String(s.nota) === String(n) ? ' checked' : '') + '><span>' + n + '</span></label>';
-      }
-      return '<div class="tn" data-v="' + esc(v) + '"><p class="tn-tit">' + esc(nomeTrava(c)) + '</p>' +
-        '<p class="tn-p">Onde essa trava impacta você?</p><div class="areas">' + areas + '</div>' +
-        '<p class="tn-p">De 0 a 10, quanto ela impacta?</p><p class="nota-guia">0 = quase não impacta · 10 = impacta muito</p>' +
-        '<div class="escala" role="radiogroup">' + notas + '</div></div>';
-    }).join('');
-  }
   function montarTravas(cat) {
     var t = TRAVAS[cat];
     travasCampo.hidden = !t;
     document.getElementById('medida').hidden = !t;
     travasLista.innerHTML = '';
-    travasNotas.innerHTML = '';
     travasCx.open = false;
     if (!t) return;
-    document.getElementById('travasRotulo').textContent = t.p + ' Marque até 3.';
+    document.getElementById('travasRotulo').textContent = t.p;
     travasLista.innerHTML = t.ops.map(function (o) {
       return '<label class="op op-cx"><input type="checkbox" name="trava" value="' + esc(o) + '"> ' + esc(o) + '</label>';
     }).join('') + '<label class="op op-cx"><input type="checkbox" name="trava" value="Outro" id="travaOutro"> Outro</label>' +
       '<input type="text" id="travaOutroTxt" maxlength="120" placeholder="Outro? Escreva aqui qual é">';
-    [].forEach.call(travasLista.querySelectorAll('input[name=trava]'), function (c) { c.addEventListener('change', function () { resumoTravas(); montarCartoes(); }); });
+    [].forEach.call(travasLista.querySelectorAll('input[name=trava]'), function (c) { c.addEventListener('change', resumoTravas); });
     document.getElementById('travaOutro').addEventListener('change', function () {
       if (this.checked) document.getElementById('travaOutroTxt').focus();
     });
     document.getElementById('travaOutroTxt').addEventListener('input', function () {
       var o = document.getElementById('travaOutro');
-      if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoTravas(); montarCartoes(); }
-      var t = travasNotas.querySelector('.tn[data-v="Outro"] .tn-tit'); if (t) t.textContent = nomeTrava(o);
+      if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoTravas(); }
     });
     resumoTravas();
     montarTentou(cat);
@@ -729,20 +676,13 @@ footer{padding:16px 16px 20px}
       });
       if (!lista.length) { travasCx.open = true; erro.textContent = ERRO_TRAVAS; return; }
       if (document.getElementById('travaOutro').checked && !outroTxt) { travasCx.open = true; erro.textContent = 'Escreve qual é a outra trava.'; document.getElementById('travaOutroTxt').focus(); return; }
-      var cartoes = travasNotas.querySelectorAll('.tn'), partes = [];
-      for (var k = 0; k < cartoes.length; k++) {
-        var tn = cartoes[k], nm = tn.querySelector('.tn-tit').textContent;
-        var ar = [].slice.call(tn.querySelectorAll('input[type=checkbox]:checked')).map(function (a) { return a.value.toLowerCase(); });
-        var nt = (tn.querySelector('input[type=radio]:checked') || {}).value;
-        if (!ar.length) { erro.textContent = 'Em "' + nm + '", marque onde essa trava impacta você.'; tn.scrollIntoView({ block: 'center' }); return; }
-        if (nt === undefined) { erro.textContent = 'Em "' + nm + '", escolha uma nota de 0 a 10.'; tn.scrollIntoView({ block: 'center' }); return; }
-        partes.push(nm + ' (' + ar.join(', ') + ') ' + nt + '/10');
-      }
-      travas = partes.join(' · ');
+      travas = lista.join(', ');
     }
     // Mensuração (23/11/2026): mesmas perguntas da /vida-pessoal/.
     var impTxt = document.getElementById('impTxt').value.trim();
-    if (impTxt.length < 3) { erro.textContent = 'Conte como isso está impactando a sua vida.'; document.getElementById('impTxt').focus(); return; }
+    if (impTxt.length < 3) { erro.textContent = 'Conte qual trava mais te limita e em que área da sua vida.'; document.getElementById('impTxt').focus(); return; }
+    var impNota = (form.querySelector('input[name=impNota]:checked') || {}).value;
+    if (impNota === undefined) { erro.textContent = 'Escolha uma nota de 0 a 10.'; return; }
     var tentou = '', gasto = '';
     if (TENTOU[categoria]) {
       tentou = document.getElementById('tentTxt').value.trim().replace(/\s+/g, ' ');
@@ -752,7 +692,7 @@ footer{padding:16px 16px 20px}
     }
     var vidaTxt = document.getElementById('vidaTxt').value.trim();
     if (vidaTxt.length < 3) { erro.textContent = 'Conte como seria a sua vida sem esse problema.'; document.getElementById('vidaTxt').focus(); return; }
-    var impacto = impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
+    var impacto = impNota + '/10 · ' + impTxt.replace(/\s+/g, ' '), vidaSem = vidaTxt.replace(/\s+/g, ' ');
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; document.getElementById('fat').focus(); return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
