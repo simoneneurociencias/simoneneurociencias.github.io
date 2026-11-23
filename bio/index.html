@@ -429,6 +429,13 @@ footer{padding:16px 16px 20px}
           <option value="empreendedor">Tenho meu próprio negócio</option>
         </select>
       </fieldset>
+      <fieldset id="travasCampo" hidden>
+        <legend id="travasRotulo"></legend>
+        <details class="sint-cx" id="travasCx">
+          <summary id="travasResumo">Toque para escolher (pode marcar mais de um)</summary>
+          <div class="sint-lista" id="travasLista"></div>
+        </details>
+      </fieldset>
       <fieldset>
         <legend id="fat-rotulo">Qual sua renda mensal?</legend>
         <select id="fat" name="fat" aria-labelledby="fat-rotulo" required>
@@ -468,6 +475,35 @@ footer{padding:16px 16px 20px}
       msg: 'Oi, Simone! Sou {nome} e respondi as perguntas da sua página. Quero agendar a consulta diagnóstica gratuita.'
     }
   };
+  // Travas por categoria (23/11/2026): cada "Eu sou" abre a SUA caixa. Trocar texto é só aqui.
+  var TRAVAS = {
+    terapeuta: { p: 'Quais destas travas você reconhece no seu trabalho como terapeuta?', ops: [
+        'Medo do julgamento ao me expor nas redes sociais',
+        'Dificuldade de dizer o meu preço e cobrar o que mereço',
+        'Desconforto ao vender o meu trabalho',
+        'Me sinto invisível, mesmo entregando bons resultados',
+        'Recuo quando a agenda enche e a renda começa a subir',
+        'Adio decisões importantes por medo de errar',
+        'Procrastino o que sei que preciso fazer',
+        'Dependo de indicação e nunca sei como o mês vai fechar',
+        'Estudo, me certifico e sinto que nunca é suficiente',
+        'Sinto que preciso me provar o tempo todo',
+        'Meu faturamento sempre bate no mesmo limite',
+        'Vejo outros terapeutas crescendo e eu no mesmo lugar'
+      ] },
+    empreendedor: { p: 'Quais destas travas você reconhece no seu negócio?', ops: [
+        'Cobro pouco ou dou desconto com medo de perder clientes',
+        'Centralizo tudo porque só confio no que passa por mim',
+        'Travo na hora de tomar decisões importantes',
+        'Adio o que importa e deixo sempre para depois',
+        'Começo projetos, mas não mantenho a consistência',
+        'Tenho medo de me expor, lançar ou aparecer',
+        'Sinto que crescer vai me tirar tempo com a família',
+        'Quero crescer, mas já vivo em sobrecarga e esgotamento'
+      ] }
+  };
+  var ERRO_TRAVAS = 'Marca pelo menos uma trava, ou escreve em Outro.';
+  var RESUMO_VAZIO = 'Toque para escolher (pode marcar mais de um)';
   var ROTULO_BOTAO = 'Quero minha consulta gratuita ';
   var URL_LEADS = 'https://script.google.com/macros/s/AKfycbzOzLiS64c2E3Q0mwasd8GPw8rWm5bAvaAKuhiaiiQ-DF5IV7ZUROZSLB-RCkScIkPu/exec';
 
@@ -482,7 +518,37 @@ footer{padding:16px 16px 20px}
 
   var form = document.getElementById('cad'), erro = document.getElementById('erro');
   // Vida pessoal mostra o aviso do CVV
+  var travasCampo = document.getElementById('travasCampo'), travasCx = document.getElementById('travasCx'),
+    travasResumo = document.getElementById('travasResumo'), travasLista = document.getElementById('travasLista');
+  function esc(t) { return t.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;'); }
+  function resumoTravas() {
+    var m = [].slice.call(form.querySelectorAll('input[name=trava]:checked')).map(function (c) { return c.value; });
+    travasResumo.textContent = m.length ? m.join(', ') : RESUMO_VAZIO;
+    travasCx.classList.toggle('escolhido', m.length > 0);
+  }
+  function montarTravas(cat) {
+    var t = TRAVAS[cat];
+    travasCampo.hidden = !t;
+    travasLista.innerHTML = '';
+    travasCx.open = false;
+    if (!t) return;
+    document.getElementById('travasRotulo').textContent = t.p;
+    travasLista.innerHTML = t.ops.map(function (o) {
+      return '<label class="op op-cx"><input type="checkbox" name="trava" value="' + esc(o) + '"> ' + esc(o) + '</label>';
+    }).join('') + '<label class="op op-cx"><input type="checkbox" name="trava" value="Outro" id="travaOutro"> Outro</label>' +
+      '<input type="text" id="travaOutroTxt" maxlength="120" placeholder="Outro? Escreva aqui qual é">';
+    [].forEach.call(travasLista.querySelectorAll('input[name=trava]'), function (c) { c.addEventListener('change', resumoTravas); });
+    document.getElementById('travaOutro').addEventListener('change', function () {
+      if (this.checked) document.getElementById('travaOutroTxt').focus();
+    });
+    document.getElementById('travaOutroTxt').addEventListener('input', function () {
+      var o = document.getElementById('travaOutro');
+      if (o.checked !== Boolean(this.value.trim())) { o.checked = Boolean(this.value.trim()); resumoTravas(); }
+    });
+    resumoTravas();
+  }
   form.elements.cat.addEventListener('change', function () {
+    montarTravas(this.value);
     document.getElementById('avisoForm').hidden = !(CATS[this.value] && CATS[this.value].aviso);
   });
   function marcado(nome) {
@@ -535,6 +601,16 @@ footer{padding:16px 16px 20px}
     if (!areaAtuacao) { erro.textContent = 'Informe sua área de atuação profissional.'; return; }
     var categoria = marcado('cat');
     if (!categoria) { erro.textContent = 'Escolhe uma opção em "Eu sou".'; return; }
+    var travas = '';
+    if (TRAVAS[categoria]) {
+      var outroTxt = document.getElementById('travaOutroTxt').value.trim();
+      var lista = [].slice.call(form.querySelectorAll('input[name=trava]:checked')).map(function (c) {
+        return c.value === 'Outro' ? 'Outro: ' + outroTxt : c.value;
+      });
+      if (!lista.length) { travasCx.open = true; erro.textContent = ERRO_TRAVAS; return; }
+      if (document.getElementById('travaOutro').checked && !outroTxt) { travasCx.open = true; erro.textContent = 'Escreve qual é a outra trava.'; document.getElementById('travaOutroTxt').focus(); return; }
+      travas = lista.join(', ');
+    }
     var renda = marcado('fat');
     if (!renda) { erro.textContent = 'Escolhe uma das opções de renda.'; return; }
     // Espera a planilha confirmar antes de ir para a aplicação, para o cadastro não se perder.
@@ -547,8 +623,8 @@ footer{padding:16px 16px 20px}
     try {
       var anterior = JSON.parse(sessionStorage.getItem('consulta_lead') || 'null');
       lead = { nome: nome, whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria,
-        porta: porta, msg: CATS[categoria].msg };
-      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta'].every(function (k) {
+        porta: porta, travas: travas, msg: CATS[categoria].msg };
+      var igual = anterior && ['nome', 'whatsapp', 'idade', 'areaAtuacao', 'faturamento', 'categoria', 'porta', 'travas'].every(function (k) {
         return anterior[k] === lead[k];
       });
       lead.cadastroId = igual && anterior.cadastroId ? anterior.cadastroId : crypto.randomUUID();
@@ -572,7 +648,7 @@ footer{padding:16px 16px 20px}
       method: 'POST', signal: ctrl.signal,
       headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
       body: JSON.stringify({ tipo: 'consulta', cadastroId: lead.cadastroId, nome: nome,
-        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo,
+        whatsapp: whats, idade: idade, areaAtuacao: areaAtuacao, faturamento: renda, categoria: categoria, origem: porta + ' · ' + CATS[categoria].rotulo + (travas ? ' · travas: ' + travas : ''),
         indice: '', faixa: '', eixoFragil: '', visibilidade: '', previsibilidade: '', autovalor: '',
         data: new Date().toISOString() })
     }).then(function (res) {
