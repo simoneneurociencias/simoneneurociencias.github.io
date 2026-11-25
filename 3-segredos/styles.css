@@ -889,3 +889,64 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela2::before{bottom:0}
 }
 .lado-check li::before{content:"✓";color:var(--ouro)}
+/* 26/11: chave menor */
+.chave-titulo{height:1.2em;margin:-.45em 0 0 .2em}
+/* 26/11: seções longas viram 2 telas no celular (Quem conduz, Decisão), cada uma com filete no topo */
+@media (max-width:640px){
+  .sec.conduz,.sec.sec-decisao{display:block;min-height:0;padding-top:0;padding-bottom:0}
+  .tela-cel{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:20px 0;position:relative}
+  .tela-cel-2::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6)}
+  .conduz .kicker{position:absolute;left:0;right:0;top:18px;margin:0;z-index:2}
+  .sec.conduz{position:relative}
+  .conduz .container{padding-left:0;padding-right:0}
+  .card-simone{border-radius:0;border-left:0;border-right:0}
+  .simone-txt{padding:0 20px}
+  .conduz-t1{padding-top:56px}
+  .simone-foto-cel{aspect-ratio:1/1;max-height:34svh;width:auto;margin:14px auto 0;object-position:center 15%}
+}
+/* 26/11: últimas seções numa tela do celular (espaços internos menores, sem diminuir letra) */
+.so-cel{display:none}
+@media (max-width:640px){
+  .so-cel{display:inline}
+  /* O que o encontro faz */
+  .virada-destaque{margin-top:14px;padding:18px 12px 18px}
+  .virada-destaque .virada-b{margin-top:14px;padding-top:14px}
+  .para-quem .cta-linha{margin-top:18px}
+  /* O Evento */
+  .numeros-oferta{display:none}
+  .oferta .sub-sec{margin-top:10px}
+  .ingresso{margin-top:14px;padding:10px 10px 16px}
+  .ingresso-topo{padding:14px 16px}
+  .ingresso-logo-3s{width:min(170px,52%)}
+  .ingresso-lista{padding:14px 16px 4px;gap:6px}
+  .preco{margin:10px 0 10px;padding-top:12px}
+  .preco-num{font-size:4rem}
+  .garantia{margin-top:10px}
+  .aviso{margin:8px 12px 0;font-size:.7rem}
+  /* A decisão: tela 1 */
+  .sec-decisao .duas-colunas{margin-top:14px}
+  .caixa-garantia{flex-direction:row;text-align:left;gap:12px;padding:12px 14px;margin-top:12px}
+  .cg-selo{width:58px;height:58px}
+  /* A decisão: tela 2 */
+  .ganhos-tit{margin-top:0}
+  .ganhos-3{gap:6px;margin-top:12px}
+  .ganhos-3 li{padding:10px 14px}
+  .fecho-final{margin-top:16px}
+  .frase-reset{margin-top:14px;padding:14px 14px}
+  .frase-reset + .cta-linha{margin-top:16px}
+  .garantia-final{margin-top:8px}
+}
+@media (max-width:640px){
+  .sec,.tela-cel,.metodo-tela2{padding-top:12px;padding-bottom:12px}
+  .duas-colunas .lado{padding-bottom:10px}
+  .virada-destaque{padding:14px 10px}
+  .virada-destaque .virada-b{margin-top:10px;padding-top:10px}
+  .para-quem .cta-linha{margin-top:14px}
+  .preco-num{font-size:3.4rem}
+  .ingresso-topo{padding:10px 14px}
+  .ganhos-3 li{padding:8px 12px}
+  .fecho-final{margin-top:12px}
+  .frase-reset{padding:10px 12px;margin-top:10px}
+  .frase-reset + .cta-linha{margin-top:12px}
+}
+@media (max-width:640px){.card-simone{border-top:0;border-bottom:0}}
