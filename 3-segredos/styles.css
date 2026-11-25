@@ -1090,3 +1090,33 @@ em{font-style:normal;color:var(--ouro)}
   .conduz + .para-quem .lado{padding-bottom:14px!important}
   .conduz + .para-quem .lado ul{gap:9px!important}
 }
+/* 26/11: fim da página redesenhado (tela 2 da decisão)
+   título no padrão de seção; Clareza → Entendimento → Caminho como fluxo com linha dourada;
+   frase final sem caixa, como fechamento grande */
+.decisao-t2 .ganhos-tit{display:block;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(1.3rem,2.9vw,2.1rem);line-height:1.2;letter-spacing:-.01em}
+.decisao-t2 .ganhos-tit::before,.decisao-t2 .ganhos-tit::after{display:none}
+.decisao-t2 .ganhos-tit .gt-1,.decisao-t2 .ganhos-tit .gt-2{display:block;font-size:inherit}
+.decisao-t2 .ganhos-tit .gt-2{color:var(--ouro);font-style:normal}
+.decisao-t2 .ganhos-3{counter-reset:g;display:flex!important;flex-direction:column;gap:16px;position:relative;max-width:360px;margin-left:auto;margin-right:auto}
+.decisao-t2 .ganhos-3::before{content:"";position:absolute;left:17px;top:18px;bottom:18px;width:2px;background:linear-gradient(180deg,rgba(185,145,91,.25),#d9b774,rgba(185,145,91,.25))}
+.decisao-t2 .ganhos-3 li{counter-increment:g;position:relative;background:none!important;border:0!important;padding:2px 0 0 54px!important;text-align:left;color:var(--txt-2);min-height:36px}
+.decisao-t2 .ganhos-3 li::before{content:counter(g,decimal-leading-zero);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--ouro);background:#021a28;color:var(--ouro);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:.85rem;box-shadow:0 0 12px rgba(185,145,91,.35)}
+.decisao-t2 .ganhos-3 li strong{display:block;font-family:var(--display);font-weight:600;color:var(--txt);font-size:1.02rem;line-height:1.2;margin-bottom:2px}
+.decisao-t2 .fecho-final{text-transform:none;font-family:var(--texto);text-align:center}
+.decisao-t2 .fecho-final > span{display:block;font-weight:400;color:var(--txt-2);font-size:min(1.08rem,2.55vh,4.4vw);margin-bottom:6px}
+.decisao-t2 .fecho-final b{display:block;font-family:var(--display);font-weight:600;font-size:min(1.05rem,4.5vw);line-height:1.3}
+.decisao-t2 .frase-reset{background:none!important;border:0!important;box-shadow:none!important;padding:0!important;text-align:center;font-family:var(--display);font-weight:600}
+.decisao-t2 .frase-reset > span{display:block;color:var(--txt);font-size:min(1.05rem,4.5vw);line-height:1.35}
+.decisao-t2 .frase-reset em{display:block;font-style:normal;color:var(--ouro);font-size:min(1.6rem,7vw);line-height:1.2;margin-top:4px}
+.decisao-t2 .frase-reset em .reset{font-size:inherit}
+/* 26/11: garantia curta com selo menor; caixas dos dois caminhos com respiro; rodapé enxuto */
+@media (max-width:640px){
+  .caixa-garantia{padding:10px 14px}
+  .cg-selo{width:46px;height:46px}
+  .sec-decisao .duas-colunas{gap:14px!important}
+}
+.rodape .container{padding-top:4px}
+.decisao-t2 .ganhos-tit,.decisao-t2 .ganhos-tit *{white-space:normal!important}
+.decisao-t2 .ganhos-tit > span{display:block}
+.decisao-t2 .frase-reset em .reset,.decisao-t2 .frase-reset em .reset span{display:inline!important}
+@media (max-width:640px){.decisao-t2 .ganhos-tit{font-size:min(1.28rem,5.4vw)}}
