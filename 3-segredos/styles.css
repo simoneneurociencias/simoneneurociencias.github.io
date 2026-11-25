@@ -816,3 +816,10 @@ em{font-style:normal;color:var(--ouro)}
   .etapas.tres .etapa h3{font-size:.95rem;margin-bottom:2px;color:var(--ouro)}
   .etapas.tres + .cta-linha{margin-top:20px}
 }
+/* 25/11 (18): "Esses bloqueios cobram..." numa tela do celular */
+.ul-termostato{margin-top:22px}
+@media (max-width:640px){
+  .ul-termostato{margin-top:12px}
+  .para-quem .duas-colunas{gap:10px;margin-top:16px}
+  .fecho-custo{margin-top:16px}
+}
