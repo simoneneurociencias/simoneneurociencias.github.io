@@ -954,3 +954,11 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-tela1 .fecho-metodo{margin:0 0 -6px}
 @media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,34svh)}.metodo-tela1{gap:clamp(10px,2svh,18px)}}
 @media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,30svh)}}
+/* 26/11 (S24): ao rolar, a barra do Chrome some e a tela fica com a altura "grande" (lvh).
+   Cada seção ocupa essa altura toda e espalha os elementos, para a linha de cima e a de baixo ficarem nas bordas da tela. */
+@media (max-width:640px){
+  .sec,.tela-cel,.metodo-tela1,.metodo-tela2{min-height:100vh;min-height:100lvh;justify-content:space-evenly}
+  .sec.metodo,.sec.conduz,.sec.sec-decisao{min-height:0}
+}
+@media (max-width:640px){.hero{min-height:100vh;min-height:100lvh}}
+@media (max-width:640px){.ingresso .garantia{display:block;text-align:center;font-size:.85rem}.ingresso .garantia svg{display:inline-block;vertical-align:-3px;margin-right:4px}}
