@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Medida da tela</title>
+<style>
+body{margin:0;background:#010c14;color:#fff;font:17px/1.5 system-ui,sans-serif;text-align:center}
+.t{position:fixed;left:0;width:1px;visibility:hidden}
+main{padding:28px 18px}
+h1{font-size:1.2rem;color:#d9b774;margin:0 0 18px}
+.n{font-size:3rem;font-weight:800;line-height:1.1}
+.r{color:#9fb3c0;font-size:.95rem;margin:2px 0 18px}
+small{color:#9fb3c0;display:block;margin-top:14px;font-size:.85rem}
+</style></head><body>
+<div class="t" id="sv" style="height:100svh;top:0"></div><div class="t" id="lv" style="height:100lvh;top:0"></div>
+<main>
+<h1>Medida da tela do seu celular</h1>
+<div class="n" id="tam">…</div><p class="r">largura x altura que a página enxerga agora</p>
+<div class="n" id="ext" style="font-size:1.6rem">…</div><p class="r">altura com a barra do navegador visível / escondida</p>
+<div class="n" id="fon" style="font-size:1.6rem">…</div><p class="r">tamanho da letra (o normal é 16)</p>
+<small id="nav"></small>
+<small>Tire um print desta tela e mande para o Claude.<br>Abra do mesmo jeito que você abre a sua página (pelo Instagram ou pelo Chrome).</small>
+</main>
+<script>
+function m(){
+ document.getElementById('tam').textContent=innerWidth+' x '+innerHeight;
+ document.getElementById('ext').textContent=document.getElementById('sv').offsetHeight+' / '+document.getElementById('lv').offsetHeight;
+ document.getElementById('fon').textContent=parseFloat(getComputedStyle(document.documentElement).fontSize);
+ var u=navigator.userAgent,n=/Instagram/.test(u)?'Navegador do Instagram':/SamsungBrowser/.test(u)?'Samsung Internet':/Chrome/.test(u)?'Chrome':'outro navegador';
+ document.getElementById('nav').textContent=n+' · densidade '+devicePixelRatio;
+}
+m();addEventListener('resize',m);
+</script>
+</body></html>

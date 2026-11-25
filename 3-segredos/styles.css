@@ -988,3 +988,4 @@ em{font-style:normal;color:var(--ouro)}
 }
 .simone-txt h2{text-transform:none;letter-spacing:-.01em;font-weight:600}@media (max-width:640px){.simone-txt h2{text-align:center}.simone-txt h2 br{display:none}.simone-cred{text-align:center}}
 @media (max-width:640px){.simone-foto-cel{max-height:23svh}.simone-vidro p+p{margin-top:6px}}
+@media (max-width:640px){.simone-foto-cel{max-height:20svh}}
