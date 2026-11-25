@@ -723,3 +723,5 @@ em{font-style:normal;color:var(--ouro)}
 .metodo h2.metodo-ponte{margin:calc(var(--esp-sec) * .9) 0 0}
 .metodo h2.metodo-ponte + .metodo-etapas{margin-top:var(--esp-bloco)}
 @media (max-width:640px){.metodo h2.metodo-ponte{margin-top:44px}}
+/* 25/11 (6): kicker "Ao vivo" embaixo do título dos 4 momentos */
+.titulo + .kicker-sob{margin:14px 0 0}
