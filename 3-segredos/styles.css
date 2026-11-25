@@ -1041,3 +1041,45 @@ em{font-style:normal;color:var(--ouro)}
 .fecho-discreto span{font-size:inherit;color:var(--txt-2);font-weight:400}
 .fecho-discreto .reset,.fecho-discreto .ambar{color:var(--ouro)}
 @media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,34svh)}} /* logo-metodo-auto */
+/* 26/11: 4 momentos com respiro: números menores, mais espaço entre as caixas, fecho mais perto entre si e longe das caixas */
+@media (max-width:640px){
+  .etapas:not(.tres) .etapa-num{font-size:.92rem}
+  .etapas:not(.tres) .etapa{column-gap:8px}
+  .etapas:not(.tres) .etapa h3{white-space:nowrap}
+  .diferente .etapas:not(.tres){gap:14px}
+  .diferente .titulo + .kicker-sob{margin-top:8px!important}
+  .diferente .virada .virada-a{margin:0 0 4px}
+  .diferente .virada .virada-b{font-size:min(1rem,4.3vw);margin-top:0}
+}
+/* 26/11 (medido em 360 de verdade): Quem conduz e Para quem cabem na tela */
+@media (max-width:640px){
+  .conduz-t1{grid-template-columns:104px 1fr;column-gap:12px;row-gap:8px}
+  .conduz-t1 .simone-foto-cel{width:104px;height:130px}
+  .conduz-t1 .simone-cred{line-height:1.35}
+  .simone-vidro{padding:12px 14px!important}
+  .simone-vidro p{line-height:1.42}
+  .livro{padding:10px 12px!important;gap:12px!important}
+  .livro-capa{width:54px!important;height:auto}
+  .sec.conduz{padding-top:22px!important;padding-bottom:6px!important}
+  .simone-txt{padding:12px 12px}
+  .conduz .container{padding-left:12px;padding-right:12px}
+  .conduz + .para-quem .sub-sec{margin-top:4px!important}
+  .conduz + .para-quem .lado ul{gap:4px}
+}
+@media (max-width:640px){
+  .conduz + .para-quem .duas-colunas{gap:8px!important}
+  .conduz + .para-quem .lado h3{padding:10px 16px 8px!important;margin-bottom:8px!important}
+  .conduz + .para-quem .lado{padding-bottom:8px!important}
+}
+/* 26/11: Quem conduz — título de seção no padrão; nome em tamanho de subtítulo; credenciais em lista */
+.simone-cred-lista{list-style:none;margin:0;padding:0}
+.simone-cred-lista li{position:relative;padding-left:16px;line-height:1.3;color:var(--txt-2)}
+.simone-cred-lista li+li{margin-top:6px}
+.simone-cred-lista li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--ouro)}
+.titulo-conduz{margin-bottom:var(--esp-bloco)}
+@media (max-width:640px){
+  .titulo-conduz{margin:0!important}
+  .simone-txt h2{font-size:min(1.05rem,4.5vw)!important;line-height:1.25}
+  .conduz-t1 h2{grid-column:2;grid-row:1}
+  .conduz-t1 .simone-cred-lista{grid-column:2;grid-row:2;align-self:start;font-size:min(1.08rem,2.55vh,4.4vw)}
+}
