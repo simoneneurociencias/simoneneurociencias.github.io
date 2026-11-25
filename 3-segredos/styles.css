@@ -834,3 +834,16 @@ em{font-style:normal;color:var(--ouro)}
 .etapas.tres .etapa{display:block}
 .seg-n{font-size:1.35em;line-height:1;margin-left:2px}
 @media (max-width:640px){.etapas.tres .etapa h3{margin-bottom:4px}}
+/* 25/11 (21): 4 etapas como linha do tempo: número num círculo, linha ligando os círculos, texto no cartão ao lado */
+.metodo-etapas{position:relative}
+.metodo-etapas li{background:none;border:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.metodo-etapas li > div{flex:1;width:100%;background:linear-gradient(160deg,rgba(12,58,64,.45),rgba(1,12,20,.6));border:1px solid rgba(185,145,91,.2);border-radius:10px;padding:20px 20px}
+.metodo-etapas .me-num{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none;margin:0;border:1.5px solid var(--ouro);border-radius:50%;background:#021a28;font-size:1.05rem;box-shadow:0 0 14px rgba(185,145,91,.35)}
+.metodo-etapas::before{content:"";position:absolute;top:22px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,rgba(185,145,91,.25),#d9b774,rgba(185,145,91,.25))}
+@media (max-width:640px){
+  .metodo-etapas{gap:10px}
+  .metodo-etapas li{flex-direction:row;align-items:center;gap:12px;padding:0}
+  .metodo-etapas li > div{padding:10px 14px}
+  .metodo-etapas .me-num{width:38px;height:38px;font-size:.95rem}
+  .metodo-etapas::before{top:19px;bottom:19px;left:18px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,rgba(185,145,91,.25),#d9b774,rgba(185,145,91,.25))}
+}
