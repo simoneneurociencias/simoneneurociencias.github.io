@@ -692,3 +692,10 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela1 .metodo-logo{width:min(420px,100%,46svh);margin:0 auto}
   .metodo .kicker.metodo-ponte{margin-top:44px}
 }
+
+/* 25/11: Neurociência · Visualização Ativa · PNL sobe para a explicação do método (1ª tela) */
+.metodo-tela1 .metodo-base{margin-top:0;color:var(--txt)}
+.metodo-etapas + .metodo-nota{margin-top:26px}
+@media (max-width:640px){
+  .metodo-tela1 .metodo-logo{width:min(420px,100%,42svh)}
+}
