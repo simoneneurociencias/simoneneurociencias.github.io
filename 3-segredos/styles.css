@@ -760,3 +760,10 @@ em{font-style:normal;color:var(--ouro)}
   .justificativas .uma-coluna{margin-top:16px}
   .justificativas .fecho{margin-top:16px}
 }
+/* 25/11 (11): selos (4h, online, 7 dias) logo abaixo do ingresso; garantia sob o último botão */
+.numeros-oferta{border:0;padding:22px 0 0;max-width:620px;margin:0 auto}
+.numeros-oferta .num{padding:0 26px}
+.numeros-oferta .num:first-child{border-left:0}
+.cta-linha{flex-wrap:wrap}
+.garantia-final{display:flex;justify-content:center;width:100%;margin-top:14px}
+@media (max-width:640px){.numeros-oferta .num{padding:0 0 0 10px}.numeros-oferta .num:first-child{padding-left:0}}
