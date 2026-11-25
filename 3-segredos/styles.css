@@ -989,3 +989,6 @@ em{font-style:normal;color:var(--ouro)}
 .simone-txt h2{text-transform:none;letter-spacing:-.01em;font-weight:600}@media (max-width:640px){.simone-txt h2{text-align:center}.simone-txt h2 br{display:none}.simone-cred{text-align:center}}
 @media (max-width:640px){.simone-foto-cel{max-height:23svh}.simone-vidro p+p{margin-top:6px}}
 @media (max-width:640px){.simone-foto-cel{max-height:20svh}}
+/* 26/11 (S24+ real: 360x588 com barras, 700 sem): o hero aparece com as barras do Chrome, então cabe em 100svh */
+@media (max-width:640px){.hero{min-height:100svh!important;height:100svh}}
+@media (max-width:640px){.simone-foto-cel{max-height:15svh}.conduz-t1{gap:8px}.simone-txt{padding:12px 14px}}
