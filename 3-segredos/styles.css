@@ -744,3 +744,19 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){
   .metodo-tela1 .metodo-logo{width:min(100%,41svh);aspect-ratio:1.1;height:auto;object-fit:cover;object-position:center}
 }
+/* 25/11 (10): no celular, todo texto de parágrafo/lista no mesmo tamanho do parágrafo do hero;
+   listas mais juntas; "O que te impede..." cabe numa tela */
+@media (max-width:640px){
+  .sub-sec,.lado p,.lado li,.etapa p,.metodo-etapas p,.mp-apoio,.faq p{font-size:min(1.08rem,2.55vh,4.4vw)}
+  .sub-sec,.lado p,.lado li,.etapa p,.metodo-etapas p,.faq p{line-height:1.4}
+  .lado{padding-bottom:20px}
+  .lado h3{padding:16px 20px 12px;margin-bottom:14px}
+  .lado ul{gap:8px;padding:0 20px}
+  .lado li{padding-left:24px}
+  .lado p{padding:0 20px}
+  .lado p + p{margin-top:8px}
+  .justificativas{padding-top:28px;padding-bottom:28px}
+  .justificativas .sub-sec{margin-top:10px}
+  .justificativas .uma-coluna{margin-top:16px}
+  .justificativas .fecho{margin-top:16px}
+}
