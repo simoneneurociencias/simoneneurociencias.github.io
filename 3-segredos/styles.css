@@ -855,3 +855,16 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){.etapas.tres .etapa .promessa{font-size:min(1.08rem,2.55vh,4.4vw)}}
 .chave-titulo{height:1.85em;margin:-1.05em 0 0 .2em}
 .chave-titulo{height:1.5em;margin:-.75em 0 0 .2em}
+/* 25/11 (24): 4 momentos: número pequeno ao lado do título, título menor, cards compactos */
+.etapas:not(.tres) .etapa{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:baseline}
+.etapas:not(.tres) .etapa-num{font-size:1.35rem;margin:0}
+.etapas:not(.tres) .etapa h3{font-size:1.02rem;margin-bottom:6px}
+.etapas:not(.tres) .etapa p{grid-column:1 / -1}
+@media (max-width:640px){
+  .etapas:not(.tres){gap:8px;margin-top:14px}
+  .etapas:not(.tres) .etapa{padding:12px 16px}
+  .etapas:not(.tres) .etapa-num{font-size:1.15rem}
+  .etapas:not(.tres) .etapa h3{font-size:.98rem;margin-bottom:2px}
+  .etapas:not(.tres) + .virada{margin-top:16px}
+}
+@media (max-width:640px){.etapas:not(.tres) .etapa h3{font-size:min(.94rem,3.9vw)}}
