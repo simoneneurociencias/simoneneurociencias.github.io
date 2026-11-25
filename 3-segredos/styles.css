@@ -767,3 +767,24 @@ em{font-style:normal;color:var(--ouro)}
 .cta-linha{flex-wrap:wrap}
 .garantia-final{display:flex;justify-content:center;width:100%;margin-top:14px}
 @media (max-width:640px){.numeros-oferta .num{padding:0 0 0 10px}.numeros-oferta .num:first-child{padding-left:0}}
+/* 25/11 (12): todos os títulos de seção no mesmo tamanho (sem exceção por seção) */
+.diferente .titulo{font-size:inherit}
+.sec .titulo,.sec .diferente .titulo,.metodo h2.titulo{font-size:clamp(1.3rem,2.9vw,2.1rem)}
+@media (max-width:640px){.sec .titulo,.diferente .titulo,.metodo h2.titulo{font-size:min(1.28rem,5.4vw)}}
+/* "E, no fundo... O que está faltando em mim?" + parágrafo numa caixa, em tamanho de subtítulo */
+.caixa-pergunta{max-width:640px;margin:var(--esp-bloco) auto 0;padding:24px 26px;border:1px solid rgba(185,145,91,.5);border-radius:14px;background:linear-gradient(180deg,rgba(12,58,64,.3),rgba(1,12,20,.5));text-align:center}
+.caixa-pergunta .fecho{margin:0;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.3;text-transform:none;color:var(--ouro-claro)}
+.caixa-pergunta .fecho span{display:block;margin-bottom:6px;font-family:var(--texto);font-weight:400;font-size:.95rem;color:var(--txt-2);text-transform:none}
+.caixa-pergunta .sub-sec{margin:14px auto 0;padding-top:14px;border-top:1px solid rgba(185,145,91,.25)}
+@media (max-width:640px){
+  .caixa-pergunta{padding:18px 18px;margin-top:16px}
+  .caixa-pergunta .fecho{font-size:min(1.05rem,4.5vw)}
+  .caixa-pergunta .fecho span{font-size:min(1.08rem,2.55vh,4.4vw)}
+  .caixa-pergunta .sub-sec{margin-top:12px;padding-top:12px}
+}
+/* 25/11 (13): troca de seção marcada: filete dourado com brilho no topo + sombra suave de "virada de página" */
+.sec{position:relative}
+.sec + .sec,.faixa + .sec{border-top:0;box-shadow:inset 0 26px 34px -26px rgba(0,0,0,.75)}
+.sec + .sec::before,.faixa + .sec::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:1px;height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6);pointer-events:none}
+/* pergunta da caixa um pouco menor, sem quebrar "mim?" sozinho */
+@media (max-width:640px){.caixa-pergunta .fecho{font-size:min(1rem,4.2vw)}}
