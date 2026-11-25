@@ -1120,3 +1120,12 @@ em{font-style:normal;color:var(--ouro)}
 .decisao-t2 .ganhos-tit > span{display:block}
 .decisao-t2 .frase-reset em .reset,.decisao-t2 .frase-reset em .reset span{display:inline!important}
 @media (max-width:640px){.decisao-t2 .ganhos-tit{font-size:min(1.28rem,5.4vw)}}
+/* 26/11: ajustes finos (para quem, ingresso, fim, rodapé) */
+.rodape-tit{font-family:var(--display);font-size:.8rem;letter-spacing:.06em;color:var(--ouro);opacity:.85;margin:0 0 10px}
+.decisao-t2 .fecho-final .ff-branco{font-family:var(--texto);font-weight:400;color:var(--txt-2);font-size:min(1.08rem,2.55vh,4.4vw);margin-bottom:6px}
+.decisao-t2 .frase-reset em{font-size:min(1.3rem,5.8vw)}
+@media (max-width:640px){
+  .sub-uma-linha{white-space:nowrap;font-size:min(1.08rem,2.55vh,4.2vw)!important}
+  .ingresso-logo-3s{width:min(230px,66%)!important}
+  .preco-parc + .btn{margin-top:22px!important}
+}
