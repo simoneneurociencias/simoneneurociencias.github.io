@@ -797,3 +797,14 @@ em{font-style:normal;color:var(--ouro)}
 /* 25/11 (15): mesmo filete entre o hero e a seção seguinte */
 .hero + .sec{box-shadow:inset 0 26px 34px -26px rgba(0,0,0,.75)}
 .hero + .sec::before{content:"";position:absolute;z-index:2;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6);pointer-events:none}
+/* 25/11 (16): 4 etapas numa tela do celular: título mais alto, cards compactos */
+@media (max-width:640px){
+  .metodo-tela2{padding-top:26px}
+  .metodo .metodo-tela2 h2.metodo-ponte + .metodo-etapas{margin-top:16px}
+  .metodo-etapas{gap:8px}
+  .metodo-etapas li{padding:12px 16px;gap:14px;align-items:center}
+  .metodo-etapas h3{margin-bottom:2px}
+  .me-num{font-size:1.6rem}
+  .metodo-nota{margin-top:14px}
+  .metodo-etapas + .metodo-nota{margin-top:14px}
+}
