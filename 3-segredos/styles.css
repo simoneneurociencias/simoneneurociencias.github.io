@@ -808,3 +808,11 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-nota{margin-top:14px}
   .metodo-etapas + .metodo-nota{margin-top:14px}
 }
+/* 25/11 (17): 3 Segredos + botão numa tela do celular: cards compactos (número ao lado do texto) */
+@media (max-width:640px){
+  .etapas.tres{gap:8px;margin-top:16px}
+  .etapas.tres .etapa{display:grid;grid-template-columns:2.6rem 1fr;column-gap:14px;align-items:center;padding:14px 16px}
+  .etapas.tres .etapa-num{grid-row:1 / span 2;font-size:1.9rem;margin:0}
+  .etapas.tres .etapa h3{font-size:.95rem;margin-bottom:2px;color:var(--ouro)}
+  .etapas.tres + .cta-linha{margin-top:20px}
+}
