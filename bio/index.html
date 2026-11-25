@@ -326,9 +326,27 @@ footer{padding:16px 16px 20px}
 /* 23/11/2026: subtítulo do formulário em pílula de destaque, letra menor (pedido dela). */
 .cad .cad-sub{font-size:.84rem;line-height:1.45;font-weight:600;color:#5c4422;background:#f5ead6;border:1px solid #d9c09a;border-radius:16px;padding:10px 16px;margin:6px 0 14px}
 </style>
+<style>
+/* 26/11: uma tela do celular por parte (S24+), filete dourado na troca; o formulário fica na tela própria */
+@media (max-width:640px){
+  .tela-cel{min-height:100vh;min-height:100lvh;display:flex;flex-direction:column;justify-content:space-evenly;position:relative;padding:14px 0;margin:0!important;box-sizing:border-box}
+  .tela-cel>*{margin-top:0!important;margin-bottom:0!important}
+  .tela-cel-2::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6)}
+  .tela-hero{justify-content:flex-start;padding-top:0}
+  .tela-hero .capa{margin-bottom:0!important}
+  .tela-hero .dobra{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+  .tela-hero .dobra>*{margin-top:0!important;margin-bottom:0!important}
+  .tela-cv .cv,.tela-cv .cta-fim{margin:0!important}
+  .tela-cel .pres.passo{padding:14px 16px}
+  .tela-cel .infos{padding:12px 0}
+}
+</style>
 </head>
 <body>
 <main>
+
+  <div class="etapa">
+  <div class="tela-cel tela-hero">
   <header class="capa">
     <div class="capa-bg" aria-hidden="true"></div>
     <img class="capa-foto" src="simone-capa-v2.webp" alt="Simone Carneiro" width="800" height="963" fetchpriority="high">
@@ -337,8 +355,6 @@ footer{padding:16px 16px 20px}
       <p class="cargo">Neurocientista e Mentora</p>
     </div>
   </header>
-
-  <div class="etapa">
   <div class="dobra">
   <h1>Eu destravo os bloqueios emocionais que impedem terapeutas e empreendedores de <em>prosperar e ter sucesso na carreira.</em></h1>
   <div class="cta-topo">
@@ -348,8 +364,9 @@ footer{padding:16px 16px 20px}
 
   <div class="faixa" aria-hidden="true"><div class="faixa-trilho"><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span><span><b>BLACK FRIDAY</b> · CONSULTA DIAGNÓSTICA GRÁTIS ATÉ 30/11 · IMPERDÍVEL ·</span></div></div>
   </div>
+  </div>
 
-  <section id="para-quem" class="bloco">
+  <section id="para-quem" class="bloco tela-cel tela-cel-2">
     <h2 class="sec-tit">Onde está a sua trava?</h2>
     <article class="pres">
       <img class="foto-lado" src="terapeuta.webp" alt="Mulher de blazer claro sorrindo, sentada em uma poltrona" width="149" height="149" loading="lazy">
@@ -363,7 +380,7 @@ footer{padding:16px 16px 20px}
     </article>
   </section>
 
-  <section class="bloco">
+  <section class="bloco tela-cel tela-cel-2">
     <h2 class="sec-tit">Como funciona a consulta diagnóstica</h2>
     <article class="pres passo">
       <img class="foto-lado" src="img/momento.webp" alt="Rosto tenso com as mãos na cabeça" width="130" height="130" loading="lazy">
@@ -388,6 +405,7 @@ footer{padding:16px 16px 20px}
     </div>
   </section>
 
+  <div class="tela-cel tela-cel-2 tela-cv">
   <section class="cv">
     <h2 class="sec-tit" style="color:var(--ouro)">Quem vai conversar com você</h2>
     <div class="cv-card">
@@ -409,6 +427,7 @@ footer{padding:16px 16px 20px}
   <div class="bloco cta-fim">
     <a class="btn-ring" href="#cadastro"><span class="btn-face">Aplicar para a consulta gratuita&nbsp;<span class="seta">→</span></span><svg class="giro" viewBox="0 0 40 40" aria-hidden="true"><g><path d="M20 3v8M20 29v8M3 20h8M29 20h8M8 8l5.6 5.6M26.4 26.4L32 32M32 8l-5.6 5.6M13.6 26.4L8 32"/></g></svg></a>
     <p class="cta-nota">Online · até 50 minutos · gratuita até <span class="fim-mes"></span></p>
+  </div>
   </div>
 
   <section id="cadastro" class="bloco">
