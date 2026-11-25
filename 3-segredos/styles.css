@@ -973,3 +973,18 @@ em{font-style:normal;color:var(--ouro)}
 }
 @media (max-width:640px){.faq summary{padding:12px 40px 12px 16px}.faq details{margin-top:6px!important}}
 @media (max-width:640px){.conduz .kicker{top:16px;left:16px;right:16px;text-align:center}.conduz-t1{padding-top:72px!important}}
+/* 26/11: Quem conduz numa tela só (sem manifesto); nome no tamanho dos títulos de seção */
+.simone-txt h2{font-size:clamp(1.3rem,2.9vw,2.1rem)!important;line-height:1.2}
+@media (max-width:640px){
+  .sec.conduz{display:flex;min-height:100vh;min-height:100lvh;padding-top:12px;padding-bottom:12px}
+  .conduz .kicker{position:static;margin:0}
+  .conduz .container{padding-left:16px;padding-right:16px;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+  .card-simone{border:1px solid rgba(255,255,255,.08);border-radius:14px}
+  .simone-txt{padding:16px 16px}
+  .conduz-t1{display:flex;flex-direction:column;gap:12px;padding:0!important}
+  .conduz-t1 > *{margin:0!important}
+  .simone-txt h2{font-size:min(1.28rem,5.4vw)!important}
+  .simone-foto-cel{max-height:26svh;aspect-ratio:1/1;width:auto;margin:0 auto!important}
+}
+.simone-txt h2{text-transform:none;letter-spacing:-.01em;font-weight:600}@media (max-width:640px){.simone-txt h2{text-align:center}.simone-txt h2 br{display:none}.simone-cred{text-align:center}}
+@media (max-width:640px){.simone-foto-cel{max-height:23svh}.simone-vidro p+p{margin-top:6px}}
