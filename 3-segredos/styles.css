@@ -950,3 +950,7 @@ em{font-style:normal;color:var(--ouro)}
   .frase-reset + .cta-linha{margin-top:12px}
 }
 @media (max-width:640px){.card-simone{border-top:0;border-bottom:0}}
+/* 26/11: "Com essa trava... O Método RE:SET existe para desativá-la." abre a tela do método, acima da logo */
+.metodo-tela1 .fecho-metodo{margin:0 0 -6px}
+@media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,34svh)}.metodo-tela1{gap:clamp(10px,2svh,18px)}}
+@media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,30svh)}}
