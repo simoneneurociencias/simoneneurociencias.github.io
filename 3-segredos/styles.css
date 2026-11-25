@@ -854,3 +854,4 @@ em{font-style:normal;color:var(--ouro)}
 .etapa .promessa{font-size:.98rem;color:var(--txt-2)}
 @media (max-width:640px){.etapas.tres .etapa .promessa{font-size:min(1.08rem,2.55vh,4.4vw)}}
 .chave-titulo{height:1.85em;margin:-1.05em 0 0 .2em}
+.chave-titulo{height:1.5em;margin:-.75em 0 0 .2em}
