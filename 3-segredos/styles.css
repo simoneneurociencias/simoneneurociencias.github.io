@@ -739,3 +739,8 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-tela1 .metodo-base{letter-spacing:.03em}
 .metodo-tela1 .metodo-base span{margin:0 3px}
 .metodo-tela1 .metodo-base small{display:table;margin:10px auto 0;padding:5px 14px;border:1px solid rgba(185,145,91,.5);border-radius:999px;background:rgba(185,145,91,.14);color:var(--txt);letter-spacing:.02em}
+/* 25/11 (9): logo do RE:SET maior no celular para ler "Reconfiguração do Sistema Emocional";
+   corta só as laterais vazias da imagem (aspect-ratio + cover) para caber na 1ª tela */
+@media (max-width:640px){
+  .metodo-tela1 .metodo-logo{width:min(100%,41svh);aspect-ratio:1.1;height:auto;object-fit:cover;object-position:center}
+}
