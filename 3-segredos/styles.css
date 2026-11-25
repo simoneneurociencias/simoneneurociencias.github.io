@@ -962,3 +962,14 @@ em{font-style:normal;color:var(--ouro)}
 }
 @media (max-width:640px){.hero{min-height:100vh;min-height:100lvh}}
 @media (max-width:640px){.ingresso .garantia{display:block;text-align:center;font-size:.85rem}.ingresso .garantia svg{display:inline-block;vertical-align:-3px;margin-right:4px}}
+/* 26/11: o conteúdo se espalha pela tela inteira (o container também vira coluna que distribui os blocos) */
+@media (max-width:640px){
+  .sec:not(.metodo):not(.conduz):not(.sec-decisao) > .container{flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+  .sec > .container > *{margin-top:0!important;margin-bottom:0!important}
+  .tela-cel > *{margin-top:0!important;margin-bottom:0!important}
+  .metodo-tela1,.metodo-tela2{justify-content:space-evenly}
+  .metodo-tela1 > *,.metodo-tela2 > *{margin-top:0!important;margin-bottom:0!important}
+  .faq details{margin-top:8px!important}
+}
+@media (max-width:640px){.faq summary{padding:12px 40px 12px 16px}.faq details{margin-top:6px!important}}
+@media (max-width:640px){.conduz .kicker{top:16px;left:16px;right:16px;text-align:center}.conduz-t1{padding-top:72px!important}}
