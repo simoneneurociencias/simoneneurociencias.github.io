@@ -882,3 +882,9 @@ em{font-style:normal;color:var(--ouro)}
   .duas-colunas .lado-lead{margin-bottom:0}
   .fecho-custo{margin-bottom:0}
 }
+@media (max-width:640px){.duas-colunas .lado h3{font-size:min(.98rem,4.1vw)}}
+/* 26/11: 2ª tela do método (4 etapas) também ocupa uma tela inteira no celular */
+@media (max-width:640px){
+  .metodo-tela2{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:20px 0}
+  .metodo-tela2::before{bottom:0}
+}
