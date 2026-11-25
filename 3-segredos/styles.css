@@ -868,3 +868,17 @@ em{font-style:normal;color:var(--ouro)}
   .etapas:not(.tres) + .virada{margin-top:16px}
 }
 @media (max-width:640px){.etapas:not(.tres) .etapa h3{font-size:min(.94rem,3.9vw)}}
+/* 26/11: no celular cada seção ocupa uma tela inteira, conteúdo centralizado:
+   o filete do topo e o da seção seguinte aparecem juntos na mesma tela */
+@media (max-width:640px){
+  .sec{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:20px;padding-bottom:20px}
+  .sec > .container{width:100%}
+  .sec.metodo{display:block;min-height:0;padding-bottom:0}
+}
+@media (max-width:640px){
+  .duas-colunas .lado h3{padding:12px 18px 10px;margin-bottom:10px}
+  .duas-colunas .lado{padding-bottom:14px}
+  .duas-colunas .lado ul{gap:4px}
+  .duas-colunas .lado-lead{margin-bottom:0}
+  .fecho-custo{margin-bottom:0}
+}
