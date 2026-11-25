@@ -794,3 +794,6 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-tela2::before{content:"";position:absolute;z-index:-1;top:0;bottom:calc(-1 * var(--esp-sec));left:50%;width:100vw;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0%,rgba(24,69,96,.35),transparent 55%),var(--bg-2);box-shadow:inset 0 26px 34px -26px rgba(0,0,0,.75)}
 .metodo-tela2::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6)}
 @media (max-width:640px){.metodo-tela2{padding-top:44px}}
+/* 25/11 (15): mesmo filete entre o hero e a seção seguinte */
+.hero + .sec{box-shadow:inset 0 26px 34px -26px rgba(0,0,0,.75)}
+.hero + .sec::before{content:"";position:absolute;z-index:2;top:0;left:50%;transform:translateX(-50%);width:min(420px,70%);height:2px;background:linear-gradient(90deg,transparent,#d9b774,transparent);box-shadow:0 0 18px 2px rgba(185,145,91,.6);pointer-events:none}
