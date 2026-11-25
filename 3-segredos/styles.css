@@ -1036,3 +1036,8 @@ em{font-style:normal;color:var(--ouro)}
   .conduz-t1 .simone-cred{grid-column:2;grid-row:2;text-align:left!important;align-self:start;font-size:min(1.08rem,2.55vh,4.4vw)}
   .conduz-t1 .simone-vidro,.conduz-t1 .livro{grid-column:1 / -1}
 }
+/* 26/11: fecho do preço discreto (não compete com a tela do método); tela do método abre com a logo maior */
+.fecho-discreto{font-family:var(--texto);text-transform:none;font-weight:600;font-size:min(.98rem,4.2vw);line-height:1.45;color:var(--txt-2)}
+.fecho-discreto span{font-size:inherit;color:var(--txt-2);font-weight:400}
+.fecho-discreto .reset,.fecho-discreto .ambar{color:var(--ouro)}
+@media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,34svh)}} /* logo-metodo-auto */
