@@ -1129,3 +1129,11 @@ em{font-style:normal;color:var(--ouro)}
   .ingresso-logo-3s{width:min(230px,66%)!important}
   .preco-parc + .btn{margin-top:22px!important}
 }
+/* 26/11: abordagens dentro da pílula; "integradas..." fora; logo do método maior e perto do texto */
+.metodo-tela1 .metodo-base .mb-pilula{display:inline-block;padding:6px 14px;border:1px solid rgba(185,145,91,.5);border-radius:999px;background:rgba(185,145,91,.14)}
+.metodo-tela1 .metodo-base small{display:block;border:0!important;background:none!important;padding:0!important;margin:8px auto 0!important;color:var(--txt-2)!important;font-weight:600}
+@media (max-width:640px){
+  .metodo-tela1{justify-content:center!important;gap:14px!important}
+  .metodo-tela1 .metodo-logo{margin-bottom:-14px!important}
+}
+@media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,38svh)!important}} /* logo-metodo-auto2 */
