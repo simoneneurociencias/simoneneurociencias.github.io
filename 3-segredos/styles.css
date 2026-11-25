@@ -735,3 +735,7 @@ em{font-style:normal;color:var(--ouro)}
   .hero-foto{max-height:520px}
   .hero h1.h1-logo{margin-top:-12px}
 }
+/* 25/11 (8): abordagens mais juntas; "integradas em um único processo" numa pílula */
+.metodo-tela1 .metodo-base{letter-spacing:.03em}
+.metodo-tela1 .metodo-base span{margin:0 3px}
+.metodo-tela1 .metodo-base small{display:table;margin:10px auto 0;padding:5px 14px;border:1px solid rgba(185,145,91,.5);border-radius:999px;background:rgba(185,145,91,.14);color:var(--txt);letter-spacing:.02em}
