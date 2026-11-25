@@ -719,3 +719,7 @@ em{font-style:normal;color:var(--ouro)}
 /* 25/11 (4): "O RE:SET atua na causa" menor */
 .mp-destaque{font-size:clamp(1.02rem,1.5vw,1.14rem)}
 @media (max-width:640px){.mp-destaque{font-size:min(1rem,4.2vw)}}
+/* 25/11 (5): "As 4 etapas do Método RE:SET" vira título no padrão dos 3 Segredos */
+.metodo h2.metodo-ponte{margin:calc(var(--esp-sec) * .9) 0 0}
+.metodo h2.metodo-ponte + .metodo-etapas{margin-top:var(--esp-bloco)}
+@media (max-width:640px){.metodo h2.metodo-ponte{margin-top:44px}}
