@@ -679,3 +679,16 @@ em{font-style:normal;color:var(--ouro)}
   .mp-destaque{margin-top:16px !important;padding-top:14px;font-size:min(1.2rem,5vw)}
   .metodo .kicker.metodo-ponte{margin-top:calc(var(--esp-bloco) + 20px)}
 }
+
+/* 25/11: 1ª tela do método = logo + definição + caixa, centrada numa tela; as 4 etapas começam na tela seguinte */
+.sec.metodo{padding-top:0}
+.metodo-tela1{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(14px,2.6svh,30px);padding:clamp(16px,3svh,40px) 0}
+.metodo-tela1 .metodo-logo{width:min(720px,100%,60svh);margin:0 auto}
+.metodo-tela1 .metodo-def,.metodo-tela1 .metodo-principio{margin-top:0 !important}
+.metodo-tela1 .metodo-principio{width:100%}
+.metodo .kicker.metodo-ponte{margin-top:calc(var(--esp-sec) * .9)}
+@media (max-width:640px){
+  .metodo-tela1{gap:clamp(12px,2.4svh,22px)}
+  .metodo-tela1 .metodo-logo{width:min(420px,100%,46svh);margin:0 auto}
+  .metodo .kicker.metodo-ponte{margin-top:44px}
+}
