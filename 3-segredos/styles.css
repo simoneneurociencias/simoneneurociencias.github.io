@@ -699,3 +699,20 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){
   .metodo-tela1 .metodo-logo{width:min(420px,100%,42svh)}
 }
+
+/* 25/11 (3): logo maior e mais perto da definição; linha das abordagens em dourado; caixa com mais respiro */
+.metodo-tela1 .metodo-logo{width:min(800px,100%,60svh);margin:0 auto calc(-1 * clamp(18px,4.5svh,52px))}
+.metodo-tela1 .metodo-base{font-size:.84rem;letter-spacing:.06em;color:var(--ouro)}
+.metodo-tela1 .metodo-base span{color:var(--txt-3)}
+.metodo-tela1 .metodo-base small{margin-top:6px;font-weight:700;font-size:.84rem;letter-spacing:.03em;color:var(--txt)}
+.metodo-tela1 .metodo-principio{margin-top:clamp(6px,1.4svh,16px) !important;padding:34px 36px 30px}
+.mp-apoio span + span{margin-top:10px}
+.mp-destaque{margin-top:24px !important;padding-top:22px}
+@media (max-width:640px){
+  .metodo-tela1 .metodo-logo{width:min(440px,100%,46svh);margin-bottom:calc(-1 * clamp(12px,2.6svh,22px))}
+  .metodo-tela1 .metodo-base{font-size:min(.8rem,3.2vw)}
+  .metodo-tela1 .metodo-base small{font-size:min(.8rem,3.3vw)}
+  .metodo-tela1 .metodo-principio{padding:24px 20px 22px}
+  .mp-apoio span + span{margin-top:8px}
+  .mp-destaque{margin-top:18px !important;padding-top:16px}
+}
