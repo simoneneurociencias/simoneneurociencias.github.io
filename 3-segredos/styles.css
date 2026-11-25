@@ -823,3 +823,9 @@ em{font-style:normal;color:var(--ouro)}
   .para-quem .duas-colunas{gap:10px;margin-top:16px}
   .fecho-custo{margin-top:16px}
 }
+/* 25/11 (19): caixa da pergunta mais enxuta no celular */
+@media (max-width:640px){
+  .caixa-pergunta{padding:14px 16px;margin-top:12px}
+  .caixa-pergunta .fecho span{margin-bottom:2px;white-space:nowrap}
+  .caixa-pergunta .sub-sec{margin-top:10px;padding-top:10px}
+}
