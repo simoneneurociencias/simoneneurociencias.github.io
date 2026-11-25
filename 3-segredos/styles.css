@@ -992,3 +992,24 @@ em{font-style:normal;color:var(--ouro)}
 /* 26/11 (S24+ real: 360x588 com barras, 700 sem): o hero aparece com as barras do Chrome, então cabe em 100svh */
 @media (max-width:640px){.hero{min-height:100svh!important;height:100svh}}
 @media (max-width:640px){.simone-foto-cel{max-height:15svh}.conduz-t1{gap:8px}.simone-txt{padding:12px 14px}}
+/* 26/11 (final): cada seção = tela menos 28px; a linha dourada fica 14px para dentro.
+   Com a rolagem parando no começo de cada seção, a tela mostra a linha de cima (14px) e a da seção seguinte (14px antes do fim). */
+@media (max-width:640px){
+  html{scroll-snap-type:y mandatory}
+  .hero{min-height:calc(100svh - 28px)!important;height:calc(100svh - 28px)}
+  .sec,.tela-cel,.metodo-tela1,.metodo-tela2{min-height:calc(100lvh - 28px)!important}
+  .sec.metodo,.sec.sec-decisao{min-height:0!important}
+  .hero,.sec:not(.metodo):not(.sec-decisao),.metodo-tela1,.metodo-tela2,.tela-cel{scroll-snap-align:start;scroll-snap-stop:always}
+  .sec + .sec::before,.faixa + .sec::before,.hero + .sec::before,.metodo-tela2::after,.tela-cel-2::before{top:14px!important}
+  .sec,.tela-cel,.metodo-tela2{padding-top:26px!important}
+}
+@media (max-width:640px){
+  .sec.metodo,.sec.sec-decisao{padding-top:0!important;padding-bottom:0!important}
+  .metodo-tela1{padding-top:26px!important;padding-bottom:10px!important}
+  .metodo-tela1 .metodo-logo{width:min(100%,26svh)}
+  .sec.conduz{padding-top:24px!important;padding-bottom:8px!important}
+  .simone-foto-cel{max-height:11svh}
+  .conduz-t1{gap:6px}
+}
+/* título que abre a tela do método; "Com essa trava, nada se sustenta." fecha a seção do preço */
+.fecho-custo span{display:block}
