@@ -888,3 +888,4 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela2{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:20px 0}
   .metodo-tela2::before{bottom:0}
 }
+.lado-check li::before{content:"✓";color:var(--ouro)}
