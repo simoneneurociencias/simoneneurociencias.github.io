@@ -716,3 +716,6 @@ em{font-style:normal;color:var(--ouro)}
   .mp-apoio span + span{margin-top:8px}
   .mp-destaque{margin-top:18px !important;padding-top:16px}
 }
+/* 25/11 (4): "O RE:SET atua na causa" menor */
+.mp-destaque{font-size:clamp(1.02rem,1.5vw,1.14rem)}
+@media (max-width:640px){.mp-destaque{font-size:min(1rem,4.2vw)}}
