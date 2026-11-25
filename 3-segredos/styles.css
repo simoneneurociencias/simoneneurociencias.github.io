@@ -1013,3 +1013,17 @@ em{font-style:normal;color:var(--ouro)}
 }
 /* título que abre a tela do método; "Com essa trava, nada se sustenta." fecha a seção do preço */
 .fecho-custo span{display:block}
+/* 26/11: rolagem normal (sem parada automática) */
+@media (max-width:640px){
+  html{scroll-snap-type:none!important}
+  /* 4 momentos: "Ao vivo · O que você vai viver em 4h" numa linha, com respiro abaixo do título */
+  .kicker-sob{white-space:nowrap;letter-spacing:.08em;font-size:min(.72rem,3.1vw)}
+  .diferente .etapas:not(.tres){gap:10px}
+}
+@media (max-width:640px){
+  .diferente .titulo + .kicker-sob{margin-top:8px!important}
+  .diferente .etapas:not(.tres){gap:8px}
+  .etapas:not(.tres) .etapa{padding:10px 14px}
+  .etapas:not(.tres) .etapa h3{line-height:1.25}
+  .etapas:not(.tres) .etapa p{line-height:1.38}
+}
