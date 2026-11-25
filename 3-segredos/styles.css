@@ -725,3 +725,12 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){.metodo h2.metodo-ponte{margin-top:44px}}
 /* 25/11 (6): kicker "Ao vivo" embaixo do título dos 4 momentos */
 .titulo + .kicker-sob{margin:14px 0 0}
+/* 25/11 (7): hero no celular termina no botão; a faixa só aparece na tela seguinte.
+   Altura pela tela grande (barra do navegador recolhida) e o que sobra vira respiro abaixo do botão.
+   Blocos juntos no centro: "Webinário" colado no título, sem vãos espalhados. */
+@media (max-width:640px){
+  .hero{min-height:calc(100lvh - 54px);padding-bottom:calc(100lvh - 100svh + 22px)}
+  .hero-in{justify-content:center}
+  .hero-foto{max-height:520px}
+  .hero h1.h1-logo{margin-top:-12px}
+}
