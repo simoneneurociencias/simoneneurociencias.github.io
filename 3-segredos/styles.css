@@ -1555,3 +1555,19 @@ em{font-style:normal;color:var(--ouro)}
 .decisao-fim .fim-tit .ft-l{display:block;white-space:nowrap}
 @media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,4.7vw)!important}}
 @media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,4.2vw)!important}}
+/* 26/11: tela do método mais harmônica no celular: logo no alto com o texto colado; mais espaço até a pílula; caixa desce */
+@media (max-width:640px){
+  .metodo-tela1{justify-content:flex-start!important;padding-bottom:30px!important}
+  .metodo-tela1 .metodo-base{margin-top:auto!important}
+  .metodo-tela1 .metodo-principio{margin-top:auto!important}
+}
+/* 26/11: ingresso: logo "Os 3 Segredos" menor e mais alta, alinhada com a fechadura; faixa do título mais baixa */
+.ingresso-logo-3s{width:min(200px,56%)!important;margin:0 0 0 -6px!important}
+.ingresso-topo{padding-top:14px!important;padding-bottom:14px!important}
+@media (max-width:640px){
+  .ingresso-logo-3s{width:min(180px,54%)!important;margin-top:-2px!important}
+  .ingresso-topo{padding:8px 14px!important}
+  .ingresso-marca{height:70px!important}
+}
+@media (max-width:640px){.metodo-tela1{padding-bottom:22px!important}}
+@media (max-width:640px){.ingresso-lista li{white-space:nowrap;font-size:min(.92rem,3.75vw)!important}}
