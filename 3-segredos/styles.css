@@ -1171,3 +1171,12 @@ em{font-style:normal;color:var(--ouro)}
 /* tela do "antes": a frase de virada ganha corpo, já que está sozinha com a caixa */
 .decisao-antes .fecho-final .ff-branco{font-size:min(1.15rem,4.8vw)}
 .decisao-antes .fecho-final .ff-ouro{font-size:min(1.3rem,5.6vw);margin-top:4px}
+/* 25/11: 4 etapas do método = efeito 06 (cartões com número grande ao fundo), sem a linha do tempo */
+.metodo-etapas::before{display:none!important}
+.metodo-etapas li{position:relative;overflow:hidden;display:block!important;background:linear-gradient(160deg,rgba(12,58,64,.45),rgba(1,12,20,.6))!important;border:1px solid rgba(185,145,91,.22)!important;border-radius:12px;padding:22px 20px!important}
+.metodo-etapas li > div{position:relative;z-index:1;background:none!important;border:0!important;padding:0!important}
+.metodo-etapas .me-num{position:absolute!important;right:10px;top:-6px;z-index:0;display:block!important;width:auto!important;height:auto!important;margin:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;font-family:var(--display);font-weight:700;font-size:5rem!important;line-height:1;color:rgba(185,145,91,.10)!important;pointer-events:none}
+@media (max-width:640px){
+  .metodo-etapas li{padding:12px 16px!important}
+  .metodo-etapas .me-num{font-size:3.4rem!important;top:-4px}
+}
