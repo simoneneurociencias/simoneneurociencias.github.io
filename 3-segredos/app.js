@@ -147,3 +147,30 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   window.addEventListener('resize', agendar);
   setTimeout(conferir, 60);
 })();
+
+// 26/11: "Mesmo assim...": um cadeado por item, que se fecha um a um quando a tela aparece (abre de novo ao sair)
+(function () {
+  var box = document.querySelector('.justificativas .lado-sim');
+  if (!box) return;
+  var itens = box.querySelectorAll('li');
+  var svg = '<svg class="cadeado" viewBox="0 0 18 22" aria-hidden="true"><path class="arco" d="M4.5 10V7a4.5 4.5 0 0 1 9 0v3"/><rect class="corpo" x="1.5" y="10" width="15" height="11" rx="2.5"/><circle class="furo" cx="9" cy="15.5" r="1.6"/></svg>';
+  [].forEach.call(itens, function (li) { li.insertAdjacentHTML('afterbegin', svg); });
+  var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var timers = [], ligado = false, pedido = false;
+  function conferir() {
+    pedido = false;
+    var r = box.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    var dentro = r.top < vh * 0.8 && r.bottom > vh * 0.2;
+    if (dentro && !ligado) {
+      ligado = true;
+      [].forEach.call(itens, function (li, i) { timers.push(setTimeout(function () { li.classList.add('trancou'); }, calmo ? 0 : 500 + i * 750)); });
+    } else if (!dentro && (r.top > vh || r.bottom < 0) && ligado) {
+      ligado = false; timers.forEach(clearTimeout); timers = [];
+      [].forEach.call(itens, function (li) { li.classList.remove('trancou'); });
+    }
+  }
+  function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 40); } }
+  window.addEventListener('scroll', agendar, { passive: true });
+  window.addEventListener('resize', agendar);
+  setTimeout(conferir, 60);
+})();

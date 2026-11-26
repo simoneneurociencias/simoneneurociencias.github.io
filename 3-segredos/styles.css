@@ -1325,3 +1325,23 @@ em{font-style:normal;color:var(--ouro)}
 .decisao-t2 .frase-reset em .reset.brilho-reset span{-webkit-text-fill-color:transparent}
 @keyframes reset-halo{0%,100%{filter:drop-shadow(0 0 2px rgba(217,183,116,.25))}50%{filter:drop-shadow(0 0 12px rgba(217,183,116,.75))}}
 @media (prefers-reduced-motion:reduce){.decisao-t2 .frase-reset em .reset.brilho-reset{animation:none}}
+/* 26/11: "Mesmo assim..." deixa de ser caixa branca: caixa escura e, em cada item, um cadeado dourado que se fecha (a trava) */
+.justificativas .lado-sim{background:linear-gradient(160deg,#052335,#010f18)!important;color:var(--txt)!important;border:1px solid rgba(185,145,91,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}
+.justificativas .lado-sim h3{color:var(--txt);border-color:rgba(185,145,91,.22)!important}
+.justificativas .lado-sim h3 em{color:var(--ouro)}
+.justificativas .lado-sim li{color:var(--txt-2);transition:color .6s}
+.justificativas .lado-sim li::before{content:none!important}
+.justificativas .lado-sim li .cadeado{position:absolute;left:0;top:.15em;width:18px;height:22px;overflow:visible}
+.cadeado .corpo{fill:rgba(185,145,91,.18);stroke:#d9b774;stroke-width:1.6}
+.cadeado .arco{fill:none;stroke:#d9b774;stroke-width:1.8;stroke-linecap:round;transform:translateY(-5px) rotate(-18deg);transform-origin:14px 9px;transition:transform .45s cubic-bezier(.5,1.6,.4,1)}
+.cadeado .furo{fill:#d9b774}
+.justificativas .lado-sim li.trancou .arco{transform:none}
+.justificativas .lado-sim li.trancou .cadeado{animation:cadeado-treme .4s .4s ease-out;filter:drop-shadow(0 0 6px rgba(217,183,116,.7))}
+.justificativas .lado-sim li.trancou{color:var(--txt)}
+@keyframes cadeado-treme{0%,100%{transform:none}25%{transform:rotate(-9deg)}60%{transform:rotate(6deg)}}
+/* "E, no fundo, você se pergunta": borda com luz girando (02) */
+.caixa-pergunta{border:1.5px solid transparent!important;
+  background:linear-gradient(180deg,rgba(12,58,64,.3),rgba(1,12,20,.5)) padding-box,linear-gradient(#021520,#021520) padding-box,
+             conic-gradient(from var(--e02-ang),rgba(185,145,91,.22) 0 65%,#d9b774 80%,#fff1d8 84%,rgba(185,145,91,.22) 92%) border-box!important;
+  animation:e02-gira 6s linear infinite;box-shadow:0 0 40px -16px rgba(210,174,121,.55)}
+@media (prefers-reduced-motion:reduce){.caixa-pergunta{animation:none}.cadeado .arco{transform:none}}
