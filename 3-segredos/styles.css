@@ -1682,3 +1682,12 @@ em{font-style:normal;color:var(--ouro)}
 @media (max-width:640px){.para-quem .virada-destaque{padding:10px 10px 10px!important}.para-quem .duas-colunas .lado h3{padding-top:8px!important;padding-bottom:6px!important}}
 @media (max-width:640px){.para-quem .duas-colunas + .virada-destaque{margin-top:10px!important}.para-quem .virada-destaque + .cta-linha{margin-top:16px!important}}
 @media (max-width:640px){.para-quem:not(.sec-decisao) .duas-colunas .lado p{font-size:min(.95rem,3.9vw)!important;line-height:1.36!important}.para-quem .virada-destaque + .cta-linha{margin-top:30px!important}}
+/* 26/11: última tela ("No final dessa jornada…") dentro de um card com borda, como as outras */
+.decisao-fim .fim-card{display:flex;flex-direction:column;align-items:center;width:100%;max-width:720px;margin:0 auto;gap:18px;padding:22px 16px 20px;border:1px solid rgba(185,145,91,.45);border-radius:18px;background:radial-gradient(ellipse at 50% 0%,rgba(185,145,91,.1),transparent 60%),linear-gradient(180deg,#021723,#010c14);box-shadow:0 0 40px rgba(185,145,91,.08)}
+.decisao-fim .fim-card > *{margin-top:0!important;margin-bottom:0!important}
+.decisao-fim .fim-card .cta-linha{margin-top:12px!important}
+@media (min-width:641px){.decisao-fim .fim-card{padding:40px 40px 34px;gap:24px}}
+/* "Porque ninguém te mostrou o bloqueio agindo.": letra legível, pode quebrar em 2 linhas, menor que o título seguinte */
+.decisao-t1 .dec-fecho .ff-ouro{white-space:normal!important}
+@media (max-width:640px){.decisao-t1 .dec-fecho .ff-ouro{font-size:min(1rem,4.2vw)!important;letter-spacing:0;line-height:1.3}}
+@media (max-width:640px){.tela-cel.decisao-t1{gap:9px!important}.decisao-t1 .cruz{height:38px!important}}
