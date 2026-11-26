@@ -193,3 +193,62 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   window.addEventListener('resize', agendar);
   setTimeout(conferir, 60);
 })();
+
+// 26/11: hero: rede de neurônios. Conexões entre pontos próximos e impulsos de luz viajando; reage ao toque ou ao mouse
+(function () {
+  var cv = document.querySelector('.hero-neural');
+  if (!cv || !cv.getContext) return;
+  var hero = cv.parentElement, ctx = cv.getContext('2d');
+  var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, nos = [], pulsos = [], visivel = true, rodando = false;
+  var cel = window.innerWidth < 640, QTD = cel ? 58 : 95, DIST = cel ? 118 : 160, toque = null;
+  function medir() {
+    W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  medir(); window.addEventListener('resize', medir);
+  function criar() { nos = []; for (var i = 0; i < QTD; i++) nos.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: Math.random() * 1.6 + 1.4, b: 0 }); }
+  function ponto(e) { var r = hero.getBoundingClientRect(), t = e.touches ? e.touches[0] : e; toque = { x: t.clientX - r.left, y: t.clientY - r.top }; }
+  hero.addEventListener('pointermove', ponto); hero.addEventListener('touchmove', ponto, { passive: true });
+  hero.addEventListener('pointerleave', function () { toque = null; }); hero.addEventListener('touchend', function () { toque = null; });
+  function quadro() {
+    if (!W || !H) { medir(); }
+    if ((!nos.length || nos[0].x === 0 && nos[1].x === 0) && W && H) criar();
+    ctx.clearRect(0, 0, W, H);
+    var i, j, a, b, dx, dy, d, al;
+    for (i = 0; i < nos.length; i++) {
+      a = nos[i];
+      if (!calmo) { a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
+      a.b *= .94;
+    }
+    ctx.lineWidth = 1.2;
+    for (i = 0; i < nos.length; i++) for (j = i + 1; j < nos.length; j++) {
+      a = nos[i]; b = nos[j]; dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
+      if (d < DIST * DIST) {
+        al = (1 - Math.sqrt(d) / DIST) * .75;
+        ctx.strokeStyle = 'rgba(217,183,116,' + al + ')';
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        if (!calmo && Math.random() < .0022 && pulsos.length < 22) pulsos.push({ a: i, b: j, t: 0 });
+      }
+    }
+    if (toque) for (i = 0; i < nos.length; i++) {
+      a = nos[i]; dx = a.x - toque.x; dy = a.y - toque.y; d = Math.sqrt(dx * dx + dy * dy);
+      if (d < DIST * 1.3) { ctx.strokeStyle = 'rgba(240,212,154,' + (1 - d / (DIST * 1.3)) * .7 + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(toque.x, toque.y); ctx.stroke(); a.b = Math.max(a.b, .6); }
+    }
+    for (i = 0; i < nos.length; i++) {
+      a = nos[i];
+      ctx.beginPath(); ctx.arc(a.x, a.y, a.r + a.b * 2.2, 0, 6.283);
+      ctx.fillStyle = 'rgba(240,210,158,' + (.8 + a.b * .2) + ')';
+      ctx.shadowColor = 'rgba(236,204,150,.9)'; ctx.shadowBlur = 6 + a.b * 14; ctx.fill(); ctx.shadowBlur = 0;
+    }
+    for (i = pulsos.length - 1; i >= 0; i--) {
+      var p = pulsos[i]; a = nos[p.a]; b = nos[p.b]; p.t += .022;
+      if (p.t >= 1) { b.b = 1; pulsos.splice(i, 1); continue; }
+      var x = a.x + (b.x - a.x) * p.t, y = a.y + (b.y - a.y) * p.t;
+      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 6.283); ctx.fillStyle = '#fff4dc'; ctx.shadowColor = '#f0d49a'; ctx.shadowBlur = 14; ctx.fill(); ctx.shadowBlur = 0;
+    }
+    if (visivel && !calmo) setTimeout(function () { requestAnimationFrame(quadro); }, 0); else rodando = false;
+  }
+  function ligar() { if (!rodando) { rodando = true; quadro(); } }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { visivel = e[0].isIntersecting; if (visivel) ligar(); }).observe(cv);
+  ligar();
+})();
