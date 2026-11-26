@@ -1319,3 +1319,9 @@ em{font-style:normal;color:var(--ouro)}
   .decisao-antes .garantia-final{margin-top:4px}
 }
 @media (max-width:640px){.decisao-antes .ad-lista{gap:6px 8px}.decisao-antes .ad-lista li{line-height:1.25}.decisao-antes .ad-lista span{font-size:min(.8rem,3.35vw);white-space:nowrap}}
+/* 26/11: "Pede um" em branco; RE:SET na cor dourada de sempre, com o brilho passando e um halo que pulsa (destaque especial) */
+.decisao-t2 .frase-reset em{color:#fff!important;-webkit-text-fill-color:#fff}
+.decisao-t2 .frase-reset em .reset.brilho-reset{display:inline-block!important;background:linear-gradient(110deg,#d9b774 35%,#fff1d6 50%,#d9b774 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:brilho-passa 3.8s ease-in-out infinite,reset-halo 2.6s ease-in-out infinite;font-size:1.2em;letter-spacing:.02em}
+.decisao-t2 .frase-reset em .reset.brilho-reset span{-webkit-text-fill-color:transparent}
+@keyframes reset-halo{0%,100%{filter:drop-shadow(0 0 2px rgba(217,183,116,.25))}50%{filter:drop-shadow(0 0 12px rgba(217,183,116,.75))}}
+@media (prefers-reduced-motion:reduce){.decisao-t2 .frase-reset em .reset.brilho-reset{animation:none}}
