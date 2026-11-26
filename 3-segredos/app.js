@@ -189,7 +189,13 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     c.appendChild(papel);
     c.classList.add('carta', 'carta-' + n);
     c.insertAdjacentHTML('beforeend', '<div class="carta-aba" role="button" tabindex="0" aria-label="Abrir o segredo ' + n + '"><span class="carta-selo"><i>0' + n + '</i></span></div><span class="carta-dica" aria-hidden="true">Toque no selo para abrir o segredo ' + n + '</span>');
-    function abrir() { c.classList.add('aberta'); }
+    function abrir() {
+      c.classList.add('aberta'); c.classList.remove('proxima');
+      var prox = cartas.filter(function (x) { return !x.classList.contains('aberta'); })[0];
+      cartas.forEach(function (x) { x.classList.remove('proxima'); });
+      if (prox) setTimeout(function () { prox.classList.add('proxima'); }, 1600);
+    }
+    c._abrir = abrir;
     var aba = c.querySelector('.carta-aba');
     c.addEventListener('click', abrir);
     aba.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
@@ -201,7 +207,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     pedido = false;
     var r = g.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
     var dentro = r.top < vh * 0.7 && r.bottom > vh * 0.3;
-    if (dentro && !timer && !g.querySelector('.carta.aberta')) timer = setTimeout(function () { cartas[0].classList.add('aberta'); }, 4000);
+    if (dentro && !timer && !g.querySelector('.carta.aberta')) timer = setTimeout(function () { cartas[0]._abrir(); }, 4000);
     if (!dentro && timer) { clearTimeout(timer); timer = null; }
   }
   function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 60); } }

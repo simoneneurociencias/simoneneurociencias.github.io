@@ -1657,3 +1657,12 @@ em{font-style:normal;color:var(--ouro)}
 @media (min-width:641px){.decisao-t1 .dec-fecho .ff-ouro{font-size:1.2rem}}
 @media (max-width:640px){.decisao-t1 .dec-fecho .ff-ouro{font-size:min(.84rem,3.1vw)!important;letter-spacing:-.01em}}
 @media (min-width:641px){.decisao-t1 .dec-antes .ad-lista span{font-size:.82rem!important}.decisao-t1 .dec-antes .ad-lista{gap:10px 14px!important}}
+/* 26/11: convite mais claro nas cartas: texto maior e mais forte, selo menor; a próxima carta fechada pulsa depois que uma abre */
+.carta-selo{width:40px!important;height:40px!important;top:42%!important}
+.carta-selo i{font-size:10px!important}
+.carta-dica{font-size:14.5px!important;font-weight:800!important;color:#ffe3ac!important;bottom:12px!important;letter-spacing:.01em!important;text-shadow:0 1px 6px rgba(0,0,0,.75)!important}
+.carta.proxima .carta-dica{animation:dica-chama 1.6s ease-in-out infinite}
+.carta.proxima .carta-aba{box-shadow:0 0 0 1px rgba(240,212,154,.7),0 0 26px -6px rgba(240,212,154,.7)}
+@keyframes dica-chama{0%,100%{opacity:1;transform:none}50%{opacity:.75;transform:translateY(-2px)}}
+@media (min-width:641px){.carta-dica{font-size:15px!important}}
+@media (prefers-reduced-motion:reduce){.carta.proxima .carta-dica{animation:none}}
