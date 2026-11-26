@@ -1619,3 +1619,17 @@ em{font-style:normal;color:var(--ouro)}
 /* decisão: títulos dos caminhos menores, em 2 linhas, para a tela caber até "Porque ninguém te mostrou o que ele é" */
 @media (max-width:640px){.decisao-t1 .lado h3{font-size:min(.86rem,3.55vw)!important;line-height:1.25}}
 @media (min-width:641px){.decisao-fim .fim-tit{font-size:clamp(1.3rem,2.9vw,2.1rem)!important}.decisao-fim .fim-tit .ft-l:first-child{display:inline}.decisao-fim .fim-tit .ft-l:nth-child(2){display:inline}.decisao-fim .fim-tit .ft-l:nth-child(2)::before{content:" "}}
+/* 26/11: "O que você já tentou" em branco; palavras riscadas continuam brancas; risco fino e lento, sem esconder a palavra */
+.decisao-t1 .dec-antes .ad-tit{color:var(--txt)!important}
+.decisao-t1 .dec-antes .ad-lista span,.ad-antes.riscado .ad-lista span{color:var(--txt)!important}
+.decisao-t1 .dec-antes .ad-lista i{height:1px!important;top:56%!important;background:rgba(217,183,116,.9)!important;transition:transform 1.3s cubic-bezier(.45,0,.35,1)!important}
+.ad-antes.riscado li:nth-child(1) i{transition-delay:.5s!important}
+.ad-antes.riscado li:nth-child(2) i{transition-delay:1.7s!important}
+.ad-antes.riscado li:nth-child(3) i{transition-delay:2.9s!important}
+.ad-antes.riscado li:nth-child(4) i{transition-delay:4.1s!important}
+/* tela "No final dessa jornada": título mais perto do topo; botão e garantia mais afastados do RE:SET */
+@media (max-width:640px){
+  .tela-cel.decisao-fim{padding-top:18px!important}
+  .decisao-fim .cta-linha{margin-top:30px!important}
+}
+@media (min-width:641px){.decisao-fim .cta-linha{margin-top:30px!important}}
