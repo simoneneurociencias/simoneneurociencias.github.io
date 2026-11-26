@@ -1598,3 +1598,13 @@ em{font-style:normal;color:var(--ouro)}
   .decisao-fim .cta-linha{margin-top:6px!important}
 }
 @media (min-width:641px){.decisao-t1 .dec-antes .ad-lista span{font-size:.88rem!important}.decisao-t1 .dec-antes .ad-lista{gap:10px 18px!important}}
+/* 26/11 (definitivo): distância entre o começo de cada tela e o título.
+   Celular: 30px em todas as telas, e as telas da decisão começam no alto (não centralizam).
+   Computador: as duas telas da decisão começam a 64px do topo. */
+@media (max-width:640px){
+  .sec,.tela-cel,.metodo-tela2,.metodo-tela1{padding-top:30px!important}
+  .tela-cel.decisao-t1,.tela-cel.decisao-fim{justify-content:flex-start!important;padding-top:30px!important}
+}
+@media (min-width:641px){
+  .tela-cel.decisao-t1,.tela-cel.decisao-fim{justify-content:flex-start!important;padding-top:64px!important;padding-bottom:64px!important}
+}
