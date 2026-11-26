@@ -1554,3 +1554,4 @@ em{font-style:normal;color:var(--ouro)}
 .rodape-tit{color:#fff!important;opacity:1!important;line-height:1.3!important}
 .decisao-fim .fim-tit .ft-l{display:block;white-space:nowrap}
 @media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,4.7vw)!important}}
+@media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,4.2vw)!important}}
