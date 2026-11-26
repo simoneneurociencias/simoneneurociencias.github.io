@@ -1448,3 +1448,6 @@ em{font-style:normal;color:var(--ouro)}
 @keyframes px-forma{0%{--pr:0px;filter:blur(2px) brightness(1.6)}65%{filter:blur(0) brightness(1.25)}100%{--pr:7px;filter:none}}
 @media (prefers-reduced-motion:reduce){.chave-titulo{animation:none}.etapas.tres.px-pronto .etapa{-webkit-mask:none;mask:none}}
 @media (max-width:640px){.metodo-tela1 .metodo-base .mb-pilula{padding:5px 12px!important}.metodo-tela1 .metodo-base small{margin-top:8px!important}.metodo-tela1 .metodo-principio{margin-top:clamp(8px,1.6svh,16px)!important}}
+/* correção 26/11: cartões dos 4 movimentos chegam ao lugar (esta regra precisa ficar DEPOIS das posições de saída) e o texto deles não usa a subida */
+.etapas.mov-on .etapa:nth-child(n){transform:none!important;opacity:1!important}
+.etapas:not(.tres) .etapa .cq{opacity:1!important;transform:none!important}
