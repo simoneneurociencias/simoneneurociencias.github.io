@@ -85,20 +85,33 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   var cv = document.querySelector('.hero-particulas');
   if (!cv || !cv.getContext) return;
   var ctx = cv.getContext('2d'), pts = [], visivel = true, dpr = Math.min(window.devicePixelRatio || 1, 2);
-  var qtd = window.innerWidth < 640 ? 26 : 50;
+  var qtd = window.innerWidth < 640 ? 70 : 120;
   function medir() { cv.width = cv.offsetWidth * dpr; cv.height = cv.offsetHeight * dpr; }
   medir(); window.addEventListener('resize', medir);
-  for (var i = 0; i < qtd; i++) pts.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.8 + 0.4, v: Math.random() * 0.0008 + 0.0003, a: Math.random() * 0.6 + 0.2, f: Math.random() * 6.28 });
+  for (var i = 0; i < qtd; i++) { var bk = Math.random() < 0.16; pts.push({ x: Math.random(), y: Math.random(), r: bk ? Math.random() * 5 + 5 : Math.random() * 2.4 + 1, v: bk ? Math.random() * 0.0007 + 0.0004 : Math.random() * 0.0022 + 0.0009, a: bk ? Math.random() * 0.14 + 0.12 : Math.random() * 0.5 + 0.5, f: Math.random() * 6.28, bk: bk }); }
   function desenhar() {
     ctx.clearRect(0, 0, cv.width, cv.height);
     pts.forEach(function (p) {
       if (!calmo) { p.y -= p.v; p.f += 0.02; if (p.y < -0.02) { p.y = 1.02; p.x = Math.random(); } }
       ctx.beginPath(); ctx.arc((p.x + Math.sin(p.f) * 0.004) * cv.width, p.y * cv.height, p.r * dpr, 0, 6.28);
-      ctx.fillStyle = 'rgba(214,180,126,' + (p.a * (0.6 + 0.4 * Math.sin(p.f * 1.3))) + ')';
-      ctx.shadowColor = 'rgba(214,180,126,.8)'; ctx.shadowBlur = 6 * dpr; ctx.fill();
+      ctx.fillStyle = 'rgba(236,204,150,' + (p.a * (0.7 + 0.3 * Math.sin(p.f * 1.3))) + ')';
+      ctx.shadowColor = 'rgba(232,196,138,.95)'; ctx.shadowBlur = (p.bk ? 18 : 10) * dpr; ctx.fill();
     });
     if (visivel && !calmo) requestAnimationFrame(desenhar);
   }
   if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { var antes = visivel; visivel = e[0].isIntersecting; if (visivel && !antes) desenhar(); }).observe(cv);
   desenhar();
+})();
+
+// 25/11: efeito 05 nas 4 etapas do método: a borda de cada cartão se desenha e o número acende, um por vez
+(function () {
+  var box = document.querySelector('.metodo-etapas');
+  if (!box || !('IntersectionObserver' in window)) return;
+  var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var o = new IntersectionObserver(function (e) {
+    if (!e[0].isIntersecting) return;
+    o.disconnect();
+    [].forEach.call(box.children, function (li, i) { setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 500 + i * 600); });
+  }, { threshold: 0.3 });
+  o.observe(box);
 })();

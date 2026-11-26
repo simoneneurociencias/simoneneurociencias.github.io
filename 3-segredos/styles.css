@@ -1181,3 +1181,13 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-etapas li{padding:12px 16px!important}
   .metodo-etapas .me-num{font-size:3.4rem!important;top:-4px}
 }
+/* efeito 05 nas 4 etapas do método: borda dourada se desenha e o número de fundo acende, cartão por cartão */
+.metodo-etapas li::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#e8c48a,var(--ouro));transform:scaleY(0);transform-origin:top;transition:transform .7s cubic-bezier(.65,0,.35,1);z-index:2}
+.metodo-etapas li.on::after{transform:scaleY(1)}
+.metodo-etapas li .me-num{transition:color .8s,text-shadow .8s}
+.metodo-etapas li.on .me-num{color:rgba(217,183,116,.42)!important;text-shadow:0 0 26px rgba(217,183,116,.35)}
+.metodo-etapas li{transition:border-color .8s}
+.metodo-etapas li.on{border-color:rgba(185,145,91,.45)!important}
+@media (prefers-reduced-motion:reduce){.metodo-etapas li::after{transform:scaleY(1);transition:none}}
+/* brilho (03) passa pela frase toda "Pede um RE:SET" */
+.decisao-t2 .frase-reset em.brilho-reset{background-size:250% 100%}
