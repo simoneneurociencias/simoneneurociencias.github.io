@@ -17,6 +17,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     document.querySelectorAll('.js-cta').forEach(function (a) { a.href = destino; });
   }
 
+  return; // 26/11: a pedido dela, sem o efeito de subida fora do hero
   // Seções entram ao rolar
   var alvos = document.querySelectorAll('.card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .frase-reset, .cta-linha');
   if (!('IntersectionObserver' in window)) return;
@@ -124,4 +125,25 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   var t = document.querySelector('.decisao-t1');
   if (!t || !('IntersectionObserver' in window)) return;
   new IntersectionObserver(function (e) { t.classList.toggle('on', e[0].isIntersecting); }, { threshold: 0.6 }).observe(t);
+})();
+
+// 26/11: os 4 movimentos do encontro: cartões entram alternando os lados, com uma luz que atravessa cada um
+(function () {
+  var g = document.querySelector('.etapas:not(.tres)');
+  if (!g || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  [].forEach.call(g.children, function (c) { var l = document.createElement('span'); l.className = 'mov-luz'; l.setAttribute('aria-hidden', 'true'); c.appendChild(l); });
+  g.classList.add('mov-pronto');
+  var pedido = false;
+  function conferir() {
+    pedido = false;
+    var r = g.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    var dentro = r.top < vh * 0.85 && r.bottom > vh * 0.15;
+    if (dentro && !g.classList.contains('mov-on')) g.classList.add('mov-on');
+    else if (!dentro && (r.top > vh || r.bottom < 0)) g.classList.remove('mov-on');
+  }
+  function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 40); } }
+  window.addEventListener('scroll', agendar, { passive: true });
+  window.addEventListener('resize', agendar);
+  setTimeout(conferir, 60);
 })();

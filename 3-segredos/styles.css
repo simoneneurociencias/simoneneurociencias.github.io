@@ -1254,3 +1254,68 @@ em{font-style:normal;color:var(--ouro)}
 .decisao-t1 .caixa-garantia p{font-size:min(.95rem,3.9vw);line-height:1.4}
 @media (prefers-reduced-motion:reduce){.decisao-t1 .cruz .f2{stroke-dashoffset:0}}
 @media (max-width:640px){.decisao-t1 .lado h3{font-size:min(1.02rem,4.3vw)!important}.decisao-t1 .lado p{font-size:min(.98rem,3.95vw)!important}.decisao-t1 .caminho-num{font-size:.64rem}}
+/* 26/11: os 4 movimentos do encontro: cada cartão entra num movimento (alternando os lados, como passos),
+   pousa e uma faixa de luz atravessa; depois o próximo. Repete ao voltar para a tela. */
+.etapas.mov-pronto .etapa{transition:none!important;opacity:0!important}
+.etapas.mov-pronto .etapa:nth-child(odd){transform:translateX(-56px) rotate(-3deg)!important}
+.etapas.mov-pronto .etapa:nth-child(even){transform:translateX(56px) rotate(3deg)!important}
+.etapas.mov-on .etapa{opacity:1!important;transform:none!important;transition:opacity .6s ease,transform .9s cubic-bezier(.2,1.25,.35,1),border-color .6s,box-shadow .6s!important}
+.etapas.mov-on .etapa:nth-child(2){transition-delay:.55s!important}
+.etapas.mov-on .etapa:nth-child(3){transition-delay:1.1s!important}
+.etapas.mov-on .etapa:nth-child(4){transition-delay:1.65s!important}
+.etapas:not(.tres) .etapa .mov-luz{position:absolute;inset:0;pointer-events:none;overflow:hidden;border-radius:inherit}
+.etapas:not(.tres) .etapa .mov-luz::before{content:"";position:absolute;top:0;bottom:0;left:-45%;width:40%;background:linear-gradient(100deg,transparent,rgba(240,210,160,.28),transparent);transform:skewX(-18deg)}
+.etapas.mov-on .etapa .mov-luz::before{animation:mov-varre 1s ease-out forwards}
+.etapas.mov-on .etapa:nth-child(1) .mov-luz::before{animation-delay:.6s}
+.etapas.mov-on .etapa:nth-child(2) .mov-luz::before{animation-delay:1.15s}
+.etapas.mov-on .etapa:nth-child(3) .mov-luz::before{animation-delay:1.7s}
+.etapas.mov-on .etapa:nth-child(4) .mov-luz::before{animation-delay:2.25s}
+@keyframes mov-varre{to{left:120%}}
+@media (prefers-reduced-motion:reduce){.etapas.mov-pronto .etapa{opacity:1!important;transform:none!important}.etapas .mov-luz{display:none}}
+.etapas.mov-on .etapa:nth-child(n){transform:none!important}
+/* 26/11: hero: os textos também entram da esquerda para a direita (mesmo movimento do título) */
+.hero .marca-kicker{animation:logo-entra 1.2s cubic-bezier(.22,.61,.36,1) 0s both}
+.hero .pill-data{animation:logo-entra 1.2s cubic-bezier(.22,.61,.36,1) .8s both}
+.hero .sub{animation:logo-entra 1.3s cubic-bezier(.22,.61,.36,1) 1s both}
+@media (prefers-reduced-motion:reduce){.hero .marca-kicker,.hero .pill-data,.hero .sub{animation:none}}
+/* 26/11: antes e depois voltam a uma tela só, compacta */
+@media (max-width:640px){
+  .tela-cel.decisao-antes{gap:12px!important;justify-content:flex-start!important}
+  .decisao-antes .ad-box{padding:12px 14px;margin-top:0}
+  .decisao-antes .ad-tit{margin-bottom:8px}
+  .decisao-antes .ad-lista{grid-template-columns:1fr 1fr;gap:6px 12px}
+  .decisao-antes .ad-lista span{font-size:min(.9rem,3.8vw)}
+  .decisao-antes .ad-pe{margin-top:8px;font-size:min(.95rem,4vw)}
+  .decisao-antes .fecho-final{margin-top:0}
+  .decisao-antes .fecho-final .ff-branco{font-size:min(.98rem,4.1vw);margin-bottom:2px}
+  .decisao-antes .fecho-final .ff-ouro{font-size:min(1.05rem,4.4vw);margin-top:0}
+  .decisao-antes .ganhos-tit{font-size:min(1.05rem,4.4vw)!important}
+  .decisao-t2 .ganhos-3.ad-depois{padding:12px!important;gap:10px!important;margin-top:0}
+  .decisao-t2 .ganhos-3.ad-depois::before,.decisao-t2 .ganhos-3.ad-depois::after{left:29px;top:30px;bottom:30px}
+  .decisao-antes .ganhos-3 li{min-height:0}
+  .decisao-antes .ganhos-3 li strong{font-size:.95rem}
+  .decisao-antes .ganhos-3 li{font-size:.9rem;line-height:1.3}
+  .decisao-antes .frase-reset > span{font-size:min(.95rem,4vw)}
+  .decisao-antes .frase-reset em{font-size:min(1.15rem,5vw)}
+  .decisao-antes .cta-linha{margin-top:0}
+}
+/* 26/11: mais espaço entre o filete dourado de cima e o começo de cada tela */
+@media (max-width:640px){
+  .sec,.tela-cel,.metodo-tela2,.metodo-tela1{padding-top:42px!important}
+}
+/* 26/11: "com Simone Carneiro" em branco */
+.assinatura{color:#fff!important;-webkit-text-fill-color:#fff}
+@media (max-width:640px){
+  .metodo-tela1{padding-top:34px!important}
+  .tela-cel.decisao-antes{gap:8px!important;padding-top:34px!important}
+  .decisao-antes .ad-box{padding:10px 14px}
+  .decisao-antes .ad-lista span{font-size:min(.86rem,3.6vw)}
+  .decisao-antes .ganhos-tit{font-size:min(1rem,4.2vw)!important}
+  .decisao-t2 .ganhos-3.ad-depois{gap:6px!important;padding:10px 12px!important}
+  .decisao-t2 .ganhos-3.ad-depois::before,.decisao-t2 .ganhos-3.ad-depois::after{top:28px;bottom:28px}
+  .decisao-antes .ganhos-3 li{font-size:.86rem;line-height:1.28}
+  .decisao-antes .ganhos-3 li strong{font-size:.92rem}
+  .decisao-antes .frase-reset em{font-size:min(1.05rem,4.6vw)}
+  .decisao-antes .garantia-final{margin-top:4px}
+}
+@media (max-width:640px){.decisao-antes .ad-lista{gap:6px 8px}.decisao-antes .ad-lista li{line-height:1.25}.decisao-antes .ad-lista span{font-size:min(.8rem,3.35vw);white-space:nowrap}}
