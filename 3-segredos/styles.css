@@ -1691,3 +1691,4 @@ em{font-style:normal;color:var(--ouro)}
 .decisao-t1 .dec-fecho .ff-ouro{white-space:normal!important}
 @media (max-width:640px){.decisao-t1 .dec-fecho .ff-ouro{font-size:min(1rem,4.2vw)!important;letter-spacing:0;line-height:1.3}}
 @media (max-width:640px){.tela-cel.decisao-t1{gap:9px!important}.decisao-t1 .cruz{height:38px!important}}
+.carta.aberta .carta-dica{display:none!important}
