@@ -1429,3 +1429,21 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela1 .metodo-principio{margin-top:22px!important}
 }
 @media (max-width:640px){.metodo-tela1 .metodo-base .mb-pilula{padding:7px 12px!important;font-size:min(.74rem,3vw)}}
+/* 26/11: baú dos 3 Segredos balança de tempos em tempos, como se algo quisesse sair */
+.chave-titulo{transform-origin:50% 90%;animation:bau-treme 4.5s ease-in-out 1.5s infinite}
+@keyframes bau-treme{
+  0%,78%,100%{transform:none;filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)) drop-shadow(0 0 10px rgba(217,183,116,.25))}
+  81%{transform:rotate(-7deg) translateY(-2px)}84%{transform:rotate(6deg)}87%{transform:rotate(-5deg) translateY(-1px)}
+  90%{transform:rotate(4deg);filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)) drop-shadow(0 0 18px rgba(240,212,154,.7))}
+  93%{transform:rotate(-2deg)}96%{transform:rotate(1deg)}
+}
+/* 26/11: cartões dos 3 Segredos se formam a partir de bolinhas (pixels) até ficarem inteiros */
+@property --pr{syntax:"<length>";inherits:false;initial-value:0px}
+.etapas.tres .etapa.revela{opacity:1!important;transform:none!important;transition:none!important}
+.etapas.tres .etapa .cq{opacity:1!important;transform:none!important;transition:none!important}
+.etapas.tres.px-pronto .etapa{--pr:0px;-webkit-mask:radial-gradient(circle,#000 var(--pr),transparent calc(var(--pr) + .6px)) 0 0/9px 9px;mask:radial-gradient(circle,#000 var(--pr),transparent calc(var(--pr) + .6px)) 0 0/9px 9px}
+.etapas.tres.px-on .etapa{animation:px-forma 1.8s cubic-bezier(.45,0,.2,1) forwards}
+.etapas.tres.px-on .etapa:nth-child(2){animation-delay:.6s}
+.etapas.tres.px-on .etapa:nth-child(3){animation-delay:1.2s}
+@keyframes px-forma{0%{--pr:0px;filter:blur(2px) brightness(1.6)}65%{filter:blur(0) brightness(1.25)}100%{--pr:7px;filter:none}}
+@media (prefers-reduced-motion:reduce){.chave-titulo{animation:none}.etapas.tres.px-pronto .etapa{-webkit-mask:none;mask:none}}

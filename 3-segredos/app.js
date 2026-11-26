@@ -173,3 +173,23 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   window.addEventListener('resize', agendar);
   setTimeout(conferir, 60);
 })();
+
+// 26/11: 3 Segredos: os cartões se formam em bolinhas quando a tela aparece (repete ao voltar)
+(function () {
+  var g = document.querySelector('.etapas.tres');
+  if (!g || !(window.CSS && CSS.supports && (CSS.supports('mask', 'none') || CSS.supports('-webkit-mask', 'none')))) return;
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  g.classList.add('px-pronto');
+  var pedido = false;
+  function conferir() {
+    pedido = false;
+    var r = g.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
+    var dentro = r.top < vh * 0.85 && r.bottom > vh * 0.15;
+    if (dentro) g.classList.add('px-on');
+    else if (r.top > vh || r.bottom < 0) g.classList.remove('px-on');
+  }
+  function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 40); } }
+  window.addEventListener('scroll', agendar, { passive: true });
+  window.addEventListener('resize', agendar);
+  setTimeout(conferir, 60);
+})();
