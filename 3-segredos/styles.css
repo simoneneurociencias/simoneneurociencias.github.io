@@ -1666,3 +1666,19 @@ em{font-style:normal;color:var(--ouro)}
 @keyframes dica-chama{0%,100%{opacity:1;transform:none}50%{opacity:.75;transform:translateY(-2px)}}
 @media (min-width:641px){.carta-dica{font-size:15px!important}}
 @media (prefers-reduced-motion:reduce){.carta.proxima .carta-dica{animation:none}}
+/* 26/11: fecho dos 4 movimentos mais discreto e em uma linha (sem ponto final) */
+.virada-mov .virada-b{font-size:clamp(1rem,1.6vw,1.25rem)!important;white-space:nowrap}
+.virada-mov .virada-b .em-branco{color:var(--txt)}
+@media (max-width:640px){.virada-mov .virada-b{font-size:min(.95rem,3.75vw)!important}}
+/* 26/11: "O que o encontro faz": frase da ponte menor e botão mais afastado da caixa */
+.para-quem .virada-destaque .virada-b{font-size:clamp(.95rem,1.6vw,1.2rem)!important}
+@media (max-width:640px){
+  .para-quem .virada-destaque .virada-b{font-size:min(.86rem,3.5vw)!important}
+  .para-quem .virada-destaque + .cta-linha{margin-top:26px!important}
+}
+@media (min-width:641px){.para-quem .virada-destaque + .cta-linha{margin-top:40px!important}}
+@media (max-width:640px){.virada-mov .virada-b{font-size:min(.86rem,3.3vw)!important;letter-spacing:-.01em}.para-quem .virada-destaque + .cta-linha{margin-top:20px!important}}
+@media (max-width:640px){.para-quem .duas-colunas + .virada-destaque{margin-top:12px!important}.para-quem .virada-destaque + .cta-linha{margin-top:18px!important}}
+@media (max-width:640px){.para-quem .virada-destaque{padding:10px 10px 10px!important}.para-quem .duas-colunas .lado h3{padding-top:8px!important;padding-bottom:6px!important}}
+@media (max-width:640px){.para-quem .duas-colunas + .virada-destaque{margin-top:10px!important}.para-quem .virada-destaque + .cta-linha{margin-top:16px!important}}
+@media (max-width:640px){.para-quem:not(.sec-decisao) .duas-colunas .lado p{font-size:min(.95rem,3.9vw)!important;line-height:1.36!important}.para-quem .virada-destaque + .cta-linha{margin-top:30px!important}}
