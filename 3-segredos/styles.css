@@ -1453,3 +1453,18 @@ em{font-style:normal;color:var(--ouro)}
 .etapas:not(.tres) .etapa .cq{opacity:1!important;transform:none!important}
 /* 26/11: hero com rede de neurônios (no lugar dos raios): pontos ligados por conexões e impulsos de luz correndo entre eles */
 .hero-neural{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+/* 26/11: sem os filetes dourados entre as telas */
+.sec + .sec::before,.faixa + .sec::before,.hero + .sec::before,.metodo-tela2::after,.tela-cel-2::before{display:none!important}
+/* 26/11: faixa rolando agora no alto das Dúvidas frequentes */
+.faq > .faixa{margin:0 0 26px}
+@media (max-width:640px){.faq > .faixa{margin:-16px -0px 18px}}
+/* 26/11: mais respiro entre título e caixas em "O que o encontro faz" e "Para quem é" */
+.para-quem .duas-colunas{margin-top:calc(var(--esp-bloco) + 8px)!important}
+@media (max-width:640px){
+  .para-quem .duas-colunas{margin-top:24px!important;gap:16px!important}
+  .sec-decisao .duas-colunas{margin-top:0!important;gap:10px!important}
+}
+@media (max-width:640px){
+  .para-quem:not(.sec-decisao) .duas-colunas{margin-top:20px!important;gap:14px!important}
+  .para-quem:not(.sec-decisao) .duas-colunas .lado h3{padding-top:10px!important;padding-bottom:8px!important}
+}
