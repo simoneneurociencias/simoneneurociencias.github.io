@@ -1220,3 +1220,9 @@ em{font-style:normal;color:var(--ouro)}
 .ad-lista span{transition-delay:2.8s}
 @media (max-width:640px){.ad-lista{gap:8px}}
 .ad-tit{white-space:nowrap;font-size:.72rem;letter-spacing:.1em}
+/* método: estado apagado bem diferente do aceso; linha mais lenta */
+.metodo-etapas .me-num{border-color:rgba(185,145,91,.28);color:var(--txt-3);box-shadow:none}
+.metodo-etapas li > div{transition:border-color .6s}
+.metodo-etapas li.on > div{border-color:rgba(185,145,91,.5)}
+.metodo-etapas::after{transition:transform 3.4s cubic-bezier(.45,0,.35,1)}
+.metodo-etapas:not(.linha-on)::after{transition:none}

@@ -103,16 +103,18 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   desenhar();
 })();
 
-// 25/11: efeito 05 nas 4 etapas do método: a linha do tempo se desenha e os números acendem, um por vez
+// 25/11: efeito 05 nas 4 etapas do método: começa apagado; ao chegar na tela, a linha se desenha e os números acendem um a um.
+// Ao sair da tela, apaga de novo, para repetir na próxima vez.
 (function () {
   var box = document.querySelector('.metodo-etapas');
   if (!box || !('IntersectionObserver' in window)) return;
   var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var o = new IntersectionObserver(function (e) {
-    if (!e[0].isIntersecting) return;
-    o.disconnect();
-    box.classList.add('linha-on');
-    [].forEach.call(box.children, function (li, i) { setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 200 + i * 650); });
-  }, { threshold: 0.3 });
-  o.observe(box);
+  var timers = [];
+  function apagar() { timers.forEach(clearTimeout); timers = []; box.classList.remove('linha-on'); [].forEach.call(box.children, function (li) { li.classList.remove('on'); }); }
+  function acender() {
+    apagar();
+    timers.push(setTimeout(function () { box.classList.add('linha-on'); }, calmo ? 0 : 350));
+    [].forEach.call(box.children, function (li, i) { timers.push(setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 450 + i * 900)); });
+  }
+  new IntersectionObserver(function (e) { if (e[0].isIntersecting) acender(); else apagar(); }, { threshold: 0.6 }).observe(box);
 })();
