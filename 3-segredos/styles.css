@@ -1513,3 +1513,44 @@ em{font-style:normal;color:var(--ouro)}
 .hero .sub{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) 1.05s backwards!important}
 .hero .hero-in > .btn{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) 1.25s backwards}
 @media (prefers-reduced-motion:reduce){.hero .logo-3s,.hero .assinatura,.hero .marca-kicker,.hero .hero-foto,.hero .pill-data,.hero .sub,.hero .hero-in > .btn{animation:none!important}}
+/* 26/11 (reorganização da decisão): tela 1 = decisão + caminhos + "o que você já tentou" + "não porque você falhou";
+   tela 2 = título "No final dessa jornada", linha do tempo vertical, RE:SET, botão e garantia. Sem a caixa "O risco é meu". */
+.decisao-t1{justify-content:flex-start!important;gap:16px}
+.decisao-t1 > *{margin-top:0!important;margin-bottom:0!important}
+.decisao-t1 .dec-antes{width:100%;max-width:560px;margin:4px auto 0!important;padding:16px 18px 14px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);text-align:left}
+.decisao-t1 .dec-antes .ad-tit{white-space:nowrap;font-size:.72rem;letter-spacing:.1em;margin-bottom:10px}
+.decisao-t1 .dec-antes .ad-lista{grid-template-columns:repeat(4,auto);justify-content:space-between;gap:8px 18px}
+.decisao-t1 .dec-antes .ad-lista span{white-space:nowrap;font-size:clamp(.85rem,1.25vw,1rem)}
+.decisao-t1 .dec-antes .ad-pe{margin-top:10px}
+.decisao-t1 .dec-fecho{text-transform:none;font-family:var(--texto);text-align:center}
+.decisao-t1 .dec-fecho b{display:block;white-space:nowrap;line-height:1.35}
+.decisao-t1 .dec-fecho .ff-branco{font-weight:400;color:var(--txt-2);font-size:1.02rem}
+.decisao-t1 .dec-fecho .ff-ouro{font-family:var(--display);font-weight:600;color:var(--ouro-btn);font-size:1.12rem}
+@media (max-width:640px){
+  .tela-cel.decisao-t1{gap:12px!important;padding-top:34px!important}
+  .decisao-t1 .dec-antes{padding:12px 14px 10px}
+  .decisao-t1 .dec-antes .ad-lista{grid-template-columns:1fr 1fr;gap:6px 10px}
+  .decisao-t1 .dec-antes .ad-lista span{font-size:min(.78rem,3.2vw)}
+  .decisao-t1 .dec-antes .ad-pe{margin-top:8px;font-size:min(.92rem,3.9vw)}
+  .decisao-t1 .dec-fecho .ff-branco{font-size:min(.88rem,3.6vw)}
+  .decisao-t1 .dec-fecho .ff-ouro{font-size:min(.92rem,3.6vw)}
+}
+/* tela 2: título no padrão dos títulos de seção; linha do tempo vertical com o efeito 05 */
+.decisao-fim{gap:20px}
+.decisao-fim > *{margin-top:0!important;margin-bottom:0!important}
+.decisao-fim .fim-tit{margin:0}
+.decisao-fim .ganhos-3.fim-linha{max-width:380px;margin:0 auto!important}
+.decisao-fim .ganhos-3.fim-linha::before{background:rgba(185,145,91,.2)!important}
+.decisao-fim .ganhos-3.fim-linha::after{content:"";position:absolute;left:17px;top:18px;bottom:18px;width:2px;background:linear-gradient(180deg,#e8c48a,var(--ouro));transform:scaleY(0);transform-origin:top;transition:transform 2s cubic-bezier(.45,0,.35,1)}
+.decisao-fim .ganhos-3.fim-linha.linha-on::after{transform:scaleY(1)}
+.decisao-fim .ganhos-3.fim-linha li::before{border-color:rgba(185,145,91,.35)!important;color:var(--txt-3)!important;box-shadow:none!important;transition:background .5s,color .5s,box-shadow .5s,border-color .5s}
+.decisao-fim .ganhos-3.fim-linha li.on::before{background:#d9b774!important;color:#021a28!important;border-color:#d9b774!important;box-shadow:0 0 0 5px rgba(185,145,91,.14),0 0 22px rgba(210,174,121,.6)!important}
+.decisao-fim .ganhos-3.fim-linha li{z-index:1}
+@media (max-width:640px){
+  .tela-cel.decisao-fim{justify-content:center!important;gap:18px!important;padding-top:34px!important}
+}
+@media (prefers-reduced-motion:reduce){.decisao-fim .ganhos-3.fim-linha::after{transform:none;transition:none}}
+/* rodapé: "Webinário · Os 3 Segredos…" em branco e com as linhas mais juntas */
+.rodape-tit{color:#fff!important;opacity:1!important;line-height:1.3!important}
+.decisao-fim .fim-tit .ft-l{display:block;white-space:nowrap}
+@media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,4.7vw)!important}}
