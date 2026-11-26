@@ -1193,3 +1193,30 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-etapas.linha-on::after{transform:scaleY(1)}
 }
 @media (prefers-reduced-motion:reduce){.metodo-etapas::after{transform:none!important;transition:none}}
+/* hero: raios de luz dourada descendo do alto, como holofote de palco (no lugar das partículas) */
+.hero-raios{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;mix-blend-mode:screen}
+.hero-raios::before{content:"";position:absolute;left:50%;top:-18%;width:120%;height:55%;transform:translateX(-50%);background:radial-gradient(ellipse at 50% 0%,rgba(236,204,150,.38),rgba(236,204,150,.10) 40%,transparent 70%);animation:raio-pulsa 7s ease-in-out infinite alternate}
+.hero-raios span{position:absolute;top:-12%;height:125%;transform-origin:50% 0;filter:blur(10px);background:linear-gradient(180deg,rgba(244,216,168,.78),rgba(232,196,138,.32) 40%,rgba(232,196,138,0) 85%);animation:raio-balanca 11s ease-in-out infinite alternate}
+.hero-raios span:nth-child(1){left:6%;width:70px;--r:-24deg;animation-duration:13s}
+.hero-raios span:nth-child(2){left:24%;width:120px;--r:-12deg;animation-duration:10s;animation-delay:-3s}
+.hero-raios span:nth-child(3){left:44%;width:90px;--r:-2deg;animation-duration:12s;animation-delay:-6s}
+.hero-raios span:nth-child(4){left:58%;width:140px;--r:8deg;animation-duration:9s;animation-delay:-2s}
+.hero-raios span:nth-child(5){left:76%;width:80px;--r:18deg;animation-duration:14s;animation-delay:-7s}
+.hero-raios span:nth-child(6){left:90%;width:60px;--r:28deg;animation-duration:11s;animation-delay:-4s}
+@keyframes raio-balanca{0%{transform:rotate(calc(var(--r) - 6deg));opacity:.45}50%{opacity:1}100%{transform:rotate(calc(var(--r) + 6deg));opacity:.6}}
+@keyframes raio-pulsa{from{opacity:.7}to{opacity:1}}
+@media (max-width:640px){.hero-raios span{filter:blur(7px)}.hero-raios span:nth-child(odd){width:54px}.hero-raios span:nth-child(even){width:84px}}
+@media (prefers-reduced-motion:reduce){.hero-raios span,.hero-raios::before{animation:none}}
+/* telas do antes e do depois: conteúdo começa logo abaixo do filete dourado, com espaços curtos entre os blocos */
+@media (max-width:640px){
+  .tela-cel.decisao-t2{justify-content:flex-start!important;gap:22px;padding-top:40px!important}
+  .decisao-antes{gap:26px}
+  .decisao-antes .ad-box{padding:18px 20px 16px}
+  .decisao-antes .ad-tit{margin-bottom:12px}
+  .decisao-antes .ad-pe{margin-top:12px}
+}
+.ad-antes.riscado li:nth-child(3) i{transform:scaleX(1);transition-delay:1.6s}
+.ad-antes.riscado li:nth-child(4) i{transform:scaleX(1);transition-delay:2.2s}
+.ad-lista span{transition-delay:2.8s}
+@media (max-width:640px){.ad-lista{gap:8px}}
+.ad-tit{white-space:nowrap;font-size:.72rem;letter-spacing:.1em}
