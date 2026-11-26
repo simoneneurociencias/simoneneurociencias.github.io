@@ -1608,3 +1608,14 @@ em{font-style:normal;color:var(--ouro)}
 @media (min-width:641px){
   .tela-cel.decisao-t1,.tela-cel.decisao-fim{justify-content:flex-start!important;padding-top:64px!important;padding-bottom:64px!important}
 }
+/* 26/11: "No final dessa jornada…" com o MESMO tamanho dos outros títulos (no celular quebra em 3 linhas naturais) */
+.decisao-fim .fim-tit{font-size:inherit}
+@media (max-width:640px){.decisao-fim .fim-tit{font-size:min(1.28rem,5.4vw)!important}}
+/* mais espaço: título → linha do tempo, e linha do tempo → "O seu próximo nível" → botão */
+.decisao-fim .ganhos-3.fim-linha{margin-top:14px!important}
+.decisao-fim .frase-reset{margin-top:18px!important}
+.decisao-fim .cta-linha{margin-top:8px!important}
+@media (min-width:641px){.decisao-fim .ganhos-3.fim-linha{margin-top:20px!important}.decisao-fim .frase-reset{margin-top:24px!important}}
+/* decisão: títulos dos caminhos menores, em 2 linhas, para a tela caber até "Porque ninguém te mostrou o que ele é" */
+@media (max-width:640px){.decisao-t1 .lado h3{font-size:min(.86rem,3.55vw)!important;line-height:1.25}}
+@media (min-width:641px){.decisao-fim .fim-tit{font-size:clamp(1.3rem,2.9vw,2.1rem)!important}.decisao-fim .fim-tit .ft-l:first-child{display:inline}.decisao-fim .fim-tit .ft-l:nth-child(2){display:inline}.decisao-fim .fim-tit .ft-l:nth-child(2)::before{content:" "}}
