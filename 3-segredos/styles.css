@@ -1226,3 +1226,31 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-etapas li.on > div{border-color:rgba(185,145,91,.5)}
 .metodo-etapas::after{transition:transform 3.4s cubic-bezier(.45,0,.35,1)}
 .metodo-etapas:not(.linha-on)::after{transition:none}
+/* 26/11: tela da decisão = encruzilhada (caminhos saem de um ponto; o fio do Caminho 2 se desenha e a caixa acende) */
+.decisao-t1 .cruz{width:100%;max-width:560px;height:46px;margin:16px auto -2px}
+.decisao-t1 .cruz svg{display:block;width:100%;height:100%;overflow:visible}
+.decisao-t1 .cruz .f1{stroke:rgba(255,255,255,.16);stroke-width:1.5;fill:none}
+.decisao-t1 .cruz .f2{stroke:#d9b774;stroke-width:2;fill:none;stroke-dasharray:200;stroke-dashoffset:200;filter:drop-shadow(0 0 4px rgba(217,183,116,.8))}
+.decisao-t1.on .cruz .f2{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s .3s ease-out}
+.decisao-t1 .cruz .pt{fill:#d9b774;filter:drop-shadow(0 0 6px #d9b774)}
+.decisao-t1 .duas-colunas{grid-template-columns:1fr 1fr!important;gap:10px!important;margin-top:0!important;max-width:560px;margin-left:auto;margin-right:auto}
+.decisao-t1 .lado{padding:14px 13px!important;border-radius:14px;text-align:left}
+.decisao-t1 .lado > *{padding-left:0!important;padding-right:0!important}
+.decisao-t1 .lado h3{border:0!important;padding:0!important;margin:0 0 6px!important;font-size:min(.95rem,3.8vw)!important;line-height:1.25}
+.decisao-t1 .lado p{font-size:min(.92rem,3.6vw)!important;line-height:1.42;margin:0}
+.decisao-t1 .caminho-num{font-size:.6rem;letter-spacing:.18em;margin-bottom:4px}
+.decisao-t1 .lado-nao{background:rgba(255,255,255,.02)!important;border:1px solid rgba(255,255,255,.08)!important}
+.decisao-t1 .lado-nao h3{color:var(--txt-2)}
+.decisao-t1 .lado-nao p{color:var(--txt-3)}
+.decisao-t1 .lado-nao em{color:var(--txt-2)}
+.decisao-t1 .lado-sim{background:var(--card)!important;color:var(--txt);border:1px solid rgba(185,145,91,.2)!important;transition:border-color .8s 1.4s,box-shadow .8s 1.4s}
+.decisao-t1 .lado-sim .caminho-num{color:var(--ouro);opacity:1}
+.decisao-t1 .lado-sim h3,.decisao-t1 .lado-sim h3 em{color:var(--txt)}
+.decisao-t1 .lado-sim p{color:var(--txt-2)}
+.decisao-t1 .lado-sim p em{color:var(--ouro-claro)}
+.decisao-t1.on .lado-sim{border-color:#d9b774!important;box-shadow:0 0 34px -10px rgba(217,183,116,.7)}
+.decisao-t1 .caixa-garantia{border:0!important;background:none!important;padding:0!important;justify-content:center;gap:10px!important;max-width:560px}
+.decisao-t1 .cg-selo{width:40px!important;height:40px!important}
+.decisao-t1 .caixa-garantia p{font-size:min(.95rem,3.9vw);line-height:1.4}
+@media (prefers-reduced-motion:reduce){.decisao-t1 .cruz .f2{stroke-dashoffset:0}}
+@media (max-width:640px){.decisao-t1 .lado h3{font-size:min(1.02rem,4.3vw)!important}.decisao-t1 .lado p{font-size:min(.98rem,3.95vw)!important}.decisao-t1 .caminho-num{font-size:.64rem}}

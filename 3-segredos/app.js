@@ -118,3 +118,10 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   }
   new IntersectionObserver(function (e) { if (e[0].isIntersecting) acender(); else apagar(); }, { threshold: 0.6 }).observe(box);
 })();
+
+// 26/11: encruzilhada da decisão: ao chegar na tela, o fio do Caminho 2 se desenha e a caixa acende; ao sair, apaga para repetir
+(function () {
+  var t = document.querySelector('.decisao-t1');
+  if (!t || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) { t.classList.toggle('on', e[0].isIntersecting); }, { threshold: 0.6 }).observe(t);
+})();
