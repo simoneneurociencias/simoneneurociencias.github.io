@@ -889,8 +889,8 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela2::before{bottom:0}
 }
 .lado-check li::before{content:"✓";color:var(--ouro)}
-/* 26/11: chave menor */
-.chave-titulo{height:1.2em;margin:-.45em 0 0 .2em}
+/* 26/11: baú dourado substitui a chave no título */
+.chave-titulo{height:1.35em;margin:-.55em 0 -.2em .22em;vertical-align:-.22em;transform:rotate(-5deg)}
 /* 26/11: seções longas viram 2 telas no celular (Quem conduz, Decisão), cada uma com filete no topo */
 @media (max-width:640px){
   .sec.conduz,.sec.sec-decisao{display:block;min-height:0;padding-top:0;padding-bottom:0}
