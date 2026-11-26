@@ -1137,3 +1137,37 @@ em{font-style:normal;color:var(--ouro)}
   .metodo-tela1 .metodo-logo{margin-bottom:-14px!important}
 }
 @media (max-width:640px){.metodo-tela1 .metodo-logo{width:min(100%,38svh)!important}} /* logo-metodo-auto2 */
+/* 25/11: efeitos da vitrine /efeitos-lp (E09 hero, E10 antes e depois, E03 brilho no RE:SET, E06 3 segredos) */
+.hero-particulas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.decisao-antes .ad-box{width:100%;max-width:360px;margin:var(--esp-bloco) auto 0;padding:22px 22px 18px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.09);text-align:left}
+.ad-tit{font-family:var(--display);font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt-3);margin-bottom:14px}
+.ad-lista{list-style:none;display:grid;gap:10px}
+.ad-lista span{position:relative;font-family:var(--display);font-weight:600;font-size:min(1.25rem,5.4vw);color:var(--txt);transition:color .6s 1.6s}
+.ad-lista i{position:absolute;left:-3px;right:-3px;top:52%;height:2px;background:var(--ouro);transform:scaleX(0);transform-origin:left;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.ad-antes.riscado li:nth-child(1) i{transform:scaleX(1);transition-delay:.4s}
+.ad-antes.riscado li:nth-child(2) i{transform:scaleX(1);transition-delay:1s}
+.ad-antes.riscado .ad-lista span{color:var(--txt-3)}
+.ad-pe{margin-top:14px;color:var(--txt-2);font-size:min(1.05rem,4.4vw)}
+.decisao-antes .fecho-final{margin-top:var(--esp-bloco)}
+.decisao-t2 .ganhos-3.ad-depois{padding:18px!important;border:1px solid rgba(185,145,91,.22);border-radius:16px;background:var(--card);transition:border-color .8s,box-shadow .8s}
+.decisao-t2 .ganhos-3.ad-depois::before{left:35px;top:36px;bottom:36px}
+.decisao-t2 .ganhos-3.ad-depois.aceso{border-color:var(--ouro);box-shadow:0 0 44px -14px rgba(210,174,121,.6)}
+.brilho-reset{background:linear-gradient(110deg,#d9b774 35%,#fff1d6 50%,#d9b774 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:brilho-passa 3.8s ease-in-out infinite}
+.brilho-reset span{-webkit-text-fill-color:transparent}
+@keyframes brilho-passa{0%{background-position:120% 0}60%,100%{background-position:-20% 0}}
+.etapas.tres .etapa{position:relative;overflow:hidden}
+.etapas.tres .etapa > :not(.etapa-num){position:relative}
+.etapas.tres .etapa-num{display:block!important;position:absolute;right:12px;top:-6px;margin:0;font-family:var(--display);font-weight:700;font-size:5rem;line-height:1;color:rgba(185,145,91,.09);pointer-events:none}
+@media (max-width:640px){.etapas.tres .etapa-num{font-size:3.6rem;top:-4px}}
+@media (prefers-reduced-motion:reduce){.brilho-reset{animation:none}.ad-lista i{transform:scaleX(1);transition:none}}
+/* E05: a linha dos 3 itens se desenha e os números acendem em sequência */
+.decisao-t2 .ganhos-3.ad-depois::before{background:rgba(185,145,91,.18)}
+.decisao-t2 .ganhos-3.ad-depois::after{content:"";position:absolute;left:35px;top:36px;bottom:36px;width:2px;background:linear-gradient(180deg,#d9b774,var(--ouro));transform:scaleY(0);transform-origin:top;transition:transform 1.6s cubic-bezier(.65,0,.35,1)}
+.decisao-t2 .ganhos-3.ad-depois.linha-on::after{transform:scaleY(1)}
+.decisao-t2 .ganhos-3.ad-depois li{z-index:1}
+.decisao-t2 .ganhos-3.ad-depois li::before{transition:background .5s,color .5s,box-shadow .5s}
+.decisao-t2 .ganhos-3.ad-depois li.on::before{background:#d9b774;color:#021a28;box-shadow:0 0 0 5px rgba(185,145,91,.14),0 0 22px rgba(210,174,121,.6)}
+@media (prefers-reduced-motion:reduce){.decisao-t2 .ganhos-3.ad-depois::after{transform:scaleY(1);transition:none}}
+/* tela do "antes": a frase de virada ganha corpo, já que está sozinha com a caixa */
+.decisao-antes .fecho-final .ff-branco{font-size:min(1.15rem,4.8vw)}
+.decisao-antes .fecho-final .ff-ouro{font-size:min(1.3rem,5.6vw);margin-top:4px}

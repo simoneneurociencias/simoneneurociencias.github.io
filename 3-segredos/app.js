@@ -18,7 +18,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   }
 
   // Seções entram ao rolar
-  var alvos = document.querySelectorAll('.sec .titulo, .sec .sub-sec, .card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .frase-reset, .cta-linha');
+  var alvos = document.querySelectorAll('.card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .frase-reset, .cta-linha');
   if (!('IntersectionObserver' in window)) return;
   alvos.forEach(function (el) {
     el.classList.add('revela');
@@ -54,4 +54,51 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     });
   }, { rootMargin: '0px 0px -8% 0px' });
   alvos.forEach(function (el) { obs.observe(el); });
+})();
+
+// 25/11: efeitos da vitrine /efeitos-lp
+(function () {
+  var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // E10: antes é riscado, depois acende
+  if ('IntersectionObserver' in window) {
+    [['[data-ad-antes]', 'riscado', 0], ['[data-ad-depois]', 'aceso', 900]].forEach(function (c) {
+      var el = document.querySelector(c[0]);
+      if (!el) return;
+      var o = new IntersectionObserver(function (e) {
+        if (e[0].isIntersecting) {
+          setTimeout(function () {
+            el.classList.add(c[1]);
+            if (c[1] !== 'aceso') return;
+            // E05: linha se desenha e os números acendem um a um
+            el.classList.add('linha-on');
+            [].forEach.call(el.children, function (li, i) { setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 150 + i * 650); });
+          }, calmo ? 0 : c[2]);
+          o.disconnect();
+        }
+      }, { threshold: 0.35 });
+      o.observe(el);
+    });
+  }
+
+  // E09: partículas douradas no hero
+  var cv = document.querySelector('.hero-particulas');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d'), pts = [], visivel = true, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var qtd = window.innerWidth < 640 ? 26 : 50;
+  function medir() { cv.width = cv.offsetWidth * dpr; cv.height = cv.offsetHeight * dpr; }
+  medir(); window.addEventListener('resize', medir);
+  for (var i = 0; i < qtd; i++) pts.push({ x: Math.random(), y: Math.random(), r: Math.random() * 1.8 + 0.4, v: Math.random() * 0.0008 + 0.0003, a: Math.random() * 0.6 + 0.2, f: Math.random() * 6.28 });
+  function desenhar() {
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    pts.forEach(function (p) {
+      if (!calmo) { p.y -= p.v; p.f += 0.02; if (p.y < -0.02) { p.y = 1.02; p.x = Math.random(); } }
+      ctx.beginPath(); ctx.arc((p.x + Math.sin(p.f) * 0.004) * cv.width, p.y * cv.height, p.r * dpr, 0, 6.28);
+      ctx.fillStyle = 'rgba(214,180,126,' + (p.a * (0.6 + 0.4 * Math.sin(p.f * 1.3))) + ')';
+      ctx.shadowColor = 'rgba(214,180,126,.8)'; ctx.shadowBlur = 6 * dpr; ctx.fill();
+    });
+    if (visivel && !calmo) requestAnimationFrame(desenhar);
+  }
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (e) { var antes = visivel; visivel = e[0].isIntersecting; if (visivel && !antes) desenhar(); }).observe(cv);
+  desenhar();
 })();
