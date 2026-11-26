@@ -1502,3 +1502,14 @@ em{font-style:normal;color:var(--ouro)}
 .carta.aberta{cursor:default}
 .carta-aba:focus-visible{outline:2px solid #f0d49a;outline-offset:3px}
 @media (prefers-reduced-motion:reduce){.carta-papel{opacity:1}.carta.aberta .carta-papel{animation:none;-webkit-mask:none;mask:none}}
+/* 26/11 (pedido final): hero com entrada. Título (logo + assinatura) entra da esquerda para a direita;
+   "Webinário", foto, data, texto e botão sobem, um depois do outro */
+@keyframes hero-sobe{from{opacity:0;transform:translateY(42px)}to{opacity:1;transform:none}}
+.hero .logo-3s{animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .25s backwards!important}
+.hero .assinatura{animation:logo-entra 1.4s cubic-bezier(.22,.61,.36,1) .6s backwards!important}
+.hero .marca-kicker{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) 0s backwards!important}
+.hero .hero-foto{animation:hero-sobe 1.1s cubic-bezier(.22,.61,.36,1) .45s backwards}
+.hero .pill-data{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) .85s backwards!important}
+.hero .sub{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) 1.05s backwards!important}
+.hero .hero-in > .btn{animation:hero-sobe .9s cubic-bezier(.22,.61,.36,1) 1.25s backwards}
+@media (prefers-reduced-motion:reduce){.hero .logo-3s,.hero .assinatura,.hero .marca-kicker,.hero .hero-foto,.hero .pill-data,.hero .sub,.hero .hero-in > .btn{animation:none!important}}
