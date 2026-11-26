@@ -1571,3 +1571,8 @@ em{font-style:normal;color:var(--ouro)}
 }
 @media (max-width:640px){.metodo-tela1{padding-bottom:22px!important}}
 @media (max-width:640px){.ingresso-lista li{white-space:nowrap;font-size:min(.92rem,3.75vw)!important}}
+/* 26/11: barra da data na mesma cor de "16 de janeiro" (não confunde com o 1 do 13h) */
+.pill-data .pd-sep{color:var(--ouro);font-weight:400;margin:0 2px}
+/* 26/11: hero: "Webinário" fica no alto; do título para baixo desce um pouco, para o título respirar */
+@media (max-width:640px){.hero .h1-logo{margin-top:14px!important}}
+@media (min-width:641px){.hero .h1-logo{margin-top:10px}}
