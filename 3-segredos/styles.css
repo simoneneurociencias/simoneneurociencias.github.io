@@ -1191,3 +1191,11 @@ em{font-style:normal;color:var(--ouro)}
 @media (prefers-reduced-motion:reduce){.metodo-etapas li::after{transform:scaleY(1);transition:none}}
 /* brilho (03) passa pela frase toda "Pede um RE:SET" */
 .decisao-t2 .frase-reset em.brilho-reset{background-size:250% 100%}
+/* efeito 02: borda com luz girando na caixa "Saber o que fazer não basta... O RE:SET atua na causa" */
+@property --e02-ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+.metodo-principio{border:1.5px solid transparent!important;
+  background:linear-gradient(180deg,rgba(12,58,64,.35),rgba(1,12,20,.55)) padding-box,linear-gradient(#021520,#021520) padding-box,
+             conic-gradient(from var(--e02-ang),rgba(185,145,91,.22) 0 65%,#d9b774 80%,#fff1d8 84%,rgba(185,145,91,.22) 92%) border-box!important;
+  animation:e02-gira 6s linear infinite;box-shadow:0 0 40px -16px rgba(210,174,121,.55)!important}
+@keyframes e02-gira{to{--e02-ang:360deg}}
+@media (prefers-reduced-motion:reduce){.metodo-principio{animation:none}}
