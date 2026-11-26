@@ -1633,3 +1633,6 @@ em{font-style:normal;color:var(--ouro)}
   .decisao-fim .cta-linha{margin-top:30px!important}
 }
 @media (min-width:641px){.decisao-fim .cta-linha{margin-top:30px!important}}
+/* 26/11: "Webinário" do hero desce um pouco do topo, sem encostar no título */
+@media (max-width:640px){.hero .marca-kicker{margin-top:16px!important}.hero .h1-logo{margin-top:10px!important}}
+@media (min-width:641px){.hero .marca-kicker{margin-top:18px}}
