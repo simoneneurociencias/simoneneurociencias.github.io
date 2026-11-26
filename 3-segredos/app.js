@@ -17,9 +17,8 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     document.querySelectorAll('.js-cta').forEach(function (a) { a.href = destino; });
   }
 
-  return; // 26/11: a pedido dela, sem o efeito de subida fora do hero
   // Seções entram ao rolar
-  var alvos = document.querySelectorAll('.card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .metodo-etapas li, .ganhos-3 li, .caixa-garantia, .fecho, .frase-reset, .cta-linha');
+  var alvos = document.querySelectorAll('.card-just, .lado, .etapa, .virada, .video-slot, .ingresso, .card-simone, .simone-vidro, .livro, .manifesto-caixa, .capa, .bonus-capa, .bonus-txt, .faq details, .metodo-logo, .metodo-def, .metodo-principio, .caixa-garantia, .fecho, .frase-reset, .cta-linha');
   if (!('IntersectionObserver' in window)) return;
   alvos.forEach(function (el) {
     el.classList.add('revela');
@@ -29,7 +28,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
     if (i > 0) el.style.transitionDelay = Math.min(i, 5) * 0.14 + 's';
   });
   // dentro de cada caixa o conteúdo também entra em cascata: título, depois cada item, um por vez
-  var caixas = document.querySelectorAll('.lado, .etapa, .metodo-etapas li, .caixa-garantia, .ingresso, .manifesto-caixa, .simone-vidro, .livro');
+  var caixas = document.querySelectorAll('.lado, .etapa, .caixa-garantia, .ingresso, .manifesto-caixa, .simone-vidro, .livro');
   caixas.forEach(function (cx) {
     var pecas = [];
     [].forEach.call(cx.children, function (f) {

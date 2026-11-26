@@ -1417,3 +1417,15 @@ em{font-style:normal;color:var(--ouro)}
 .etapas.mov-on .etapa:nth-child(3) .mov-luz::before{animation-delay:3s}
 .etapas.mov-on .etapa:nth-child(4) .mov-luz::before{animation-delay:3.9s}
 .diferente{overflow-x:hidden}
+/* 26/11: no hero só o título entra da esquerda; os textos ficam parados */
+.hero .marca-kicker,.hero .pill-data,.hero .sub{animation:none!important}
+/* 26/11: pílula "Neurociência · Visualização Ativa · PNL" com destaque: letra dourada, fundo escuro; mais respiro até a caixa */
+.metodo-tela1 .metodo-base .mb-pilula{color:#e2c088!important;-webkit-text-fill-color:#e2c088;font-weight:600;background:#020f18!important;border:1px solid rgba(217,183,116,.75)!important;box-shadow:0 0 18px -4px rgba(217,183,116,.45),inset 0 0 12px rgba(217,183,116,.08);padding:8px 16px!important}
+.metodo-tela1 .metodo-base .mb-pilula span{color:#d9b774!important;opacity:.8}
+.metodo-tela1 .metodo-base small{margin-top:14px!important;color:var(--txt)!important}
+.metodo-tela1 .metodo-principio{margin-top:28px!important}
+@media (max-width:640px){
+  .metodo-tela1 .metodo-logo{width:min(100%,22svh)!important}
+  .metodo-tela1 .metodo-principio{margin-top:22px!important}
+}
+@media (max-width:640px){.metodo-tela1 .metodo-base .mb-pilula{padding:7px 12px!important;font-size:min(.74rem,3vw)}}
