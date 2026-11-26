@@ -1155,10 +1155,11 @@ em{font-style:normal;color:var(--ouro)}
 .brilho-reset{background:linear-gradient(110deg,#d9b774 35%,#fff1d6 50%,#d9b774 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:brilho-passa 3.8s ease-in-out infinite}
 .brilho-reset span{-webkit-text-fill-color:transparent}
 @keyframes brilho-passa{0%{background-position:120% 0}60%,100%{background-position:-20% 0}}
-.etapas.tres .etapa{position:relative;overflow:hidden}
-.etapas.tres .etapa > :not(.etapa-num){position:relative}
-.etapas.tres .etapa-num{display:block!important;position:absolute;right:12px;top:-6px;margin:0;font-family:var(--display);font-weight:700;font-size:5rem;line-height:1;color:rgba(185,145,91,.09);pointer-events:none}
-@media (max-width:640px){.etapas.tres .etapa-num{font-size:3.6rem;top:-4px}}
+/* efeito 06 nos 4 momentos (saiu dos 3 segredos a pedido dela) */
+.etapas:not(.tres) .etapa{position:relative;overflow:hidden;display:block!important}
+.etapas:not(.tres) .etapa > :not(.etapa-num){position:relative}
+.etapas:not(.tres) .etapa-num{position:absolute;right:12px;top:-6px;margin:0;font-family:var(--display);font-weight:700;font-size:5rem!important;line-height:1;color:rgba(185,145,91,.10);pointer-events:none}
+@media (max-width:640px){.etapas:not(.tres) .etapa-num{font-size:3.4rem!important;top:-4px}}
 @media (prefers-reduced-motion:reduce){.brilho-reset{animation:none}.ad-lista i{transform:scaleX(1);transition:none}}
 /* E05: a linha dos 3 itens se desenha e os números acendem em sequência */
 .decisao-t2 .ganhos-3.ad-depois::before{background:rgba(185,145,91,.18)}
