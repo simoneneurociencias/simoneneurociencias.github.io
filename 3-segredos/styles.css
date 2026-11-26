@@ -1425,8 +1425,8 @@ em{font-style:normal;color:var(--ouro)}
 .metodo-tela1 .metodo-base small{margin-top:14px!important;color:var(--txt)!important}
 .metodo-tela1 .metodo-principio{margin-top:28px!important}
 @media (max-width:640px){
-  .metodo-tela1 .metodo-logo{width:min(100%,22svh)!important}
-  .metodo-tela1 .metodo-principio{margin-top:22px!important}
+  .metodo-tela1 .metodo-principio{margin-top:clamp(10px,2svh,18px)!important}
+  .metodo-tela1 .metodo-base small{margin-top:10px!important}
 }
 @media (max-width:640px){.metodo-tela1 .metodo-base .mb-pilula{padding:7px 12px!important;font-size:min(.74rem,3vw)}}
 /* 26/11: baú dos 3 Segredos balança de tempos em tempos, como se algo quisesse sair */
@@ -1447,3 +1447,4 @@ em{font-style:normal;color:var(--ouro)}
 .etapas.tres.px-on .etapa:nth-child(3){animation-delay:1.2s}
 @keyframes px-forma{0%{--pr:0px;filter:blur(2px) brightness(1.6)}65%{filter:blur(0) brightness(1.25)}100%{--pr:7px;filter:none}}
 @media (prefers-reduced-motion:reduce){.chave-titulo{animation:none}.etapas.tres.px-pronto .etapa{-webkit-mask:none;mask:none}}
+@media (max-width:640px){.metodo-tela1 .metodo-base .mb-pilula{padding:5px 12px!important}.metodo-tela1 .metodo-base small{margin-top:8px!important}.metodo-tela1 .metodo-principio{margin-top:clamp(8px,1.6svh,16px)!important}}
