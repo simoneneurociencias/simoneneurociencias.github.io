@@ -1468,3 +1468,5 @@ em{font-style:normal;color:var(--ouro)}
   .para-quem:not(.sec-decisao) .duas-colunas{margin-top:20px!important;gap:14px!important}
   .para-quem:not(.sec-decisao) .duas-colunas .lado h3{padding-top:10px!important;padding-bottom:8px!important}
 }
+/* 26/11: título do hero sem entrada (fica parado) */
+.logo-3s,.assinatura,.marca-logo{animation:none!important}

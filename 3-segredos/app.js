@@ -194,57 +194,79 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   setTimeout(conferir, 60);
 })();
 
-// 26/11: hero: rede de neurônios. Conexões entre pontos próximos e impulsos de luz viajando; reage ao toque ou ao mouse
+// 26/11: hero: rede de neurônios no formato de um cérebro (vista de lado). Os pontos vivem dentro do contorno,
+// tremem de leve em volta do lugar, se ligam aos vizinhos e impulsos de luz correm entre eles; reage ao toque/mouse.
 (function () {
   var cv = document.querySelector('.hero-neural');
   if (!cv || !cv.getContext) return;
   var hero = cv.parentElement, ctx = cv.getContext('2d');
   var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, nos = [], pulsos = [], visivel = true, rodando = false;
-  var cel = window.innerWidth < 640, QTD = cel ? 58 : 95, DIST = cel ? 118 : 160, toque = null;
-  function medir() {
-    W = cv.offsetWidth; H = cv.offsetHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  var dpr = Math.min(window.devicePixelRatio || 1, 2), W = 0, H = 0, nos = [], pulsos = [], visivel = true, rodando = false, toque = null, DIST = 60, t = 0;
+  var cel = window.innerWidth < 640, QTD = cel ? 90 : 140;
+  // contorno do cérebro numa caixa 200 x 150
+  var CEREBRO = 'M38 108 C12 100 4 66 24 50 C22 24 58 6 92 14 C114 0 160 4 174 32 C198 44 200 86 178 102 C176 122 146 132 128 120 C116 134 84 134 72 120 C56 126 42 120 38 108 Z M118 118 C120 132 122 142 126 150 L138 150 C134 140 132 128 132 116 Z';
+  var forma = new Path2D(CEREBRO), GEO = null;
+  var DOBRAS = new Path2D('M52 46 C70 34 92 48 112 36 C128 28 148 36 160 46 M40 74 C62 62 84 82 108 68 C128 56 150 72 172 64 M56 100 C74 90 96 106 118 96 C134 88 152 98 166 92 M100 18 C96 34 104 52 98 70 M140 22 C134 40 146 58 138 80');
+  function montar() {
+    W = cv.offsetWidth; H = cv.offsetHeight; if (!W || !H) return false;
+    cv.width = W * dpr; cv.height = H * dpr;
+    var bw = Math.min(W * (cel ? .96 : .62), 620), esc = bw / 200, bh = 150 * esc;
+    var ox = (W - bw) / 2, oy = cel ? H * .04 : Math.max(H * .1, 40);
+    DIST = 26 * esc; GEO = { ox: ox, oy: oy, esc: esc };
+    var prova = document.createElement('canvas').getContext('2d');
+    nos = []; var tent = 0;
+    while (nos.length < QTD && tent < 8000) {
+      tent++; var u = Math.random() * 200, v = Math.random() * 150;
+      if (prova.isPointInPath(forma, u, v)) nos.push({ hx: ox + u * esc, hy: oy + v * esc, x: 0, y: 0, f: Math.random() * 6.28, a: Math.random() * 3 + 2, r: Math.random() * 1.4 + 1.2, b: 0 });
+    }
+    // um pouco de pontos soltos fora do cérebro, bem discretos
+    for (var k = 0; k < (cel ? 10 : 18); k++) nos.push({ hx: Math.random() * W, hy: Math.random() * H, x: 0, y: 0, f: Math.random() * 6.28, a: 8, r: 1, b: 0, solto: true });
+    return true;
   }
-  medir(); window.addEventListener('resize', medir);
-  function criar() { nos = []; for (var i = 0; i < QTD; i++) nos.push({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35, r: Math.random() * 1.6 + 1.4, b: 0 }); }
-  function ponto(e) { var r = hero.getBoundingClientRect(), t = e.touches ? e.touches[0] : e; toque = { x: t.clientX - r.left, y: t.clientY - r.top }; }
+  function ponto(e) { var r = hero.getBoundingClientRect(), p = e.touches ? e.touches[0] : e; toque = { x: p.clientX - r.left, y: p.clientY - r.top }; }
   hero.addEventListener('pointermove', ponto); hero.addEventListener('touchmove', ponto, { passive: true });
   hero.addEventListener('pointerleave', function () { toque = null; }); hero.addEventListener('touchend', function () { toque = null; });
+  window.addEventListener('resize', function () { montar(); });
   function quadro() {
-    if (!W || !H) { medir(); }
-    if ((!nos.length || nos[0].x === 0 && nos[1].x === 0) && W && H) criar();
-    ctx.clearRect(0, 0, W, H);
-    var i, j, a, b, dx, dy, d, al;
-    for (i = 0; i < nos.length; i++) {
-      a = nos[i];
-      if (!calmo) { a.x += a.vx; a.y += a.vy; if (a.x < 0 || a.x > W) a.vx *= -1; if (a.y < 0 || a.y > H) a.vy *= -1; }
-      a.b *= .94;
+    if (!nos.length && !montar()) { setTimeout(quadro, 200); return; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
+    if (!calmo) t += .016;
+    if (GEO) {
+      ctx.save(); ctx.translate(GEO.ox, GEO.oy); ctx.scale(GEO.esc, GEO.esc);
+      ctx.lineWidth = 1.4 / GEO.esc; ctx.strokeStyle = 'rgba(217,183,116,' + (.5 + Math.sin(t * 1.3) * .1) + ')';
+      ctx.shadowColor = 'rgba(217,183,116,.8)'; ctx.shadowBlur = 10; ctx.stroke(forma); ctx.shadowBlur = 0;
+      ctx.lineWidth = 1 / GEO.esc; ctx.strokeStyle = 'rgba(217,183,116,.26)'; ctx.stroke(DOBRAS);
+      ctx.restore();
     }
-    ctx.lineWidth = 1.2;
-    for (i = 0; i < nos.length; i++) for (j = i + 1; j < nos.length; j++) {
-      a = nos[i]; b = nos[j]; dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
-      if (d < DIST * DIST) {
-        al = (1 - Math.sqrt(d) / DIST) * .75;
-        ctx.strokeStyle = 'rgba(217,183,116,' + al + ')';
-        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        if (!calmo && Math.random() < .0022 && pulsos.length < 22) pulsos.push({ a: i, b: j, t: 0 });
+    var i, j, a, b, dx, dy, d, al;
+    for (i = 0; i < nos.length; i++) { a = nos[i]; a.x = a.hx + Math.sin(t * .9 + a.f) * a.a; a.y = a.hy + Math.cos(t * .7 + a.f) * a.a; a.b *= .94; }
+    ctx.lineWidth = 1;
+    for (i = 0; i < nos.length; i++) { a = nos[i]; if (a.solto) continue;
+      for (j = i + 1; j < nos.length; j++) { b = nos[j]; if (b.solto) continue;
+        dx = a.x - b.x; dy = a.y - b.y; d = dx * dx + dy * dy;
+        if (d < DIST * DIST) {
+          al = (1 - Math.sqrt(d) / DIST) * .85;
+          ctx.strokeStyle = 'rgba(217,183,116,' + al + ')';
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          if (!calmo && Math.random() < .0016 && pulsos.length < 26) pulsos.push({ a: i, b: j, t: 0 });
+        }
       }
     }
     if (toque) for (i = 0; i < nos.length; i++) {
       a = nos[i]; dx = a.x - toque.x; dy = a.y - toque.y; d = Math.sqrt(dx * dx + dy * dy);
-      if (d < DIST * 1.3) { ctx.strokeStyle = 'rgba(240,212,154,' + (1 - d / (DIST * 1.3)) * .7 + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(toque.x, toque.y); ctx.stroke(); a.b = Math.max(a.b, .6); }
+      if (d < DIST * 2.2) { ctx.strokeStyle = 'rgba(240,212,154,' + (1 - d / (DIST * 2.2)) * .8 + ')'; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(toque.x, toque.y); ctx.stroke(); a.b = Math.max(a.b, .7); }
     }
     for (i = 0; i < nos.length; i++) {
       a = nos[i];
       ctx.beginPath(); ctx.arc(a.x, a.y, a.r + a.b * 2.2, 0, 6.283);
-      ctx.fillStyle = 'rgba(240,210,158,' + (.8 + a.b * .2) + ')';
-      ctx.shadowColor = 'rgba(236,204,150,.9)'; ctx.shadowBlur = 6 + a.b * 14; ctx.fill(); ctx.shadowBlur = 0;
+      ctx.fillStyle = a.solto ? 'rgba(236,204,150,.35)' : 'rgba(240,210,158,' + (.8 + a.b * .2) + ')';
+      ctx.shadowColor = 'rgba(236,204,150,.9)'; ctx.shadowBlur = a.solto ? 0 : 6 + a.b * 14; ctx.fill(); ctx.shadowBlur = 0;
     }
     for (i = pulsos.length - 1; i >= 0; i--) {
-      var p = pulsos[i]; a = nos[p.a]; b = nos[p.b]; p.t += .022;
+      var p = pulsos[i]; a = nos[p.a]; b = nos[p.b]; p.t += .03;
       if (p.t >= 1) { b.b = 1; pulsos.splice(i, 1); continue; }
-      var x = a.x + (b.x - a.x) * p.t, y = a.y + (b.y - a.y) * p.t;
-      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, 6.283); ctx.fillStyle = '#fff4dc'; ctx.shadowColor = '#f0d49a'; ctx.shadowBlur = 14; ctx.fill(); ctx.shadowBlur = 0;
+      ctx.beginPath(); ctx.arc(a.x + (b.x - a.x) * p.t, a.y + (b.y - a.y) * p.t, 2.2, 0, 6.283);
+      ctx.fillStyle = '#fff4dc'; ctx.shadowColor = '#f0d49a'; ctx.shadowBlur = 14; ctx.fill(); ctx.shadowBlur = 0;
     }
     if (visivel && !calmo) setTimeout(function () { requestAnimationFrame(quadro); }, 0); else rodando = false;
   }
