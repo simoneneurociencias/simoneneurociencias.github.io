@@ -1636,3 +1636,24 @@ em{font-style:normal;color:var(--ouro)}
 /* 26/11: "Webinário" do hero desce um pouco do topo, sem encostar no título */
 @media (max-width:640px){.hero .marca-kicker{margin-top:16px!important}.hero .h1-logo{margin-top:10px!important}}
 @media (min-width:641px){.hero .marca-kicker{margin-top:18px}}
+/* 26/11: "O que você já tentou" = opção 1: um ✕ dourado aparece na frente de cada item (sem risco por cima) */
+.decisao-t1 .dec-antes .ad-lista i{display:none!important}
+.decisao-t1 .dec-antes .ad-lista span{display:inline-flex;align-items:center;gap:6px}
+.decisao-t1 .dec-antes .ad-lista span::before{content:"✕";display:inline-block;width:0;overflow:hidden;color:var(--ouro2,#d9b774);font-weight:700;transform:scale(0) rotate(-90deg);transition:transform .6s cubic-bezier(.5,1.8,.4,1),width .3s}
+.ad-antes.riscado .ad-lista span::before{width:.9em;transform:none}
+.ad-antes.riscado li:nth-child(1) span::before{transition-delay:.5s}
+.ad-antes.riscado li:nth-child(2) span::before{transition-delay:1.4s}
+.ad-antes.riscado li:nth-child(3) span::before{transition-delay:2.3s}
+.ad-antes.riscado li:nth-child(4) span::before{transition-delay:3.2s}
+@media (prefers-reduced-motion:reduce){.decisao-t1 .dec-antes .ad-lista span::before{width:.9em;transform:none;transition:none}}
+/* "…e o bloqueio continua." em destaque dourado */
+.decisao-t1 .dec-antes .ad-pe{color:#d9b774!important;font-weight:700}
+/* fecho novo, menor para caber em uma linha */
+.decisao-t1 .dec-fecho .ff-ouro{white-space:nowrap}
+@media (max-width:640px){
+  .decisao-t1 .dec-antes .ad-lista span{font-size:min(.74rem,3.05vw)!important;gap:4px}
+  .decisao-t1 .dec-fecho .ff-ouro{font-size:min(.86rem,3.35vw)!important}
+}
+@media (min-width:641px){.decisao-t1 .dec-fecho .ff-ouro{font-size:1.2rem}}
+@media (max-width:640px){.decisao-t1 .dec-fecho .ff-ouro{font-size:min(.84rem,3.1vw)!important;letter-spacing:-.01em}}
+@media (min-width:641px){.decisao-t1 .dec-antes .ad-lista span{font-size:.82rem!important}.decisao-t1 .dec-antes .ad-lista{gap:10px 14px!important}}
