@@ -1172,23 +1172,6 @@ em{font-style:normal;color:var(--ouro)}
 /* tela do "antes": a frase de virada ganha corpo, já que está sozinha com a caixa */
 .decisao-antes .fecho-final .ff-branco{font-size:min(1.15rem,4.8vw)}
 .decisao-antes .fecho-final .ff-ouro{font-size:min(1.3rem,5.6vw);margin-top:4px}
-/* 25/11: 4 etapas do método = efeito 06 (cartões com número grande ao fundo), sem a linha do tempo */
-.metodo-etapas::before{display:none!important}
-.metodo-etapas li{position:relative;overflow:hidden;display:block!important;background:linear-gradient(160deg,rgba(12,58,64,.45),rgba(1,12,20,.6))!important;border:1px solid rgba(185,145,91,.22)!important;border-radius:12px;padding:22px 20px!important}
-.metodo-etapas li > div{position:relative;z-index:1;background:none!important;border:0!important;padding:0!important}
-.metodo-etapas .me-num{position:absolute!important;right:10px;top:-6px;z-index:0;display:block!important;width:auto!important;height:auto!important;margin:0!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;font-family:var(--display);font-weight:700;font-size:5rem!important;line-height:1;color:rgba(185,145,91,.10)!important;pointer-events:none}
-@media (max-width:640px){
-  .metodo-etapas li{padding:12px 16px!important}
-  .metodo-etapas .me-num{font-size:3.4rem!important;top:-4px}
-}
-/* efeito 05 nas 4 etapas do método: borda dourada se desenha e o número de fundo acende, cartão por cartão */
-.metodo-etapas li::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#e8c48a,var(--ouro));transform:scaleY(0);transform-origin:top;transition:transform .7s cubic-bezier(.65,0,.35,1);z-index:2}
-.metodo-etapas li.on::after{transform:scaleY(1)}
-.metodo-etapas li .me-num{transition:color .8s,text-shadow .8s}
-.metodo-etapas li.on .me-num{color:rgba(217,183,116,.42)!important;text-shadow:0 0 26px rgba(217,183,116,.35)}
-.metodo-etapas li{transition:border-color .8s}
-.metodo-etapas li.on{border-color:rgba(185,145,91,.45)!important}
-@media (prefers-reduced-motion:reduce){.metodo-etapas li::after{transform:scaleY(1);transition:none}}
 /* brilho (03) passa pela frase toda "Pede um RE:SET" */
 .decisao-t2 .frase-reset em.brilho-reset{background-size:250% 100%}
 /* efeito 02: borda com luz girando na caixa "Saber o que fazer não basta... O RE:SET atua na causa" */
@@ -1199,3 +1182,14 @@ em{font-style:normal;color:var(--ouro)}
   animation:e02-gira 6s linear infinite;box-shadow:0 0 40px -16px rgba(210,174,121,.55)!important}
 @keyframes e02-gira{to{--e02-ang:360deg}}
 @media (prefers-reduced-motion:reduce){.metodo-principio{animation:none}}
+/* 4 etapas do método: volta a linha do tempo, com o efeito 05 (linha se desenha e os números acendem um a um) */
+.metodo-etapas::before{background:rgba(185,145,91,.18)}
+.metodo-etapas::after{content:"";position:absolute;top:22px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,#e8c48a,var(--ouro));transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.45,0,.35,1)}
+.metodo-etapas.linha-on::after{transform:scaleX(1)}
+.metodo-etapas .me-num{transition:background .5s,color .5s,box-shadow .5s}
+.metodo-etapas li.on .me-num{background:#d9b774;color:#021a28;box-shadow:0 0 0 5px rgba(185,145,91,.14),0 0 22px rgba(210,174,121,.6)}
+@media (max-width:640px){
+  .metodo-etapas::after{top:19px;bottom:19px;left:18px;right:auto;width:2px;height:auto;background:linear-gradient(180deg,#e8c48a,var(--ouro));transform:scaleY(0);transform-origin:top}
+  .metodo-etapas.linha-on::after{transform:scaleY(1)}
+}
+@media (prefers-reduced-motion:reduce){.metodo-etapas::after{transform:none!important;transition:none}}

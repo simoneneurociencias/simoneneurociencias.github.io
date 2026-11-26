@@ -103,7 +103,7 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   desenhar();
 })();
 
-// 25/11: efeito 05 nas 4 etapas do método: a borda de cada cartão se desenha e o número acende, um por vez
+// 25/11: efeito 05 nas 4 etapas do método: a linha do tempo se desenha e os números acendem, um por vez
 (function () {
   var box = document.querySelector('.metodo-etapas');
   if (!box || !('IntersectionObserver' in window)) return;
@@ -111,7 +111,8 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   var o = new IntersectionObserver(function (e) {
     if (!e[0].isIntersecting) return;
     o.disconnect();
-    [].forEach.call(box.children, function (li, i) { setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 500 + i * 600); });
+    box.classList.add('linha-on');
+    [].forEach.call(box.children, function (li, i) { setTimeout(function () { li.classList.add('on'); }, calmo ? 0 : 200 + i * 650); });
   }, { threshold: 0.3 });
   o.observe(box);
 })();
