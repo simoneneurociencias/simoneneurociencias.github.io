@@ -1470,3 +1470,35 @@ em{font-style:normal;color:var(--ouro)}
 }
 /* 26/11: título do hero sem entrada (fica parado) */
 .logo-3s,.assinatura,.marca-logo{animation:none!important}
+/* 26/11: 3 Segredos = carta lacrada (sai o efeito das bolinhas; os cartões voltam a subir na entrada) */
+.etapas.tres.px-pronto .etapa,.etapas.tres.px-on .etapa{-webkit-mask:none!important;mask:none!important;animation:none!important}
+.etapas.tres .etapa.revela{opacity:0!important;transform:translateY(46px)!important;transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1)!important}
+.etapas.tres .etapa.revela.visivel{opacity:1!important;transform:none!important}
+@property --rv{syntax:"<length>";inherits:false;initial-value:0px}
+.etapas.tres .carta{position:relative;perspective:900px;cursor:pointer;min-height:112px;overflow:visible}
+.etapas.tres .carta-1{background:linear-gradient(160deg,#0b1f31,#040c15)!important;border-color:rgba(120,150,190,.32)!important}
+.etapas.tres .carta-2{background:linear-gradient(160deg,#0f3352,#071b2d)!important;border-color:rgba(140,170,220,.35)!important}
+.etapas.tres .carta-3{background:radial-gradient(120% 140% at 0% 0%,rgba(201,161,105,.75) 0%,rgba(122,90,46,.55) 34%,#22180a 70%,#110c05 100%)!important;border-color:rgba(217,183,116,.7)!important}
+.etapas.tres .carta-3 .carta-papel h3,.etapas.tres .carta-3 .carta-papel h3 *{color:#fff1d6!important}
+.etapas.tres .carta-3 .carta-papel .promessa{color:#e8dcc6!important}
+.etapas.tres .carta-3 .carta-papel .promessa strong{color:#f0d49a!important}
+.carta-papel{position:relative;opacity:0}
+.carta.aberta .carta-papel{opacity:1;-webkit-mask:radial-gradient(circle at 50% 50%,#000 var(--rv),transparent calc(var(--rv) + 70px));mask:radial-gradient(circle at 50% 50%,#000 var(--rv),transparent calc(var(--rv) + 70px));animation:carta-revela 1.6s .55s cubic-bezier(.3,0,.2,1) both}
+@keyframes carta-revela{from{--rv:-70px}to{--rv:520px}}
+.carta-aba{position:absolute;inset:-1px;border-radius:inherit;z-index:3;transform-origin:top;backface-visibility:hidden;transition:transform 1s cubic-bezier(.6,0,.3,1) .3s,opacity .4s 1s;border:1px solid rgba(185,145,91,.45)}
+.carta-1 .carta-aba{background:linear-gradient(160deg,#0e2538,#050f1a)}
+.carta-2 .carta-aba{background:linear-gradient(160deg,#164064,#0a2238)}
+.carta-3 .carta-aba{background:radial-gradient(120% 140% at 0% 0%,#c9a169 0%,#7a5a2e 38%,#2a1d0c 72%,#140e06 100%)}
+.carta-aba::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(to top right,transparent calc(50% - .8px),rgba(217,183,116,.55) 50%,transparent calc(50% + .8px)) left top/50% 58% no-repeat,linear-gradient(to top left,transparent calc(50% - .8px),rgba(217,183,116,.55) 50%,transparent calc(50% + .8px)) right top/50% 58% no-repeat}
+.carta-aba::after{content:"";position:absolute;inset:0;border-radius:inherit;clip-path:polygon(0 0,100% 0,50% 58%);background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02))}
+.carta-selo{position:absolute;left:50%;top:46%;width:50px;height:50px;transform:translate(-50%,-50%);z-index:2;background:url(selo-cera-dourado.png) center/contain no-repeat;filter:drop-shadow(0 5px 7px rgba(0,0,0,.65));display:grid;place-items:center;transition:transform .5s cubic-bezier(.5,1.8,.4,1)}
+.carta-selo i{font-style:normal;font-family:var(--display);font-weight:700;font-size:12px;color:#8a5e17;text-shadow:0 1px 0 rgba(255,246,200,.9),0 -1px 0 rgba(120,80,15,.45)}
+.carta-selo::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1.5px solid rgba(240,212,154,.8);animation:carta-pulso 1.8s ease-out infinite;pointer-events:none}
+@keyframes carta-pulso{from{transform:scale(.6);opacity:1}to{transform:scale(1.6);opacity:0}}
+.carta-dica{position:absolute;left:0;right:0;bottom:9px;z-index:4;text-align:center;font:700 12.5px var(--texto);letter-spacing:.02em;color:#f3d9a4;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none;transition:opacity .3s}
+.carta.aberta .carta-selo{transform:translate(-50%,-50%) scale(0) rotate(40deg)}
+.carta.aberta .carta-aba{transform:rotateX(180deg);opacity:0;pointer-events:none}
+.carta.aberta .carta-dica{opacity:0}
+.carta.aberta{cursor:default}
+.carta-aba:focus-visible{outline:2px solid #f0d49a;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.carta-papel{opacity:1}.carta.aberta .carta-papel{animation:none;-webkit-mask:none;mask:none}}

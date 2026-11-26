@@ -174,24 +174,39 @@ var CHECKOUT_URL = 'https://chk.eduzz.com/797ZYA480E';
   setTimeout(conferir, 60);
 })();
 
-// 26/11: 3 Segredos: os cartões se formam em bolinhas quando a tela aparece (repete ao voltar)
+// 26/11: 3 Segredos = carta lacrada. Cada cartão fica coberto por um envelope com selo de cera dourado;
+// ao tocar no selo, ele some, a aba abre e o segredo aparece de dentro para fora.
+// Se a pessoa ficar ~4 s na tela sem tocar, a primeira carta abre sozinha para mostrar como funciona.
 (function () {
   var g = document.querySelector('.etapas.tres');
-  if (!g || !(window.CSS && CSS.supports && (CSS.supports('mask', 'none') || CSS.supports('-webkit-mask', 'none')))) return;
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  g.classList.add('px-pronto');
-  var pedido = false;
+  if (!g) return;
+  var calmo = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cartas = [].slice.call(g.querySelectorAll('.etapa'));
+  cartas.forEach(function (c, i) {
+    var n = i + 1, papel = document.createElement('div');
+    papel.className = 'carta-papel';
+    [].slice.call(c.childNodes).forEach(function (no) { if (!(no.classList && no.classList.contains('etapa-num'))) papel.appendChild(no); });
+    c.appendChild(papel);
+    c.classList.add('carta', 'carta-' + n);
+    c.insertAdjacentHTML('beforeend', '<div class="carta-aba" role="button" tabindex="0" aria-label="Abrir o segredo ' + n + '"><span class="carta-selo"><i>0' + n + '</i></span></div><span class="carta-dica" aria-hidden="true">Toque no selo para abrir o segredo ' + n + '</span>');
+    function abrir() { c.classList.add('aberta'); }
+    var aba = c.querySelector('.carta-aba');
+    c.addEventListener('click', abrir);
+    aba.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrir(); } });
+    if (calmo) abrir();
+  });
+  if (calmo) return;
+  var timer = null, pedido = false;
   function conferir() {
     pedido = false;
     var r = g.getBoundingClientRect(), vh = window.innerHeight || document.documentElement.clientHeight;
-    var dentro = r.top < vh * 0.85 && r.bottom > vh * 0.15;
-    if (dentro) g.classList.add('px-on');
-    else if (r.top > vh || r.bottom < 0) g.classList.remove('px-on');
+    var dentro = r.top < vh * 0.7 && r.bottom > vh * 0.3;
+    if (dentro && !timer && !g.querySelector('.carta.aberta')) timer = setTimeout(function () { cartas[0].classList.add('aberta'); }, 4000);
+    if (!dentro && timer) { clearTimeout(timer); timer = null; }
   }
-  function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 40); } }
+  function agendar() { if (!pedido) { pedido = true; setTimeout(conferir, 60); } }
   window.addEventListener('scroll', agendar, { passive: true });
-  window.addEventListener('resize', agendar);
-  setTimeout(conferir, 60);
+  setTimeout(conferir, 100);
 })();
 
 // 26/11: hero: rede de neurônios no formato de um cérebro (vista de lado). Os pontos vivem dentro do contorno,
